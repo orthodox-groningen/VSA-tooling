@@ -1,17 +1,31 @@
-# VSA stap 14 fix - SVG regressietests robuuster
+# VSA stap 15 - scope-grid rendering
 
-Deze patch lost twee problemen op:
+Deze stap verbetert de SVG-renderer.
 
-1. `test_regression_layout.py` verwachtte ten onrechte dat elke regressiemap `expected-ast.json` heeft.
-2. `test_svg_regression.py` vergeleek exacte SVG-coördinaten, terwijl de renderer nog experimenteel is.
+Nieuw:
 
-Nieuwe aanpak:
+- elke `ScopeNode` krijgt een intern grid;
+- samengestelde hoogte-modifiers worden per kolom gerenderd;
+- samengestelde lengte-modifiers worden per kolom gerenderd;
+- ontbrekende modifiers worden visueel aangevuld met `~`;
+- melisma's krijgen daardoor betere horizontale spreiding.
 
-- parser-regressies worden alleen getest met `.parser-step1`;
-- SVG-regressies worden alleen getest met `.svg-regression`;
-- SVG-regressies controleren voorlopig structurele kenmerken:
-  - SVG begint/eindigt correct;
-  - verwachte tekstfragmenten zijn aanwezig;
-  - verwacht aantal lijnen/punten klopt minimaal.
+Voorbeeld:
 
-Exacte SVG-vergelijking komt later terug zodra de renderer-layout stabieler is.
+```text
+{/&\&/tekst_&~&~}
+```
+
+wordt intern:
+
+```text
+kolom 1: /   _
+kolom 2: \   ~
+kolom 3: /   ~
+```
+
+Nog niet perfect:
+
+- tekstbreedte wordt nog geschat;
+- echte fontmeting komt later;
+- regelafbreking is nog niet aanwezig.

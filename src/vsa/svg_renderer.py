@@ -2,18 +2,19 @@ from xml.sax.saxutils import escape
 
 from .ast import TextNode, ScopeNode, PitchMarkerNode
 from .svg_glyphs import SVGGlyphRenderer
+from .scope_layout import build_scope_layout, estimate_text_width
 
 
 class SVGRenderer:
     def __init__(self):
         self.width = 1200
-        self.height = 180
+        self.height = 190
         self.font_family = "Segoe UI"
         self.glyphs = SVGGlyphRenderer(unit=12)
 
     def render_document(self, document):
-        x = 40
-        baseline_y = 105
+        x = 40.0
+        baseline_y = 110.0
 
         parts = []
 
@@ -62,50 +63,55 @@ class SVGRenderer:
             f'{escape(text)}</text>'
         )
 
-        return x + self._estimate_text_width(text, 20)
+        return x + estimate_text_width(text, 20)
 
     def _render_scope(self, parts, node, x, baseline_y):
-        text_width = self._estimate_text_width(node.text, 20)
-        modifier_count = max(len(node.height_modifier), len(node.length_modifier), 1)
-        scope_width = max(text_width, modifier_count * 28)
+        layout = build_scope_layout(node)
 
-        parts.extend(
-            self.glyphs.render_height_modifier(
-                node.height_modifier,
-                x,
-                baseline_y - 34,
-                scope_width,
+        for index, column in enumerate(layout.columns):
+            col_x = x + sum(c.width for c in layout.columns[:index])
+
+            parts.extend(
+                self.glyphs.render_height_modifier(
+                    [column.ehm],
+                    col_x,
+                    baseline_y - 38,
+                    column.width,
+                )
             )
-        )
+
+            parts.extend(
+                self.glyphs.render_length_modifier(
+                    [column.elm],
+                    col_x,
+                    baseline_y + 18,
+                    column.width,
+                )
+            )
 
         parts.append(
             f'<text x="{x:.2f}" y="{baseline_y:.2f}" '
             f'font-family="{self.font_family}" font-size="20">'
-            f'{escape(node.text)}</text>'
+            f'{escape(layout.text)}</text>'
         )
 
-        parts.extend(
-            self.glyphs.render_length_modifier(
-                node.length_modifier,
-                x,
-                baseline_y + 18,
-                scope_width,
-            )
-        )
-
-        return x + scope_width + 4
+        return x + layout.width + 4
 
     def _render_pitch_marker(self, parts, node, x, baseline_y):
-        width = 34
+        width = max(34.0, max(len(node.height_modifier), 1) * 28.0)
 
-        parts.extend(
-            self.glyphs.render_height_modifier(
-                node.height_modifier,
-                x,
-                baseline_y - 34,
-                width,
-            )
-        )
+        if node.height_modifier:
+            column_width = width / len(node.height_modifier)
+
+            for index, ehm in enumerate(node.height_modifier):
+                parts.extend(
+                    self.glyphs.render_height_modifier(
+                        [ehm],
+                        x + index * column_width,
+                        baseline_y - 38,
+                        column_width,
+                    )
+                )
 
         parts.append(
             f'<line x1="{x:.2f}" y1="{baseline_y - 8:.2f}" '
@@ -114,6 +120,3 @@ class SVGRenderer:
         )
 
         return x + width + 8
-
-    def _estimate_text_width(self, text, font_size):
-        return max(8, len(text) * font_size * 0.55)

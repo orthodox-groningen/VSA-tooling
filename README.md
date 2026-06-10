@@ -1,17 +1,21 @@
-# VSA stap 27 - preview en productie scheiden
+# VSA stap 28 - versie en releasevoorbereiding
 
-Deze stap bereidt preview/productie-publicatie voor.
+Deze stap voegt basisversiebeheer toe.
 
 Nieuw:
 
-- aparte build scripts voor preview en productie;
-- aparte GitHub Actions workflow met keuze `preview` of `production`;
-- productie draait standaard nog zonder automatische publicatie;
-- preview blijft geschikt voor GitHub Pages demo.
+- `vsa --version`
+- centrale versie in `src/vsa/__init__.py`
+- `CHANGELOG.md`
+- release-notities in docs
+- handmatige GitHub Actions workflow om release-artifacts te bouwen
 
 Doel:
 
 ```text
-preview     = veilig testen
-production  = later echte site-output
+werkende build
+  ↓
+versie markeren
+  ↓
+release artifacts maken
 ```

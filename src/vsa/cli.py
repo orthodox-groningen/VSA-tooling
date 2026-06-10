@@ -3,6 +3,7 @@ import json
 import sys
 from pathlib import Path
 
+from . import __version__
 from .parser import Parser
 from .block_parser import parse_markdown_blocks
 from .validation_runner import validate_path
@@ -37,6 +38,7 @@ def _resolve_output_mode(cli_value, config):
 def main():
     argparser = argparse.ArgumentParser(description="VSA CLI")
     argparser.add_argument("--config", default=None)
+    argparser.add_argument("--version", action="store_true")
 
     subparsers = argparser.add_subparsers(dest="command")
 
@@ -78,6 +80,11 @@ def main():
     argparser.add_argument("--ast", action="store_true")
 
     args = argparser.parse_args()
+
+    if args.version:
+        print(f"vsa {__version__}")
+        return
+
     config = load_config(args.config)
 
     if args.command == "build-markdown":

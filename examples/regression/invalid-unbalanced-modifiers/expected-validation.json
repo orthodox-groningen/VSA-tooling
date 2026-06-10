@@ -1,0 +1,10 @@
+{
+  "syntax": "valid",
+  "semantic": "invalid",
+  "errors": [
+    {
+      "code": "VSA-SEMANTIC-MODIFIER-COUNT-MISMATCH",
+      "message_nl": "Hoogte- en lengte-modifier bevatten niet hetzelfde aantal muzikale posities."
+    }
+  ]
+}

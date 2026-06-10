@@ -1,0 +1,15 @@
+{
+  "type": "Document",
+  "nodes": [
+    {
+      "type": "ScopeNode",
+      "height_modifier": [
+        "/"
+      ],
+      "text": "tekst",
+      "length_modifier": [
+        "_"
+      ]
+    }
+  ]
+}

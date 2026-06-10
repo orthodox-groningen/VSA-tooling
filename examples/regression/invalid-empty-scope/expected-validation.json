@@ -1,0 +1,10 @@
+{
+  "syntax": "invalid",
+  "semantic": "not-run",
+  "errors": [
+    {
+      "code": "VSA-SYNTAX-EMPTY-SCOPE",
+      "message_nl": "Scope zonder zangelement."
+    }
+  ]
+}

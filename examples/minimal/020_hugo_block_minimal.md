@@ -1,0 +1,3 @@
+::: vsa-notatie
+[:] {tekst} [:]
+:::

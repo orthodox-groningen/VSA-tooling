@@ -15,12 +15,13 @@ class MarkdownBuildResult:
 
 
 def build_markdown_site(
-    input_dir: str | Path,
-    output_dir: str | Path,
-    assets_dir: str | Path,
-    assets_url_prefix: str = "/vsa",
-    max_line_width: float = 800.0,
-) -> MarkdownBuildResult:
+    input_dir,
+    output_dir,
+    assets_dir,
+    assets_url_prefix="/vsa",
+    max_line_width=800.0,
+    output_mode="img",
+):
     input_dir = Path(input_dir)
     output_dir = Path(output_dir)
     assets_dir = Path(assets_dir)
@@ -49,16 +50,19 @@ def build_markdown_site(
 
     for markdown_file in markdown_files:
         relative = markdown_file.relative_to(input_dir)
+
         target_markdown = output_dir / relative
         target_markdown.parent.mkdir(parents=True, exist_ok=True)
 
         source = markdown_file.read_text(encoding="utf-8")
+
         rewritten, svg_paths = _rewrite_markdown_file(
             source=source,
             source_relative=relative,
             assets_dir=assets_dir,
             assets_url_prefix=assets_url_prefix,
             max_line_width=max_line_width,
+            output_mode=output_mode,
         )
 
         target_markdown.write_text(rewritten, encoding="utf-8")
@@ -73,11 +77,12 @@ def build_markdown_site(
 
 
 def _rewrite_markdown_file(
-    source: str,
-    source_relative: Path,
-    assets_dir: Path,
-    assets_url_prefix: str,
-    max_line_width: float,
+    source,
+    source_relative,
+    assets_dir,
+    assets_url_prefix,
+    max_line_width,
+    output_mode,
 ):
     blocks = parse_markdown_blocks(source)
     lines = source.splitlines()
@@ -95,7 +100,6 @@ def _rewrite_markdown_file(
             continue
 
         block_index += 1
-
         index += 1
 
         while index < len(lines) and lines[index].strip() != END_MARKER:
@@ -105,34 +109,39 @@ def _rewrite_markdown_file(
             break
 
         end_index = index
-
         block = blocks[block_index - 1]
 
         svg_name = _svg_name(source_relative, block_index)
+
         svg_path = assets_dir / svg_name
         svg_path.parent.mkdir(parents=True, exist_ok=True)
-
-        document = block.parse_body()
 
         renderer = SVGRenderer()
         renderer.max_line_width = max_line_width
 
-        svg = renderer.render_document(document)
+        svg = renderer.render_document(block.parse_body())
         svg_path.write_text(svg, encoding="utf-8")
 
         svg_paths.append(svg_path)
 
         img_src = f"{assets_url_prefix.rstrip('/')}/{svg_name.replace(chr(92), '/')}"
-        alt = f"VSA notatie blok {block_index}"
 
-        result_lines.append(f'<img class="vsa-notation" src="{img_src}" alt="{alt}">')
+        if output_mode == "shortcode":
+            replacement = f'{{{{< vsa src="{img_src}" >}}}}'
+        else:
+            replacement = (
+                f'<img class="vsa-notation" '
+                f'src="{img_src}" alt="VSA notatie">'
+            )
+
+        result_lines.append(replacement)
 
         index = end_index + 1
 
     return "\n".join(result_lines) + "\n", svg_paths
 
 
-def _svg_name(source_relative: Path, block_index: int):
+def _svg_name(source_relative, block_index):
     without_suffix = source_relative.with_suffix("")
     stem = "-".join(without_suffix.parts)
     stem = _safe_name(stem)
@@ -140,7 +149,7 @@ def _svg_name(source_relative: Path, block_index: int):
     return f"{stem}-block-{block_index}.svg"
 
 
-def _safe_name(value: str):
+def _safe_name(value):
     value = value.lower()
     value = re.sub(r"[^a-z0-9_-]+", "-", value)
     value = value.strip("-")

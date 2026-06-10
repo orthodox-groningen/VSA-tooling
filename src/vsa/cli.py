@@ -29,7 +29,7 @@ def _resolve_max_line_width(cli_value, config):
 
 def main():
     argparser = argparse.ArgumentParser(description="VSA CLI")
-    argparser.add_argument("--config", default=None, help="Pad naar vsa.toml")
+    argparser.add_argument("--config", default=None)
 
     subparsers = argparser.add_subparsers(dest="command")
 
@@ -61,12 +61,16 @@ def main():
     build_cmd.add_argument("assets_dir")
     build_cmd.add_argument("--assets-url-prefix", default=None)
     build_cmd.add_argument("--max-line-width", type=float, default=None)
+    build_cmd.add_argument(
+        "--output-mode",
+        choices=["img", "shortcode"],
+        default="img",
+    )
 
     argparser.add_argument("legacy_input", nargs="?")
     argparser.add_argument("--ast", action="store_true")
 
     args = argparser.parse_args()
-
     config = load_config(args.config)
 
     if args.command == "build-markdown":
@@ -77,6 +81,7 @@ def main():
                 assets_dir=args.assets_dir,
                 assets_url_prefix=args.assets_url_prefix or config.hugo.assets_url_prefix,
                 max_line_width=_resolve_max_line_width(args.max_line_width, config),
+                output_mode=args.output_mode,
             )
         except ProcessValidationError as exc:
             _print_validation_messages(exc.messages)

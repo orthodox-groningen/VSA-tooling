@@ -1,37 +1,33 @@
-# VSA stap 20 - projectconfiguratie
+# VSA stap 21 fix - shortcode opt-in
 
-Deze stap voegt `vsa.toml` ondersteuning toe.
+Deze patch herstelt backwards compatibility.
 
-Doel:
+Probleem:
 
-```cmd
-vsa build-markdown examples\hugo-demo\content-source generated\content generated\static\vsa
-```
+- `build_markdown_site()` gebruikte ineens standaard `shortcode`;
+- bestaande tests en bestaande workflow verwachten standaard `<img>`.
 
-kan defaults gebruiken uit:
+Fix:
 
-```toml
-[rendering]
-max-line-width = 700
-
-[hugo]
-assets-url-prefix = "/vsa"
-```
-
-CLI-opties blijven voorrang houden.
-
-## Config zoeken
-
-De tool zoekt standaard naar:
-
-```text
-vsa.toml
-```
-
-in de huidige werkmap.
-
-Je kunt ook expliciet een configbestand meegeven:
+- default output blijft `img`;
+- shortcode blijft beschikbaar via:
 
 ```cmd
-vsa build-markdown ... --config vsa.toml
+--output-mode shortcode
 ```
+
+Dus:
+
+```cmd
+vsa build-markdown ...
+```
+
+geeft `<img>`.
+
+En:
+
+```cmd
+vsa build-markdown ... --output-mode shortcode
+```
+
+geeft Hugo-shortcodes.

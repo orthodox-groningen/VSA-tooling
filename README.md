@@ -1,28 +1,20 @@
-# VSA stap 26 - GitHub Pages publicatie
+# VSA Pages enable fix
 
-Deze stap voegt een GitHub Pages workflow toe.
+Deze patch zet in de Pages workflow:
 
-Doel:
-
-```text
-VSA validate
-  ↓
-VSA build-markdown
-  ↓
-Hugo build
-  ↓
-GitHub Pages deploy
+```yaml
+enablement: true
 ```
 
-Belangrijk:
+bij:
 
-- deze workflow draait alleen handmatig via `workflow_dispatch`;
-- dus hij publiceert niet automatisch bij elke push;
-- dat is veiliger zolang de demo/workflow nog in ontwikkeling is.
+```yaml
+actions/configure-pages@v5
+```
 
-## GitHub instelling
+Dit helpt wanneer GitHub Pages nog niet eerder voor de repo is geactiveerd.
 
-Zet in GitHub:
+Als dit alsnog faalt, moet je handmatig instellen:
 
 ```text
 Settings → Pages → Build and deployment → Source → GitHub Actions

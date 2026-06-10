@@ -18,3 +18,9 @@ def test_pages_workflow_uses_pages_actions():
     assert "actions/configure-pages" in text
     assert "actions/upload-pages-artifact" in text
     assert "actions/deploy-pages" in text
+
+
+def test_pages_workflow_enables_pages_if_needed():
+    text = Path(".github/workflows/pages-demo.yml").read_text(encoding="utf-8")
+
+    assert "enablement: true" in text

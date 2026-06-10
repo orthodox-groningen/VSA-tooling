@@ -6,6 +6,7 @@ from pathlib import Path
 from .parser import Parser
 from .block_parser import parse_markdown_blocks
 from .validation_runner import validate_file
+from .svg_export import export_svg
 
 
 def main():
@@ -13,22 +14,30 @@ def main():
 
     subparsers = argparser.add_subparsers(dest="command")
 
-    parse_cmd = subparsers.add_parser("parse", help="Parse één VSA-bestand")
+    parse_cmd = subparsers.add_parser("parse")
     parse_cmd.add_argument("input")
     parse_cmd.add_argument("--ast", action="store_true")
 
-    blocks_cmd = subparsers.add_parser("blocks", help="Toon VSA-blokken in Markdown")
+    blocks_cmd = subparsers.add_parser("blocks")
     blocks_cmd.add_argument("input")
     blocks_cmd.add_argument("--json", action="store_true")
 
-    validate_cmd = subparsers.add_parser("validate", help="Valideer VSA of Markdown met VSA-blokken")
+    validate_cmd = subparsers.add_parser("validate")
     validate_cmd.add_argument("input")
 
-    # Backwards compatible: vsa input.vsa --ast
+    svg_cmd = subparsers.add_parser("svg")
+    svg_cmd.add_argument("input")
+    svg_cmd.add_argument("output")
+
     argparser.add_argument("legacy_input", nargs="?")
     argparser.add_argument("--ast", action="store_true")
 
     args = argparser.parse_args()
+
+    if args.command == "svg":
+        export_svg(args.input, args.output)
+        print(f"SVG geschreven naar: {args.output}")
+        return
 
     if args.command == "validate":
         result = validate_file(args.input)

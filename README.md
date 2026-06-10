@@ -1,18 +1,19 @@
-# VSA stap 6 - meerdere fouten rapporteren
+# VSA SVG stap 7 - fix
 
-Deze stap verbetert `vsa validate`.
+Deze patch herstelt de eerste SVG-renderer.
 
-Nieuw:
+Problemen opgelost:
 
-- meerdere syntaxfouten verzamelen;
-- meerdere semantische fouten verzamelen;
-- niet stoppen bij de eerste fout;
-- foutlijst geschikt maken voor CMD, Hugo en GitHub Actions.
+- gewone tekst buiten scopes verdwijnt niet meer;
+- tijdelijke zwarte debugpunten zijn verwijderd;
+- hoogte-modifiers worden voorlopig als tekstuele glyphs boven het zangelement getoond;
+- lengte-modifiers worden voorlopig als tekstuele glyphs onder het zangelement getoond;
+- toonhoogte-markeringen worden als horizontale lijn weergegeven.
 
-Belangrijk:
+Dit is nog geen definitieve grafische VSA-rendering, maar de inhoudelijke lagen zijn nu correcter:
 
-- parsing zelf kan nog steeds stoppen bij een harde parsefout;
-- maar de validatierunner doet eerst een recoverable syntax-scan;
-- daarna wordt semantiek alleen uitgevoerd als er geen syntaxfouten zijn.
-
-Dit voorkomt misleidende vervolgmeldingen.
+```text
+bovenlaag  = hoogte-modifiers
+tekstlaag  = gewone tekst + zangelementen
+onderlaag  = lengte-modifiers
+```

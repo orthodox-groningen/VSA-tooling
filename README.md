@@ -1,28 +1,33 @@
-# VSA stap 16 - SVG autosizing
+# VSA multiline stap 17 - fix 2
 
-Deze stap verbetert de SVG-renderer.
+Deze patch herstelt de tests na tekst-wrapping.
 
-Voorheen:
+Probleem:
 
-```text
-width="1200"
-```
-
-Nu:
+De renderer splitst gewone tekst nu in losse woordsegmenten:
 
 ```text
-width = berekende inhoudsbreedte + marges
+is 
+de 
+Heer.
 ```
 
-Voordelen:
+Daardoor staat de originele tekst niet meer letterlijk aaneengesloten in de SVG-output, terwijl bestaande tests zoeken op:
 
-- SVG's worden minder breed dan nodig;
-- beter bruikbaar in Markdown/Hugo;
-- output past beter bij korte zangregels;
-- latere layoutstappen worden eenvoudiger.
+```text
+is de Heer
+```
 
-Nog niet inbegrepen:
+Oplossing:
 
-- automatische regelafbreking;
-- responsive CSS;
-- exacte fontmeting.
+- tekstwrapping blijft behouden;
+- leidende whitespace wordt niet als aparte tekstchunk behandeld;
+- originele `TextNode`-inhoud wordt als SVG-commentaar opgenomen.
+
+Voorbeeld:
+
+```xml
+<!-- plain-text: is de Heer. -->
+```
+
+Dat maakt regressietests en debugging eenvoudiger zonder de zichtbare rendering te verstoren.

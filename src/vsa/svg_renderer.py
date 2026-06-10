@@ -3,40 +3,60 @@ from xml.sax.saxutils import escape
 from .ast import TextNode, ScopeNode, PitchMarkerNode
 from .svg_glyphs import SVGGlyphRenderer
 from .scope_layout import build_scope_layout, estimate_text_width
-from .svg_layout_measure import measure_document_width
+from .svg_line_layout import build_lines
 
 
 class SVGRenderer:
     def __init__(self):
-        self.height = 190
         self.font_family = "Segoe UI"
         self.glyphs = SVGGlyphRenderer(unit=12)
 
-    def render_document(self, document):
-        width = measure_document_width(document)
+        self.left_margin = 40.0
+        self.top_margin = 40.0
+        self.line_height = 110.0
+        self.max_line_width = 800.0
 
-        x = 40.0
-        baseline_y = 110.0
+    def render_document(self, document):
+        lines = build_lines(document, self.max_line_width)
+
+        width = self.left_margin * 2 + max((line.width for line in lines), default=0)
+        width = max(width, 120.0)
+
+        height = self.top_margin * 2 + len(lines) * self.line_height
+        height = max(height, 120.0)
 
         parts = []
 
         parts.append(
             f'<svg xmlns="http://www.w3.org/2000/svg" '
-            f'width="{width:.0f}" height="{self.height}" '
-            f'viewBox="0 0 {width:.0f} {self.height}">'
+            f'width="{width:.0f}" height="{height:.0f}" '
+            f'viewBox="0 0 {width:.0f} {height:.0f}">'
         )
 
         parts.append('<rect width="100%" height="100%" fill="white"/>')
 
+        # Bewaar originele plain text als metadata voor debugging en regressietests.
         for node in document.nodes:
             if isinstance(node, TextNode):
-                x = self._render_text(parts, node.text, x, baseline_y)
+                text = node.text.strip()
+                if text:
+                    parts.append(f'<!-- plain-text: {escape(text)} -->')
 
-            elif isinstance(node, ScopeNode):
-                x = self._render_scope(parts, node, x, baseline_y)
+        for line_index, line in enumerate(lines):
+            x = self.left_margin
+            baseline_y = self.top_margin + 70 + (line_index * self.line_height)
 
-            elif isinstance(node, PitchMarkerNode):
-                x = self._render_pitch_marker(parts, node, x, baseline_y)
+            for item in line.items:
+                node = item.node
+
+                if isinstance(node, TextNode):
+                    x = self._render_text(parts, node.text, x, baseline_y)
+
+                elif isinstance(node, ScopeNode):
+                    x = self._render_scope(parts, node, x, baseline_y)
+
+                elif isinstance(node, PitchMarkerNode):
+                    x = self._render_pitch_marker(parts, node, x, baseline_y)
 
         parts.append("</svg>")
 

@@ -7,7 +7,7 @@ from .parser import Parser
 from .block_parser import parse_markdown_blocks
 from .validation_runner import validate_file
 from .svg_export import export_svg
-from .markdown_processor import process_markdown_file
+from .markdown_processor import process_path
 
 
 def main():
@@ -40,7 +40,7 @@ def main():
     args = argparser.parse_args()
 
     if args.command == "process":
-        result = process_markdown_file(args.input, args.output_dir)
+        result = process_path(args.input, args.output_dir)
 
         print(f"{len(result.blocks)} SVG-bestand(en) gegenereerd")
 

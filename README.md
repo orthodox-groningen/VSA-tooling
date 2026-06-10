@@ -1,36 +1,33 @@
-# VSA stap 8 - Markdown verwerken naar SVG
+# VSA stap 9 - map verwerken
 
-Deze stap voegt een eerste `process` commando toe.
+Deze stap breidt `vsa process` uit.
 
-Doel:
-
-```text
-Markdown met ::: vsa-notatie blokken
-  ↓
-VSA parser
-  ↓
-SVG renderer
-  ↓
-gegenereerde SVG-bestanden
-```
-
-Dit is de eerste echte stap richting Hugo-integratie.
-
-## Voorbeeld
+Voorheen:
 
 ```cmd
-vsa process examples\minimal\031_markdown_block_metadata.md generated\vsa
+vsa process bestand.md uitvoermap
 ```
 
-Dat maakt bijvoorbeeld:
+Nu ook:
+
+```cmd
+vsa process content generated\vsa
+```
+
+Het commando:
+
+- accepteert een bestand of map;
+- zoekt recursief naar `.md` en `.markdown`;
+- verwerkt alle VSA-blokken;
+- schrijft SVG-bestanden naar één uitvoermap;
+- gebruikt veilige bestandsnamen met padprefix.
+
+Dit is nuttig voor Hugo:
 
 ```text
-generated\vsa\031_markdown_block_metadata-block-1.svg
+content/
+  ↓
+vsa process content generated\vsa
+  ↓
+hugo build
 ```
-
-Nog niet inbegrepen:
-
-- Markdown herschrijven;
-- shortcodes invoegen;
-- Hugo render hooks;
-- nette SVG-layout.

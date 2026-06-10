@@ -9,6 +9,7 @@ from .validation_runner import validate_path
 from .svg_export import export_svg
 from .markdown_processor import process_path, ProcessValidationError
 from .markdown_builder import build_markdown_site
+from .config import load_config
 
 
 def _print_validation_messages(messages):
@@ -19,8 +20,16 @@ def _print_validation_messages(messages):
         )
 
 
+def _resolve_max_line_width(cli_value, config):
+    if cli_value is not None:
+        return cli_value
+
+    return config.rendering.max_line_width
+
+
 def main():
     argparser = argparse.ArgumentParser(description="VSA CLI")
+    argparser.add_argument("--config", default=None, help="Pad naar vsa.toml")
 
     subparsers = argparser.add_subparsers(dest="command")
 
@@ -38,25 +47,27 @@ def main():
     svg_cmd = subparsers.add_parser("svg")
     svg_cmd.add_argument("input")
     svg_cmd.add_argument("output")
-    svg_cmd.add_argument("--max-line-width", type=float, default=800.0)
+    svg_cmd.add_argument("--max-line-width", type=float, default=None)
 
     process_cmd = subparsers.add_parser("process")
     process_cmd.add_argument("input")
     process_cmd.add_argument("output_dir")
     process_cmd.add_argument("--no-validate", action="store_true")
-    process_cmd.add_argument("--max-line-width", type=float, default=800.0)
+    process_cmd.add_argument("--max-line-width", type=float, default=None)
 
     build_cmd = subparsers.add_parser("build-markdown")
     build_cmd.add_argument("input_dir")
     build_cmd.add_argument("output_dir")
     build_cmd.add_argument("assets_dir")
-    build_cmd.add_argument("--assets-url-prefix", default="/vsa")
-    build_cmd.add_argument("--max-line-width", type=float, default=800.0)
+    build_cmd.add_argument("--assets-url-prefix", default=None)
+    build_cmd.add_argument("--max-line-width", type=float, default=None)
 
     argparser.add_argument("legacy_input", nargs="?")
     argparser.add_argument("--ast", action="store_true")
 
     args = argparser.parse_args()
+
+    config = load_config(args.config)
 
     if args.command == "build-markdown":
         try:
@@ -64,8 +75,8 @@ def main():
                 input_dir=args.input_dir,
                 output_dir=args.output_dir,
                 assets_dir=args.assets_dir,
-                assets_url_prefix=args.assets_url_prefix,
-                max_line_width=args.max_line_width,
+                assets_url_prefix=args.assets_url_prefix or config.hugo.assets_url_prefix,
+                max_line_width=_resolve_max_line_width(args.max_line_width, config),
             )
         except ProcessValidationError as exc:
             _print_validation_messages(exc.messages)
@@ -81,7 +92,7 @@ def main():
                 args.input,
                 args.output_dir,
                 validate=not args.no_validate,
-                max_line_width=args.max_line_width,
+                max_line_width=_resolve_max_line_width(args.max_line_width, config),
             )
         except ProcessValidationError as exc:
             _print_validation_messages(exc.messages)
@@ -98,7 +109,7 @@ def main():
         export_svg(
             args.input,
             args.output,
-            max_line_width=args.max_line_width,
+            max_line_width=_resolve_max_line_width(args.max_line_width, config),
         )
         print(f"SVG geschreven naar: {args.output}")
         return

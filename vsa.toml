@@ -1,0 +1,5 @@
+[rendering]
+max-line-width = 800
+
+[hugo]
+assets-url-prefix = "/vsa"

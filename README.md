@@ -1,26 +1,37 @@
-# VSA stap 19 - validate op bestanden én mappen
+# VSA stap 20 - projectconfiguratie
 
-Deze stap breidt `vsa validate` uit.
+Deze stap voegt `vsa.toml` ondersteuning toe.
 
-Voorheen:
-
-```cmd
-vsa validate bestand.md
-```
-
-Nu ook:
+Doel:
 
 ```cmd
-vsa validate content
+vsa build-markdown examples\hugo-demo\content-source generated\content generated\static\vsa
 ```
 
-Het commando:
+kan defaults gebruiken uit:
 
-- accepteert een bestand of map;
-- zoekt recursief naar `.md`, `.markdown` en `.vsa`;
-- valideert alle gevonden bestanden;
-- verzamelt alle fouten;
-- geeft exitcode `0` bij alles OK;
-- geeft exitcode `1` bij één of meer fouten.
+```toml
+[rendering]
+max-line-width = 700
 
-Dit is belangrijk voor Hugo en GitHub Actions.
+[hugo]
+assets-url-prefix = "/vsa"
+```
+
+CLI-opties blijven voorrang houden.
+
+## Config zoeken
+
+De tool zoekt standaard naar:
+
+```text
+vsa.toml
+```
+
+in de huidige werkmap.
+
+Je kunt ook expliciet een configbestand meegeven:
+
+```cmd
+vsa build-markdown ... --config vsa.toml
+```

@@ -7,7 +7,15 @@ from .parser import Parser
 from .block_parser import parse_markdown_blocks
 from .validation_runner import validate_file
 from .svg_export import export_svg
-from .markdown_processor import process_path
+from .markdown_processor import process_path, ProcessValidationError
+
+
+def _print_validation_messages(messages):
+    for message in messages:
+        print(
+            f"{message.source}:{message.line}:{message.column}: "
+            f"{message.code}: {message.message_nl}"
+        )
 
 
 def main():
@@ -33,6 +41,11 @@ def main():
     process_cmd = subparsers.add_parser("process")
     process_cmd.add_argument("input")
     process_cmd.add_argument("output_dir")
+    process_cmd.add_argument(
+        "--no-validate",
+        action="store_true",
+        help="Sla validatie over vóór SVG-generatie",
+    )
 
     argparser.add_argument("legacy_input", nargs="?")
     argparser.add_argument("--ast", action="store_true")
@@ -40,7 +53,15 @@ def main():
     args = argparser.parse_args()
 
     if args.command == "process":
-        result = process_path(args.input, args.output_dir)
+        try:
+            result = process_path(
+                args.input,
+                args.output_dir,
+                validate=not args.no_validate,
+            )
+        except ProcessValidationError as exc:
+            _print_validation_messages(exc.messages)
+            sys.exit(1)
 
         print(f"{len(result.blocks)} SVG-bestand(en) gegenereerd")
 
@@ -61,12 +82,7 @@ def main():
             print("OK")
             sys.exit(0)
 
-        for message in result.messages:
-            print(
-                f"{message.source}:{message.line}:{message.column}: "
-                f"{message.code}: {message.message_nl}"
-            )
-
+        _print_validation_messages(result.messages)
         sys.exit(1)
 
     if args.command == "blocks":

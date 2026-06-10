@@ -1,33 +1,33 @@
-# VSA stap 9 - map verwerken
+# VSA stap 10 - process valideert vóór SVG-generatie
 
-Deze stap breidt `vsa process` uit.
+Deze stap maakt `vsa process` veiliger.
 
 Voorheen:
 
-```cmd
-vsa process bestand.md uitvoermap
+```text
+process
+  ↓
+SVG genereren
 ```
 
-Nu ook:
-
-```cmd
-vsa process content generated\vsa
-```
-
-Het commando:
-
-- accepteert een bestand of map;
-- zoekt recursief naar `.md` en `.markdown`;
-- verwerkt alle VSA-blokken;
-- schrijft SVG-bestanden naar één uitvoermap;
-- gebruikt veilige bestandsnamen met padprefix.
-
-Dit is nuttig voor Hugo:
+Nu:
 
 ```text
-content/
+process
   ↓
-vsa process content generated\vsa
+validate
   ↓
-hugo build
+alleen bij OK: SVG genereren
 ```
+
+Bij fouten:
+
+- worden foutmeldingen getoond;
+- wordt er geen SVG gegenereerd;
+- eindigt het commando met exitcode `1`.
+
+Dit is belangrijk voor:
+
+- lokale controle;
+- Hugo-builds;
+- GitHub Actions.

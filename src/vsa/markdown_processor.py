@@ -4,6 +4,7 @@ import re
 
 from .block_parser import parse_markdown_blocks
 from .svg_renderer import SVGRenderer
+from .validation_runner import validate_file
 
 
 @dataclass
@@ -18,9 +19,26 @@ class ProcessResult:
     blocks: list[ProcessedBlock]
 
 
-def process_markdown_file(input_path: str | Path, output_dir: str | Path, base_dir: str | Path | None = None) -> ProcessResult:
+class ProcessValidationError(Exception):
+    def __init__(self, messages):
+        self.messages = messages
+        super().__init__("VSA-validatie mislukt.")
+
+
+def process_markdown_file(
+    input_path: str | Path,
+    output_dir: str | Path,
+    base_dir: str | Path | None = None,
+    validate: bool = True,
+) -> ProcessResult:
     input_path = Path(input_path)
     output_dir = Path(output_dir)
+
+    if validate:
+        validation = validate_file(input_path)
+
+        if not validation.ok:
+            raise ProcessValidationError(validation.messages)
 
     output_dir.mkdir(parents=True, exist_ok=True)
 
@@ -51,14 +69,14 @@ def process_markdown_file(input_path: str | Path, output_dir: str | Path, base_d
     return ProcessResult(blocks=processed)
 
 
-def process_path(input_path: str | Path, output_dir: str | Path) -> ProcessResult:
+def process_path(input_path: str | Path, output_dir: str | Path, validate: bool = True) -> ProcessResult:
     input_path = Path(input_path)
     output_dir = Path(output_dir)
 
     all_blocks = []
 
     if input_path.is_file():
-        result = process_markdown_file(input_path, output_dir)
+        result = process_markdown_file(input_path, output_dir, validate=validate)
         all_blocks.extend(result.blocks)
 
     elif input_path.is_dir():
@@ -67,11 +85,24 @@ def process_path(input_path: str | Path, output_dir: str | Path) -> ProcessResul
             list(input_path.rglob("*.markdown"))
         )
 
+        if validate:
+            all_messages = []
+
+            for markdown_file in markdown_files:
+                validation = validate_file(markdown_file)
+
+                if not validation.ok:
+                    all_messages.extend(validation.messages)
+
+            if all_messages:
+                raise ProcessValidationError(all_messages)
+
         for markdown_file in markdown_files:
             result = process_markdown_file(
                 markdown_file,
                 output_dir,
                 base_dir=input_path,
+                validate=False,
             )
             all_blocks.extend(result.blocks)
 

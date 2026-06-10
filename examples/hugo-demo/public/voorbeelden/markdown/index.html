@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <title>Markdown en Hugo</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 2rem;
+            line-height: 1.5;
+            max-width: 1100px;
+        }
+
+        nav {
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #cccccc;
+        }
+
+        nav a {
+            margin-right: 1rem;
+        }
+
+        pre {
+            background: #f0f0f0;
+            padding: 1rem;
+            overflow-x: auto;
+        }
+
+        code {
+            font-family: Consolas, monospace;
+        }
+
+        table {
+            border-collapse: collapse;
+        }
+
+        th, td {
+            border: 1px solid #cccccc;
+            padding: 0.5rem;
+        }
+
+        .vsa-notation {
+            margin-top: 1rem;
+            margin-bottom: 1rem;
+            border: 1px solid #cccccc;
+            padding: 1rem;
+        }
+    </style>
+</head>
+
+<body>
+
+<nav>
+    <a href="/">Home</a>
+    <a href="/voorbeelden/">Voorbeelden</a>
+    <a href="/voorbeelden/basis/">Basis</a>
+    <a href="/voorbeelden/multiline/">Multiline</a>
+    <a href="/voorbeelden/fouten/">Fouten</a>
+    <a href="/voorbeelden/markdown/">Markdown</a>
+    <a href="/voorbeelden/cli/">CLI</a>
+    <a href="/voorbeelden/rendering/">Rendering</a>
+</nav>
+
+
+
+<h1 id="markdown-en-hugo">Markdown en Hugo</h1>
+<ul>
+<li><a href="/">Home</a></li>
+<li><a href="/voorbeelden/fouten/">Vorige: Fouten</a></li>
+<li><a href="/voorbeelden/cli/">Volgende: CLI</a></li>
+</ul>
+<h2 id="bron-markdown">Bron-Markdown</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-markdown" data-lang="markdown"><span style="display:flex;"><span><div class="vsa-container">
+  <img
+    class="vsa-notation"
+    src="/vsa/voorbeelden-markdown-block-1.svg"
+    alt="VSA notatie">
+</div>
+
+</span></span></code></pre></div><h2 id="commando">Commando</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-cmd" data-lang="cmd"><span style="display:flex;"><span>vsa build-markdown examples\hugo-demo\content-source generated\content generated\static\vsa
+</span></span></code></pre></div><h2 id="gegenereerde-markdown">Gegenereerde Markdown</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>&lt;<span style="color:#f92672">img</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;vsa-notation&#34;</span> <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;/vsa/demo-block-1.svg&#34;</span> <span style="color:#a6e22e">alt</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;VSA notatie&#34;</span>&gt;
+</span></span></code></pre></div><h2 id="gegenereerde-svg">Gegenereerde SVG</h2>
+<div class="vsa-container">
+  <img
+    class="vsa-notation"
+    src="/vsa/voorbeelden-markdown-block-2.svg"
+    alt="VSA notatie">
+</div>
+
+<h2 id="wat-wordt-waar-opgeslagen">Wat wordt waar opgeslagen?</h2>
+<table>
+  <thead>
+      <tr>
+          <th>Type</th>
+          <th>Voorbeeld</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>gegenereerde Markdown</td>
+          <td><code>generated\content\...</code></td>
+      </tr>
+      <tr>
+          <td>gegenereerde SVG</td>
+          <td><code>generated\static\vsa\...</code></td>
+      </tr>
+  </tbody>
+</table>
+
+
+
+
+</body>
+</html>

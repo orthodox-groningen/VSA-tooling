@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <title>Basisvoorbeelden</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 2rem;
+            line-height: 1.5;
+            max-width: 1100px;
+        }
+
+        nav {
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #cccccc;
+        }
+
+        nav a {
+            margin-right: 1rem;
+        }
+
+        pre {
+            background: #f0f0f0;
+            padding: 1rem;
+            overflow-x: auto;
+        }
+
+        code {
+            font-family: Consolas, monospace;
+        }
+
+        table {
+            border-collapse: collapse;
+        }
+
+        th, td {
+            border: 1px solid #cccccc;
+            padding: 0.5rem;
+        }
+
+        .vsa-notation {
+            margin-top: 1rem;
+            margin-bottom: 1rem;
+            border: 1px solid #cccccc;
+            padding: 1rem;
+        }
+    </style>
+</head>
+
+<body>
+
+<nav>
+    <a href="/">Home</a>
+    <a href="/voorbeelden/">Voorbeelden</a>
+    <a href="/voorbeelden/basis/">Basis</a>
+    <a href="/voorbeelden/multiline/">Multiline</a>
+    <a href="/voorbeelden/fouten/">Fouten</a>
+    <a href="/voorbeelden/markdown/">Markdown</a>
+    <a href="/voorbeelden/cli/">CLI</a>
+    <a href="/voorbeelden/rendering/">Rendering</a>
+</nav>
+
+
+
+<h1 id="basisvoorbeelden">Basisvoorbeelden</h1>
+<ul>
+<li><a href="/">Home</a></li>
+<li><a href="/voorbeelden/">Voorbeelden</a></li>
+<li><a href="/voorbeelden/multiline/">Volgende: Multiline</a></li>
+</ul>
+<h2 id="voorbeeld-1">Voorbeeld 1</h2>
+<h3 id="invoer">Invoer</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>[:] {/Hei_}{/lig_} is de Heer. [:]
+</span></span></code></pre></div><h3 id="svg">SVG</h3>
+<div class="vsa-container">
+  <img
+    class="vsa-notation"
+    src="/vsa/voorbeelden-basis-block-1.svg"
+    alt="VSA notatie">
+</div>
+
+<h3 id="wat-gebeurt-hier">Wat gebeurt hier?</h3>
+<table>
+  <thead>
+      <tr>
+          <th>Onderdeel</th>
+          <th>Betekenis</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>[:]</code></td>
+          <td>pitch-marker</td>
+      </tr>
+      <tr>
+          <td><code>{/Hei_}</code></td>
+          <td>scope met modifier</td>
+      </tr>
+      <tr>
+          <td><code>is de Heer.</code></td>
+          <td>gewone tekst</td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="commando">Commando</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-cmd" data-lang="cmd"><span style="display:flex;"><span>vsa svg examples\minimal\050_svg_demo.vsa output.svg
+</span></span></code></pre></div><h2 id="verwachte-output">Verwachte output</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>SVG geschreven naar: output.svg
+</span></span></code></pre></div>
+
+
+
+</body>
+</html>

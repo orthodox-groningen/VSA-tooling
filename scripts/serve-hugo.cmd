@@ -8,10 +8,12 @@ echo === VSA + Hugo local preview ===
 echo.
 
 echo [1/2] Generate Markdown + SVG
+if exist examples\hugo-demo\static\vsa rmdir /s /q examples\hugo-demo\static\vsa
+
 vsa build-markdown ^
   examples\hugo-demo\content-source ^
   generated\hugo\content ^
-  generated\hugo\static\vsa
+  examples\hugo-demo\static\vsa
 if errorlevel 1 exit /b 1
 
 echo.

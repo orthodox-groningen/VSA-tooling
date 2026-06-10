@@ -8,6 +8,7 @@ echo === Build preview ===
 echo.
 
 if exist generated\preview rmdir /s /q generated\preview
+if exist examples\hugo-demo\static\vsa rmdir /s /q examples\hugo-demo\static\vsa
 
 vsa validate examples\hugo-demo\content-source
 if errorlevel 1 exit /b 1
@@ -15,7 +16,7 @@ if errorlevel 1 exit /b 1
 vsa build-markdown ^
   examples\hugo-demo\content-source ^
   generated\preview\content ^
-  generated\preview\static\vsa
+  examples\hugo-demo\static\vsa
 if errorlevel 1 exit /b 1
 
 hugo ^

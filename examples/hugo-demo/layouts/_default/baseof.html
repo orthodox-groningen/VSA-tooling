@@ -1,29 +1,70 @@
 <!DOCTYPE html>
 <html lang="nl">
 <head>
-  <meta charset="utf-8">
-  <title>{{ .Title }}</title>
+    <meta charset="utf-8">
+    <title>{{ .Title }}</title>
 
-  <style>
-    body {
-      font-family: Segoe UI, sans-serif;
-      max-width: 900px;
-      margin: 2rem auto;
-      padding: 1rem;
-    }
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 2rem;
+            line-height: 1.5;
+            max-width: 1100px;
+        }
 
-    .vsa-container {
-      margin: 1.5rem 0;
-    }
+        nav {
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #cccccc;
+        }
 
-    .vsa-notation {
-      max-width: 100%;
-      height: auto;
-    }
-  </style>
+        nav a {
+            margin-right: 1rem;
+        }
+
+        pre {
+            background: #f0f0f0;
+            padding: 1rem;
+            overflow-x: auto;
+        }
+
+        code {
+            font-family: Consolas, monospace;
+        }
+
+        table {
+            border-collapse: collapse;
+        }
+
+        th, td {
+            border: 1px solid #cccccc;
+            padding: 0.5rem;
+        }
+
+        .vsa-notation {
+            margin-top: 1rem;
+            margin-bottom: 1rem;
+            border: 1px solid #cccccc;
+            padding: 1rem;
+        }
+    </style>
 </head>
 
 <body>
-  {{ block "main" . }}{{ end }}
+
+<nav>
+    <a href="/">Home</a>
+    <a href="/voorbeelden/">Voorbeelden</a>
+    <a href="/voorbeelden/basis/">Basis</a>
+    <a href="/voorbeelden/multiline/">Multiline</a>
+    <a href="/voorbeelden/fouten/">Fouten</a>
+    <a href="/voorbeelden/markdown/">Markdown</a>
+    <a href="/voorbeelden/cli/">CLI</a>
+    <a href="/voorbeelden/rendering/">Rendering</a>
+</nav>
+
+{{ block "main" . }}
+{{ end }}
+
 </body>
 </html>

@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+	<meta name="generator" content="Hugo 0.160.1"><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <title>VSA Tool Demo</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 2rem;
+            line-height: 1.5;
+            max-width: 1100px;
+        }
+
+        nav {
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #cccccc;
+        }
+
+        nav a {
+            margin-right: 1rem;
+        }
+
+        pre {
+            background: #f0f0f0;
+            padding: 1rem;
+            overflow-x: auto;
+        }
+
+        code {
+            font-family: Consolas, monospace;
+        }
+
+        table {
+            border-collapse: collapse;
+        }
+
+        th, td {
+            border: 1px solid #cccccc;
+            padding: 0.5rem;
+        }
+
+        .vsa-notation {
+            margin-top: 1rem;
+            margin-bottom: 1rem;
+            border: 1px solid #cccccc;
+            padding: 1rem;
+        }
+    </style>
+</head>
+
+<body>
+
+<nav>
+    <a href="/">Home</a>
+    <a href="/voorbeelden/">Voorbeelden</a>
+    <a href="/voorbeelden/basis/">Basis</a>
+    <a href="/voorbeelden/multiline/">Multiline</a>
+    <a href="/voorbeelden/fouten/">Fouten</a>
+    <a href="/voorbeelden/markdown/">Markdown</a>
+    <a href="/voorbeelden/cli/">CLI</a>
+    <a href="/voorbeelden/rendering/">Rendering</a>
+</nav>
+
+
+
+<main>
+  <h1 id="vsa-tool-demo">VSA Tool Demo</h1>
+<p>Welkom bij de interactieve demo- en documentatiesite van de VSA Tool.</p>
+<h2 id="wat-kun-je-hier-bekijken">Wat kun je hier bekijken?</h2>
+<table>
+  <thead>
+      <tr>
+          <th>Onderdeel</th>
+          <th>Beschrijving</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><a href="/voorbeelden/basis/">Basisvoorbeelden</a></td>
+          <td>eenvoudige VSA-notatie</td>
+      </tr>
+      <tr>
+          <td><a href="/voorbeelden/multiline/">Multiline voorbeelden</a></td>
+          <td>automatische regelafbreking</td>
+      </tr>
+      <tr>
+          <td><a href="/voorbeelden/fouten/">Foutvoorbeelden</a></td>
+          <td>validatiefouten en diagnose</td>
+      </tr>
+      <tr>
+          <td><a href="/voorbeelden/markdown/">Markdown/Hugo</a></td>
+          <td>Markdown + SVG generatie</td>
+      </tr>
+      <tr>
+          <td><a href="/voorbeelden/cli/">CLI demo&rsquo;s</a></td>
+          <td>voorbeelden van commando-output</td>
+      </tr>
+      <tr>
+          <td><a href="/voorbeelden/rendering/">Rendering</a></td>
+          <td>renderer- en layoutvoorbeelden</td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="belangrijkste-workflow">Belangrijkste workflow</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>VSA
+</span></span><span style="display:flex;"><span>  ↓
+</span></span><span style="display:flex;"><span>validate
+</span></span><span style="display:flex;"><span>  ↓
+</span></span><span style="display:flex;"><span>svg/build-markdown
+</span></span><span style="display:flex;"><span>  ↓
+</span></span><span style="display:flex;"><span>Hugo/GitHub Pages
+</span></span></code></pre></div><h2 id="snelle-voorbeelden">Snelle voorbeelden</h2>
+<h3 id="controleer-vsa">Controleer VSA</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-cmd" data-lang="cmd"><span style="display:flex;"><span>vsa validate examples\minimal\050_svg_demo.vsa
+</span></span></code></pre></div><h3 id="maak-svg">Maak SVG</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-cmd" data-lang="cmd"><span style="display:flex;"><span>vsa svg examples\minimal\050_svg_demo.vsa output.svg
+</span></span></code></pre></div><h3 id="bouw-hugo-content">Bouw Hugo-content</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-cmd" data-lang="cmd"><span style="display:flex;"><span>vsa build-markdown examples\hugo-demo\content-source generated\content generated\static\vsa
+</span></span></code></pre></div>
+
+  <h2>Pagina's</h2>
+
+  <ul>
+    
+      <li>
+        <a href="/voorbeelden/basis/">Basisvoorbeelden</a>
+      </li>
+    
+      <li>
+        <a href="/voorbeelden/cli/">CLI demo&#39;s</a>
+      </li>
+    
+      <li>
+        <a href="/voorbeelden/fouten/">Foutvoorbeelden</a>
+      </li>
+    
+      <li>
+        <a href="/voorbeelden/markdown/">Markdown en Hugo</a>
+      </li>
+    
+      <li>
+        <a href="/voorbeelden/multiline/">Multiline voorbeelden</a>
+      </li>
+    
+      <li>
+        <a href="/voorbeelden/rendering/">Rendering</a>
+      </li>
+    
+      <li>
+        <a href="/zondag/toon-1/">Zondag toon 1</a>
+      </li>
+    
+  </ul>
+</main>
+
+
+
+</body>
+</html>

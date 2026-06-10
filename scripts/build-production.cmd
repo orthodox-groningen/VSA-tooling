@@ -8,6 +8,7 @@ echo === Build production candidate ===
 echo.
 
 if exist generated\production rmdir /s /q generated\production
+if exist examples\hugo-demo\static\vsa rmdir /s /q examples\hugo-demo\static\vsa
 
 vsa validate examples\hugo-demo\content-source
 if errorlevel 1 exit /b 1
@@ -15,7 +16,7 @@ if errorlevel 1 exit /b 1
 vsa build-markdown ^
   examples\hugo-demo\content-source ^
   generated\production\content ^
-  generated\production\static\vsa ^
+  examples\hugo-demo\static\vsa ^
   --max-line-width 900
 if errorlevel 1 exit /b 1
 

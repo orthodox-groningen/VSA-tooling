@@ -2,7 +2,7 @@
 <html lang="nl">
 <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
     <meta charset="utf-8">
-    <title>Zondag toon 1</title>
+    <title>Rendering</title>
 
     <style>
         body {
@@ -65,16 +65,59 @@
 
 
 
-<p>Dit is een voorbeeldpagina.</p>
+<h1 id="rendering">Rendering</h1>
+<ul>
+<li><a href="/">Home</a></li>
+<li><a href="/voorbeelden/cli/">Vorige: CLI</a></li>
+<li><a href="/voorbeelden/">Voorbeelden-overzicht</a></li>
+</ul>
+<h2 id="svg-renderer">SVG renderer</h2>
+<p>De renderer zet de parserstructuur om naar SVG.</p>
+<h2 id="voorbeeld">Voorbeeld</h2>
 <div class="vsa-container">
   <img
     class="vsa-notation"
-    src="/vsa/zondag-toon-1-block-1.svg"
+    src="/vsa/voorbeelden-rendering-block-1.svg"
     alt="VSA notatie">
 </div>
 
-<p>Meer tekst onder de notatie.</p>
-
+<h2 id="huidige-status">Huidige status</h2>
+<table>
+  <thead>
+      <tr>
+          <th>Onderdeel</th>
+          <th>Status</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>multiline rendering</td>
+          <td>aanwezig</td>
+      </tr>
+      <tr>
+          <td>automatische afbreking</td>
+          <td>aanwezig</td>
+      </tr>
+      <tr>
+          <td>SVG-export</td>
+          <td>aanwezig</td>
+      </tr>
+      <tr>
+          <td>MusicXML-export</td>
+          <td>nog niet aanwezig</td>
+      </tr>
+      <tr>
+          <td>definitieve typografie</td>
+          <td>nog in ontwikkeling</td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="waarom-regressietests">Waarom regressietests?</h2>
+<p>Kleine layoutwijzigingen kunnen rendering breken.</p>
+<p>Daarom bestaan:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>tests/
+</span></span><span style="display:flex;"><span>examples/regression/
+</span></span></code></pre></div>
 
 
 

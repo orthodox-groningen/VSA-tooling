@@ -1,6 +1,19 @@
+# early test- and develop stuff:
 MANIFEST.md
-/*.svg
+
+# Generated output
 generated/
+public/
+resources/
+
+# Hugo generated output
+examples/hugo-demo/public/
+
+# Generated SVG assets
+examples/hugo-demo/static/vsa/
+
+# Local SVG experiments
+/*.svg
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>VSA Tool Demo on VSA Demo</title>
-    <link>http://localhost:1313/</link>
-    <description>Recent content in VSA Tool Demo on VSA Demo</description>
+    <title>Voorbeelden on VSA Demo</title>
+    <link>http://localhost:1313/voorbeelden/</link>
+    <description>Recent content in Voorbeelden on VSA Demo</description>
     <generator>Hugo</generator>
     <language>nl</language>
-    <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/voorbeelden/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Basisvoorbeelden</title>
       <link>http://localhost:1313/voorbeelden/basis/</link>
@@ -48,13 +48,6 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/voorbeelden/rendering/</guid>
       <description>&lt;h1 id=&#34;rendering&#34;&gt;Rendering&lt;/h1&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;a href=&#34;http://localhost:1313/&#34;&gt;Home&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;http://localhost:1313/voorbeelden/cli/&#34;&gt;Vorige: CLI&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;http://localhost:1313/voorbeelden/&#34;&gt;Voorbeelden-overzicht&lt;/a&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;svg-renderer&#34;&gt;SVG renderer&lt;/h2&gt;&#xA;&lt;p&gt;De renderer zet de parserstructuur om naar SVG.&lt;/p&gt;&#xA;&lt;h2 id=&#34;voorbeeld&#34;&gt;Voorbeeld&lt;/h2&gt;&#xA;&lt;div class=&#34;vsa-container&#34;&gt;&#xA;  &lt;img&#xA;    class=&#34;vsa-notation&#34;&#xA;    src=&#34;http://localhost:1313/vsa/voorbeelden-rendering-block-1.svg&#34;&#xA;    alt=&#34;VSA notatie&#34;&gt;&#xA;&lt;/div&gt;&#xA;&#xA;&lt;h2 id=&#34;huidige-status&#34;&gt;Huidige status&lt;/h2&gt;&#xA;&lt;table&gt;&#xA;  &lt;thead&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;th&gt;Onderdeel&lt;/th&gt;&#xA;          &lt;th&gt;Status&lt;/th&gt;&#xA;      &lt;/tr&gt;&#xA;  &lt;/thead&gt;&#xA;  &lt;tbody&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;multiline rendering&lt;/td&gt;&#xA;          &lt;td&gt;aanwezig&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;automatische afbreking&lt;/td&gt;&#xA;          &lt;td&gt;aanwezig&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;SVG-export&lt;/td&gt;&#xA;          &lt;td&gt;aanwezig&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;MusicXML-export&lt;/td&gt;&#xA;          &lt;td&gt;nog niet aanwezig&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;definitieve typografie&lt;/td&gt;&#xA;          &lt;td&gt;nog in ontwikkeling&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;  &lt;/tbody&gt;&#xA;&lt;/table&gt;&#xA;&lt;h2 id=&#34;waarom-regressietests&#34;&gt;Waarom regressietests?&lt;/h2&gt;&#xA;&lt;p&gt;Kleine layoutwijzigingen kunnen rendering breken.&lt;/p&gt;&#xA;&lt;p&gt;Daarom bestaan:&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tests/&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;examples/regression/&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
-    </item>
-    <item>
-      <title>Zondag toon 1</title>
-      <link>http://localhost:1313/zondag/toon-1/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/zondag/toon-1/</guid>
-      <description>&lt;p&gt;Dit is een voorbeeldpagina.&lt;/p&gt;&#xA;&lt;div class=&#34;vsa-container&#34;&gt;&#xA;  &lt;img&#xA;    class=&#34;vsa-notation&#34;&#xA;    src=&#34;http://localhost:1313/vsa/zondag-toon-1-block-1.svg&#34;&#xA;    alt=&#34;VSA notatie&#34;&gt;&#xA;&lt;/div&gt;&#xA;&#xA;&lt;p&gt;Meer tekst onder de notatie.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

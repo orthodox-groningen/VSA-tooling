@@ -1,32 +1,25 @@
-# VSA stap 31 - voorbeeldvalidatie en CLI-demo pagina's
+# VSA stap 32 - site build workflow testfix
 
-Deze stap doet twee dingen.
+Deze patch wijzigt alleen de test.
 
-## 1. Voorbeelden valideren
+Probleem:
 
-Alle voorbeelden die goed moeten zijn worden automatisch gevalideerd.
+De workflow bevat correct:
 
-Voorbeelden die fout moeten zijn worden automatisch gecontroleerd op falen.
+```bash
+"${GITHUB_REF}" == "refs/heads/main"
+```
 
-Daarmee voorkomen we dat de demo-site of voorbeelden per ongeluk ongeldige VSA bevatten.
+maar de test zocht naar:
 
-## 2. CLI-demo pagina's
+```text
+GITHUB_REF" == "refs/heads/main"
+```
 
-De Hugo-demo krijgt per belangrijk `vsa`-commando een eigen pagina:
+Dat mist de sluitende `}`.
 
-- `vsa validate`
-- `vsa svg`
-- `vsa blocks`
-- `vsa parse`
-- `vsa process`
-- `vsa build-markdown`
-- `vsa --version`
+Fix:
 
-Elke pagina laat zien:
-
-- doel;
-- input;
-- commando;
-- verwachte output;
-- wat er fout kan gaan;
-- wat je daarna moet doen.
+- test zoekt nu inhoudelijk naar `GITHUB_REF`;
+- test zoekt naar `refs/heads/main`;
+- test zoekt naar `target=production` en `target=preview`.

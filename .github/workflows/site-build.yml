@@ -1,0 +1,97 @@
+name: Site build
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  site-build:
+    name: Build preview or production site
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Determine build target
+        id: target
+        shell: bash
+        run: |
+          if [[ "${GITHUB_EVENT_NAME}" == "push" && "${GITHUB_REF}" == "refs/heads/main" ]]; then
+            echo "target=production" >> "$GITHUB_OUTPUT"
+            echo "output_dir=generated/production" >> "$GITHUB_OUTPUT"
+            echo "hugo_flags=--minify" >> "$GITHUB_OUTPUT"
+            echo "max_line_width=900" >> "$GITHUB_OUTPUT"
+          else
+            echo "target=preview" >> "$GITHUB_OUTPUT"
+            echo "output_dir=generated/preview" >> "$GITHUB_OUTPUT"
+            echo "hugo_flags=" >> "$GITHUB_OUTPUT"
+            echo "max_line_width=800" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Show build target
+        run: |
+          echo "Target: ${{ steps.target.outputs.target }}"
+          echo "Output dir: ${{ steps.target.outputs.output_dir }}"
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install VSA tooling
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -e .
+          python -m pip install pytest
+
+      - name: Run tests
+        run: |
+          python -m pytest
+
+      - name: Validate VSA demo content
+        run: |
+          vsa validate examples/hugo-demo/content-source
+
+      - name: Clean generated static VSA assets
+        run: |
+          rm -rf examples/hugo-demo/static/vsa
+
+      - name: Generate Hugo content and SVG
+        run: |
+          vsa build-markdown \
+            examples/hugo-demo/content-source \
+            "${{ steps.target.outputs.output_dir }}/content" \
+            examples/hugo-demo/static/vsa \
+            --max-line-width "${{ steps.target.outputs.max_line_width }}"
+
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v3
+        with:
+          hugo-version: "0.147.9"
+
+      - name: Build Hugo site
+        run: |
+          hugo \
+            --source examples/hugo-demo \
+            --contentDir "../../${{ steps.target.outputs.output_dir }}/content" \
+            --destination "../../${{ steps.target.outputs.output_dir }}/site" \
+            ${{ steps.target.outputs.hugo_flags }}
+
+      - name: Upload site artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: site-${{ steps.target.outputs.target }}
+          path: ${{ steps.target.outputs.output_dir }}/site
+
+      - name: Upload generated content artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: generated-content-${{ steps.target.outputs.target }}
+          path: ${{ steps.target.outputs.output_dir }}/content
+
+      - name: Upload generated svg artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: generated-svg-${{ steps.target.outputs.target }}
+          path: examples/hugo-demo/static/vsa

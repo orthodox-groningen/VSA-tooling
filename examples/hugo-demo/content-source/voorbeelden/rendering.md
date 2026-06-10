@@ -15,8 +15,19 @@ De renderer zet de parserstructuur om naar SVG.
 ## Voorbeeld
 
 ::: vsa-notatie
-[:] {/Hei_}{/lig_} is de Heer. [:]
+[:] {/Hei_}{/lig_} is de Heer. [\\:]
 :::
+
+## Schermgroottes
+
+De demo-site is bedoeld voor:
+
+| Scherm | Verwacht gedrag |
+|--------|-----------------|
+| smalle telefoon | navigatie onder elkaar, SVG schaalt mee |
+| tablet | navigatie wrapt waar nodig |
+| laptop | normale leesbreedte |
+| groot scherm | bredere contentkolom, maar niet eindeloos breed |
 
 ## Huidige status
 
@@ -25,6 +36,7 @@ De renderer zet de parserstructuur om naar SVG.
 | multiline rendering | aanwezig |
 | automatische afbreking | aanwezig |
 | SVG-export | aanwezig |
+| responsive demo-layout | aanwezig |
 | MusicXML-export | nog niet aanwezig |
 | definitieve typografie | nog in ontwikkeling |
 

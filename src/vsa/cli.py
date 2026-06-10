@@ -1,9 +1,11 @@
 import argparse
 import json
+import sys
 from pathlib import Path
 
 from .parser import Parser
 from .block_parser import parse_markdown_blocks
+from .validation_runner import validate_file
 
 
 def main():
@@ -19,11 +21,29 @@ def main():
     blocks_cmd.add_argument("input")
     blocks_cmd.add_argument("--json", action="store_true")
 
+    validate_cmd = subparsers.add_parser("validate", help="Valideer VSA of Markdown met VSA-blokken")
+    validate_cmd.add_argument("input")
+
     # Backwards compatible: vsa input.vsa --ast
     argparser.add_argument("legacy_input", nargs="?")
     argparser.add_argument("--ast", action="store_true")
 
     args = argparser.parse_args()
+
+    if args.command == "validate":
+        result = validate_file(args.input)
+
+        if result.ok:
+            print("OK")
+            sys.exit(0)
+
+        for message in result.messages:
+            print(
+                f"{message.source}:{message.line}:{message.column}: "
+                f"{message.code}: {message.message_nl}"
+            )
+
+        sys.exit(1)
 
     if args.command == "blocks":
         markdown = Path(args.input).read_text(encoding="utf-8")

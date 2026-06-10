@@ -1,26 +1,17 @@
-# VSA stap 4 - Markdown blokken
+# VSA stap 5 - validate commando
 
-Deze stap voegt ondersteuning toe voor VSA-blokken in Markdown:
+Deze stap voegt een eerste echt bruikbaar validatiecommando toe:
 
-```markdown
-::: vsa-notatie
-do="F4"
-mode="major"
-
-[:] {tekst} [:]
-:::
+```cmd
+vsa validate bestand.md
 ```
 
-Ondersteund:
+Het commando:
 
-- VSA-blokken vinden in Markdown;
-- blokmetadata parsen;
-- defaultwaarden toepassen;
-- VSA-body doorgeven aan de bestaande parser;
-- CLI-commando `blocks` toevoegen.
-
-Nog niet inbegrepen:
-
-- SVG-rendering;
-- MusicXML-export;
-- Hugo build integratie.
+- herkent Markdownbestanden met `::: vsa-notatie`;
+- herkent losse `.vsa` bestanden;
+- parseert VSA-inhoud;
+- voert semantische validatie uit;
+- toont fouten;
+- geeft exitcode `0` bij OK;
+- geeft exitcode `1` bij fouten.

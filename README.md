@@ -1,9 +1,52 @@
-# VSA Parser stap 1 - testfix
+# VSA Parser stap 2
 
-Deze patch lost drie testproblemen op:
+Deze stap voegt toe:
 
-1. oude placeholder-test voor lexer vervangen;
-2. oude placeholder-test voor parser vervangen;
-3. regressietest beperkt tot mappen met `.parser-step1`.
+- tokens;
+- lexer;
+- diagnostics;
+- syntax-validator;
+- regel/kolom-informatie;
+- strengere syntax-validatie.
 
-Daardoor worden grotere bestaande regressiemappen zoals `zondag-toon-1` nog niet meegenomen.
+## Nieuwe architectuur
+
+```text
+tekst
+  ↓
+lexer
+  ↓
+tokens
+  ↓
+parser
+  ↓
+AST
+  ↓
+syntax validator
+```
+
+## Testen
+
+Alle tests:
+
+```cmd
+scripts\test.cmd
+```
+
+Alleen lexer:
+
+```cmd
+python -m pytest tests\test_lexer.py -v
+```
+
+Alleen syntax-validatie:
+
+```cmd
+python -m pytest tests\test_syntax_validation.py -v
+```
+
+CLI AST-output:
+
+```cmd
+vsa examples\minimal\013_height_and_length.vsa --ast
+```

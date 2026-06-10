@@ -1,9 +1,7 @@
-"""
-Voorlopig is er nog geen aparte lexer nodig.
+from .tokens import Token
 
-De parser leest de tekst direct. Dit bestand blijft bestaan omdat de architectuur
-later waarschijnlijk wel een echte lexer krijgt.
-"""
+
+SPECIAL_CHARS = "{}[]"
 
 
 class Lexer:
@@ -11,4 +9,52 @@ class Lexer:
         self.text = text
 
     def tokenize(self):
-        return []
+        tokens = []
+
+        line = 1
+        column = 1
+        position = 0
+
+        for ch in self.text:
+            if ch in SPECIAL_CHARS:
+                tokens.append(
+                    Token(
+                        type="SYMBOL",
+                        value=ch,
+                        position=position,
+                        line=line,
+                        column=column,
+                    )
+                )
+
+            elif ch.isspace():
+                tokens.append(
+                    Token(
+                        type="WHITESPACE",
+                        value=ch,
+                        position=position,
+                        line=line,
+                        column=column,
+                    )
+                )
+
+            else:
+                tokens.append(
+                    Token(
+                        type="TEXT",
+                        value=ch,
+                        position=position,
+                        line=line,
+                        column=column,
+                    )
+                )
+
+            if ch == "\n":
+                line += 1
+                column = 1
+            else:
+                column += 1
+
+            position += 1
+
+        return tokens

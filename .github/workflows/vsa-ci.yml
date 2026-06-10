@@ -5,7 +5,8 @@ on:
   pull_request:
 
 jobs:
-  test-and-build:
+  windows-ci:
+    name: Windows tool CI
     runs-on: windows-latest
 
     steps:
@@ -15,8 +16,8 @@ jobs:
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.12'
+          python-version: "3.12"
 
       - name: Run VSA CI
         shell: cmd
-        run: scripts\\ci.cmd
+        run: scripts\ci.cmd

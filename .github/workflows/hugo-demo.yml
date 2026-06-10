@@ -1,0 +1,52 @@
+name: Hugo demo build
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  hugo-demo:
+    name: Build Hugo demo site
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install VSA tooling
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -e .
+          python -m pip install pytest
+
+      - name: Run tests
+        run: |
+          python -m pytest
+
+      - name: Validate VSA demo content
+        run: |
+          vsa validate examples/hugo-demo/content-source
+
+      - name: Generate Hugo content and SVG
+        run: |
+          vsa build-markdown             examples/hugo-demo/content-source             generated/hugo/content             examples/hugo-demo/static/vsa
+
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v3
+        with:
+          hugo-version: "0.147.9"
+
+      - name: Build Hugo demo
+        run: |
+          hugo             --source examples/hugo-demo             --contentDir ../../generated/hugo/content             --destination ../../generated/site
+
+      - name: Upload generated site
+        uses: actions/upload-artifact@v4
+        with:
+          name: hugo-demo-site
+          path: generated/site

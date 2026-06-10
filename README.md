@@ -1,15 +1,19 @@
-# VSA CI pytest fix
+# VSA stap 24 - GitHub Actions opschonen
 
-Deze patch maakt `scripts\\ci.cmd` robuuster.
+Deze stap maakt de GitHub Actions duidelijker.
 
-Probleem op GitHub Actions:
+Er zijn nu twee workflows:
 
 ```text
-No module named pytest
+VSA CI
+  = Windows, CMD, scripts\ci.cmd
+
+Hugo demo build
+  = Ubuntu, Python, VSA build-markdown, Hugo build
 ```
 
-Fix:
+Waarom:
 
-- `ci.cmd` installeert eerst het project en pytest;
-- daarna pas tests draaien;
-- lokaal blijft het ook werken.
+- tool-CI blijft dicht bij jouw Windows/CMD workflow;
+- Hugo-build gebruikt Linux, zoals veel hosting/deploy workflows;
+- fouten worden makkelijker te lokaliseren.

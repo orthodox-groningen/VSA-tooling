@@ -1,21 +1,17 @@
-# VSA Pages enable fix
+# VSA stap 27 - preview en productie scheiden
 
-Deze patch zet in de Pages workflow:
+Deze stap bereidt preview/productie-publicatie voor.
 
-```yaml
-enablement: true
-```
+Nieuw:
 
-bij:
+- aparte build scripts voor preview en productie;
+- aparte GitHub Actions workflow met keuze `preview` of `production`;
+- productie draait standaard nog zonder automatische publicatie;
+- preview blijft geschikt voor GitHub Pages demo.
 
-```yaml
-actions/configure-pages@v5
-```
-
-Dit helpt wanneer GitHub Pages nog niet eerder voor de repo is geactiveerd.
-
-Als dit alsnog faalt, moet je handmatig instellen:
+Doel:
 
 ```text
-Settings → Pages → Build and deployment → Source → GitHub Actions
+preview     = veilig testen
+production  = later echte site-output
 ```

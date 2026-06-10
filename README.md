@@ -1,24 +1,26 @@
-# VSA stap 18 - SVG regelbreedte instelbaar maken
+# VSA stap 19 - validate op bestanden én mappen
 
-Deze stap maakt de maximale SVG-regelbreedte instelbaar via de CLI.
+Deze stap breidt `vsa validate` uit.
 
-Nieuw:
+Voorheen:
 
 ```cmd
-vsa svg input.vsa output.svg --max-line-width 600
-vsa process input.md output-dir --max-line-width 600
-vsa build-markdown input-dir output-dir assets-dir --max-line-width 600
+vsa validate bestand.md
 ```
 
-Waarom:
+Nu ook:
 
-- smalle websitekolom: kleinere regelbreedte;
-- brede desktopweergave: grotere regelbreedte;
-- print/PDF: eventueel nog groter;
-- layoutgedrag wordt reproduceerbaar testbaar.
-
-Default blijft:
-
-```text
-800
+```cmd
+vsa validate content
 ```
+
+Het commando:
+
+- accepteert een bestand of map;
+- zoekt recursief naar `.md`, `.markdown` en `.vsa`;
+- valideert alle gevonden bestanden;
+- verzamelt alle fouten;
+- geeft exitcode `0` bij alles OK;
+- geeft exitcode `1` bij één of meer fouten.
+
+Dit is belangrijk voor Hugo en GitHub Actions.

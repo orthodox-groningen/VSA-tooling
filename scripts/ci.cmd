@@ -16,8 +16,8 @@ python -m pytest
 if errorlevel 1 exit /b 1
 
 echo.
-echo [3/4] Validate demo content
-vsa validate examples\hugo-demo\content-source\zondag\toon-1.md
+echo [3/4] Validate demo content directory
+vsa validate examples\hugo-demo\content-source
 if errorlevel 1 exit /b 1
 
 echo.

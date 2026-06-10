@@ -5,7 +5,7 @@ from pathlib import Path
 
 from .parser import Parser
 from .block_parser import parse_markdown_blocks
-from .validation_runner import validate_file
+from .validation_runner import validate_path
 from .svg_export import export_svg
 from .markdown_processor import process_path, ProcessValidationError
 from .markdown_builder import build_markdown_site
@@ -104,7 +104,7 @@ def main():
         return
 
     if args.command == "validate":
-        result = validate_file(args.input)
+        result = validate_path(args.input)
 
         if result.ok:
             print("OK")

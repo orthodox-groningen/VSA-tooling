@@ -34,6 +34,41 @@ class ValidationResult:
             )
         )
 
+    def extend(self, other):
+        if not other.ok:
+            self.ok = False
+
+        self.messages.extend(other.messages)
+
+
+def validate_path(path: str | Path) -> ValidationResult:
+    path = Path(path)
+
+    if path.is_file():
+        return validate_file(path)
+
+    if path.is_dir():
+        result = ValidationResult()
+
+        files = sorted(
+            list(path.rglob("*.md")) +
+            list(path.rglob("*.markdown")) +
+            list(path.rglob("*.vsa"))
+        )
+
+        for file in files:
+            result.extend(validate_file(file))
+
+        return result
+
+    result = ValidationResult()
+    result.add_error(
+        source=str(path),
+        code="VSA-PATH-NOT-FOUND",
+        message_nl="Pad niet gevonden.",
+    )
+    return result
+
 
 def validate_file(path: str | Path) -> ValidationResult:
     path = Path(path)

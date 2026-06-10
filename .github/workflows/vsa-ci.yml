@@ -17,10 +17,6 @@ jobs:
         with:
           python-version: '3.12'
 
-      - name: Bootstrap
-        shell: cmd
-        run: scripts\bootstrap.cmd
-
       - name: Run VSA CI
         shell: cmd
-        run: scripts\ci.cmd
+        run: scripts\\ci.cmd

@@ -1,32 +1,15 @@
-# VSA stap 23 - Hugo workflow en GitHub Actions
+# VSA CI pytest fix
 
-Deze stap voegt een echte build-workflow toe.
+Deze patch maakt `scripts\\ci.cmd` robuuster.
 
-Nieuw:
-
-- `scripts/build-hugo.cmd`
-- `scripts/serve-hugo.cmd`
-- `.github/workflows/hugo.yml`
-- voorbeeld `package.json`
-- voorbeeld Hugo config
-- voorbeeld Hugo directory-structuur
-
-Doel:
+Probleem op GitHub Actions:
 
 ```text
-Markdown met VSA
-    ↓
-vsa build-markdown
-    ↓
-gegenereerde Hugo content + SVG
-    ↓
-hugo
-    ↓
-site
+No module named pytest
 ```
 
-Hiermee wordt de repo bruikbaar voor:
+Fix:
 
-- lokale Hugo preview;
-- GitHub Actions preview builds;
-- productie builds.
+- `ci.cmd` installeert eerst het project en pytest;
+- daarna pas tests draaien;
+- lokaal blijft het ook werken.

@@ -2,4 +2,10 @@
 max-line-width = 800
 
 [hugo]
-assets-url-prefix = "/vsa"
+
+# Gebruik gewone <img>-tags:
+# output-mode = "img"
+
+# Gebruik Hugo shortcodes:
+# {{< vsa src="..." >}}
+output-mode = "shortcode"

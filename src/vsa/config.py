@@ -11,6 +11,7 @@ class RenderingConfig:
 @dataclass
 class HugoConfig:
     assets_url_prefix: str = "/vsa"
+    output_mode: str = "img"
 
 
 @dataclass
@@ -33,6 +34,13 @@ def load_config(path: str | Path | None = None) -> VSAConfig:
     rendering_data = data.get("rendering", {})
     hugo_data = data.get("hugo", {})
 
+    output_mode = str(hugo_data.get("output-mode", "img"))
+
+    if output_mode not in ["img", "shortcode"]:
+        raise ValueError(
+            "Ongeldige hugo.output-mode in vsa.toml. Gebruik 'img' of 'shortcode'."
+        )
+
     return VSAConfig(
         rendering=RenderingConfig(
             max_line_width=float(
@@ -42,6 +50,7 @@ def load_config(path: str | Path | None = None) -> VSAConfig:
         hugo=HugoConfig(
             assets_url_prefix=str(
                 hugo_data.get("assets-url-prefix", "/vsa")
-            )
+            ),
+            output_mode=output_mode,
         ),
     )

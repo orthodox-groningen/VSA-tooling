@@ -1,33 +1,35 @@
-# VSA stap 21 fix - shortcode opt-in
+# VSA stap 22 - output-mode in vsa.toml
 
-Deze patch herstelt backwards compatibility.
+Deze stap breidt `vsa.toml` uit.
 
-Probleem:
+Nieuw:
 
-- `build_markdown_site()` gebruikte ineens standaard `shortcode`;
-- bestaande tests en bestaande workflow verwachten standaard `<img>`.
-
-Fix:
-
-- default output blijft `img`;
-- shortcode blijft beschikbaar via:
-
-```cmd
---output-mode shortcode
+```toml
+[hugo]
+assets-url-prefix = "/vsa"
+output-mode = "img"
 ```
 
-Dus:
+Mogelijke waarden:
 
-```cmd
-vsa build-markdown ...
+```text
+img
+shortcode
 ```
 
-geeft `<img>`.
+Voorrang:
 
-En:
-
-```cmd
-vsa build-markdown ... --output-mode shortcode
+```text
+CLI-optie --output-mode
+  ↓
+vsa.toml
+  ↓
+default: img
 ```
 
-geeft Hugo-shortcodes.
+Voor Hugo kun je dus instellen:
+
+```toml
+[hugo]
+output-mode = "shortcode"
+```

@@ -27,6 +27,13 @@ def _resolve_max_line_width(cli_value, config):
     return config.rendering.max_line_width
 
 
+def _resolve_output_mode(cli_value, config):
+    if cli_value is not None:
+        return cli_value
+
+    return config.hugo.output_mode
+
+
 def main():
     argparser = argparse.ArgumentParser(description="VSA CLI")
     argparser.add_argument("--config", default=None)
@@ -64,7 +71,7 @@ def main():
     build_cmd.add_argument(
         "--output-mode",
         choices=["img", "shortcode"],
-        default="img",
+        default=None,
     )
 
     argparser.add_argument("legacy_input", nargs="?")
@@ -81,7 +88,7 @@ def main():
                 assets_dir=args.assets_dir,
                 assets_url_prefix=args.assets_url_prefix or config.hugo.assets_url_prefix,
                 max_line_width=_resolve_max_line_width(args.max_line_width, config),
-                output_mode=args.output_mode,
+                output_mode=_resolve_output_mode(args.output_mode, config),
             )
         except ProcessValidationError as exc:
             _print_validation_messages(exc.messages)

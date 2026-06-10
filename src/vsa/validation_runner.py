@@ -4,6 +4,7 @@ from pathlib import Path
 from .block_parser import parse_markdown_blocks
 from .parser import Parser
 from .semantic_validator import SemanticValidator
+from .recoverable_syntax_validator import RecoverableSyntaxValidator
 from .errors import VSAError
 
 
@@ -64,6 +65,20 @@ def _validate_markdown(path: Path, text: str, result: ValidationResult):
 
 
 def _validate_vsa_text(source: str, text: str, result: ValidationResult):
+    syntax_diagnostics = RecoverableSyntaxValidator(text).validate()
+
+    for diagnostic in syntax_diagnostics.items:
+        result.add_error(
+            source=source,
+            code=diagnostic.code,
+            message_nl=diagnostic.message_nl,
+            line=diagnostic.line,
+            column=diagnostic.column,
+        )
+
+    if syntax_diagnostics.has_errors():
+        return
+
     try:
         document = Parser(text).parse()
     except VSAError as exc:

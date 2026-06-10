@@ -1,17 +1,18 @@
-# VSA stap 5 - validate commando
+# VSA stap 6 - meerdere fouten rapporteren
 
-Deze stap voegt een eerste echt bruikbaar validatiecommando toe:
+Deze stap verbetert `vsa validate`.
 
-```cmd
-vsa validate bestand.md
-```
+Nieuw:
 
-Het commando:
+- meerdere syntaxfouten verzamelen;
+- meerdere semantische fouten verzamelen;
+- niet stoppen bij de eerste fout;
+- foutlijst geschikt maken voor CMD, Hugo en GitHub Actions.
 
-- herkent Markdownbestanden met `::: vsa-notatie`;
-- herkent losse `.vsa` bestanden;
-- parseert VSA-inhoud;
-- voert semantische validatie uit;
-- toont fouten;
-- geeft exitcode `0` bij OK;
-- geeft exitcode `1` bij fouten.
+Belangrijk:
+
+- parsing zelf kan nog steeds stoppen bij een harde parsefout;
+- maar de validatierunner doet eerst een recoverable syntax-scan;
+- daarna wordt semantiek alleen uitgevoerd als er geen syntaxfouten zijn.
+
+Dit voorkomt misleidende vervolgmeldingen.

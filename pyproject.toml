@@ -5,8 +5,16 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "vsa-tool"
 version = "0.1.0"
-description = "VSA parser, validator, renderer and exporter"
 requires-python = ">=3.12"
+
+[project.scripts]
+vsa = "vsa.cli:main"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

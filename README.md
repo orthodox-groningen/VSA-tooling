@@ -1,33 +1,39 @@
-# VSA stap 10 - process valideert vóór SVG-generatie
+# VSA stap 11 - Markdown build met SVG-verwijzingen
 
-Deze stap maakt `vsa process` veiliger.
+Deze stap voegt een nieuw commando toe:
 
-Voorheen:
+```cmd
+vsa build-markdown input-dir output-dir assets-dir
+```
+
+Doel:
 
 ```text
-process
+content/*.md met ::: vsa-notatie
+  ↓
+validatie
   ↓
 SVG genereren
+  ↓
+Markdown kopiëren/herschrijven
+  ↓
+output Markdown met <img src="...">
 ```
 
-Nu:
+Dit is een praktische Hugo-route:
 
 ```text
-process
+content-source/
   ↓
-validate
+vsa build-markdown
   ↓
-alleen bij OK: SVG genereren
+content-generated/
+  ↓
+hugo build
 ```
 
-Bij fouten:
+Nog niet inbegrepen:
 
-- worden foutmeldingen getoond;
-- wordt er geen SVG gegenereerd;
-- eindigt het commando met exitcode `1`.
-
-Dit is belangrijk voor:
-
-- lokale controle;
-- Hugo-builds;
-- GitHub Actions.
+- Hugo shortcodes;
+- render hooks;
+- finale SVG-layout.

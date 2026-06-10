@@ -8,6 +8,7 @@ from .block_parser import parse_markdown_blocks
 from .validation_runner import validate_file
 from .svg_export import export_svg
 from .markdown_processor import process_path, ProcessValidationError
+from .markdown_builder import build_markdown_site
 
 
 def _print_validation_messages(messages):
@@ -41,24 +42,38 @@ def main():
     process_cmd = subparsers.add_parser("process")
     process_cmd.add_argument("input")
     process_cmd.add_argument("output_dir")
-    process_cmd.add_argument(
-        "--no-validate",
-        action="store_true",
-        help="Sla validatie over vóór SVG-generatie",
-    )
+    process_cmd.add_argument("--no-validate", action="store_true")
+
+    build_cmd = subparsers.add_parser("build-markdown")
+    build_cmd.add_argument("input_dir")
+    build_cmd.add_argument("output_dir")
+    build_cmd.add_argument("assets_dir")
+    build_cmd.add_argument("--assets-url-prefix", default="/vsa")
 
     argparser.add_argument("legacy_input", nargs="?")
     argparser.add_argument("--ast", action="store_true")
 
     args = argparser.parse_args()
 
+    if args.command == "build-markdown":
+        try:
+            result = build_markdown_site(
+                input_dir=args.input_dir,
+                output_dir=args.output_dir,
+                assets_dir=args.assets_dir,
+                assets_url_prefix=args.assets_url_prefix,
+            )
+        except ProcessValidationError as exc:
+            _print_validation_messages(exc.messages)
+            sys.exit(1)
+
+        print(f"{len(result.markdown_files)} Markdownbestand(en) geschreven")
+        print(f"{len(result.svg_files)} SVG-bestand(en) geschreven")
+        return
+
     if args.command == "process":
         try:
-            result = process_path(
-                args.input,
-                args.output_dir,
-                validate=not args.no_validate,
-            )
+            result = process_path(args.input, args.output_dir, validate=not args.no_validate)
         except ProcessValidationError as exc:
             _print_validation_messages(exc.messages)
             sys.exit(1)

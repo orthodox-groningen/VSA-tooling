@@ -1,19 +1,12 @@
-# VSA stap 24 - GitHub Actions opschonen
+# VSA stap 25 - build artifacts
 
-Deze stap maakt de GitHub Actions duidelijker.
+Deze stap voegt expliciete build-artifacts toe.
 
-Er zijn nu twee workflows:
+Doel:
 
-```text
-VSA CI
-  = Windows, CMD, scripts\ci.cmd
+- gegenereerde Hugo-site bewaren;
+- gegenereerde SVG-bestanden bewaren;
+- gegenereerde Markdown bewaren;
+- resultaat kunnen downloaden uit GitHub Actions.
 
-Hugo demo build
-  = Ubuntu, Python, VSA build-markdown, Hugo build
-```
-
-Waarom:
-
-- tool-CI blijft dicht bij jouw Windows/CMD workflow;
-- Hugo-build gebruikt Linux, zoals veel hosting/deploy workflows;
-- fouten worden makkelijker te lokaliseren.
+Dit is nog geen productie-deploy, maar wel de stap vóór preview/productie-publicatie.

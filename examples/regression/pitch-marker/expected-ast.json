@@ -1,0 +1,19 @@
+{
+  "type": "Document",
+  "nodes": [
+    {
+      "type": "PitchMarkerNode",
+      "height_modifier": []
+    },
+    {
+      "type": "TextNode",
+      "text": " "
+    },
+    {
+      "type": "ScopeNode",
+      "height_modifier": [],
+      "text": "tekst",
+      "length_modifier": []
+    }
+  ]
+}

@@ -3,13 +3,9 @@
   "nodes": [
     {
       "type": "ScopeNode",
-      "height_modifier": [
-        "/"
-      ],
+      "height_modifier": ["/"],
       "text": "tekst",
-      "length_modifier": [
-        "_"
-      ]
+      "length_modifier": ["_"]
     }
   ]
 }

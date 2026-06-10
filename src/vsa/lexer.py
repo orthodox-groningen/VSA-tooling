@@ -1,7 +1,8 @@
 """
-Eerste lexer-skelet voor VSA.
+Voorlopig is er nog geen aparte lexer nodig.
 
-Nog niet geïmplementeerd.
+De parser leest de tekst direct. Dit bestand blijft bestaan omdat de architectuur
+later waarschijnlijk wel een echte lexer krijgt.
 """
 
 
@@ -10,4 +11,4 @@ class Lexer:
         self.text = text
 
     def tokenize(self):
-        raise NotImplementedError("Lexer nog niet geïmplementeerd.")
+        return []

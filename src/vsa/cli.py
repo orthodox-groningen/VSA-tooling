@@ -1,15 +1,24 @@
 import argparse
+import json
+from pathlib import Path
+
+from .parser import Parser
 
 
 def main():
-    parser = argparse.ArgumentParser(description="VSA CLI")
+    argparser = argparse.ArgumentParser(description="VSA CLI")
+    argparser.add_argument("input", help="VSA inputbestand")
+    argparser.add_argument("--ast", action="store_true", help="Print AST als JSON")
 
-    parser.add_argument("input", nargs="?")
+    args = argparser.parse_args()
 
-    args = parser.parse_args()
+    text = Path(args.input).read_text(encoding="utf-8")
+    document = Parser(text).parse()
 
-    print("VSA CLI placeholder")
-    print(f"Input: {args.input}")
+    if args.ast:
+        print(json.dumps(document.to_dict(), ensure_ascii=False, indent=2))
+    else:
+        print("OK")
 
 
 if __name__ == "__main__":

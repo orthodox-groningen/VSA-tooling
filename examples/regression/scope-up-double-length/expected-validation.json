@@ -1,5 +1,5 @@
 {
   "syntax": "valid",
-  "semantic": "valid",
+  "semantic": "not-run",
   "errors": []
 }

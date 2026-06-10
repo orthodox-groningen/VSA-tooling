@@ -1,42 +1,9 @@
-# VSA Parser Skeleton
+# VSA Parser stap 1 - testfix
 
-Dit zipbestand bevat een eerste werkende basis voor:
+Deze patch lost drie testproblemen op:
 
-- AST-structuren;
-- parser-skelet;
-- lexer-skelet;
-- foutafhandeling;
-- pytest-tests;
-- regressietests.
+1. oude placeholder-test voor lexer vervangen;
+2. oude placeholder-test voor parser vervangen;
+3. regressietest beperkt tot mappen met `.parser-step1`.
 
-Doel:
-
-```text
-VSA tekst
-  ↓
-parser
-  ↓
-AST
-```
-
-Nog niet inbegrepen:
-
-- SVG-rendering;
-- MusicXML-export;
-- semantische validatie;
-- Hugo-integratie.
-
-## Aanbevolen eerste stap
-
-Voer uit:
-
-```cmd
-scripts\bootstrap.cmd
-scripts\test.cmd
-```
-
-Daarna:
-
-- implementeer lexer;
-- implementeer parser;
-- laat regressietests slagen.
+Daardoor worden grotere bestaande regressiemappen zoals `zondag-toon-1` nog niet meegenomen.

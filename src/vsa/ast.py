@@ -1,10 +1,16 @@
-from dataclasses import dataclass, field
-from typing import List, Optional, Union
+from dataclasses import dataclass, field, asdict
+from typing import List, Optional, Union, Dict, Any
 
 
 @dataclass
 class TextNode:
     text: str
+
+    def to_dict(self) -> Dict[str, Any]:
+        return {
+            "type": "TextNode",
+            "text": self.text,
+        }
 
 
 @dataclass
@@ -13,10 +19,24 @@ class ScopeNode:
     text: str
     length_modifier: List[str]
 
+    def to_dict(self) -> Dict[str, Any]:
+        return {
+            "type": "ScopeNode",
+            "height_modifier": self.height_modifier,
+            "text": self.text,
+            "length_modifier": self.length_modifier,
+        }
+
 
 @dataclass
 class PitchMarkerNode:
     height_modifier: Optional[List[str]] = None
+
+    def to_dict(self) -> Dict[str, Any]:
+        return {
+            "type": "PitchMarkerNode",
+            "height_modifier": self.height_modifier or [],
+        }
 
 
 Node = Union[TextNode, ScopeNode, PitchMarkerNode]
@@ -25,3 +45,9 @@ Node = Union[TextNode, ScopeNode, PitchMarkerNode]
 @dataclass
 class Document:
     nodes: List[Node] = field(default_factory=list)
+
+    def to_dict(self) -> Dict[str, Any]:
+        return {
+            "type": "Document",
+            "nodes": [node.to_dict() for node in self.nodes],
+        }

@@ -1,10 +1,8 @@
-import pytest
-
 from vsa.parser import Parser
 
 
 def test_parser_placeholder():
     parser = Parser("{tekst}")
+    document = parser.parse()
 
-    with pytest.raises(NotImplementedError):
-        parser.parse()
+    assert document.to_dict()["type"] == "Document"

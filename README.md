@@ -1,4 +1,4 @@
-# VSA Tool
+# VSA Tooling
 
 VSA Tool is a standalone parser, validator, renderer, and exporter for the **Vereenvoudigde Slavische Accentnotatie (VSA)** specification.
 

@@ -1,21 +1,20 @@
-# VSA stap 28 - versie en releasevoorbereiding
+# VSA stap 29 fix 2 - bruikbare gebruikersdocumentatie
 
-Deze stap voegt basisversiebeheer toe.
-
-Nieuw:
-
-- `vsa --version`
-- centrale versie in `src/vsa/__init__.py`
-- `CHANGELOG.md`
-- release-notities in docs
-- handmatige GitHub Actions workflow om release-artifacts te bouwen
+Deze patch herschrijft de documentatie opnieuw.
 
 Doel:
 
-```text
-werkende build
-  ↓
-versie markeren
-  ↓
-release artifacts maken
-```
+- niet alleen commando's opsommen;
+- uitleggen wanneer je welk commando nodig hebt;
+- uitleggen wat er gecontroleerd wordt;
+- uitleggen wat output betekent;
+- uitleggen wat je doet bij fouten;
+- uitleggen wat input/output-paden betekenen;
+- defaults en opties duidelijk maken.
+
+Bestanden:
+
+- `docs/user-guide.md`
+- `docs/cli-reference.md`
+- `tests/test_user_docs.py`
+- `docs/architecture/parser-stap-29-fix2-bruikbare-documentatie.md`

@@ -7,6 +7,7 @@ from .parser import Parser
 from .block_parser import parse_markdown_blocks
 from .validation_runner import validate_file
 from .svg_export import export_svg
+from .markdown_processor import process_markdown_file
 
 
 def main():
@@ -29,10 +30,24 @@ def main():
     svg_cmd.add_argument("input")
     svg_cmd.add_argument("output")
 
+    process_cmd = subparsers.add_parser("process")
+    process_cmd.add_argument("input")
+    process_cmd.add_argument("output_dir")
+
     argparser.add_argument("legacy_input", nargs="?")
     argparser.add_argument("--ast", action="store_true")
 
     args = argparser.parse_args()
+
+    if args.command == "process":
+        result = process_markdown_file(args.input, args.output_dir)
+
+        print(f"{len(result.blocks)} SVG-bestand(en) gegenereerd")
+
+        for block in result.blocks:
+            print(f"- {block.output_file}")
+
+        return
 
     if args.command == "svg":
         export_svg(args.input, args.output)

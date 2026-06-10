@@ -1,19 +1,36 @@
-# VSA SVG stap 7 - fix
+# VSA stap 8 - Markdown verwerken naar SVG
 
-Deze patch herstelt de eerste SVG-renderer.
+Deze stap voegt een eerste `process` commando toe.
 
-Problemen opgelost:
-
-- gewone tekst buiten scopes verdwijnt niet meer;
-- tijdelijke zwarte debugpunten zijn verwijderd;
-- hoogte-modifiers worden voorlopig als tekstuele glyphs boven het zangelement getoond;
-- lengte-modifiers worden voorlopig als tekstuele glyphs onder het zangelement getoond;
-- toonhoogte-markeringen worden als horizontale lijn weergegeven.
-
-Dit is nog geen definitieve grafische VSA-rendering, maar de inhoudelijke lagen zijn nu correcter:
+Doel:
 
 ```text
-bovenlaag  = hoogte-modifiers
-tekstlaag  = gewone tekst + zangelementen
-onderlaag  = lengte-modifiers
+Markdown met ::: vsa-notatie blokken
+  ↓
+VSA parser
+  ↓
+SVG renderer
+  ↓
+gegenereerde SVG-bestanden
 ```
+
+Dit is de eerste echte stap richting Hugo-integratie.
+
+## Voorbeeld
+
+```cmd
+vsa process examples\minimal\031_markdown_block_metadata.md generated\vsa
+```
+
+Dat maakt bijvoorbeeld:
+
+```text
+generated\vsa\031_markdown_block_metadata-block-1.svg
+```
+
+Nog niet inbegrepen:
+
+- Markdown herschrijven;
+- shortcodes invoegen;
+- Hugo render hooks;
+- nette SVG-layout.

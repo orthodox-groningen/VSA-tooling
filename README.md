@@ -1,52 +1,9 @@
-# VSA Parser stap 2
+# VSA Parser stap 3 - fix
 
-Deze stap voegt toe:
+Deze patch herstelt:
 
-- tokens;
-- lexer;
-- diagnostics;
-- syntax-validator;
-- regel/kolom-informatie;
-- strengere syntax-validatie.
+- parsing van samengestelde hoogte- en lengte-modifiers;
+- een foutieve test rond impliciete lengte-modifiers;
+- ontbrekende regressiebestanden voor `semantic-mismatch`.
 
-## Nieuwe architectuur
-
-```text
-tekst
-  ↓
-lexer
-  ↓
-tokens
-  ↓
-parser
-  ↓
-AST
-  ↓
-syntax validator
-```
-
-## Testen
-
-Alle tests:
-
-```cmd
-scripts\test.cmd
-```
-
-Alleen lexer:
-
-```cmd
-python -m pytest tests\test_lexer.py -v
-```
-
-Alleen syntax-validatie:
-
-```cmd
-python -m pytest tests\test_syntax_validation.py -v
-```
-
-CLI AST-output:
-
-```cmd
-vsa examples\minimal\013_height_and_length.vsa --ast
-```
+Uitpakken over de bestaande repo heen.

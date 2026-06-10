@@ -65,7 +65,6 @@ class Parser:
 
     def _parse_pitch_marker(self) -> PitchMarkerNode:
         start = self.pos
-
         end = self.text.find("]", self.pos)
 
         if end == -1:
@@ -85,7 +84,6 @@ class Parser:
 
     def _parse_scope(self) -> ScopeNode:
         start = self.pos
-
         end = self.text.find("}", self.pos)
 
         if end == -1:
@@ -99,14 +97,7 @@ class Parser:
         if any(ch.isspace() for ch in content):
             raise VSASyntaxError("Whitespace binnen scope", start)
 
-        height_modifier, rest = self._consume_prefix_modifier(content, EHM_VALUES)
-        length_modifier, element = self._consume_suffix_modifier(rest, ELM_VALUES)
-
-        if element == "":
-            raise VSASyntaxError("Scope zonder zangelement", start)
-
-        if any(ch in MODIFIER_CHARS for ch in element):
-            raise VSASyntaxError("Modifierteken binnen zangelement", start)
+        height_modifier, element, length_modifier = self._split_scope_content(content, start)
 
         self.pos = end + 1
 
@@ -116,53 +107,76 @@ class Parser:
             length_modifier=length_modifier,
         )
 
-    def _consume_prefix_modifier(self, content: str, allowed_values: list[str]) -> tuple[list[str], str]:
-        parts = []
-        remaining = content
+    def _split_scope_content(self, content: str, start: int):
+        prefix_candidates = self._prefix_candidates(content, EHM_VALUES)
+        suffix_candidates = self._suffix_candidates(content, ELM_VALUES)
 
-        while remaining:
-            matched = None
-
-            for value in allowed_values:
-                if remaining.startswith(value):
-                    matched = value
-                    break
-
-            if matched is None:
-                break
-
-            parts.append(matched)
-            remaining = remaining[len(matched):]
-
-            if remaining.startswith("&"):
-                remaining = remaining[1:]
-                continue
-
-            break
-
-        return parts, remaining
-
-    def _consume_suffix_modifier(self, content: str, allowed_values: list[str]) -> tuple[list[str], str]:
         best = None
 
-        for index in range(len(content) + 1):
-            candidate_text = content[:index]
-            candidate_modifier = content[index:]
+        for prefix_len, height_modifier in prefix_candidates:
+            for suffix_start, length_modifier in suffix_candidates:
+                if prefix_len > suffix_start:
+                    continue
 
-            if candidate_modifier == "":
-                continue
+                element = content[prefix_len:suffix_start]
+
+                if element == "":
+                    continue
+
+                if any(ch in MODIFIER_CHARS for ch in element):
+                    continue
+
+                score = prefix_len + (len(content) - suffix_start)
+
+                if best is None or score > best[0]:
+                    best = (score, height_modifier, element, length_modifier)
+
+        if best is None:
+            if any(ch in MODIFIER_CHARS for ch in content):
+                raise VSASyntaxError("Modifierteken binnen zangelement", start)
+
+            return [], content, []
+
+        _, height_modifier, element, length_modifier = best
+
+        return height_modifier, element, length_modifier
+
+    def _prefix_candidates(self, content: str, allowed_values: list[str]):
+        candidates = [(0, [])]
+
+        def walk(index, parts):
+            matched_any = False
+
+            for value in allowed_values:
+                if content.startswith(value, index):
+                    next_index = index + len(value)
+                    new_parts = parts + [value]
+                    candidates.append((next_index, new_parts))
+                    matched_any = True
+
+                    if content.startswith("&", next_index):
+                        walk(next_index + 1, new_parts)
+
+            return matched_any
+
+        walk(0, [])
+
+        return candidates
+
+    def _suffix_candidates(self, content: str, allowed_values: list[str]):
+        candidates = [(len(content), [])]
+
+        for index in range(len(content)):
+            raw = content[index:]
 
             try:
-                parts = self._split_modifier(candidate_modifier, allowed_values)
+                parts = self._split_modifier(raw, allowed_values)
             except VSASyntaxError:
                 continue
 
-            best = (parts, candidate_text)
+            candidates.append((index, parts))
 
-        if best is None:
-            return [], content
-
-        return best
+        return candidates
 
     def _split_modifier(self, modifier: str, allowed_values: list[str]) -> list[str]:
         if modifier == "":

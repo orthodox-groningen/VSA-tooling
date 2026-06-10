@@ -1,0 +1,9 @@
+{
+  "syntax": "valid",
+  "semantic": "invalid",
+  "errors": [
+    {
+      "code": "VSA-SEMANTIC-MODIFIER-COUNT-MISMATCH"
+    }
+  ]
+}

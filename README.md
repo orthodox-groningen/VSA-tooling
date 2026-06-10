@@ -1,12 +1,29 @@
-# VSA stap 25 - build artifacts
+# VSA stap 26 - GitHub Pages publicatie
 
-Deze stap voegt expliciete build-artifacts toe.
+Deze stap voegt een GitHub Pages workflow toe.
 
 Doel:
 
-- gegenereerde Hugo-site bewaren;
-- gegenereerde SVG-bestanden bewaren;
-- gegenereerde Markdown bewaren;
-- resultaat kunnen downloaden uit GitHub Actions.
+```text
+VSA validate
+  ↓
+VSA build-markdown
+  ↓
+Hugo build
+  ↓
+GitHub Pages deploy
+```
 
-Dit is nog geen productie-deploy, maar wel de stap vóór preview/productie-publicatie.
+Belangrijk:
+
+- deze workflow draait alleen handmatig via `workflow_dispatch`;
+- dus hij publiceert niet automatisch bij elke push;
+- dat is veiliger zolang de demo/workflow nog in ontwikkeling is.
+
+## GitHub instelling
+
+Zet in GitHub:
+
+```text
+Settings → Pages → Build and deployment → Source → GitHub Actions
+```

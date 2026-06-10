@@ -1,9 +1,26 @@
-# VSA Parser stap 3 - fix
+# VSA stap 4 - Markdown blokken
 
-Deze patch herstelt:
+Deze stap voegt ondersteuning toe voor VSA-blokken in Markdown:
 
-- parsing van samengestelde hoogte- en lengte-modifiers;
-- een foutieve test rond impliciete lengte-modifiers;
-- ontbrekende regressiebestanden voor `semantic-mismatch`.
+```markdown
+::: vsa-notatie
+do="F4"
+mode="major"
 
-Uitpakken over de bestaande repo heen.
+[:] {tekst} [:]
+:::
+```
+
+Ondersteund:
+
+- VSA-blokken vinden in Markdown;
+- blokmetadata parsen;
+- defaultwaarden toepassen;
+- VSA-body doorgeven aan de bestaande parser;
+- CLI-commando `blocks` toevoegen.
+
+Nog niet inbegrepen:
+
+- SVG-rendering;
+- MusicXML-export;
+- Hugo build integratie.

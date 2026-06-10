@@ -1,0 +1,5 @@
+# Voorbeeld
+
+::: vsa-notatie
+[:] {tekst} [:]
+:::

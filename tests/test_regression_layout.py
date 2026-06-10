@@ -1,12 +1,15 @@
 from pathlib import Path
 
 
-def test_regression_directories_exist():
+def test_parser_regression_directories_exist():
     base = Path("examples/regression")
 
     assert base.exists()
 
-    subdirs = [p for p in base.iterdir() if p.is_dir()]
+    subdirs = [
+        p for p in base.iterdir()
+        if p.is_dir() and (p / ".parser-step1").exists()
+    ]
 
     assert len(subdirs) > 0
 

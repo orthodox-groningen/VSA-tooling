@@ -6,6 +6,20 @@
   </url><url>
     <loc>http://localhost:1313/voorbeelden/cli/</loc>
   </url><url>
+    <loc>http://localhost:1313/voorbeelden/cli/version/</loc>
+  </url><url>
+    <loc>http://localhost:1313/voorbeelden/cli/blocks/</loc>
+  </url><url>
+    <loc>http://localhost:1313/voorbeelden/cli/build-markdown/</loc>
+  </url><url>
+    <loc>http://localhost:1313/voorbeelden/cli/parse/</loc>
+  </url><url>
+    <loc>http://localhost:1313/voorbeelden/cli/process/</loc>
+  </url><url>
+    <loc>http://localhost:1313/voorbeelden/cli/svg/</loc>
+  </url><url>
+    <loc>http://localhost:1313/voorbeelden/cli/validate/</loc>
+  </url><url>
     <loc>http://localhost:1313/voorbeelden/fouten/</loc>
   </url><url>
     <loc>http://localhost:1313/voorbeelden/markdown/</loc>

@@ -71,23 +71,50 @@
 <li><a href="/voorbeelden/markdown/">Vorige: Markdown</a></li>
 <li><a href="/voorbeelden/rendering/">Volgende: Rendering</a></li>
 </ul>
-<h2 id="vsa-validate"><code>vsa validate</code></h2>
-<h3 id="commando">Commando</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-cmd" data-lang="cmd"><span style="display:flex;"><span>vsa validate examples\minimal\050_svg_demo.vsa
-</span></span></code></pre></div><h3 id="output">Output</h3>
+<p>Deze sectie laat per <code>vsa</code>-commando zien hoe je het gebruikt.</p>
+<h2 id="commandos">Commando&rsquo;s</h2>
+<table>
+  <thead>
+      <tr>
+          <th>Pagina</th>
+          <th>Doel</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><a href="/voorbeelden/cli/validate/"><code>vsa validate</code></a></td>
+          <td>controleren of VSA klopt</td>
+      </tr>
+      <tr>
+          <td><a href="/voorbeelden/cli/svg/"><code>vsa svg</code></a></td>
+          <td>SVG maken uit VSA</td>
+      </tr>
+      <tr>
+          <td><a href="/voorbeelden/cli/blocks/"><code>vsa blocks</code></a></td>
+          <td>VSA-blokken in Markdown inspecteren</td>
+      </tr>
+      <tr>
+          <td><a href="/voorbeelden/cli/parse/"><code>vsa parse</code></a></td>
+          <td>AST/debugstructuur bekijken</td>
+      </tr>
+      <tr>
+          <td><a href="/voorbeelden/cli/process/"><code>vsa process</code></a></td>
+          <td>SVG&rsquo;s maken uit Markdown</td>
+      </tr>
+      <tr>
+          <td><a href="/voorbeelden/cli/build-markdown/"><code>vsa build-markdown</code></a></td>
+          <td>Hugo Markdown + SVG bouwen</td>
+      </tr>
+      <tr>
+          <td><a href="/voorbeelden/cli/version/"><code>vsa --version</code></a></td>
+          <td>versie tonen</td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="snelle-sanity-check">Snelle sanity check</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-cmd" data-lang="cmd"><span style="display:flex;"><span>vsa validate examples\hugo-demo\content-source
+</span></span></code></pre></div><p>Verwachte output:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>OK
-</span></span></code></pre></div><hr>
-<h2 id="vsa-blocks"><code>vsa blocks</code></h2>
-<h3 id="commando-1">Commando</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-cmd" data-lang="cmd"><span style="display:flex;"><span>vsa blocks examples\minimal\031_markdown_block_metadata.md
-</span></span></code></pre></div><h3 id="output-1">Output</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>1 VSA-blok(ken) gevonden
-</span></span></code></pre></div><hr>
-<h2 id="vsa---version"><code>vsa --version</code></h2>
-<h3 id="commando-2">Commando</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-cmd" data-lang="cmd"><span style="display:flex;"><span>vsa --version
-</span></span></code></pre></div><h3 id="output-2">Output</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>vsa 0.1.0
 </span></span></code></pre></div>
 
 

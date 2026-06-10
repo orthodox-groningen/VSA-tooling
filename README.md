@@ -1,38 +1,32 @@
-# VSA stap 30 - demo quality fix
+# VSA stap 31 - voorbeeldvalidatie en CLI-demo pagina's
 
-Deze patch herstelt twee demo-site problemen.
+Deze stap doet twee dingen.
 
-## 1. Dubbele titels
+## 1. Voorbeelden valideren
 
-De templates voegden automatisch `<h1>{{ .Title }}</h1>` toe, terwijl de Markdownpagina's zelf ook al een `# Titel` bevatten.
+Alle voorbeelden die goed moeten zijn worden automatisch gevalideerd.
 
-Fix:
+Voorbeelden die fout moeten zijn worden automatisch gecontroleerd op falen.
 
-- `single.html` toont alleen `.Content`;
-- `list.html` toont alleen `.Content`;
-- `home.html` toont alleen `.Content` plus paginaoverzicht.
+Daarmee voorkomen we dat de demo-site of voorbeelden per ongeluk ongeldige VSA bevatten.
 
-## 2. Ongeldig multiline voorbeeld
+## 2. CLI-demo pagina's
 
-Het multiline voorbeeld had:
+De Hugo-demo krijgt per belangrijk `vsa`-commando een eigen pagina:
 
-```text
-[:] ... [:]
-```
+- `vsa validate`
+- `vsa svg`
+- `vsa blocks`
+- `vsa parse`
+- `vsa process`
+- `vsa build-markdown`
+- `vsa --version`
 
-maar de afsluiting moet zijn:
+Elke pagina laat zien:
 
-```text
-[\\:]
-```
-
-Fix:
-
-```text
-[:] {/Hei_}{/lig_} is de Heer en Hij is heilig en wonderbaar in al Zijn werken. [\\:]
-```
-
-Ook toegevoegd:
-
-- tests die controleren dat demo-content valideert;
-- test die controleert dat het multiline voorbeeld de correcte afsluitende pitch-marker bevat.
+- doel;
+- input;
+- commando;
+- verwachte output;
+- wat er fout kan gaan;
+- wat je daarna moet doen.

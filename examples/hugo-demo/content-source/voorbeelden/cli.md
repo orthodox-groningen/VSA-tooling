@@ -8,48 +8,28 @@ title: "CLI demo's"
 - [Vorige: Markdown](/voorbeelden/markdown/)
 - [Volgende: Rendering](/voorbeelden/rendering/)
 
-## `vsa validate`
+Deze sectie laat per `vsa`-commando zien hoe je het gebruikt.
 
-### Commando
+## Commando's
+
+| Pagina | Doel |
+|--------|------|
+| [`vsa validate`](/voorbeelden/cli/validate/) | controleren of VSA klopt |
+| [`vsa svg`](/voorbeelden/cli/svg/) | SVG maken uit VSA |
+| [`vsa blocks`](/voorbeelden/cli/blocks/) | VSA-blokken in Markdown inspecteren |
+| [`vsa parse`](/voorbeelden/cli/parse/) | AST/debugstructuur bekijken |
+| [`vsa process`](/voorbeelden/cli/process/) | SVG's maken uit Markdown |
+| [`vsa build-markdown`](/voorbeelden/cli/build-markdown/) | Hugo Markdown + SVG bouwen |
+| [`vsa --version`](/voorbeelden/cli/version/) | versie tonen |
+
+## Snelle sanity check
 
 ```cmd
-vsa validate examples\minimal\050_svg_demo.vsa
+vsa validate examples\hugo-demo\content-source
 ```
 
-### Output
+Verwachte output:
 
 ```text
 OK
-```
-
----
-
-## `vsa blocks`
-
-### Commando
-
-```cmd
-vsa blocks examples\minimal\031_markdown_block_metadata.md
-```
-
-### Output
-
-```text
-1 VSA-blok(ken) gevonden
-```
-
----
-
-## `vsa --version`
-
-### Commando
-
-```cmd
-vsa --version
-```
-
-### Output
-
-```text
-vsa 0.1.0
 ```

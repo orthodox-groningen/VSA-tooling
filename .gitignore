@@ -1,5 +1,5 @@
 MANIFEST.md
-output.svg
+/*.svg
 generated/
 
 # Byte-compiled / optimized / DLL files

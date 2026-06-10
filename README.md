@@ -1,31 +1,28 @@
-# VSA stap 15 - scope-grid rendering
+# VSA stap 16 - SVG autosizing
 
 Deze stap verbetert de SVG-renderer.
 
-Nieuw:
-
-- elke `ScopeNode` krijgt een intern grid;
-- samengestelde hoogte-modifiers worden per kolom gerenderd;
-- samengestelde lengte-modifiers worden per kolom gerenderd;
-- ontbrekende modifiers worden visueel aangevuld met `~`;
-- melisma's krijgen daardoor betere horizontale spreiding.
-
-Voorbeeld:
+Voorheen:
 
 ```text
-{/&\&/tekst_&~&~}
+width="1200"
 ```
 
-wordt intern:
+Nu:
 
 ```text
-kolom 1: /   _
-kolom 2: \   ~
-kolom 3: /   ~
+width = berekende inhoudsbreedte + marges
 ```
 
-Nog niet perfect:
+Voordelen:
 
-- tekstbreedte wordt nog geschat;
-- echte fontmeting komt later;
-- regelafbreking is nog niet aanwezig.
+- SVG's worden minder breed dan nodig;
+- beter bruikbaar in Markdown/Hugo;
+- output past beter bij korte zangregels;
+- latere layoutstappen worden eenvoudiger.
+
+Nog niet inbegrepen:
+
+- automatische regelafbreking;
+- responsive CSS;
+- exacte fontmeting.

@@ -3,16 +3,18 @@ from xml.sax.saxutils import escape
 from .ast import TextNode, ScopeNode, PitchMarkerNode
 from .svg_glyphs import SVGGlyphRenderer
 from .scope_layout import build_scope_layout, estimate_text_width
+from .svg_layout_measure import measure_document_width
 
 
 class SVGRenderer:
     def __init__(self):
-        self.width = 1200
         self.height = 190
         self.font_family = "Segoe UI"
         self.glyphs = SVGGlyphRenderer(unit=12)
 
     def render_document(self, document):
+        width = measure_document_width(document)
+
         x = 40.0
         baseline_y = 110.0
 
@@ -20,7 +22,8 @@ class SVGRenderer:
 
         parts.append(
             f'<svg xmlns="http://www.w3.org/2000/svg" '
-            f'width="{self.width}" height="{self.height}">'
+            f'width="{width:.0f}" height="{self.height}" '
+            f'viewBox="0 0 {width:.0f} {self.height}">'
         )
 
         parts.append('<rect width="100%" height="100%" fill="white"/>')
@@ -68,13 +71,13 @@ class SVGRenderer:
     def _render_scope(self, parts, node, x, baseline_y):
         layout = build_scope_layout(node)
 
-        for index, column in enumerate(layout.columns):
-            col_x = x + sum(c.width for c in layout.columns[:index])
+        running_x = x
 
+        for column in layout.columns:
             parts.extend(
                 self.glyphs.render_height_modifier(
                     [column.ehm],
-                    col_x,
+                    running_x,
                     baseline_y - 38,
                     column.width,
                 )
@@ -83,11 +86,13 @@ class SVGRenderer:
             parts.extend(
                 self.glyphs.render_length_modifier(
                     [column.elm],
-                    col_x,
+                    running_x,
                     baseline_y + 18,
                     column.width,
                 )
             )
+
+            running_x += column.width
 
         parts.append(
             f'<text x="{x:.2f}" y="{baseline_y:.2f}" '

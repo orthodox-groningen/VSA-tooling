@@ -30,6 +30,7 @@ def process_markdown_file(
     output_dir: str | Path,
     base_dir: str | Path | None = None,
     validate: bool = True,
+    max_line_width: float = 800.0,
 ) -> ProcessResult:
     input_path = Path(input_path)
     output_dir = Path(output_dir)
@@ -51,7 +52,11 @@ def process_markdown_file(
 
     for index, block in enumerate(blocks, start=1):
         document = block.parse_body()
-        svg = SVGRenderer().render_document(document)
+
+        renderer = SVGRenderer()
+        renderer.max_line_width = max_line_width
+
+        svg = renderer.render_document(document)
 
         output_name = f"{stem}-block-{index}.svg"
         output_path = output_dir / output_name
@@ -69,14 +74,24 @@ def process_markdown_file(
     return ProcessResult(blocks=processed)
 
 
-def process_path(input_path: str | Path, output_dir: str | Path, validate: bool = True) -> ProcessResult:
+def process_path(
+    input_path: str | Path,
+    output_dir: str | Path,
+    validate: bool = True,
+    max_line_width: float = 800.0,
+) -> ProcessResult:
     input_path = Path(input_path)
     output_dir = Path(output_dir)
 
     all_blocks = []
 
     if input_path.is_file():
-        result = process_markdown_file(input_path, output_dir, validate=validate)
+        result = process_markdown_file(
+            input_path,
+            output_dir,
+            validate=validate,
+            max_line_width=max_line_width,
+        )
         all_blocks.extend(result.blocks)
 
     elif input_path.is_dir():
@@ -103,6 +118,7 @@ def process_path(input_path: str | Path, output_dir: str | Path, validate: bool 
                 output_dir,
                 base_dir=input_path,
                 validate=False,
+                max_line_width=max_line_width,
             )
             all_blocks.extend(result.blocks)
 

@@ -19,6 +19,7 @@ def build_markdown_site(
     output_dir: str | Path,
     assets_dir: str | Path,
     assets_url_prefix: str = "/vsa",
+    max_line_width: float = 800.0,
 ) -> MarkdownBuildResult:
     input_dir = Path(input_dir)
     output_dir = Path(output_dir)
@@ -57,6 +58,7 @@ def build_markdown_site(
             source_relative=relative,
             assets_dir=assets_dir,
             assets_url_prefix=assets_url_prefix,
+            max_line_width=max_line_width,
         )
 
         target_markdown.write_text(rewritten, encoding="utf-8")
@@ -70,7 +72,13 @@ def build_markdown_site(
     )
 
 
-def _rewrite_markdown_file(source: str, source_relative: Path, assets_dir: Path, assets_url_prefix: str):
+def _rewrite_markdown_file(
+    source: str,
+    source_relative: Path,
+    assets_dir: Path,
+    assets_url_prefix: str,
+    max_line_width: float,
+):
     blocks = parse_markdown_blocks(source)
     lines = source.splitlines()
 
@@ -88,14 +96,12 @@ def _rewrite_markdown_file(source: str, source_relative: Path, assets_dir: Path,
 
         block_index += 1
 
-        start_index = index
         index += 1
 
         while index < len(lines) and lines[index].strip() != END_MARKER:
             index += 1
 
         if index >= len(lines):
-            # hoort niet te gebeuren na validatie
             break
 
         end_index = index
@@ -107,7 +113,11 @@ def _rewrite_markdown_file(source: str, source_relative: Path, assets_dir: Path,
         svg_path.parent.mkdir(parents=True, exist_ok=True)
 
         document = block.parse_body()
-        svg = SVGRenderer().render_document(document)
+
+        renderer = SVGRenderer()
+        renderer.max_line_width = max_line_width
+
+        svg = renderer.render_document(document)
         svg_path.write_text(svg, encoding="utf-8")
 
         svg_paths.append(svg_path)

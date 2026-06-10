@@ -38,17 +38,20 @@ def main():
     svg_cmd = subparsers.add_parser("svg")
     svg_cmd.add_argument("input")
     svg_cmd.add_argument("output")
+    svg_cmd.add_argument("--max-line-width", type=float, default=800.0)
 
     process_cmd = subparsers.add_parser("process")
     process_cmd.add_argument("input")
     process_cmd.add_argument("output_dir")
     process_cmd.add_argument("--no-validate", action="store_true")
+    process_cmd.add_argument("--max-line-width", type=float, default=800.0)
 
     build_cmd = subparsers.add_parser("build-markdown")
     build_cmd.add_argument("input_dir")
     build_cmd.add_argument("output_dir")
     build_cmd.add_argument("assets_dir")
     build_cmd.add_argument("--assets-url-prefix", default="/vsa")
+    build_cmd.add_argument("--max-line-width", type=float, default=800.0)
 
     argparser.add_argument("legacy_input", nargs="?")
     argparser.add_argument("--ast", action="store_true")
@@ -62,6 +65,7 @@ def main():
                 output_dir=args.output_dir,
                 assets_dir=args.assets_dir,
                 assets_url_prefix=args.assets_url_prefix,
+                max_line_width=args.max_line_width,
             )
         except ProcessValidationError as exc:
             _print_validation_messages(exc.messages)
@@ -73,7 +77,12 @@ def main():
 
     if args.command == "process":
         try:
-            result = process_path(args.input, args.output_dir, validate=not args.no_validate)
+            result = process_path(
+                args.input,
+                args.output_dir,
+                validate=not args.no_validate,
+                max_line_width=args.max_line_width,
+            )
         except ProcessValidationError as exc:
             _print_validation_messages(exc.messages)
             sys.exit(1)
@@ -86,7 +95,11 @@ def main():
         return
 
     if args.command == "svg":
-        export_svg(args.input, args.output)
+        export_svg(
+            args.input,
+            args.output,
+            max_line_width=args.max_line_width,
+        )
         print(f"SVG geschreven naar: {args.output}")
         return
 

@@ -1,33 +1,24 @@
-# VSA multiline stap 17 - fix 2
+# VSA stap 18 - SVG regelbreedte instelbaar maken
 
-Deze patch herstelt de tests na tekst-wrapping.
+Deze stap maakt de maximale SVG-regelbreedte instelbaar via de CLI.
 
-Probleem:
+Nieuw:
 
-De renderer splitst gewone tekst nu in losse woordsegmenten:
+```cmd
+vsa svg input.vsa output.svg --max-line-width 600
+vsa process input.md output-dir --max-line-width 600
+vsa build-markdown input-dir output-dir assets-dir --max-line-width 600
+```
+
+Waarom:
+
+- smalle websitekolom: kleinere regelbreedte;
+- brede desktopweergave: grotere regelbreedte;
+- print/PDF: eventueel nog groter;
+- layoutgedrag wordt reproduceerbaar testbaar.
+
+Default blijft:
 
 ```text
-is 
-de 
-Heer.
+800
 ```
-
-Daardoor staat de originele tekst niet meer letterlijk aaneengesloten in de SVG-output, terwijl bestaande tests zoeken op:
-
-```text
-is de Heer
-```
-
-Oplossing:
-
-- tekstwrapping blijft behouden;
-- leidende whitespace wordt niet als aparte tekstchunk behandeld;
-- originele `TextNode`-inhoud wordt als SVG-commentaar opgenomen.
-
-Voorbeeld:
-
-```xml
-<!-- plain-text: is de Heer. -->
-```
-
-Dat maakt regressietests en debugging eenvoudiger zonder de zichtbare rendering te verstoren.

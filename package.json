@@ -1,0 +1,8 @@
+{
+  "name": "vsa-tooling-demo",
+  "private": true,
+  "scripts": {
+    "vsa-build": "scripts\\build-hugo.cmd",
+    "vsa-serve": "scripts\\serve-hugo.cmd"
+  }
+}

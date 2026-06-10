@@ -1,35 +1,32 @@
-# VSA stap 22 - output-mode in vsa.toml
+# VSA stap 23 - Hugo workflow en GitHub Actions
 
-Deze stap breidt `vsa.toml` uit.
+Deze stap voegt een echte build-workflow toe.
 
 Nieuw:
 
-```toml
-[hugo]
-assets-url-prefix = "/vsa"
-output-mode = "img"
-```
+- `scripts/build-hugo.cmd`
+- `scripts/serve-hugo.cmd`
+- `.github/workflows/hugo.yml`
+- voorbeeld `package.json`
+- voorbeeld Hugo config
+- voorbeeld Hugo directory-structuur
 
-Mogelijke waarden:
-
-```text
-img
-shortcode
-```
-
-Voorrang:
+Doel:
 
 ```text
-CLI-optie --output-mode
-  ↓
-vsa.toml
-  ↓
-default: img
+Markdown met VSA
+    ↓
+vsa build-markdown
+    ↓
+gegenereerde Hugo content + SVG
+    ↓
+hugo
+    ↓
+site
 ```
 
-Voor Hugo kun je dus instellen:
+Hiermee wordt de repo bruikbaar voor:
 
-```toml
-[hugo]
-output-mode = "shortcode"
-```
+- lokale Hugo preview;
+- GitHub Actions preview builds;
+- productie builds.

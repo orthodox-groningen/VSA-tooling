@@ -1,9 +1,11 @@
-# Zondag toon 1
+---
+title: "Zondag toon 1"
+---
 
-Voorbeeldtekst vóór de VSA-notatie.
+Dit is een voorbeeldpagina.
 
 ::: vsa-notatie
 [:] {/Hei_}{/lig_} is de Heer. [:]
 :::
 
-Voorbeeldtekst ná de VSA-notatie.
+Meer tekst onder de notatie.

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8">
+  <title>{{ .Title }}</title>
+
+  <style>
+    body {
+      font-family: Segoe UI, sans-serif;
+      max-width: 900px;
+      margin: 2rem auto;
+      padding: 1rem;
+    }
+
+    .vsa-container {
+      margin: 1.5rem 0;
+    }
+
+    .vsa-notation {
+      max-width: 100%;
+      height: auto;
+    }
+  </style>
+</head>
+
+<body>
+  {{ block "main" . }}{{ end }}
+</body>
+</html>

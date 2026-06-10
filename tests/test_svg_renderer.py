@@ -21,8 +21,7 @@ def test_svg_renderer_does_not_use_debug_circles():
 
     assert "<circle" not in svg
     assert "tekst" in svg
-    assert "/" in svg
-    assert "_" in svg
+    assert "<line" in svg
 
 
 def test_svg_renderer_pitch_marker_line():

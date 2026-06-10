@@ -1,25 +1,8 @@
-# VSA stap 12 - CI/build-script
+# VSA stap 13 - testfix
 
-Deze stap voegt een eerste echte CI-flow toe.
+Deze patch past een oude SVG-test aan.
 
-Doel:
+De oude test verwachtte nog dat `_` letterlijk in de SVG stond.
+Sinds stap 13 wordt `_` als echte SVG-lijn gerenderd.
 
-```text
-tests
-  ↓
-validate
-  ↓
-build-markdown
-```
-
-Dit werkt lokaal via CMD en in GitHub Actions.
-
-## Lokaal
-
-```cmd
-scripts\ci.cmd
-```
-
-## GitHub Actions
-
-Bij `push` en `pull_request` draait dezelfde controle automatisch.
+Daarom controleert de test nu op `<line>` in plaats van op `_`.

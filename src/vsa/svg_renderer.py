@@ -1,18 +1,19 @@
 from xml.sax.saxutils import escape
 
 from .ast import TextNode, ScopeNode, PitchMarkerNode
+from .svg_glyphs import SVGGlyphRenderer
 
 
 class SVGRenderer:
     def __init__(self):
         self.width = 1200
-        self.height = 160
+        self.height = 180
         self.font_family = "Segoe UI"
-        self.mono_family = "Consolas"
+        self.glyphs = SVGGlyphRenderer(unit=12)
 
     def render_document(self, document):
         x = 40
-        baseline_y = 85
+        baseline_y = 105
 
         parts = []
 
@@ -38,10 +39,6 @@ class SVGRenderer:
         return "\n".join(parts)
 
     def render(self, positions):
-        """
-        Backwards compatible fallback voor oudere tests.
-        Rendert alleen musical positions, zonder gewone TextNodes.
-        """
         from .ast import Document, ScopeNode
 
         nodes = [
@@ -59,12 +56,10 @@ class SVGRenderer:
         if text == "":
             return x
 
-        safe = escape(text)
-
         parts.append(
-            f'<text x="{x}" y="{baseline_y}" '
+            f'<text x="{x:.2f}" y="{baseline_y:.2f}" '
             f'font-family="{self.font_family}" font-size="20">'
-            f'{safe}</text>'
+            f'{escape(text)}</text>'
         )
 
         return x + self._estimate_text_width(text, 20)
@@ -72,56 +67,53 @@ class SVGRenderer:
     def _render_scope(self, parts, node, x, baseline_y):
         text_width = self._estimate_text_width(node.text, 20)
         modifier_count = max(len(node.height_modifier), len(node.length_modifier), 1)
-        scope_width = max(text_width, modifier_count * 24)
+        scope_width = max(text_width, modifier_count * 28)
 
-        center_x = x + scope_width / 2
-
-        if node.height_modifier:
-            glyph = "&".join(node.height_modifier)
-            parts.append(
-                f'<text x="{center_x}" y="{baseline_y - 28}" '
-                f'text-anchor="middle" '
-                f'font-family="{self.mono_family}" font-size="16">'
-                f'{escape(glyph)}</text>'
+        parts.extend(
+            self.glyphs.render_height_modifier(
+                node.height_modifier,
+                x,
+                baseline_y - 34,
+                scope_width,
             )
+        )
 
         parts.append(
-            f'<text x="{x}" y="{baseline_y}" '
+            f'<text x="{x:.2f}" y="{baseline_y:.2f}" '
             f'font-family="{self.font_family}" font-size="20">'
             f'{escape(node.text)}</text>'
         )
 
-        if node.length_modifier:
-            glyph = "&".join(node.length_modifier)
-            parts.append(
-                f'<text x="{center_x}" y="{baseline_y + 26}" '
-                f'text-anchor="middle" '
-                f'font-family="{self.mono_family}" font-size="16">'
-                f'{escape(glyph)}</text>'
+        parts.extend(
+            self.glyphs.render_length_modifier(
+                node.length_modifier,
+                x,
+                baseline_y + 18,
+                scope_width,
             )
+        )
 
         return x + scope_width + 4
 
     def _render_pitch_marker(self, parts, node, x, baseline_y):
-        width = 30
+        width = 34
 
-        if node.height_modifier:
-            glyph = "&".join(node.height_modifier)
-            parts.append(
-                f'<text x="{x + width / 2}" y="{baseline_y - 28}" '
-                f'text-anchor="middle" '
-                f'font-family="{self.mono_family}" font-size="16">'
-                f'{escape(glyph)}</text>'
+        parts.extend(
+            self.glyphs.render_height_modifier(
+                node.height_modifier,
+                x,
+                baseline_y - 34,
+                width,
             )
+        )
 
         parts.append(
-            f'<line x1="{x}" y1="{baseline_y - 8}" '
-            f'x2="{x + width}" y2="{baseline_y - 8}" '
+            f'<line x1="{x:.2f}" y1="{baseline_y - 8:.2f}" '
+            f'x2="{x + width:.2f}" y2="{baseline_y - 8:.2f}" '
             f'stroke="black" stroke-width="2"/>'
         )
 
         return x + width + 8
 
     def _estimate_text_width(self, text, font_size):
-        # Eenvoudige schatting; later vervangen door echte layout.
         return max(8, len(text) * font_size * 0.55)

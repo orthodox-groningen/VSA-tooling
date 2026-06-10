@@ -1,3 +1,5 @@
+MANIFEST.md
+output.svg
 generated/
 
 # Byte-compiled / optimized / DLL files
@@ -218,4 +220,3 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
-MANIFEST.md

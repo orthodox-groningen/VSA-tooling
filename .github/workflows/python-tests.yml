@@ -1,0 +1,26 @@
+name: Python tests
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Bootstrap
+        shell: cmd
+        run: scripts\bootstrap.cmd
+
+      - name: Run tests
+        shell: cmd
+        run: scripts\test.cmd

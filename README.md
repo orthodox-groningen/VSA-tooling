@@ -1,39 +1,25 @@
-# VSA stap 11 - Markdown build met SVG-verwijzingen
+# VSA stap 12 - CI/build-script
 
-Deze stap voegt een nieuw commando toe:
-
-```cmd
-vsa build-markdown input-dir output-dir assets-dir
-```
+Deze stap voegt een eerste echte CI-flow toe.
 
 Doel:
 
 ```text
-content/*.md met ::: vsa-notatie
+tests
   ↓
-validatie
+validate
   ↓
-SVG genereren
-  ↓
-Markdown kopiëren/herschrijven
-  ↓
-output Markdown met <img src="...">
+build-markdown
 ```
 
-Dit is een praktische Hugo-route:
+Dit werkt lokaal via CMD en in GitHub Actions.
 
-```text
-content-source/
-  ↓
-vsa build-markdown
-  ↓
-content-generated/
-  ↓
-hugo build
+## Lokaal
+
+```cmd
+scripts\ci.cmd
 ```
 
-Nog niet inbegrepen:
+## GitHub Actions
 
-- Hugo shortcodes;
-- render hooks;
-- finale SVG-layout.
+Bij `push` en `pull_request` draait dezelfde controle automatisch.

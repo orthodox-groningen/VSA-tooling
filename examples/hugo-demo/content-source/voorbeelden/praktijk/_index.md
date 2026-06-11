@@ -4,7 +4,7 @@ title: "Praktijkvoorbeelden"
 
 # Praktijkvoorbeelden
 
-- [Home](../../)
+- [Home](../../../)
 - [Voorbeelden](../)
 
 Deze pagina bevat praktijkvoorbeelden van troparen en kondaken per toon.

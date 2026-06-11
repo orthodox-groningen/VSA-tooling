@@ -1,16 +1,20 @@
-# Stap 45 - final test expectation fix
+# Hugo demo praktijk layout fallback fix
 
-De validator rapporteert terecht regel 3.
+Deze overlay pakt twee mogelijke oorzaken aan:
 
-In dit testbestand:
+1. `voorbeelden/praktijk.md` botst met `voorbeelden/praktijk/`.
+2. Hugo gebruikt geen passende list-template, waardoor `<main class="page"></main>` leeg blijft.
 
-```text
-1 ::: vsa-notatie
-2 [:] Scharen
-3 jubelen en zich ver{\blij_&~&~}{\den_},
-4 :::
+## Na uitpakken
+
+```cmd
+scripts\fix-praktijk-navigation.cmd
+scripts\build-hugo.cmd
+scripts\serve-hugo.cmd
 ```
 
-staat het foutieve zangelement op regel 3.
+## Debug
 
-Deze patch past alleen de testverwachting aan.
+```cmd
+scripts\debug-praktijk-navigation.cmd
+```

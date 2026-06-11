@@ -2,8 +2,6 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>//:1313/voorbeelden/praktijk/</loc>
-  </url><url>
     <loc>//:1313/voorbeelden/basis/</loc>
   </url><url>
     <loc>//:1313/voorbeelden/cli/</loc>
@@ -26,11 +24,45 @@
   </url><url>
     <loc>//:1313/voorbeelden/fouten/</loc>
   </url><url>
+    <loc>//:1313/voorbeelden/praktijk/kondak-toon-1/</loc>
+  </url><url>
+    <loc>//:1313/voorbeelden/praktijk/kondak-toon-2/</loc>
+  </url><url>
+    <loc>//:1313/voorbeelden/praktijk/kondak-toon-3/</loc>
+  </url><url>
+    <loc>//:1313/voorbeelden/praktijk/kondak-toon-4/</loc>
+  </url><url>
+    <loc>//:1313/voorbeelden/praktijk/kondak-toon-5/</loc>
+  </url><url>
+    <loc>//:1313/voorbeelden/praktijk/kondak-toon-6/</loc>
+  </url><url>
+    <loc>//:1313/voorbeelden/praktijk/kondak-toon-7/</loc>
+  </url><url>
+    <loc>//:1313/voorbeelden/praktijk/kondak-toon-8/</loc>
+  </url><url>
     <loc>//:1313/voorbeelden/markdown/</loc>
   </url><url>
     <loc>//:1313/voorbeelden/multiline/</loc>
   </url><url>
+    <loc>//:1313/voorbeelden/praktijk/</loc>
+  </url><url>
     <loc>//:1313/voorbeelden/rendering/</loc>
+  </url><url>
+    <loc>//:1313/voorbeelden/praktijk/tropaar-toon-1/</loc>
+  </url><url>
+    <loc>//:1313/voorbeelden/praktijk/tropaar-toon-2/</loc>
+  </url><url>
+    <loc>//:1313/voorbeelden/praktijk/tropaar-toon-3/</loc>
+  </url><url>
+    <loc>//:1313/voorbeelden/praktijk/tropaar-toon-4/</loc>
+  </url><url>
+    <loc>//:1313/voorbeelden/praktijk/tropaar-toon-5/</loc>
+  </url><url>
+    <loc>//:1313/voorbeelden/praktijk/tropaar-toon-6/</loc>
+  </url><url>
+    <loc>//:1313/voorbeelden/praktijk/tropaar-toon-7/</loc>
+  </url><url>
+    <loc>//:1313/voorbeelden/praktijk/tropaar-toon-8/</loc>
   </url><url>
     <loc>//:1313/voorbeelden/</loc>
   </url><url>

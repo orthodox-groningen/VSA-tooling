@@ -20,7 +20,7 @@ het met de {Va_}der en de Geest me{\\de}{/eeu_}wi{\ge} {\woord_},
 om zich in het vlees aan het Kruis te {\\ver}{/&\he_&~}{\fen_},
 {//Hij_} heeft de {/dood_} {\\on}der{gaan_}.
 {//en} door Zijn roemrijke ver{rij_}{\&\ze}{/nis}
-// {/heeft} Jok de {\do_}{\den_} {\op_}{/&\ge}{\wekt_} [:]
+// {/heeft} Hij de {\do_}{\den_} {\op_}{/&\ge}{\wekt_} [:]
 :::
 
 ---
@@ -34,7 +34,7 @@ het met de {Va_}der en de Geest me{\\de}{/eeu_}wi{\ge} {\woord_},
 om zich in het vlees aan het Kruis te {\\ver}{/&\he_&~}{\fen_},
 {//Hij_} heeft de {/dood_} {\\on}der{gaan_}.
 {//en} door Zijn roemrijke ver{rij_}{\&\ze}{/nis}
-// {/heeft} Jok de {\do_}{\den_} {\op_}{/&\ge}{\wekt_} [:]
+// {/heeft} Hij de {\do_}{\den_} {\op_}{/&\ge}{\wekt_} [:]
 ```
 
 ---

@@ -13,10 +13,17 @@ class SemanticValidationResult:
 
     @property
     def ok(self):
-        return len(self.items) == 0
+        return not self.has_fatal_errors()
 
     def has_errors(self):
+        """Backward-compatible: any semantic diagnostic counts as an issue."""
         return len(self.items) > 0
+
+    def has_fatal_errors(self):
+        return any(item.severity == "error" for item in self.items)
+
+    def has_warnings(self):
+        return any(item.severity == "warning" for item in self.items)
 
 
 class SemanticValidator:
@@ -56,6 +63,7 @@ class SemanticValidator:
                     ),
                     line=1,
                     column=1,
+                    severity="error",
                 )
 
     def _validate_pitch_marker_ending(self, diagnostics):
@@ -90,6 +98,7 @@ class SemanticValidator:
                 ),
                 line=1,
                 column=1,
+                severity="error",
             )
             return
 
@@ -102,6 +111,7 @@ class SemanticValidator:
                 ),
                 line=1,
                 column=1,
+                severity="error",
             )
 
 

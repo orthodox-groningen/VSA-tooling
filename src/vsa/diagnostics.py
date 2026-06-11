@@ -1,5 +1,4 @@
 from dataclasses import dataclass
-from typing import Optional
 
 
 @dataclass
@@ -17,11 +16,11 @@ class DiagnosticCollection:
 
     def add(
         self,
-        code: str,
-        message_nl: str,
-        line: int,
-        column: int,
-        severity: str = "error",
+        code,
+        message_nl,
+        line,
+        column,
+        severity="error",
     ):
         self.items.append(
             Diagnostic(
@@ -34,4 +33,11 @@ class DiagnosticCollection:
         )
 
     def has_errors(self):
-        return any(x.severity == "error" for x in self.items)
+        """Backward-compatible: any diagnostic counts as an issue."""
+        return len(self.items) > 0
+
+    def has_fatal_errors(self):
+        return any(item.severity == "error" for item in self.items)
+
+    def has_warnings(self):
+        return any(item.severity == "warning" for item in self.items)

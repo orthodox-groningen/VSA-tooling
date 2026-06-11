@@ -15,6 +15,7 @@ class ValidationMessage:
     message_nl: str
     line: int = 1
     column: int = 1
+    severity: str = "error"
 
 
 @dataclass
@@ -22,8 +23,52 @@ class ValidationResult:
     ok: bool = True
     messages: list[ValidationMessage] = field(default_factory=list)
 
-    def add_error(self, source: str, code: str, message_nl: str, line: int = 1, column: int = 1):
-        self.ok = False
+    def add_error(
+        self,
+        source: str,
+        code: str,
+        message_nl: str,
+        line: int = 1,
+        column: int = 1,
+    ):
+        self.add_message(
+            source=source,
+            code=code,
+            message_nl=message_nl,
+            line=line,
+            column=column,
+            severity="error",
+        )
+
+    def add_warning(
+        self,
+        source: str,
+        code: str,
+        message_nl: str,
+        line: int = 1,
+        column: int = 1,
+    ):
+        self.add_message(
+            source=source,
+            code=code,
+            message_nl=message_nl,
+            line=line,
+            column=column,
+            severity="warning",
+        )
+
+    def add_message(
+        self,
+        source: str,
+        code: str,
+        message_nl: str,
+        line: int = 1,
+        column: int = 1,
+        severity: str = "error",
+    ):
+        if severity == "error":
+            self.ok = False
+
         self.messages.append(
             ValidationMessage(
                 source=source,
@@ -31,6 +76,7 @@ class ValidationResult:
                 message_nl=message_nl,
                 line=line,
                 column=column,
+                severity=severity,
             )
         )
 
@@ -39,6 +85,12 @@ class ValidationResult:
             self.ok = False
 
         self.messages.extend(other.messages)
+
+    def has_errors(self):
+        return any(message.severity == "error" for message in self.messages)
+
+    def has_warnings(self):
+        return any(message.severity == "warning" for message in self.messages)
 
 
 def validate_path(path: str | Path) -> ValidationResult:
@@ -127,10 +179,19 @@ def _validate_vsa_text(source: str, text: str, result: ValidationResult):
     diagnostics = SemanticValidator(document).validate()
 
     for diagnostic in diagnostics.items:
-        result.add_error(
-            source=source,
-            code=diagnostic.code,
-            message_nl=diagnostic.message_nl,
-            line=diagnostic.line,
-            column=diagnostic.column,
-        )
+        if diagnostic.severity == "error":
+            result.add_error(
+                source=source,
+                code=diagnostic.code,
+                message_nl=diagnostic.message_nl,
+                line=diagnostic.line,
+                column=diagnostic.column,
+            )
+        else:
+            result.add_warning(
+                source=source,
+                code=diagnostic.code,
+                message_nl=diagnostic.message_nl,
+                line=diagnostic.line,
+                column=diagnostic.column,
+            )

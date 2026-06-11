@@ -710,3 +710,28 @@ scripts\test.cmd
 | ik wil Hugo-content maken | `vsa build-markdown` |
 | ik wil parserproblemen debuggen | `vsa parse --ast` |
 | ik wil alles lokaal controleren | `scripts\ci.cmd` |
+
+## Warnings en errors
+
+Vanaf stap 37 kent de validator twee niveaus.
+
+| Severity | Betekenis |
+|----------|-----------|
+| `error` | validatie faalt; exitcode wordt fout |
+| `warning` | aandachtspunt; validatie mag doorgaan |
+
+Syntaxproblemen blijven `error`.
+
+Semantische aandachtspunten zijn voorlopig `warning`, bijvoorbeeld:
+
+```text
+VSA-SEMANTIC-MODIFIER-COUNT-MISMATCH
+VSA-SEMANTIC-EMPTY-FINAL-PITCH-MARKER
+VSA-SEMANTIC-MISSING-FINAL-PITCH-MARKER
+```
+
+Praktisch betekent dit:
+
+- `vsa validate` kan waarschuwingen tonen zonder de build te laten falen;
+- CI kan later via configuratie strenger worden gemaakt;
+- bestaande foutcodes blijven bruikbaar.

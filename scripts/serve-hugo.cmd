@@ -21,4 +21,5 @@ echo.
 echo [2/2] Start Hugo server
 hugo server ^
   --source examples\hugo-demo ^
-  --contentDir ..\..\generated\hugo\content
+  --contentDir ..\..\generated\hugo\content ^
+  --baseURL /

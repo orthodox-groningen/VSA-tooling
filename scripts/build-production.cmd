@@ -25,6 +25,7 @@ hugo ^
   --source examples\hugo-demo ^
   --contentDir ..\..\generated\production\content ^
   --destination ..\..\generated\production\site ^
+  --baseURL / ^
   --minify
 if errorlevel 1 exit /b 1
 

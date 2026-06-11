@@ -2,38 +2,38 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://localhost:1313/voorbeelden/basis/</loc>
+    <loc>//localhost:1313/voorbeelden/basis/</loc>
   </url><url>
-    <loc>http://localhost:1313/voorbeelden/cli/</loc>
+    <loc>//localhost:1313/voorbeelden/cli/</loc>
   </url><url>
-    <loc>http://localhost:1313/voorbeelden/cli/version/</loc>
+    <loc>//localhost:1313/voorbeelden/cli/version/</loc>
   </url><url>
-    <loc>http://localhost:1313/voorbeelden/cli/blocks/</loc>
+    <loc>//localhost:1313/voorbeelden/cli/blocks/</loc>
   </url><url>
-    <loc>http://localhost:1313/voorbeelden/cli/build-markdown/</loc>
+    <loc>//localhost:1313/voorbeelden/cli/build-markdown/</loc>
   </url><url>
-    <loc>http://localhost:1313/voorbeelden/cli/parse/</loc>
+    <loc>//localhost:1313/voorbeelden/cli/parse/</loc>
   </url><url>
-    <loc>http://localhost:1313/voorbeelden/cli/process/</loc>
+    <loc>//localhost:1313/voorbeelden/cli/process/</loc>
   </url><url>
-    <loc>http://localhost:1313/voorbeelden/cli/svg/</loc>
+    <loc>//localhost:1313/voorbeelden/cli/svg/</loc>
   </url><url>
-    <loc>http://localhost:1313/voorbeelden/cli/validate/</loc>
+    <loc>//localhost:1313/voorbeelden/cli/validate/</loc>
   </url><url>
-    <loc>http://localhost:1313/voorbeelden/fouten/</loc>
+    <loc>//localhost:1313/voorbeelden/fouten/</loc>
   </url><url>
-    <loc>http://localhost:1313/voorbeelden/markdown/</loc>
+    <loc>//localhost:1313/voorbeelden/markdown/</loc>
   </url><url>
-    <loc>http://localhost:1313/voorbeelden/multiline/</loc>
+    <loc>//localhost:1313/voorbeelden/multiline/</loc>
   </url><url>
-    <loc>http://localhost:1313/voorbeelden/rendering/</loc>
+    <loc>//localhost:1313/voorbeelden/rendering/</loc>
   </url><url>
-    <loc>http://localhost:1313/voorbeelden/</loc>
+    <loc>//localhost:1313/voorbeelden/</loc>
   </url><url>
-    <loc>http://localhost:1313/</loc>
+    <loc>//localhost:1313/</loc>
   </url><url>
-    <loc>http://localhost:1313/zondag/toon-1/</loc>
+    <loc>//localhost:1313/zondag/toon-1/</loc>
   </url><url>
-    <loc>http://localhost:1313/zondag/</loc>
+    <loc>//localhost:1313/zondag/</loc>
   </url>
 </urlset>

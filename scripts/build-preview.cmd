@@ -23,7 +23,8 @@ if errorlevel 1 exit /b 1
 hugo ^
   --source examples\hugo-demo ^
   --contentDir ..\..\generated\preview\content ^
-  --destination ..\..\generated\preview\site
+  --destination ..\..\generated\preview\site ^
+  --baseURL /
 if errorlevel 1 exit /b 1
 
 echo.

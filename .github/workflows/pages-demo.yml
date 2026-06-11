@@ -40,12 +40,17 @@ jobs:
         run: |
           vsa validate examples/hugo-demo/content-source
 
+      - name: Clean generated static VSA assets
+        run: |
+          rm -rf examples/hugo-demo/static/vsa
+
       - name: Generate Hugo content and SVG
         run: |
           vsa build-markdown \
             examples/hugo-demo/content-source \
             generated/hugo/content \
-            examples/hugo-demo/static/vsa
+            examples/hugo-demo/static/vsa \
+            --output-mode shortcode
 
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v3
@@ -58,7 +63,7 @@ jobs:
             --source examples/hugo-demo \
             --contentDir ../../generated/hugo/content \
             --destination ../../generated/site \
-            --baseURL "${{ github.server_url }}/${{ github.repository }}/"
+            --baseURL "https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/"
 
       - name: Setup Pages
         uses: actions/configure-pages@v5

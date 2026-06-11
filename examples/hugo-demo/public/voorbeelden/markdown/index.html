@@ -37,16 +37,11 @@
 </span></span></code></pre></div><h2 id="commando">Commando</h2>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-cmd" data-lang="cmd"><span style="display:flex;"><span>vsa build-markdown examples\hugo-demo\content-source generated\content examples\hugo-demo\static\vsa
 </span></span></code></pre></div><h2 id="gegenereerde-markdown">Gegenereerde Markdown</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-go-html-template" data-lang="go-html-template"><span style="display:flex;"><span>
-<div class="vsa-container">
-  <img
-    class="vsa-notation"
-    src="/vsa/demo-block-1.svg"
-    alt="VSA notatie"
-    loading="lazy">
-</div>
-
-</span></span></code></pre></div><h2 id="gegenereerde-svg">Gegenereerde SVG</h2>
+<p>Als de demo-site met shortcode-output wordt gebouwd, komt er in de gegenereerde Markdown ongeveer dit te staan:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-go-html-template" data-lang="go-html-template"><span style="display:flex;"><span><span style="color:#75715e">{{</span><span style="color:#960050;background-color:#1e0010">&lt;</span> <span style="color:#a6e22e">vsa</span> <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;/vsa/demo-block-1.svg&#34;</span> <span style="color:#960050;background-color:#1e0010">&gt;</span><span style="color:#75715e">}}</span>
+</span></span></code></pre></div><p>Let op: in deze documentatie is de shortcode expres ontsnapt met <code>/* ... */</code>, zodat Hugo hem niet uitvoert in het codeblok.</p>
+<p>Zonder escaping zou Hugo proberen de shortcode echt te renderen.</p>
+<h2 id="gegenereerde-svg">Gegenereerde SVG</h2>
 
 <div class="vsa-container">
   <img

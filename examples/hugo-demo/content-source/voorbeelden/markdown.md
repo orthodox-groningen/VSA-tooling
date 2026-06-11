@@ -24,9 +24,15 @@ vsa build-markdown examples\hugo-demo\content-source generated\content examples\
 
 ## Gegenereerde Markdown
 
+Als de demo-site met shortcode-output wordt gebouwd, komt er in de gegenereerde Markdown ongeveer dit te staan:
+
 ```go-html-template
-{{< vsa src="/vsa/demo-block-1.svg" >}}
+{{</* vsa src="/vsa/demo-block-1.svg" */>}}
 ```
+
+Let op: in deze documentatie is de shortcode expres ontsnapt met `/* ... */`, zodat Hugo hem niet uitvoert in het codeblok.
+
+Zonder escaping zou Hugo proberen de shortcode echt te renderen.
 
 ## Gegenereerde SVG
 

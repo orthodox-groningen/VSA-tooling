@@ -1,16 +1,19 @@
-# VSA stap 34 - test en link fix
+# VSA stap 34 - shortcode voorbeeld escape fix
 
-Deze patch herstelt de fouten na de responsive/subpad-fix.
+Deze patch lost het probleem op dat een shortcodevoorbeeld in een Markdown-codeblok toch door Hugo werd uitgevoerd.
 
-## Opgelost
+Probleem:
 
-1. `block_parser` ondersteunt opnieuw:
-   - default metadata via `effective_metadata()`;
-   - metadataregels zoals `do="C4"`.
+```go-html-template
+{{< vsa src="/vsa/demo-block-1.svg" >}}
+```
 
-2. CLI-demo-subpagina's gebruiken relatieve links.
+werd in de demo-site uitgevoerd, waardoor je een plaatje-placeholder zag in plaats van de tekst van de shortcode.
 
-3. Tests zijn aangepast aan subpad-veilige Hugo-links:
-   - `relURL` in templates;
-   - geen harde `/voorbeelden/...` links;
-   - CSS via `relURL`.
+Fix:
+
+```go-html-template
+{{</* vsa src="/vsa/demo-block-1.svg" */>}}
+```
+
+Hugo toont dit als shortcodevoorbeeld, maar voert het niet uit.

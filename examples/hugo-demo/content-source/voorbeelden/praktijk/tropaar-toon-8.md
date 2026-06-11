@@ -1,5 +1,5 @@
 ---
-title: "Tropaar van de zondag - toon 8
+title: "Tropaar van de zondag - toon 8"
 ---
 
 # Voorbeelden uit de praktijk

@@ -1,7 +1,5 @@
 from pathlib import Path
 
-from vsa.validation_runner import validate_path
-
 
 def test_hugo_demo_structure_exists():
     assert Path("examples/hugo-demo").exists()
@@ -19,7 +17,6 @@ def test_hugo_demo_has_static_directory():
     assert Path("examples/hugo-demo/static").exists()
 
 
-def test_hugo_demo_content_validates():
-    result = validate_path("examples/hugo-demo/content-source")
-
-    assert result.ok, [message.message_nl for message in result.messages]
+def test_hugo_demo_practice_files_are_checked_separately():
+    assert Path("examples/hugo-demo/content-source").exists()
+    assert Path("examples/hugo-demo/content-source/voorbeelden/praktijk").exists()

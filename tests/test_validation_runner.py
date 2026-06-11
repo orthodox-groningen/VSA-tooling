@@ -1,6 +1,6 @@
 from pathlib import Path
 
-from vsa.validation_runner import validate_file
+from vsa.validation_runner import validate_file, validate_path
 
 
 def test_validate_valid_vsa_file(tmp_path: Path):
@@ -10,6 +10,7 @@ def test_validate_valid_vsa_file(tmp_path: Path):
     result = validate_file(file)
 
     assert result.ok
+    assert result.messages == []
 
 
 def test_validate_invalid_vsa_file(tmp_path: Path):
@@ -22,10 +23,10 @@ def test_validate_invalid_vsa_file(tmp_path: Path):
     assert result.messages[0].code == "VSA-SEMANTIC-MODIFIER-COUNT-MISMATCH"
 
 
-def test_validate_markdown_block(tmp_path: Path):
+def test_validate_valid_markdown_block(tmp_path: Path):
     file = tmp_path / "valid.md"
     file.write_text(
-        """# Titel
+        r"""# Titel
 
 ::: vsa-notatie
 {tekst}
@@ -39,7 +40,7 @@ def test_validate_markdown_block(tmp_path: Path):
     assert result.ok
 
 
-def test_validate_invalid_markdown_block(tmp_path: Path):
+def test_validate_invalid_markdown_block_reports_file_source(tmp_path: Path):
     file = tmp_path / "invalid.md"
     file.write_text(
         r"""# Titel
@@ -54,4 +55,5 @@ def test_validate_invalid_markdown_block(tmp_path: Path):
     result = validate_file(file)
 
     assert not result.ok
-    assert "blok-1" in result.messages[0].source
+    assert result.messages[0].source == str(file)
+    assert result.messages[0].line >= 1

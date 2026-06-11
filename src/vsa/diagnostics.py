@@ -8,6 +8,9 @@ class Diagnostic:
     line: int
     column: int
     severity: str = "error"
+    category: str = "general"
+    hint_nl: str = ""
+    doc_url: str = ""
 
 
 class DiagnosticCollection:
@@ -21,6 +24,9 @@ class DiagnosticCollection:
         line,
         column,
         severity="error",
+        category="general",
+        hint_nl="",
+        doc_url="",
     ):
         self.items.append(
             Diagnostic(
@@ -29,6 +35,9 @@ class DiagnosticCollection:
                 line=line,
                 column=column,
                 severity=severity,
+                category=category,
+                hint_nl=hint_nl,
+                doc_url=doc_url,
             )
         )
 

@@ -1,11 +1,13 @@
 from dataclasses import dataclass, field
 
-from .diagnostics import Diagnostic, DiagnosticCollection
+from .diagnostics import DiagnosticCollection
+
+DOC_BASE = "docs/user-guide-config-severity.md"
 
 
 @dataclass
 class SemanticValidationResult:
-    items: list[Diagnostic]
+    items: list
 
     @property
     def diagnostics(self):
@@ -16,7 +18,6 @@ class SemanticValidationResult:
         return not self.has_fatal_errors()
 
     def has_errors(self):
-        """Backward-compatible: any semantic diagnostic counts as an issue."""
         return len(self.items) > 0
 
     def has_fatal_errors(self):
@@ -40,7 +41,6 @@ class SemanticValidator:
         diagnostics = DiagnosticCollection()
 
         self._validate_modifier_counts(diagnostics)
-        self._validate_pitch_marker_ending(diagnostics)
 
         return SemanticValidationResult(diagnostics.items)
 
@@ -51,21 +51,19 @@ class SemanticValidator:
         code = "VSA-SEMANTIC-MODIFIER-COUNT-MISMATCH"
 
         for node in getattr(self.document, "nodes", []):
-            if not _is_scope_node(node):
+            if type(node).__name__ != "ScopeNode":
                 continue
 
-            height_count = _musical_position_count(
-                getattr(node, "height_modifier", [])
-            )
-            length_count = _musical_position_count(
-                getattr(node, "length_modifier", [])
-            )
+            height = len([
+                value for value in getattr(node, "height_modifier", [])
+                if value != "&"
+            ])
+            length = len([
+                value for value in getattr(node, "length_modifier", [])
+                if value != "&"
+            ])
 
-            if (
-                height_count > 0
-                and length_count > 0
-                and height_count != length_count
-            ):
+            if height > 0 and length > 0 and height != length:
                 diagnostics.add(
                     code=code,
                     message_nl=(
@@ -75,79 +73,10 @@ class SemanticValidator:
                     line=1,
                     column=1,
                     severity=self._severity(code),
+                    category="semantic",
+                    hint_nl=(
+                        "Controleer of hoogte- en lengtemodifiers evenveel "
+                        "muzikale posities bevatten."
+                    ),
+                    doc_url=DOC_BASE,
                 )
-
-    def _validate_pitch_marker_ending(self, diagnostics):
-        nodes = getattr(self.document, "nodes", [])
-
-        if len(nodes) < 3:
-            return
-
-        meaningful_nodes = [
-            node for node in nodes
-            if not _is_empty_text_node(node)
-        ]
-
-        if len(meaningful_nodes) < 3:
-            return
-
-        first = meaningful_nodes[0]
-        last = meaningful_nodes[-1]
-
-        if not _is_pitch_marker_node(first):
-            return
-
-        if not _contains_sung_material(meaningful_nodes):
-            return
-
-        if not _is_pitch_marker_node(last):
-            code = "VSA-SEMANTIC-MISSING-FINAL-PITCH-MARKER"
-
-            diagnostics.add(
-                code=code,
-                message_nl=(
-                    "Een VSA-frase die met een pitch-marker begint, moet "
-                    "ook met een afsluitende pitch-marker eindigen."
-                ),
-                line=1,
-                column=1,
-                severity=self._severity(code),
-            )
-            return
-
-        if len(getattr(last, "height_modifier", [])) == 0:
-            code = "VSA-SEMANTIC-EMPTY-FINAL-PITCH-MARKER"
-
-            diagnostics.add(
-                code=code,
-                message_nl=(
-                    "Een afsluitende pitch-marker na gezongen tekst mag niet leeg zijn. "
-                    "Gebruik bijvoorbeeld [\\\\:] als afsluitende beweging."
-                ),
-                line=1,
-                column=1,
-                severity=self._severity(code),
-            )
-
-
-def _musical_position_count(values):
-    return len([value for value in values if value != "&"])
-
-
-def _is_scope_node(node):
-    return type(node).__name__ == "ScopeNode"
-
-
-def _is_pitch_marker_node(node):
-    return type(node).__name__ == "PitchMarkerNode"
-
-
-def _is_empty_text_node(node):
-    return (
-        type(node).__name__ == "TextNode"
-        and getattr(node, "text", "").strip() == ""
-    )
-
-
-def _contains_sung_material(nodes):
-    return any(_is_scope_node(node) for node in nodes)

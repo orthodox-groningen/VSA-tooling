@@ -1,5 +1,5 @@
 ---
-title: "Kondak van de zondag - toon 8
+title: "Kondak van de zondag - toon 8"
 ---
 
 # Voorbeelden uit de praktijk

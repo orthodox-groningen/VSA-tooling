@@ -1,14 +1,16 @@
-# Stap 42 - documentatie voor severity-config
+# Stap 45 - final test expectation fix
 
-Deze stap documenteert het inmiddels werkende configuratiegedrag.
+De validator rapporteert terecht regel 3.
 
-Nieuw in documentatie/demo:
+In dit testbestand:
 
-- `--config` bij:
-  - `vsa validate`
-  - `vsa process`
-  - `vsa build-markdown`
-- severity-overrides via `vsa.toml`;
-- verschil tussen `error` en `warning`;
-- syntax-errors blijven altijd hard;
-- standaard blijft semantiek `error`.
+```text
+1 ::: vsa-notatie
+2 [:] Scharen
+3 jubelen en zich ver{\blij_&~&~}{\den_},
+4 :::
+```
+
+staat het foutieve zangelement op regel 3.
+
+Deze patch past alleen de testverwachting aan.

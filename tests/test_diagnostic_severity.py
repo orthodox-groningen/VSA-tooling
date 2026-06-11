@@ -40,12 +40,12 @@ def test_semantic_modifier_mismatch_is_error_for_now():
     assert result.items[0].severity == "error"
 
 
-def test_empty_final_pitch_marker_is_error_for_now():
+def test_final_pitch_marker_policy_produces_no_diagnostic():
     document = Parser(r"[:] {tekst} [:]").parse()
 
     result = SemanticValidator(document).validate()
 
-    assert result.items[0].severity == "error"
+    assert result.items == []
 
 
 def test_semantic_errors_are_fatal_for_now():

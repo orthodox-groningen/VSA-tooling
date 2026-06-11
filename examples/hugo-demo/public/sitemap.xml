@@ -2,6 +2,8 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>//:1313/voorbeelden/praktijk/</loc>
+  </url><url>
     <loc>//:1313/voorbeelden/basis/</loc>
   </url><url>
     <loc>//:1313/voorbeelden/cli/</loc>

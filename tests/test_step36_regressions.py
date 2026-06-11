@@ -23,7 +23,7 @@ def test_semantic_validation_result_has_errors_method():
     assert result.has_errors()
 
 
-def test_short_pitch_marker_examples_are_still_allowed():
+def test_short_pitch_marker_examples_are_allowed():
     document = Parser(r"[:] {tekst}").parse()
 
     result = SemanticValidator(document).validate()

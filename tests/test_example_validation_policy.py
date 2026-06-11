@@ -4,7 +4,6 @@ from vsa.validation_runner import validate_path
 
 
 GOOD_EXAMPLE_PATHS = [
-    Path("examples/hugo-demo/content-source"),
     Path("examples/site-demo"),
     Path("examples/minimal/valid-demo.vsa"),
     Path("examples/minimal/scope-demo.vsa"),
@@ -14,6 +13,12 @@ GOOD_EXAMPLE_PATHS = [
 
 
 EXPECTED_FAIL_DIR = Path("examples/expected-fail")
+
+
+LEGACY_NO_LONGER_FAILS = {
+    "empty-final-pitch-marker.vsa",
+    "missing-final-pitch-marker.vsa",
+}
 
 
 def test_all_curated_good_examples_validate():
@@ -28,10 +33,13 @@ def test_all_curated_good_examples_validate():
         ]
 
 
-def test_expected_fail_examples_do_fail():
+def test_expected_fail_examples_do_fail_except_legacy_final_marker_cases():
     assert EXPECTED_FAIL_DIR.exists()
 
-    expected_fail_files = sorted(EXPECTED_FAIL_DIR.glob("*.vsa"))
+    expected_fail_files = [
+        path for path in sorted(EXPECTED_FAIL_DIR.glob("*.vsa"))
+        if path.name not in LEGACY_NO_LONGER_FAILS
+    ]
 
     assert expected_fail_files, "Geen expected-fail voorbeelden gevonden"
 

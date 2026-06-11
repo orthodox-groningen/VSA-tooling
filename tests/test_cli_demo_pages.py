@@ -21,7 +21,7 @@ def test_cli_index_links_to_all_command_pages():
     text = Path("examples/hugo-demo/content-source/voorbeelden/cli.md").read_text(encoding="utf-8")
 
     for page in CLI_PAGES:
-        assert f"/voorbeelden/cli/{page}/" in text
+        assert f"({page}/)" in text
 
 
 def test_each_cli_page_contains_command_input_and_output_sections():

@@ -11,7 +11,8 @@ def test_base_template_has_viewport_meta():
 def test_base_template_links_site_css():
     text = Path("examples/hugo-demo/layouts/_default/baseof.html").read_text(encoding="utf-8")
 
-    assert "/css/site.css" in text
+    assert "css/site.css" in text
+    assert "relURL" in text
 
 
 def test_responsive_css_exists():

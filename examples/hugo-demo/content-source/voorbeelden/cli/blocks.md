@@ -4,10 +4,10 @@ title: "CLI: vsa blocks"
 
 # CLI: `vsa blocks`
 
-- [Home](/)
-- [CLI overzicht](/voorbeelden/cli/)
-- [Vorige: vsa svg](/voorbeelden/cli/svg/)
-- [Volgende: vsa parse](/voorbeelden/cli/parse/)
+- [Home](../../../)
+- [CLI overzicht](../)
+- [Vorige: vsa svg](../svg/)
+- [Volgende: vsa parse](../parse/)
 
 ## Waarvoor gebruik je dit?
 
@@ -38,17 +38,3 @@ vsa blocks examples\minimal\valid-block-demo.md
 ```cmd
 vsa blocks examples\minimal\valid-block-demo.md --json
 ```
-
-Dan zie je onder andere:
-
-```text
-start_line
-end_line
-metadata
-body
-ast
-```
-
-## Wanneer nuttig?
-
-Gebruik dit als een Markdownbestand niet lijkt te worden verwerkt en je wilt controleren of de VSA-blokken worden herkend.

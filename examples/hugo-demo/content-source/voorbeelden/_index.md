@@ -8,13 +8,13 @@ title: "Voorbeelden"
 
 | Pagina | Beschrijving |
 |---------|--------------|
-| [Basis](/voorbeelden/basis/) | eenvoudige voorbeelden |
-| [Multiline](/voorbeelden/multiline/) | regelafbreking |
-| [Fouten](/voorbeelden/fouten/) | validatiefouten |
-| [Markdown](/voorbeelden/markdown/) | Markdown + Hugo |
-| [CLI](/voorbeelden/cli/) | commando-output |
-| [Rendering](/voorbeelden/rendering/) | renderer/layout |
+| [Basis](basis/) | eenvoudige voorbeelden |
+| [Multiline](multiline/) | regelafbreking |
+| [Fouten](fouten/) | validatiefouten |
+| [Markdown](markdown/) | Markdown + Hugo |
+| [CLI](cli/) | commando-output |
+| [Rendering](rendering/) | renderer/layout |
 
 ## Navigatie
 
-- [Home](/)
+- [Home](../)

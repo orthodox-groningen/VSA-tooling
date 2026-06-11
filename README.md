@@ -1,25 +1,16 @@
-# VSA stap 32 - site build workflow testfix
+# VSA stap 34 - test en link fix
 
-Deze patch wijzigt alleen de test.
+Deze patch herstelt de fouten na de responsive/subpad-fix.
 
-Probleem:
+## Opgelost
 
-De workflow bevat correct:
+1. `block_parser` ondersteunt opnieuw:
+   - default metadata via `effective_metadata()`;
+   - metadataregels zoals `do="C4"`.
 
-```bash
-"${GITHUB_REF}" == "refs/heads/main"
-```
+2. CLI-demo-subpagina's gebruiken relatieve links.
 
-maar de test zocht naar:
-
-```text
-GITHUB_REF" == "refs/heads/main"
-```
-
-Dat mist de sluitende `}`.
-
-Fix:
-
-- test zoekt nu inhoudelijk naar `GITHUB_REF`;
-- test zoekt naar `refs/heads/main`;
-- test zoekt naar `target=production` en `target=preview`.
+3. Tests zijn aangepast aan subpad-veilige Hugo-links:
+   - `relURL` in templates;
+   - geen harde `/voorbeelden/...` links;
+   - CSS via `relURL`.

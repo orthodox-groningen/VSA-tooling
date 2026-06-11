@@ -10,12 +10,12 @@ Welkom bij de interactieve demo- en documentatiesite van de VSA Tool.
 
 | Onderdeel | Beschrijving |
 |------------|--------------|
-| [Basisvoorbeelden](/voorbeelden/basis/) | eenvoudige VSA-notatie |
-| [Multiline voorbeelden](/voorbeelden/multiline/) | automatische regelafbreking |
-| [Foutvoorbeelden](/voorbeelden/fouten/) | validatiefouten en diagnose |
-| [Markdown/Hugo](/voorbeelden/markdown/) | Markdown + SVG generatie |
-| [CLI demo's](/voorbeelden/cli/) | voorbeelden van commando-output |
-| [Rendering](/voorbeelden/rendering/) | renderer- en layoutvoorbeelden |
+| [Basisvoorbeelden](voorbeelden/basis/) | eenvoudige VSA-notatie |
+| [Multiline voorbeelden](voorbeelden/multiline/) | automatische regelafbreking |
+| [Foutvoorbeelden](voorbeelden/fouten/) | validatiefouten en diagnose |
+| [Markdown/Hugo](voorbeelden/markdown/) | Markdown + SVG generatie |
+| [CLI demo's](voorbeelden/cli/) | voorbeelden van commando-output |
+| [Rendering](voorbeelden/rendering/) | renderer- en layoutvoorbeelden |
 
 ## Belangrijkste workflow
 
@@ -46,5 +46,5 @@ vsa svg examples\minimal\050_svg_demo.vsa output.svg
 ### Bouw Hugo-content
 
 ```cmd
-vsa build-markdown examples\hugo-demo\content-source generated\content generated\static\vsa
+vsa build-markdown examples\hugo-demo\content-source generated\content examples\hugo-demo\static\vsa
 ```

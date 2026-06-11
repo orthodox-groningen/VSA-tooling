@@ -1,86 +1,75 @@
 <!DOCTYPE html>
 <html lang="nl">
 <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
-    <meta charset="utf-8">
-    <title>Rendering</title>
-
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 2rem;
-            line-height: 1.5;
-            max-width: 1100px;
-        }
-
-        nav {
-            margin-bottom: 2rem;
-            padding-bottom: 1rem;
-            border-bottom: 1px solid #cccccc;
-        }
-
-        nav a {
-            margin-right: 1rem;
-        }
-
-        pre {
-            background: #f0f0f0;
-            padding: 1rem;
-            overflow-x: auto;
-        }
-
-        code {
-            font-family: Consolas, monospace;
-        }
-
-        table {
-            border-collapse: collapse;
-        }
-
-        th, td {
-            border: 1px solid #cccccc;
-            padding: 0.5rem;
-        }
-
-        .vsa-notation {
-            margin-top: 1rem;
-            margin-bottom: 1rem;
-            border: 1px solid #cccccc;
-            padding: 1rem;
-        }
-    </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Rendering</title>
+  <link rel="stylesheet" href="/css/site.css">
 </head>
 
 <body>
+  <header class="site-header">
+    <nav class="site-nav" aria-label="Hoofdnavigatie">
+      <a href="/">Home</a>
+      <a href="/voorbeelden/">Voorbeelden</a>
+      <a href="/voorbeelden/basis/">Basis</a>
+      <a href="/voorbeelden/multiline/">Multiline</a>
+      <a href="/voorbeelden/fouten/">Fouten</a>
+      <a href="/voorbeelden/markdown/">Markdown</a>
+      <a href="/voorbeelden/cli/">CLI</a>
+      <a href="/voorbeelden/rendering/">Rendering</a>
+    </nav>
+  </header>
 
-<nav>
-    <a href="/">Home</a>
-    <a href="/voorbeelden/">Voorbeelden</a>
-    <a href="/voorbeelden/basis/">Basis</a>
-    <a href="/voorbeelden/multiline/">Multiline</a>
-    <a href="/voorbeelden/fouten/">Fouten</a>
-    <a href="/voorbeelden/markdown/">Markdown</a>
-    <a href="/voorbeelden/cli/">CLI</a>
-    <a href="/voorbeelden/rendering/">Rendering</a>
-</nav>
-
-
+  <main class="page">
+    
 
 <h1 id="rendering">Rendering</h1>
 <ul>
-<li><a href="/">Home</a></li>
-<li><a href="/voorbeelden/cli/">Vorige: CLI</a></li>
-<li><a href="/voorbeelden/">Voorbeelden-overzicht</a></li>
+<li><a href="../../">Home</a></li>
+<li><a href="../cli/">Vorige: CLI</a></li>
+<li><a href="../">Voorbeelden-overzicht</a></li>
 </ul>
 <h2 id="svg-renderer">SVG renderer</h2>
 <p>De renderer zet de parserstructuur om naar SVG.</p>
 <h2 id="voorbeeld">Voorbeeld</h2>
+
 <div class="vsa-container">
   <img
     class="vsa-notation"
     src="/vsa/voorbeelden-rendering-block-1.svg"
-    alt="VSA notatie">
+    alt="VSA notatie"
+    loading="lazy">
 </div>
 
+<h2 id="schermgroottes">Schermgroottes</h2>
+<p>De demo-site is bedoeld voor:</p>
+<table>
+  <thead>
+      <tr>
+          <th>Scherm</th>
+          <th>Verwacht gedrag</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>smalle telefoon</td>
+          <td>volle breedte, navigatie onder elkaar</td>
+      </tr>
+      <tr>
+          <td>tablet</td>
+          <td>navigatie wrapt waar nodig</td>
+      </tr>
+      <tr>
+          <td>laptop</td>
+          <td>normale leesbreedte</td>
+      </tr>
+      <tr>
+          <td>groot scherm</td>
+          <td>bredere contentkolom, maar niet eindeloos breed</td>
+      </tr>
+  </tbody>
+</table>
 <h2 id="huidige-status">Huidige status</h2>
 <table>
   <thead>
@@ -103,6 +92,10 @@
           <td>aanwezig</td>
       </tr>
       <tr>
+          <td>responsive demo-layout</td>
+          <td>aanwezig</td>
+      </tr>
+      <tr>
           <td>MusicXML-export</td>
           <td>nog niet aanwezig</td>
       </tr>
@@ -112,14 +105,9 @@
       </tr>
   </tbody>
 </table>
-<h2 id="waarom-regressietests">Waarom regressietests?</h2>
-<p>Kleine layoutwijzigingen kunnen rendering breken.</p>
-<p>Daarom bestaan:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>tests/
-</span></span><span style="display:flex;"><span>examples/regression/
-</span></span></code></pre></div>
 
 
 
+  </main>
 </body>
 </html>

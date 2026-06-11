@@ -4,9 +4,9 @@ title: "Foutvoorbeelden"
 
 # Foutvoorbeelden
 
-- [Home](/)
-- [Vorige: Multiline](/voorbeelden/multiline/)
-- [Volgende: Markdown](/voorbeelden/markdown/)
+- [Home](../../)
+- [Vorige: Multiline](../multiline/)
+- [Volgende: Markdown](../markdown/)
 
 ## Ongeldige invoer
 
@@ -17,7 +17,7 @@ title: "Foutvoorbeelden"
 ## Commando
 
 ```cmd
-vsa validate examples\site-demo-invalid
+vsa validate examples\expected-fail\semantic-mismatch.vsa
 ```
 
 ## Voorbeeldfout
@@ -29,18 +29,6 @@ VSA-SEMANTIC-MODIFIER-COUNT-MISMATCH
 ## Wat betekent dat?
 
 Er zijn meer hoogteposities dan lengteposities.
-
-### Hoogte
-
-```text
-/ en \
-```
-
-### Lengte
-
-```text
-_
-```
 
 ## Hoe los je dat op?
 

@@ -92,9 +92,26 @@ def _rewrite_markdown_file(
 
     index = 0
     block_index = 0
+    in_code_fence = False
+    fence_marker = ""
 
     while index < len(lines):
-        if lines[index].strip() != START_MARKER:
+        stripped = lines[index].strip()
+        fence = _opening_or_closing_fence(stripped)
+
+        if fence:
+            if not in_code_fence:
+                in_code_fence = True
+                fence_marker = fence
+            elif _closes_fence(stripped, fence_marker):
+                in_code_fence = False
+                fence_marker = ""
+
+            result_lines.append(lines[index])
+            index += 1
+            continue
+
+        if in_code_fence or stripped != START_MARKER:
             result_lines.append(lines[index])
             index += 1
             continue
@@ -155,3 +172,17 @@ def _safe_name(value):
     value = value.strip("-")
 
     return value or "vsa"
+
+
+def _opening_or_closing_fence(stripped: str):
+    if stripped.startswith("```"):
+        return "```"
+
+    if stripped.startswith("~~~"):
+        return "~~~"
+
+    return ""
+
+
+def _closes_fence(stripped: str, fence_marker: str):
+    return stripped.startswith(fence_marker)

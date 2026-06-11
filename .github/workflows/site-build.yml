@@ -63,7 +63,8 @@ jobs:
             examples/hugo-demo/content-source \
             "${{ steps.target.outputs.output_dir }}/content" \
             examples/hugo-demo/static/vsa \
-            --max-line-width "${{ steps.target.outputs.max_line_width }}"
+            --max-line-width "${{ steps.target.outputs.max_line_width }}" \
+            --output-mode shortcode
 
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v3

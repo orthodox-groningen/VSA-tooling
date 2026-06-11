@@ -4,9 +4,9 @@ title: "Multiline voorbeelden"
 
 # Multiline voorbeelden
 
-- [Home](/)
-- [Vorige: Basis](/voorbeelden/basis/)
-- [Volgende: Fouten](/voorbeelden/fouten/)
+- [Home](../../)
+- [Vorige: Basis](../basis/)
+- [Volgende: Fouten](../fouten/)
 
 ## Invoer
 

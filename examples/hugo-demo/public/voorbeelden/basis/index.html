@@ -26,14 +26,15 @@
 
 <h1 id="basisvoorbeelden">Basisvoorbeelden</h1>
 <ul>
-<li><a href="/">Home</a></li>
-<li><a href="/voorbeelden/">Voorbeelden</a></li>
-<li><a href="/voorbeelden/multiline/">Volgende: Multiline</a></li>
+<li><a href="../../">Home</a></li>
+<li><a href="../">Voorbeelden</a></li>
+<li><a href="../multiline/">Volgende: Multiline</a></li>
 </ul>
 <h2 id="voorbeeld-1">Voorbeeld 1</h2>
 <h3 id="invoer">Invoer</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>[:] {/Hei_}{/lig_} is de Heer. [:]
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>[:] {/Hei_}{/lig_} is de Heer. [\\:]
 </span></span></code></pre></div><h3 id="svg">SVG</h3>
+
 <div class="vsa-container">
   <img
     class="vsa-notation"
@@ -53,7 +54,7 @@
   <tbody>
       <tr>
           <td><code>[:]</code></td>
-          <td>pitch-marker</td>
+          <td>openings-pitch-marker</td>
       </tr>
       <tr>
           <td><code>{/Hei_}</code></td>
@@ -63,10 +64,14 @@
           <td><code>is de Heer.</code></td>
           <td>gewone tekst</td>
       </tr>
+      <tr>
+          <td><code>[\\:]</code></td>
+          <td>afsluitende pitch-marker</td>
+      </tr>
   </tbody>
 </table>
 <h2 id="commando">Commando</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-cmd" data-lang="cmd"><span style="display:flex;"><span>vsa svg examples\minimal\050_svg_demo.vsa output.svg
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-cmd" data-lang="cmd"><span style="display:flex;"><span>vsa svg examples\minimal\valid-demo.vsa output.svg
 </span></span></code></pre></div><h2 id="verwachte-output">Verwachte output</h2>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>SVG geschreven naar: output.svg
 </span></span></code></pre></div>

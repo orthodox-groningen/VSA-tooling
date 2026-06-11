@@ -1,7 +1,8 @@
+{{ $src := .Get "src" }}
 <div class="vsa-container">
   <img
     class="vsa-notation"
-    src="{{ .Get "src" }}"
+    src="{{ $src | relURL }}"
     alt="VSA notatie"
     loading="lazy">
 </div>

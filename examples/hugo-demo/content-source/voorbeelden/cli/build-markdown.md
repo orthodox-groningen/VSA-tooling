@@ -4,19 +4,14 @@ title: "CLI: vsa build-markdown"
 
 # CLI: `vsa build-markdown`
 
-- [Home](/)
-- [CLI overzicht](/voorbeelden/cli/)
-- [Vorige: vsa process](/voorbeelden/cli/process/)
-- [Volgende: vsa --version](/voorbeelden/cli/version/)
+- [Home](../../../)
+- [CLI overzicht](../)
+- [Vorige: vsa process](../process/)
+- [Volgende: vsa --version](../version/)
 
 ## Waarvoor gebruik je dit?
 
 Dit is het belangrijkste commando voor Hugo.
-
-Het maakt:
-
-1. gegenereerde Markdown;
-2. gegenereerde SVG-bestanden.
 
 ## Commando
 
@@ -38,23 +33,3 @@ SVG-bestand(en) geschreven
 | `<input-dir>` | `examples\hugo-demo\content-source` | bron-Markdown |
 | `<output-dir>` | `generated\content` | gegenereerde Markdown |
 | `<assets-dir>` | `examples\hugo-demo\static\vsa` | gegenereerde SVG's voor Hugo |
-
-## Outputvorm
-
-Standaard:
-
-```html
-<img class="vsa-notation" src="/vsa/..." alt="VSA notatie">
-```
-
-Met shortcode:
-
-```cmd
-vsa build-markdown examples\hugo-demo\content-source generated\content examples\hugo-demo\static\vsa --output-mode shortcode
-```
-
-Geeft:
-
-```go-html-template
-{{< vsa src="/vsa/..." >}}
-```

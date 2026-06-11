@@ -12,31 +12,45 @@
 
 html {
   font-size: 18px;
+  width: 100%;
 }
 
 body {
   font-family: Arial, sans-serif;
   line-height: 1.55;
   margin: 0;
+  min-width: 0;
+  width: 100%;
   color: #111111;
   background: #ffffff;
 }
 
 .page {
+  width: 100%;
   max-width: var(--page-max-width);
   margin: 0 auto;
-  padding: 1.25rem var(--page-padding) 3rem;
+  padding:
+    1.25rem
+    max(var(--page-padding), env(safe-area-inset-right))
+    3rem
+    max(var(--page-padding), env(safe-area-inset-left));
 }
 
 .site-header {
+  width: 100%;
   border-bottom: 1px solid var(--border-color);
   background: var(--nav-bg);
 }
 
 .site-nav {
+  width: 100%;
   max-width: var(--page-max-width);
   margin: 0 auto;
-  padding: 0.75rem var(--page-padding);
+  padding:
+    0.75rem
+    max(var(--page-padding), env(safe-area-inset-right))
+    0.75rem
+    max(var(--page-padding), env(safe-area-inset-left));
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem 1rem;
@@ -64,6 +78,7 @@ pre {
   overflow-x: auto;
   border: 1px solid var(--border-color);
   border-radius: 0.25rem;
+  max-width: 100%;
 }
 
 code {
@@ -71,16 +86,12 @@ code {
   font-size: 0.95em;
 }
 
-.table-wrap,
-table {
-  max-width: 100%;
-}
-
 table {
   border-collapse: collapse;
   display: block;
   overflow-x: auto;
   white-space: nowrap;
+  max-width: 100%;
   margin: 1rem 0;
 }
 
@@ -99,6 +110,7 @@ svg,
 
 .vsa-container {
   margin: 1.25rem 0;
+  max-width: 100%;
   overflow-x: auto;
 }
 
@@ -119,6 +131,11 @@ svg,
 }
 
 @media (max-width: 900px) {
+  :root {
+    --page-max-width: none;
+    --page-padding: 0.9rem;
+  }
+
   html {
     font-size: 17px;
   }
@@ -138,10 +155,14 @@ svg,
   }
 
   .page {
+    max-width: none;
+    margin: 0;
     padding-top: 1rem;
   }
 
   .site-nav {
+    max-width: none;
+    margin: 0;
     flex-direction: column;
     align-items: flex-start;
   }

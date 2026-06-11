@@ -4,34 +4,34 @@ title: "Markdown en Hugo"
 
 # Markdown en Hugo
 
-- [Home](/)
-- [Vorige: Fouten](/voorbeelden/fouten/)
-- [Volgende: CLI](/voorbeelden/cli/)
+- [Home](../../)
+- [Vorige: Fouten](../fouten/)
+- [Volgende: CLI](../cli/)
 
 ## Bron-Markdown
 
 ````markdown
 ::: vsa-notatie
-[:] {/Hei_}{/lig_} is de Heer. [:]
+[:] {/Hei_}{/lig_} is de Heer. [\\:]
 :::
 ````
 
 ## Commando
 
 ```cmd
-vsa build-markdown examples\hugo-demo\content-source generated\content generated\static\vsa
+vsa build-markdown examples\hugo-demo\content-source generated\content examples\hugo-demo\static\vsa
 ```
 
 ## Gegenereerde Markdown
 
-```html
-<img class="vsa-notation" src="/vsa/demo-block-1.svg" alt="VSA notatie">
+```go-html-template
+{{< vsa src="/vsa/demo-block-1.svg" >}}
 ```
 
 ## Gegenereerde SVG
 
 ::: vsa-notatie
-[:] {/Hei_}{/lig_} is de Heer. [:]
+[:] {/Hei_}{/lig_} is de Heer. [\\:]
 :::
 
 ## Wat wordt waar opgeslagen?
@@ -39,4 +39,4 @@ vsa build-markdown examples\hugo-demo\content-source generated\content generated
 | Type | Voorbeeld |
 |------|------------|
 | gegenereerde Markdown | `generated\content\...` |
-| gegenereerde SVG | `generated\static\vsa\...` |
+| gegenereerde SVG | `examples\hugo-demo\static\vsa\...` |

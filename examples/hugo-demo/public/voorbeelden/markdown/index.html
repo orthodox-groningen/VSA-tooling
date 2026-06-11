@@ -26,28 +26,32 @@
 
 <h1 id="markdown-en-hugo">Markdown en Hugo</h1>
 <ul>
-<li><a href="/">Home</a></li>
-<li><a href="/voorbeelden/fouten/">Vorige: Fouten</a></li>
-<li><a href="/voorbeelden/cli/">Volgende: CLI</a></li>
+<li><a href="../../">Home</a></li>
+<li><a href="../fouten/">Vorige: Fouten</a></li>
+<li><a href="../cli/">Volgende: CLI</a></li>
 </ul>
 <h2 id="bron-markdown">Bron-Markdown</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-markdown" data-lang="markdown"><span style="display:flex;"><span><div class="vsa-container">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-markdown" data-lang="markdown"><span style="display:flex;"><span>::: vsa-notatie
+</span></span><span style="display:flex;"><span>[:] {/Hei_}{/lig_} is de Heer. [\\:]
+</span></span><span style="display:flex;"><span>:::
+</span></span></code></pre></div><h2 id="commando">Commando</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-cmd" data-lang="cmd"><span style="display:flex;"><span>vsa build-markdown examples\hugo-demo\content-source generated\content examples\hugo-demo\static\vsa
+</span></span></code></pre></div><h2 id="gegenereerde-markdown">Gegenereerde Markdown</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-go-html-template" data-lang="go-html-template"><span style="display:flex;"><span>
+<div class="vsa-container">
   <img
     class="vsa-notation"
-    src="/vsa/voorbeelden-markdown-block-1.svg"
+    src="/vsa/demo-block-1.svg"
     alt="VSA notatie"
     loading="lazy">
 </div>
 
-</span></span></code></pre></div><h2 id="commando">Commando</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-cmd" data-lang="cmd"><span style="display:flex;"><span>vsa build-markdown examples\hugo-demo\content-source generated\content generated\static\vsa
-</span></span></code></pre></div><h2 id="gegenereerde-markdown">Gegenereerde Markdown</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>&lt;<span style="color:#f92672">img</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;vsa-notation&#34;</span> <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;/vsa/demo-block-1.svg&#34;</span> <span style="color:#a6e22e">alt</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;VSA notatie&#34;</span>&gt;
 </span></span></code></pre></div><h2 id="gegenereerde-svg">Gegenereerde SVG</h2>
+
 <div class="vsa-container">
   <img
     class="vsa-notation"
-    src="/vsa/voorbeelden-markdown-block-2.svg"
+    src="/vsa/voorbeelden-markdown-block-1.svg"
     alt="VSA notatie"
     loading="lazy">
 </div>
@@ -67,7 +71,7 @@
       </tr>
       <tr>
           <td>gegenereerde SVG</td>
-          <td><code>generated\static\vsa\...</code></td>
+          <td><code>examples\hugo-demo\static\vsa\...</code></td>
       </tr>
   </tbody>
 </table>

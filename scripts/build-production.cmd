@@ -17,7 +17,8 @@ vsa build-markdown ^
   examples\hugo-demo\content-source ^
   generated\production\content ^
   examples\hugo-demo\static\vsa ^
-  --max-line-width 900
+  --max-line-width 900 ^
+  --output-mode shortcode
 if errorlevel 1 exit /b 1
 
 hugo ^

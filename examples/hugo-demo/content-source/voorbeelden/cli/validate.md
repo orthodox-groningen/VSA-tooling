@@ -4,9 +4,9 @@ title: "CLI: vsa validate"
 
 # CLI: `vsa validate`
 
-- [Home](/)
-- [CLI overzicht](/voorbeelden/cli/)
-- [Volgende: vsa svg](/voorbeelden/cli/svg/)
+- [Home](../../../)
+- [CLI overzicht](../)
+- [Volgende: vsa svg](../svg/)
 
 ## Waarvoor gebruik je dit?
 
@@ -32,10 +32,6 @@ vsa validate examples\minimal\valid-demo.vsa
 OK
 ```
 
-### Betekenis
-
-De notatie is syntactisch en semantisch geldig.
-
 ## Fout voorbeeld
 
 ### Input
@@ -55,7 +51,3 @@ vsa validate examples\expected-fail\semantic-mismatch.vsa
 ```text
 VSA-SEMANTIC-MODIFIER-COUNT-MISMATCH
 ```
-
-### Wat doe je daarna?
-
-Controleer of hoogte- en lengteposities hetzelfde aantal muzikale posities bevatten.

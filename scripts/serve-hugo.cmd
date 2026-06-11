@@ -13,7 +13,8 @@ if exist examples\hugo-demo\static\vsa rmdir /s /q examples\hugo-demo\static\vsa
 vsa build-markdown ^
   examples\hugo-demo\content-source ^
   generated\hugo\content ^
-  examples\hugo-demo\static\vsa
+  examples\hugo-demo\static\vsa ^
+  --output-mode shortcode
 if errorlevel 1 exit /b 1
 
 echo.

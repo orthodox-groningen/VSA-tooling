@@ -1,21 +1,63 @@
-from .block import VSABlock
-from .errors import VSASyntaxError
+from dataclasses import dataclass, field
+import re
+
+from .parser import Parser
 
 
 START_MARKER = "::: vsa-notatie"
 END_MARKER = ":::"
 
 
-def parse_markdown_blocks(markdown: str) -> list[VSABlock]:
+DEFAULT_METADATA = {
+    "do": "F4",
+    "mode": "major",
+    "tempo": "100",
+    "validate-ending": "true",
+    "duration-model": "default",
+}
+
+
+@dataclass
+class MarkdownBlock:
+    start_line: int
+    end_line: int
+    metadata: dict[str, str] = field(default_factory=dict)
+    body: str = ""
+
+    def effective_metadata(self):
+        result = dict(DEFAULT_METADATA)
+        result.update(self.metadata)
+        return result
+
+    def parse_body(self):
+        return Parser(self.body).parse()
+
+
+def parse_markdown_blocks(markdown: str):
     lines = markdown.splitlines()
     blocks = []
 
     index = 0
+    in_code_fence = False
+    fence_marker = ""
 
     while index < len(lines):
-        line = lines[index].strip()
+        stripped = lines[index].strip()
 
-        if line != START_MARKER:
+        fence = _opening_or_closing_fence(stripped)
+
+        if fence:
+            if not in_code_fence:
+                in_code_fence = True
+                fence_marker = fence
+            elif _closes_fence(stripped, fence_marker):
+                in_code_fence = False
+                fence_marker = ""
+
+            index += 1
+            continue
+
+        if in_code_fence or stripped != START_MARKER:
             index += 1
             continue
 
@@ -24,62 +66,68 @@ def parse_markdown_blocks(markdown: str) -> list[VSABlock]:
 
         metadata = {}
         body_lines = []
-        in_body = False
 
         while index < len(lines):
-            current = lines[index]
+            stripped_inner = lines[index].strip()
 
-            if current.strip() == END_MARKER:
-                end_line = index + 1
-                blocks.append(
-                    VSABlock(
-                        metadata=metadata,
-                        body="\n".join(body_lines).strip(),
-                        start_line=start_line,
-                        end_line=end_line,
-                    )
-                )
+            if stripped_inner == END_MARKER:
                 break
 
-            if not in_body:
-                stripped = current.strip()
+            parsed_metadata = _parse_metadata_line(stripped_inner)
 
-                if stripped == "":
-                    in_body = True
-                    index += 1
-                    continue
+            if parsed_metadata is not None:
+                key, value = parsed_metadata
+                metadata[key] = value
+            else:
+                body_lines.append(lines[index])
 
-                if _looks_like_parameter(stripped):
-                    key, value = _parse_parameter(stripped, index + 1)
-                    metadata[key] = value
-                    index += 1
-                    continue
-
-                in_body = True
-
-            body_lines.append(current)
             index += 1
 
+        if index >= len(lines):
+            end_line = len(lines)
         else:
-            raise VSASyntaxError("VSA-blok zonder afsluitende :::", start_line)
+            end_line = index + 1
+
+        blocks.append(
+            MarkdownBlock(
+                start_line=start_line,
+                end_line=end_line,
+                metadata=metadata,
+                body="\n".join(body_lines).strip(),
+            )
+        )
 
         index += 1
 
     return blocks
 
 
-def _looks_like_parameter(line: str) -> bool:
-    return "=" in line and line.endswith('"')
+def _parse_metadata_line(line: str):
+    if line == "":
+        return None
+
+    hash_match = re.fullmatch(r"#\s*([^:]+)\s*:\s*(.*)", line)
+
+    if hash_match:
+        return hash_match.group(1).strip(), hash_match.group(2).strip().strip('"')
+
+    assignment_match = re.fullmatch(r"([A-Za-z0-9_-]+)\s*=\s*\"(.*)\"", line)
+
+    if assignment_match:
+        return assignment_match.group(1).strip(), assignment_match.group(2).strip()
+
+    return None
 
 
-def _parse_parameter(line: str, line_number: int):
-    if '="' not in line or not line.endswith('"'):
-        raise VSASyntaxError("Ongeldige blokparameter", line_number)
+def _opening_or_closing_fence(stripped: str):
+    if stripped.startswith("```"):
+        return "```"
 
-    key, raw_value = line.split('="', 1)
-    value = raw_value[:-1]
+    if stripped.startswith("~~~"):
+        return "~~~"
 
-    if key == "":
-        raise VSASyntaxError("Blokparameter zonder naam", line_number)
+    return ""
 
-    return key, value
+
+def _closes_fence(stripped: str, fence_marker: str):
+    return stripped.startswith(fence_marker)

@@ -16,7 +16,8 @@ if errorlevel 1 exit /b 1
 vsa build-markdown ^
   examples\hugo-demo\content-source ^
   generated\preview\content ^
-  examples\hugo-demo\static\vsa
+  examples\hugo-demo\static\vsa ^
+  --output-mode shortcode
 if errorlevel 1 exit /b 1
 
 hugo ^

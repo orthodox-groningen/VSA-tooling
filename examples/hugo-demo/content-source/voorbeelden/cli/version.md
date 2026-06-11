@@ -4,9 +4,9 @@ title: "CLI: vsa --version"
 
 # CLI: `vsa --version`
 
-- [Home](/)
-- [CLI overzicht](/voorbeelden/cli/)
-- [Vorige: vsa build-markdown](/voorbeelden/cli/build-markdown/)
+- [Home](../../../)
+- [CLI overzicht](../)
+- [Vorige: vsa build-markdown](../build-markdown/)
 
 ## Waarvoor gebruik je dit?
 
@@ -23,11 +23,3 @@ vsa --version
 ```text
 vsa 0.1.0
 ```
-
-## Wanneer nuttig?
-
-Gebruik dit bij:
-
-- foutmeldingen rapporteren;
-- releasecontrole;
-- vergelijken van lokale omgeving en GitHub Actions.

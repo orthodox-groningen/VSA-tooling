@@ -1,4 +1,4 @@
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 
 from .diagnostics import Diagnostic, DiagnosticCollection
 
@@ -26,9 +26,15 @@ class SemanticValidationResult:
         return any(item.severity == "warning" for item in self.items)
 
 
+@dataclass
+class SemanticValidationOptions:
+    severity_overrides: dict[str, str] = field(default_factory=dict)
+
+
 class SemanticValidator:
-    def __init__(self, document):
+    def __init__(self, document, options: SemanticValidationOptions | None = None):
         self.document = document
+        self.options = options or SemanticValidationOptions()
 
     def validate(self):
         diagnostics = DiagnosticCollection()
@@ -38,7 +44,12 @@ class SemanticValidator:
 
         return SemanticValidationResult(diagnostics.items)
 
+    def _severity(self, code: str):
+        return self.options.severity_overrides.get(code, "error")
+
     def _validate_modifier_counts(self, diagnostics):
+        code = "VSA-SEMANTIC-MODIFIER-COUNT-MISMATCH"
+
         for node in getattr(self.document, "nodes", []):
             if not _is_scope_node(node):
                 continue
@@ -56,14 +67,14 @@ class SemanticValidator:
                 and height_count != length_count
             ):
                 diagnostics.add(
-                    code="VSA-SEMANTIC-MODIFIER-COUNT-MISMATCH",
+                    code=code,
                     message_nl=(
                         "Hoogte- en lengte-modifier bevatten niet hetzelfde "
                         "aantal muzikale posities."
                     ),
                     line=1,
                     column=1,
-                    severity="error",
+                    severity=self._severity(code),
                 )
 
     def _validate_pitch_marker_ending(self, diagnostics):
@@ -90,28 +101,32 @@ class SemanticValidator:
             return
 
         if not _is_pitch_marker_node(last):
+            code = "VSA-SEMANTIC-MISSING-FINAL-PITCH-MARKER"
+
             diagnostics.add(
-                code="VSA-SEMANTIC-MISSING-FINAL-PITCH-MARKER",
+                code=code,
                 message_nl=(
                     "Een VSA-frase die met een pitch-marker begint, moet "
                     "ook met een afsluitende pitch-marker eindigen."
                 ),
                 line=1,
                 column=1,
-                severity="error",
+                severity=self._severity(code),
             )
             return
 
         if len(getattr(last, "height_modifier", [])) == 0:
+            code = "VSA-SEMANTIC-EMPTY-FINAL-PITCH-MARKER"
+
             diagnostics.add(
-                code="VSA-SEMANTIC-EMPTY-FINAL-PITCH-MARKER",
+                code=code,
                 message_nl=(
                     "Een afsluitende pitch-marker na gezongen tekst mag niet leeg zijn. "
                     "Gebruik bijvoorbeeld [\\\\:] als afsluitende beweging."
                 ),
                 line=1,
                 column=1,
-                severity="error",
+                severity=self._severity(code),
             )
 
 

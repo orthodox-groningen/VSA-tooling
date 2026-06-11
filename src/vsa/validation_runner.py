@@ -2,8 +2,12 @@ from dataclasses import dataclass, field
 from pathlib import Path
 
 from .block_parser import parse_markdown_blocks
+from .config import VSAConfig
 from .parser import Parser
-from .semantic_validator import SemanticValidator
+from .semantic_validator import (
+    SemanticValidationOptions,
+    SemanticValidator,
+)
 from .recoverable_syntax_validator import RecoverableSyntaxValidator
 from .errors import VSAError
 
@@ -93,11 +97,11 @@ class ValidationResult:
         return any(message.severity == "warning" for message in self.messages)
 
 
-def validate_path(path: str | Path) -> ValidationResult:
+def validate_path(path: str | Path, config: VSAConfig | None = None) -> ValidationResult:
     path = Path(path)
 
     if path.is_file():
-        return validate_file(path)
+        return validate_file(path, config=config)
 
     if path.is_dir():
         result = ValidationResult()
@@ -109,7 +113,7 @@ def validate_path(path: str | Path) -> ValidationResult:
         )
 
         for file in files:
-            result.extend(validate_file(file))
+            result.extend(validate_file(file, config=config))
 
         return result
 
@@ -122,20 +126,25 @@ def validate_path(path: str | Path) -> ValidationResult:
     return result
 
 
-def validate_file(path: str | Path) -> ValidationResult:
+def validate_file(path: str | Path, config: VSAConfig | None = None) -> ValidationResult:
     path = Path(path)
     text = path.read_text(encoding="utf-8")
     result = ValidationResult()
 
     if path.suffix.lower() in [".md", ".markdown"]:
-        _validate_markdown(path, text, result)
+        _validate_markdown(path, text, result, config=config)
     else:
-        _validate_vsa_text(str(path), text, result)
+        _validate_vsa_text(str(path), text, result, config=config)
 
     return result
 
 
-def _validate_markdown(path: Path, text: str, result: ValidationResult):
+def _validate_markdown(
+    path: Path,
+    text: str,
+    result: ValidationResult,
+    config: VSAConfig | None = None,
+):
     try:
         blocks = parse_markdown_blocks(text)
     except VSAError as exc:
@@ -148,10 +157,15 @@ def _validate_markdown(path: Path, text: str, result: ValidationResult):
 
     for index, block in enumerate(blocks, start=1):
         source = f"{path}:blok-{index}"
-        _validate_vsa_text(source, block.body, result)
+        _validate_vsa_text(source, block.body, result, config=config)
 
 
-def _validate_vsa_text(source: str, text: str, result: ValidationResult):
+def _validate_vsa_text(
+    source: str,
+    text: str,
+    result: ValidationResult,
+    config: VSAConfig | None = None,
+):
     syntax_diagnostics = RecoverableSyntaxValidator(text).validate()
 
     for diagnostic in syntax_diagnostics.items:
@@ -176,7 +190,8 @@ def _validate_vsa_text(source: str, text: str, result: ValidationResult):
         )
         return
 
-    diagnostics = SemanticValidator(document).validate()
+    semantic_options = _semantic_options_from_config(config)
+    diagnostics = SemanticValidator(document, semantic_options).validate()
 
     for diagnostic in diagnostics.items:
         if diagnostic.severity == "error":
@@ -195,3 +210,12 @@ def _validate_vsa_text(source: str, text: str, result: ValidationResult):
                 line=diagnostic.line,
                 column=diagnostic.column,
             )
+
+
+def _semantic_options_from_config(config: VSAConfig | None):
+    if config is None:
+        return SemanticValidationOptions()
+
+    return SemanticValidationOptions(
+        severity_overrides=dict(config.validation.severity)
+    )

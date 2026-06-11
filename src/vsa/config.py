@@ -15,42 +15,71 @@ class HugoConfig:
 
 
 @dataclass
+class ValidationConfig:
+    severity: dict[str, str] = field(default_factory=dict)
+
+
+@dataclass
 class VSAConfig:
     rendering: RenderingConfig = field(default_factory=RenderingConfig)
     hugo: HugoConfig = field(default_factory=HugoConfig)
+    validation: ValidationConfig = field(default_factory=ValidationConfig)
 
 
 def load_config(path: str | Path | None = None) -> VSAConfig:
+    config = VSAConfig()
+
     if path is None:
-        path = Path("vsa.toml")
-    else:
-        path = Path(path)
+        return config
+
+    path = Path(path)
 
     if not path.exists():
-        return VSAConfig()
+        return config
 
     data = tomllib.loads(path.read_text(encoding="utf-8"))
 
-    rendering_data = data.get("rendering", {})
-    hugo_data = data.get("hugo", {})
+    rendering = data.get("rendering", {})
+    hugo = data.get("hugo", {})
+    validation = data.get("validation", {})
 
-    output_mode = str(hugo_data.get("output-mode", "img"))
+    if "max-line-width" in rendering:
+        config.rendering.max_line_width = float(rendering["max-line-width"])
 
-    if output_mode not in ["img", "shortcode"]:
+    if "assets-url-prefix" in hugo:
+        config.hugo.assets_url_prefix = str(hugo["assets-url-prefix"])
+
+    if "output-mode" in hugo:
+        config.hugo.output_mode = _normalize_output_mode(hugo["output-mode"])
+
+    severity = validation.get("severity", {})
+
+    if isinstance(severity, dict):
+        config.validation.severity = {
+            str(code): _normalize_severity(value)
+            for code, value in severity.items()
+        }
+
+    return config
+
+
+def _normalize_output_mode(value):
+    value = str(value).strip().lower()
+
+    if value not in {"img", "shortcode"}:
         raise ValueError(
-            "Ongeldige hugo.output-mode in vsa.toml. Gebruik 'img' of 'shortcode'."
+            f"Onbekende output-mode: {value}. Gebruik 'img' of 'shortcode'."
         )
 
-    return VSAConfig(
-        rendering=RenderingConfig(
-            max_line_width=float(
-                rendering_data.get("max-line-width", 800.0)
-            )
-        ),
-        hugo=HugoConfig(
-            assets_url_prefix=str(
-                hugo_data.get("assets-url-prefix", "/vsa")
-            ),
-            output_mode=output_mode,
-        ),
-    )
+    return value
+
+
+def _normalize_severity(value):
+    value = str(value).strip().lower()
+
+    if value not in {"error", "warning"}:
+        raise ValueError(
+            f"Onbekende severity: {value}. Gebruik 'error' of 'warning'."
+        )
+
+    return value

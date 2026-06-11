@@ -2,27 +2,44 @@
 
 Deze stap sluit severity-overrides aan op de validatielaag.
 
-Standaard blijft alles hetzelfde:
-
-```text
-semantische diagnostics = error
-```
-
-Nieuw:
+## Nieuw
 
 ```python
 config = load_config("vsa.toml")
+
 validate_file("bestand.vsa", config=config)
 validate_path("map", config=config)
 ```
 
-Als `vsa.toml` bevat:
+## Config
 
 ```toml
 [validation.severity]
 VSA-SEMANTIC-EMPTY-FINAL-PITCH-MARKER = "warning"
 ```
 
-dan wordt die specifieke semantische diagnostic een warning en laat `result.ok` de validatie slagen.
+## Gedrag
 
-CLI-integratie komt hierna.
+Zonder config:
+
+```text
+semantic diagnostics = error
+```
+
+Met override:
+
+```text
+specifieke code = warning
+```
+
+## Nog niet
+
+CLI-integratie is nog niet gedaan.
+
+Dus dit werkt nog niet automatisch via:
+
+```cmd
+vsa --config vsa.toml validate ...
+```
+
+Dat is de volgende stap.

@@ -1,28 +1,14 @@
-# Stap 39 - validation config integration
+# Stap 42 - documentatie voor severity-config
 
-Deze stap sluit severity-overrides aan op de validatielaag.
+Deze stap documenteert het inmiddels werkende configuratiegedrag.
 
-Standaard blijft alles hetzelfde:
+Nieuw in documentatie/demo:
 
-```text
-semantische diagnostics = error
-```
-
-Nieuw:
-
-```python
-config = load_config("vsa.toml")
-validate_file("bestand.vsa", config=config)
-validate_path("map", config=config)
-```
-
-Als `vsa.toml` bevat:
-
-```toml
-[validation.severity]
-VSA-SEMANTIC-EMPTY-FINAL-PITCH-MARKER = "warning"
-```
-
-dan wordt die specifieke semantische diagnostic een warning en laat `result.ok` de validatie slagen.
-
-CLI-integratie komt hierna.
+- `--config` bij:
+  - `vsa validate`
+  - `vsa process`
+  - `vsa build-markdown`
+- severity-overrides via `vsa.toml`;
+- verschil tussen `error` en `warning`;
+- syntax-errors blijven altijd hard;
+- standaard blijft semantiek `error`.

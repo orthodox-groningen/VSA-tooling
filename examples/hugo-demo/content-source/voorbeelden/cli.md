@@ -21,6 +21,7 @@ Deze sectie laat per `vsa`-commando zien hoe je het gebruikt.
 | [`vsa process`](process/) | SVG's maken uit Markdown |
 | [`vsa build-markdown`](build-markdown/) | Hugo Markdown + SVG bouwen |
 | [`vsa --version`](version/) | versie tonen |
+| [`--config`](config/) | configuratie en severity-overrides gebruiken |
 
 ## Snelle sanity check
 
@@ -32,4 +33,10 @@ Verwachte output:
 
 ```text
 OK
+```
+
+## Config gebruiken
+
+```cmd
+vsa validate bestand.vsa --config vsa.toml
 ```

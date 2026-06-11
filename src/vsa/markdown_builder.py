@@ -3,6 +3,7 @@ from pathlib import Path
 import re
 
 from .block_parser import START_MARKER, END_MARKER, parse_markdown_blocks
+from .config import VSAConfig
 from .svg_renderer import SVGRenderer
 from .validation_runner import validate_file
 from .markdown_processor import ProcessValidationError
@@ -21,6 +22,7 @@ def build_markdown_site(
     assets_url_prefix="/vsa",
     max_line_width=800.0,
     output_mode="img",
+    config: VSAConfig | None = None,
 ):
     input_dir = Path(input_dir)
     output_dir = Path(output_dir)
@@ -34,7 +36,7 @@ def build_markdown_site(
     all_messages = []
 
     for markdown_file in markdown_files:
-        validation = validate_file(markdown_file)
+        validation = validate_file(markdown_file, config=config)
 
         if not validation.ok:
             all_messages.extend(validation.messages)

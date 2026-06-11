@@ -24,8 +24,8 @@ def test_base_template_contains_navigation():
     ).read_text(encoding="utf-8")
 
     assert "Voorbeelden" in text
-    assert "voorbeelden/basis/" in text
-    assert "voorbeelden/cli/" in text
+    assert 'voorbeelden/basis/' in text
+    assert 'voorbeelden/cli/' in text
     assert "relURL" in text
 
 

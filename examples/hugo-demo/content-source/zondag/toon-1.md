@@ -1,11 +1,9 @@
 ---
-title: "Zondag toon 1"
+title: "Zondag - toon 1"
 ---
 
-Dit is een voorbeeldpagina.
+# Zondag - toon 1
 
 ::: vsa-notatie
-[:] {/Hei_}{/lig_} is de Heer. [:]
+[:] {/Hei_}{/lig_} is de Heer. [\\:]
 :::
-
-Meer tekst onder de notatie.

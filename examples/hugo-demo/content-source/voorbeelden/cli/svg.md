@@ -13,6 +13,12 @@ title: "CLI: vsa svg"
 
 Gebruik `vsa svg` om één `.vsa` bestand om te zetten naar één `.svg` afbeelding.
 
+## Input
+
+```text
+[:] {/Hei_}{/lig_} is de Heer. [\\:]
+```
+
 ## Commando
 
 ```cmd

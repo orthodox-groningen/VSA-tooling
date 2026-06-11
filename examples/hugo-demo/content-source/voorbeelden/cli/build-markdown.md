@@ -13,6 +13,11 @@ title: "CLI: vsa build-markdown"
 
 Dit is het belangrijkste commando voor Hugo.
 
+Het maakt:
+
+1. gegenereerde Markdown;
+2. gegenereerde SVG-bestanden.
+
 ## Commando
 
 ```cmd

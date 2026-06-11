@@ -13,6 +13,14 @@ title: "CLI: vsa process"
 
 Gebruik `vsa process` als je Markdown met VSA-blokken hebt en alleen SVG-bestanden wilt genereren.
 
+## Input Markdown
+
+````markdown
+::: vsa-notatie
+[:] {/Hei_}{/lig_} is de Heer. [\\:]
+:::
+````
+
 ## Commando
 
 ```cmd

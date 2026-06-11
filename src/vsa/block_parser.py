@@ -73,20 +73,17 @@ def parse_markdown_blocks(markdown: str):
             if stripped_inner == END_MARKER:
                 break
 
-            parsed_metadata = _parse_metadata_line(stripped_inner)
+            parsed = _parse_metadata_line(stripped_inner)
 
-            if parsed_metadata is not None:
-                key, value = parsed_metadata
-                metadata[key] = value
-            else:
+            if parsed is None:
                 body_lines.append(lines[index])
+            else:
+                key, value = parsed
+                metadata[key] = value
 
             index += 1
 
-        if index >= len(lines):
-            end_line = len(lines)
-        else:
-            end_line = index + 1
+        end_line = index + 1 if index < len(lines) else len(lines)
 
         blocks.append(
             MarkdownBlock(
@@ -106,15 +103,21 @@ def _parse_metadata_line(line: str):
     if line == "":
         return None
 
-    hash_match = re.fullmatch(r"#\s*([^:]+)\s*:\s*(.*)", line)
+    hash_match = re.match(
+        r"^#\s*([A-Za-z0-9_-]+)\s*:\s*(.*?)\s*$",
+        line,
+    )
 
     if hash_match:
-        return hash_match.group(1).strip(), hash_match.group(2).strip().strip('"')
+        return hash_match.group(1), hash_match.group(2)
 
-    assignment_match = re.fullmatch(r"([A-Za-z0-9_-]+)\s*=\s*\"(.*)\"", line)
+    assignment_match = re.match(
+        r'^([A-Za-z0-9_-]+)\s*=\s*"([^"]*)"\s*$',
+        line,
+    )
 
     if assignment_match:
-        return assignment_match.group(1).strip(), assignment_match.group(2).strip()
+        return assignment_match.group(1), assignment_match.group(2)
 
     return None
 

@@ -1,49 +1,23 @@
-# VSA stap 35 - URL policy fix
+# Stap 36 - site-demo ending fix
 
-Deze patch trekt alle URL-generatie recht voor:
+Deze patch herstelt de laatste falende test.
 
-- lokale Hugo-server;
-- lokale preview-build;
-- GitHub Pages deploy;
-- branch-aware artifacts.
-
-## Probleem
-
-Er waren twee soorten fouten:
-
-1. SVG's werden soms geladen vanaf domein-root:
+Probleem:
 
 ```text
-https://orthodox-groningen.github.io/vsa/...
+examples\site-demo\zondag\toon-1.md
 ```
 
-2. GitHub Pages kreeg soms een verkeerde baseURL:
+bevatte nog:
 
 ```text
-https://orthodox-groningen.github.io/orthodox-groningen/VSA-tooling/...
+[:] {/Hei_}{/lig_} is de Heer. [:]
 ```
 
-## Beleid
+Dat is sinds stap 36 semantisch ongeldig.
 
-| Context | baseURL |
-|---------|---------|
-| lokaal serveren | `/` |
-| lokale build | `/` |
-| GitHub Pages | `https://<owner>.github.io/<repo>/` |
-| artifact build | `/` |
-
-## Belangrijke regel
-
-Voor GitHub Pages gebruiken we niet:
+Fix:
 
 ```text
-github.server_url/github.repository
-```
-
-want dat is voor GitHub zelf, niet voor GitHub Pages.
-
-Wel:
-
-```text
-https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/
+[:] {/Hei_}{/lig_} is de Heer. [\\:]
 ```

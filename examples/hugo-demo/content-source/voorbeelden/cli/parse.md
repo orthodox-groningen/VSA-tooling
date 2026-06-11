@@ -13,6 +13,12 @@ title: "CLI: vsa parse"
 
 Gebruik `vsa parse --ast` om te zien hoe de parser de VSA-invoer intern begrijpt.
 
+## Input
+
+```text
+{/Hei_}
+```
+
 ## Commando
 
 ```cmd

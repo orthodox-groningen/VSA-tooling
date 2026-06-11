@@ -1,4 +1,5 @@
 {{ $src := .Get "src" }}
+{{ $src = replaceRE "^/" "" $src }}
 <div class="vsa-container">
   <img
     class="vsa-notation"

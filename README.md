@@ -1,19 +1,32 @@
-# VSA stap 34 - shortcode voorbeeld escape fix
+# VSA stap 34 - GitHub Pages SVG URL fix
 
-Deze patch lost het probleem op dat een shortcodevoorbeeld in een Markdown-codeblok toch door Hugo werd uitgevoerd.
+Probleem op GitHub Pages:
 
-Probleem:
-
-```go-html-template
-{{< vsa src="/vsa/demo-block-1.svg" >}}
+```text
+https://orthodox-groningen.github.io/vsa/...
 ```
 
-werd in de demo-site uitgevoerd, waardoor je een plaatje-placeholder zag in plaats van de tekst van de shortcode.
+maar de site staat onder:
+
+```text
+https://orthodox-groningen.github.io/VSA-tooling/
+```
+
+Dus de SVG moet worden:
+
+```text
+https://orthodox-groningen.github.io/VSA-tooling/vsa/...
+```
+
+Oorzaak:
+
+- `vsa build-markdown` genereert shortcode-bron met `src="/vsa/..."`;
+- de shortcode gaf die URL door aan `relURL`;
+- met een voorloopslash blijft de URL domein-root gericht.
 
 Fix:
 
-```go-html-template
-{{</* vsa src="/vsa/demo-block-1.svg" */>}}
-```
+- de shortcode verwijdert eerst de voorloopslash;
+- daarna wordt `relURL` toegepast.
 
-Hugo toont dit als shortcodevoorbeeld, maar voert het niet uit.
+Daardoor werkt zowel lokaal als op GitHub Pages.

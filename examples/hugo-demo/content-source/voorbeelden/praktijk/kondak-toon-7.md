@@ -18,7 +18,7 @@ en {/heeft} {\zijn} {\kracht} {\ver}{-&/nie}{/tigd_}.
 De hades werd ge{bon_}{\den_}.  
 Een{/stem}{\mig} {\ju}belen en roepen de pro{-&/fe}{/ten_}:  
 de Verlosser is aan hen die geloven ver{sche_}{\nen_}.  
-// {/Hij} sprak: ver{\heft_} {\u}, \{sta} {/op_} uit de {\dood_}. [\:]
+// {/Hij} sprak: ver{\heft_} {\u}, {\sta} {/op_} uit de {\dood_}. [\:]
 :::
 
 ---
@@ -30,7 +30,7 @@ en {/heeft} {\zijn} {\kracht} {\ver}{-&/nie}{/tigd_}.
 De hades werd ge{bon_}{\den_}.  
 Een{/stem}{\mig} {\ju}belen en roepen de pro{-&/fe}{/ten_}:  
 de Verlosser is aan hen die geloven ver{sche_}{\nen_}.  
-// {/Hij} sprak: ver{\heft_} {\u}, \{sta} {/op_} uit de {\dood_}. [\:]
+// {/Hij} sprak: ver{\heft_} {\u}, {\sta} {/op_} uit de {\dood_}. [\:]
 ```
 
 ---

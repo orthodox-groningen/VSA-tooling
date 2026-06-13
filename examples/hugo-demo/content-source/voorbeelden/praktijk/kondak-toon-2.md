@@ -19,7 +19,7 @@ was hij ver{\sla_}{\gen_},
 {/toen} de {/sche_}pping zag dat de doden wa{/ren} {/op_}{\ge_}{\staan_}
 was zij vervuld met {\vreu_}{\gde_},
 {/Adam} {/ju_}belt en het heelal zingt U lof ten al{/le} {/&\tij_&_}{\den_},
-// Gij {\mijn} {/Ver}{/&\&/los_&~&~}{\ser} {\en_} {\Heer_}. [\:]
+// Gij {\mijn} {/Ver}{/&\&/los_&~&~}{\ser_} {\en_} {\Heer_}. [\:]
 :::
 
 ---
@@ -32,7 +32,7 @@ was hij ver{\sla_}{\gen_},
 {/toen} de {/sche_}pping zag dat de doden wa{/ren} {/op_}{\ge_}{\staan_}
 was zij vervuld met {\vreu_}{\gde_},
 {/Adam} {/ju_}belt en het heelal zingt U lof ten al{/le} {/&\tij_&_}{\den_},
-// Gij {\mijn} {/Ver}{/&\&/los_&~&~}{\ser} {\en_} {\Heer_}. [\:]
+// Gij {\mijn} {/Ver}{/&\&/los_&~&~}{\ser_} {\en_} {\Heer_}. [\:]
 ```
 
 ---

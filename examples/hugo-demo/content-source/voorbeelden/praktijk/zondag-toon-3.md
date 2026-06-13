@@ -2,6 +2,10 @@
 title: "Zondag - toon 3"
 ---
 
+# Zondag - Toon 3
+
+Bron: koormap Groningen
+
 ## Tropaar (Toon 3)
 
 ::: vsa-notatie

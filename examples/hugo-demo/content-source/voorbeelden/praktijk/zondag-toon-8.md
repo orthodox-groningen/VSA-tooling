@@ -2,6 +2,10 @@
 title: "Zondag - toon 8"
 ---
 
+# Zondag - Toon 8
+
+Bron: koormap Groningen
+
 ## Tropaar (Toon 8)
 
 ::: vsa-notatie

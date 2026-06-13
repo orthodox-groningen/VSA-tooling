@@ -16,7 +16,7 @@ title: "Tropaar van de zondag - toon 4"
 {/de} blijde boodschap van de opstanding hadden ver{no_}{\men_},  
 wierpen zij {van_} {/zich_} {\af_}  
 {/de} veroordeling van de {voor_}ou{\ders_}.  
-De vrouwen die de Heer {-&/dien_&_}{\den}  
+De vrouwen die de Heer {-&/dien_&_}{\den_}   
 {/rie}pen jubelend tot de a{pos_}te{\len_}:  
 ver{nie_}{/tigd} is de {\dood_},  
 {/want} opgestaan is {Chris_}tus {\God_},  
@@ -30,7 +30,7 @@ ver{nie_}{/tigd} is de {\dood_},
 {/de} blijde boodschap van de opstanding hadden ver{no_}{\men_},  
 wierpen zij {van_} {/zich_} {\af_}  
 {/de} veroordeling van de {voor_}ou{\ders_}.  
-De vrouwen die de Heer {-&/dien_&_}{\den}  
+De vrouwen die de Heer {-&/dien_&_}{\den_}   
 {/rie}pen jubelend tot de a{pos_}te{\len_}:  
 ver{nie_}{/tigd} is de {\dood_},  
 {/want} opgestaan is {Chris_}tus {\God_},  

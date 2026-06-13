@@ -12,7 +12,7 @@ title: "Kondak van de zondag - toon 6"
 ---
 
 ::: vsa-notatie
-[:] Met Zijn le{/ven}{/schen_}kende {\hand}+  
+[:] Met Zijn le{/ven}{/schen_}kende {\hand_}  
 {\\heeft} Hij {/de} {/do}den opgewekt uit het dal {\der} {/duis_}{\ter_}{\nis_}.  
 {/De} Levenschenken{/de}, {/Chris_}{tus_} {\God_},  
 {\\heeft} aan {/het} {/men}selijk geslacht de opstanding {\ge}{/&\schon_&_}{\ken_}.  
@@ -25,7 +25,7 @@ title: "Kondak van de zondag - toon 6"
 ---
 
 ```text
-[:] Met Zijn le{/ven}{/schen_}kende {\hand}+  
+[:] Met Zijn le{/ven}{/schen_}kende {\hand_}  
 {\\heeft} Hij {/de} {/do}den opgewekt uit het dal {\der} {/duis_}{\ter_}{\nis_}.  
 {/De} Levenschenken{/de}, {/Chris_}{tus_} {\God_},  
 {\\heeft} aan {/het} {/men}selijk geslacht de opstanding {\ge}{/&\schon_&_}{\ken_}.  

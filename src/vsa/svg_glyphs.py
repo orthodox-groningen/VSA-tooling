@@ -2,9 +2,23 @@ from xml.sax.saxutils import escape
 
 
 class SVGGlyphRenderer:
-    def __init__(self, unit: int = 10):
+    def __init__(
+        self,
+        unit: float = 8.0,
+        upper_width_factor: float = 0.48,
+        lower_width_factor: float = 0.55,
+        upper_stroke_width_factor: float = 0.075,
+        lower_stroke_width_factor: float = 0.075,
+        upper_color: str = "black",
+        lower_color: str = "red",
+    ):
         self.unit = unit
-        self.stroke_width = max(1, unit / 8)
+        self.upper_width_factor = upper_width_factor
+        self.lower_width_factor = lower_width_factor
+        self.upper_stroke_width = max(1.0, unit * upper_stroke_width_factor)
+        self.lower_stroke_width = max(1.0, unit * lower_stroke_width_factor)
+        self.upper_color = upper_color
+        self.lower_color = lower_color
 
     def render_height_modifier(self, values, x, y, width):
         parts = []
@@ -17,7 +31,7 @@ class SVGGlyphRenderer:
 
         for index, value in enumerate(values):
             cx = x + (index * col_width) + (col_width / 2)
-            parts.extend(self._render_ehm(value, cx, y))
+            parts.extend(self._render_ehm(value, cx, y, col_width))
 
         return parts
 
@@ -36,87 +50,177 @@ class SVGGlyphRenderer:
 
         return parts
 
-    def _render_ehm(self, value, cx, y):
-        if value == "~":
+    def _render_ehm(self, value, cx, y, col_width):
+        if value in ["", "~"]:
             return []
+
+        width = self._glyph_width(col_width, self.upper_width_factor, cap_factor=1.35)
+        half_width = width / 2
+        half_height = half_width * 0.45
 
         if value == "-":
             return [
-                self._line(cx - self.unit / 2, y, cx + self.unit / 2, y)
+                self._line(
+                    cx - half_width,
+                    y,
+                    cx + half_width,
+                    y,
+                    color=self.upper_color,
+                    stroke_width=self.upper_stroke_width,
+                    css_class="vsa-glyph vsa-upper-glyph vsa-glyph-flat",
+                )
             ]
 
         if value == "+/":
             return [
                 self._text("+", cx - self.unit, y + 4),
-                self._line(cx - self.unit / 2, y + self.unit / 2, cx + self.unit / 2, y - self.unit / 2),
+                self._line(
+                    cx - half_width,
+                    y + half_height,
+                    cx + half_width,
+                    y - half_height,
+                    color=self.upper_color,
+                    stroke_width=self.upper_stroke_width,
+                    css_class="vsa-glyph vsa-upper-glyph vsa-glyph-rise",
+                ),
             ]
 
         if value == "-\\":
             return [
-                self._line(cx - self.unit, y, cx - self.unit / 4, y),
-                self._line(cx - self.unit / 2, y - self.unit / 2, cx + self.unit / 2, y + self.unit / 2),
+                self._line(
+                    cx - half_width,
+                    y,
+                    cx,
+                    y,
+                    color=self.upper_color,
+                    stroke_width=self.upper_stroke_width,
+                    css_class="vsa-glyph vsa-upper-glyph vsa-glyph-flat",
+                ),
+                self._line(
+                    cx - half_width / 2,
+                    y - half_height,
+                    cx + half_width,
+                    y + half_height,
+                    color=self.upper_color,
+                    stroke_width=self.upper_stroke_width,
+                    css_class="vsa-glyph vsa-upper-glyph vsa-glyph-fall",
+                ),
             ]
 
         if set(value) == {"/"}:
-            return self._stacked_slashes(cx, y, len(value), up=True)
+            return self._stacked_slashes(
+                cx,
+                y,
+                len(value),
+                up=True,
+                half_width=half_width,
+                half_height=half_height,
+            )
 
         if set(value) == {"\\"}:
-            return self._stacked_slashes(cx, y, len(value), up=False)
+            return self._stacked_slashes(
+                cx,
+                y,
+                len(value),
+                up=False,
+                half_width=half_width,
+                half_height=half_height,
+            )
 
         return []
 
     def _render_elm(self, value, cx, y, col_width):
-        if value in ["~", "-"]:
+        if value in ["", "~", "-"]:
             return []
+
+        width = self._glyph_width(col_width, self.lower_width_factor, cap_factor=1.45)
+        half_width = width / 2
 
         if set(value) == {"_"}:
             parts = []
             for index in range(len(value)):
-                yy = y + index * (self.unit / 2)
+                yy = y + index * (self.unit * 0.35)
                 parts.append(
-                    self._line(cx - col_width * 0.35, yy, cx + col_width * 0.35, yy)
+                    self._line(
+                        cx - half_width,
+                        yy,
+                        cx + half_width,
+                        yy,
+                        color=self.lower_color,
+                        stroke_width=self.lower_stroke_width,
+                        css_class="vsa-glyph vsa-lower-glyph vsa-glyph-length",
+                    )
                 )
             return parts
 
         if set(value) == {"."}:
             parts = []
             for index in range(len(value)):
-                yy = y + index * (self.unit / 2)
+                yy = y + index * (self.unit * 0.35)
                 parts.append(
-                    f'<circle cx="{cx:.2f}" cy="{yy:.2f}" r="{self.unit / 8:.2f}" fill="black"/>'
+                    f'<circle class="vsa-glyph vsa-lower-glyph vsa-glyph-dot" '
+                    f'cx="{cx:.2f}" cy="{yy:.2f}" '
+                    f'r="{max(1.0, self.unit / 8):.2f}" fill="{escape(self.lower_color)}"/>'
                 )
             return parts
 
         return []
 
-    def _stacked_slashes(self, cx, y, count, up):
+    def _glyph_width(self, col_width, factor, cap_factor):
+        # Uniforme accentlengte: liever ongeveer één dikke letter breed dan
+        # woordbreed. Bij heel smalle tekst blijft de glyph binnen de tekst.
+        desired = col_width * factor
+        cap = self.unit * cap_factor
+        return max(1.0, min(col_width, desired, cap))
+
+    def _stacked_slashes(self, cx, y, count, up, half_width, half_height):
         parts = []
 
+        stack_gap = max(3.0, self.unit * 0.46)
+
         for index in range(count):
-            yy = y - index * self.unit
+            yy = y - index * stack_gap
 
             if up:
                 parts.append(
-                    self._line(cx - self.unit / 2, yy + self.unit / 2, cx + self.unit / 2, yy - self.unit / 2)
+                    self._line(
+                        cx - half_width,
+                        yy + half_height,
+                        cx + half_width,
+                        yy - half_height,
+                        color=self.upper_color,
+                        stroke_width=self.upper_stroke_width,
+                        css_class="vsa-glyph vsa-upper-glyph vsa-glyph-rise",
+                    )
                 )
             else:
                 parts.append(
-                    self._line(cx - self.unit / 2, yy - self.unit / 2, cx + self.unit / 2, yy + self.unit / 2)
+                    self._line(
+                        cx - half_width,
+                        yy - half_height,
+                        cx + half_width,
+                        yy + half_height,
+                        color=self.upper_color,
+                        stroke_width=self.upper_stroke_width,
+                        css_class="vsa-glyph vsa-upper-glyph vsa-glyph-fall",
+                    )
                 )
 
         return parts
 
-    def _line(self, x1, y1, x2, y2):
+    def _line(self, x1, y1, x2, y2, color, stroke_width, css_class):
         return (
-            f'<line x1="{x1:.2f}" y1="{y1:.2f}" '
+            f'<line class="{css_class}" '
+            f'x1="{x1:.2f}" y1="{y1:.2f}" '
             f'x2="{x2:.2f}" y2="{y2:.2f}" '
-            f'stroke="black" stroke-width="{self.stroke_width:.2f}" '
+            f'stroke="{escape(color)}" stroke-width="{stroke_width:.2f}" '
             f'stroke-linecap="round"/>'
         )
 
     def _text(self, value, x, y):
         return (
-            f'<text x="{x:.2f}" y="{y:.2f}" '
+            f'<text class="vsa-glyph-text" x="{x:.2f}" y="{y:.2f}" '
+            f'xml:space="preserve" '
             f'font-family="Consolas" font-size="{self.unit * 1.2:.2f}">'
             f'{escape(value)}</text>'
         )

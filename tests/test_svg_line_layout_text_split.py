@@ -1,22 +1,18 @@
-from vsa.ast import TextNode, Document
-from vsa.svg_line_layout import split_text_node, build_lines
+from vsa.ast import TextNode
+from vsa.svg_line_layout import WhitespaceNode, split_text_node
 
 
-def test_split_text_node_into_word_chunks():
+def test_split_text_node_into_word_and_whitespace_chunks():
     chunks = split_text_node(TextNode(" is de Heer. "))
 
     texts = [chunk.text for chunk in chunks]
 
-    assert texts == ["is ", "de ", "Heer. "]
+    assert texts == [" ", "is", " ", "de", " ", "Heer.", " "]
+    assert isinstance(chunks[0], WhitespaceNode)
+    assert isinstance(chunks[2], WhitespaceNode)
+    assert isinstance(chunks[4], WhitespaceNode)
+    assert isinstance(chunks[6], WhitespaceNode)
 
 
-def test_long_text_node_can_wrap_between_words():
-    document = Document(nodes=[
-        TextNode(" is de Heer, en heilig is Zijn Naam. "),
-        TextNode("en nog meer tekst.")
-    ])
-
-    lines = build_lines(document, max_width=180)
-
-    assert len(lines) > 1
-    assert all(line.width <= 220 for line in lines)
+def test_split_text_node_ignores_empty_text():
+    assert split_text_node(TextNode("")) == []

@@ -51,6 +51,7 @@ def _build_parser():
     svg = subparsers.add_parser("svg")
     svg.add_argument("input")
     svg.add_argument("output")
+    svg.add_argument("--config", default=None)
     svg.add_argument("--max-line-width", type=float, default=None)
 
     process = subparsers.add_parser("process")
@@ -173,7 +174,7 @@ def _cmd_svg(args, config):
     text = Path(args.input).read_text(encoding="utf-8")
     document = Parser(text).parse()
 
-    renderer = SVGRenderer()
+    renderer = SVGRenderer(svg_config=config.rendering.svg)
     renderer.max_line_width = (
         args.max_line_width
         if args.max_line_width is not None

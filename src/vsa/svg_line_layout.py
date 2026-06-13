@@ -6,6 +6,11 @@ from .scope_layout import build_scope_layout, estimate_text_width
 
 
 @dataclass
+class WhitespaceNode:
+    text: str
+
+
+@dataclass
 class LayoutItem:
     node: object
     width: float
@@ -17,19 +22,32 @@ class LayoutLine:
     width: float = 0.0
 
 
+@dataclass
+class LineLayoutSettings:
+    font_size: float = 20.0
+    text_gap: float = 0.0
+    scope_gap: float = 0.0
+    pitch_marker_width: float = 20.0
+    pitch_marker_gap: float = 2.0
+
+
 def split_text_node(node: TextNode):
-    text = node.text.lstrip()
+    text = node.text
 
     if text == "":
         return []
 
-    parts = re.findall(r"\S+\s*", text)
+    tokens = re.findall(r"\s+|\S+", text)
 
-    return [
-        TextNode(text=part)
-        for part in parts
-        if part != ""
-    ]
+    result = []
+
+    for token in tokens:
+        if token.isspace():
+            result.append(WhitespaceNode(text=token))
+        else:
+            result.append(TextNode(text=token))
+
+    return result
 
 
 def iter_layout_nodes(document):
@@ -40,38 +58,96 @@ def iter_layout_nodes(document):
             yield node
 
 
-def measure_node(node):
+def measure_node(node, settings: LineLayoutSettings | None = None):
+    settings = settings or LineLayoutSettings()
+
+    if isinstance(node, WhitespaceNode):
+        return estimate_text_width(
+            node.text,
+            settings.font_size,
+            preserve_whitespace=True,
+        )
+
     if isinstance(node, TextNode):
-        return estimate_text_width(node.text, 20)
+        return estimate_text_width(
+            node.text,
+            settings.font_size,
+            preserve_whitespace=True,
+        ) + settings.text_gap
 
     if isinstance(node, ScopeNode):
-        return build_scope_layout(node).width + 4
+        return build_scope_layout(node).width + settings.scope_gap
 
     if isinstance(node, PitchMarkerNode):
-        return max(34.0, max(len(node.height_modifier), 1) * 28.0) + 8
+        marker_width = max(
+            settings.pitch_marker_width,
+            max(len(node.height_modifier), 1) * settings.pitch_marker_width,
+        )
+        return marker_width + settings.pitch_marker_gap
 
     return 0.0
 
 
-def build_lines(document, max_width: float = 800.0):
+def build_lines(
+    document,
+    max_width: float = 800.0,
+    settings: LineLayoutSettings | None = None,
+):
+    settings = settings or LineLayoutSettings()
     lines = []
     current = LayoutLine()
 
     for node in iter_layout_nodes(document):
-        width = measure_node(node)
+        width = measure_node(node, settings=settings)
 
-        if current.items and current.width + width > max_width:
-            lines.append(current)
+        if (
+            current.items
+            and current.width + width > max_width
+            and _may_break_before(current.items[-1].node, node)
+        ):
+            lines.append(_strip_trailing_whitespace(current))
             current = LayoutLine()
 
-            if isinstance(node, TextNode):
-                node = TextNode(text=node.text.lstrip())
-                width = measure_node(node)
+            if isinstance(node, WhitespaceNode):
+                continue
 
         current.items.append(LayoutItem(node=node, width=width))
         current.width += width
 
     if current.items:
-        lines.append(current)
+        lines.append(_strip_trailing_whitespace(current))
 
     return lines
+
+
+def _strip_trailing_whitespace(line: LayoutLine):
+    while line.items and isinstance(line.items[-1].node, WhitespaceNode):
+        item = line.items.pop()
+        line.width -= item.width
+
+    return line
+
+
+def _may_break_before(previous_node, next_node):
+    if isinstance(previous_node, PitchMarkerNode):
+        return True
+
+    if isinstance(next_node, PitchMarkerNode):
+        return True
+
+    if isinstance(previous_node, WhitespaceNode):
+        return True
+
+    if isinstance(next_node, WhitespaceNode):
+        return True
+
+    # De parser bewaart de spaties tussen "{tekst} {tekst}" soms niet als
+    # TextNode. Voor zulke losse ongemodificeerde scopes staan we wrapping toe.
+    if isinstance(previous_node, ScopeNode) and isinstance(next_node, ScopeNode):
+        return _scope_is_plain_word(previous_node) and _scope_is_plain_word(next_node)
+
+    return False
+
+
+def _scope_is_plain_word(node: ScopeNode):
+    return not node.height_modifier and not node.length_modifier

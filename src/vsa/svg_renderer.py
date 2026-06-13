@@ -1,41 +1,67 @@
 from xml.sax.saxutils import escape
 
 from .ast import TextNode, ScopeNode, PitchMarkerNode
+from .config import SVGRenderingConfig
 from .svg_glyphs import SVGGlyphRenderer
 from .scope_layout import build_scope_layout, estimate_text_width
-from .svg_line_layout import build_lines
+from .svg_line_layout import (
+    LineLayoutSettings,
+    WhitespaceNode,
+    build_lines,
+)
 
 
 class SVGRenderer:
-    def __init__(self):
-        self.font_family = "Segoe UI"
-        self.glyphs = SVGGlyphRenderer(unit=12)
+    def __init__(self, svg_config: SVGRenderingConfig | None = None):
+        self.svg_config = svg_config or SVGRenderingConfig()
 
-        self.left_margin = 40.0
-        self.top_margin = 40.0
-        self.line_height = 110.0
-        self.max_line_width = 800.0
+        self.font_family = self.svg_config.font_family
+        self.font_size = self.svg_config.font_size
 
-    def render_document(self, document):
-        lines = build_lines(document, self.max_line_width)
-
-        width = self.left_margin * 2 + max((line.width for line in lines), default=0)
-        width = max(width, 120.0)
-
-        height = self.top_margin * 2 + len(lines) * self.line_height
-        height = max(height, 120.0)
-
-        parts = []
-
-        parts.append(
-            f'<svg xmlns="http://www.w3.org/2000/svg" '
-            f'width="{width:.0f}" height="{height:.0f}" '
-            f'viewBox="0 0 {width:.0f} {height:.0f}">'
+        self.glyphs = SVGGlyphRenderer(
+            unit=max(6.0, self.font_size * 0.40),
+            upper_width_factor=self.svg_config.upper.width_factor,
+            lower_width_factor=self.svg_config.lower.width_factor,
+            upper_stroke_width_factor=self.svg_config.upper.stroke_width_factor,
+            lower_stroke_width_factor=self.svg_config.lower.stroke_width_factor,
+            upper_color=self.svg_config.upper.color,
+            lower_color=self.svg_config.lower.color,
         )
 
-        parts.append('<rect width="100%" height="100%" fill="white"/>')
+        self.left_margin = self.svg_config.margin_x
+        self.top_margin = self.svg_config.margin_y
+        self.line_height = self.svg_config.line_height
+        self.max_line_width = 800.0
 
-        # Bewaar originele plain text als metadata voor debugging en regressietests.
+        self.text_gap = self.svg_config.text_gap
+        self.scope_gap = self.svg_config.scope_gap
+        self.optical_scope_gap = self.svg_config.optical_scope_gap
+        self.pitch_marker_gap = self.svg_config.pitch_marker_gap
+
+    def render_document(self, document):
+        line_settings = LineLayoutSettings(
+            font_size=self.font_size,
+            text_gap=self.text_gap,
+            scope_gap=self.scope_gap,
+            pitch_marker_width=self.svg_config.pitch_marker.width,
+            pitch_marker_gap=self.pitch_marker_gap,
+        )
+        lines = build_lines(document, self.max_line_width, settings=line_settings)
+
+        width = self.left_margin * 2 + max((line.width for line in lines), default=0)
+        width = max(width, 60.0)
+
+        height = self.top_margin * 2 + len(lines) * self.line_height
+        height = max(height, 55.0)
+
+        parts = [
+            f'<svg class="vsa-svg" xmlns="http://www.w3.org/2000/svg" '
+            f'width="{width:.0f}" height="{height:.0f}" '
+            f'viewBox="0 0 {width:.0f} {height:.0f}">',
+            '<rect width="100%" height="100%" fill="white"/>',
+            '<g class="vsa-score">',
+        ]
+
         for node in document.nodes:
             if isinstance(node, TextNode):
                 text = node.text.strip()
@@ -44,22 +70,37 @@ class SVGRenderer:
 
         for line_index, line in enumerate(lines):
             x = self.left_margin
-            baseline_y = self.top_margin + 70 + (line_index * self.line_height)
+            baseline_y = self.top_margin + 28 + (line_index * self.line_height)
+            previous_rendered_node = None
 
-            for item in line.items:
+            parts.append(f'<g class="vsa-line" data-vsa-line="{line_index + 1}">')
+
+            for item_index, item in enumerate(line.items, start=1):
                 node = item.node
 
-                if isinstance(node, TextNode):
-                    x = self._render_text(parts, node.text, x, baseline_y)
+                if isinstance(node, WhitespaceNode):
+                    x = self._render_whitespace(node, x)
+                    previous_rendered_node = node
+
+                elif isinstance(node, TextNode):
+                    x = self._render_text(parts, node.text, x, baseline_y, item_index)
+                    previous_rendered_node = node
 
                 elif isinstance(node, ScopeNode):
-                    x = self._render_scope(parts, node, x, baseline_y)
+                    if _needs_optical_scope_gap(previous_rendered_node, node):
+                        x += self.optical_scope_gap
+
+                    x = self._render_scope(parts, node, x, baseline_y, item_index)
+                    previous_rendered_node = node
 
                 elif isinstance(node, PitchMarkerNode):
-                    x = self._render_pitch_marker(parts, node, x, baseline_y)
+                    x = self._render_pitch_marker(parts, node, x, baseline_y, item_index)
+                    previous_rendered_node = node
 
+            parts.append("</g>")
+
+        parts.append("</g>")
         parts.append("</svg>")
-
         return "\n".join(parts)
 
     def render(self, positions):
@@ -76,72 +117,125 @@ class SVGRenderer:
 
         return self.render_document(Document(nodes=nodes))
 
-    def _render_text(self, parts, text, x, baseline_y):
+    def _render_whitespace(self, node, x):
+        return x + estimate_text_width(node.text, self.font_size, preserve_whitespace=True)
+
+    def _render_text(self, parts, text, x, baseline_y, item_index):
         if text == "":
             return x
 
+        parts.append(f'<g class="vsa-unit vsa-unit-text" data-vsa-unit="{item_index}">')
         parts.append(
-            f'<text x="{x:.2f}" y="{baseline_y:.2f}" '
-            f'font-family="{self.font_family}" font-size="20">'
+            f'<text class="vsa-text vsa-free-text" x="{x:.2f}" y="{baseline_y:.2f}" '
+            f'xml:space="preserve" '
+            f'font-family="{escape(self.font_family)}" font-size="{self.font_size:.2f}">'
             f'{escape(text)}</text>'
         )
+        parts.append("</g>")
 
-        return x + estimate_text_width(text, 20)
+        return x + estimate_text_width(text, self.font_size, preserve_whitespace=True) + self.text_gap
 
-    def _render_scope(self, parts, node, x, baseline_y):
+    def _render_scope(self, parts, node, x, baseline_y, item_index):
         layout = build_scope_layout(node)
-
         running_x = x
+        upper_y = baseline_y + self.svg_config.upper.offset_y
+        filler_y = baseline_y + self.svg_config.filler_offset_y
+
+        parts.append(f'<g class="vsa-unit vsa-unit-scope" data-vsa-unit="{item_index}">')
+        parts.append('<g class="vsa-glyph-group vsa-upper-glyphs">')
 
         for column in layout.columns:
             parts.extend(
-                self.glyphs.render_height_modifier(
-                    [column.ehm],
-                    running_x,
-                    baseline_y - 38,
-                    column.width,
-                )
+                self.glyphs.render_height_modifier([column.ehm], running_x, upper_y, column.width)
             )
+            running_x += column.width
 
+        parts.append("</g>")
+
+        running_x = x
+        parts.append('<g class="vsa-glyph-group vsa-lower-glyphs">')
+
+        for column in layout.columns:
             parts.extend(
                 self.glyphs.render_length_modifier(
                     [column.elm],
                     running_x,
-                    baseline_y + 18,
+                    baseline_y + self.svg_config.lower.offset_y,
                     column.width,
                 )
             )
-
             running_x += column.width
 
+        parts.append("</g>")
+
         parts.append(
-            f'<text x="{x:.2f}" y="{baseline_y:.2f}" '
-            f'font-family="{self.font_family}" font-size="20">'
+            f'<text class="vsa-text vsa-sung-text" x="{x:.2f}" y="{baseline_y:.2f}" '
+            f'xml:space="preserve" '
+            f'font-family="{escape(self.font_family)}" font-size="{self.font_size:.2f}">'
             f'{escape(layout.text)}</text>'
         )
 
-        return x + layout.width + 4
+        if getattr(layout, "filler_width", 0.0) > 2.0:
+            start = x + layout.text_width + 1.0
+            end = x + layout.width - 2.0
+            if end > start:
+                parts.append(
+                    f'<line class="vsa-filler-line" '
+                    f'x1="{start:.2f}" y1="{filler_y:.2f}" '
+                    f'x2="{end:.2f}" y2="{filler_y:.2f}" '
+                    f'stroke="black" stroke-width="1.00" stroke-linecap="round"/>'
+                )
 
-    def _render_pitch_marker(self, parts, node, x, baseline_y):
-        width = max(34.0, max(len(node.height_modifier), 1) * 28.0)
+        parts.append("</g>")
+        return x + layout.width + self.scope_gap
+
+    def _render_pitch_marker(self, parts, node, x, baseline_y, item_index):
+        width = max(
+            self.svg_config.pitch_marker.width,
+            max(len(node.height_modifier), 1) * self.svg_config.pitch_marker.width,
+        )
+
+        parts.append(f'<g class="vsa-unit vsa-pitch-marker" data-vsa-unit="{item_index}">')
 
         if node.height_modifier:
             column_width = width / len(node.height_modifier)
-
+            parts.append('<g class="vsa-pitch-marker-upper-glyph vsa-upper-glyphs">')
             for index, ehm in enumerate(node.height_modifier):
                 parts.extend(
                     self.glyphs.render_height_modifier(
                         [ehm],
                         x + index * column_width,
-                        baseline_y - 38,
+                        baseline_y + self.svg_config.upper.offset_y,
                         column_width,
                     )
                 )
+            parts.append("</g>")
+
+        dash_width = width * self.svg_config.pitch_marker.dash_width_factor
+        dash_start = x + (width - dash_width) / 2
+        dash_end = dash_start + dash_width
+        dash_y = baseline_y + self.svg_config.pitch_marker.offset_y
 
         parts.append(
-            f'<line x1="{x:.2f}" y1="{baseline_y - 8:.2f}" '
-            f'x2="{x + width:.2f}" y2="{baseline_y - 8:.2f}" '
-            f'stroke="black" stroke-width="2"/>'
+            f'<line class="vsa-pitch-marker-dash" '
+            f'x1="{dash_start:.2f}" y1="{dash_y:.2f}" '
+            f'x2="{dash_end:.2f}" y2="{dash_y:.2f}" '
+            f'stroke="black" stroke-width="1.50" stroke-linecap="round"/>'
         )
+        parts.append("</g>")
 
-        return x + width + 8
+        return x + width + self.pitch_marker_gap
+
+
+def _needs_optical_scope_gap(previous_node, current_node):
+    if not isinstance(previous_node, ScopeNode):
+        return False
+
+    if not isinstance(current_node, ScopeNode):
+        return False
+
+    return _scope_has_visible_modifiers(previous_node) or _scope_has_visible_modifiers(current_node)
+
+
+def _scope_has_visible_modifiers(node):
+    return bool(node.height_modifier or node.length_modifier)

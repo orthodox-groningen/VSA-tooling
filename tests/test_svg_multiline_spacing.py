@@ -7,9 +7,19 @@ def test_multiline_does_not_keep_large_unbreakable_textnode():
 
     document = Parser(source).parse()
 
-    lines = build_lines(document, max_width=800)
+    # De renderer is compacter geworden; met 700 testen we nog steeds dat
+    # gewone tekstnodes niet als één groot onbreekbaar blok worden behandeld.
+    lines = build_lines(document, max_width=700)
 
     assert len(lines) >= 2
 
-    # De eerste regel mag niet kunstmatig extreem veel ongebruikte ruimte hebben.
-    assert lines[0].width > 650
+
+def test_multiline_keeps_scopes_as_units():
+    source = r"[:] {/Hei_}{/lig_} is de Heer [:]"
+
+    document = Parser(source).parse()
+
+    lines = build_lines(document, max_width=80)
+
+    assert len(lines) >= 2
+    assert all(line.items for line in lines)

@@ -6,6 +6,61 @@
 5. Demo-site afronden (zie verderop)
 6. MusicXML-export starten (dat is een grote stap; zie ook hieronder): AST → MusicXML.
 
+## 1. Hoogte-controle bij laatste hoogte-marker
+
+Het volgende is fout, maar wordt niet gedetecteerd
+
+::: vsa-notatie
+[//:] aap{/noot}{/mies}, [:]
+:::
+
+## 2. Specificatie change voor `+/` en `-\` 
+
+Liturgicon, p247, derde regel van onderen, heeft:
+<!-- [:] {{ ... }} {\heeft} mijn {\geest_} {-&/in} {/&\God}, {\&/mijn} {\&+\Red_&_}{/der_}. [/:] -->
+
+De syntax `+\` is nu nog geen geldige EHM, maar zou dat wel kunnen worden conform dit gebruik.
+Dan betekent `+` in een EHM gewoon een halve stap erbij, en zou `-` een halve stap eraf zijn.
+Dan: `/+` is zoals het liturgicon zegt, maar dan is `+` op zichzelf ook goed.
+
+## 3. Kommentaar niet valideren
+
+Het moet mogelijk zijn om in kommentaarblokken (of regelcommentaar) ongeldige syntax of semantiek
+te beschrijven. Er moeten dus manieren komen om aan te geven wat blok-commentaar en wat regel-commentaar is.
+
+
+7. Muzikale semantiek uitbreiden, bijv:
+   - toonhoogte-continuïteit
+   - bereikcontrole
+   - verboden overgangspatronen
+   - alignment-validatie
+   - multi-voice voorbereiding
+
+8. AST/formalisering verbeteren (nu nog vrij pragmatisch, later):
+   - expliciete node-typen
+   - spans/ranges
+   - source maps
+   - roundtrip parsing
+
+9. CLI professionaliseren, bijv:
+   - colored diagnostics
+   - --json
+   - --warnings-as-errors
+   - statistics
+   - lint mode
+
+10. Multi-voice / sync placeholders (dat eerdere grote idee voor nieuwe major release):
+   - placeholders
+   - stem-sync
+   - gedeelde ritmische structuur
+   - SATB
+
+11. Editor tooling, bijv:
+   - VS Code extension
+   - syntax highlighting
+   - live validation
+   - hover diagnostics
+
 ## CLI netter maken
 
 1. betere foutmeldingen (alle foutmeldingen moeten niet alleen aangeven wat er fout is, en waar (bestand, regelnummer, positie), maar ook wat er concreet gebeuren moet om de fout op te lossen). foutmeldingen moeten bruikbaar zijn voor non-techies (zoals ik).
@@ -35,3 +90,13 @@ Je had het over: spacing, typografie, regels, glyph-posities, etc. Lijkt me prim
    - in de handleiding ook zijn beschreven
 5. nagaan of het mogelijk is in de hugo demo om gebruikers de mogelijkheid geven om parameters in te vullen om te zien welke effecten dat heeft, bijvoorbeeld de breedte van een SVG, andere rendering-variabelen of keuze opties.
 6. Nagaan wat er veranderd is aan de oorspronkelijk VSA referentie v1 (v1.0) en aan de gebruikershandleiding documenten, en wat er nog aan gedaan moet worden, gegeven alle veranderingen in de code van de repo. In het bijzonder kan ik me voorstellen dat de gebruikershandleiding gebruik maakt van het feit dat er een hugo demo site bestaat waar lezers zelf dingen kunnen zien (zeker als ze daarin ook parameters kunnen uitproberen)
+
+## bracket-token dispatch in parser:
+
+Bracket-token dispatch in parser:
+- huidige parser behandelt alles tussen [ ... ] als pitchmarker
+- wrap-tokens zoals [/?] conflicteren daardoor implementatietechnisch
+- toekomstige oplossing:
+  - token dispatching
+  - meerdere bracket-token families
+  - voorbereiding op MusicXML/control tokens

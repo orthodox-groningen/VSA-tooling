@@ -1,20 +1,17 @@
-# Hugo demo praktijk layout fallback fix
+# Stap 54 - fillerhoogte en optische scope-gap
 
-Deze overlay pakt twee mogelijke oorzaken aan:
+Deze stap verwerkt de visuele observaties na stap 53.
 
-1. `voorbeelden/praktijk.md` botst met `voorbeelden/praktijk/`.
-2. Hugo gebruikt geen passende list-template, waardoor `<main class="page"></main>` leeg blijft.
+## Wijzigingen
 
-## Na uitpakken
+- EHM-hoogte blijft ongewijzigd.
+- Filler-lines staan niet meer op EHM-hoogte, maar op tekst/dash-hoogte.
+- Er komt een kleine optische gap tussen aanpalende gemodificeerde scopes.
+- Dit moet overlap zoals `me{\\de}{/eeu_}wi{\ge}` verminderen.
+- Single-EHM glyphbreedte blijft gecapt op accentbreedte.
 
-```cmd
-scripts\fix-praktijk-navigation.cmd
-scripts\build-hugo.cmd
-scripts\serve-hugo.cmd
-```
-
-## Debug
+## Test
 
 ```cmd
-scripts\debug-praktijk-navigation.cmd
+scripts\retry.cmd vsa-step54-filler-and-optical-gap.zip
 ```

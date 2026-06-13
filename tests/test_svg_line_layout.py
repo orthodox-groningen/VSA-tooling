@@ -2,10 +2,12 @@ from vsa.parser import Parser
 from vsa.svg_line_layout import build_lines
 
 
-def test_short_document_stays_on_one_line():
-    document = Parser("{tekst}").parse()
+def test_short_document_stays_one_line():
+    source = "{tekst}"
 
-    lines = build_lines(document, max_width=800)
+    document = Parser(source).parse()
+
+    lines = build_lines(document, max_width=300)
 
     assert len(lines) == 1
 

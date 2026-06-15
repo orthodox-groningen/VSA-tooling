@@ -28,7 +28,7 @@ class PitchMarkerConfig:
 
 @dataclass
 class SVGRenderingConfig:
-    font_family: str = "Segoe UI"
+    font_family: str = "DejaVu Sans"
     font_size: float = 20.0
     line_height: float = 44.0
     text_gap: float = 0.0
@@ -124,14 +124,9 @@ def _load_svg_rendering_config(config: SVGRenderingConfig, data: dict):
     if "scope-gap" in data:
         config.scope_gap = _non_negative_float(data["scope-gap"], "rendering.svg.scope-gap")
     if "optical-scope-gap" in data:
-        config.optical_scope_gap = _non_negative_float(
-            data["optical-scope-gap"],
-            "rendering.svg.optical-scope-gap",
-        )
+        config.optical_scope_gap = _non_negative_float(data["optical-scope-gap"], "rendering.svg.optical-scope-gap")
     if "pitch-marker-gap" in data:
-        config.pitch_marker_gap = _non_negative_float(
-            data["pitch-marker-gap"], "rendering.svg.pitch-marker-gap"
-        )
+        config.pitch_marker_gap = _non_negative_float(data["pitch-marker-gap"], "rendering.svg.pitch-marker-gap")
     if "margin-x" in data:
         config.margin_x = _non_negative_float(data["margin-x"], "rendering.svg.margin-x")
     if "margin-y" in data:
@@ -157,9 +152,7 @@ def _load_upper_glyph_config(config: UpperGlyphConfig, data: dict):
     if "offset-y" in data:
         config.offset_y = float(data["offset-y"])
     if "stroke-width-factor" in data:
-        config.stroke_width_factor = _positive_float(
-            data["stroke-width-factor"], "rendering.svg.glyphs.upper.stroke-width-factor"
-        )
+        config.stroke_width_factor = _positive_float(data["stroke-width-factor"], "rendering.svg.glyphs.upper.stroke-width-factor")
     if "color" in data:
         config.color = _non_empty_string(data["color"], "rendering.svg.glyphs.upper.color")
 
@@ -172,9 +165,7 @@ def _load_lower_glyph_config(config: LowerGlyphConfig, data: dict):
     if "offset-y" in data:
         config.offset_y = float(data["offset-y"])
     if "stroke-width-factor" in data:
-        config.stroke_width_factor = _positive_float(
-            data["stroke-width-factor"], "rendering.svg.glyphs.lower.stroke-width-factor"
-        )
+        config.stroke_width_factor = _positive_float(data["stroke-width-factor"], "rendering.svg.glyphs.lower.stroke-width-factor")
     if "color" in data:
         config.color = _non_empty_string(data["color"], "rendering.svg.glyphs.lower.color")
 
@@ -185,9 +176,7 @@ def _load_pitch_marker_config(config: PitchMarkerConfig, data: dict):
     if "width" in data:
         config.width = _positive_float(data["width"], "rendering.svg.pitch-marker.width")
     if "dash-width-factor" in data:
-        config.dash_width_factor = _positive_float(
-            data["dash-width-factor"], "rendering.svg.pitch-marker.dash-width-factor"
-        )
+        config.dash_width_factor = _positive_float(data["dash-width-factor"], "rendering.svg.pitch-marker.dash-width-factor")
     if "offset-y" in data:
         config.offset_y = float(data["offset-y"])
 

@@ -3,6 +3,7 @@ import re
 
 from .ast import TextNode, ScopeNode, PitchMarkerNode
 from .scope_layout import build_scope_layout, estimate_text_width
+from .spacing_policy import whitespace_width
 
 
 @dataclass
@@ -34,6 +35,7 @@ class LineLayoutSettings:
     scope_gap: float = 0.0
     pitch_marker_width: float = 20.0
     pitch_marker_gap: float = 2.0
+    font_family: str = "DejaVu Sans"
 
 
 def split_text_node(node: TextNode):
@@ -42,8 +44,6 @@ def split_text_node(node: TextNode):
     if text == "":
         return []
 
-    # Markdown hardbreak spaces before a physical newline are not content
-    # inside VSA notation.
     text = re.sub(r"[ \t]+(\r\n|\r|\n)", r"\1", text)
 
     tokens = re.findall(r"\r\n|\r|\n|\s+|[^\s\r\n]+", text)
@@ -76,21 +76,22 @@ def measure_node(node, settings: LineLayoutSettings | None = None):
         return 0.0
 
     if isinstance(node, WhitespaceNode):
-        return estimate_text_width(
-            node.text,
-            settings.font_size,
-            preserve_whitespace=True,
-        )
+        return whitespace_width(node.text, settings.font_size, settings.font_family)
 
     if isinstance(node, TextNode):
         return estimate_text_width(
             node.text,
             settings.font_size,
             preserve_whitespace=True,
+            font_family=settings.font_family,
         ) + settings.text_gap
 
     if isinstance(node, ScopeNode):
-        return build_scope_layout(node).width + settings.scope_gap
+        return build_scope_layout(
+            node,
+            text_font_size=settings.font_size,
+            font_family=settings.font_family,
+        ).width + settings.scope_gap
 
     if isinstance(node, PitchMarkerNode):
         marker_width = max(

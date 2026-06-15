@@ -4,6 +4,7 @@ from .ast import TextNode, ScopeNode, PitchMarkerNode
 from .config import SVGRenderingConfig
 from .svg_glyphs import SVGGlyphRenderer
 from .scope_layout import build_scope_layout, estimate_text_width
+from .spacing_policy import filler_line_geometry, whitespace_width
 from .svg_line_layout import (
     LineLayoutSettings,
     WhitespaceNode,
@@ -45,6 +46,7 @@ class SVGRenderer:
             scope_gap=self.scope_gap,
             pitch_marker_width=self.svg_config.pitch_marker.width,
             pitch_marker_gap=self.pitch_marker_gap,
+            font_family=self.font_family,
         )
         lines = build_lines(document, self.max_line_width, settings=line_settings)
 
@@ -118,7 +120,7 @@ class SVGRenderer:
         return self.render_document(Document(nodes=nodes))
 
     def _render_whitespace(self, node, x):
-        return x + estimate_text_width(node.text, self.font_size, preserve_whitespace=True)
+        return x + whitespace_width(node.text, self.font_size, self.font_family)
 
     def _render_text(self, parts, text, x, baseline_y, item_index):
         if text == "":
@@ -133,10 +135,19 @@ class SVGRenderer:
         )
         parts.append("</g>")
 
-        return x + estimate_text_width(text, self.font_size, preserve_whitespace=True) + self.text_gap
+        return x + estimate_text_width(
+            text,
+            self.font_size,
+            preserve_whitespace=True,
+            font_family=self.font_family,
+        ) + self.text_gap
 
     def _render_scope(self, parts, node, x, baseline_y, item_index):
-        layout = build_scope_layout(node)
+        layout = build_scope_layout(
+            node,
+            text_font_size=self.font_size,
+            font_family=self.font_family,
+        )
         running_x = x
         upper_y = baseline_y + self.svg_config.upper.offset_y
         filler_y = baseline_y + self.svg_config.filler_offset_y
@@ -175,13 +186,14 @@ class SVGRenderer:
 
         if getattr(layout, "filler_width", 0.0) > 2.0:
             start = x + layout.text_width + 1.0
-            end = x + layout.width - 2.0
-            if end > start:
+            end = x + layout.width - 3.0
+            draw_start, draw_end = filler_line_geometry(start, end, layout.filler_width, self.font_size)
+            if draw_end > draw_start:
                 parts.append(
                     f'<line class="vsa-filler-line" '
-                    f'x1="{start:.2f}" y1="{filler_y:.2f}" '
-                    f'x2="{end:.2f}" y2="{filler_y:.2f}" '
-                    f'stroke="black" stroke-width="1.00" stroke-linecap="round"/>'
+                    f'x1="{draw_start:.2f}" y1="{filler_y:.2f}" '
+                    f'x2="{draw_end:.2f}" y2="{filler_y:.2f}" '
+                    f'stroke="black" stroke-width="0.75" stroke-linecap="round"/>'
                 )
 
         parts.append("</g>")
@@ -235,6 +247,3 @@ def _needs_optical_scope_gap(previous_node, current_node):
 
 def _scope_has_visible_modifiers(node):
     return bool(node.height_modifier or node.length_modifier)
-
-
-# step60 multiline baseline debug

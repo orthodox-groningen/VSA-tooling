@@ -1,0 +1,23 @@
+DejaVu Fonts license note
+
+The DejaVu fonts are based on Bitstream Vera fonts.
+The DejaVu project states that DejaVu changes are in the public domain,
+while the fonts also include Bitstream Vera and Arev-related license terms.
+
+When shipping DejaVuSans.ttf in this repository, include the complete upstream
+DejaVu Fonts license text here.
+
+Upstream license source:
+
+https://dejavu-fonts.github.io/License.html
+
+Repository license source:
+
+https://github.com/dejavu-fonts/dejavu-fonts/blob/master/LICENSE
+
+Status for this patch:
+
+- The font policy and default lookup are added.
+- The actual DejaVuSans.ttf file is not included in this patch.
+- Before committing a TTF file, replace this note with the complete upstream
+  license text and verify that the selected TTF comes from the matching source.

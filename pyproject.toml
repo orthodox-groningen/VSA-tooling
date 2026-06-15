@@ -16,3 +16,9 @@ package-dir = {"" = "src"}
 [tool.setuptools.packages.find]
 where = ["src"]
 
+
+
+[project.optional-dependencies]
+rendering = [
+    "Pillow>=10.0",
+]

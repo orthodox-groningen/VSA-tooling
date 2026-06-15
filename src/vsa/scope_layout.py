@@ -29,6 +29,7 @@ def build_scope_layout(
     node,
     minimum_column_width: float = MIN_GLYPH_CELL_WIDTH,
     text_font_size: float = 20.0,
+    font_family: str = "Segoe UI",
 ):
     hm = node.height_modifier or []
     lm = node.length_modifier or []
@@ -50,7 +51,7 @@ def build_scope_layout(
         lm = lm * count
 
     text = node.text
-    text_width = estimate_scope_text_width(text, text_font_size)
+    text_width = estimate_scope_text_width(text, text_font_size, font_family=font_family)
 
     if count <= 1:
         grid_width = text_width
@@ -81,9 +82,19 @@ def build_scope_layout(
     )
 
 
-def estimate_scope_text_width(text: str, font_size: float):
-    return _estimate_scope_text_width(text, font_size)
+def estimate_scope_text_width(text: str, font_size: float, font_family: str = "Segoe UI"):
+    return _estimate_scope_text_width(text, font_size, font_family=font_family)
 
 
-def estimate_text_width(text: str, font_size: float, preserve_whitespace: bool = True):
-    return _estimate_text_width(text, font_size, preserve_whitespace=preserve_whitespace)
+def estimate_text_width(
+    text: str,
+    font_size: float,
+    preserve_whitespace: bool = True,
+    font_family: str = "Segoe UI",
+):
+    return _estimate_text_width(
+        text,
+        font_size,
+        preserve_whitespace=preserve_whitespace,
+        font_family=font_family,
+    )

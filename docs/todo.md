@@ -50,7 +50,7 @@ Te onderzoeken:
 
 Actie:
 
-- Liturgikon-voorbeeld opnieuw bekijken;
+- Liturgikon-voorbeeld opnieuw bekijken (zwaar gebruikt bij 'zaligsprekingen' op pp. 54-55);
 - syntax en semantiek specificeren;
 - parser uitbreiden;
 - validator uitbreiden;

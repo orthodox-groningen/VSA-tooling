@@ -3,6 +3,8 @@ setlocal
 
 cd /d %~dp0\..
 
+call .venv\Scripts\activate
+
 echo.
 echo === VSA + Hugo build ===
 echo.
@@ -12,7 +14,8 @@ vsa validate examples\hugo-demo\content-source
 if errorlevel 1 exit /b 1
 
 echo.
-echo [2/4] Generate Markdown + SVG
+echo [2/4] Generate Markdown + SVG
+python scripts\update-spacing-diagnostics-metadata.py
 vsa build-markdown ^
   examples\hugo-demo\content-source ^
   generated\hugo\content ^

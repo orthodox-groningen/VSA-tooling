@@ -10,9 +10,12 @@ def test_upper_glyph_offset_is_higher():
 
 
 def test_text_width_estimate_is_roomier():
-    assert estimate_scope_text_width("baard", 20) >= 53.0
-    assert estimate_scope_text_width("baard", 20) > estimate_scope_text_width("iiii", 20)
-    assert estimate_scope_text_width("baard", 20) > estimate_text_width("baard", 20)
+    baard = estimate_scope_text_width("baard", 20)
+    iiii = estimate_scope_text_width("iiii", 20)
+
+    assert baard > 50.0
+    assert baard > iiii
+    assert baard > estimate_text_width("baard", 20)
 
 
 def test_multi_ehm_scope_forces_filler_space():

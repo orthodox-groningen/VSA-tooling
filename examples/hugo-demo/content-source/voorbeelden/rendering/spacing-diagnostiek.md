@@ -4,6 +4,25 @@ title: "Spacing diagnostiek"
 
 # Spacing diagnostiek
 
+<!-- VSA-METRICS-START -->
+## Metrics van deze build
+
+| Kenmerk | Waarde |
+|---|---|
+| Font | `DejaVu Sans` |
+| Backend | `pillow` |
+| Real metrics | `True` |
+| Fontpad | `assets\fonts\DejaVuSans.ttf` |
+| Fontgrootte | `20` |
+| Ascent | `19.0` |
+| Descent | `5.0` |
+| Breedte `iiii` | `24.0` |
+| Breedte `mmmm` | `76.0` |
+| Breedte `eeu` | `37.0` |
+| Breedte `baard` | `58.0` |
+
+<!-- VSA-METRICS-END -->
+
 Deze pagina bevat kleine, gerichte voorbeelden om SVG-spacing, tekstmeting en overlap te inspecteren.
 
 Gebruik deze pagina bij wijzigingen aan:

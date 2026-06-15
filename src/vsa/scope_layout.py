@@ -1,5 +1,10 @@
 from dataclasses import dataclass
 
+from .text_metrics import (
+    estimate_scope_text_width as _estimate_scope_text_width,
+    estimate_text_width as _estimate_text_width,
+)
+
 
 MIN_GLYPH_CELL_WIDTH = 14.0
 
@@ -50,9 +55,6 @@ def build_scope_layout(
     if count <= 1:
         grid_width = text_width
     else:
-        # Multi-EHM/ELM scopes hebben ruimte nodig voor afzonderlijke glyphs.
-        # Daarom krijgt zo'n scope minstens count * minimum_column_width,
-        # plus een kleine rechterbuffer zodat de filler-line zichtbaar kan zijn.
         grid_width = max(
             text_width + minimum_column_width,
             count * minimum_column_width,
@@ -72,27 +74,16 @@ def build_scope_layout(
 
     return ScopeLayout(
         text=text,
-        width=grid_width,
+        width=round(grid_width, 2),
         columns=columns,
-        text_width=text_width,
-        filler_width=filler_width,
+        text_width=round(text_width, 2),
+        filler_width=round(filler_width, 2),
     )
 
 
 def estimate_scope_text_width(text: str, font_size: float):
-    if text == "":
-        return max(4.0, font_size * 0.25)
-
-    return round(max(4.0, len(text) * font_size * 0.55), 2)
+    return _estimate_scope_text_width(text, font_size)
 
 
 def estimate_text_width(text: str, font_size: float, preserve_whitespace: bool = True):
-    if text == "":
-        return 0.0
-
-    visible = text if preserve_whitespace else text.strip()
-
-    if visible == "":
-        return 0.0
-
-    return round(len(visible) * font_size * 0.55, 2)
+    return _estimate_text_width(text, font_size, preserve_whitespace=preserve_whitespace)

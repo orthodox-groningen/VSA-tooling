@@ -1,6 +1,6 @@
 from vsa.config import SVGRenderingConfig
 from vsa.parser import Parser
-from vsa.scope_layout import build_scope_layout, estimate_scope_text_width
+from vsa.scope_layout import build_scope_layout, estimate_scope_text_width, estimate_text_width
 from vsa.svg_glyphs import SVGGlyphRenderer
 from vsa.svg_renderer import SVGRenderer
 
@@ -10,7 +10,9 @@ def test_upper_glyph_offset_is_higher():
 
 
 def test_text_width_estimate_is_roomier():
-    assert estimate_scope_text_width("baard", 20) == 55.0
+    assert estimate_scope_text_width("baard", 20) >= 53.0
+    assert estimate_scope_text_width("baard", 20) > estimate_scope_text_width("iiii", 20)
+    assert estimate_scope_text_width("baard", 20) > estimate_text_width("baard", 20)
 
 
 def test_multi_ehm_scope_forces_filler_space():

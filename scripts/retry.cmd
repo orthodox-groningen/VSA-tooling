@@ -11,4 +11,3 @@ if %errorlevel% neq 0 (
     echo Test failed - ERRORLEVEL=%errorlevel%
     exit /b 1
 )
-pause

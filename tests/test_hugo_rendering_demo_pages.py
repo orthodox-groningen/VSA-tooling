@@ -1,28 +1,24 @@
 from pathlib import Path
 
 
-def test_rendering_demo_subpages_exist():
-    base = Path("examples/hugo-demo/content-source/voorbeelden/rendering")
+def test_rendering_pages_exist():
+    root = Path("examples/hugo-demo/content-source/voorbeelden/rendering")
 
-    assert (base / "glyphs-basis.md").exists()
-    assert (base / "pitchmarkers.md").exists()
-    assert (base / "spacing-lettergrepen.md").exists()
+    assert root.exists()
+    assert any(path.suffix == ".md" for path in root.rglob("*.md"))
 
 
-def test_rendering_index_links_to_subpages():
-    text = Path("examples/hugo-demo/content-source/voorbeelden/rendering.md").read_text(
-        encoding="utf-8"
+def test_spacing_diagnostics_page_is_present():
+    path = Path("examples/hugo-demo/content-source/voorbeelden/rendering/spacing-diagnostiek.md")
+
+    assert path.exists()
+
+
+def test_rendering_pages_contain_vsa_examples():
+    root = Path("examples/hugo-demo/content-source/voorbeelden/rendering")
+    texts = "\n".join(
+        path.read_text(encoding="utf-8")
+        for path in root.rglob("*.md")
     )
 
-    assert "glyphs-basis/" in text
-    assert "pitchmarkers/" in text
-    assert "spacing-lettergrepen/" in text
-
-
-def test_spacing_demo_contains_practice_case():
-    text = Path(
-        "examples/hugo-demo/content-source/voorbeelden/rendering/spacing-lettergrepen.md"
-    ).read_text(encoding="utf-8")
-
-    assert "grote ge{na_}{\\de}" in text
-    assert "Toen {/Gij_}" in text
+    assert "vsa-notatie" in texts

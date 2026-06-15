@@ -1,17 +1,29 @@
-# Stap 61 - Markdown hardbreak newlines
+# Stap 63 - rendering spacing diagnostics
 
-Toon 8 gebruikt in de VSA-bron regels met twee spaties vóór newline:
+Deze stap voegt een diagnostische Hugo-pagina toe voor spacing/overlap inspectie.
 
-```markdown
-... {\ge_}.  
-Drie ...
+Doel:
+
+- snel zien of stap 62 verbetering geeft;
+- bekende probleemgevallen bij elkaar zetten;
+- later makkelijk regressies herkennen.
+
+## Nieuwe pagina
+
+```text
+/voorbeelden/rendering/spacing-diagnostiek/
 ```
 
-Binnen een `vsa-notatie` blok moeten die twee spaties niet als gewone inline
-spacing blijven meetellen. Ze betekenen hier praktisch: einde bronregel.
+Met voorbeelden rond:
 
-Deze stap:
+- `me{\\de}{/eeu_}wi{\ge}`;
+- `eerstge{/bo_}re{\ne_}`;
+- `{/ge}{/&/o}pen{baard_}`;
+- `ge{\ble_}{\ven_}`;
+- filler-lines bij multi-EHM scopes.
 
-- normaliseert `  \r\n`, `  \n`, `  \r` naar gewone newline;
-- stript trailing whitespace vóór harde bronregelgrenzen;
-- voegt regressietests toe op toon-8-achtige bron.
+## Test
+
+```cmd
+scripts\retry.cmd vsa-step63-rendering-spacing-diagnostics.zip
+```

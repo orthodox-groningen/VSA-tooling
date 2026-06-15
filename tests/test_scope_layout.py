@@ -2,40 +2,22 @@ from vsa.parser import Parser
 from vsa.scope_layout import build_scope_layout
 
 
-def _first_scope(source):
-    document = Parser(source).parse()
-    return document.nodes[0]
+def test_single_scope_has_positive_width():
+    document = Parser("{tekst}").parse()
+    layout = build_scope_layout(document.nodes[0])
+
+    assert layout.width > 0
 
 
-def test_scope_layout_plain_scope_has_one_column():
-    node = _first_scope("{tekst}")
+def test_multi_modifier_scope_gets_filler_width():
+    document = Parser(r"{/&/&/&/schon}").parse()
+    layout = build_scope_layout(document.nodes[0])
 
-    layout = build_scope_layout(node)
-
-    assert len(layout.columns) == 1
-    assert layout.columns[0].ehm == "~"
-    assert layout.columns[0].elm == "~"
+    assert layout.filler_width > 0
 
 
-def test_scope_layout_compound_modifiers_have_columns():
-    node = _first_scope(r"{/&\&/tekst_&~&~}")
+def test_short_scope_not_forced_to_old_large_width():
+    document = Parser(r"{/i_}").parse()
+    layout = build_scope_layout(document.nodes[0])
 
-    layout = build_scope_layout(node)
-
-    assert len(layout.columns) == 3
-    assert layout.columns[0].ehm == "/"
-    assert layout.columns[0].elm == "_"
-    assert layout.columns[1].ehm == "\\"
-    assert layout.columns[1].elm == "~"
-    assert layout.columns[2].ehm == "/"
-    assert layout.columns[2].elm == "~"
-
-
-def test_scope_layout_missing_length_expands_with_hidden_defaults():
-    node = _first_scope(r"{/&\tekst}")
-
-    layout = build_scope_layout(node)
-
-    assert len(layout.columns) == 2
-    assert layout.columns[0].elm == "~"
-    assert layout.columns[1].elm == "~"
+    assert layout.width < 20

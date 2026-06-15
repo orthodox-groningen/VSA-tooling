@@ -9,7 +9,7 @@ De inhoud van deze pagina is ontleend aan het Liturgikon.
 
 ### TROPARION t.1 (als Woensag)
 ::: vsa-notatie
-[:] Heer, red Uw {/&/volk_&_} en ze{/gen} {/Uw} {/erf_}{deel_}; * 
+[:] Heer, red Uw {/&/volk_&_} {\\en} ze{/gen} {/Uw} {/erf_}{deel_}; * 
 {\en} bescherm Uw Gemeente {\door_} {Uw_} {\Kruis_}. [:]
 :::
 

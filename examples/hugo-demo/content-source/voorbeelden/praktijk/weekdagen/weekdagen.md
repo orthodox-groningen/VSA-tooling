@@ -163,7 +163,7 @@ Zij worden geplant in het Huis des Heren, en zullen bloeien in de voorhoven van 
 
 ### TROPARION t.1
 ::: vsa-notatie
-[:] Heer, red Uw {/&/volk_&_} en ze{/gen} {/Uw} {/erf_}{deel_}; * 
+[:] Heer, red Uw {/&/volk_&_} {\\en} ze{/gen} {/Uw} {/erf_}{deel_}; * 
 {\en} bescherm Uw Gemeente {\door_} {Uw_} {\Kruis_}. [:]
 :::
 
@@ -261,7 +261,7 @@ God is verheerlijkt in de raad der Heiligen; groot en ontzagwekkend boven allen 
 
 ### TROPARION t.1
 ::: vsa-notatie
-[:] Heer, red Uw {/&/volk_&_} en ze{/gen} {/Uw} {/erf_}{deel_}; * 
+[:] Heer, red Uw {/&/volk_&_} {\\en} ze{/gen} {/Uw} {/erf_}{deel_}; * 
 {\en} bescherm Uw Gemeente {\door_} {Uw_} {\Kruis_}. [:]
 :::
 

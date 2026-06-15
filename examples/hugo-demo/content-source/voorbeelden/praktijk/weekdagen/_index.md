@@ -6,6 +6,8 @@ title: "Praktijkvoorbeelden"
 
 [Alle weekdagen](weekdagen/)
 
+[Antifonen](antifonen/)
+
 [maandag](maandag/)
 [dinsdag](dinsdag/)
 [woensdag](woensdag/)

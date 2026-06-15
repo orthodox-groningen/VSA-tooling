@@ -23,3 +23,6 @@ hugo server ^
   --source examples\hugo-demo ^
   --contentDir ..\..\generated\hugo\content ^
   --baseURL /
+  --disableFastRender
+  --forceSyncStatic
+  --noHTTPCache

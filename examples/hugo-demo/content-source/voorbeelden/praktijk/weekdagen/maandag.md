@@ -53,4 +53,3 @@ Looft den Heer uit de hemelen,
 looft Hem in den hoge. 
 Looft Hem, al Zijn Engelen; 
 looft Hem, al Zijn Krachten.
-

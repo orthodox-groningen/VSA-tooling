@@ -13,7 +13,11 @@ jobs:
           echo "This legacy workflow is disabled by default."
           echo "Use hugo-demo.yml for the active Hugo demo build."
 
+
+
+
       - name: Install rendering fonts
+        if: runner.os == 'Linux'
         run: sudo apt-get update && sudo apt-get install -y fonts-dejavu-core
 
       - name: Install rendering dependencies

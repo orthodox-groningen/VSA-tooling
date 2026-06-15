@@ -205,6 +205,37 @@ Er moet een config-specificatie komen waarin gebruikers voorkeuren kunnen opgeve
 
 Config moet vóór gebruik gevalideerd worden.
 
+
+### 4.6 Woord-georiënteerde SVG-layout
+
+Status: `Later`
+
+De huidige SVG-renderer werkt met losse render-units:
+
+- vrije tekst;
+- zangelementen/scopes;
+- pitchmarkers;
+- whitespace.
+
+Dat is inmiddels bruikbaar, maar bij woorden die uit meerdere tekst- en scopefragmenten bestaan,
+blijven kleine kieren zichtbaar. Voorbeelden:
+
+- `me{\\de}{/eeu_}wi{\ge}`;
+- `eerstge{/bo_}re{\ne_}`;
+- `ge{\ble_}{\ven_}`;
+- `{/ge}{/&/o}pen{baard_}`;
+- `schon...ken` met filler.
+
+Waarschijnlijk vraagt dit om een aparte woord-georiënteerde layoutfase:
+
+```text
+bronsegmenten → woordcluster → tekst als geheel meten → glyphs per segment positioneren
+```
+
+Dat is geen kleine tuningstap maar een grotere rendererarchitectuurstap.
+
+Voor nu is de huidige rendering voldoende bruikbaar; dit punt later opnieuw oppakken.
+
 ## 5. CLI professionaliseren
 
 Status: `Open`

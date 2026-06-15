@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+from .markdown_newline_policy import preserve_vsa_source_newlines
 import argparse
 import json
 import sys
@@ -136,7 +137,7 @@ def _cmd_validate(args, config):
 
 def _cmd_parse(args):
     text = Path(args.path).read_text(encoding="utf-8")
-    document = Parser(text).parse()
+    document = Parser(preserve_vsa_source_newlines(text)).parse()
 
     if args.ast:
         print(json.dumps(document.to_dict(), ensure_ascii=False, indent=2))
@@ -172,7 +173,7 @@ def _cmd_blocks(args):
 
 def _cmd_svg(args, config):
     text = Path(args.input).read_text(encoding="utf-8")
-    document = Parser(text).parse()
+    document = Parser(preserve_vsa_source_newlines(text)).parse()
 
     renderer = SVGRenderer(svg_config=config.rendering.svg)
     renderer.max_line_width = (

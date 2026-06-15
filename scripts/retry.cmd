@@ -6,7 +6,7 @@ if not exist "c:\Users\rj200\Downloads\%1" (
 )
 cls
 tar -xf "c:\Users\rj200\Downloads\%1"
-scripts\test.cmd
+call scripts\test.cmd
 if %errorlevel% neq 0 (
     echo Test failed - ERRORLEVEL=%errorlevel%
     exit /b 1

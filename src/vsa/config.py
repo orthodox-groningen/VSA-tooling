@@ -14,7 +14,7 @@ class UpperGlyphConfig:
 @dataclass
 class LowerGlyphConfig:
     width_factor: float = 0.55
-    offset_y: float = 5.0
+    offset_y: float = 7.0
     stroke_width_factor: float = 0.075
     color: str = "red"
 
@@ -33,7 +33,7 @@ class SVGRenderingConfig:
     line_height: float = 44.0
     text_gap: float = 0.0
     scope_gap: float = 0.0
-    optical_scope_gap: float = 2.0
+    optical_scope_gap: float = 4.0
     pitch_marker_gap: float = 4.0
     margin_x: float = 8.0
     margin_y: float = 8.0

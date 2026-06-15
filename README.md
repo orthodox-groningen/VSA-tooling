@@ -1,17 +1,17 @@
-# Stap 54 - fillerhoogte en optische scope-gap
+# Stap 61 - Markdown hardbreak newlines
 
-Deze stap verwerkt de visuele observaties na stap 53.
+Toon 8 gebruikt in de VSA-bron regels met twee spaties vóór newline:
 
-## Wijzigingen
-
-- EHM-hoogte blijft ongewijzigd.
-- Filler-lines staan niet meer op EHM-hoogte, maar op tekst/dash-hoogte.
-- Er komt een kleine optische gap tussen aanpalende gemodificeerde scopes.
-- Dit moet overlap zoals `me{\\de}{/eeu_}wi{\ge}` verminderen.
-- Single-EHM glyphbreedte blijft gecapt op accentbreedte.
-
-## Test
-
-```cmd
-scripts\retry.cmd vsa-step54-filler-and-optical-gap.zip
+```markdown
+... {\ge_}.  
+Drie ...
 ```
+
+Binnen een `vsa-notatie` blok moeten die twee spaties niet als gewone inline
+spacing blijven meetellen. Ze betekenen hier praktisch: einde bronregel.
+
+Deze stap:
+
+- normaliseert `  \r\n`, `  \n`, `  \r` naar gewone newline;
+- stript trailing whitespace vóór harde bronregelgrenzen;
+- voegt regressietests toe op toon-8-achtige bron.

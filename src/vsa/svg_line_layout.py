@@ -11,6 +11,11 @@ class WhitespaceNode:
 
 
 @dataclass
+class HardBreakNode:
+    token: str = "\n"
+
+
+@dataclass
 class LayoutItem:
     node: object
     width: float
@@ -37,12 +42,18 @@ def split_text_node(node: TextNode):
     if text == "":
         return []
 
-    tokens = re.findall(r"\s+|\S+", text)
+    # Markdown hardbreak spaces before a physical newline are not content
+    # inside VSA notation.
+    text = re.sub(r"[ \t]+(\r\n|\r|\n)", r"\1", text)
+
+    tokens = re.findall(r"\r\n|\r|\n|\s+|[^\s\r\n]+", text)
 
     result = []
 
     for token in tokens:
-        if token.isspace():
+        if token in ("\r\n", "\r", "\n"):
+            result.append(HardBreakNode(token=token))
+        elif token.isspace():
             result.append(WhitespaceNode(text=token))
         else:
             result.append(TextNode(text=token))
@@ -60,6 +71,9 @@ def iter_layout_nodes(document):
 
 def measure_node(node, settings: LineLayoutSettings | None = None):
     settings = settings or LineLayoutSettings()
+
+    if isinstance(node, HardBreakNode):
+        return 0.0
 
     if isinstance(node, WhitespaceNode):
         return estimate_text_width(
@@ -98,6 +112,11 @@ def build_lines(
     current = LayoutLine()
 
     for node in iter_layout_nodes(document):
+        if isinstance(node, HardBreakNode):
+            lines.append(_strip_trailing_whitespace(current))
+            current = LayoutLine()
+            continue
+
         width = measure_node(node, settings=settings)
 
         if (
@@ -114,7 +133,7 @@ def build_lines(
         current.items.append(LayoutItem(node=node, width=width))
         current.width += width
 
-    if current.items:
+    if current.items or not lines:
         lines.append(_strip_trailing_whitespace(current))
 
     return lines
@@ -141,8 +160,6 @@ def _may_break_before(previous_node, next_node):
     if isinstance(next_node, WhitespaceNode):
         return True
 
-    # De parser bewaart de spaties tussen "{tekst} {tekst}" soms niet als
-    # TextNode. Voor zulke losse ongemodificeerde scopes staan we wrapping toe.
     if isinstance(previous_node, ScopeNode) and isinstance(next_node, ScopeNode):
         return _scope_is_plain_word(previous_node) and _scope_is_plain_word(next_node)
 

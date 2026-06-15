@@ -145,9 +145,7 @@ class SVGRenderer:
         parts.append('<g class="vsa-glyph-group vsa-upper-glyphs">')
 
         for column in layout.columns:
-            parts.extend(
-                self.glyphs.render_height_modifier([column.ehm], running_x, upper_y, column.width)
-            )
+            parts.extend(self.glyphs.render_height_modifier([column.ehm], running_x, upper_y, column.width))
             running_x += column.width
 
         parts.append("</g>")
@@ -230,12 +228,13 @@ class SVGRenderer:
 def _needs_optical_scope_gap(previous_node, current_node):
     if not isinstance(previous_node, ScopeNode):
         return False
-
     if not isinstance(current_node, ScopeNode):
         return False
-
     return _scope_has_visible_modifiers(previous_node) or _scope_has_visible_modifiers(current_node)
 
 
 def _scope_has_visible_modifiers(node):
     return bool(node.height_modifier or node.length_modifier)
+
+
+# step60 multiline baseline debug

@@ -7,7 +7,7 @@ Bij pagina's in subdirectories werd soms naar een verkeerde SVG verwezen.
 Voorbeeld:
 
 ```text
-content-source\voorbeelden\praktijk\weekdagen\woensdag.md
+content-source\praktijk\weekdagen\woensdag.md
 ```
 
 moet verwijzen naar:

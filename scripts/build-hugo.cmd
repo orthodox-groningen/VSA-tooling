@@ -16,6 +16,10 @@ if errorlevel 1 exit /b 1
 echo.
 echo [2/4] Generate Markdown + SVG
 
+
+python scripts\update-nav-placeholders.py
+
+
 python scripts\update-spacing-diagnostics-metadata.py
 vsa build-markdown ^
   examples\hugo-demo\content-source ^
@@ -23,8 +27,10 @@ vsa build-markdown ^
   generated\hugo\static\vsa
 if errorlevel 1 exit /b 1
 
-echo.
-python scripts\repair-vsa-image-refs.py
+echo.
+
+python scripts\repair-vsa-image-refs.py
+
 
 echo [3/4] Run tests
 python -m pytest

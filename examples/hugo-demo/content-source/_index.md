@@ -4,18 +4,13 @@ title: "Home"
 
 # Home
 
-<!-- VSA-SITE-NAV-START -->
-## Navigatie
-
-- [Voorbeelden](./voorbeelden/)
-- [Praktijkvoorbeelden](./voorbeelden/praktijk/)
-- [Renderingvoorbeelden](./voorbeelden/rendering/)
-<!-- VSA-SITE-NAV-END -->
-
-
-<!-- Gegenereerd door scripts/apply-step71-hugo-index-navigation.py -->
-
-## Secties
-
+<!-- VSA-NAV:CHILDREN -->
+<!-- VSA-NAV-GENERATED:CHILDREN-START -->
+- [Praktijkvoorbeelden](praktijk/)
 - [Voorbeelden](voorbeelden/)
-- [Zondag](zondag/)
+<!-- VSA-NAV-GENERATED:CHILDREN-END -->
+<!-- VSA-NAV:PAGES -->
+<!-- VSA-NAV-GENERATED:PAGES-START -->
+<!-- Geen items voor PAGES. -->
+<!-- VSA-NAV-GENERATED:PAGES-END -->
+Deze pagina kan redactioneel worden aangevuld. Het navigatiegedeelte hieronder wordt automatisch bijgewerkt.

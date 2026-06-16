@@ -122,7 +122,7 @@ def update_home_page() -> None:
         "## Navigatie",
         "",
         "- [Voorbeelden](./voorbeelden/)",
-        "- [Praktijkvoorbeelden](./voorbeelden/praktijk/)",
+        "- [Praktijkvoorbeelden](./praktijk/)",
         "- [Renderingvoorbeelden](./voorbeelden/rendering/)",
         END,
     ])

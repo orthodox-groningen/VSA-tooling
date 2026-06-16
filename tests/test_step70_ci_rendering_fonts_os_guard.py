@@ -1,47 +1,62 @@
 from pathlib import Path
-import subprocess
-import sys
+from importlib.util import module_from_spec, spec_from_file_location
 
 
 SCRIPT = Path("scripts/apply-step70-ci-rendering-fonts-os-guard.py")
 WORKFLOW_DIR = Path(".github/workflows")
 
 
+def load_step70_module():
+    spec = spec_from_file_location("apply_step70", SCRIPT)
+    module = module_from_spec(spec)
+    assert spec is not None
+    assert spec.loader is not None
+    spec.loader.exec_module(module)
+    return module
+
+
 def test_step70_script_exists():
     assert SCRIPT.exists()
 
 
-def test_step70_script_runs():
-    result = subprocess.run(
-        [sys.executable, str(SCRIPT)],
-        check=False,
-        capture_output=True,
-        text=True,
-    )
+def test_patch_workflow_adds_linux_guard_without_touching_files():
+    mod = load_step70_module()
 
-    assert result.returncode == 0
-    assert "Stap 70" in result.stdout
+    source = """name: test
+jobs:
+  test:
+    runs-on: windows-latest
+    steps:
+      - name: Run tests
+        run: pytest
+"""
 
+    patched = mod.patch_workflow(source)
 
-def test_rendering_font_install_is_linux_guarded_after_apply():
-    if not WORKFLOW_DIR.exists():
-        return
-
-    offenders = []
-
-    for path in list(WORKFLOW_DIR.glob("*.yml")) + list(WORKFLOW_DIR.glob("*.yaml")):
-        text = path.read_text(encoding="utf-8")
-
-        if "fonts-dejavu-core" not in text:
-            continue
-
-        if "if: runner.os == 'Linux'" not in text:
-            offenders.append(str(path))
-
-    assert offenders == []
+    assert "Install rendering fonts" in patched
+    assert "if: runner.os == 'Linux'" in patched
+    assert "fonts-dejavu-core" in patched
 
 
-def test_no_unguarded_sudo_apt_get_font_step_after_apply():
+def test_patch_workflow_is_idempotent_without_touching_files():
+    mod = load_step70_module()
+
+    source = """name: test
+jobs:
+  test:
+    runs-on: windows-latest
+    steps:
+      - name: Run tests
+        run: pytest
+"""
+
+    once = mod.patch_workflow(source)
+    twice = mod.patch_workflow(once)
+
+    assert once == twice
+
+
+def test_existing_workflows_do_not_have_unguarded_font_install():
     if not WORKFLOW_DIR.exists():
         return
 

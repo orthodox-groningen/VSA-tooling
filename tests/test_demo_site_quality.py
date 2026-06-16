@@ -19,4 +19,4 @@ def test_hugo_demo_has_static_directory():
 
 def test_hugo_demo_practice_files_are_checked_separately():
     assert Path("examples/hugo-demo/content-source").exists()
-    assert Path("examples/hugo-demo/content-source/voorbeelden/praktijk").exists()
+    assert Path("examples/hugo-demo/content-source/praktijk").exists()

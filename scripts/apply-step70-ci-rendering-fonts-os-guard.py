@@ -66,12 +66,13 @@ def patch_workflow(text: str) -> str:
 def remove_existing_font_steps(text: str) -> str:
     # Verwijder eerdere Install rendering fonts blokken, inclusief foute sudo op Windows.
     pattern = re.compile(
-        r"\n?      - name: Install rendering fonts\n"
+        r"(?:\n)?"
+        r"      - name: Install rendering fonts\n"
         r"(?:        if: .*\n)?"
         r"        run: .*(?:fonts-dejavu-core|apt-get).*\n",
         flags=re.MULTILINE,
     )
-    return pattern.sub("\n", text)
+    return pattern.sub("", text)
 
 
 if __name__ == "__main__":

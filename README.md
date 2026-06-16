@@ -1,21 +1,18 @@
-# Stap 72 - fix nested VSA image refs
+# Stap 83 - stop muterende workflow-tests
 
-Bug:
+Probleem:
 
-```text
-examples\hugo-demo\content-source\voorbeelden\praktijk\weekdagen\woensdag.md
-```
-
-genereert SVG:
+`build-hugo.cmd` draait de test-suite. Sommige tests voerden `apply-step*.py` scripts uit.
+Daardoor werden echte repo-bestanden aangepast tijdens tests, o.a.:
 
 ```text
-examples\hugo-demo\public\vsa\voorbeelden-praktijk-weekdagen-woensdag-block-1.svg
+.github\workflows\*.yml
 ```
 
-maar HTML verwees naar:
+Dat veroorzaakte steeds extra lege regels in workflow-bestanden.
 
-```html
-<img class="vsa-notation" src="/vsa/voorbeelden-praktijk-donderdag-block-1.svg">
-```
+Oplossing:
 
-Deze stap voegt een repair/check-script toe dat VSA image refs baseert op het volledige relatieve pagina-pad.
+- stap-70 test voert het apply-script niet meer uit op de echte repo;
+- test alleen nog de pure patchfunctie op tekst;
+- workflow YAML-bestanden kunnen eenmalig opgeschoond worden.

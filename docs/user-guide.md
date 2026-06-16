@@ -7,6 +7,9 @@ De voorbeelden zijn geschreven voor Windows 11 en CMD.exe.
 ## 1. Wat doet de VSA-tool?
 
 De VSA-tool helpt bij het werken met VSA-notatie.
+- Onder een VSA-tekst verstaan we een tekst waarin naast gewone tekst ook (geldige) VSA-syntax constructies zitten; een VSA-tekst kan worden omgezet (gerenderd) naar plaatjes (SVG) en later ook andere dingen.
+- Onder een VSA-bestand verstaan we een bestand waarin uitsluitend VSA-tekst zit.
+- Onder een VSA-blok verstaan we een tekst die begint met `::: vsa-notatie` en eindigt met `:::` (beiden aan het begin van een regel), en waartussen zich vsa-tekst bevindt. VSA-blokken zitten typisch in markdown bestanden
 
 De tool kan:
 

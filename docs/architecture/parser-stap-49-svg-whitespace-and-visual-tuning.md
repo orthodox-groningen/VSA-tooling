@@ -1,6 +1,6 @@
 # Stap 49 - SVG whitespace en visuele tuning
 
-Deze stap verwerkt praktijkobservaties uit `/voorbeelden/praktijk/`.
+Deze stap verwerkt praktijkobservaties uit `/praktijk/`.
 
 ## Belangrijk
 

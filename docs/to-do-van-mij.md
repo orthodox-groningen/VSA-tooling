@@ -1,6 +1,5 @@
 # TODO lijst
 
-
 1. Hoogte-controle bij laatste hoogte-marker
 
 Het volgende is fout, maar wordt niet gedetecteerd

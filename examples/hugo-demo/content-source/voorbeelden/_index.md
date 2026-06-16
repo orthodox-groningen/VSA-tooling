@@ -4,18 +4,22 @@ title: "Voorbeelden"
 
 # Voorbeelden
 
-## Beschikbare categorieën
-
-| Pagina | Beschrijving |
-|--------|--------------|
-| [Basis](basis/) | eenvoudige voorbeelden |
-| [Multiline](multiline/) | regelafbreking |
-| [Fouten](fouten/) | validatiefouten |
-| [Markdown](markdown/) | Markdown + Hugo |
-| [CLI](cli/) | commando-output |
-| [Rendering](rendering/) | renderer/layout |
-| [Praktijk](praktijk/) | troparen en kondaken uit de praktijk |
-
-## Navigatie
+<!-- Gegenereerd door scripts/apply-step71-hugo-index-navigation.py -->
 
 - [Home](../)
+- [Omhoog](../)
+
+## Secties
+
+- [CLI](cli/)
+- [Praktijk](praktijk/)
+- [Rendering](rendering/)
+
+## Pagina's
+
+- [Basisvoorbeelden](basis/)
+- [CLI demo's](cli/)
+- [Foutvoorbeelden](fouten/)
+- [Markdown en Hugo](markdown/)
+- [Multiline voorbeelden](multiline/)
+- [Rendering voorbeelden](rendering/)

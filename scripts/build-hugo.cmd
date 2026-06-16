@@ -14,7 +14,8 @@ vsa validate examples\hugo-demo\content-source
 if errorlevel 1 exit /b 1
 
 echo.
-echo [2/4] Generate Markdown + SVG
+echo [2/4] Generate Markdown + SVG
+
 python scripts\update-spacing-diagnostics-metadata.py
 vsa build-markdown ^
   examples\hugo-demo\content-source ^
@@ -22,7 +23,9 @@ vsa build-markdown ^
   generated\hugo\static\vsa
 if errorlevel 1 exit /b 1
 
-echo.
+echo.
+python scripts\repair-vsa-image-refs.py
+
 echo [3/4] Run tests
 python -m pytest
 if errorlevel 1 exit /b 1

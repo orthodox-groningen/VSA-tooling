@@ -1,16 +1,21 @@
 ---
-title: "Praktijkvoorbeelden"
+title: "Weekdagen"
 ---
 
 # Weekdagen
 
-[Alle weekdagen](weekdagen/)
+<!-- Gegenereerd door scripts/apply-step71-hugo-index-navigation.py -->
 
-[Antifonen](antifonen/)
+- [Home](../../../)
+- [Omhoog](../)
 
-[maandag](maandag/)
-[dinsdag](dinsdag/)
-[woensdag](woensdag/)
-[donderdag](donderdag/)
-[vrijdag](vrijdag/)
-[zaterdag](zaterdag/)
+## Pagina's
+
+- [Antifonen - weekdagen](antifonen/)
+- [Dinsdag — H. Joannes de Doper](dinsdag/)
+- [Donderdag — H. Apostelen](donderdag/)
+- [Maandag - de Heilige Engelen](maandag/)
+- [Vrijdag — het Heilig Kruis](vrijdag/)
+- [Weekdagen volgens Liturgikon (p244-251)](weekdagen/)
+- [Woensdag — het Heilig Kruis](woensdag/)
+- [Zaterdag — de Koren der Heiligen](zaterdag/)

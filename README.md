@@ -1,21 +1,21 @@
-# Stap 70 - CI rendering fonts OS guard
+# Stap 72 - fix nested VSA image refs
 
-GitHub Actions faalde omdat een Linux-commando op een Windows runner werd uitgevoerd:
+Bug:
 
 ```text
-sudo apt-get update && sudo apt-get install -y fonts-dejavu-core
+examples\hugo-demo\content-source\voorbeelden\praktijk\weekdagen\woensdag.md
 ```
 
-Op Windows bestaat `sudo` niet.
+genereert SVG:
 
-Deze stap patcht workflows zodat:
-
-- `fonts-dejavu-core` alleen op Linux draait;
-- Windows jobs geen `sudo apt-get` uitvoeren;
-- rendering dependencies (`requirements-rendering.txt`) wel platformonafhankelijk geïnstalleerd kunnen worden.
-
-Gebruik:
-
-```cmd
-python scripts\apply-step70-ci-rendering-fonts-os-guard.py
+```text
+examples\hugo-demo\public\vsa\voorbeelden-praktijk-weekdagen-woensdag-block-1.svg
 ```
+
+maar HTML verwees naar:
+
+```html
+<img class="vsa-notation" src="/vsa/voorbeelden-praktijk-donderdag-block-1.svg">
+```
+
+Deze stap voegt een repair/check-script toe dat VSA image refs baseert op het volledige relatieve pagina-pad.

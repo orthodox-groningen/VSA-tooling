@@ -1,18 +1,14 @@
-# Stap 83 - stop muterende workflow-tests
+# Stap 90 - stop build-hugo mutators
 
 Probleem:
 
-`build-hugo.cmd` draait de test-suite. Sommige tests voerden `apply-step*.py` scripts uit.
-Daardoor werden echte repo-bestanden aangepast tijdens tests, o.a.:
+Oude apply-scripts herschrijven `scripts\build-hugo.cmd` en voegen regels in midden in het `hugo ^` blok.
 
-```text
-.github\workflows\*.yml
-```
+Deze stap:
 
-Dat veroorzaakte steeds extra lege regels in workflow-bestanden.
-
-Oplossing:
-
-- stap-70 test voert het apply-script niet meer uit op de echte repo;
-- test alleen nog de pure patchfunctie op tekst;
-- workflow YAML-bestanden kunnen eenmalig opgeschoond worden.
+- zet `scripts\build-hugo.cmd` schoon terug;
+- deactiveert oude mutators:
+  - `apply-step76-regenerate-missing-vsa-images.py`
+  - `apply-step84-hugo-link-asset-checker.py`
+  - `apply-step86-clean-build-regenerate-check.py`
+- past tests aan zodat ze niet meer verwachten dat deze scripts `build-hugo.cmd` muteren.

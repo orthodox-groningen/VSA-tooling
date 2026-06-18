@@ -41,7 +41,10 @@ def test_praktijk_index_exists_if_praktijk_dir_exists():
     assert (CONTENT / "praktijk" / "_index.md").exists()
 
 
-def test_link_checker_script_mentions_vsa_assets():
+def test_link_checker_script_handles_links_and_assets():
     text = CHECK.read_text(encoding="utf-8")
-    assert "img=" in text
-    assert "href=" in text
+
+    assert "LinkParser" in text
+    assert '"href"' in text
+    assert '"src"' in text
+    assert "format_ref" in text

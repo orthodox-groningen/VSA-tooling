@@ -7,7 +7,7 @@ source: "Liturgikon (pp.174-175)"
 
 De inhoud van deze pagina is ontleend aan het Liturgikon (pp.174-175).
 
-### Eerste Antifoon
+### 1e Antifoon
 ::: vsa-notatie
 [:] Door de {/ge}{/be_}den van de {\\hei}{/li}{/ge} {\Moe}{/der} {/&\&/&\&\Gods_&~&~&~&~}, {\o} {Hei_}{-&/land}, {/&\red_&_} {\ons_}. [:]
 :::

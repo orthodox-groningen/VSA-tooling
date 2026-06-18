@@ -95,9 +95,10 @@ Belangrijke scheiding:
 | Toonhoogtebeweging     | Een relatieve verandering van toonhoogte zoals beschreven door een EHM.                                                                                             |
 | Toonladdergraad        | Een positie binnen de toonladder, bijvoorbeeld `do`, `re`, `mi`, `fa`, `sol`, `la`, `ti`.                                                                           |
 | VSA-markering          | Iedere syntactische constructie waarmee muzikale informatie aan tekst wordt gekoppeld, zoals scopes, modifiers en toonhoogte-markeringen.                           |
+| VSA-zangstuk           | Een tekst die gezongen kan worden, zoals een tropaar of kondak, en in VSA is opgeschreven.                                                                          |
 | Zangelement            | De tekst waaraan muzikale informatie wordt gekoppeld. Dit is vaak een lettergreep, maar kan ook een kleiner of groter tekstfragment zijn.                           |
 | Zangelement-scope      | Een gemarkeerd tekstdeel tussen `{` en `}`. Een scope bevat achtereenvolgens een optionele hoogte-modifier, exact één zangelement en een optionele lengte-modifier. |
-| Zangstuk               | Een tekst die gezongen kan worden, zoals een tropaar of kondak, en in VSA is opgeschreven.                                                                          |
+| Zangstuk               | Zie: VSA-zangstuk                                                                                                                                                   |
 
 ---
 
@@ -219,8 +220,6 @@ Een EHM beschrijft één relatieve toonhoogtebeweging of een lege grafische posi
 | `\\\\\` | `{\\\\\tekst}`  | vijf ladderstappen omlaag | vijf gestapelde schuine strepen omlaag                      |
 | `~`     | `{~tekst}`      | zelfde toonhoogte         | geen zichtbare glyph                                        |
 
-Het teken `&` komt nooit in een EHM voor. Het wordt uitsluitend gebruikt om EHMs samen te stellen.
-
 ### 4.4 Enkelvoudige Lengte-Modifiers (ELMs)
 
 Een ELM beschrijft de duur van één muzikale positie ten opzichte van de standaardduur.
@@ -233,8 +232,6 @@ Een ELM beschrijft de duur van één muzikale positie ten opzichte van de standa
 | `..`  | `{tekst..}`  | 1/4 × standaardduur | twee gestapelde punten                         |
 | `-`   | `{tekst-}`   | standaardduur       | implementatie-afhankelijke standaardduur-glyph |
 | `~`   | `{tekst~}`   | standaardduur       | geen zichtbare glyph                           |
-
-Het teken `&` komt nooit in een ELM voor. Het wordt uitsluitend gebruikt om ELMs samen te stellen.
 
 ### 4.5 Samengestelde modifiers
 
@@ -264,14 +261,24 @@ Voorbeelden:
 [//:]
 ```
 
-Een toonhoogte-markering mag alleen voorkomen:
+Elke toonhoogte-markering geeft een toonhoogte aan ten opzichte van de basistoon
+van de do-context.
 
-- aan het begin van een zangstuk;
-- aan het einde van een zangstuk.
+Voor de eerste toonhoogte-markering wordt de do-context extern gespecificeerd: 
+- in de praktijk van het zingen door de koorlei(st)er.
+- binnen de context van conversies, bijvoorbeeld naar MusicXML, wordt dat gespecificeerd 
+door de feitelijke conversie - dat is buiten de scope van de pure VSA.
 
-Een beginmarkering definieert de startcontext, gegeven de do-context. Een eindmarkering kan worden gebruikt om de verwachte eindtoon te noteren of visueel af te sluiten.
+Elke volgende toonhoogte-markering geeft aan dat de zang op die positie op die hoogte moet zitten.
+Dat betekent
+- in de praktijk dat zangers een check hebben of ze daar op de goede hoogte zitten;
+- in de context van conversies, bijvoorbeeld naar MusicXML, dat het mogelijk is om een controle uit te voeren op de toonhoogte van het converteerde materiaal.
 
-De `:` is een syntactische afsluiter binnen de toonhoogte-markering. Hij wordt visueel gerenderd als een horizontale lijn rond het verticale midden van de tekstregel.
+Het is een gangbare praktijk om zowel voor als na een zangstuk een toonhoogte-markering te schrijven.
+Indien twee zangstukken elkaar opvolgen, kan dat dus ook (vanuit VSA perspectief) gezien worden
+als een enkel zangstuk met tussenliggende toonhoogte-markeringen.
+
+De tekst `:]` is de syntactische afsluiter van een toonhoogte-markering. Hij wordt visueel gerenderd als een horizontale lijn rond het verticale midden van de tekstregel, met daarboven de rendering van de EHM.
 
 ### 4.7 Absolute toonhoogte binnen Hugo blokmetadata
 
@@ -328,17 +335,13 @@ Let op: in EBNF wordt `\` als escape-teken gebruikt. Om het teken `\` zelf te no
 
 zangstuk ::=
     { whitespace }
-    [ toonhoogte-markering ]
-    { non-scopechar | scope }
-    [ toonhoogte-markering ]
+    { toonhoogte-markering | non-scopechar | scope }
     { whitespace } ;
 
 toonhoogte-markering ::=
     "["
-    [ hoogte-modifier ]
-    ":"
-    "]" ;
-
+    [ EHM ]
+    ":]" ;
 
 non-scopechar ::=
     ? elk Unicode-karakter behalve "{" en "}" ? ;
@@ -373,6 +376,7 @@ ELM ::=
       "~"
     | "-"
     | "_"
+    | "_."
     | "__"
     | "."
     | ".."
@@ -477,7 +481,14 @@ is semantisch gelijk aan:
 
 Wanneer een zangelement meerdere muzikale posities bevat, wordt hetzelfde zangelement over meerdere opeenvolgende tonen gezongen. Dit heet een **melisma**.
 
-Voorbeeld:
+Een melisma wordt gespecificeerd door 
+- een (optionele) hoogte modifier, die is samengesteld uit een rij EHMs die gescheiden zijn door `&`.
+- een zangelement
+- een (optionele) lengte modifier, die is samengesteld uit een rij ELMs die gescheiden zijn door `&`.
+
+Voor een melisma moet (natuurlijk) altijd tenminste of de hoogte modifier, of de lengte modifier aanwezig zijn; immers, als ze er beide niet zijn is het gewoon een gezongen toon. Als een van beide ontbreekt, wordt hij geacht een rij `~` te zijn (gescheiden door `&`s) met evenveel muzikale posities als de gespecificeerde modifier.
+
+Voorbeelden:
 
 ```text
 {-&/tekst~&_}
@@ -635,6 +646,7 @@ Een ELM bepaalt de duur van één muzikale positie ten opzichte van de standaard
 | `-`   | 1 × standaardduur   |
 | `~`   | 1 × standaardduur   |
 | `_`   | 2 × standaardduur   |
+| `_.`  | 3 x standaardduur   |
 | `__`  | 4 × standaardduur   |
 | `.`   | 1/2 × standaardduur |
 | `..`  | 1/4 × standaardduur |
@@ -664,9 +676,27 @@ produceert, bij interpretatie in majeur met `C4` als `do`, de toonreeks:
 B3 C4 B3 C4 D4 C4 D4
 ```
 
-### 5.12 Toonhoogte-markering aan begin en einde
+### 5.12 Toonhoogte-markeringen
 
-Een beginmarkering bevat alleen een relatieve hoogte-modifier en geeft daarmee aan op welke toonladdergraad de zang begint ten opzichte van de do-context. Een beginmarkering `[:]` betekent dat de zang op de do-context begint. Een markering `[//:]` betekent dat de zang twee ladderstappen boven de do-context begint.
+Een toonhoogte-markering bevat alleen een relatieve hoogte-modifier en geeft daarmee aan op welke toonladdergraad de zang zicht bevindt ten opzichte van de do-context op de positie van die toonhoggte markering.
+
+Elke hoogte-markering geeft een (toon)hoogte aan ten opzichte van de basistoon ('do').
+
+Voor de eerste hoogte-markering wordt de hoogte (of basistoon) extern gegeven. 
+In de praktijk van het zingen wordt dit aangegeven door de koorlei(st)er.
+Binnen de context van conversies, bijvoorbeeld naar MusicXML, wordt dat gespecificeerd 
+door de feitelijke conversie - dat is buiten de scope van VSA.
+
+Elke volgende hoogte-markering geeft aan dat de zang op die positie op die hoogte moet zitten. 
+Een latere hoogte-markering vervangt dus niet de eerdere markering als documentstructuur, maar introduceert een nieuwe pitch-positie in dezelfde melodische lijn.
+
+Het is een gangbare praktijk om voor een zangstuk een hoogte-markering te schrijven,
+en om dit ook aan het eind van een zangstuk te doen (ter controle voor zangers).
+Indien twee zangstukken elkaar opvolgen, kan dat vanuit VSA perspectief dan ook
+gezien worden als een enkel zangstuk met tussenliggende hoogte-markeringen.
+
+
+ Een beginmarkering `[:]` betekent dat de zang op de do-context begint. Een markering `[//:]` betekent dat de zang twee ladderstappen boven de do-context begint.
 
 Een eindmarkering kan worden gebruikt als visuele afsluiting en als semantische eindcontrole: (het ontbreken van) de hoogtemodifier zegt dan op welke hoogte (relatief ten opzichte van de do-context) de laatste nood moet zijn gezongen. Een implementatie mag controleren of een eindmarkering overeenkomt met de berekende eindtoon van het zangstuk. Een eindmarkering `[:]` betekent dat de zang op de do-context eindigt. Een markering `[//:]` betekent dat de zang twee ladderstappen boven de do-context eindigt.
 
@@ -676,11 +706,12 @@ Bepaalde tekstfragmenten buiten scopes kunnen door implementaties semantisch wor
 
 |  Tekst  | Betekenis                    | MusicXML        |
 | :-----: | ---------------------------- | --------------- |
-|   `*`   | rustpunt of ademhaling       | ademteken     |
+|   `*`   | rustpunt of ademhaling       | ademteken       |
 |   `/`   | frasescheiding of maatstreep | maatstreep         |
 |  `//`   | sterke frasescheiding        | dubbele maatstreep |
 
-Deze markeringen maken geen deel uit van de kernsyntax van VSA-scopes, maar mogen door renderers of weergavecomponenten en exporteurs semantisch worden verwerkt.
+Deze markeringen maken geen deel uit van de kernsyntax van VSA-scopes,
+maar mogen door renderers of weergavecomponenten en exporteurs semantisch worden verwerkt.
 
 ---
 
@@ -708,7 +739,8 @@ Een renderer of exporteur mag uitsluitend werken op een zangstuk dat syntactisch
 
 ### 6.2 Syntactische fouten
 
-Een syntactische fout treedt op wanneer de invoer niet voldoet aan de grammatica. Hier is een aantal voorbeelden:
+Een syntactische fout treedt op wanneer de invoer niet voldoet aan de grammatica.
+Hier is een aantal voorbeelden:
 
 | Voorbeeld    | Fout                                    |
 | ------------ | --------------------------------------- |
@@ -722,7 +754,10 @@ Syntactische fouten worden gedetecteerd vóór semantische validatie.
 
 ### 6.3 Semantische fouten
 
-Een semantische fout treedt op wanneer de invoer syntactisch geldig is, maar niet voldoet aan de betekenisregels van VSA. De laatste twee voorbeelden gaan uit van een do-context met parameters `do="C4"` en `mode="major"`.
+Een semantische fout treedt op wanneer de invoer syntactisch geldig is,
+maar niet voldoet aan de betekenisregels van VSA.
+De laatste twee voorbeelden gaan uit van een do-context 
+met parameters `do="C4"` en `mode="major"`.
 
 | Voorbeeld          | Fout                                                                                      |
 | ------------------ | ----------------------------------------------------------------------------------------- |
@@ -1033,11 +1068,12 @@ Mapping naar MusicXML bij `duration-model="default"`:
 | `~`   | kwartnoot                             |
 | `-`   | kwartnoot                             |
 | `_`   | halve noot                            |
+| `_.`  | anderhalve noot                       |
 | `__`  | hele noot                             |
 | `.`   | achtste noot                          |
 | `..`  | zestiende noot                        |
 
-Andere duration-modellen mogen hiervan afwijken. Voor Liturgikon-compatibele export mag `__` bijvoorbeeld als halve noot met punt worden geïnterpreteerd wanneer het gekozen duration-model dat voorschrijft. Als meerdere ELMs aanwezig zijn binnen één zangelement-scope, krijgt elke muzikale positie haar eigen duurwaarde.
+Andere duration-modellen mogen hiervan afwijken. Als meerdere ELMs aanwezig zijn binnen één zangelement-scope, krijgt elke muzikale positie haar eigen duurwaarde.
 
 #### 8.2.6 Melismatische mapping
 
@@ -1093,7 +1129,7 @@ In alle gevallen moet een foutmelding minimaal bevatten:
 | `{\\tekst}`         | tekst met twee gestapelde strepen omlaag                              |
 | `{tekst_&_}`        | tekst over twee posities, beide met dubbele duur                      |
 | `{//&\tekst}`       | twee posities: twee stappen omhoog, daarna één stap omlaag            |
-| `{/tekst__}`        | één stap omhoog, viermaal standaardduur                               |
+| `{/tekst_.}`        | één stap omhoog, driemaal standaardduur                               |
 | `{/&\&/tekst_&~&~}` | drie posities: omhoog, omlaag, omhoog; alleen eerste positie verlengd |
 | `[:]`               | horizontale lijn op baseline                                          |
 | `[//:]`             | toonhoogte-markering met initiële beweging `//`                       |
@@ -1101,19 +1137,13 @@ In alle gevallen moet een foutmelding minimaal bevatten:
 ### 9.2 Voorbeeld in Hugo Markdown
 
 ```markdown
-## Troparion toon 1
+## TROPARION Toon 3 - Donderdag (H. Apostelen)
 
 ::: vsa-notatie
-[:] Ter{/&/wijl_&_} {\\de} steen door de israëlie{/ten} {/ver}{/ze_}geld {was_}
-{\en} de soldaten Uw allerzuiverst lichaam be{\waak_}{ten_}
-O, Ver{/los_}{/ser_}, {\\zijt} Gij na drie {/da}{/gen} {/op_}gestaan
-{\om} aan de wereld het Leven te {\schen_}{\ken_}
-Daarom {/roe_}{/pen_} {\\de} hemelse mach{/ten} {/U} {/toe_}:
-{\O} Levenschenker, {\e_}re zij {\U_},
-{/e_}{/re_} {\\zij} Uw verrijze{/nis}, {/o} {/Chris_}{tus_},
-{\e}re {\zij} {/Uw} {/Ko_}ning{schap_},
-{\e}re zij {\Uw} {/Voor}{/zie_}nig{heid_},
-// {\Gij} enig Mens{\lie_}{ven_}{\de_} [:]
+[\\:] Hei{/li}{/ge} {\&/A}{/&/pos}te{len_}, * 
+bidt tot de barm{\har_}{\ti}{\ge} {\God_}, * 
+{/dat} {/Hij} de verge{\ving} {/der} {/&/zon}{den_} * 
+// moge schenken aan {\on}{\ze} {/&/&/&\&\&\&/zie~&~&~&~&~&~&_}{\len_}. [:]
 :::
 ```
 

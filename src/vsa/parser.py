@@ -1,6 +1,8 @@
-from .ast import Document, TextNode, ScopeNode, PitchMarkerNode
+from .ast import Document, TextNode, ScopeNode, PitchMarkerNode, HeightMarkerNode
 from .errors import VSASyntaxError
 
+
+BRACKET_DIRECTIVE_END = ":]"
 
 EHM_VALUES = [
     "/////",
@@ -65,22 +67,30 @@ class Parser:
 
     def _parse_pitch_marker(self) -> PitchMarkerNode:
         start = self.pos
-        end = self.text.find("]", self.pos)
+        end_token = self.text.find(BRACKET_DIRECTIVE_END, self.pos + 1)
 
-        if end == -1:
-            raise VSASyntaxError("Toonhoogte-markering zonder afsluitende ']'", start)
+        if end_token == -1:
+            raise VSASyntaxError("Toonhoogte-markering mist bracket-directive eindtoken ':]'", start)
 
-        content = self.text[self.pos + 1:end]
+        raw_modifier = self.text[self.pos + 1:end_token]
+        height_modifier = self._parse_pitch_marker_modifier(raw_modifier, start)
 
-        if not content.endswith(":"):
-            raise VSASyntaxError("Toonhoogte-markering mist ':'", start)
+        self.pos = end_token + len(BRACKET_DIRECTIVE_END)
 
-        raw_modifier = content[:-1]
-        height_modifier = self._split_modifier(raw_modifier, EHM_VALUES) if raw_modifier else []
+        return HeightMarkerNode(
+            height_modifier=height_modifier,
+            start=start,
+            end=self.pos,
+        )
 
-        self.pos = end + 1
+    def _parse_pitch_marker_modifier(self, raw_modifier: str, start: int) -> list[str]:
+        if raw_modifier == "":
+            return []
 
-        return PitchMarkerNode(height_modifier=height_modifier)
+        if raw_modifier not in EHM_VALUES:
+            raise VSASyntaxError(f"Ongeldige modifier: {raw_modifier}", start)
+
+        return [raw_modifier]
 
     def _parse_scope(self) -> ScopeNode:
         start = self.pos

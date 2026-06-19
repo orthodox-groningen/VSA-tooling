@@ -1,4 +1,4 @@
-from dataclasses import dataclass, field, asdict
+from dataclasses import dataclass, field
 from typing import List, Optional, Union, Dict, Any
 
 
@@ -31,12 +31,24 @@ class ScopeNode:
 @dataclass
 class PitchMarkerNode:
     height_modifier: Optional[List[str]] = None
+    start: Optional[int] = None
+    end: Optional[int] = None
+
+    @property
+    def ehm(self) -> List[str]:
+        return self.height_modifier or []
 
     def to_dict(self) -> Dict[str, Any]:
         return {
             "type": "PitchMarkerNode",
             "height_modifier": self.height_modifier or [],
         }
+
+
+# Compatibele naam voor de nieuwe terminologie.
+# Nog geen aparte class: renderer, validator en bestaande tests behandelen
+# hoogte-markeringen voorlopig nog als PitchMarkerNode.
+HeightMarkerNode = PitchMarkerNode
 
 
 Node = Union[TextNode, ScopeNode, PitchMarkerNode]

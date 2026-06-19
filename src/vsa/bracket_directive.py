@@ -5,15 +5,24 @@ from typing import NamedTuple
 
 BRACKET_DIRECTIVE_END = ":]"
 
+# Valid EHM values for pitch/height-marker directives.
+# The empty string represents the neutral marker `[:]`.
 VALID_EHM_VALUES = {
     "",
-    "/",
-    "//",
+    "/////",
+    "////",
     "///",
-    "\\",
-    "\\\\",
+    "//",
+    "+/",
+    "/",
+    "-\\",
+    "\\\\\\\\\\",
+    "\\\\\\\\",
     "\\\\\\",
+    "\\\\",
+    "\\",
     "-",
+    "~",
     "/\\",
 }
 

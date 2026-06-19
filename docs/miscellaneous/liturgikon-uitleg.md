@@ -1,6 +1,6 @@
 ## Appendix 1 - Uitleg van notatie volgens Nederlands Liturgikon
 
-De volgende tekst komt uit het Liturgikon, pp 27-30 (een uitgave van
+Onderstaande tekst is overgenomen uit het Liturgikon, pp 27-30 (een uitgave van
 de Nederlands Orthodoxe Kerk, dr. Kuyperstraat 2, den Haag, maart 1968):
 
 ### De Muziek
@@ -34,7 +34,7 @@ vergeten zal. En eigenlijk kan hetzelfde al gezegd worden van het gewone
 De vierstemmige liturgiemuziek is apart uitgegeven.  
 In deze uitgave is alleen de melodie aangegeven, in een vereenvoudigd neumenschrift.
 
-###De Muzieknotatie
+### De Muzieknotatie
 
 Deze kan het best duidelijk gemaakt worden aan de hand van enkele voorbeelden.
 
@@ -47,6 +47,8 @@ stijging of daling van de melodie van evenveel tonen.
 Wanneer een notengroep op dezelfde toon begint als de laatstgezongen toon,  
 wordt deze aangegeven met een horizontaal streepje  
 (zie het begin van het derde voorbeeld).
+
+![Derde voorbeeld](liturgikon-voorbeeld-3.jpg)
 
 Om de plaats van de melodie in de toonladder vast te leggen, wordt voor het stuk  
 de eerste toon aangegeven. Staat er alleen een liggend streepje, dan begint de zang  
@@ -66,7 +68,7 @@ maar daar staat tegenover dat deze tekens veel vlotter geleerd worden dan noten
 lezen, en dat het gebruik mogelijk is waar muzieknotatie te kostbaar zou zijn.  
 De slottoon wordt telkens aangegeven, om de overgang naar een volgend stuk te weten.
 
-*(Afbeelding 2)*
+![Tweede voorbeeld](liturgikon-voorbeeld-2.jpg)
 
 Een kruis (+) betekent een extra stijging van een halve toon;  
 een mol (b) een extra daling van een halve toon.  
@@ -77,11 +79,13 @@ dan worden deze tekens niet steeds weer geschreven, omdat het oor zich
 
 Een kruis (+) betekent een extra stijging van een halve toon;  
 een mol (♭) een extra daling van een halve toon.  
-Zo worden ze ook als herstellingstekens gebruikt (zie 3e voorbeeld).
+Zo worden ze ook als herstellingstekens gebruikt (zie 2e voorbeeld).
 
 Wanneer een zelfde melodietje steeds herhaald wordt, zoals bv. in de Zaligsprekingen,  
 dan worden deze tekens niet steeds weer geschreven, omdat het oor zich gemakkelijk  
 aanpast aan de andere toonschaal.
+
+![Derde voorbeeld](liturgikon-voorbeeld-3.jpg)
 
 De tekens onder de tekst geven de duur van de tonen aan.  
 Zonder teken duurt elke noot één tel, of een kwartnoot.  
@@ -106,7 +110,9 @@ Ze kunnen ook gemakkelijk aan bestaande boeken worden toegevoegd.
 
 ### Relatie tussen de Liturgikon-notatie en VSA
 
-De VSA-notatie is sterk geïnspireerd door de vereenvoudigde neumennotatie zoals beschreven in het Nederlands Liturgikon (1968), maar is daar niet volledig identiek aan. VSA formaliseert en generaliseert verschillende aspecten van deze praktijknotatie om parsing, validatie, rendering en export naar formaten zoals MusicXML mogelijk te maken.
+Onderstaande tekst is mogelijk niet geheel correct en moet wellicht worden gereviseerd.
+
+De VSA-notatie is sterk geïnspireerd door de vereenvoudigde neumennotatie zoals beschreven in het Nederlands Liturgikon (1968), maar is daar niet volledig identiek aan. VSA formaliseert en generaliseert verschillende aspecten van deze praktijknotatie om parsing, validatie, rendering en export naar formaten zoals SVG en MusicXML mogelijk te maken.
 
 De belangrijkste verschillen zijn:
 
@@ -122,7 +128,15 @@ De belangrijkste verschillen zijn:
 | Validatie | Alleen muzikaal gehoor | Syntactische en semantische validatie |
 | Export    | Niet voorzien | SVG en MusicXML |
 
-Het grootste inhoudelijke verschil betreft de interpretatie van `+/` en `-\`. In het Liturgikon staat dat een kruis (+) een *extra* stijging van een halve toon betekent (en een mol (b) een *extra* daling van een halve toon). Dit wordt gestaafd door het bijbehorende voorbeeld. Echter, een dergelijke notatie maakt het dan onmogelijk om een halve ladderstap omhoog of omlaag te gaan. De zangpraktijk van de auteur is dat `+/` en `-\` (ook?) worden gebruikt om een stijging/daling van een halve toon mee aan te geven. Dat is ook zoals zij in VSA worden geïnterpreteerd: als zelfstandige relatieve toonhoogtebewegingen van een halve ladderstap.
+Het grootste inhoudelijke verschil betreft de interpretatie van `+/` en `-\`.
+In het Liturgikon staat dat een kruis (+) een *extra* stijging van een halve toon betekent
+(en een mol (b) een *extra* daling van een halve toon). Dit wordt gestaafd door 
+het bijbehorende voorbeeld. Echter, een dergelijke notatie maakt het dan onmogelijk 
+om een halve ladderstap omhoog of omlaag te gaan. 
+De zangpraktijk van de auteur is dat `+/` en `-\` (ook?) worden gebruikt om 
+een stijging/daling van een halve toon mee aan te geven. Dat is ook zoals zij in VSA
+worden geïnterpreteerd: als zelfstandige relatieve toonhoogtebewegingen van een halve
+ladderstap.
 
 Bij omzetting van historische notaties naar VSA kunnen daardoor de volgende situaties optreden:
 

@@ -4,7 +4,7 @@ Deze stap legt syntax, semantiek en architectuur vast voor meerdere hoogte-marke
 
 ## Bestanden
 
-- `docs/specs/vsa-height-markers.md`
+- `docs/spec/vsa-height-markers.md`
 - `docs/architecture/height-marker-model.md`
 - `docs/todo-step73-addendum.md`
 

@@ -2,7 +2,7 @@ from pathlib import Path
 
 def main():
     required = [
-        Path("docs/specs/vsa-height-markers.md"),
+        Path("docs/spec/vsa-height-markers.md"),
         Path("docs/architecture/height-marker-model.md"),
     ]
     print("Stap 73 - specificatie meerdere hoogte-markeringen")

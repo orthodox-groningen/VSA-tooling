@@ -1,6 +1,10 @@
-Stap 109
+# Stap 111 - ControlTokenNode
 
-Getest:
-- nieuwe regressietests compileren
+Deze stap voegt een AST-node toe voor control tokens.
 
-Wijzigt alleen tests en documentatie.
+Nog niet inbegrepen:
+
+- parserdispatch;
+- rendering;
+- MusicXML;
+- validatorregels.

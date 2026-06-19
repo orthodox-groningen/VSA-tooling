@@ -45,13 +45,27 @@ class PitchMarkerNode:
         }
 
 
-# Compatibele naam voor de nieuwe terminologie.
-# Nog geen aparte class: renderer, validator en bestaande tests behandelen
-# hoogte-markeringen voorlopig nog als PitchMarkerNode.
 HeightMarkerNode = PitchMarkerNode
 
 
-Node = Union[TextNode, ScopeNode, PitchMarkerNode]
+@dataclass
+class ControlTokenNode:
+    token: str
+    meaning: str
+    start: Optional[int] = None
+    end: Optional[int] = None
+
+    def to_dict(self) -> Dict[str, Any]:
+        return {
+            "type": "ControlTokenNode",
+            "token": self.token,
+            "meaning": self.meaning,
+        }
+
+
+
+
+Node = Union[TextNode, ScopeNode, PitchMarkerNode, ControlTokenNode]
 
 
 @dataclass

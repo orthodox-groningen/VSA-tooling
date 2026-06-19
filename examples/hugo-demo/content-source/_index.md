@@ -13,7 +13,7 @@ Dit document introduceert de **Vereenvoudigde Slavische Accentnotatie (VSA)**: e
 - voldoende semantische informatie bevat voor conversie naar symbolische muziekformaten zoals MusicXML.
 
 VSA is niet nieuw in de zin dat de orthodoxie een lange geschiedenis heeft waarin zang geschreven werd met tekens boven en onder de gezongen tekst, die de (relatieve) veranderingen in toonhoogte en duur vastlegden (neumen notaties). In (Nederlandse) orthodoxe parochies zijn vereenvoudigde vormen daarvan in gebruik, die echter niet zijn gestandaardiseerd noch formeel gedocumenteerd. Om zulke muzieknotaties te kunnen gebruiken in geautomatiseerde systemen is een notatie nodig die formeel is gespecificeerd, en dat is wat VSA beoogt te zijn. 
-VSA is ontworpen om aan te sluiten bij de notatie zoals die is [beschreven in het Nederlandse Liturgikon](./praktijk/liturgikon-notatie-uitleg) (den Haag, 1968).
+VSA is ontworpen om aan te sluiten bij de notatie zoals die is [beschreven in het Nederlandse Liturgikon](/liturgikon-notatie/) (den Haag, 1968).
 
 ### Deze site
 

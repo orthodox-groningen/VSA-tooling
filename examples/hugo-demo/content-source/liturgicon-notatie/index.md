@@ -42,7 +42,7 @@ In deze uitgave is alleen de melodie aangegeven, in een vereenvoudigd neumenschr
 
 Deze kan het best duidelijk gemaakt worden aan de hand van enkele voorbeelden.
 
-![Drie voorbeelden van de notatie](img/liturgikon-voorbeelden.jpg)
+![Drie voorbeelden van de notatie](liturgikon-voorbeelden.jpg)
 
 De tekens bóven de tekst geven een verandering van toonhoogte aan. 
 Het aantal boven elkaar geplaatste stijgende of dalende strepen betekent een 
@@ -52,7 +52,7 @@ Wanneer een notengroep op dezelfde toon begint als de laatstgezongen toon,
 wordt deze aangegeven met een horizontaal streepje, zoals getoond in de 
 eerste lettergreep (`zo-`) in onderstaand voorbeeld:
 
-![Derde voorbeeld](img/liturgikon-voorbeeld-3.jpg)
+![Derde voorbeeld](liturgikon-voorbeeld-3.jpg)
 
 Om de plaats van de melodie in de toonladder vast te leggen, wordt voor het stuk 
 de eerste toon aangegeven. Staat er alleen een liggend streepje, dan begint de zang 
@@ -72,7 +72,7 @@ maar daar staat tegenover dat deze tekens veel vlotter geleerd worden dan noten
 lezen, en dat het gebruik mogelijk is waar muzieknotatie te kostbaar zou zijn. 
 De slottoon wordt telkens aangegeven, om de overgang naar een volgend stuk te weten.
 
-![Tweede voorbeeld](img/liturgikon-voorbeeld-2.jpg)
+![Tweede voorbeeld](liturgikon-voorbeeld-2.jpg)
 
 Een kruis (+) betekent een extra stijging van een halve toon; 
 een mol (b) een extra daling van een halve toon. 
@@ -94,7 +94,7 @@ Zonder teken duurt elke noot één tel, of een kwartnoot.
 Een horizontale onderstreping verdubbelt de duur tot een halve noot, twee tellen. 
 Dubbele onderstreping is vier of drie tellen (zie eind van onderstaand voorbeeld, onder `U`).
 
-![Derde voorbeeld](img/liturgikon-voorbeeld-3.jpg)
+![Derde voorbeeld](liturgikon-voorbeeld-3.jpg)
 
 Een punt of verticaal streepje onder de tekst maakt deze tot een achtste noot 
 of halve tel (in bovenstaand voorbeeld, onder `trou-`, wordt dit tweemaal gebruikt).

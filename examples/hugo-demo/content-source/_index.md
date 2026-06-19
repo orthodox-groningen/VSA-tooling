@@ -7,7 +7,7 @@ title: "Home"
 {{< navbuttons 
     \"CLI        | ./voorbeelden/cli/\"
     \"Rendering  | ./voorbeelden/rendering/\"
-    \"Praktijk   | ../praktijk/\"
+    \"Praktijk   | ./praktijk/\"
 >}}
 
 ---

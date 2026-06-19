@@ -1,12 +1,14 @@
 ---
 title: "Voorbeelden"
 ---
+
+## Voorbeelden
+
 {{< navbuttons 
     \"Home       | ../\"
-    \"Omhoog     | ../\"
-    \"Praktijk   | ../praktijk/\"
     \"CLI        | cli/\"
     \"Rendering  | rendering/\"
+    \"Praktijk   | ../praktijk/\"
 >}}
 
 ---

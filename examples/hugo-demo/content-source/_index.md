@@ -2,9 +2,11 @@
 title: "Home"
 ---
 
+## Home
+
 {{< navbuttons 
-    \"CLI        | ./cli/\"
-    \"Rendering  | ./rendering/\"
+    \"CLI        | ./voorbeelden/cli/\"
+    \"Rendering  | ./voorbeelden/rendering/\"
     \"Praktijk   | ../praktijk/\"
 >}}
 

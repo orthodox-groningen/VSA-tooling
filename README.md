@@ -1,10 +1,9 @@
-# Stap 111 - ControlTokenNode
+# Stap 113 - control-token semantics
 
-Deze stap voegt een AST-node toe voor control tokens.
+Deze stap legt alleen de renderer-onafhankelijke semantiek vast.
 
-Nog niet inbegrepen:
+Geen productiecodewijzigingen.
 
-- parserdispatch;
-- rendering;
-- MusicXML;
-- validatorregels.
+Geen parserdispatch.
+
+Doel: voorkomen dat `[/]`, `[*]`, `[/?]`, `[*?]` te vroeg actief worden in de parser.

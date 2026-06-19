@@ -1,331 +1,185 @@
 # TODO lijst
 
-Statuswaarden:
+Deze lijst is geconsolideerd uit `docs/todo.md` en alle `docs/todo-stepXX-addendum.md` bestanden.
 
-- `Open`: nog doen.
-- `In uitvoering`: actief onderwerp.
-- `Later`: bewust geparkeerd.
-- `Afgerond`: gedaan, maar historisch nuttig.
+Statuswaarden: `Open`, `In uitvoering`, `Later`, `Afgerond`, `Gespecificeerd`, `Geïmplementeerd`.
 
-## 1. Parser en validator
+## 1. Parser, syntax en validatie
 
-### 1.1 Hoogte-controle bij laatste hoogte-marker
+### 1.1 Meerdere hoogte-markeringen en bracket-directives
+
+Status: `In uitvoering`
+
+- Meerdere hoogte-markeringen per `vsa-notatie` blok zijn toegestaan.
+- Hoogte-markering blijft `[<EHM>:]`; `:]` is één eindtoken van een bracket-directive.
+- Niet tokenizen als losse `:` en `]`; niet overstappen op `{<EHM>:}`.
+- Tekst vóór, tussen en na hoogte-markeringen is toegestaan.
+- Parser moet bracket-token dispatch krijgen.
+- `src/vsa/bracket_directive.py` en `src/vsa/bracket_token_stream.py` zijn geïsoleerd geïmplementeerd.
+- Nog doen: EHM-set koppelen aan bestaande definitie, parseracceptatie, AST-representatie, validatorregels en SVG-rendering.
+
+### 1.2 Eindtoon en pitchmarker-validatie
 
 Status: `Open`
 
-Het volgende is fout, maar wordt nog niet gedetecteerd:
+- Eindtoon bij laatste hoogte-marker detecteren.
+- Begin- en eind-pitchmarkers strenger controleren.
+- Foutmelding moet bestand, regel, kolom en concrete herstelactie noemen.
 
-```vsa
-[//:] aap{/noot}{/mies}, [:]
+### 1.3 Halve-stap modifiers en commentaar
+
+Status: `Open`
+
+- Onderzoeken of `+`, `-`, `/+`, `+\` syntactisch/semantisch nodig zijn.
+- Commentaarvormen specificeren; validator moet commentaar overslaan.
+
+### 1.4 AST-formalisering
+
+Status: `Later`
+
+- Expliciete node-typen, spans/ranges, source maps, roundtrip parsing en betere foutposities.
+
+### 1.5 Bracket-token dispatch
+
+Status: `In uitvoering`
+
+Bracket-token dispatch moet worden geïmplementeerd voordat andere bracket-tokens ondersteund kunnen worden zoals:
+
+- `[/]`
+- `[*]`
+- `[/?]`
+- `[*?]`
+
+Deze tokens zijn nog niet ondersteund.
+
+## 2. SVG-rendering en fontmetrics
+
+### 2.1 Spacing, glyphs en woordclusters
+
+Status: `In uitvoering`
+
+- Natuurlijke spacing tussen tekst en zangelementen.
+- Geen overlap; woordspaties behouden; geen `deHeerheeft`.
+- EHM/ELM-posities verder finetunen.
+- Woord-georiënteerde layoutfase later onderzoeken voor woorden zoals `me{\de}{/eeu_}wi{\ge}`.
+
+### 2.2 Filler-lines en wrapping
+
+Status: `In uitvoering`
+
+- Filler-lines op tekst/dash-hoogte, niet op EHM-hoogte.
+- Bron-newlines blijven harde bronregelgrenzen.
+- Wraptokens `[/]`, `[*]`, `[/?]`, `[*?]` wachten op bracket-token dispatch.
+
+### 2.3 Newline-beleid
+
+Status: `In uitvoering`
+
+Controleer consequent gedrag van:
+
+- CR
+- LF
+- CRLF
+
+in parser, validator, markdown-processor en Hugo-pipeline.
+
+Verboden voor VSA-source:
+
+```python
+" ".join(lines)
+source.replace("\n", " ")
 ```
 
-Gewenst:
-
-- validator controleert of eindtoon klopt;
-- foutmelding noemt bestand, regel, kolom en concrete herstelactie.
-
-### 1.2 Pitchmarkers strenger controleren
-
-Status: `Open`
-
-Uitbreiden met:
-
-- strengere checks op begin-pitchmarker;
-- strengere checks op eind-pitchmarker;
-- eindtoon;
-- metadata waar relevant.
-
-### 1.3 Specificatie-change voor `+/`, `+\`, `- /`, `-\`
-
-Status: `Open`
-
-Liturgikon, p.247, derde regel van onderen, heeft vermoedelijk een notatie die suggereert dat `+` en `-` als halve-stap modifiers bruikbaar kunnen zijn.
-
-Te onderzoeken:
-
-- `+` in een EHM betekent halve stap erbij;
-- `-` in een EHM betekent halve stap eraf;
-- `/+` of `+\` zou dan syntactisch geldig kunnen zijn;
-- `+` op zichzelf zou mogelijk ook geldig zijn.
-
-Actie:
-
-- Liturgikon-voorbeeld opnieuw bekijken (zwaar gebruikt bij 'zaligsprekingen' op pp. 54-55);
-- syntax en semantiek specificeren;
-- parser uitbreiden;
-- validator uitbreiden;
-- rendering bepalen.
-
-### 1.4 Commentaar niet valideren
-
-Status: `Open`
-
-Het moet mogelijk zijn om in commentaarblokken of regelcommentaar ongeldige syntax of semantiek te beschrijven.
-
-Te specificeren:
-
-- regelcommentaar;
-- blokcommentaar;
-- gedrag binnen markdown;
-- gedrag binnen `vsa-notatie`;
-- validator moet commentaar overslaan.
-
-### 1.5 Bracket-token dispatch in parser
-
-Status: `Open`
-
-Huidige parser behandelt alles tussen `[ ... ]` als pitchmarker. Daardoor conflicteren wraptokens zoals `[/?]` implementatietechnisch, ook al zijn ze conceptueel anders bedoeld.
-
-Toekomstige oplossing:
-
-- token-dispatch vóór pitchmarker-parsing;
-- meerdere bracket-token families;
-- pitchmarkers;
-- wrap/control tokens;
-- voorbereiding op MusicXML/control tokens;
-- voorbereiding op alignment/control tokens.
-
-Belangrijk:
-
-- `[:]` blijft pitchmarker;
-- `[/]`, `[*]`, `[/?]`, `[*?]` worden nog niet ondersteund totdat bracket-token dispatch is geïmplementeerd.
-
-## 2. Muzikale semantiek
-
-Status: `Later`
-
-Uitbreidingen:
-
-- toonhoogte-continuïteit;
-- bereikcontrole;
-- verboden overgangspatronen;
-- alignment-validatie;
-- multi-voice voorbereiding.
-
-## 3. AST en formalisering
-
-Status: `Later`
-
-De AST is nu nog pragmatisch. Later verbeteren met:
-
-- expliciete node-typen;
-- spans/ranges;
-- source maps;
-- roundtrip parsing;
-- betere mapping van parserfouten naar bronposities;
-- betere ondersteuning voor rendering en MusicXML.
-
-## 4. SVG-rendering
-
-Status: `In uitvoering`
-
-Algemene doelen:
-
-- normale lopende tekst met muzikale overlays;
-- links uitlijnen;
-- geen tweezijdig uitvullen als default;
-- natuurlijke spacing tussen tekst en zangelementen;
-- glyphs als accenten boven/onder de tekst;
-- duidelijke en compacte regelafstand;
-- configureerbare rendering.
-
-### 4.1 Spacing en typografie
-
-Status: `In uitvoering`
-
-Aandachtspunten:
-
-- woordspaties behouden;
-- geen overlap tussen aangrenzende tekst en zangelementen;
-- optische spacing tussen aanpalende scopes;
-- compactere spacing waar mogelijk;
-- geen samenplakken zoals `deHeerheeft`.
-
-### 4.2 Glyph-posities
-
-Status: `In uitvoering`
-
-Aandachtspunten:
-
-- EHM-positie is nu visueel acceptabel;
-- ELMs mogen iets lager als ze staarten van `ij`, `p`, `g`, `j` raken;
-- stacked EHMs moeten goed onderscheidbaar blijven;
-- single-EHM glyphs niet woordbreed maken;
-- multi-EHM scopes moeten voldoende ruimte krijgen.
-
-### 4.3 Filler-lines
-
-Status: `In uitvoering`
-
-Gewenst:
-
-- filler-lines op tekst/dash-hoogte;
-- niet op EHM-hoogte;
-- stoppen vóór de volgende render-unit;
-- bruikbaar bij bijvoorbeeld `geo____` en `geschon___ken`.
-
-### 4.4 Afbreekpolicy
-
-Status: `In uitvoering`
-
-Nu ondersteunen:
-
-- CR;
-- LF;
-- CRLF;
-- bron-newlines zijn harde bronregelgrenzen;
-- renderer mag tekst uit twee bronregels niet samenvoegen;
-- wrapping mag alleen binnen één bronregel;
-- niet afbreken midden in woorden.
-
-Nog niet ondersteunen:
-
-- `[/]`;
-- `[*]`;
-- `[/?]`;
-- `[*?]`.
-
-Deze tokens wachten op bracket-token dispatch.
-
-### 4.5 Renderingconfiguratie
-
-Status: `Open`
-
-Er moet een config-specificatie komen waarin gebruikers voorkeuren kunnen opgeven, zoals:
-
-- kleur bovenglyphs;
-- kleur onderglyphs;
-- font;
-- fontgrootte;
-- regelafstand;
-- glyphbreedtes;
-- glyphhoogtes;
-- spacing;
-- wrapgedrag.
-
-Config moet vóór gebruik gevalideerd worden.
-
-
-### 4.6 Woord-georiënteerde SVG-layout
-
-Status: `Later`
-
-De huidige SVG-renderer werkt met losse render-units:
-
-- vrije tekst;
-- zangelementen/scopes;
-- pitchmarkers;
-- whitespace.
-
-Dat is inmiddels bruikbaar, maar bij woorden die uit meerdere tekst- en scopefragmenten bestaan,
-blijven kleine kieren zichtbaar. Voorbeelden:
-
-- `me{\\de}{/eeu_}wi{\ge}`;
-- `eerstge{/bo_}re{\ne_}`;
-- `ge{\ble_}{\ven_}`;
-- `{/ge}{/&/o}pen{baard_}`;
-- `schon...ken` met filler.
-
-Waarschijnlijk vraagt dit om een aparte woord-georiënteerde layoutfase:
-
-```text
-bronsegmenten → woordcluster → tekst als geheel meten → glyphs per segment positioneren
+Toegestaan:
+
+```python
+"\n".join(lines)
+source.replace("\r\n", "\n").replace("\r", "\n")
 ```
 
-Dat is geen kleine tuningstap maar een grotere rendererarchitectuurstap.
+### 2.4 Real font metrics
 
-Voor nu is de huidige rendering voldoende bruikbaar; dit punt later opnieuw oppakken.
+Status: `Geïmplementeerd / Open eindcontrole`
 
-## 5. CLI professionaliseren
+- Build gebruikt `.venv\Scripts\python.exe` indien aanwezig.
+- Build faalt als real font metrics niet actief zijn.
+- Later controleren: CI, README, licenties, DejaVu Sans, Pillow en fallbackbeleid.
+
+### 2.5 Diagnostische renderingpagina's
+
+Status: `In uitvoering`
+
+Gerichte demo-pagina's blijven nodig voor spacing, overlap, glyph-posities, filler-lines, pitchmarkers, wrapping en Markdown-hardbreaks.
+
+## 3. Hugo-site, navigatie en build-output
+
+### 3.1 Content-source bevriezen
+
+Status: `Geïmplementeerd`
+
+- `examples/hugo-demo/content-source` is redactionele broncontent.
+- Scripts mogen daar niet automatisch frontmatter, titels, headings of vrije markdown herschrijven.
+- Navigatie/spacing-metadata worden alleen in `generated/hugo/content` bijgewerkt.
+
+### 3.2 Marker-only navigatie
+
+Status: `Geïmplementeerd`
+
+- Gebruiker plaatst zelf `VSA-NAV:*` markers.
+- Alleen het corresponderende `VSA-NAV-GENERATED:*` blok wordt vervangen.
+- Vrije markdown vóór/na markers blijft ongemoeid.
+
+### 3.3 Linkchecker en SVG-assets
+
+Status: `In uitvoering`
+
+- Linkchecker structureel in build/CI opnemen zodra site-inhoud stabiel is.
+- SVG assetnamen en HTML refs moeten actuele relatieve paden gebruiken.
+- Oude routes `/zondag/` en `/voorbeelden/praktijk/` definitief afhandelen.
+
+### 3.4 Demo-site afronden
 
 Status: `Open`
 
-Gewenst:
+- Alle pagina’s nalopen op tekst, links, voorbeelden en responsive gedrag.
+- CLI-demo’s en handleiding actualiseren.
+- `examples/hugo-demo/content`, `examples/hugo-demo/public`, `examples/hugo-demo/static/vsa` en `generated` blijven build-output.
 
-1. Betere foutmeldingen:
-   - wat is fout;
-   - waar is het fout;
-   - wat moet de gebruiker concreet doen;
-   - bruikbaar voor non-techies.
-2. Correcte terminologie:
-   - `&` is geen modifierteken;
-   - onderscheid tussen zangelement, EHM, ELM, tekstgedeelte, etc.
-3. Uitgebreidere `--help`.
-4. `vsa <command> --help` met:
-   - inputs;
-   - outputs;
-   - parameters;
-   - locaties;
-   - exitcodes;
-   - voorbeelden.
-5. Mogelijk `vsa <errorcode> --help`.
-6. Helpteksten praktisch nuttig maken.
-7. Geen Python tracebacks tonen.
-8. Waar mogelijk meerdere fouten verzamelen in één run.
+## 4. Tests, CI en releasehygiëne
 
-## 6. Demo-site afronden
+### 4.1 Repo hygiene
+
+Status: `In uitvoering`
+
+- Oude `todo-stepXX-addendum.md` bestanden zijn in deze lijst verwerkt en kunnen weg.
+- Oude migratie-/apply-tests samenvoegen in `test_repo_hygiene.py`.
+- `retry.cmd` is verouderd; gebruik `scripts/test.cmd`.
+- Tests mogen working tree niet muteren.
+
+### 4.2 CI en workflows
 
 Status: `Open`
 
-Taken:
+- Linux-commando’s alleen op Linux runners.
+- Rendering dependencies platformonafhankelijk houden.
+- CI font-metrics eindcontrole met Pillow/DejaVu.
 
-1. Nieuwe README maken voor de repo.
-2. Repo opruimen.
-3. Alle pagina’s nalopen op:
-   - tekst;
-   - links;
-   - voorbeelden;
-   - mobiel;
-   - tablet.
-4. Controleren dat alle VSA-commando’s:
-   - een eigen Hugo-demo pagina hebben;
-   - in de handleiding staan;
-   - syntax, inputs, outputs en parameters beschrijven.
-5. Onderzoeken of de Hugo-demo interactieve parameters kan ondersteunen:
-   - SVG-breedte;
-   - renderingvariabelen;
-   - keuzeopties.
-6. Referentie v1 en gebruikershandleiding actualiseren op basis van codewijzigingen.
-7. Handleiding slim laten verwijzen naar Hugo-demo voorbeelden.
+## 5. Later
 
-## 7. MusicXML-export
+### 5.1 MusicXML-export
 
 Status: `Later`
 
-Grote stap:
+AST → MusicXML, inclusief begin-pitchmarkers, regeleindes, control tokens, alignment en validatie.
 
-```text
-AST → MusicXML
-```
-
-Aandachtspunten:
-
-- begin-pitchmarker waarschijnlijk relevant;
-- regeleindes mogelijk mappen op maatstrepen;
-- wrap/control tokens mogelijk relevant;
-- alignment en ritmische structuur voorbereiden;
-- validatie vooraf noodzakelijk.
-
-## 8. Multi-voice en sync placeholders
+### 5.2 Multi-voice en sync placeholders
 
 Status: `Later`
 
-Eerder idee voor major release:
+SATB, placeholders, gedeelde ritmische structuur en tekstueel sync houden van stemmen.
 
-- placeholders;
-- stem-sync;
-- gedeelde ritmische structuur;
-- SATB;
-- tekstueel in sync houden van meerdere stemmen.
-
-## 9. Editor tooling
+### 5.3 Editor tooling
 
 Status: `Later`
 
-Mogelijke uitbreidingen:
-
-- VS Code extension;
-- syntax highlighting;
-- live validation;
-- hover diagnostics;
-- quick fixes.
+VS Code extension, syntax highlighting, live validation, hover diagnostics en quick fixes.

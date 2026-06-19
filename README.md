@@ -1,10 +1,7 @@
-# Stap 101 - content-source bevriezen
+# Stap 103 - todo.md + step91 test fix
 
-Deze stap sluit af dat scripts `examples\hugo-demo\content-source` redactioneel herschrijven.
+`docs/todo.md` is de geconsolideerde TODO-lijst.
 
-Belangrijk:
-
-- `build-hugo.cmd` draait navigatie/metrics alleen op `generated\hugo\content`.
-- `update-nav-placeholders.py` is marker-only.
-- Oude eenmalige mutatiescripts zijn no-op/verouderd.
-- `retry.cmd` is verouderd; gebruik `scripts\test.cmd`.
+Omdat `todo-stepXX-addendum.md` bestanden nu weg mogen, is
+`tests/test_step91_multiple_height_marker_specs.py` aangepast zodat deze
+`docs/todo.md` controleert in plaats van `docs/todo-step91-addendum.md`.

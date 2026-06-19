@@ -1,7 +1,8 @@
 <div class="nav-buttons">
-  {{- range $i, $v := .Params }}
-    {{- $text := index $v 0 -}}
-    {{- $url  := index $v 1 -}}
+  {{- range .Params }}
+    {{- $parts := split . "|" -}}
+    {{- $text := trim (index $parts 0) " " -}}
+    {{- $url  := trim (index $parts 1) " " -}}
     <a class="btn" href="{{ $url }}">{{ $text }}</a>
   {{- end }}
 </div>

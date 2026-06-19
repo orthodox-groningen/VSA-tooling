@@ -2,9 +2,8 @@ from pathlib import Path
 import re
 
 
-def test_step60_scripts_exist():
+def test_inspect_svg_line_script_exists():
     assert Path("scripts/inspect-svg-line-y.py").exists()
-    assert Path("scripts/apply-step60-multiline-baseline.py").exists()
 
 
 def test_svg_translate_positions_are_distinct():

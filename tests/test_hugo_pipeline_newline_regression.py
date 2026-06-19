@@ -3,9 +3,6 @@ import subprocess
 import sys
 
 
-def test_step58_apply_script_exists():
-    assert Path("scripts/apply-step58-real-pipeline-newlines.py").exists()
-
 
 def test_tone8_like_source_has_three_render_lines_at_layout_level():
     from vsa.parser import Parser

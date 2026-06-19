@@ -2,7 +2,7 @@ from pathlib import Path
 
 
 SPEC = Path("docs/architecture/parser-stap-91-multiple-height-marker-specs.md")
-TODO = Path("docs/todo-step91-addendum.md")
+TODO = Path("docs/todo.md")
 
 
 def test_step91_spec_exists():
@@ -60,10 +60,11 @@ def test_step91_spec_says_svg_treats_markers_equally():
     assert "geen aparte visuele status" in text
 
 
-def test_step91_todo_addendum_exists():
+def test_step91_todo_is_consolidated_in_main_todo():
     assert TODO.exists()
     text = TODO.read_text(encoding="utf-8")
 
+    assert "Meerdere hoogte-markeringen" in text
     assert "parseracceptatie" in text
     assert "AST-representatie" in text
     assert "validatorregels" in text

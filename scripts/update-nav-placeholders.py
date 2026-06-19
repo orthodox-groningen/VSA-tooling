@@ -6,7 +6,7 @@ import os
 import re
 
 
-MARKER_RE = re.compile(r"<!--\s*VSA-NAV:(HOME|UP|SIBLINGS|CHILDREN|PAGES)\s*-->")
+MARKER_RE = re.compile(r"<!--\s*VSA-NAV:(HOME|UP|SIBLINGS|CHILDREN|PAGES|PAGES-HERE)\s*-->")
 GENERATED_BLOCK_RE_TEMPLATE = (
     r"<!--\s*VSA-NAV-GENERATED:{kind}-START\s*-->"
     r".*?"
@@ -97,6 +97,9 @@ def render_items(kind: str, path: Path, root: Path) -> list[str]:
     if kind == "PAGES":
         return child_page_items(path.parent)
 
+    if kind == "PAGES-HERE":
+        return child_page_items_here(path.parent)
+
     return []
 
 
@@ -135,6 +138,19 @@ def child_page_items(directory: Path) -> list[str]:
 
     if not pages:
         return ["<!-- Geen items voor PAGES. -->"]
+
+    return [f"- [{title_for_page(item)}]({item.stem}/)" for item in pages]
+
+
+def child_page_items_here(directory: Path) -> list[str]:
+    """Toont alleen pagina’s in dezelfde directory, zonder recursie."""
+    pages = [
+        item for item in sorted(directory.glob("*.md"), key=sort_key)
+        if item.name != "_index.md"
+    ]
+
+    if not pages:
+        return ["<!-- Geen items voor PAGES-HERE. -->"]
 
     return [f"- [{title_for_page(item)}]({item.stem}/)" for item in pages]
 

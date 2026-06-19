@@ -27,6 +27,7 @@ Eigen introductietekst.
 <!-- VSA-NAV:SIBLINGS -->
 <!-- VSA-NAV:CHILDREN -->
 <!-- VSA-NAV:PAGES -->
+<!-- VSA-NAV:PAGES-HERE -->
 ```
 
 Daarna vult het buildscript direct onder elke marker een gegenereerd blok in.
@@ -76,6 +77,14 @@ Genereert links naar onderliggende secties, dus submappen met een `_index.md`.
 Genereert links naar gewone `.md` pagina's in dezelfde map.
 
 Als een map én een pagina dezelfde naam hebben, bijvoorbeeld `cli.md` en `cli/_index.md`, krijgt de sectie voorrang.
+
+### Pages-Here
+
+```html
+<!-- VSA-NAV:PAGES-HERE -->
+```
+
+Genereert links naar bestanden (geen mappen) met de extensi `.md` in dezelfde map (uitgezonderd `_index.md`).
 
 ## Pagina of sectie uit navigatie houden
 

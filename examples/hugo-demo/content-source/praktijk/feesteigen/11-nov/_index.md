@@ -24,7 +24,7 @@ title: "November"
 
 --- 
 
-<!-- VSA-NAV:PAGES -->
+<!-- VSA-NAV:PAGES-HERE  -->
 <!-- VSA-NAV-GENERATED:PAGES-START -->
 - [21 nov. Tempelgang van de Moeder Gods](11-21-tempelgang-moeder-gods/)
 - [Apostel Andreas, de Eerstgeroepene (30 nov.)](11-30-apostel-andreas/)

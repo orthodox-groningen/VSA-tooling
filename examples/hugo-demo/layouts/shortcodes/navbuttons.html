@@ -1,0 +1,26 @@
+<div class="nav-buttons">
+  {{- range $i, $v := .Params }}
+    {{- $text := index $v 0 -}}
+    {{- $url  := index $v 1 -}}
+    <a class="btn" href="{{ $url }}">{{ $text }}</a>
+  {{- end }}
+</div>
+
+<style>
+.nav-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 1rem 0;
+}
+.nav-buttons .btn {
+  padding: 0.4rem 0.8rem;
+  background: #eee;
+  border-radius: 4px;
+  text-decoration: none;
+  border: 1px solid #ccc;
+}
+.nav-buttons .btn:hover {
+  background: #ddd;
+}
+</style>

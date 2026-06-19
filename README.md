@@ -1,14 +1,10 @@
-# Stap 90 - stop build-hugo mutators
+# Stap 101 - content-source bevriezen
 
-Probleem:
+Deze stap sluit af dat scripts `examples\hugo-demo\content-source` redactioneel herschrijven.
 
-Oude apply-scripts herschrijven `scripts\build-hugo.cmd` en voegen regels in midden in het `hugo ^` blok.
+Belangrijk:
 
-Deze stap:
-
-- zet `scripts\build-hugo.cmd` schoon terug;
-- deactiveert oude mutators:
-  - `apply-step76-regenerate-missing-vsa-images.py`
-  - `apply-step84-hugo-link-asset-checker.py`
-  - `apply-step86-clean-build-regenerate-check.py`
-- past tests aan zodat ze niet meer verwachten dat deze scripts `build-hugo.cmd` muteren.
+- `build-hugo.cmd` draait navigatie/metrics alleen op `generated\hugo\content`.
+- `update-nav-placeholders.py` is marker-only.
+- Oude eenmalige mutatiescripts zijn no-op/verouderd.
+- `retry.cmd` is verouderd; gebruik `scripts\test.cmd`.

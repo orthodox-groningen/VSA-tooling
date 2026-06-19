@@ -1,0 +1,35 @@
+@echo off
+setlocal
+cd /d %~dp0\..
+echo Verwijder verouderde scripts...
+if exist "scripts/apply-step51-force.py" del /q "scripts/apply-step51-force.py"
+if exist "scripts/apply-step57-preserve-newlines.py" del /q "scripts/apply-step57-preserve-newlines.py"
+if exist "scripts/apply-step58-real-pipeline-newlines.py" del /q "scripts/apply-step58-real-pipeline-newlines.py"
+if exist "scripts/apply-step60-multiline-baseline.py" del /q "scripts/apply-step60-multiline-baseline.py"
+if exist "scripts/apply-step61-markdown-hardbreak-newlines.py" del /q "scripts/apply-step61-markdown-hardbreak-newlines.py"
+if exist "scripts/apply-step66-pillow-dependency-ci.py" del /q "scripts/apply-step66-pillow-dependency-ci.py"
+if exist "scripts/apply-step67-spacing-policy.py" del /q "scripts/apply-step67-spacing-policy.py"
+if exist "scripts/apply-step68-todo-and-navigation.py" del /q "scripts/apply-step68-todo-and-navigation.py"
+if exist "scripts/apply-step70-ci-rendering-fonts-os-guard.py" del /q "scripts/apply-step70-ci-rendering-fonts-os-guard.py"
+if exist "scripts/apply-step71-hugo-index-navigation.py" del /q "scripts/apply-step71-hugo-index-navigation.py"
+if exist "scripts/apply-step72-fix-nested-vsa-image-refs.py" del /q "scripts/apply-step72-fix-nested-vsa-image-refs.py"
+if exist "scripts/apply-step73-spec-multiple-height-markers.py" del /q "scripts/apply-step73-spec-multiple-height-markers.py"
+if exist "scripts/apply-step75-navigation-praktijk-moved.py" del /q "scripts/apply-step75-navigation-praktijk-moved.py"
+if exist "scripts/apply-step76-regenerate-missing-vsa-images.py" del /q "scripts/apply-step76-regenerate-missing-vsa-images.py"
+if exist "scripts/apply-step78-index-nav-blocks-only.py" del /q "scripts/apply-step78-index-nav-blocks-only.py"
+if exist "scripts/apply-step79-explicit-nav-placeholders.py" del /q "scripts/apply-step79-explicit-nav-placeholders.py"
+if exist "scripts/apply-step81-stabilize-hugo-navigation.py" del /q "scripts/apply-step81-stabilize-hugo-navigation.py"
+if exist "scripts/apply-step84-hugo-link-asset-checker.py" del /q "scripts/apply-step84-hugo-link-asset-checker.py"
+if exist "scripts/apply-step86-clean-build-regenerate-check.py" del /q "scripts/apply-step86-clean-build-regenerate-check.py"
+if exist "scripts/debug-praktijk-navigation.cmd" del /q "scripts/debug-praktijk-navigation.cmd"
+if exist "scripts/fix-praktijk-navigation.cmd" del /q "scripts/fix-praktijk-navigation.cmd"
+if exist "scripts/hide-legacy-hugo-routes.py" del /q "scripts/hide-legacy-hugo-routes.py"
+if exist "scripts/migrate-index-navigation-placeholders.py" del /q "scripts/migrate-index-navigation-placeholders.py"
+if exist "scripts/regenerate-missing-vsa-images.py" del /q "scripts/regenerate-missing-vsa-images.py"
+if exist "scripts/repair-vsa-image-refs.py" del /q "scripts/repair-vsa-image-refs.py"
+if exist "scripts/retry.cmd" del /q "scripts/retry.cmd"
+if exist "scripts/revert-step68-navigation.py" del /q "scripts/revert-step68-navigation.py"
+if exist "scripts/stabilize-hugo-navigation.py" del /q "scripts/stabilize-hugo-navigation.py"
+if exist "scripts/update-index-navigation-blocks.py" del /q "scripts/update-index-navigation-blocks.py"
+echo Klaar.
+endlocal

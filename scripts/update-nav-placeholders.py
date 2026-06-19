@@ -1,265 +1,183 @@
 from __future__ import annotations
 
 from pathlib import Path
+import argparse
+import os
 import re
 
 
-ROOT = Path(__file__).resolve().parents[1]
-CONTENT_ROOT = ROOT / "examples" / "hugo-demo" / "content-source"
-
-NAV_TYPES = ("HOME", "UP", "SIBLINGS", "CHILDREN", "PAGES")
-MARKER_RE = re.compile(r"<!-- VSA-NAV:(HOME|UP|SIBLINGS|CHILDREN|PAGES) -->")
-GENERATED_RE = re.compile(
-    r"\n*<!-- VSA-NAV-GENERATED:(HOME|UP|SIBLINGS|CHILDREN|PAGES)-START -->"
+MARKER_RE = re.compile(r"<!--\s*VSA-NAV:(HOME|UP|SIBLINGS|CHILDREN|PAGES)\s*-->")
+GENERATED_BLOCK_RE_TEMPLATE = (
+    r"<!--\s*VSA-NAV-GENERATED:{kind}-START\s*-->"
     r".*?"
-    r"<!-- VSA-NAV-GENERATED:\1-END -->\n*",
-    re.DOTALL,
+    r"<!--\s*VSA-NAV-GENERATED:{kind}-END\s*-->"
 )
 
 
 def main() -> None:
-    if not CONTENT_ROOT.exists():
-        print(f"Niet gevonden: {CONTENT_ROOT}")
+    parser = argparse.ArgumentParser(description="Update explicit VSA navigation generated blocks only.")
+    parser.add_argument(
+        "content_root",
+        nargs="?",
+        default=str(Path("generated") / "hugo" / "content"),
+        help="Markdown content root to update. Defaults to generated\\hugo\\content.",
+    )
+    args = parser.parse_args()
+
+    root = Path(args.content_root)
+    if not root.exists():
+        print(f"Niet gevonden: {root}")
         raise SystemExit(1)
 
-    changed = []
-
-    for path in sorted(CONTENT_ROOT.rglob("*.md")):
+    changed: list[Path] = []
+    for path in sorted(root.rglob("*.md")):
         original = path.read_text(encoding="utf-8")
-        text = update_placeholders(path, original)
-
-        if text != original:
-            path.write_text(text.rstrip() + "\n", encoding="utf-8")
+        updated = update_file_text(original, path, root)
+        if updated != original:
+            path.write_text(updated, encoding="utf-8")
             changed.append(path)
 
-    print("Hugo navigatie-placeholders bijgewerkt.")
     if changed:
+        print("Hugo navigatie-placeholders bijgewerkt.")
         for path in changed:
-            print(f"- {path.relative_to(ROOT)}")
+            print(f"- {path}")
     else:
-        print("Geen wijzigingen nodig.")
+        print("Geen navigatie-placeholders gewijzigd.")
 
 
-def update_placeholders(path: Path, text: str) -> str:
-    # Oude gegenereerde inhoud wordt altijd verwijderd en daarna opnieuw opgebouwd.
-    text = GENERATED_RE.sub("\n", text)
+def update_file_text(text: str, path: Path, root: Path) -> str:
+    updated = text
+    kinds = list(dict.fromkeys(MARKER_RE.findall(text)))
 
-    lines = text.splitlines()
-    out = []
+    for kind in kinds:
+        updated = update_generated_block(updated, kind, render_items(kind, path, root))
 
-    for line in lines:
-        out.append(line)
-        match = MARKER_RE.fullmatch(line.strip())
-        if match:
-            nav_type = match.group(1)
-            out.append(render_generated_block(path, nav_type))
-
-    return "\n".join(out) + "\n"
+    return updated
 
 
-def render_generated_block(path: Path, nav_type: str) -> str:
-    lines = [
-        f"<!-- VSA-NAV-GENERATED:{nav_type}-START -->",
-    ]
+def update_generated_block(text: str, kind: str, items: list[str]) -> str:
+    marker_match = re.search(rf"<!--\s*VSA-NAV:{re.escape(kind)}\s*-->", text)
+    if not marker_match:
+        return text
 
-    items = navigation_items(path, nav_type)
+    generated = render_generated_block(kind, items)
+    pattern = re.compile(
+        GENERATED_BLOCK_RE_TEMPLATE.format(kind=re.escape(kind)),
+        flags=re.DOTALL,
+    )
 
-    if items:
-        for label, link in items:
-            lines.append(f"- [{label}]({link})")
-    else:
-        lines.append(f"<!-- Geen items voor {nav_type}. -->")
+    match = pattern.search(text, marker_match.end())
+    if match:
+        return text[:match.start()] + generated + text[match.end():]
 
-    lines.append(f"<!-- VSA-NAV-GENERATED:{nav_type}-END -->")
-    return "\n".join(lines)
+    return text[:marker_match.end()] + "\n" + generated + text[marker_match.end():]
 
 
-def navigation_items(path: Path, nav_type: str) -> list[tuple[str, str]]:
-    current_route = route_parts_for_path(path)
-    current_dir = path.parent
+def render_generated_block(kind: str, items: list[str]) -> str:
+    return "\n".join([
+        f"<!-- VSA-NAV-GENERATED:{kind}-START -->",
+        *items,
+        f"<!-- VSA-NAV-GENERATED:{kind}-END -->",
+    ])
 
-    if nav_type == "HOME":
-        if current_route == ():
-            return []
-        return [("Home", relative_url(current_route, ()))]
 
-    if nav_type == "UP":
-        if current_route == ():
-            return []
-        return [("Omhoog", relative_url(current_route, current_route[:-1]))]
+def render_items(kind: str, path: Path, root: Path) -> list[str]:
+    if kind == "HOME":
+        return [f"- [Home]({rel_link(path.parent, root)})"]
 
-    if nav_type == "SIBLINGS":
-        return sibling_items(path, current_route, current_dir)
+    if kind == "UP":
+        return [f"- [Omhoog]({rel_link(path.parent, path.parent.parent)})"]
 
-    if nav_type == "CHILDREN":
-        return child_section_items(current_route, current_dir)
+    if kind == "SIBLINGS":
+        return sibling_items(path)
 
-    if nav_type == "PAGES":
-        return child_page_items(path, current_route, current_dir)
+    if kind == "CHILDREN":
+        return child_section_items(path.parent)
+
+    if kind == "PAGES":
+        return child_page_items(path.parent)
 
     return []
 
 
-def sibling_items(path: Path, current_route: tuple[str, ...], current_dir: Path) -> list[tuple[str, str]]:
-    if current_dir == CONTENT_ROOT:
-        return []
+def sibling_items(path: Path) -> list[str]:
+    current = path.parent
+    parent = current.parent
 
-    parent_dir = current_dir.parent
-    items: list[tuple[str, str]] = []
+    siblings = [
+        item for item in sorted(parent.iterdir(), key=sort_key)
+        if item.is_dir() and item != current and not item.name.startswith("_")
+    ] if parent.exists() else []
 
-    for child in sorted(parent_dir.iterdir(), key=lambda p: p.name.lower()):
-        if not child.is_dir() or child == current_dir or child.name.startswith("."):
-            continue
-        index = child / "_index.md"
-        if index.exists() and not is_nav_excluded(index):
-            target = route_parts_for_directory(child)
-            items.append((page_title(index), relative_url(current_route, target)))
+    if not siblings:
+        return ["<!-- Geen items voor SIBLINGS. -->"]
 
-    sibling_section_names = {
-        child.name.lower()
-        for child in parent_dir.iterdir()
-        if child.is_dir() and (child / "_index.md").exists()
-    }
-
-    for sibling in sorted(parent_dir.glob("*.md"), key=lambda p: p.name.lower()):
-        if sibling.name.lower() == "_index.md" or sibling == path:
-            continue
-        if is_nav_excluded(sibling):
-            continue
-        if sibling.stem.lower() in sibling_section_names:
-            # Vermijd dubbele navigatie wanneer zowel cli.md als cli/_index.md bestaan.
-            continue
-        target = route_parts_for_path(sibling)
-        items.append((page_title(sibling), relative_url(current_route, target)))
-
-    return dedupe_items(items)
+    return [f"- [{title_for_dir(item)}]({rel_link(current, item)})" for item in siblings]
 
 
-def child_section_items(current_route: tuple[str, ...], current_dir: Path) -> list[tuple[str, str]]:
-    items: list[tuple[str, str]] = []
+def child_section_items(directory: Path) -> list[str]:
+    children = [
+        item for item in sorted(directory.iterdir(), key=sort_key)
+        if item.is_dir() and (item / "_index.md").exists()
+    ] if directory.exists() else []
 
-    for child in sorted(current_dir.iterdir(), key=lambda p: p.name.lower()):
-        if not child.is_dir() or child.name.startswith("."):
-            continue
-        index = child / "_index.md"
-        if index.exists() and not is_nav_excluded(index):
-            target = route_parts_for_directory(child)
-            items.append((page_title(index), relative_url(current_route, target)))
+    if not children:
+        return ["<!-- Geen items voor CHILDREN. -->"]
 
-    return dedupe_items(items)
+    return [f"- [{title_for_dir(item)}]({item.name}/)" for item in children]
 
 
-def child_page_items(path: Path, current_route: tuple[str, ...], current_dir: Path) -> list[tuple[str, str]]:
-    items: list[tuple[str, str]] = []
-    child_section_names = {
-        child.name.lower()
-        for child in current_dir.iterdir()
-        if child.is_dir() and (child / "_index.md").exists()
-    }
+def child_page_items(directory: Path) -> list[str]:
+    pages = [
+        item for item in sorted(directory.glob("*.md"), key=sort_key)
+        if item.name != "_index.md"
+    ] if directory.exists() else []
 
-    for page in sorted(current_dir.glob("*.md"), key=lambda p: p.name.lower()):
-        if page.name.lower() == "_index.md" or page == path:
-            continue
-        if is_nav_excluded(page):
-            continue
-        if page.stem.lower() in child_section_names:
-            continue
-        target = route_parts_for_path(page)
-        items.append((page_title(page), relative_url(current_route, target)))
+    if not pages:
+        return ["<!-- Geen items voor PAGES. -->"]
 
-    return dedupe_items(items)
+    return [f"- [{title_for_page(item)}]({item.stem}/)" for item in pages]
 
 
-def route_parts_for_directory(directory: Path) -> tuple[str, ...]:
-    return tuple(directory.relative_to(CONTENT_ROOT).parts)
+def title_for_dir(path: Path) -> str:
+    title = title_from_frontmatter(path / "_index.md")
+    return title or path.name.replace("-", " ").title()
 
 
-def route_parts_for_path(path: Path) -> tuple[str, ...]:
-    rel = path.relative_to(CONTENT_ROOT)
-
-    if path.name.lower() == "_index.md":
-        return tuple(rel.parent.parts)
-
-    return tuple(rel.with_suffix("").parts)
+def title_for_page(path: Path) -> str:
+    title = title_from_frontmatter(path)
+    return title or path.stem.replace("-", " ").title()
 
 
-def relative_url(from_route: tuple[str, ...], to_route: tuple[str, ...]) -> str:
-    common = 0
-    for a, b in zip(from_route, to_route):
-        if a != b:
-            break
-        common += 1
-
-    ups = [".."] * (len(from_route) - common)
-    downs = list(to_route[common:])
-    parts = ups + downs
-
-    if not parts:
-        return "./"
-
-    return "/".join(parts) + "/"
-
-
-def page_title(path: Path) -> str:
-    data = frontmatter(path)
-
-    if "title" in data and data["title"].strip():
-        return data["title"].strip()
+def title_from_frontmatter(path: Path) -> str | None:
+    if not path.exists():
+        return None
 
     text = path.read_text(encoding="utf-8")
-    for line in text.splitlines():
-        if line.startswith("# "):
-            return line[2:].strip()
+    if not text.startswith("---"):
+        return None
 
-    return title_for_slug(path.stem)
-
-
-def frontmatter(path: Path) -> dict[str, str]:
-    text = path.read_text(encoding="utf-8")
-    lines = text.splitlines()
-
-    if not lines or lines[0].strip() != "---":
-        return {}
-
-    data: dict[str, str] = {}
-
-    for line in lines[1:]:
+    for line in text.splitlines()[1:]:
         if line.strip() == "---":
-            break
-        if ":" not in line:
-            continue
-        key, value = line.split(":", 1)
-        data[key.strip()] = value.strip().strip('"').strip("'")
+            return None
+        if line.strip().lower().startswith("title:"):
+            value = line.split(":", 1)[1].strip()
+            return value.strip("\"'") or None
 
-    return data
-
-
-def is_nav_excluded(path: Path) -> bool:
-    data = frontmatter(path)
-    value = data.get("vsa_nav_exclude", "").strip().lower()
-    return value in {"true", "yes", "1", "ja"}
+    return None
 
 
-def title_for_slug(slug: str) -> str:
-    special = {"vsa": "VSA", "svg": "SVG", "cli": "CLI"}
-    return " ".join(
-        special.get(part.lower(), part.capitalize())
-        for part in slug.replace("_", "-").split("-")
-    )
+def rel_link(from_dir: Path, to_path: Path) -> str:
+    rel = Path(os.path.relpath(to_path, from_dir)).as_posix()
+    if rel == ".":
+        return "./"
+    if not rel.endswith("/"):
+        rel += "/"
+    return rel
 
 
-def dedupe_items(items: list[tuple[str, str]]) -> list[tuple[str, str]]:
-    seen = set()
-    result = []
-
-    for item in items:
-        key = item[1]
-        if key in seen:
-            continue
-        seen.add(key)
-        result.append(item)
-
-    return result
+def sort_key(path: Path) -> tuple[str, str]:
+    return (path.name.lower(), path.name)
 
 
 if __name__ == "__main__":

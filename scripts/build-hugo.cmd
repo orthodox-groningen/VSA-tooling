@@ -1,26 +1,34 @@
 @echo off
 setlocal
+set "PY=python"
+if exist .venv\Scripts\python.exe set "PY=.venv\Scripts\python.exe"
 echo.
 echo === VSA + Hugo build ===
 echo.
+echo Python: %PY%
+echo.
 echo [1/5] Clean generated Hugo artifacts
-python scripts\clean-hugo-build-artifacts.py
+"%PY%" scripts\clean-hugo-build-artifacts.py
 if errorlevel 1 exit /b 1
 echo OK
 echo.
 echo [2/5] Validate content
-vsa validate examples\hugo-demo\content-source
+"%PY%" -m vsa.cli validate examples\hugo-demo\content-source
 if errorlevel 1 exit /b 1
 echo OK
 echo.
 echo [3/5] Generate Markdown + SVG
-python scripts\update-nav-placeholders.py
-python scripts\update-spacing-diagnostics-metadata.py
-vsa build-markdown ^
+"%PY%" -m vsa.cli build-markdown ^
   examples\hugo-demo\content-source ^
   generated\hugo\content ^
   generated\hugo\static\vsa ^
   --config examples\hugo-demo\vsa-demo-config.yml
+if errorlevel 1 exit /b 1
+"%PY%" scripts\update-nav-placeholders.py generated\hugo\content
+if errorlevel 1 exit /b 1
+"%PY%" scripts\update-spacing-diagnostics-metadata.py generated\hugo\content\voorbeelden\rendering\spacing-diagnostiek.md
+if errorlevel 1 exit /b 1
+"%PY%" scripts\assert-real-font-metrics.py
 if errorlevel 1 exit /b 1
 echo OK
 echo.

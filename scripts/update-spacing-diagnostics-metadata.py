@@ -1,4 +1,7 @@
+from __future__ import annotations
+
 from pathlib import Path
+import argparse
 import sys
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -9,14 +12,22 @@ if str(SRC) not in sys.path:
 from vsa.text_metrics import DEFAULT_FONT_FAMILY, estimate_text_width, get_font_metrics, using_real_font_metrics
 
 
-PAGE = ROOT / "examples/hugo-demo/content-source/voorbeelden/rendering/spacing-diagnostiek.md"
 START = "<!-- VSA-METRICS-START -->"
 END = "<!-- VSA-METRICS-END -->"
+DEFAULT_PAGE = Path("generated/hugo/content/voorbeelden/rendering/spacing-diagnostiek.md")
 
 
-def main():
-    if not PAGE.exists():
-        print(f"Niet gevonden: {PAGE}")
+def main() -> None:
+    parser = argparse.ArgumentParser(description="Update spacing diagnostics metrics block.")
+    parser.add_argument("page", nargs="?", default=str(DEFAULT_PAGE))
+    args = parser.parse_args()
+
+    page = Path(args.page)
+    if not page.is_absolute():
+        page = ROOT / page
+
+    if not page.exists():
+        print(f"Niet gevonden: {page}")
         raise SystemExit(1)
 
     metrics = get_font_metrics(20, DEFAULT_FONT_FAMILY)
@@ -43,19 +54,17 @@ def main():
     ]
 
     block = "\n".join(lines)
-
-    text = PAGE.read_text(encoding="utf-8")
+    text = page.read_text(encoding="utf-8")
 
     if START in text and END in text:
         before = text.split(START, 1)[0]
         after = text.split(END, 1)[1]
         text = before + block + after
     else:
-        insert_after = "# Spacing diagnostiek\n"
-        text = text.replace(insert_after, insert_after + "\n" + block + "\n", 1)
+        text = text.rstrip() + "\n\n" + block + "\n"
 
-    PAGE.write_text(text, encoding="utf-8")
-    print(f"Metrics bijgewerkt in {PAGE}")
+    page.write_text(text, encoding="utf-8")
+    print(f"Metrics bijgewerkt in {page}")
 
 
 if __name__ == "__main__":

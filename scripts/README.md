@@ -1,10 +1,11 @@
 # Scripts voor VSA Tooling
 
-Deze map bevat eenvoudige scripts voor lokaal ontwikkelen en voor gebruik in GitHub Actions.
+Deze map bevat de actieve scripts voor lokaal ontwikkelen en CI.
 
-De scripts zijn bewust eenvoudig gehouden en gericht op Windows 11, CMD.exe en Python.
+Belangrijk: scripts mogen `examples\hugo-demo\content-source` niet redactioneel herschrijven.
+Generated navigatie en spacing-metadata worden alleen bijgewerkt in `generated\...\content`.
 
-## Overzicht
+## Actieve scripts
 
 | Script | Doel |
 |---|---|
@@ -12,29 +13,26 @@ De scripts zijn bewust eenvoudig gehouden en gericht op Windows 11, CMD.exe en P
 | `test.cmd` | alle tests uitvoeren |
 | `test-verbose.cmd` | tests uitvoeren met extra uitvoer |
 | `clean.cmd` | tijdelijke build- en testbestanden verwijderen |
-| `run-example.cmd` | voorbeeldbestand verwerken |
-| `ci.cmd` | lokaal dezelfde stappen uitvoeren als CI |
+| `build-hugo.cmd` | Hugo-demo schoon bouwen |
+| `serve-hugo.cmd` | lokale Hugo-preview starten |
+| `build-preview.cmd` | preview-output bouwen |
+| `build-production.cmd` | productie-kandidaat bouwen |
+| `check-hugo-links-and-assets.py` | gegenereerde Hugo-output op dode links/assets controleren |
+| `debug-font-metrics.py` | fontmetrics inspecteren |
+| `assert-real-font-metrics.py` | build laten falen als Pillow/DejaVu real metrics niet actief zijn |
+| `update-nav-placeholders.py` | gegenereerde navigatie bijwerken in generated content |
+| `update-spacing-diagnostics-metadata.py` | spacingdiagnostiek bijwerken in generated content |
 
-## Aanbevolen workflow
+## Verouderde scripts
 
-Na clone:
+Zie:
 
 ```cmd
-scripts\bootstrap.cmd
+type scripts\OBSOLETE_SCRIPTS.md
 ```
 
-Tijdens ontwikkeling:
+`retry.cmd` is verouderd. Gebruik:
 
 ```cmd
 scripts\test.cmd
 ```
-
-Voor commit/push:
-
-```cmd
-scripts\ci.cmd
-```
-
-## GitHub Actions
-
-GitHub Actions kan later exact dezelfde scripts gebruiken.

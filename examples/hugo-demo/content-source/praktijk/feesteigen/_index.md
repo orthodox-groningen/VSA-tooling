@@ -19,18 +19,18 @@ title: "Feesteigen"
 <!-- VSA-NAV-GENERATED:SIBLINGS-END -->
 <!-- VSA-NAV:CHILDREN -->
 <!-- VSA-NAV-GENERATED:CHILDREN-START -->
-- [Januari](01-jan/)
-- [Februari](02-feb/)
-- [Maart](03-mrt/)
-- [April](04-apr/)
-- [Mei](05-mei/)
-- [Juni](06-jun/)
-- [Juli](07-jul/)
-- [Augustus](08-aug/)
-- [September](09-sep/)
-- [Oktober](10-okt/)
-- [November](11-nov/)
-- [December](12-dec/)
+- [01 Jan](01-jan/)
+- [02 Feb](02-feb/)
+- [03 Mrt](03-mrt/)
+- [04 Apr](04-apr/)
+- [05 Mei](05-mei/)
+- [06 Jun](06-jun/)
+- [07 Jul](07-jul/)
+- [08 Aug](08-aug/)
+- [09 Sep](09-sep/)
+- [10 Okt](10-okt/)
+- [11 Nov](11-nov/)
+- [12 Dec](12-dec/)
 <!-- VSA-NAV-GENERATED:CHILDREN-END -->
 <!-- VSA-NAV:PAGES -->
 <!-- VSA-NAV-GENERATED:PAGES-START -->

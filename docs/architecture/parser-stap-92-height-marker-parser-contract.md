@@ -4,18 +4,44 @@
 
 Dit document legt vast wat de parser moet accepteren en afwijzen wanneer meerdere hoogte-markeringen worden ondersteund.
 
-De vorm van een hoogte-markering blijft:
+## Bracket-directive model
+
+Een constructie tussen `[` en `:]` wordt gezien als een bracket-directive.
+
+Het einde van zo'n directive is het samengestelde eindtoken:
+
+```text
+:]
+```
+
+Dus de parser behandelt dit niet als twee losse tekens:
+
+```text
+:
+]
+```
+
+Dit maakt later andere directive-vormen tussen `[` en `:]` mogelijk.
+
+## Hoogte-markering
+
+Een hoogte-markering is een specifieke bracket-directive met deze vorm:
 
 ```text
 [<EHM>:]
 ```
 
-Een hoogte-markering bevat dus:
+Daarbij is `<EHM>` een geldige EHM volgens de EHM-specificatie.
 
-- een openingshaak `[`;
-- een geldige EHM;
-- een dubbele punt `:`;
-- een sluithaak `]`.
+Voorbeelden:
+
+```text
+[:]
+[/:]
+[//:]
+[\:]
+[-:]
+```
 
 ## Geldige voorbeelden
 
@@ -55,11 +81,7 @@ Heer, [:] {\ont}ferm [\:] {/U}.
 [:] {//eerst} test 1 [//:] {\\en} dan tekst {\twee} [\:] en dan {/tekst} drie [-:]
 ```
 
-## Ongeldige voorbeelden
-
-Ongeldige voorbeelden zouden in de toekomst nodig kunnen zijn voor uitbreidingen.
-Daarom moet het mogelijk zijn om te kiezen of tekst tussen `[` en `:]` een harde fout moet
-opleveren, of een waarschuwing (die dan wel gelogd moet worden op een toepasselijk niveau).
+## Ongeldige of nog niet ondersteunde voorbeelden
 
 ### `&` in een hoogte-markering
 
@@ -75,26 +97,33 @@ Reden: `&` is geen EHM-teken. Bovendien is `/&\` geen EHM, maar een samengesteld
 [_:] fout
 ```
 
-Reden: `_` is een ELM, geen EHM.
+Reden: `_` is geen EHM (dat het wel een ELM is doet niet terzake).
 
-### Marker zonder dubbele punt
+### non-EHM modifiers in een hoogte-markering
 
 ```text
-[/] fout
+[//\:] fout
 ```
 
-Reden: een hoogte-markering vereist `:` vóór `]`.
-Feitelijk is dit geen marker, omdat hij niet eindigt op `:]`. 
-Er moet gekozen kunnen worden of dit toch een harde fout oplevert,
-of een waarschuwing (die op een toepasselijk niveau wordt gelogd).
+Reden: `//\` is geen EHM (het doet er niet toe dat alle karakters in een EHM kunnen voorkomen).
 
-### Marker met spatie vóór dubbele punt
+### Geen bracket-directive omdat het eindtoken ontbreekt
+
+```text
+[/] fout of waarschuwing
+```
+
+Reden: deze constructie eindigt niet op `:]` en is daarom geen hoogte-markering.
+
+Er moet gekozen kunnen worden of dit een harde fout oplevert of een waarschuwing die op een toepasselijk niveau wordt gelogd.
+
+### Marker met spatie vóór het eindtoken
 
 ```text
 [/ :] fout
 ```
 
-Reden: de marker moet exact `[<EHM>:]` volgen; er mogen dus geen spaties in zitten.
+Reden: `/ ` is geen EHM; er mogen geen spaties in zitten.
 
 ## AST-contract
 
@@ -112,7 +141,7 @@ position = tokenpositie of bronpositie
 
 De eerste pitch marker krijgt geen ander tokentype dan latere pitch markers.
 
-Het onderscheid tussen beginhoogte en latere doelhoogtes is semantisch, niet syntactisch.
+Het onderscheid tussen eerste hoogte-markering en latere hoogte-markeringen is semantisch, niet syntactisch.
 
 ## Validator-contract
 
@@ -132,7 +161,7 @@ Wel blijft ongeldig:
 
 ```text
 ongeldige EHM in pitch marker
-ongeldige bracketconstructie
+ongeldige bracket-directive
 ```
 
 ## Renderer-contract

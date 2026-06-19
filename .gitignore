@@ -8,6 +8,8 @@ resources/
 
 # Hugo generated output
 examples/hugo-demo/public/
+examples/hugo-demo/content/
+examples/hugo-demo/.hugo_build.lock
 
 # Generated SVG assets
 examples/hugo-demo/static/vsa/
@@ -233,3 +235,4 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+

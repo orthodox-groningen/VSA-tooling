@@ -3,11 +3,13 @@ title: "Antifonen - weekdagen"
 source: "Liturgikon (pp.174-175)"
 ---
 
-# Antifonen - weekdagen
+## Antifonen - weekdagen
 
 De inhoud van deze pagina is ontleend aan het Liturgikon (pp.174-175).
 
-### 1e Antifoon
+<details>
+  <summary>1e Antifoon (weekdagen)</summary>
+
 ::: vsa-notatie
 [:] Door de {/ge}{/be_}den van de {\\hei}{/li}{/ge} {\Moe}{/der} {/&\&/&\&\Gods_&~&~&~&~}, {\o} {Hei_}{-&/land}, {/&\red_&_} {\ons_}. [:]
 :::
@@ -16,8 +18,10 @@ De inhoud van deze pagina is ontleend aan het Liturgikon (pp.174-175).
 5. [:] Eer aan {/de} {/Va}der, de {\\Zoon} {/en} {/de} {/Hei_}lige {\Geest},
 {\\nu} en {/al}{/tijd} en in de eeuwen der {\eeuw}{\en}, {/A_}{\men_}.  (Door de ....) 
 :::
+</details>
 
-## 2e ANTIFOON
+<details>
+  <summary>2e Antifoon (weekdagen)</summary>
 
 ::: vsa-notatie
 5. [:] Eer aan {/de} {/Va}{\der}, {/en} {/aan_} de {\Zoon_},  
@@ -39,6 +43,10 @@ en altijd Maagd {\Ma}{/&\&\ri~&~&_}{/a_};
 {\en} {/de} {/&\Hei}{\li}{/ge} {/Geest_}.  
 {\&/O} {/Chris_}{\&\tus}, {/on_}{\ze_} {\God__}, {/&/ver}{/&\&\&\los__&_&_&_} {/ons__}. [/:]
 :::
+</details>
+
+<details>
+  <summary>Kyrie (weekdagen)</summary>
 
 ::: vsa-notatie
 [//:] {/Ky_}ri-e {\e}{/&\&\&/lei}{/son__}.  
@@ -48,12 +56,13 @@ en altijd Maagd {\Ma}{/&\&\ri~&~&_}{/a_};
 :::
 
 Bij de Kleine Intocht soms nog eens: Verlos ons …
+</details>
 
----
-
-## 3e ANTIFOON
+<details>
+  <summary>3e Antifoon (weekdagen)</summary>
 
 ::: vsa-notatie
 [//:] Eer aan de Vader, de Zoon en de {Hei_}lige {/Geest_},  
 nu en altijd en in de eeuwen der eeuwen. {\A_}{men_}. [//:]
 :::
+</details>

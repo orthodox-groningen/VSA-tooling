@@ -5,11 +5,10 @@ sources:
   - "Praktijk in Groningen ('Verlos ons Zoon van God')"
 ---
 
-# Antifonen - weekdagen (Hemelum)
+## Antifonen - weekdagen (Hemelum)
 
-De inhoud van deze pagina is ontleend aan het Liturgikon (pp.174-175 en pp.258-259).
-
-### 1e Antifoon
+<details>
+  <summary>1e Antifoon (weekdagen)</summary>
 
 ::: vsa-notatie
 1. Juich {/voor} {/God}, ge{\he}{/le} {/aar__}{\de_},  
@@ -30,8 +29,10 @@ Door de {/ge}{/be_}den van de {\\hei}{/li}{/ge} {\Moe}{/der} {/&\&/&\&\Gods_&~&~
 5. Eer aan {/de} {/Va}der, de {\\Zoon} {/en} {/de} {/Hei_}lige {\Geest},
    {\\nu} en {/al}{/tijd} en in de eeuwen der {\eeuw}{\en}, {/A_}{\men_}. - Door ...
 :::
+</details>
 
-### 2e Antifoon
+<details>
+  <summary>2e Antifoon (weekdagen)</summary>
 
 ::: vsa-notatie
 1. De Heer {/be}{/mint} de poor{\ten} {/van} {/Si__}{\on_} 
@@ -54,8 +55,10 @@ Die won{/der}{/baar} zijt {\in} {/Uw} {/&\&/Hei__&~&~}{\li}{\gen~},
 5. Eer aan {/de} {/Va}{\der}, {/en} {/aan_} de {\Zoon_},  
    {\\en} {/aan} {/de} {\Hei_}lige {\Geest_}.  
 :::
+</details>
 
-### Eengeboren Zoon
+<details>
+  <summary>Eengeboren zoon (weekdagen)</summary>
 
 ::: vsa-notatie
 [//:] Nu en altijd en in de eeuwen {\der} {/eeuw}{\en}. {\A_}{/men_}.
@@ -72,8 +75,10 @@ Die won{/der}{/baar} zijt {\in} {/Uw} {/&\&/Hei__&~&~}{\li}{\gen~},
    {\en} {/de} {/&\Hei}{\li}{/ge} {/Geest_}.  
    {\&/O} {/Chris_}{\&\tus}, {/on_}{\ze_} {\God__}, {/&/ver}{/&\&\&\los__&_&_&_} {/ons__}. [/:]
 :::
+</details>
 
-### Rest van de kleine intocht?
+<details>
+  <summary>Rest van de kleine intocht? (weekdagen)</summary>
 
 ::: vsa-notatie
 [//:] {/Ky_}ri-e {\e}{/&\&\&/lei}{/son__}.  
@@ -86,3 +91,4 @@ Bij de Kleine Intocht soms nog eens: Verlos ons …
 [//:] Eer aan de Vader, de Zoon en de {Hei_}lige {/Geest_},  
 nu en altijd en in de eeuwen der eeuwen. {\A_}{men_}. [//:]
 :::
+</details>

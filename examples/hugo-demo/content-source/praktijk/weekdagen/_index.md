@@ -3,34 +3,26 @@ title: "Weekdagen"
 ---
 
 {{< navbuttons 
-    "Home       | ../../" 
-    "Omhoog     | ../" 
-    "Weekdagen  | ../weekdagen/" 
-    "Zondagen   | ../zondagen/" 
-    "Feesteigen | ../feesteigen/" 
+    \"Home       | ../../\"
+    \"Omhoog     | ../\"
+    \"Weekdagen  | ../weekdagen/\"
+    \"Zondagen   | ../zondagen/\"
+    \"Feesteigen | ../feesteigen/\"
 >}}
 
-## Antifonen
-
-- [Antifonen - weekdagen (Hemelum)](antifonen-hemelum/)
-- [Antifonen - weekdagen](antifonen/)
-
-## Troparen en Kondaken
+---
 
 {{< navbuttons 
-    \"Maandag - de Heilige Engelen     | maandag/\"
-    \"Dinsdag - H. Joannes de Doper    | dinsdag/\"
-    \"Woensdag - het Heilig Kruis      | woensdag/\"
-    \"Donderdag - H. Apostelen         | donderdag/\"
-    \"Vrijdag - het Heilig Kruis       | vrijdag/\"
-    \"Zaterdag - de Koren der Heiligen | zaterdag/\"
+    \"Maandag<br>(H. Engelen)  | maandag/\"
+    \"Dinsdag<br>(Voorloper)   | dinsdag/\"
+    \"Woensdag<br>(H. Kruis)   | woensdag/\"
+    \"Donderdag<br>(Apostelen) | donderdag/\"
+    \"Vrijdag<br>(H. Kruis)    | vrijdag/\"
+    \"Zaterdag<br>(Heiligen)   | zaterdag/\"
 >}}
 
-- [Maandag - de Heilige Engelen](maandag/)
-- [Dinsdag - H. Joannes de Doper](dinsdag/)
-- [Woensdag - het Heilig Kruis](woensdag/)
-- [Donderdag - H. Apostelen](donderdag/)
-- [Vrijdag - het Heilig Kruis](vrijdag/)
-- [Zaterdag - de Koren der Heiligen](zaterdag/)
+--- 
 
 - [Weekdagen volgens Liturgikon (p244-251)](weekdagen/)
+- [Antifonen - weekdagen (Hemelum)](antifonen-hemelum/)
+- [Antifonen - weekdagen](antifonen/)

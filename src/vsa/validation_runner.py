@@ -4,10 +4,17 @@ import re
 
 from .block_parser import parse_markdown_blocks
 from .config import VSAConfig
-from .parser import Parser
+from .parser import HALFTOON_CANONICAL, Parser
 from .semantic_validator import SemanticValidationOptions, SemanticValidator
 from .recoverable_syntax_validator import RecoverableSyntaxValidator
 from .errors import VSAError
+
+# Characters that form the base of an EHM (direction or same-tone).
+_BASE_MODIFIER_CHARS: frozenset[str] = frozenset("/\\-~")
+
+# Characters that can be a halftoon prefix — only valid when immediately
+# followed by a _BASE_MODIFIER_CHARS character.
+_HALFTOON_PREFIX_CHARS: frozenset[str] = frozenset(HALFTOON_CANONICAL)
 
 
 @dataclass
@@ -287,8 +294,19 @@ def _first_scope_issue(text: str):
 
 def _split_scope_prefix_and_text(content: str):
     index = 0
-    while index < len(content) and content[index] in "/\\-~&":
-        index += 1
+    n = len(content)
+    while index < n:
+        ch = content[index]
+        if ch in _BASE_MODIFIER_CHARS or ch == "&":
+            index += 1
+        elif (
+            ch in _HALFTOON_PREFIX_CHARS
+            and index + 1 < n
+            and content[index + 1] in _BASE_MODIFIER_CHARS
+        ):
+            index += 2  # consume prefix + base char as one unit
+        else:
+            break
     return content[:index], content[index:]
 
 
@@ -341,10 +359,19 @@ def _modifier_counts_heuristic(content: str):
 
 def _scope_prefix(text: str):
     index = 0
-
-    while index < len(text) and text[index] in "/\\-~&":
-        index += 1
-
+    n = len(text)
+    while index < n:
+        ch = text[index]
+        if ch in _BASE_MODIFIER_CHARS or ch == "&":
+            index += 1
+        elif (
+            ch in _HALFTOON_PREFIX_CHARS
+            and index + 1 < n
+            and text[index + 1] in _BASE_MODIFIER_CHARS
+        ):
+            index += 2
+        else:
+            break
     return text[:index]
 
 

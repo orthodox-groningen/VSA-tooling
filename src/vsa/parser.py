@@ -39,6 +39,7 @@ EHM_VALUES = sorted(
 ELM_VALUES = [
     "__",
     "..",
+    "_.",
     "_",
     ".",
     "-",

@@ -248,14 +248,15 @@ Alle combinaties van een halftoon-prefix met een basisbeweging zijn syntactisch 
 
 Een ELM beschrijft de duur van één muzikale positie ten opzichte van de standaardduur.
 
-| ELM   | Voorbeeld    | Duur                | Visuele glyph                                  |
-| ----- | ------------ | ------------------- | ---------------------------------------------- |
-| `_`   | `{tekst_}`   | 2 × standaardduur   | één horizontale lijn onder het zangelement     |
-| `__`  | `{tekst__}`  | 4 × standaardduur   | twee gestapelde horizontale lijnen             |
-| `.`   | `{tekst.}`   | 1/2 × standaardduur | één punt onder het zangelement                 |
-| `..`  | `{tekst..}`  | 1/4 × standaardduur | twee gestapelde punten                         |
-| `-`   | `{tekst-}`   | standaardduur       | implementatie-afhankelijke standaardduur-glyph |
-| `~`   | `{tekst~}`   | standaardduur       | geen zichtbare glyph                           |
+| ELM   | Voorbeeld    | Duur                | Visuele glyph                                                        |
+| ----- | ------------ | ------------------- | -------------------------------------------------------------------- |
+| `_`   | `{tekst_}`   | 2 × standaardduur   | één horizontale lijn onder het zangelement                           |
+| `_.`  | `{tekst_.}`  | 3 × standaardduur   | volle lijn boven, halve lijn (linkerhelft) direct daaronder          |
+| `__`  | `{tekst__}`  | 4 × standaardduur   | twee gestapelde horizontale lijnen                                   |
+| `.`   | `{tekst.}`   | 1/2 × standaardduur | één punt onder het zangelement                                       |
+| `..`  | `{tekst..}`  | 1/4 × standaardduur | twee gestapelde punten                                               |
+| `-`   | `{tekst-}`   | standaardduur       | implementatie-afhankelijke standaardduur-glyph                       |
+| `~`   | `{tekst~}`   | standaardduur       | geen zichtbare glyph                                                 |
 
 ### 4.5 Samengestelde modifiers
 

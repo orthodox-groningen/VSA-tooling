@@ -30,9 +30,10 @@ voortekst [:] tekst {/zin_} [/:] meer {/tekst_} [//:] natekst.
 
 Status: `Open`
 
-- Eindtoon bij laatste hoogte-marker detecteren.
-- Begin- en eind-pitchmarkers strenger controleren.
-- Foutmelding moet bestand, regel, kolom en concrete herstelactie noemen.
+- Eindtooncontrole alleen toepassen wanneer een expliciete eindmarkering aanwezig is.
+- Geen fout meer geven voor ontbrekende eindmarkering: `VSA-SEMANTIC-MISSING-FINAL-PITCH-MARKER` is obsolete.
+- Geen fout meer geven voor `[:]` als eindmarkering: `[:]` is equivalent aan `[-:]` c.q. `[~:]`; `VSA-SEMANTIC-EMPTY-FINAL-PITCH-MARKER` is daarvoor obsolete.
+- Foutmelding voor echte eindtoonmismatch moet bestand, regel, kolom en concrete herstelactie noemen.
 
 ### 1.3 Halve-stap modifiers en commentaar
 

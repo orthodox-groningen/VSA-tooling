@@ -128,7 +128,7 @@ Een aantal parameters van de bloksyntax hebben normatieve defaultwaarde, wat het
 | `do`              | `F4`           | absolute starttoon voor interpretatie en MusicXML-export    |
 | `mode`            | `major`        | modusdefinitie voor toonladderinterpretatie                 |
 | `tempo`           | `100`          | tempo voor MusicXML-export                                  |
-| `validate-ending` | `true`         | controleer dat de eindtoonhoogte-markering bestaat en klopt |
+| `validate-ending` | `true`         | controleer een aanwezige eindtoonhoogte-markering tegen de berekende eindtoon |
 | `duration-model`  | `default`      | mapping van ELM-duurwaarden naar MusicXML-durationwaarden   |
 
 Andere parameters mogen eveneens voorkomen, bijvoorbeeld `title`, `subtitle`, `composer`, `language`, `meter`, `tone` of renderer-specifieke metadata. Zie Appendix 3 voor voorbeelden. De blokmetadata heeft voorrang op implementatie-defaults.
@@ -264,12 +264,9 @@ Voorbeelden:
 [//:]
 ```
 
-Een toonhoogte-markering mag alleen voorkomen:
+Een toonhoogte-markering mag op meerdere posities in een zangstuk voorkomen.
 
-- aan het begin van een zangstuk;
-- aan het einde van een zangstuk.
-
-Een beginmarkering definieert de startcontext, gegeven de do-context. Een eindmarkering kan worden gebruikt om de verwachte eindtoon te noteren of visueel af te sluiten.
+De eerste toonhoogte-markering definieert de startcontext, gegeven de do-context. Latere toonhoogte-markeringen geven aan dat de zang op die positie op de aangegeven relatieve hoogte moet zitten. Een laatste markering kan worden gebruikt om de verwachte eindtoon te noteren of visueel af te sluiten.
 
 De `:` is een syntactische afsluiter binnen de toonhoogte-markering. Hij wordt visueel gerenderd als een horizontale lijn rond het verticale midden van de tekstregel.
 
@@ -668,7 +665,7 @@ B3 C4 B3 C4 D4 C4 D4
 
 Een beginmarkering bevat alleen een relatieve hoogte-modifier en geeft daarmee aan op welke toonladdergraad de zang begint ten opzichte van de do-context. Een beginmarkering `[:]` betekent dat de zang op de do-context begint. Een markering `[//:]` betekent dat de zang twee ladderstappen boven de do-context begint.
 
-Een eindmarkering kan worden gebruikt als visuele afsluiting en als semantische eindcontrole: (het ontbreken van) de hoogtemodifier zegt dan op welke hoogte (relatief ten opzichte van de do-context) de laatste nood moet zijn gezongen. Een implementatie mag controleren of een eindmarkering overeenkomt met de berekende eindtoon van het zangstuk. Een eindmarkering `[:]` betekent dat de zang op de do-context eindigt. Een markering `[//:]` betekent dat de zang twee ladderstappen boven de do-context eindigt.
+Een eindmarkering kan worden gebruikt als visuele afsluiting en als semantische eindcontrole. Een ontbrekende eindmarkering is toegestaan en betekent dat er geen expliciete eindtooncontrole is genoteerd. Een eindmarkering `[:]` is niet leeg in semantische zin: zij betekent dat de zang op de do-context eindigt en is equivalent aan `[-:]` c.q. `[~:]`. Een markering `[//:]` betekent dat de zang twee ladderstappen boven de do-context eindigt. Een implementatie mag een aanwezige eindmarkering controleren tegen de berekende eindtoon van het zangstuk.
 
 ### 5.13 Tekstmarkeringen buiten scopes
 

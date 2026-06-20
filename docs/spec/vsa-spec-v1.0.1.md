@@ -129,7 +129,7 @@ Een aantal parameters van de bloksyntax hebben normatieve defaultwaarde, wat het
 | `do`              | `F4`           | absolute starttoon voor interpretatie en MusicXML-export    |
 | `mode`            | `major`        | modusdefinitie voor toonladderinterpretatie                 |
 | `tempo`           | `100`          | tempo voor MusicXML-export                                  |
-| `validate-ending` | `true`         | controleer dat de eindtoonhoogte-markering bestaat en klopt |
+| `validate-ending` | `true`         | controleer een aanwezige eindtoonhoogte-markering tegen de berekende eindtoon |
 | `duration-model`  | `default`      | mapping van ELM-duurwaarden naar MusicXML-durationwaarden   |
 
 Andere parameters mogen eveneens voorkomen, bijvoorbeeld `title`, `subtitle`, `composer`, `language`, `meter`, `tone` of renderer-specifieke metadata. Zie Appendix 3 voor voorbeelden. De blokmetadata heeft voorrang op implementatie-defaults.
@@ -698,7 +698,7 @@ gezien worden als een enkel zangstuk met tussenliggende hoogte-markeringen.
 
  Een beginmarkering `[:]` betekent dat de zang op de do-context begint. Een markering `[//:]` betekent dat de zang twee ladderstappen boven de do-context begint.
 
-Een eindmarkering kan worden gebruikt als visuele afsluiting en als semantische eindcontrole: (het ontbreken van) de hoogtemodifier zegt dan op welke hoogte (relatief ten opzichte van de do-context) de laatste nood moet zijn gezongen. Een implementatie mag controleren of een eindmarkering overeenkomt met de berekende eindtoon van het zangstuk. Een eindmarkering `[:]` betekent dat de zang op de do-context eindigt. Een markering `[//:]` betekent dat de zang twee ladderstappen boven de do-context eindigt.
+Een eindmarkering kan worden gebruikt als visuele afsluiting en als semantische eindcontrole. Een ontbrekende eindmarkering is toegestaan en betekent dat er geen expliciete eindtooncontrole is genoteerd. Een eindmarkering `[:]` is niet leeg in semantische zin: zij betekent dat de zang op de do-context eindigt en is equivalent aan `[-:]` c.q. `[~:]`. Een markering `[//:]` betekent dat de zang twee ladderstappen boven de do-context eindigt. Een implementatie mag een aanwezige eindmarkering controleren tegen de berekende eindtoon van het zangstuk.
 
 ### 5.13 Tekstmarkeringen buiten scopes
 

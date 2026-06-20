@@ -1,30 +1,33 @@
 # Stap 36 - validator pitch-marker eindcontrole
 
-Deze stap voegt een semantische validatie toe.
+## Status
 
-## Nieuwe foutcodes
+Deze oorspronkelijke stap is **verouderd**.
 
-```text
-VSA-SEMANTIC-MISSING-FINAL-PITCH-MARKER
-VSA-SEMANTIC-EMPTY-FINAL-PITCH-MARKER
-```
+De foutcode `VSA-SEMANTIC-MISSING-FINAL-PITCH-MARKER` is obsolete: het ontbreken van een eindmarkering is syntactisch én semantisch toegestaan.
 
-## Regel
+De foutcode `VSA-SEMANTIC-EMPTY-FINAL-PITCH-MARKER` is eveneens obsolete voor `[:]`: een lege hoogte-markering betekent een neutrale hoogte en is semantisch gelijkwaardig aan `[-:]` c.q. `[~:]`.
 
-Als een VSA-frase begint met een pitch-marker en gezongen materiaal bevat, dan moet de frase eindigen met een niet-lege pitch-marker.
+## Huidige policy
 
-Ongeldig:
+Syntactisch geldig:
 
 ```text
 [:] {/Hei_}{/lig_} is de Heer. [:]
+[:] {/Hei_}{/lig_} is de Heer.
+[:] {/Hei_}{/lig_} is de Heer. [-:]
+[:] {/Hei_}{/lig_} is de Heer. [~:]
+[:] {/Hei_}{/lig_} is de Heer. [\:]
 ```
 
-Geldig:
+Semantisch:
 
-```text
-[:] {/Hei_}{/lig_} is de Heer. [\\:]
-```
+- geen eindmarkering betekent: geen expliciete eindtooncontrole;
+- `[:]` aan het einde betekent: expliciete neutrale eindhoogte;
+- `[:]`, `[-:]` en `[~:]` zijn voor eindhoogtecontrole equivalent;
+- een niet-neutrale eindmarkering, bijvoorbeeld `[//:]`, kan later worden gecontroleerd tegen de berekende eindtoon.
 
-## Waarom
+## Niet meer gebruiken
 
-Dit voorkomt dat demo's en voorbeelden syntactisch door de parser komen maar muzikaal/semantisch verdacht blijven.
+Deze stap mag niet meer worden gelezen als actuele validator-specificatie.
+Actuele regels staan in de algemene specificatie en in de latere pitch-marker policy-documentatie.

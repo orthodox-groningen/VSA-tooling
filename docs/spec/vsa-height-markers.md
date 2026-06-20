@@ -110,7 +110,11 @@ Wel kan de validator controleren:
 - of hoogte-markeringen syntactisch geldig zijn;
 - of de eerste markering als beginhoogte geïnterpreteerd kan worden;
 - of latere markeringen betekenisvol zijn binnen de gekozen toon/semantiek;
-- of optionele eindhoogte-regels kloppen, zodra die gespecificeerd zijn.
+- of een expliciete eindmarkering overeenkomt met de berekende eindtoon, zodra eindtooncontrole is gespecificeerd.
+
+Een eindmarkering is optioneel. Het ontbreken van een eindmarkering is dus geen semantische fout.
+
+Een eindmarkering `[:]` is niet leeg in semantische zin: zij betekent neutrale hoogte en is equivalent aan `[-:]` c.q. `[~:]`.
 
 ## 7. Implementatieconsequenties
 

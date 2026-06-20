@@ -25,4 +25,6 @@ Als `[:]` aan het einde staat, betekent dat:
 expliciete neutrale eindmarkering
 ```
 
-Eindtooncontrole komt later als aparte semantische regel.
+`[:]` is daarbij equivalent aan `[-:]` c.q. `[~:]`.
+
+Eindtooncontrole komt later als aparte semantische regel en geldt alleen wanneer er een expliciete eindmarkering aanwezig is.

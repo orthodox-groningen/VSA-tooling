@@ -30,7 +30,7 @@ class PitchMarkerConfig:
 class SVGRenderingConfig:
     font_family: str = "DejaVu Sans"
     font_size: float = 20.0
-    line_height: float = 44.0
+    line_height: float = 38.0
     text_gap: float = 0.0
     scope_gap: float = 0.0
     optical_scope_gap: float = 4.0

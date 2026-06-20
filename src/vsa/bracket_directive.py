@@ -5,17 +5,12 @@ from typing import NamedTuple
 
 BRACKET_DIRECTIVE_END = ":]"
 
-# Valid EHM values for pitch/height-marker directives.
-# The empty string represents the neutral marker `[:]`.
-VALID_EHM_VALUES = {
-    "",
+_BASE_EHM_VALUES = [
     "/////",
     "////",
     "///",
     "//",
-    "+/",
     "/",
-    "-\\",
     "\\\\\\\\\\",
     "\\\\\\\\",
     "\\\\\\",
@@ -23,8 +18,18 @@ VALID_EHM_VALUES = {
     "\\",
     "-",
     "~",
-    "/\\",
-}
+]
+
+_HALFTOON_PREFIXES = ["#", "♯", "+", "b", "♭"]
+
+# Valid EHM values for pitch/height-marker directives.
+# The empty string represents the neutral marker `[:]`.
+# "/\\" is a legacy special case preserved for compatibility.
+VALID_EHM_VALUES: set[str] = (
+    {"", "/\\"}
+    | set(_BASE_EHM_VALUES)
+    | {p + b for p in _HALFTOON_PREFIXES for b in _BASE_EHM_VALUES}
+)
 
 
 class BracketDirective(NamedTuple):

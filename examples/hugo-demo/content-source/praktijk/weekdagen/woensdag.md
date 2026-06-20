@@ -122,10 +122,9 @@ Want {/&/Gij_&_} {\\zijt} {/on}{/ze} {/Hel_}{per_} *
 <details>
   <summary>Prokimen (Lk. 1:46–48, Toon 3) en Alleluia (Ps. 131)</summary>
 
-<!-- In het Liturgikon staat `{\&+\Red_&_}`, maar omdat dit met de `+\` niet werkt, doen we het zo: -->
 ::: vsa-notatie
 [:] Mijn ziel ver{/heft_} {den_} {\Heer_},
-en ge{/juicht_} {\heeft} mijn {\geest_} {-&/in} {/&\God}, {\&/mijn} {\&-\Red_&_}{/der_}. [/:]
+en ge{/juicht_} {\heeft} mijn {\geest_} {-&/in} {/&\God}, {\&/mijn} {\&+\Red_&_}{/der_}. [/:]
 :::
 Machtigen heeft Hij neergehaald van de troon, 
 maar geringen heeft Hij verheven.

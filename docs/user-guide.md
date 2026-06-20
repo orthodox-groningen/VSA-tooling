@@ -725,13 +725,13 @@ Vanaf stap 37 kent de validator twee niveaus.
 
 Syntaxproblemen blijven `error`.
 
-Semantische aandachtspunten zijn voorlopig `warning`, bijvoorbeeld:
+Semantische aandachtspunten kunnen via configuratie als `warning` worden behandeld, bijvoorbeeld:
 
 ```text
 VSA-SEMANTIC-MODIFIER-COUNT-MISMATCH
-VSA-SEMANTIC-EMPTY-FINAL-PITCH-MARKER
-VSA-SEMANTIC-MISSING-FINAL-PITCH-MARKER
 ```
+
+De oude foutcodes `VSA-SEMANTIC-MISSING-FINAL-PITCH-MARKER` en `VSA-SEMANTIC-EMPTY-FINAL-PITCH-MARKER` zijn obsolete. Een ontbrekende eindmarkering is toegestaan. Een eindmarkering `[:]` is geldig en betekent neutrale hoogte, equivalent aan `[-:]` c.q. `[~:]`.
 
 Praktisch betekent dit:
 

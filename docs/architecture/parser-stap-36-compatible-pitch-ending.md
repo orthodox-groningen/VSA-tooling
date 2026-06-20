@@ -1,40 +1,34 @@
 # Stap 36 - compatibele pitch-marker eindcontrole
 
-De eerdere stap 36 paste niet bij de bestaande validator-architectuur.
+## Status
 
-Bestaande code gebruikt:
+Deze oorspronkelijke stap is **verouderd**.
 
-```python
-SemanticValidator(document).validate()
-```
-
-en verwacht:
-
-```python
-diagnostics.items
-```
-
-Deze patch behoudt die API.
-
-## Nieuwe foutcodes
+De destijds genoemde foutcodes zijn niet langer actuele semantische regels:
 
 ```text
 VSA-SEMANTIC-MISSING-FINAL-PITCH-MARKER
 VSA-SEMANTIC-EMPTY-FINAL-PITCH-MARKER
 ```
 
-## Ongeldig
+## Huidige policy
 
-```text
-[:] {/Hei_}{/lig_} is de Heer. [:]
-```
+Een eindmarkering is optioneel.
 
 ```text
 [:] {/Hei_}{/lig_} is de Heer.
 ```
 
-## Geldig
+is geldig.
+
+Een lege eindmarkering is geen semantische fout. `[:]` betekent een neutrale hoogte en is equivalent aan `[-:]` c.q. `[~:]`.
 
 ```text
-[:] {/Hei_}{/lig_} is de Heer. [\\:]
+[:] {/Hei_}{/lig_} is de Heer. [:]
+[:] {/Hei_}{/lig_} is de Heer. [-:]
+[:] {/Hei_}{/lig_} is de Heer. [~:]
 ```
+
+zijn semantisch geldig als expliciete neutrale eindhoogte.
+
+Een niet-neutrale eindmarkering, bijvoorbeeld `[\:]` of `[//:]`, kan later worden gecontroleerd tegen de berekende eindtoon.

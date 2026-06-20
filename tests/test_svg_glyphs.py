@@ -17,9 +17,10 @@ def test_render_double_underscore_as_two_lines():
     assert len([part for part in parts if "<line" in part]) == 2
 
 
-def test_render_dots_as_circles():
+def test_render_dots_as_filled_circles():
     renderer = SVGGlyphRenderer()
 
     parts = renderer.render_length_modifier([".."], 0, 20, 40)
 
     assert len([part for part in parts if "<circle" in part]) == 2
+    assert not any("vsa-glyph-dot" in part and "<line" in part for part in parts)

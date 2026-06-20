@@ -62,7 +62,7 @@ Belangrijke scheiding:
 | Blok                   | zie: Hugo markdown blok                                                                                                                                             |           
 | Do-context             | De grondtooncontext waarbinnen relatieve toonhoogtebewegingen worden geïnterpreteerd. De do-context bestaat uit de grondtoon (`do`) en de modus                     |
 | Duur                   | Interne representatie van de duur van een muzikale positie.                                                                                                         |
-| EHM                    | Enkelvoudige Hoogte-Modifier. Een elementaire hoogte-instructie zoals `/`, `\\`, `+/`, `-\\`, `-` of `~`.                                                           |
+| EHM                    | Enkelvoudige Hoogte-Modifier. Een elementaire hoogte-instructie, bestaande uit een optionele halftoon-prefix (`#`, `b` of alias) gevolgd door een basisbeweging zoals `/`, `\\`, `-` of `~`.  |
 | ELM                    | Enkelvoudige Lengte-Modifier. Een elementaire duurinstructie zoals `_`, `__`, `.`, `..`, `-` of `~`.                                                                |
 | Export                 | Het omzetten van gevalideerde VSA-notatie naar een extern formaat zoals MusicXML.                                                                                   |
 | Glyph                  | De grafische representatie van een EHM of ELM.                                                                                                                      |
@@ -129,7 +129,7 @@ Een aantal parameters van de bloksyntax hebben normatieve defaultwaarde, wat het
 | `do`              | `F4`           | absolute starttoon voor interpretatie en MusicXML-export    |
 | `mode`            | `major`        | modusdefinitie voor toonladderinterpretatie                 |
 | `tempo`           | `100`          | tempo voor MusicXML-export                                  |
-| `validate-ending` | `true`         | controleer dat de eindtoonhoogte-markering bestaat en klopt |
+| `validate-ending` | `true`         | controleer een aanwezige eindtoonhoogte-markering tegen de berekende eindtoon |
 | `duration-model`  | `default`      | mapping van ELM-duurwaarden naar MusicXML-durationwaarden   |
 
 Andere parameters mogen eveneens voorkomen, bijvoorbeeld `title`, `subtitle`, `composer`, `language`, `meter`, `tone` of renderer-specifieke metadata. Zie Appendix 3 voor voorbeelden. De blokmetadata heeft voorrang op implementatie-defaults.
@@ -201,37 +201,62 @@ Tekst buiten scopes blijft gewone tekst en wordt ongewijzigd weergegeven, behalv
 
 ### 4.3 Enkelvoudige Hoogte-Modifiers (EHMs)
 
-Een EHM beschrijft één relatieve toonhoogtebeweging of een lege grafische positie.
+Een EHM beschrijft één relatieve toonhoogtebeweging of een lege grafische positie. Een EHM is ofwel een enkelvoudige basisbeweging, ofwel een halftoon-prefix gevolgd door een basisbeweging.
 
-| EHM     | Voorbeeld       | Betekenis                 | Visuele rendering (glyph)                                   |
-| ------- | --------------- | ------------------------- | ----------------------------------------------------------- |
-| `+/`    | `{+/tekst}`     | halve ladderstap omhoog   | `+` gevolgd door één schuine streep omhoog                  |
-| `/`     | `{/tekst}`      | één ladderstap omhoog     | één schuine streep omhoog                                   |
-| `//`    | `{//tekst}`     | twee ladderstappen omhoog | twee gestapelde schuine strepen omhoog                      |
-| `///`   | `{///tekst}`    | drie ladderstappen omhoog | drie gestapelde schuine strepen omhoog                      |
-| `////`  | `{////tekst}`   | vier ladderstappen omhoog | vier gestapelde schuine strepen omhoog                      |
-| `/////` | `{/////tekst}`  | vijf ladderstappen omhoog | vijf gestapelde schuine strepen omhoog                      |
-| `-`     | `{-tekst}`      | zelfde toonhoogte         | horizontaal streepje                                        |
-| `-\`    | `{-\tekst}`     | halve ladderstap omlaag   | horizontaal streepje gevolgd door één schuine streep omlaag |
-| `\`     | `{\tekst}`      | één ladderstap omlaag     | één schuine streep omlaag                                   |
-| `\\`    | `{\\tekst}`     | twee ladderstappen omlaag | twee gestapelde schuine strepen omlaag                      |
-| `\\\`   | `{\\\tekst}`    | drie ladderstappen omlaag | drie gestapelde schuine strepen omlaag                      |
-| `\\\\`  | `{\\\\tekst}`   | vier ladderstappen omlaag | vier gestapelde schuine strepen omlaag                      |
-| `\\\\\` | `{\\\\\tekst}`  | vijf ladderstappen omlaag | vijf gestapelde schuine strepen omlaag                      |
-| `~`     | `{~tekst}`      | zelfde toonhoogte         | geen zichtbare glyph                                        |
+#### 4.3.1 Basisbewegingen
+
+| EHM     | Voorbeeld       | Betekenis                 | Visuele rendering (glyph)              |
+| ------- | --------------- | ------------------------- | -------------------------------------- |
+| `/`     | `{/tekst}`      | één ladderstap omhoog     | één schuine streep omhoog              |
+| `//`    | `{//tekst}`     | twee ladderstappen omhoog | twee gestapelde schuine strepen omhoog |
+| `///`   | `{///tekst}`    | drie ladderstappen omhoog | drie gestapelde schuine strepen omhoog |
+| `////`  | `{////tekst}`   | vier ladderstappen omhoog | vier gestapelde schuine strepen omhoog |
+| `/////` | `{/////tekst}`  | vijf ladderstappen omhoog | vijf gestapelde schuine strepen omhoog |
+| `-`     | `{-tekst}`      | zelfde toonhoogte         | horizontaal streepje                   |
+| `\`     | `{\tekst}`      | één ladderstap omlaag     | één schuine streep omlaag              |
+| `\\`    | `{\\tekst}`     | twee ladderstappen omlaag | twee gestapelde schuine strepen omlaag |
+| `\\\`   | `{\\\tekst}`    | drie ladderstappen omlaag | drie gestapelde schuine strepen omlaag |
+| `\\\\`  | `{\\\\tekst}`   | vier ladderstappen omlaag | vier gestapelde schuine strepen omlaag |
+| `\\\\\` | `{\\\\\tekst}`  | vijf ladderstappen omlaag | vijf gestapelde schuine strepen omlaag |
+| `~`     | `{~tekst}`      | zelfde toonhoogte         | geen zichtbare glyph                   |
+
+#### 4.3.2 Halftoon-prefix
+
+Een halftoon-prefix modificeert het resultaat van de basisbeweging met een halve toon omhoog (`#`) of omlaag (`b`). De prefix staat altijd onmiddellijk vóór een basisbeweging; een standalone prefix is niet geldig.
+
+| Prefix | Alias(es) | Betekenis   | Visuele rendering |
+| ------ | --------- | ----------- | ----------------- |
+| `#`    | `+`, `♯`  | +½ toon     | `+` links van de basisglyph |
+| `b`    | `♭`       | −½ toon     | `♭` links van de basisglyph |
+
+Voorbeelden van gecombineerde EHMs:
+
+| EHM   | Basisbeweging | Prefix | Netto beweging          | Voorbeeld     |
+| ----- | ------------- | ------ | ----------------------- | ------------- |
+| `#/`  | +1 trede      | +½     | +1½ toon omhoog         | `{#/tekst}`   |
+| `b/`  | +1 trede      | −½     | +½ toon omhoog          | `{b/tekst}`   |
+| `#\`  | −1 trede      | +½     | −½ toon omlaag          | `{#\tekst}`   |
+| `b\`  | −1 trede      | −½     | −1½ toon omlaag         | `{b\tekst}`   |
+| `#-`  | 0 (unisono)   | +½     | +½ toon (chromatisch)   | `{#-tekst}`   |
+| `b-`  | 0 (unisono)   | −½     | −½ toon (chromatisch)   | `{b-tekst}`   |
+| `#//` | +2 treden     | +½     | +2½ toon omhoog         | `{#//tekst}`  |
+| `b\\` | −2 treden     | −½     | −2½ toon omlaag         | `{b\\tekst}`  |
+
+Alle combinaties van een halftoon-prefix met een basisbeweging zijn syntactisch geldig. De semantische geldigheid hangt af van de do-context en modus (zie §5.9).
 
 ### 4.4 Enkelvoudige Lengte-Modifiers (ELMs)
 
 Een ELM beschrijft de duur van één muzikale positie ten opzichte van de standaardduur.
 
-| ELM   | Voorbeeld    | Duur                | Visuele glyph                                  |
-| ----- | ------------ | ------------------- | ---------------------------------------------- |
-| `_`   | `{tekst_}`   | 2 × standaardduur   | één horizontale lijn onder het zangelement     |
-| `__`  | `{tekst__}`  | 4 × standaardduur   | twee gestapelde horizontale lijnen             |
-| `.`   | `{tekst.}`   | 1/2 × standaardduur | één punt onder het zangelement                 |
-| `..`  | `{tekst..}`  | 1/4 × standaardduur | twee gestapelde punten                         |
-| `-`   | `{tekst-}`   | standaardduur       | implementatie-afhankelijke standaardduur-glyph |
-| `~`   | `{tekst~}`   | standaardduur       | geen zichtbare glyph                           |
+| ELM   | Voorbeeld    | Duur                | Visuele glyph                                                        |
+| ----- | ------------ | ------------------- | -------------------------------------------------------------------- |
+| `_`   | `{tekst_}`   | 2 × standaardduur   | één horizontale lijn onder het zangelement                           |
+| `_.`  | `{tekst_.}`  | 3 × standaardduur   | volle lijn boven, halve lijn (linkerhelft) direct daaronder          |
+| `__`  | `{tekst__}`  | 4 × standaardduur   | twee gestapelde horizontale lijnen                                   |
+| `.`   | `{tekst.}`   | 1/2 × standaardduur | één punt onder het zangelement                                       |
+| `..`  | `{tekst..}`  | 1/4 × standaardduur | twee gestapelde punten                                               |
+| `-`   | `{tekst-}`   | standaardduur       | implementatie-afhankelijke standaardduur-glyph                       |
+| `~`   | `{tekst~}`   | standaardduur       | geen zichtbare glyph                                                 |
 
 ### 4.5 Samengestelde modifiers
 
@@ -356,16 +381,18 @@ scope ::=
 hoogte-modifier ::= EHM { "&" EHM } ;
 lengte-modifier ::= ELM { "&" ELM } ;
 
-EHM ::=
+EHM ::= base-EHM | halftoon-prefix base-EHM ;
+
+halftoon-prefix ::= "#" | "♯" | "+" | "b" | "♭" ;
+
+base-EHM ::=
       "~"
-    | "+/"
+    | "-"
     | "/"
     | "//"
     | "///"
     | "////"
     | "/////"
-    | "-"
-    | "-\\"
     | "\\"
     | "\\\\"
     | "\\\\\\"
@@ -593,7 +620,15 @@ De do-context bepaalt dus het startpunt. De modus bepaalt de interne structuur v
 
 ### 5.8 Interpretatie van EHMs
 
-Een EHM is een operator op de actuele toonladderpositie.
+Een EHM is een operator op de actuele toonladderpositie. Een EHM bestaat uit een optionele halftoon-prefix en een basisbeweging. Het semantische effect is:
+
+```
+netto beweging = basisbeweging + prefix_delta
+```
+
+waarbij `prefix_delta` gelijk is aan +½ toon voor prefix `#` (of alias `+`, `♯`) en −½ toon voor prefix `b` (of alias `♭`).
+
+#### Basisbewegingen
 
 | EHM     | Semantisch effect            |
 | ------- | ---------------------------- |
@@ -609,8 +644,17 @@ Een EHM is een operator op de actuele toonladderpositie.
 | `\\\\\` | verplaats vijf graden omlaag |
 | `-`     | behoud de huidige toonhoogte |
 | `~`     | behoud de huidige toonhoogte |
-| `+/`    | halve ladderstap omhoog      |
-| `-\`    | halve ladderstap omlaag      |
+
+#### Halftoon-prefix combinaties (voorbeelden)
+
+| EHM   | Basisbeweging | Prefix | Netto effect                  |
+| ----- | ------------- | ------ | ----------------------------- |
+| `#/`  | +1 graad      | +½     | +1 graad + ½ toon omhoog      |
+| `b/`  | +1 graad      | −½     | +1 graad − ½ toon (= +½ toon) |
+| `#\`  | −1 graad      | +½     | −1 graad + ½ toon (= −½ toon) |
+| `b\`  | −1 graad      | −½     | −1 graad − ½ toon             |
+| `#-`  | 0 graden      | +½     | +½ toon (chromatisch omhoog)  |
+| `b-`  | 0 graden      | −½     | −½ toon (chromatisch omlaag)  |
 
 EHMs worden sequentieel toegepast. Bij blokmetadata `do="C4"` en `mode="major"` produceert de EHM-reeks `/`, `\\`, `///` de toonreeks:
 
@@ -620,9 +664,16 @@ C4 → D4 → B3 → E4
 
 Hierbij wordt uitgegaan van opeenvolgende toonladderstappen binnen de gekozen modus.
 
-### 5.9 Geldigheid van halve ladderstappen
+### 5.9 Geldigheid van halftoon-prefix combinaties
 
-Een EHM van het type `+/` of `-\` is alleen semantisch geldig als de betreffende overgang in de toonladder een onderverdeling in twee gelijke subposities toestaat. Als geen dergelijke onderverdeling beschikbaar is, is het gebruik van `+/` of `-\` een semantische fout.
+Een EHM met halftoon-prefix is semantisch geldig als het resulterende interval (basisbeweging ± ½ toon) zinvol is binnen de do-context en modus. Een prefix mag nooit standalone voorkomen; hij moet altijd onmiddellijk voorafgaan aan een basisbeweging.
+
+Semantische geldigheid vereist dat:
+
+1. de basisbeweging zelf geldig is binnen de huidige toonladderpositie en modus;
+2. de aanvullende ½ toon een gedefinieerd interval oplevert (de modus staat een dergelijke chromatische aanpassing toe).
+
+Als aan voorwaarde 2 niet is voldaan, is de EHM een semantische fout.
 
 Voorbeeld van zo'n semantische fout:
 
@@ -631,11 +682,13 @@ Voorbeeld van zo'n semantische fout:
 do="C4"
 mode="major"
 
-[//:] {+/tekst}
+[//:] {#/tekst}
 :::
 ```
 
-Als de combinatie van `do`, `mode` en beginmarkering de actuele positie op `mi` brengt, en de overgang `mi → fa` in de gekozen modus al een kleine stap is, dan is `+/` niet geldig als verdere halvering van die overgang niet is gedefinieerd.
+Als de actuele positie op `mi` staat en de overgang `mi → fa` al een kleine stap is, dan brengt `#/` de melodie een extra ½ toon buiten de toonladder. Als de modus hiervoor geen gedefinieerde subpositie heeft, is dit een semantische fout.
+
+De onderscheiding tussen een halftoon-prefix op een basisbeweging en een zelfstandige chromatische aanpassing (`#-`, `b-`) heeft ook semantisch gevolgen voor MusicXML-export: `b-` beschrijft een chromatische verschuiving op de huidige positie, terwijl `b/` een combinatie is van een ladderstap en een halvering.
 
 ### 5.10 Interpretatie van ELMs
 
@@ -698,7 +751,7 @@ gezien worden als een enkel zangstuk met tussenliggende hoogte-markeringen.
 
  Een beginmarkering `[:]` betekent dat de zang op de do-context begint. Een markering `[//:]` betekent dat de zang twee ladderstappen boven de do-context begint.
 
-Een eindmarkering kan worden gebruikt als visuele afsluiting en als semantische eindcontrole: (het ontbreken van) de hoogtemodifier zegt dan op welke hoogte (relatief ten opzichte van de do-context) de laatste nood moet zijn gezongen. Een implementatie mag controleren of een eindmarkering overeenkomt met de berekende eindtoon van het zangstuk. Een eindmarkering `[:]` betekent dat de zang op de do-context eindigt. Een markering `[//:]` betekent dat de zang twee ladderstappen boven de do-context eindigt.
+Een eindmarkering kan worden gebruikt als visuele afsluiting en als semantische eindcontrole. Een ontbrekende eindmarkering is toegestaan en betekent dat er geen expliciete eindtooncontrole is genoteerd. Een eindmarkering `[:]` is niet leeg in semantische zin: zij betekent dat de zang op de do-context eindigt en is equivalent aan `[-:]` c.q. `[~:]`. Een markering `[//:]` betekent dat de zang twee ladderstappen boven de do-context eindigt. Een implementatie mag een aanwezige eindmarkering controleren tegen de berekende eindtoon van het zangstuk.
 
 ### 5.13 Tekstmarkeringen buiten scopes
 
@@ -1288,22 +1341,33 @@ De belangrijkste verschillen zijn:
 | Syntax    | Geen formele grammatica | Volledig formele syntax (EBNF) |
 | Structuur | Markeringen direct boven/onder tekst | Gestructureerde scopes `{...}` |
 | Toonhoogte | Relatieve intervalnotatie | Relatieve toonladder-notatie binnen een do-context |
-| `+/` en `-\` | Extra halve toon bovenop een bestaande beweging | Zelfstandige halve ladderstap |
+| `#`/`b` als prefix | Extra halve toon bovenop een bestaande beweging | Prefix-modifier vóór een basisbeweging; `#` = +½, `b` = −½; aliases: `+`/`♯` voor `#`, `♭` voor `b` |
 | Lege posities | Impliciet | Expliciet via `~` |
 | Melisma   | Impliciet / ad hoc | Formeel model via samengestelde modifiers |
 | Validatie | Alleen muzikaal gehoor | Syntactische en semantische validatie |
 | Export    | Niet voorzien | SVG en MusicXML |
 
-Het grootste inhoudelijke verschil betreft de interpretatie van `+/` en `-\`. In het Liturgikon staat dat een kruis (+) een *extra* stijging van een halve toon betekent (en een mol (b) een *extra* daling van een halve toon). Dit wordt gestaafd door het bijbehorende voorbeeld. Echter, een dergelijke notatie maakt het dan onmogelijk om een halve ladderstap omhoog of omlaag te gaan. De zangpraktijk van de auteur is dat `+/` en `-\` (ook?) worden gebruikt om een stijging/daling van een halve toon mee aan te geven. Dat is ook zoals zij in VSA worden geïnterpreteerd: als zelfstandige relatieve toonhoogtebewegingen van een halve ladderstap.
+Het grootste inhoudelijke verschil betreft de halftoon-modificatoren. In het Liturgikon staat dat een kruis (+) een *extra* stijging van een halve toon betekent bovenop een bestaande richtingspijl, en een mol (♭) een *extra* daling. VSA volgt deze semantiek: `#` (alias `+`, `♯`) en `b` (alias `♭`) zijn prefix-modificatoren die altijd gecombineerd worden met een basisbeweging (`/`, `\`, `-`, `~`, of meerdere pijlen).
 
-Bij omzetting van historische notaties naar VSA kunnen daardoor de volgende situaties optreden:
+Voorbeelden van de correspondentie:
 
-- een historische `+/` moet soms worden herschreven als een combinatie van een hele en halve beweging;
-- de exacte melodische uitkomst kan afhankelijk zijn van de gekozen modus en do-context;
+| Liturgikon | VSA      | Netto beweging          |
+| ---------- | -------- | ----------------------- |
+| `+` op `/` | `#/`     | +1 graad + ½ toon       |
+| `♭` op `/` | `b/`     | +1 graad − ½ toon       |
+| `+` op `\` | `#\`     | −1 graad + ½ toon       |
+| `♭` op `\` | `b\`     | −1 graad − ½ toon       |
+| `+` op `-` | `#-`     | ½ toon omhoog (chromatisch) |
+| `♭` op `-` | `b-`     | ½ toon omlaag (chromatisch) |
+
+Een standalone `#` of `b` zonder basisbeweging is niet geldig in VSA. Als een historische notatie een kruis of mol plaatst bij een toon zonder expliciete richtingspijl, moet dit in VSA worden uitgeschreven als `#-` of `b-`.
+
+Bij omzetting van historische notaties naar VSA kunnen de volgende situaties optreden:
+
 - historische notaties laten sommige toonladderinformatie impliciet, terwijl VSA die expliciet moet modelleren;
 - melismatische passages moeten in VSA soms explicieter worden gespecificeerd dan in historische bronnen.
 
-VSA moet daarom worden gezien als een geformaliseerde afleiding van deze historische praktijknotatie, niet als een exacte reproductie ervan.
+VSA moet worden gezien als een geformaliseerde afleiding van deze historische praktijknotatie, niet als een exacte reproductie ervan.
 
 ## Appendix 2. Voorbeeldmapping van toonladdergraden
 

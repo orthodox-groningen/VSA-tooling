@@ -22,8 +22,7 @@ semantic diagnostic = warning
 
 ```toml
 [validation.severity]
-VSA-SEMANTIC-EMPTY-FINAL-PITCH-MARKER = "warning"
-VSA-SEMANTIC-MISSING-FINAL-PITCH-MARKER = "warning"
+VSA-SEMANTIC-MODIFIER-COUNT-MISMATCH = "warning"
 ```
 
 ## Geldige severity-waarden
@@ -53,7 +52,7 @@ vsa validate bestand.vsa --config vsa.toml
 Bij alleen warnings:
 
 ```text
-WARNING: VSA-SEMANTIC-EMPTY-FINAL-PITCH-MARKER
+WARNING: VSA-SEMANTIC-MODIFIER-COUNT-MISMATCH
 ```
 
 De exitcode is dan `0`.
@@ -93,3 +92,10 @@ blijft validatie en generatie stoppen.
 Gebruik warnings tijdelijk bij migratie of experimenten.
 
 Gebruik errors voor CI, demo-sites en publicatie wanneer de notatie stabiel moet zijn.
+
+
+## Verouderde pitchmarker-foutcodes
+
+De oude foutcodes `VSA-SEMANTIC-MISSING-FINAL-PITCH-MARKER` en `VSA-SEMANTIC-EMPTY-FINAL-PITCH-MARKER` zijn obsolete.
+
+Een ontbrekende eindmarkering is toegestaan. Een eindmarkering `[:]` is geldig en betekent neutrale hoogte, equivalent aan `[-:]` c.q. `[~:]`.

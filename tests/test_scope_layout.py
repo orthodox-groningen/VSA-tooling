@@ -21,3 +21,19 @@ def test_short_scope_not_forced_to_old_large_width():
     layout = build_scope_layout(document.nodes[0])
 
     assert layout.width < 20
+
+
+def test_prefixed_ehm_scope_is_wider_than_plain():
+    plain = build_scope_layout(Parser(r"{/ge}").parse().nodes[0])
+    prefixed = build_scope_layout(Parser(r"{+/ge}").parse().nodes[0])
+
+    assert prefixed.width > plain.width
+    assert prefixed.prefix_extra > 0
+
+
+def test_prefixed_ehm_filler_width_unchanged():
+    """prefix_extra must not inflate filler_width — filler is only for melisma."""
+    plain = build_scope_layout(Parser(r"{/ge_}").parse().nodes[0])
+    prefixed = build_scope_layout(Parser(r"{+/ge_}").parse().nodes[0])
+
+    assert prefixed.filler_width == plain.filler_width

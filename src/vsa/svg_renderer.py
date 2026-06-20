@@ -2,7 +2,7 @@ from xml.sax.saxutils import escape
 
 from .ast import TextNode, ScopeNode, PitchMarkerNode
 from .config import SVGRenderingConfig
-from .svg_glyphs import SVGGlyphRenderer
+from .svg_glyphs import SVGGlyphRenderer, _split_ehm_token
 from .scope_layout import build_scope_layout, estimate_text_width
 from .spacing_policy import filler_line_geometry, whitespace_width
 from .svg_line_layout import (
@@ -53,7 +53,8 @@ class SVGRenderer:
         width = self.left_margin * 2 + max((line.width for line in lines), default=0)
         width = max(width, 60.0)
 
-        height = self.top_margin * 2 + len(lines) * self.line_height
+        extra_top = self._compute_extra_top(lines)
+        height = self.top_margin * 2 + len(lines) * self.line_height + extra_top
         height = max(height, 55.0)
 
         parts = [
@@ -72,7 +73,7 @@ class SVGRenderer:
 
         for line_index, line in enumerate(lines):
             x = self.left_margin
-            baseline_y = self.top_margin + 28 + (line_index * self.line_height)
+            baseline_y = self.top_margin + extra_top + 28 + (line_index * self.line_height)
             previous_rendered_node = None
 
             parts.append(f'<g class="vsa-line" data-vsa-line="{line_index + 1}">')
@@ -104,6 +105,39 @@ class SVGRenderer:
         parts.append("</g>")
         parts.append("</svg>")
         return "\n".join(parts)
+
+    def _compute_extra_top(self, lines) -> float:
+        """Extra top padding so the highest stacked glyph tip stays above y=0."""
+        max_stack = 1
+        for line in lines:
+            for item in line.items:
+                node = item.node
+                if isinstance(node, ScopeNode):
+                    ehm_values = node.height_modifier
+                elif isinstance(node, PitchMarkerNode):
+                    ehm_values = node.height_modifier
+                else:
+                    continue
+                for value in ehm_values:
+                    if not value:
+                        continue
+                    _, base = _split_ehm_token(value)
+                    if base and len(set(base)) == 1 and set(base) <= {"/", "\\"}:
+                        max_stack = max(max_stack, len(base))
+
+        if max_stack <= 1:
+            return 0.0
+
+        unit = self.glyphs.unit
+        stack_gap = max(3.0, unit * 0.46)
+        # Worst-case half-height matching the cap in _render_base_ehm
+        max_half_height = (unit * 1.35 / 2) * 0.45
+        # Y of the lowest-indexed (bottom) slash for line 0
+        upper_y_line0 = self.top_margin + 28 + self.svg_config.upper.offset_y
+        # Top endpoint of the highest slash
+        highest_point = upper_y_line0 - (max_stack - 1) * stack_gap - max_half_height
+        # Push it to y=2 to leave room for the stroke half-width
+        return max(0.0, 2.0 - highest_point)
 
     def render(self, positions):
         from .ast import Document, ScopeNode
@@ -148,44 +182,44 @@ class SVGRenderer:
             text_font_size=self.font_size,
             font_family=self.font_family,
         )
-        running_x = x
         upper_y = baseline_y + self.svg_config.upper.offset_y
+        lower_y = baseline_y + self.svg_config.lower.offset_y
         filler_y = baseline_y + self.svg_config.filler_offset_y
 
-        parts.append(f'<g class="vsa-unit vsa-unit-scope" data-vsa-unit="{item_index}">')
-        parts.append('<g class="vsa-glyph-group vsa-upper-glyphs">')
+        # x_syllable is where the syllable text (and ELM) begins.
+        # When a halftone prefix is present, x_syllable is shifted right
+        # so the ELM stays centered under the syllable text while the
+        # prefix symbol occupies the reserved space to the left.
+        x_syllable = x + layout.prefix_extra
 
+        parts.append(f'<g class="vsa-unit vsa-unit-scope" data-vsa-unit="{item_index}">')
+
+        # EHM: runs from x (full column width includes the prefix zone).
+        parts.append('<g class="vsa-glyph-group vsa-upper-glyphs">')
+        running_x = x
         for column in layout.columns:
             parts.extend(self.glyphs.render_height_modifier([column.ehm], running_x, upper_y, column.width))
             running_x += column.width
-
         parts.append("</g>")
 
-        running_x = x
+        # ELM: runs from x_syllable with the syllable-zone column width.
         parts.append('<g class="vsa-glyph-group vsa-lower-glyphs">')
-
+        elm_col_width = (layout.width - layout.prefix_extra) / len(layout.columns)
+        running_x = x_syllable
         for column in layout.columns:
-            parts.extend(
-                self.glyphs.render_length_modifier(
-                    [column.elm],
-                    running_x,
-                    baseline_y + self.svg_config.lower.offset_y,
-                    column.width,
-                )
-            )
-            running_x += column.width
-
+            parts.extend(self.glyphs.render_length_modifier([column.elm], running_x, lower_y, elm_col_width))
+            running_x += elm_col_width
         parts.append("</g>")
 
         parts.append(
-            f'<text class="vsa-text vsa-sung-text" x="{x:.2f}" y="{baseline_y:.2f}" '
+            f'<text class="vsa-text vsa-sung-text" x="{x_syllable:.2f}" y="{baseline_y:.2f}" '
             f'xml:space="preserve" '
             f'font-family="{escape(self.font_family)}" font-size="{self.font_size:.2f}">'
             f'{escape(layout.text)}</text>'
         )
 
-        if getattr(layout, "filler_width", 0.0) > 2.0:
-            start = x + layout.text_width + 1.0
+        if layout.filler_width > 2.0:
+            start = x_syllable + layout.text_width + 1.0
             end = x + layout.width - 3.0
             draw_start, draw_end = filler_line_geometry(start, end, layout.filler_width, self.font_size)
             if draw_end > draw_start:

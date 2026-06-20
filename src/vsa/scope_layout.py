@@ -1,5 +1,6 @@
 from dataclasses import dataclass
 
+from .parser import HALFTOON_CANONICAL
 from .text_metrics import (
     estimate_scope_text_width as _estimate_scope_text_width,
     estimate_text_width as _estimate_text_width,
@@ -23,6 +24,7 @@ class ScopeLayout:
     columns: list[ScopeColumn]
     text_width: float = 0.0
     filler_width: float = 0.0
+    prefix_extra: float = 0.0
 
 
 def build_scope_layout(
@@ -54,15 +56,27 @@ def build_scope_layout(
     text_width = estimate_scope_text_width(text, text_font_size, font_family=font_family)
 
     if count <= 1:
-        grid_width = text_width
+        base_grid_width = text_width
     else:
-        grid_width = max(
+        base_grid_width = max(
             text_width + minimum_column_width,
             count * minimum_column_width,
         )
 
+    # Filler width is based on the syllable zone only (before prefix extra).
+    filler_width = max(0.0, base_grid_width - text_width)
+
+    # Reserve extra space to the left of the glyph for halftone prefix symbols.
+    # This shifts the column centre rightward so the prefix fits inside the column
+    # without overflowing into the adjacent scope.
+    prefix_count = sum(
+        1 for ehm in hm
+        if len(ehm) >= 2 and ehm[0] in HALFTOON_CANONICAL
+    )
+    prefix_extra = round(prefix_count * text_font_size * 0.8, 2)
+
+    grid_width = base_grid_width + prefix_extra
     column_width = grid_width / count
-    filler_width = max(0.0, grid_width - text_width)
 
     columns = [
         ScopeColumn(
@@ -79,6 +93,7 @@ def build_scope_layout(
         columns=columns,
         text_width=round(text_width, 2),
         filler_width=round(filler_width, 2),
+        prefix_extra=prefix_extra,
     )
 
 

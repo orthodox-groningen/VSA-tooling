@@ -17,4 +17,5 @@ def test_svg_renders_dots():
 
     svg = SVGRenderer().render_document(document)
 
-    assert svg.count("<circle") == 2
+    assert svg.count('<circle') >= 2
+    assert svg.count('vsa-glyph-dot') == 2

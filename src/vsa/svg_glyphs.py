@@ -85,8 +85,18 @@ class SVGGlyphRenderer:
 
         if prefix is not None and parts:
             symbol = self.prefix_symbols.get(prefix, prefix)
-            # Place the prefix symbol to the left of the base glyph.
-            parts = [self._text(symbol, cx - self.unit, y + 4)] + parts
+            # Position the prefix just to the left of the glyph's left edge.
+            glyph_width = self._glyph_width(col_width, self.upper_width_factor, cap_factor=1.35)
+            x_prefix = cx - glyph_width / 2 - 1.0
+            # For stacked slashes, center the prefix vertically on the full stack.
+            stack_count = (
+                len(base)
+                if base and len(set(base)) == 1 and set(base) <= {"/", "\\"}
+                else 1
+            )
+            stack_gap = max(3.0, self.unit * 0.46)
+            stack_center_y = y - (stack_count - 1) * stack_gap / 2
+            parts = [self._text(symbol, x_prefix, stack_center_y + 4, anchor="end")] + parts
 
         return parts
 
@@ -182,13 +192,15 @@ class SVGGlyphRenderer:
             return parts
 
         if set(value) == {"."}:
+            r = max(1.5, self.unit * 0.20)          # ← tune this: 0.20 / 0.25 / 0.30
+            dot_spacing = self.unit * 0.5           # center-to-center for ".."
             parts = []
             for index in range(len(value)):
-                yy = y + index * (self.unit * 0.35)
+                yy = y + index * dot_spacing
                 parts.append(
                     f'<circle class="vsa-glyph vsa-lower-glyph vsa-glyph-dot" '
-                    f'cx="{cx:.2f}" cy="{yy:.2f}" '
-                    f'r="{max(1.0, self.unit / 8):.2f}" fill="{escape(self.lower_color)}"/>'
+                    f'cx="{cx:.2f}" cy="{yy:.2f}" r="{r:.2f}" '
+                    f'fill="{self.lower_color}" stroke="none"/>'
                 )
             return parts
 
@@ -245,10 +257,11 @@ class SVGGlyphRenderer:
             f'stroke-linecap="round"/>'
         )
 
-    def _text(self, value, x, y):
+    def _text(self, value, x, y, anchor="start"):
+        anchor_attr = f' text-anchor="{anchor}"' if anchor != "start" else ""
         return (
             f'<text class="vsa-glyph-text" x="{x:.2f}" y="{y:.2f}" '
-            f'xml:space="preserve" '
-            f'font-family="Consolas" font-size="{self.unit * 1.2:.2f}">'
+            f'xml:space="preserve"{anchor_attr} '
+            f'font-family="Consolas" font-size="{self.unit * 2.0:.2f}">'
             f'{escape(value)}</text>'
         )

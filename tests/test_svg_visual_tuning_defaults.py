@@ -5,7 +5,7 @@ from vsa.svg_glyphs import SVGGlyphRenderer
 def test_visual_tuning_defaults_are_compact():
     config = SVGRenderingConfig()
 
-    assert config.line_height == 44.0
+    assert config.line_height == 38.0
     assert config.margin_x == 8.0
     assert config.margin_y == 8.0
     assert config.upper.width_factor == 0.48

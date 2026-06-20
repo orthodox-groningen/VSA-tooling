@@ -1,9 +1,9 @@
 <div class="nav-buttons">
   {{- range .Params }}
     {{- $parts := split . "|" -}}
-    {{- $text := trim (index $parts 0) " " -}}
-    {{- $url  := trim (index $parts 1) " " -}}
-    <a class="btn" href="{{ $url }}">
+    {{- $text := trim (index $parts 0) " \t\"\\" -}}
+    {{- $url  := trim (index $parts 1) " \t\"\\" -}}
+    <a class="btn" href="{{ partial "internal-link-url.html" $url }}">
       {{ $text | safeHTML }}
     </a>
   {{- end }}

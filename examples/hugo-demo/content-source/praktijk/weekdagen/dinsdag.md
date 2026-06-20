@@ -4,12 +4,12 @@ source: "Liturgikon"
 ---
 
 {{< navbuttons 
-    \"Maandag   | ../maandag/\"
-    \"Dinsdag   | ../dinsdag/\"
-    \"Woensdag  | ../woensdag/\"
-    \"Donderdag | ../donderdag/\"
-    \"Vrijdag   | ../vrijdag/\"
-    \"Zaterdag  | ../zaterdag/\"
+    "Maandag   | ../maandag/"
+    "Dinsdag   | ../dinsdag/"
+    "Woensdag  | ../woensdag/"
+    "Donderdag | ../donderdag/"
+    "Vrijdag   | ../vrijdag/"
+    "Zaterdag  | ../zaterdag/"
 >}}
 
 ---

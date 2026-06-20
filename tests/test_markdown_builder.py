@@ -38,3 +38,20 @@ Na de notatie.
     svg = (assets_dir / "demo-block-1.svg").read_text(encoding="utf-8")
 
     assert "Hei" in svg
+
+
+def test_build_markdown_site_copies_content_assets(tmp_path: Path):
+    input_dir = tmp_path / "content-source"
+    output_dir = tmp_path / "content-generated"
+    assets_dir = tmp_path / "static" / "vsa"
+
+    page_dir = input_dir / "liturgikon-notatie"
+    page_dir.mkdir(parents=True)
+
+    (page_dir / "index.md").write_text("# Liturgikon\n", encoding="utf-8")
+    (page_dir / "liturgikon-voorbeelden.jpg").write_bytes(b"fake-jpeg")
+
+    result = build_markdown_site(input_dir, output_dir, assets_dir)
+
+    assert len(result.static_files) == 1
+    assert (output_dir / "liturgikon-notatie" / "liturgikon-voorbeelden.jpg").read_bytes() == b"fake-jpeg"

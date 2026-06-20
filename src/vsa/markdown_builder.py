@@ -1,6 +1,7 @@
 from dataclasses import dataclass
 from pathlib import Path
 import re
+import shutil
 
 from .block_parser import START_MARKER, END_MARKER, parse_markdown_blocks
 from .config import VSAConfig
@@ -9,10 +10,20 @@ from .validation_runner import validate_file
 from .markdown_processor import ProcessValidationError
 
 
+CONTENT_ASSET_SUFFIXES = {
+    ".jpg",
+    ".jpeg",
+    ".png",
+    ".webp",
+    ".gif",
+}
+
+
 @dataclass
 class MarkdownBuildResult:
     markdown_files: list[str]
     svg_files: list[str]
+    static_files: list[str]
 
 
 def build_markdown_site(
@@ -72,10 +83,35 @@ def build_markdown_site(
         written_markdown.append(str(target_markdown))
         written_svg.extend(str(path) for path in svg_paths)
 
+    written_static = _copy_content_assets(input_dir, output_dir)
+
     return MarkdownBuildResult(
         markdown_files=written_markdown,
         svg_files=written_svg,
+        static_files=written_static,
     )
+
+
+def _copy_content_assets(input_dir: Path, output_dir: Path) -> list[str]:
+    written_static: list[str] = []
+
+    for source in sorted(input_dir.rglob("*")):
+        if not source.is_file():
+            continue
+
+        suffix = source.suffix.lower()
+        if suffix in {".md", ".markdown"}:
+            continue
+        if suffix not in CONTENT_ASSET_SUFFIXES:
+            continue
+
+        relative = source.relative_to(input_dir)
+        target = output_dir / relative
+        target.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copy2(source, target)
+        written_static.append(str(target))
+
+    return written_static
 
 
 def _rewrite_markdown_file(

@@ -43,7 +43,8 @@ echo [5/5] Build Hugo site
 hugo ^
   --source examples\hugo-demo ^
   --contentDir ..\..\generated\hugo\content ^
-  --destination ..\..\generated\site
+  --destination ..\..\generated\site ^
+  --baseURL /
 if errorlevel 1 exit /b 1
 if exist examples\hugo-demo\public rmdir /s /q examples\hugo-demo\public
 xcopy /e /i /y generated\site examples\hugo-demo\public >nul

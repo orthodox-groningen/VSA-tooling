@@ -1,5 +1,29 @@
 from xml.sax.saxutils import escape
 
+from .parser import HALFTOON_CANONICAL
+
+# Visual symbols for halftoon prefixes.
+# '#' (canonical kruis) → '+' matches Liturgikon convention.
+# 'b' (canonical mol)   → '♭' uses the standard flat symbol.
+# Override via SVGGlyphRenderer(prefix_symbols={...}) for alternative styles.
+DEFAULT_PREFIX_SYMBOLS: dict[str, str] = {
+    "#": "+",
+    "b": "♭",
+}
+
+# Single-character prefix chars (all aliases), used to detect prefix tokens.
+_HALFTOON_PREFIX_CHARS: frozenset[str] = frozenset(HALFTOON_CANONICAL)
+
+
+def _split_ehm_token(value: str) -> tuple[str | None, str]:
+    """Split an EHM token into (canonical_prefix, base).
+
+    Returns (None, value) when no halftoon prefix is present.
+    """
+    if len(value) >= 2 and value[0] in _HALFTOON_PREFIX_CHARS:
+        return HALFTOON_CANONICAL[value[0]], value[1:]
+    return None, value
+
 
 class SVGGlyphRenderer:
     def __init__(
@@ -11,6 +35,7 @@ class SVGGlyphRenderer:
         lower_stroke_width_factor: float = 0.075,
         upper_color: str = "black",
         lower_color: str = "red",
+        prefix_symbols: dict[str, str] | None = None,
     ):
         self.unit = unit
         self.upper_width_factor = upper_width_factor
@@ -19,6 +44,7 @@ class SVGGlyphRenderer:
         self.lower_stroke_width = max(1.0, unit * lower_stroke_width_factor)
         self.upper_color = upper_color
         self.lower_color = lower_color
+        self.prefix_symbols = prefix_symbols if prefix_symbols is not None else DEFAULT_PREFIX_SYMBOLS
 
     def render_height_modifier(self, values, x, y, width):
         parts = []
@@ -51,14 +77,29 @@ class SVGGlyphRenderer:
         return parts
 
     def _render_ehm(self, value, cx, y, col_width):
-        if value in ["", "~"]:
+        if value in ("", "~"):
+            return []
+
+        prefix, base = _split_ehm_token(value)
+        parts = self._render_base_ehm(base, cx, y, col_width)
+
+        if prefix is not None and parts:
+            symbol = self.prefix_symbols.get(prefix, prefix)
+            # Place the prefix symbol to the left of the base glyph.
+            parts = [self._text(symbol, cx - self.unit, y + 4)] + parts
+
+        return parts
+
+    def _render_base_ehm(self, base, cx, y, col_width):
+        """Render a base EHM (without any halftoon prefix)."""
+        if base in ("", "~"):
             return []
 
         width = self._glyph_width(col_width, self.upper_width_factor, cap_factor=1.35)
         half_width = width / 2
         half_height = half_width * 0.45
 
-        if value == "-":
+        if base == "-":
             return [
                 self._line(
                     cx - half_width,
@@ -71,57 +112,21 @@ class SVGGlyphRenderer:
                 )
             ]
 
-        if value == "+/":
-            return [
-                self._text("+", cx - self.unit, y + 4),
-                self._line(
-                    cx - half_width,
-                    y + half_height,
-                    cx + half_width,
-                    y - half_height,
-                    color=self.upper_color,
-                    stroke_width=self.upper_stroke_width,
-                    css_class="vsa-glyph vsa-upper-glyph vsa-glyph-rise",
-                ),
-            ]
-
-        if value == "-\\":
-            return [
-                self._line(
-                    cx - half_width,
-                    y,
-                    cx,
-                    y,
-                    color=self.upper_color,
-                    stroke_width=self.upper_stroke_width,
-                    css_class="vsa-glyph vsa-upper-glyph vsa-glyph-flat",
-                ),
-                self._line(
-                    cx - half_width / 2,
-                    y - half_height,
-                    cx + half_width,
-                    y + half_height,
-                    color=self.upper_color,
-                    stroke_width=self.upper_stroke_width,
-                    css_class="vsa-glyph vsa-upper-glyph vsa-glyph-fall",
-                ),
-            ]
-
-        if set(value) == {"/"}:
+        if set(base) == {"/"}:
             return self._stacked_slashes(
                 cx,
                 y,
-                len(value),
+                len(base),
                 up=True,
                 half_width=half_width,
                 half_height=half_height,
             )
 
-        if set(value) == {"\\"}:
+        if set(base) == {"\\"}:
             return self._stacked_slashes(
                 cx,
                 y,
-                len(value),
+                len(base),
                 up=False,
                 half_width=half_width,
                 half_height=half_height,

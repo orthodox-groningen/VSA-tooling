@@ -4,14 +4,12 @@ from .errors import VSASyntaxError
 
 BRACKET_DIRECTIVE_END = ":]"
 
-EHM_VALUES = [
+BASE_EHM_VALUES = [
     "/////",
     "////",
     "///",
     "//",
-    "+/",
     "/",
-    "-\\",
     "\\\\\\\\\\",
     "\\\\\\\\",
     "\\\\\\",
@@ -20,6 +18,23 @@ EHM_VALUES = [
     "-",
     "~",
 ]
+
+# Canonical form: '+' and '♯' are aliases for '#'; '♭' is alias for 'b'.
+HALFTOON_PREFIXES = ["#", "♯", "+", "b", "♭"]
+
+HALFTOON_CANONICAL: dict[str, str] = {
+    "#": "#",
+    "♯": "#",
+    "+": "#",
+    "b": "b",
+    "♭": "b",
+}
+
+EHM_VALUES = sorted(
+    BASE_EHM_VALUES + [p + b for p in HALFTOON_PREFIXES for b in BASE_EHM_VALUES],
+    key=len,
+    reverse=True,
+)
 
 ELM_VALUES = [
     "__",

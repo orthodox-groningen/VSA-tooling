@@ -128,17 +128,35 @@ De uitleg in het Liturgikon is op één punt niet eenduidig. De tekst stelt dat 
 
 Het gebruik in het Liturgikon zelf wijst op de **absolute interpretatie**: de combinatie `+\` (dalende streep met kruis) komt voor als notatie voor een halve stap omlaag (zie bijv. het zaterdagse prokimen (p 180), het prokimen op p 181, en het prijslied op p. 188.), en niet als 1½ toon omlaag. Op grond hiervan is de absolute interpretatie vrijwel zeker de bedoelde: `+` en `b` zijn daarmee absolute modificatoren die het eindresultaat van de beweging een halve toon opschuiven, los van de bewegingsrichting.
 
+### Implementatie in VSA
+
+VSA volgt de absolute interpretatie. Het systeem gebruikt een halftoon-prefix die altijd vóór een basisbeweging staat:
+
+| VSA-notatie | Alias(es) | Basisbeweging | Netto beweging |
+| :---------: | :-------: | :-----------: | :------------- |
+| `#/`        | `+/`, `♯/` | +1 trede      | +1½ toon omhoog |
+| `b/`        | `♭/`       | +1 trede      | +½ toon omhoog |
+| `#\`        | `+\`, `♯\` | −1 trede      | −½ toon omlaag |
+| `b\`        | `♭\`       | −1 trede      | −1½ toon omlaag |
+| `#-`        | `+-`, `♯-` | 0 (unisono)   | +½ toon (chromatisch) |
+| `b-`        | `♭-`       | 0 (unisono)   | −½ toon (chromatisch) |
+
+De canonieke symbolen in VSA zijn `#` (kruis) en `b` (mol). De aanduidingen `+` en `♯` zijn toegestane aliassen voor `#`; `♭` is een alias voor `b`. In de documentatie en in nieuwe notaties wordt `#` en `b` aanbevolen; bestaande notaties met `+` en `♭` zijn en blijven geldig.
+
+Een standalone `#` of `b` — zonder basisbeweging — is niet toegestaan. Een kruis of mol bij een toon zonder expliciete richtingsstreep wordt genoteerd als `#-` (chromatisch omhoog) of `b-` (chromatisch omlaag).
+
 ### Verschil met VSA
 
-| Onderwerp  | Liturgikon-notatie                          |   VSA   |
-|----------- | ------------------------------------------- | ------- |
-| Doel       | Praktische zanghulp voor menselijke zangers | Formele, machine-verwerkbare notatie |
-| Syntax     | Geen formele grammatica                     | Volledig formele syntax (EBNF) |
-| Structuur  | Markeringen direct boven/onder tekst        | Gestructureerde scopes `{...}` |
-| Toonhoogte | Relatieve intervalnotatie                   | Relatieve toonladder-notatie binnen een do-context |
-| Lege posities | Impliciet                                | Expliciet via `~` |
-| Melisma    | Impliciet / ad hoc                          | Formeel model via samengestelde modifiers |
-| Validatie  | Alleen muzikaal gehoor                      | Syntactische en semantische validatie |
-| Export     | Niet voorzien (kopieerapparaat of scanner)  | SVG en MusicXML |
+| Onderwerp     | Liturgikon-notatie                          | VSA |
+| ------------- | ------------------------------------------- | --- |
+| Doel          | Praktische zanghulp voor menselijke zangers | Formele, machine-verwerkbare notatie |
+| Syntax        | Geen formele grammatica                     | Volledig formele syntax (EBNF) |
+| Structuur     | Markeringen direct boven/onder tekst        | Gestructureerde scopes `{...}` |
+| Toonhoogte    | Relatieve intervalnotatie                   | Relatieve toonladder-notatie binnen een do-context |
+| Kruis en mol  | `+` en `♭` als prefix op richtingspijl      | `#` en `b` als canonieke prefix; `+`, `♯`, `♭` als aliases |
+| Lege posities | Impliciet                                   | Expliciet via `~` |
+| Melisma       | Impliciet / ad hoc                          | Formeel model via samengestelde modifiers |
+| Validatie     | Alleen muzikaal gehoor                      | Syntactische en semantische validatie |
+| Export        | Niet voorzien (kopieerapparaat of scanner)  | SVG en MusicXML |
 
 </details>

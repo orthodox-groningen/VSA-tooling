@@ -1,6 +1,7 @@
 from dataclasses import dataclass, field
 
 from .diagnostics import DiagnosticCollection
+from .height_markers import height_marker_refs
 
 DOC_BASE = "docs/user-guide-config-severity.md"
 
@@ -35,6 +36,7 @@ class SemanticValidationOptions:
 class SemanticValidator:
     def __init__(self, document, options: SemanticValidationOptions | None = None):
         self.document = document
+        self.height_markers = height_marker_refs(document)
         self.options = options or SemanticValidationOptions()
 
     def validate(self):
@@ -43,6 +45,9 @@ class SemanticValidator:
         self._validate_modifier_counts(diagnostics)
 
         return SemanticValidationResult(diagnostics.items)
+
+    def _height_markers(self):
+        return self.height_markers
 
     def _severity(self, code: str):
         return self.options.severity_overrides.get(code, "error")

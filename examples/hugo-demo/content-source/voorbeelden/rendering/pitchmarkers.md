@@ -15,14 +15,18 @@ Bron:
 
 ````markdown
 ::: vsa-notatie
-[:] tekst [:]
+[:] begin en {/eind} {\\mar}kering met {/tekst} er{\tus}{\sen}{/in} [:]
+tekst ervoor [:], ertussen, en [:] erna.
+nu gaan we {/iets} {/ho}ger: [//:] {\maar} we kun{\nen} {\ook} {\la}ger [\\:]
 :::
 ````
 
 Rendering:
 
 ::: vsa-notatie
-[:] tekst [:]
+[:] begin en {/eind} {\\mar}kering met {/tekst} er{\tus}{\sen}{/in} [:]
+tekst ervoor [:], ertussen, en [:] erna.
+nu gaan we {/iets} {/ho}ger: [//:] {\maar} we kun{\nen} {\ook} {\la}ger [\\:]
 :::
 
 Bron:

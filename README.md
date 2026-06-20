@@ -1,9 +1,7 @@
-# Stap 113 - control-token semantics
+# Stap 122 - Validator height marker helpers
 
-Deze stap legt alleen de renderer-onafhankelijke semantiek vast.
+Deze stap sluit `SemanticValidator` aan op `height_marker_refs(document)`.
 
-Geen productiecodewijzigingen.
+Ook inbegrepen: `src/vsa/height_markers.py`, zodat deze stap zelfstandig toepasbaar blijft na stap 120.
 
-Geen parserdispatch.
-
-Doel: voorkomen dat `[/]`, `[*]`, `[/?]`, `[*?]` te vroeg actief worden in de parser.
+Geen validatieregels gewijzigd.

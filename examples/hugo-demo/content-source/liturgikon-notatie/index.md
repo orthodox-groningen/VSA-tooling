@@ -5,7 +5,8 @@ Title: "Notatie uitleg (Nederlands Liturgikon, 1968)"
 ## Notatie uitleg volgens het Nederlands Liturgikon
 
 Onderstaande tekst is overgenomen uit het Liturgikon, pp 27-30 (een uitgave van
-de Nederlands Orthodoxe Kerk, dr. Kuyperstraat 2, den Haag, maart 1968):
+de Nederlands Orthodoxe Kerk, dr. Kuyperstraat 2, den Haag, maart 1968).
+Op een aantal plaatsen is een klein beetje tekst toegevoegd ter verduidelijking.
 
 ### De Muziek
 
@@ -50,7 +51,7 @@ stijging of daling van de melodie van evenveel tonen.
 
 Wanneer een notengroep op dezelfde toon begint als de laatstgezongen toon, 
 wordt deze aangegeven met een horizontaal streepje, zoals getoond in de 
-eerste lettergreep (`zo-`) in onderstaand voorbeeld:
+eerste lettergreep (‘zo-’) in onderstaand voorbeeld:
 
 ![Derde voorbeeld](liturgikon-voorbeeld-3.jpg)
 
@@ -75,13 +76,6 @@ De slottoon wordt telkens aangegeven, om de overgang naar een volgend stuk te we
 ![Tweede voorbeeld](liturgikon-voorbeeld-2.jpg)
 
 Een kruis (+) betekent een extra stijging van een halve toon; 
-een mol (b) een extra daling van een halve toon. 
-Zo worden ze ook als herstellingsteken gebruikt (zie bovenstaand voorbeeld).
-
-Wanneer een zelfde melodietje steeds herhaald wordt, zoals bv. in de Zaligsprekingen, 
-dan worden deze tekens niet steeds weer geschreven, omdat het oor zich
-
-Een kruis (+) betekent een extra stijging van een halve toon; 
 een mol (♭) een extra daling van een halve toon. 
 Zo worden ze ook als herstellingstekens gebruikt (zie 2e voorbeeld).
 
@@ -92,14 +86,14 @@ aanpast aan de andere toonschaal.
 De tekens onder de tekst geven de duur van de tonen aan. 
 Zonder teken duurt elke noot één tel, of een kwartnoot. 
 Een horizontale onderstreping verdubbelt de duur tot een halve noot, twee tellen. 
-Dubbele onderstreping is vier of drie tellen (zie eind van onderstaand voorbeeld, onder `U`).
+Dubbele onderstreping is vier of drie tellen (zie eind van onderstaand voorbeeld, onder ‘U’).
 
 ![Derde voorbeeld](liturgikon-voorbeeld-3.jpg)
 
 Een punt of verticaal streepje onder de tekst maakt deze tot een achtste noot 
-of halve tel (in bovenstaand voorbeeld, onder `trou-`, wordt dit tweemaal gebruikt).
+of halve tel (in bovenstaand voorbeeld, onder ‘trou-’, wordt dit tweemaal gebruikt).
 
-Het einde van een muzikaal zinsdeel wordt aangegeven door een sterretje `*` 
+Het einde van een muzikaal zinsdeel wordt aangegeven door een sterretje ‘*’ 
 tussen de tekst, en dit zal dus vaak een rustteken zijn.
 
 Er is geen strakke maat: het ritme moet de zinsbouw en de betekenis 
@@ -115,40 +109,36 @@ Ze kunnen ook gemakkelijk aan bestaande boeken worden toegevoegd.
 <details>
     <summary>Relatie tussen de Liturgikon-notatie en VSA</summary>
 
-Onderstaande tekst is mogelijk niet geheel correct en moet wellicht worden gereviseerd.
-
 De VSA-notatie is sterk geïnspireerd door de vereenvoudigde neumennotatie zoals beschreven in het Nederlands Liturgikon (1968), maar is daar niet volledig identiek aan. VSA formaliseert en generaliseert verschillende aspecten van deze praktijknotatie om parsing, validatie, rendering en export naar formaten zoals SVG en MusicXML mogelijk te maken.
 
-De belangrijkste verschillen zijn:
+### De betekenis van `+` en `b`
 
-| Onderwerp | Liturgikon-notatie | VSA |
-|-----------|-------------------|-----|
-| Doel      | Praktische zanghulp voor menselijke zangers | Formele, machine-verwerkbare notatie |
-| Syntax    | Geen formele grammatica | Volledig formele syntax (EBNF) |
-| Structuur | Markeringen direct boven/onder tekst | Gestructureerde scopes `{...}` |
-| Toonhoogte | Relatieve intervalnotatie | Relatieve toonladder-notatie binnen een do-context |
-| `+/` en `-\` | Extra halve toon bovenop een bestaande beweging | Zelfstandige halve ladderstap |
-| Lege posities | Impliciet | Expliciet via `~` |
-| Melisma   | Impliciet / ad hoc | Formeel model via samengestelde modifiers |
-| Validatie | Alleen muzikaal gehoor | Syntactische en semantische validatie |
-| Export    | Niet voorzien | SVG en MusicXML |
+De uitleg in het Liturgikon is op één punt niet eenduidig. De tekst stelt dat een kruis (`+`) *"een extra stijging van een halve toon"* betekent en een mol (`b`) *"een extra daling van een halve toon"*. Het woord "extra" laat twee interpretaties open:
 
-Het grootste inhoudelijke verschil betreft de interpretatie van `+/` en `-\`.
-In het Liturgikon staat dat een kruis (+) een *extra* stijging van een halve toon betekent
-(en een mol (b) een *extra* daling van een halve toon). Dit wordt gestaafd door 
-het bijbehorende voorbeeld. Echter, een dergelijke notatie maakt het dan onmogelijk 
-om een halve ladderstap omhoog of omlaag te gaan. 
-De zangpraktijk van de auteur is dat `+/` en `-\` (ook?) worden gebruikt om 
-een stijging/daling van een halve toon mee aan te geven. Dat is ook zoals zij in VSA
-worden geïnterpreteerd: als zelfstandige relatieve toonhoogtebewegingen van een halve
-ladderstap.
+1. **Versterkende interpretatie:** `+` en `b` versterken de richting van de bijbehorende beweging. Dan werkt `+` alleen zinvol bij een stijgende streep en `b` alleen bij een dalende streep — dan kunnen zuivere halve stappen niet worden genoteerd.
 
-Bij omzetting van historische notaties naar VSA kunnen daardoor de volgende situaties optreden:
+2. **Absolute interpretatie:** `+` verschuift het eindresultaat altijd een halve toon omhoog, `b` altijd een halve toon omlaag, ongeacht de richting van de beweging. Dan zijn alle combinaties geldig:
 
-- een historische `+/` moet soms worden herschreven als een combinatie van een hele en halve beweging;
-- de exacte melodische uitkomst kan afhankelijk zijn van de gekozen modus en do-context;
-- historische notaties laten sommige toonladderinformatie impliciet, terwijl VSA die expliciet moet modelleren;
-- melismatische passages moeten in VSA soms explicieter worden gespecificeerd dan in historische bronnen.
+| Notatie | Streepjes | Modificator | Resultaat |
+| :-----: | :-------: | :---------: | :-------- |
+|   `+/`  |  +1 toon  |   +½ toon   | +1½ toon omhoog |
+|   `b\`  |  −1 toon  |   −½ toon   | −1½ toon omlaag |
+|   `b/`  |  +1 toon  |   −½ toon   | **+½ toon omhoog** |
+|   `+\`  |  −1 toon  |   +½ toon   | **−½ toon omlaag** |
 
-VSA moet daarom worden gezien als een geformaliseerde afleiding van deze historische praktijknotatie, niet als een exacte reproductie ervan.
+Het gebruik in het Liturgikon zelf wijst op de **absolute interpretatie**: de combinatie `+\` (dalende streep met kruis) komt voor als notatie voor een halve stap omlaag (zie bijv. het zaterdagse prokimen (p 180), het prokimen op p 181, en het prijslied op p. 188.), en niet als 1½ toon omlaag. Op grond hiervan is de absolute interpretatie vrijwel zeker de bedoelde: `+` en `b` zijn daarmee absolute modificatoren die het eindresultaat van de beweging een halve toon opschuiven, los van de bewegingsrichting.
+
+### Verschil met VSA
+
+| Onderwerp  | Liturgikon-notatie                          |   VSA   |
+|----------- | ------------------------------------------- | ------- |
+| Doel       | Praktische zanghulp voor menselijke zangers | Formele, machine-verwerkbare notatie |
+| Syntax     | Geen formele grammatica                     | Volledig formele syntax (EBNF) |
+| Structuur  | Markeringen direct boven/onder tekst        | Gestructureerde scopes `{...}` |
+| Toonhoogte | Relatieve intervalnotatie                   | Relatieve toonladder-notatie binnen een do-context |
+| Lege posities | Impliciet                                | Expliciet via `~` |
+| Melisma    | Impliciet / ad hoc                          | Formeel model via samengestelde modifiers |
+| Validatie  | Alleen muzikaal gehoor                      | Syntactische en semantische validatie |
+| Export     | Niet voorzien (kopieerapparaat of scanner)  | SVG en MusicXML |
+
 </details>

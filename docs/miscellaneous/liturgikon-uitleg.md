@@ -45,7 +45,7 @@ Het aantal boven elkaar geplaatste stijgende of dalende strepen betekent een
 stijging of daling van de melodie van evenveel tonen.
 
 Wanneer een notengroep op dezelfde toon begint als de laatstgezongen toon,  
-wordt deze aangegeven met een horizontaal streepje  
+wordt deze aangegeven met een horizontaal streepje 
 (zie het begin van het derde voorbeeld).
 
 ![Derde voorbeeld](liturgikon-voorbeeld-3.jpg)
@@ -71,15 +71,8 @@ De slottoon wordt telkens aangegeven, om de overgang naar een volgend stuk te we
 ![Tweede voorbeeld](liturgikon-voorbeeld-2.jpg)
 
 Een kruis (+) betekent een extra stijging van een halve toon;  
-een mol (b) een extra daling van een halve toon.  
-Zo worden ze ook als herstellingsteken gebruikt (zie 3e voorbeeld).
-
-Wanneer een zelfde melodietje steeds herhaald wordt, zoals bv. in de Zaligsprekingen,  
-dan worden deze tekens niet steeds weer geschreven, omdat het oor zich
-
-Een kruis (+) betekent een extra stijging van een halve toon;  
 een mol (♭) een extra daling van een halve toon.  
-Zo worden ze ook als herstellingstekens gebruikt (zie 2e voorbeeld).
+Zo worden ze ook als herstellingstekens gebruikt (zie bovenstaand voorbeeld).
 
 Wanneer een zelfde melodietje steeds herhaald wordt, zoals bv. in de Zaligsprekingen,  
 dan worden deze tekens niet steeds weer geschreven, omdat het oor zich gemakkelijk  

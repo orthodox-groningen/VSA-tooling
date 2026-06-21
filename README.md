@@ -1,7 +1,11 @@
-# Stap 122 - Validator height marker helpers
+# Stap 128 - GitHub Pages preview
 
-Deze stap sluit `SemanticValidator` aan op `height_marker_refs(document)`.
+Deze patch voegt een automatische preview-workflow toe:
 
-Ook inbegrepen: `src/vsa/height_markers.py`, zodat deze stap zelfstandig toepasbaar blijft na stap 120.
+```text
+https://orthodox-groningen.github.io/preview/
+```
 
-Geen validatieregels gewijzigd.
+Productie blijft handmatig via de bestaande productie-workflow.
+
+Let op: GitHub Pages moet publiceren vanuit branch `gh-pages`, folder `/`, als je deze preview direct op `/preview/` wilt zien.

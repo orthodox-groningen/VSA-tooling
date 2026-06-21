@@ -30,7 +30,7 @@ Door de {/ge}{/be_}den van de {\\hei}{/li}{/ge} {\Moe}{/der} {/&\&/&\&\Gods_&~&~
 2. Belijd {/de} {/Heer} en {\roep} {/Zijn} {/Naam__} {\in_},  
    {\\ver}kondig {/Zijn} {/wer}ken on{\der} {\de} {/vol_}ke{\ren_}. — Door ... 
 
-3. In de {/Stad} van de {\Heer} {/der} {/Krach__}{\ten_},  
+3. In {/de} {/Stad} van de {\Heer} {/der} {/Krach__}{\ten_},  
    {\\in} {/de} {/Stad} {\&\van} {/on__}ze {\God_}. — Door ... 
 
 4. Zijn {/ver}{/blijf}plaats {\is} {/in} {/Vre__}{\de_},  

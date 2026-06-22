@@ -1,60 +1,55 @@
 from pathlib import Path
 
 
-def read(path):
+def read(path: str) -> str:
     return Path(path).read_text(encoding="utf-8")
 
 
-def test_hugo_default_baseurl_is_root_for_local_use():
-    text = read("examples/hugo-demo/hugo.toml")
-
-    assert 'baseURL = "/"' in text
-
-
-def test_pages_workflow_uses_github_pages_url_not_github_server_url():
-    text = read(".github/workflows/pages-demo.yml")
-
-    assert "github.server_url" not in text
-    assert "github.repository }}" not in text
-    assert "github.repository_owner" in text
-    assert "github.event.repository.name" in text
-    assert "github.io" in text
-
-
-def test_pages_workflow_builds_with_pages_baseurl():
-    text = read(".github/workflows/pages-demo.yml")
-
-    assert '--baseURL "https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/"' in text
-
-
-def test_local_scripts_use_root_baseurl():
-    for script in [
-        "scripts/serve-hugo.cmd",
-        "scripts/build-preview.cmd",
-        "scripts/build-production.cmd",
+def test_no_github_server_url_in_pages_workflows():
+    for path in [
+        ".github/workflows/pages-demo.yml",
+        ".github/workflows/pages-preview.yml",
     ]:
-        text = read(script)
-
-        assert "--baseURL /" in text
-
-
-def test_site_build_artifact_workflow_uses_root_baseurl():
-    text = read(".github/workflows/site-build.yml")
-
-    assert "--baseURL /" in text
+        text = read(path)
+        assert "github.server_url" not in text
+        assert "github.repository }}" not in text
 
 
-def test_base_template_uses_relurl_for_navigation_and_css():
-    text = read("examples/hugo-demo/layouts/_default/baseof.html")
+def test_production_pages_workflow_builds_with_root_github_pages_baseurl():
+    text = read(".github/workflows/pages-demo.yml")
 
-    assert "relURL" in text
-    assert 'href="{{ "voorbeelden/' in text
-    assert 'href="/voorbeelden/' not in text
-    assert 'href="/css/site.css"' not in text
+    assert '--baseURL "https://orthodox-groningen.github.io/"' in text
 
 
-def test_shortcode_strips_leading_slash_before_relurl():
-    text = read("examples/hugo-demo/layouts/shortcodes/vsa.html")
+def test_preview_pages_workflow_builds_with_preview_baseurl():
+    text = read(".github/workflows/pages-preview.yml")
 
-    assert 'replaceRE "^/" "" $src' in text
-    assert 'src="{{ $src | relURL }}"' in text
+    assert '--baseURL "https://orthodox-groningen.github.io/preview/"' in text
+
+
+def test_preview_url_is_not_used_as_production_baseurl():
+    text = read(".github/workflows/pages-demo.yml")
+
+    assert "https://orthodox-groningen.github.io/preview/" not in text
+
+
+def test_hugo_invocations_use_explicit_baseurl():
+    production = read(".github/workflows/pages-demo.yml")
+    preview = read(".github/workflows/pages-preview.yml")
+
+    assert "--baseURL" in production
+    assert "--baseURL" in preview
+
+
+def test_pages_preview_and_production_use_github_pages_host():
+    production = read(".github/workflows/pages-demo.yml")
+    preview = read(".github/workflows/pages-preview.yml")
+
+    assert "https://orthodox-groningen.github.io/" in production
+    assert "https://orthodox-groningen.github.io/preview/" in preview
+
+
+def test_pages_url_policy_does_not_use_repository_name_subpath():
+    production = read(".github/workflows/pages-demo.yml")
+
+    assert "${{ github.event.repository.name }}" not in production

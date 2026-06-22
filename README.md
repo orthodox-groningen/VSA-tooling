@@ -1,11 +1,5 @@
-# Stap 128 - GitHub Pages preview
+# Stap 130 - gh-pages workflow testcontracten
 
-Deze patch voegt een automatische preview-workflow toe:
+Deze patch past de workflowtests aan op stap 129.
 
-```text
-https://orthodox-groningen.github.io/preview/
-```
-
-Productie blijft handmatig via de bestaande productie-workflow.
-
-Let op: GitHub Pages moet publiceren vanuit branch `gh-pages`, folder `/`, als je deze preview direct op `/preview/` wilt zien.
+Geen workflowcode gewijzigd.

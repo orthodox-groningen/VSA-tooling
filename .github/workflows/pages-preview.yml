@@ -67,33 +67,15 @@ jobs:
             --destination ../../generated/preview/site \
             --baseURL "https://orthodox-groningen.github.io/preview/"
 
-      - name: Prepare gh-pages worktree
-        shell: bash
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-
-          if git ls-remote --exit-code --heads origin gh-pages >/dev/null 2>&1; then
-            git fetch origin gh-pages:gh-pages
-            git worktree add .pages gh-pages
-          else
-            mkdir .pages
-            git -C .pages init
-            git -C .pages checkout -b gh-pages
-            git -C .pages remote add origin "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
-          fi
-
       - name: Deploy preview directory
-        shell: bash
-        run: |
-          rm -rf .pages/preview
-          mkdir -p .pages/preview
-          cp -a generated/preview/site/. .pages/preview/
-          touch .pages/.nojekyll
-
-          git -C .pages add -A .nojekyll preview
-          git -C .pages commit -m "Deploy preview ${GITHUB_SHA}" || exit 0
-          git -C .pages push origin HEAD:gh-pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: gh-pages
+          publish_dir: generated/preview/site
+          destination_dir: preview
+          keep_files: true
 
       - name: Show preview URL
-        run: echo "Preview URL: https://orthodox-groningen.github.io/preview/"
+        run: |
+          echo "Preview URL: https://orthodox-groningen.github.io/preview/"

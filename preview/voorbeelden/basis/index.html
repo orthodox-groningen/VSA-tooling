@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Basisvoorbeelden</title>
+  <link rel="stylesheet" href="/preview/css/site.css">
+</head>
+
+<body>
+  <header class="site-header">
+    <nav class="site-nav" aria-label="Hoofdnavigatie">
+      <a href="/preview/">Home</a>
+      <a href="/preview/voorbeelden/">Voorbeelden</a>
+      <a href="/preview/voorbeelden/basis/">Basis</a>
+      <a href="/preview/voorbeelden/multiline/">Multiline</a>
+      <a href="/preview/voorbeelden/fouten/">Fouten</a>
+      <a href="/preview/voorbeelden/markdown/">Markdown</a>
+      <a href="/preview/voorbeelden/cli/">CLI</a>
+      <a href="/preview/voorbeelden/rendering/">Rendering</a>
+      <a href="/preview/praktijk/">Praktijk</a>
+    </nav>
+  </header>
+
+  <main class="page">
+    
+
+<h1 id="basisvoorbeelden">Basisvoorbeelden</h1>
+<ul>
+<li><a href="../../">Home</a>
+</li>
+<li><a href="../">Voorbeelden</a>
+</li>
+<li><a href="../multiline/">Volgende: Multiline</a>
+</li>
+</ul>
+<h2 id="voorbeeld-1">Voorbeeld 1</h2>
+<h3 id="invoer">Invoer</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>[:] {/Hei_}{/lig_} is de Heer. [\\:]
+</span></span></code></pre></div><h3 id="svg">SVG</h3>
+
+
+<div class="vsa-container">
+  <img
+    class="vsa-notation"
+    src="/preview/vsa/voorbeelden-basis-block-1.svg"
+    alt="VSA notatie"
+    loading="lazy">
+</div>
+
+<h3 id="wat-gebeurt-hier">Wat gebeurt hier?</h3>
+<table>
+  <thead>
+      <tr>
+          <th>Onderdeel</th>
+          <th>Betekenis</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>[:]</code></td>
+          <td>openings-pitch-marker</td>
+      </tr>
+      <tr>
+          <td><code>{/Hei_}</code></td>
+          <td>scope met modifier</td>
+      </tr>
+      <tr>
+          <td><code>is de Heer.</code></td>
+          <td>gewone tekst</td>
+      </tr>
+      <tr>
+          <td><code>[\\:]</code></td>
+          <td>afsluitende pitch-marker</td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="commando">Commando</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cmd" data-lang="cmd"><span style="display:flex;"><span>vsa svg examples\minimal\valid-demo.vsa output.svg
+</span></span></code></pre></div><h2 id="verwachte-output">Verwachte output</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>SVG geschreven naar: output.svg
+</span></span></code></pre></div>
+
+
+  </main>
+</body>
+</html>

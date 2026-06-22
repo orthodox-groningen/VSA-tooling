@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CLI: vsa --config</title>
+  <link rel="stylesheet" href="/preview/css/site.css">
+</head>
+
+<body>
+  <header class="site-header">
+    <nav class="site-nav" aria-label="Hoofdnavigatie">
+      <a href="/preview/">Home</a>
+      <a href="/preview/voorbeelden/">Voorbeelden</a>
+      <a href="/preview/voorbeelden/basis/">Basis</a>
+      <a href="/preview/voorbeelden/multiline/">Multiline</a>
+      <a href="/preview/voorbeelden/fouten/">Fouten</a>
+      <a href="/preview/voorbeelden/markdown/">Markdown</a>
+      <a href="/preview/voorbeelden/cli/">CLI</a>
+      <a href="/preview/voorbeelden/rendering/">Rendering</a>
+      <a href="/preview/praktijk/">Praktijk</a>
+    </nav>
+  </header>
+
+  <main class="page">
+    
+
+<h1 id="cli---config">CLI: <code>--config</code></h1>
+<ul>
+<li><a href="../../../">Home</a>
+</li>
+<li><a href="../">CLI overzicht</a>
+</li>
+<li><a href="../version/">Vorige: vsa &ndash;version</a>
+</li>
+</ul>
+<h2 id="waarvoor-gebruik-je-dit">Waarvoor gebruik je dit?</h2>
+<p>Gebruik <code>--config</code> om instellingen uit een <code>vsa.toml</code> bestand te gebruiken.</p>
+<p>Dit werkt nu voor:</p>
+<table>
+  <thead>
+      <tr>
+          <th>Commando</th>
+          <th>Config gebruikt voor</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>vsa validate</code></td>
+          <td>severity-overrides</td>
+      </tr>
+      <tr>
+          <td><code>vsa process</code></td>
+          <td>severity-overrides en renderingconfig</td>
+      </tr>
+      <tr>
+          <td><code>vsa build-markdown</code></td>
+          <td>severity-overrides, renderingconfig en Hugo-output</td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="voorbeeldconfig">Voorbeeldconfig</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-toml" data-lang="toml"><span style="display:flex;"><span>[<span style="color:#a6e22e">validation</span>.<span style="color:#a6e22e">severity</span>]
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">VSA-SEMANTIC-EMPTY-FINAL-PITCH-MARKER</span> = <span style="color:#e6db74">&#34;warning&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">VSA-SEMANTIC-MISSING-FINAL-PITCH-MARKER</span> = <span style="color:#e6db74">&#34;warning&#34;</span>
+</span></span></code></pre></div><h2 id="voorbeeld-validate">Voorbeeld: validate</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cmd" data-lang="cmd"><span style="display:flex;"><span>vsa validate examples\expected-fail\empty-final-pitch-marker.vsa --config vsa.toml
+</span></span></code></pre></div><p>Als de foutcode op <code>warning</code> staat:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>WARNING: VSA-SEMANTIC-EMPTY-FINAL-PITCH-MARKER
+</span></span></code></pre></div><p>De exitcode is dan <code>0</code>.</p>
+<h2 id="voorbeeld-process">Voorbeeld: process</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cmd" data-lang="cmd"><span style="display:flex;"><span>vsa process input.md generated\vsa --config vsa.toml
+</span></span></code></pre></div><p>Als er alleen warnings zijn, worden SVG-bestanden wel gegenereerd.</p>
+<h2 id="voorbeeld-build-markdown">Voorbeeld: build-markdown</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cmd" data-lang="cmd"><span style="display:flex;"><span>vsa build-markdown content generated\content static\vsa --config vsa.toml
+</span></span></code></pre></div><p>Als er alleen warnings zijn, worden Markdown en SVG-bestanden wel gegenereerd.</p>
+<h2 id="wat-blijft-altijd-hard">Wat blijft altijd hard?</h2>
+<p>Syntax-errors blijven altijd <code>error</code>.</p>
+<p>Voorbeeld:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>{onafgesloten
+</span></span></code></pre></div><p>Dit blijft de build stoppen, ook als semantische foutcodes als warning zijn geconfigureerd.</p>
+
+
+
+  </main>
+</body>
+</html>

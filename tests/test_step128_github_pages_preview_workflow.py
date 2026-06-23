@@ -18,7 +18,7 @@ def test_pages_preview_runs_on_push():
 def test_pages_preview_builds_with_preview_baseurl():
     text = WORKFLOW.read_text(encoding="utf-8")
 
-    assert '--baseURL "https://orthodox-groningen.github.io/preview/"' in text
+    assert '--baseURL "https://orthodox-groningen.github.io/VSA-tooling/preview/"' in text
 
 
 def test_pages_preview_deploys_preview_directory_to_gh_pages():

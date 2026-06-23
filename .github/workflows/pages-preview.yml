@@ -65,7 +65,7 @@ jobs:
             --source examples/hugo-demo \
             --contentDir ../../generated/preview/content \
             --destination ../../generated/preview/site \
-            --baseURL "https://orthodox-groningen.github.io/preview/"
+            --baseURL "https://orthodox-groningen.github.io/VSA-tooling/preview/"
 
       - name: Deploy preview directory
         uses: peaceiris/actions-gh-pages@v3
@@ -78,4 +78,4 @@ jobs:
 
       - name: Show preview URL
         run: |
-          echo "Preview URL: https://orthodox-groningen.github.io/preview/"
+          echo "Preview URL: https://orthodox-groningen.github.io/VSA-tooling/preview/"

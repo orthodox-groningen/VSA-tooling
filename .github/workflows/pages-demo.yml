@@ -65,7 +65,7 @@ jobs:
             --source examples/hugo-demo \
             --contentDir ../../generated/hugo/content \
             --destination ../../generated/site \
-            --baseURL "https://orthodox-groningen.github.io/"
+            --baseURL "https://orthodox-groningen.github.io/VSA-tooling/"
 
       - name: Deploy production root
         uses: peaceiris/actions-gh-pages@v3

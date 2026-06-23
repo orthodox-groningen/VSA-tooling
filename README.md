@@ -1,5 +1,12 @@
-# Stap 130 - gh-pages workflow testcontracten
+# Stap 131 - project-site baseURL
 
-Deze patch past de workflowtests aan op stap 129.
+Deze patch corrigeert de GitHub Pages URL's voor een project-site.
 
-Geen workflowcode gewijzigd.
+Correct:
+
+```text
+https://orthodox-groningen.github.io/VSA-tooling/
+https://orthodox-groningen.github.io/VSA-tooling/preview/
+```
+
+Geen parser- of rendererwijzigingen.

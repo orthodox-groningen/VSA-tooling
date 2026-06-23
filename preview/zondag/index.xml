@@ -2,10 +2,10 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Zondag on VSA Demo</title>
-    <link>https://orthodox-groningen.github.io/preview/zondag/</link>
+    <link>https://orthodox-groningen.github.io/VSA-tooling/preview/zondag/</link>
     <description>Recent content in Zondag on VSA Demo</description>
     <generator>Hugo</generator>
     <language>nl</language>
-    <atom:link href="https://orthodox-groningen.github.io/preview/zondag/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://orthodox-groningen.github.io/VSA-tooling/preview/zondag/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

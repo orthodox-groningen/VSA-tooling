@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>December on VSA Demo</title>
+    <link>https://orthodox-groningen.github.io/VSA-tooling/praktijk/feesteigen/12-dec/</link>
+    <description>Recent content in December on VSA Demo</description>
+    <generator>Hugo</generator>
+    <language>nl</language>
+    <atom:link href="https://orthodox-groningen.github.io/VSA-tooling/praktijk/feesteigen/12-dec/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>H. Nicolaas van Myra (6 December)</title>
+      <link>https://orthodox-groningen.github.io/VSA-tooling/praktijk/feesteigen/12-dec/12-06-nicolaas-van-myra/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://orthodox-groningen.github.io/VSA-tooling/praktijk/feesteigen/12-dec/12-06-nicolaas-van-myra/</guid>
+      <description>&lt;h3 id=&#34;troparion-t-4&#34;&gt;TROPARION t. 4&lt;/h3&gt;&#xA;&#xA;&#xA;&lt;div class=&#34;vsa-container&#34;&gt;&#xA;  &lt;img&#xA;    class=&#34;vsa-notation&#34;&#xA;    src=&#34;https://orthodox-groningen.github.io/VSA-tooling/vsa/praktijk-feesteigen-12-dec-12-06-nicolaas-van-myra-block-1.svg&#34;&#xA;    alt=&#34;VSA notatie&#34;&#xA;    loading=&#34;lazy&#34;&gt;&#xA;&lt;/div&gt;&#xA;&#xA;&lt;h3 id=&#34;kondakion-t-3&#34;&gt;KONDAKION t. 3&lt;/h3&gt;&#xA;&#xA;&#xA;&lt;div class=&#34;vsa-container&#34;&gt;&#xA;  &lt;img&#xA;    class=&#34;vsa-notation&#34;&#xA;    src=&#34;https://orthodox-groningen.github.io/VSA-tooling/vsa/praktijk-feesteigen-12-dec-12-06-nicolaas-van-myra-block-2.svg&#34;&#xA;    alt=&#34;VSA notatie&#34;&#xA;    loading=&#34;lazy&#34;&gt;&#xA;&lt;/div&gt;&#xA;&#xA;&lt;hr&gt;</description>
+    </item>
+  </channel>
+</rss>

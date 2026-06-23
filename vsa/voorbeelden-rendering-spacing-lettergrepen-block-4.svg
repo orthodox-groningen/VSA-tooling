@@ -1,0 +1,67 @@
+<svg class="vsa-svg" xmlns="http://www.w3.org/2000/svg" width="607" height="55" viewBox="0 0 607 55">
+<rect width="100%" height="100%" fill="white"/>
+<g class="vsa-score">
+<!-- plain-text: gedood door het hemellicht -->
+<!-- plain-text: , o -->
+<g class="vsa-line" data-vsa-line="1">
+<g class="vsa-unit vsa-pitch-marker" data-vsa-unit="1">
+<line class="vsa-pitch-marker-dash" x1="13.50" y1="31.00" x2="22.50" y2="31.00" stroke="black" stroke-width="1.50" stroke-linecap="round"/>
+</g>
+<g class="vsa-unit vsa-unit-text" data-vsa-unit="3">
+<text class="vsa-text vsa-free-text" x="42.40" y="36.00" xml:space="preserve" font-family="DejaVu Sans" font-size="20.00">gedood</text>
+</g>
+<g class="vsa-unit vsa-unit-text" data-vsa-unit="5">
+<text class="vsa-text vsa-free-text" x="127.69" y="36.00" xml:space="preserve" font-family="DejaVu Sans" font-size="20.00">door</text>
+</g>
+<g class="vsa-unit vsa-unit-text" data-vsa-unit="7">
+<text class="vsa-text vsa-free-text" x="183.48" y="36.00" xml:space="preserve" font-family="DejaVu Sans" font-size="20.00">het</text>
+</g>
+<g class="vsa-unit vsa-unit-text" data-vsa-unit="9">
+<text class="vsa-text vsa-free-text" x="226.71" y="36.00" xml:space="preserve" font-family="DejaVu Sans" font-size="20.00">hemellicht</text>
+</g>
+<g class="vsa-unit vsa-unit-scope" data-vsa-unit="11">
+<g class="vsa-glyph-group vsa-upper-glyphs">
+<line class="vsa-glyph vsa-upper-glyph vsa-glyph-rise" x1="354.31" y1="16.43" x2="365.10" y2="11.57" stroke="black" stroke-width="1.00" stroke-linecap="round"/>
+</g>
+<g class="vsa-glyph-group vsa-lower-glyphs">
+</g>
+<text class="vsa-text vsa-sung-text" x="342.09" y="36.00" xml:space="preserve" font-family="DejaVu Sans" font-size="20.00">der</text>
+</g>
+<g class="vsa-unit vsa-unit-scope" data-vsa-unit="13">
+<g class="vsa-glyph-group vsa-upper-glyphs">
+<line class="vsa-glyph vsa-upper-glyph vsa-glyph-rise" x1="403.54" y1="16.43" x2="414.34" y2="11.57" stroke="black" stroke-width="1.00" stroke-linecap="round"/>
+</g>
+<g class="vsa-glyph-group vsa-lower-glyphs">
+<line class="vsa-glyph vsa-lower-glyph vsa-glyph-length" x1="403.14" y1="43.00" x2="414.74" y2="43.00" stroke="red" stroke-width="1.00" stroke-linecap="round"/>
+</g>
+<text class="vsa-text vsa-sung-text" x="387.72" y="36.00" xml:space="preserve" font-family="DejaVu Sans" font-size="20.00">God</text>
+</g>
+<g class="vsa-unit vsa-unit-scope" data-vsa-unit="14">
+<g class="vsa-glyph-group vsa-upper-glyphs">
+<line class="vsa-glyph vsa-upper-glyph vsa-glyph-fall" x1="451.38" y1="11.57" x2="462.18" y2="16.43" stroke="black" stroke-width="1.00" stroke-linecap="round"/>
+</g>
+<g class="vsa-glyph-group vsa-lower-glyphs">
+</g>
+<text class="vsa-text vsa-sung-text" x="434.16" y="36.00" xml:space="preserve" font-family="DejaVu Sans" font-size="20.00">heid</text>
+</g>
+<g class="vsa-unit vsa-unit-text" data-vsa-unit="15">
+<text class="vsa-text vsa-free-text" x="479.41" y="36.00" xml:space="preserve" font-family="DejaVu Sans" font-size="20.00">,</text>
+</g>
+<g class="vsa-unit vsa-unit-text" data-vsa-unit="17">
+<text class="vsa-text vsa-free-text" x="496.17" y="36.00" xml:space="preserve" font-family="DejaVu Sans" font-size="20.00">o</text>
+</g>
+<g class="vsa-unit vsa-unit-scope" data-vsa-unit="19">
+<g class="vsa-glyph-group vsa-upper-glyphs">
+<line class="vsa-glyph vsa-upper-glyph vsa-glyph-fall" x1="538.35" y1="11.57" x2="549.14" y2="16.43" stroke="black" stroke-width="1.00" stroke-linecap="round"/>
+</g>
+<g class="vsa-glyph-group vsa-lower-glyphs">
+<line class="vsa-glyph vsa-lower-glyph vsa-glyph-length" x1="537.95" y1="43.00" x2="549.54" y2="43.00" stroke="red" stroke-width="1.00" stroke-linecap="round"/>
+</g>
+<text class="vsa-text vsa-sung-text" x="518.80" y="36.00" xml:space="preserve" font-family="DejaVu Sans" font-size="20.00">Heer</text>
+</g>
+<g class="vsa-unit vsa-pitch-marker" data-vsa-unit="21">
+<line class="vsa-pitch-marker-dash" x1="584.59" y1="31.00" x2="593.59" y2="31.00" stroke="black" stroke-width="1.50" stroke-linecap="round"/>
+</g>
+</g>
+</g>
+</svg>

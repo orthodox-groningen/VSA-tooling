@@ -12,6 +12,12 @@ title: "Weekdagen"
 
 ---
 
+
+- [Antifonen - weekdagen (Hemelum)](antifonen-hemelum/)
+- [Antifonen - weekdagen (Liturgikon)](antifonen/)
+
+---
+
 {{< navbuttons 
     "Maandag<br>(H. Engelen)  | maandag/"
     "Dinsdag<br>(Voorloper)   | dinsdag/"
@@ -22,7 +28,3 @@ title: "Weekdagen"
 >}}
 
 --- 
-
-- [Weekdagen volgens Liturgikon (p244-251)](weekdagen/)
-- [Antifonen - weekdagen (Hemelum)](antifonen-hemelum/)
-- [Antifonen - weekdagen](antifonen/)

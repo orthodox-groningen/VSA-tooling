@@ -12,7 +12,7 @@ title: "Markdown en Hugo"
 
 ````markdown
 ::: vsa-notatie
-[:] {/Hei_}{/lig_} is de Heer. [\\:]
+[:] {/Hei_}{/lig_} is de Heer. [//:]
 :::
 ````
 
@@ -37,7 +37,7 @@ Zonder escaping zou Hugo proberen de shortcode echt te renderen.
 ## Gegenereerde SVG
 
 ::: vsa-notatie
-[:] {/Hei_}{/lig_} is de Heer. [\\:]
+[:] {/Hei_}{/lig_} is de Heer. [//:]
 :::
 
 ## Wat wordt waar opgeslagen?

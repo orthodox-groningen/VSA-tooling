@@ -1,5 +1,6 @@
 from .ast import Document, TextNode, ScopeNode, PitchMarkerNode, HeightMarkerNode
 from .errors import VSASyntaxError
+from .vsa_comments import strip_vsa_html_comments
 
 
 BRACKET_DIRECTIVE_END = ":]"
@@ -51,7 +52,9 @@ MODIFIER_CHARS = set("&~+-\\/_.")
 
 class Parser:
     def __init__(self, text: str):
-        self.text = text
+        # HTML comments inside VSA notation are source-only annotations.
+        # They are ignored for parsing and all derived artifacts.
+        self.text = strip_vsa_html_comments(text)
         self.pos = 0
 
     def parse(self) -> Document:

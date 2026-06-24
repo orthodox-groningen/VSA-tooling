@@ -8,6 +8,7 @@ from .parser import HALFTOON_CANONICAL, Parser
 from .semantic_validator import SemanticValidationOptions, SemanticValidator
 from .recoverable_syntax_validator import RecoverableSyntaxValidator
 from .errors import VSAError
+from .vsa_comments import strip_vsa_html_comments
 
 # Characters that form the base of an EHM (direction or same-tone).
 _BASE_MODIFIER_CHARS: frozenset[str] = frozenset("/\\-~")
@@ -143,7 +144,8 @@ def _validate_markdown(path: Path, text: str, result: ValidationResult,
 
 def _validate_vsa_text(source: str, text: str, result: ValidationResult,
                        config: VSAConfig | None = None, source_line_offset: int = 0):
-    syntax_diagnostics = RecoverableSyntaxValidator(text).validate()
+    semantic_text = strip_vsa_html_comments(text)
+    syntax_diagnostics = RecoverableSyntaxValidator(semantic_text).validate()
 
     for diagnostic in syntax_diagnostics.items:
         result.add_error(
@@ -160,7 +162,7 @@ def _validate_vsa_text(source: str, text: str, result: ValidationResult,
     if syntax_diagnostics.has_errors():
         return
 
-    scope_issue = _first_scope_issue(text)
+    scope_issue = _first_scope_issue(semantic_text)
     if scope_issue is not None:
         line, column, code, message_nl, hint_nl = scope_issue
         result.add_error(
@@ -175,9 +177,9 @@ def _validate_vsa_text(source: str, text: str, result: ValidationResult,
         return
 
     try:
-        document = Parser(text).parse()
+        document = Parser(semantic_text).parse()
     except VSAError as exc:
-        line, column = _line_column_from_exception(text, exc)
+        line, column = _line_column_from_exception(semantic_text, exc)
         result.add_error(
             source=source,
             code="VSA-PARSE-ERROR",
@@ -197,7 +199,7 @@ def _validate_vsa_text(source: str, text: str, result: ValidationResult,
         column = diagnostic.column
 
         if diagnostic.code == "VSA-SEMANTIC-MODIFIER-COUNT-MISMATCH":
-            location = _first_modifier_count_mismatch_location(text)
+            location = _first_modifier_count_mismatch_location(semantic_text)
             if location is not None:
                 rel_line, rel_column = location
                 line = source_line_offset + rel_line

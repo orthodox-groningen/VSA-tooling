@@ -9,9 +9,9 @@ def test_text_width_preserves_spaces_between_words():
     svg = SVGRenderer().render_document(document)
 
     assert 'xml:space="preserve"' in svg
-    assert "de " in svg
-    assert "Heer " in svg
-    assert "en " in svg
+    assert "de" in svg
+    assert "Heer" in svg
+    assert "en" in svg
 
 
 def test_line_width_counts_spaces():

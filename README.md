@@ -1,9 +1,10 @@
-# Stap 133 - safe SVG comments
+# Stap 135 - HTML-commentaar policy
 
-Repareert ongeldige SVG wanneer brontekst `<!-- ... -->` of andere dubbele hyphens bevat.
+Deze patch voert broncommentaar binnen VSA-notatie in.
 
-Gewijzigd:
+Kort:
 
-- `src/vsa/svg_renderer.py`
-- `tests/test_step133_safe_svg_comments.py`
-- `docs/architecture/parser-stap-133-safe-svg-comments.md`
+- `<!-- ... -->` blijft in de bron staan;
+- parser/validator/renderers negeren het;
+- SVG bevat geen commentaar of commentaartekst;
+- oude SVG `plain-text` metadata-comments vervallen.

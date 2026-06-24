@@ -11,7 +11,7 @@ def test_process_markdown_file_generates_svg(tmp_path: Path):
         """# Demo
 
 ::: vsa-notatie
-[:] {/Hei_}{/lig_} is de Heer. [\\\\:]
+[:] {/Hei_}{/lig_} is de Heer. [//:]
 :::
 """,
         encoding="utf-8",

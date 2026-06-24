@@ -1,9 +1,11 @@
+from .vsa_comments import strip_vsa_html_comments
 from .diagnostics import DiagnosticCollection
 
 
 class RecoverableSyntaxValidator:
     def __init__(self, text: str):
-        self.text = text
+        # HTML comments inside VSA notation are ignored for validation.
+        self.text = strip_vsa_html_comments(text)
         self.diagnostics = DiagnosticCollection()
 
     def validate(self):

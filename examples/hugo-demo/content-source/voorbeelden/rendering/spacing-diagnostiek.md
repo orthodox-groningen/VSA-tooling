@@ -7,18 +7,18 @@ title: "Spacing diagnostiek"
 <!-- VSA-METRICS-START -->
 ## Metrics van deze build
 
-| Kenmerk | Waarde |
-|---|---|
-| Font | `DejaVu Sans` |
-| Backend | `pillow` |
-| Real metrics | `True` |
-| Fontpad | `assets\fonts\DejaVuSans.ttf` |
-| Fontgrootte | `20` |
-| Ascent | `19.0` |
-| Descent | `5.0` |
-| Breedte `iiii` | `24.0` |
-| Breedte `mmmm` | `76.0` |
-| Breedte `eeu` | `37.0` |
+| Kenmerk         | Waarde |
+| --------------- | ------ |
+| Font            | `DejaVu Sans` |
+| Backend         | `pillow` |
+| Real metrics    | `True` |
+| Fontpad         | `assets\fonts\DejaVuSans.ttf` |
+| Fontgrootte     | `20`   |
+| Ascent          | `19.0` |
+| Descent         | `5.0`  |
+| Breedte `iiii`  | `24.0` |
+| Breedte `mmmm`  | `76.0` |
+| Breedte `eeu`   | `37.0` |
 | Breedte `baard` | `58.0` |
 
 <!-- VSA-METRICS-END -->
@@ -36,11 +36,11 @@ Gebruik deze pagina bij wijzigingen aan:
 ## 1. Aanpalende scopes binnen één woord
 
 ::: vsa-notatie
-[:] me{\\de}{/eeu_}wi{\ge} [:]
+[:] me{\\de}{/eeu_}wi{/ge} [:]
 :::
 
 ```text
-[:] me{\\de}{/eeu_}wi{\ge} [:]
+[:] me{\\de}{/eeu_}wi{/ge} [:]
 ```
 
 Let op:
@@ -67,11 +67,11 @@ Let op:
 ## 3. Korte scope gevolgd door gewone tekst
 
 ::: vsa-notatie
-[:] {/ge}{/&/o}pen{baard_} [:]
+[:] {/ge}{/&/o}pen{baard_} [///:]
 :::
 
 ```text
-[:] {/ge}{/&/o}pen{baard_} [:]
+[:] {/ge}{/&/o}pen{baard_} [///:]
 ```
 
 Let op:
@@ -82,11 +82,11 @@ Let op:
 ## 4. Twee gemodificeerde scopes naast elkaar
 
 ::: vsa-notatie
-[:] ge{\ble_}{\ven_} [:]
+[:] ge{\ble_}{\ven_} [\\:]
 :::
 
 ```text
-[:] ge{\ble_}{\ven_} [:]
+[:] ge{\ble_}{\ven_} [\\:]
 ```
 
 Let op:
@@ -97,11 +97,11 @@ Let op:
 ## 5. Multi-EHM filler
 
 ::: vsa-notatie
-[:] {\ge}{/&/&/&\&\&\&/schon..&..&..&..&..&..&~}{\ken__} [:]
+[:] {\ge}{/&/&/&\&\&\&/schon..&..&..&..&..&..&~}{\ken__} [\:]
 :::
 
 ```text
-[:] {\ge}{/&/&/&\&\&\&/schon..&..&..&..&..&..&~}{\ken__} [:]
+[:] {\ge}{/&/&/&\&\&\&/schon..&..&..&..&..&..&~}{\ken__} [\:]
 ```
 
 Let op:
@@ -115,13 +115,13 @@ Let op:
 ::: vsa-notatie
 [:] eerste regel met {/tekst_} 
 tweede regel met {/tekst_} 
-derde regel met {/tekst_} [:]
+derde regel met {\tekst_} [/:]
 :::
 
 ```text
 [:] eerste regel met {/tekst_} 
 tweede regel met {/tekst_} 
-derde regel met {/tekst_} [:]
+derde regel met {\tekst_} [/:]
 ```
 
 Let op:

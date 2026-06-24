@@ -11,13 +11,13 @@ title: "Multiline voorbeelden"
 ## Invoer
 
 ```text
-[:] {/Hei_}{/lig_} is de Heer en Hij is heilig en wonderbaar in al Zijn werken. [\\:]
+[:] {/Hei_}{/lig_} is de Heer en Hij is heilig en wonderbaar in al Zijn werken. [//:]
 ```
 
 ## SVG
 
 ::: vsa-notatie
-[:] {/Hei_}{/lig_} is de Heer en Hij is heilig en wonderbaar in al Zijn werken. [\\:]
+[:] {/Hei_}{/lig_} is de Heer en Hij is heilig en wonderbaar in al Zijn werken. [//:]
 :::
 
 ## Commando

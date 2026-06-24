@@ -16,7 +16,7 @@ def test_build_markdown_site_rewrites_vsa_block(tmp_path: Path):
 Voor de notatie.
 
 ::: vsa-notatie
-[:] {/Hei_}{/lig_} is de Heer. [\\\\:]
+[:] {/Hei_}{/lig_} is de Heer. [//:]
 :::
 
 Na de notatie.

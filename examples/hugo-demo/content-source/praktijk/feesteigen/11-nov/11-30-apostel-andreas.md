@@ -18,7 +18,7 @@ Bid daarom, heilige Andreas, tot de {Mees_}ter {/van} het heel{\al_},
 de uit God {\spre_}{ken_}{\de_}, 
 {/de} Eerstge{/roe_}pene door de {/Ver}{/&\los_&_}{\ser_}, 
 de broeder van {\Pe_}{\tros_}. 
-{/Want} zoals tot {/hem_} roept Andreas {/nog} {steeds_} {\tot_} {\ons_}: 
+{/Want} zoals tot {/hem_} roept Andreas {/nog} {/steeds_} {\tot_} {\ons_}: 
 // "Wij hebben Hem gevonden naar Wie {\wij} {/zo}{/zeer_} {\&/ver}{\&\lang_&_}{\den_}." [:]
 :::
 

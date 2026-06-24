@@ -13,5 +13,5 @@ Oud:
 Nieuw:
 
 ```text
-[:] {/Hei_}{/lig_} is de Heer. [\\:]
+[:] {/Hei_}{/lig_} is de Heer. [//:]
 ```

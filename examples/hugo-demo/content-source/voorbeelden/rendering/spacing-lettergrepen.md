@@ -15,14 +15,14 @@ Bron:
 
 ````markdown
 ::: vsa-notatie
-[:] grote ge{na_}{\de} {\ge}{/schon_}{\ken_} [:]
+[:] grote ge{na_}{\de} {\ge}{/schon_}{\ken_} [\\:]
 :::
 ````
 
 Rendering:
 
 ::: vsa-notatie
-[:] grote ge{na_}{\de} {\ge}{/schon_}{\ken_} [:]
+[:] grote ge{na_}{\de} {\ge}{/schon_}{\ken_} [\\:]
 :::
 
 ## Lettergrepen dicht bij elkaar
@@ -31,14 +31,14 @@ Bron:
 
 ````markdown
 ::: vsa-notatie
-[:] {/ne_}{\der}ge{\daald_} en ver{\blij_}{\den_} [:]
+[:] {/ne_}{\der}ge{\daald_} en ver{\blij_}{\den_} [\\\:]
 :::
 ````
 
 Rendering:
 
 ::: vsa-notatie
-[:] {/ne_}{\der}ge{\daald_} en ver{\blij_}{\den_} [:]
+[:] {/ne_}{\der}ge{\daald_} en ver{\blij_}{\den_} [\\\:]
 :::
 
 ## Praktijkregel toon 2
@@ -47,14 +47,14 @@ Bron:
 
 ````markdown
 ::: vsa-notatie
-[/:] Toen {/Gij_} tot de dood {/zijt} {/ne_}{\der}ge{\daald_}, [:]
+[/:] Toen {/Gij_} tot de dood {/zijt} {/ne_}{\der}ge{\daald_}, [//:]
 :::
 ````
 
 Rendering:
 
 ::: vsa-notatie
-[/:] Toen {/Gij_} tot de dood {/zijt} {/ne_}{\der}ge{\daald_}, [:]
+[/:] Toen {/Gij_} tot de dood {/zijt} {/ne_}{\der}ge{\daald_}, [//:]
 :::
 
 ## Whitespace in gewone tekst

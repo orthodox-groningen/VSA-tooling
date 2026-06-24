@@ -49,7 +49,7 @@ wij worden be{/&/waakt_&_} {\\door} het Kruis {/van} {/Uw} {/Zoon_}; *
 En ver{/blijd_} {/ons_} {\\met} {/&/Uw} {/kracht_} * 
 {\in} de strijd tegen de {\vij_}{\and_}. * 
 Want {/&/Gij_&_} {\\zijt} {/on}{/ze} {/Hel_}{per_} * 
-// {\door} het onoverwinnelijke Vredeswapen {/van} {Uw_} {\Kruis_}. [:]
+// {\door} het onoverwinnelijke Vredeswapen {/van} {Uw_} {\Kruis_}. [//:]
 :::
 </details>
 
@@ -67,8 +67,9 @@ Want {/&/Gij_&_} {\\zijt} {/on}{/ze} {/Hel_}{per_} *
 
 ::: vsa-notatie
 <!-- Liturgikon, p247 -->
-[:] Mijn ziel ver{/heft_} {den_} {\Heer_},
-en ge{/juicht_} {\heeft} mijn {\geest_} {-&/in} {/&\God}, {\&/mijn} {\&+\Red_&_}{/der_}. [/:]
+[//:] Mijn ziel ver{/heft_} {den_} {\Heer_},
+en ge{/juicht_} {\heeft} mijn {\geest_} {-&/in} {/&\God}, {\&/mijn} {\&+\Red_&_}{b/der_}. [/:]
+<!--de `b/` op het eind staat niet in het Liturgikon. Wij beschouwen dat als een typo in het Liturgikon -->
 :::
 Machtigen heeft Hij neergehaald van de troon, 
 maar geringen heeft Hij verheven.

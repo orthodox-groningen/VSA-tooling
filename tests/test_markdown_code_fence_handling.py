@@ -80,4 +80,4 @@ def test_demo_markdown_page_keeps_bron_markdown_as_code_example():
     text = Path("examples/hugo-demo/content-source/voorbeelden/markdown.md").read_text(encoding="utf-8")
 
     assert "````markdown" in text
-    assert "[:] {/Hei_}{/lig_} is de Heer. [\\\\:]" in text
+    assert "[:] {/Hei_}{/lig_} is de Heer. [//:]" in text

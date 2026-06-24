@@ -11,7 +11,8 @@ def validate_source(source: str):
 
 
 def test_semantic_validator_accepts_multiple_height_markers():
-    result = validate_source("[:] tekst [/:] meer tekst [//:] einde")
+    # No scopes between markers → no pitch delta; all markers at pitch 0 → consistent
+    result = validate_source("[:] tekst [:] meer tekst [:] einde")
 
     assert result.ok
     assert not result.has_errors()
@@ -25,7 +26,8 @@ def test_semantic_validator_accepts_text_before_first_height_marker():
 
 
 def test_semantic_validator_accepts_text_between_and_after_height_markers():
-    result = validate_source("begin [:] midden [\\:] einde")
+    # Text nodes carry no pitch delta; both markers at pitch 0 → consistent
+    result = validate_source("begin [:] midden [:] einde")
 
     assert result.ok
     assert not result.has_errors()
@@ -39,8 +41,9 @@ def test_semantic_validator_accepts_document_without_height_markers():
 
 
 def test_validate_file_accepts_multiple_height_markers(tmp_path: Path):
+    # No scopes → no pitch change; all markers at pitch 0 → consistent
     path = tmp_path / "multiple-height-markers.vsa"
-    path.write_text("[:] tekst [/:] meer tekst [//:] einde", encoding="utf-8")
+    path.write_text("[:] tekst [:] meer tekst [:] einde", encoding="utf-8")
 
     result = validate_file(path)
 

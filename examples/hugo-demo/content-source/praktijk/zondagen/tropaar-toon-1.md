@@ -12,7 +12,7 @@ title: "Tropaar van de zondag - toon 1"
 
 ::: vsa-notatie
 [:] Ter{/&/wijl_&_} {\\de} steen door de israëlie{/ten} {/ver}{/ze_}geld {was_}
-{\en} de soldaten Uw allerzuiverst lichaam be{\waak_}{ten_}
+{\en} de soldaten Uw allerzuiverst lichaam be{\waak_}{\ten_}
 O, Ver{/los_}{/ser_}, {\\zijt} Gij na drie {/da}{/gen} {/op_}gestaan
 {\om} aan de wereld het Leven te {\schen_}{\ken_}
 Daarom {/roe_}{/pen_} {\\de} hemelse mach{/ten} {/U} {/toe_}:
@@ -27,7 +27,7 @@ Daarom {/roe_}{/pen_} {\\de} hemelse mach{/ten} {/U} {/toe_}:
 
 ```text
 [:] Ter{/&/wijl_&_} {\\de} steen door de israëlie{/ten} {/ver}{/ze_}geld {was_}
-{\en} de soldaten Uw allerzuiverst lichaam be{\waak_}{ten_}
+{\en} de soldaten Uw allerzuiverst lichaam be{\waak_}{\ten_}
 O, Ver{/los_}{/ser_}, {\\zijt} Gij na drie {/da}{/gen} {/op_}gestaan
 {\om} aan de wereld het Leven te {\schen_}{\ken_}
 Daarom {/roe_}{/pen_} {\\de} hemelse mach{/ten} {/U} {/toe_}:

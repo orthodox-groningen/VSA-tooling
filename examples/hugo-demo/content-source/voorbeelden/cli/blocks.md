@@ -17,7 +17,7 @@ Gebruik `vsa blocks` om te zien hoeveel VSA-blokken in een Markdownbestand staan
 
 ````markdown
 ::: vsa-notatie
-[:] {/Hei_}{/lig_} is de Heer. [\\:]
+[:] {/Hei_}{/lig_} is de Heer. [//:]
 :::
 ````
 

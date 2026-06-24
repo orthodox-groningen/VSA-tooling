@@ -49,7 +49,7 @@ wij worden be{/&/waakt_&_} {\\door} het Kruis {/van} {/Uw} {/Zoon_}; *
 En ver{/blijd_} {/ons_} {\\met} {/&/Uw} {/kracht_} * 
 {\in} de strijd tegen de {\vij_}{\and_}. * 
 Want {/&/Gij_&_} {\\zijt} {/on}{/ze} {/Hel_}{per_} * 
-// {\door} het onoverwinnelijke Vredeswapen {/van} {Uw_} {\Kruis_}. [:]
+// {\door} het onoverwinnelijke Vredeswapen {/van} {Uw_} {\Kruis_}. [//:]
 :::
 </details>
 
@@ -68,7 +68,7 @@ Want {/&/Gij_&_} {\\zijt} {/on}{/ze} {/Hel_}{per_} *
 ::: vsa-notatie
 <!-- Liturgikon, 248 -->
 [//:] Ver{\heft_} {/den} {/Heer} {on_}{\zen_} {\God_};
-{//valt} neer voor de steun Zijner {-&/voe}{\ten}, {\want} {Hij_} {\&/is} {/&\hei_&_}{\lig_}. [-:]
+{//valt} neer voor de steun Zijner {-&/voe}{\ten}, {\want} {\Hij_} {\&/is} {/&\hei_&_}{\lig_}. [:]
 :::
 Groot is de Heer in Sion; Hij is verheven boven alle volkeren. 
 Verheft den Heer onzen God, en aanbidt op Zijn heilige berg; want heilig is de Heer onze God.

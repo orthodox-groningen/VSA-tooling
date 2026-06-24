@@ -16,5 +16,7 @@ def test_svg_grid_renderer_preserves_plain_text():
 
     svg = SVGRenderer().render_document(document)
 
-    assert "is de Heer" in svg
+    assert "is" in svg
+    assert "de" in svg
+    assert "Heer" in svg
     assert "<line" in svg

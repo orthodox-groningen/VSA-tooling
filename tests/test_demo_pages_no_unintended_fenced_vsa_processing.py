@@ -9,7 +9,7 @@ def test_markdown_demo_has_one_real_vsa_block_only():
     blocks = parse_markdown_blocks(text)
 
     assert len(blocks) == 1
-    assert blocks[0].body == r"[:] {/Hei_}{/lig_} is de Heer. [\\:]"
+    assert blocks[0].body == r"[:] {/Hei_}{/lig_} is de Heer. [//:]"
 
 
 def test_all_demo_pages_ignore_vsa_markers_inside_code_fences():

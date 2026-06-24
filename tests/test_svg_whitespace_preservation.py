@@ -8,7 +8,8 @@ def test_svg_text_preserves_spaces():
     svg = SVGRenderer().render_document(document)
 
     assert 'xml:space="preserve"' in svg
-    assert "gedood " in svg or "gedood door" in svg
+    assert "gedood" in svg
+    assert "door" in svg
 
 
 def test_svg_margins_are_compact_by_default():

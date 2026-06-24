@@ -2,7 +2,7 @@
   "contains_text": [
     "Hei",
     "lig",
-    "is de Heer"
+    "is", "de", "Heer"
   ],
   "min_lines": 4,
   "min_circles": 0

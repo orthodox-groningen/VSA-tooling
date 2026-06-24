@@ -1,0 +1,21 @@
+\voorbeelden\multiline.md:20:81:                      hoogte -2, berekend: 2.
+
+\voorbeelden\rendering\glyphs-basis.md:26:93:         hoogte 1,  berekend: -5.
+\voorbeelden\rendering\glyphs-basis.md:70:75:         hoogte 0,  berekend: -2.5.
+\voorbeelden\rendering\glyphs-basis.md:100:64:        hoogte 0,  berekend: 1.
+\voorbeelden\rendering\pitchmarkers.md:27:69:         hoogte 0,  berekend: -1.
+\voorbeelden\rendering\pitchmarkers.md:28:14:         hoogte 0,  berekend: -1.
+\voorbeelden\rendering\pitchmarkers.md:28:32:         hoogte 0,  berekend: -1.
+\voorbeelden\rendering\pitchmarkers.md:29:30:         hoogte 2,  berekend: 1.
+\voorbeelden\rendering\pitchmarkers.md:29:73:         hoogte -2, berekend: -3.
+\voorbeelden\rendering\pitchmarkers.md:43:12:         hoogte -1, berekend: 1.
+\voorbeelden\rendering\pitchmarkers.md:57:13:         hoogte 1,  berekend: -2.
+\voorbeelden\rendering\pitchmarkers.md:73:64:         hoogte 0,  berekend: 2.
+\voorbeelden\rendering\spacing-diagnostiek.md:39:28:  hoogte 0,  berekend: -2.
+\voorbeelden\rendering\spacing-diagnostiek.md:70:28:  hoogte 0,  berekend: 3.
+\voorbeelden\rendering\spacing-diagnostiek.md:85:22:  hoogte 0,  berekend: -2.
+\voorbeelden\rendering\spacing-diagnostiek.md:100:58: hoogte 0,  berekend: -1.
+\voorbeelden\rendering\spacing-diagnostiek.md:118:27: hoogte 0,  berekend: 3.
+\voorbeelden\rendering\spacing-lettergrepen.md:25:46: hoogte 0,  berekend: -2.
+\voorbeelden\rendering\spacing-lettergrepen.md:41:51: hoogte 0,  berekend: -3.
+\voorbeelden\rendering\spacing-lettergrepen.md:57:64: hoogte 0,  berekend: 2.

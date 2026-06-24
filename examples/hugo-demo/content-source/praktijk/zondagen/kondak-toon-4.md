@@ -17,7 +17,7 @@ title: "Kondak van de zondag - toon 4"
 uit de graven {op_}{/ge_}{\wekt} 
 {/en} van de {boe_}ien be{\vrijd_}. 
 De poorten van de hades heeft Hij ver{-&/bro_&_}{\ken_} 
-als Ge{bie_}der en {\Heer_}, 
+{/als} Ge{bie_}der en {\Heer_}, 
 // en na drie dagen is Hij {op_}{\ge_}{/staan_}. [\:]
 :::
 
@@ -29,7 +29,7 @@ als Ge{bie_}der en {\Heer_},
 uit de graven {op_}{/ge_}{\wekt} 
 {/en} van de {boe_}ien be{\vrijd_}. 
 De poorten van de hades heeft Hij ver{-&/bro_&_}{\ken_} 
-als Ge{bie_}der en {\Heer_}, 
+{/als} Ge{bie_}der en {\Heer_}, 
 // en na drie dagen is Hij {op_}{\ge_}{/staan_}. [\:]
 ```
 

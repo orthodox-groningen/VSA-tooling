@@ -5,6 +5,53 @@ from typing import Literal
 
 from vsa.ast import Document, HeightMarkerNode, PitchMarkerNode
 
+# Halftoon-prefixen: canonical "#" = +0.5, canonical "b" = -0.5
+_SHARP_CANONICAL = "#"
+_FLAT_CANONICAL = "b"
+_SHARP_PREFIX_CHARS: frozenset[str] = frozenset("+#♯")
+_FLAT_PREFIX_CHARS: frozenset[str] = frozenset("b♭")
+
+
+def _pitch_of_ehm(ehm: str) -> float:
+    """Berekent de pitchbijdrage van één EHM-waarde als float (halftoon = ±0.5)."""
+    if not ehm:
+        return 0.0
+    halftone = 0.0
+    base = ehm
+    if ehm[0] in _SHARP_PREFIX_CHARS:
+        halftone, base = +0.5, ehm[1:]
+    elif ehm[0] in _FLAT_PREFIX_CHARS:
+        halftone, base = -0.5, ehm[1:]
+    return halftone + base.count("/") - base.count("\\")
+
+
+def _pitch_of_ehm_list(ehm_list: list[str]) -> float:
+    """Berekent de cumulatieve pitchbijdrage van een lijst EHM-waarden."""
+    return sum(_pitch_of_ehm(e) for e in ehm_list)
+
+
+def _marker_for_pitch(pitch: float) -> str:
+    """Geeft de canonieke hoogte-markeringsstring voor een gegeven pitchwaarde.
+
+    Voorbeelden: 0 → '[:]', 2 → '[//:]', -1.5 → '[b\\:]', 0.5 → '[+-:]'
+    """
+    if pitch == 0.0:
+        return "[:]"
+    n = int(pitch)       # truncatie naar nul (bijv. int(-2.5) == -2)
+    half = pitch - n     # 0.0 of ±0.5
+    backslash = "\\"
+    if half == 0.0:
+        if n > 0:
+            return f"[{'/' * n}:]"
+        return f"[{backslash * abs(n)}:]"
+    # Halftoon-geval
+    if pitch > 0:
+        # +0.5 → [+-:], +1.5 → [+/:], +2.5 → [+//:]
+        return "[+-:]" if n == 0 else f"[+{'/' * n}:]"
+    else:
+        # -0.5 → [b-:], -1.5 → [b\:], -2.5 → [b\\:]
+        return "[b-:]" if n == 0 else f"[b{backslash * abs(n)}:]"
+
 
 HeightMarkerRole = Literal["start_height", "local_height"]
 

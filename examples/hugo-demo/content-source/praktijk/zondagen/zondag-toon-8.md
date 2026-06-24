@@ -19,7 +19,7 @@ Gij {/zijt} {/ons} {/le}ven {\en} onze verrijzenis, Heer, {\e_}re zij {\U_}. [:]
 
 ::: vsa-notatie
 [:] Toen {/Gij} {/uit} {/het} graf {\zijt} opgestaan, hebt Gij de doden {\op}ge{\wekt_}. 
-en {/met} {/U} {/is} Adam weer ver{\re_}{\zen_} 
+en {/met} {/U} {/is} A{\dam} weer ver{\re_}{\zen_} 
 De {/ein}{/den} {/der} aar{\de} {\ju}be{\len_} 
 om{/dat} {/Gij} {/ont}waakt {\zijt} uit de doden, Gij enig barm{\har_}tige {\Heer_}. [:]
 :::

@@ -17,7 +17,7 @@ Gebruik `vsa process` als je Markdown met VSA-blokken hebt en alleen SVG-bestand
 
 ````markdown
 ::: vsa-notatie
-[:] {/Hei_}{/lig_} is de Heer. [\\:]
+[:] {/Hei_}{/lig_} is de Heer. [//:]
 :::
 ````
 

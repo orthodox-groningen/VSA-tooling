@@ -55,10 +55,10 @@ en altijd Maagd {\Ma}{/&\&\ri~&~&_}{/a_};
 
 ::: vsa-notatie
 <!-- Liturgikon, p174 -->
-[//:] {/Ky_}ri-e {\e}{/&\&\&/lei}{/son__}. 
-{Ky_}-ri-{\e} {/e}{/&\&\&/lei}{/son__}. 
-{\&/Aan} {/&\U_&__}, {/&\o_&_} {\Heer__}. 
-{//&\&\&/A__&~&_&_}{/men__}. [//:]
+[//:] {/Ky_}ri-e {\e}{/&\&\lei}{/son__}.
+{Ky_}-ri-{\e} {/e}{/&\&\&/lei}{/son__}.
+{\&/Aan} {/&\&\U_&_.&-}, {/&\o_&_} {\Heer__}.
+{//&\&\&/A__&~&_&_}{/men__}. [///:]
 :::
 
 Bij de Kleine Intocht soms nog eens: Verlos ons …

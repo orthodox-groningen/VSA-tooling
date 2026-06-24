@@ -26,14 +26,20 @@ Voorbeeld:
 voortekst [:] tekst {/zin_} [/:] meer {/tekst_} [//:] natekst.
 ```
 
-### 1.2 Eindtoon en pitchmarker-validatie
+### 1.2 Hoogtemarkeringen validatie
 
-Status: `Open`
+Status: `Geïmplementeerd`
 
-- Eindtooncontrole alleen toepassen wanneer een expliciete eindmarkering aanwezig is.
-- Geen fout meer geven voor ontbrekende eindmarkering: `VSA-SEMANTIC-MISSING-FINAL-PITCH-MARKER` is obsolete.
-- Geen fout meer geven voor `[:]` als eindmarkering: `[:]` is equivalent aan `[-:]` c.q. `[~:]`; `VSA-SEMANTIC-EMPTY-FINAL-PITCH-MARKER` is daarvoor obsolete.
-- Foutmelding voor echte eindtoonmismatch moet bestand, regel, kolom en concrete herstelactie noemen.
+- Elke lokale hoogte-markering (`[X:]` na de eerste) wordt vergeleken met de
+  cumulatieve hoogte op basis van alle tussenliggende EHMs van zangelementen.
+- Halftoon-prefixen (`+`, `#`, `♯` = +0.5; `b`, `♭` = −0.5) tellen mee.
+- Foutcode: `VSA-SEMANTIC-HEIGHT-MARKER-MISMATCH`.
+- Foutmelding bevat berekende hoogte, gedeclareerde hoogte, regelnummer, kolom
+  en de canonieke correcte markering als directe herstelactie.
+- Alle fouten in één blok worden verzameld; validatie stopt niet bij de eerste.
+- Ernstigheid is configureerbaar via `severity_overrides`.
+- Valse positieven voor ontbrekende of lege eindmarkering worden niet gegeven:
+  een afwezige eindmarkering is gewoon geldig.
 
 ### 1.3 Halve-stap modifiers en commentaar
 

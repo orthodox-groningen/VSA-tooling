@@ -85,7 +85,7 @@ Zij zullen roepen, ja een hymne zingen.
 en vergeef hun wat zij in dit leven hebben ge{\zon_}{\digd_}. * 
 {/Want} {/nie_}mand is zonder zon{/de}, {/bui_}{\ten_} {\U_}, * 
 Die de macht bezit om ook aan hen, die zijn overge{\gaan}, 
-// {/de} {/rust_} {\te} {/ver}{\&\le_&_}{\nen}. [:]
+// {/de} {/rust_} {\te} {/ver}{\&\le_&_}{\nen}. [\:]
 :::
 </details>
 
@@ -97,7 +97,7 @@ Die de macht bezit om ook aan hen, die zijn overge{\gaan},
 [:] Met {/Uw} {/Hei}ligen laat {/rus}{\ten}, o {\Chris_}{\tus_}, * 
 de {/zie}{/len} van Uw dienaren en {/die}{\na}{\res_}{\sen_}, * 
 waar {/geen} {/smart}, {/droef}heid {\noch} {\tra}nen {\zijn_}, * 
-// doch waar {/Le}ven is, {\zon}{/der} {/ein__}{\de_}. [//:]
+// doch {/waar} {/Le}ven is, {\zon}{/der} {/ein__}{\de_}. [//:]
 :::
 </details>
 

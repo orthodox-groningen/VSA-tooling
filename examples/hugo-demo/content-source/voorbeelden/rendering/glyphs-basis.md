@@ -23,7 +23,7 @@ in volgende hoofdstukken wordt ook de VSA source ervan getoond.
     {\en} {/om} {/on_}{\ze} {\Ver}{/&\los_&_}{\sing_} 
     en altijd Maagd {\Ma}{/&\&\ri~&~&_}{/a_}; 
     {\en} {\&/dit} {/is_} {\dan} (als het goed is tenminste) een onbehoorlijk en onbetamelijk lang {\re}{/&\&\gel~&~&_}{/tje}. 
-    {\&/O} {/Chris_}{\&\tus}, {/on_}{\ze_} {\God__}, {/&/ver}{/&\&\&\los__&_&_&_} {/ons__}. [/:]
+    {\&/O} {/Chris_}{\&\tus}, {/on_}{\ze_} {\God__}, {/&/ver}{/&\&\&\los__&_&_&_} {////ons__}. [\\:]
 :::
 
 :::
@@ -60,14 +60,14 @@ Rendering:
 
 ````markdown
 ::: vsa-notatie
-[:] {b/op} {b\neer} {b-vlak} {b~niets} {♭//dubbel} {♭///drie} {♭\\\\vier} [:]
+[:] {b/op} {b\neer} {b-vlak} {b~niets} {♭//dubbel} {♭///drie} {♭\\\\vier}
 :::
 ````
 
 Rendering:
 
 ::: vsa-notatie
-[:] {b/op} {b\neer} {b-vlak} {b~niets} {♭//dubbel} {♭///drie} {♭\\\\vier} [:]
+[:] {b/op} {b\neer} {b-vlak} {b~niets} {♭//dubbel} {♭///drie} {♭\\\\vier}
 :::
 
 ## Lengtemarkers
@@ -97,7 +97,7 @@ Bron:
 Rendering:
 
 ::: vsa-notatie
-[:] {/Hei_} {\lig_} {-vlak_} {//O} Christus {\on}{/ze} {\God_} [:]
+[:] {/Hei_} {\lig_} {-vlak_} {//O} Christus {\on}{/ze} {\God_} [/:]
 :::
 
 ## Zangstuk voorbeeld

@@ -192,7 +192,7 @@ class SVGGlyphRenderer:
             return parts
 
         if set(value) == {"."}:
-            r = max(1.5, self.unit * 0.20)          # ← tune this: 0.20 / 0.25 / 0.30
+            r = max(1.5, self.unit * 0.20)
             dot_spacing = self.unit * 0.5           # center-to-center for ".."
             parts = []
             for index in range(len(value)):

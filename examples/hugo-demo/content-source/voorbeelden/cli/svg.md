@@ -16,7 +16,7 @@ Gebruik `vsa svg` om één `.vsa` bestand om te zetten naar één `.svg` afbeeld
 ## Input
 
 ```text
-[:] {/Hei_}{/lig_} is de Heer. [\\:]
+[:] {/Hei_}{/lig_} is de Heer. [//:]
 ```
 
 ## Commando
@@ -34,5 +34,5 @@ SVG geschreven naar: output.svg
 ## Gegenereerde SVG
 
 ::: vsa-notatie
-[:] {/Hei_}{/lig_} is de Heer. [\\:]
+[:] {/Hei_}{/lig_} is de Heer. [//:]
 :::

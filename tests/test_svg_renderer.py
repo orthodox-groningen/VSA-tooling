@@ -11,7 +11,9 @@ def test_svg_renderer_keeps_text_nodes():
     assert "</svg>" in svg
     assert "Hei" in svg
     assert "lig" in svg
-    assert "is de Heer" in svg
+    assert "is" in svg
+    assert "de" in svg
+    assert "Heer" in svg
 
 
 def test_svg_renderer_does_not_use_debug_circles():

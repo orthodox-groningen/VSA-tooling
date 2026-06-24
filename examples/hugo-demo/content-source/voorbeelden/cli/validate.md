@@ -17,7 +17,7 @@ Gebruik `vsa validate` om te controleren of VSA-invoer klopt voordat je SVG of H
 ### Input
 
 ```text
-[:] {/Hei_}{/lig_} is de Heer. [\\:]
+[:] {/Hei_}{/lig_} is de Heer. [//:]
 ```
 
 ### Commando

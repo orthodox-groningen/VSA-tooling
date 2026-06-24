@@ -19,7 +19,8 @@ def test_semantic_validator_collects_height_markers_via_helper_layer():
 
 
 def test_semantic_validator_accepts_multiple_height_markers_after_helper_integration():
-    document = Parser("[:] tekst [/:] meer [//:]").parse()
+    # No scopes → no pitch delta; all markers at pitch 0 → consistent
+    document = Parser("[:] tekst [:] meer [:]").parse()
     validator = SemanticValidator(document)
 
     result = validator.validate()

@@ -13,13 +13,13 @@ title: "Basisvoorbeelden"
 ### Invoer
 
 ```text
-[:] {/Hei_}{/lig_} is de Heer. [\\:]
+[:] {/Hei_}{/lig_} is de Heer. [//:]
 ```
 
 ### SVG
 
 ::: vsa-notatie
-[:] {/Hei_}{/lig_} is de Heer. [\\:]
+[:] {/Hei_}{/lig_} is de Heer. [//:]
 :::
 
 ### Wat gebeurt hier?

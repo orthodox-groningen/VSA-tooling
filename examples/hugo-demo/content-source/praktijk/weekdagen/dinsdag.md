@@ -24,7 +24,7 @@ source: "Liturgikon"
 <!-- Liturgikon, p245 -->
 [/:] Het {/aan_}denken der {/Ge}{/&\rech_&_}{\ten_} * 
 wordt gevierd met {\hym_}{\nen_}. * 
-Maar {/gij_} hebt het getuigenis des Heren, {/o} {/Voor_}{\lo_}{\per_}, * 
+{/Maar} {/gij_} hebt het getuigenis des Heren, {/o} {/Voor_}{\lo_}{\per_}, * 
 want gij zijt in waarheid de grootste der Pro{\fe_}{\ten_}, * 
 {/om}dat gij {/Hem_} die gij {/ge}{/pre_}{\dikt_} {\had_}, * 
 mocht dopen in de {\wa_}te{\ren_}. * 
@@ -44,7 +44,7 @@ om de zonden der wereld weg te {\ne_}{\men_}, *
 [/:] Door {/U_} hebben wij deel gekregen aan {/de} {/god_}{\de}lijke na{\tuur_}, * 
 altijd-maagdelijk {\Moe_}der {\Gods_}: * 
 {/want} {/gij_} hebt God in {/het} {/vlees_} {\ge_}{\baard_}. * 
-Daarom willen wij allen, zoals het {\past}, {/u} {/vroom_} {\&/ver}{\&\hef_&_}{\fen_}. [/:]
+Daarom willen wij allen, zoals het {\past}, {/u} {/vroom_} {\&/ver}{\&\hef_&_}{\fen_}. [:]
 :::
 </details>
 

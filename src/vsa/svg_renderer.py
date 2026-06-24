@@ -1,5 +1,20 @@
 from xml.sax.saxutils import escape
 
+
+def _safe_xml_comment_text(value: str) -> str:
+    """Return text that is safe inside an XML/SVG comment.
+
+    XML comments may not contain a double hyphen and may not end with a hyphen.
+    Source text can contain Markdown/HTML comments such as '<!-- ... -->', so
+    escaping alone is not enough: escaped text can still contain '--'.
+    """
+    safe = escape(value)
+    while "--" in safe:
+        safe = safe.replace("--", "- -")
+    if safe.endswith("-"):
+        safe += " "
+    return safe
+
 from .ast import TextNode, ScopeNode, PitchMarkerNode
 from .config import SVGRenderingConfig
 from .svg_glyphs import SVGGlyphRenderer, _split_ehm_token
@@ -69,7 +84,7 @@ class SVGRenderer:
             if isinstance(node, TextNode):
                 text = node.text.strip()
                 if text:
-                    parts.append(f'<!-- plain-text: {escape(text)} -->')
+                    parts.append(f'<!-- plain-text: {_safe_xml_comment_text(text)} -->')
 
         for line_index, line in enumerate(lines):
             x = self.left_margin

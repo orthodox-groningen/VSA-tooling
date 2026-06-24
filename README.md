@@ -1,10 +1,9 @@
-# Stap 132 - demo-site kwaliteitscontrole
+# Stap 133 - safe SVG comments
 
-Voegt toe:
+Repareert ongeldige SVG wanneer brontekst `<!-- ... -->` of andere dubbele hyphens bevat.
 
-```text
-scripts/check-demo-site-quality.py
-tests/test_step132_demo_site_quality_check.py
-```
+Gewijzigd:
 
-Nog niet automatisch gekoppeld aan workflows.
+- `src/vsa/svg_renderer.py`
+- `tests/test_step133_safe_svg_comments.py`
+- `docs/architecture/parser-stap-133-safe-svg-comments.md`

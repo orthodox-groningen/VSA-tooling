@@ -19,10 +19,10 @@ in volgende hoofdstukken wordt ook de VSA source ervan getoond.
 [:] {+/op} {+\neer} {+-vlak} {+~niets} {#//dub}bel {♯\\\\\drie}
 [:] {b///op} {b\neer} {b-vlak} {b~niets} {♭//dub}bel {♭////drie}
 [/////:] {kort_} ander{half_.} {dub__}bel dub{bel__} {punt.} {pun..}{ten..} {\\\\\stapel}
-[:] Gij {\die} {/on}{/&\sterf}{\&/elijk} {/zijt_},  
-    {\en} {/om} {/on_}{\ze} {\Ver}{/&\los_&_}{\sing_}  
-    en altijd Maagd {\Ma}{/&\&\ri~&~&_}{/a_};  
-    {\en} {\&/dit} {/is_} {\dan} (als het goed is tenminste) een onbehoorlijk en onbetamelijk lang {\re}{/&\&\gel~&~&_}{/tje}.  
+[:] Gij {\die} {/on}{/&\sterf}{\&/elijk} {/zijt_}, 
+    {\en} {/om} {/on_}{\ze} {\Ver}{/&\los_&_}{\sing_} 
+    en altijd Maagd {\Ma}{/&\&\ri~&~&_}{/a_}; 
+    {\en} {\&/dit} {/is_} {\dan} (als het goed is tenminste) een onbehoorlijk en onbetamelijk lang {\re}{/&\&\gel~&~&_}{/tje}. 
     {\&/O} {/Chris_}{\&\tus}, {/on_}{\ze_} {\God__}, {/&/ver}{/&\&\&\los__&_&_&_} {/ons__}. [/:]
 :::
 
@@ -105,33 +105,33 @@ Rendering:
 ````markdown
 ::: vsa-notatie
 [//:] Nu en altijd en in de eeuwen {\der} {/eeuw}{\en}. {\A_}{/men_}.
-   {\EEN}GE{/BO_}REN Zoon en Woord van God,  
-   Gij {\die} {/on}{/&\sterf}{\&/elijk} {/zijt_},  
-   {\en} {/om} {/on_}{\ze} {\Ver}{/&\los_&_}{\sing_}  
-   Vlees zijt {/ge}{/wor_}den uit de Moeder Gods  
-   en altijd Maagd {\Ma}{/&\&\ri~&~&_}{/a_};  
-   {\Die} {/zon_}der verandering Mens geworden  
-   {\en} ge{/&\krui}{\&/sigd} {/zijt__};  
-   {\&/de} {/dood_} {\door} te sterven hebt {\ver}{/&\&\tre~&~&_}{/den}.  
-   {//Een_} van de heilige {\Drie}{/&\&\een~&~&_}{/heid_},  
-   {\Die} ver{/heer|}lijkt zijt met de Vader  
-   {\en} {/de} {/&\Hei}{\li}{/ge} {/Geest_}.  
+   {\EEN}GE{/BO_}REN Zoon en Woord van God, 
+   Gij {\die} {/on}{/&\sterf}{\&/elijk} {/zijt_}, 
+   {\en} {/om} {/on_}{\ze} {\Ver}{/&\los_&_}{\sing_} 
+   Vlees zijt {/ge}{/wor_}den uit de Moeder Gods 
+   en altijd Maagd {\Ma}{/&\&\ri~&~&_}{/a_}; 
+   {\Die} {/zon_}der verandering Mens geworden 
+   {\en} ge{/&\krui}{\&/sigd} {/zijt__}; 
+   {\&/de} {/dood_} {\door} te sterven hebt {\ver}{/&\&\tre~&~&_}{/den}. 
+   {//Een_} van de heilige {\Drie}{/&\&\een~&~&_}{/heid_}, 
+   {\Die} ver{/heer|}lijkt zijt met de Vader 
+   {\en} {/de} {/&\Hei}{\li}{/ge} {/Geest_}. 
    {\&/O} {/Chris_}{\&\tus}, {/on_}{\ze_} {\God__}, {/&/ver}{/&\&\&\los__&_&_&_} {/ons__}. [/:]
 :::
 ````
 
 ::: vsa-notatie
 [//:] Nu en altijd en in de eeuwen {\der} {/eeuw}{\en}. {\A_}{/men_}.
-   {\EEN}GE{/BO_}REN Zoon en Woord van God,  
-   Gij {\die} {/on}{/&\sterf}{\&/elijk} {/zijt_},  
-   {\en} {/om} {/on_}{\ze} {\Ver}{/&\los_&_}{\sing_}  
-   Vlees zijt {/ge}{/wor_}den uit de Moeder Gods  
-   en altijd Maagd {\Ma}{/&\&\ri~&~&_}{/a_};  
-   {\Die} {/zon_}der verandering Mens geworden  
-   {\en} ge{/&\krui}{\&/sigd} {/zijt__};  
-   {\&/de} {/dood_} {\door} te sterven hebt {\ver}{/&\&\tre~&~&_}{/den}.  
-   {//Een_} van de heilige {\Drie}{/&\&\een~&~&_}{/heid_},  
-   {\Die} ver{/heer|}lijkt zijt met de Vader  
-   {\en} {/de} {/&\Hei}{\li}{/ge} {/Geest_}.  
+   {\EEN}GE{/BO_}REN Zoon en Woord van God, 
+   Gij {\die} {/on}{/&\sterf}{\&/elijk} {/zijt_}, 
+   {\en} {/om} {/on_}{\ze} {\Ver}{/&\los_&_}{\sing_} 
+   Vlees zijt {/ge}{/wor_}den uit de Moeder Gods 
+   en altijd Maagd {\Ma}{/&\&\ri~&~&_}{/a_}; 
+   {\Die} {/zon_}der verandering Mens geworden 
+   {\en} ge{/&\krui}{\&/sigd} {/zijt__}; 
+   {\&/de} {/dood_} {\door} te sterven hebt {\ver}{/&\&\tre~&~&_}{/den}. 
+   {//Een_} van de heilige {\Drie}{/&\&\een~&~&_}{/heid_}, 
+   {\Die} ver{/heer|}lijkt zijt met de Vader 
+   {\en} {/de} {/&\Hei}{\li}{/ge} {/Geest_}. 
    {\&/O} {/Chris_}{\&\tus}, {/on_}{\ze_} {\God__}, {/&/ver}{/&\&\&\los__&_&_&_} {/ons__}. [/:]
 :::

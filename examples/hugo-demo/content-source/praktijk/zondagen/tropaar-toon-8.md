@@ -11,18 +11,18 @@ title: "Tropaar van de zondag - toon 8"
 ---
 
 ::: vsa-notatie
-[:] Uit {/de} {/ho}{/ge} zijt {\Gij} neergedaald, o Barm{\har}ti{\ge_}.  
-Drie {/da}{/gen} {/zijt} Gij {\in} het graf ge{\ble_}{\ven_}  
-om {/ons} {/van} {/het} lij{\den} \te ver{\los_}{\sen_}.  
+[:] Uit {/de} {/ho}{/ge} zijt {\Gij} neergedaald, o Barm{\har}ti{\ge_}. 
+Drie {/da}{/gen} {/zijt} Gij {\in} het graf ge{\ble_}{\ven_} 
+om {/ons} {/van} {/het} lij{\den} \te ver{\los_}{\sen_}. 
 Gij {/zijt} {/ons} {/le}ven {\en} onze verrijzenis, Heer, {\e_}re zij {\U_}. [:]
 :::
 
 ---
 
 ```text
-[:] Uit {/de} {/ho}{/ge} zijt {\Gij} neergedaald, o Barm{\har}ti{\ge_}.  
-Drie {/da}{/gen} {/zijt} Gij {\in} het graf ge{\ble_}{\ven_}  
-om {/ons} {/van} {/het} lij{\den} \te ver{\los_}{\sen_}.  
+[:] Uit {/de} {/ho}{/ge} zijt {\Gij} neergedaald, o Barm{\har}ti{\ge_}. 
+Drie {/da}{/gen} {/zijt} Gij {\in} het graf ge{\ble_}{\ven_} 
+om {/ons} {/van} {/het} lij{\den} \te ver{\los_}{\sen_}. 
 Gij {/zijt} {/ons} {/le}ven {\en} onze verrijzenis, Heer, {\e_}re zij {\U_}. [:]
 ```
 

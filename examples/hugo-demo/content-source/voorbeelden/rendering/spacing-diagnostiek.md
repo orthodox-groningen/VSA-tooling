@@ -113,14 +113,14 @@ Let op:
 ## 6. Bronregels blijven regels
 
 ::: vsa-notatie
-[:] eerste regel met {/tekst_}  
-tweede regel met {/tekst_}  
+[:] eerste regel met {/tekst_} 
+tweede regel met {/tekst_} 
 derde regel met {/tekst_} [:]
 :::
 
 ```text
-[:] eerste regel met {/tekst_}  
-tweede regel met {/tekst_}  
+[:] eerste regel met {/tekst_} 
+tweede regel met {/tekst_} 
 derde regel met {/tekst_} [:]
 ```
 

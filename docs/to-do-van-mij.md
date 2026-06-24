@@ -17,7 +17,7 @@ Het volgende is fout, maar wordt niet gedetecteerd
 5. Er moet syntax en (renderings)semantiek komen die toelaat dat het beginakkoord (voor SATB) ook in SVGs terecht gaat komen.
 
 6. Binnen `::: vsa-notatie ... :::` constructies mogen meerdere hoogte-markeringen voorkomen. De eerste geeft de beginhoogte aan. Elke volgende geeft de hoogte aan waar op die positie de zang moet 'zitten'. Er is geen voorschrift over de posities van zulke markeringen ten opzichte van de (gezongen) tekst: er mag dus best tekst staan voor de eerste hoogtemarkering, en ook na de laatste. Daartussen mogen ook hoogtemarkeringen worden gezet. De SVG rendering behandelt alle hoogtemarkeringen op dezelfde wijze.
-   
+  
 7. Het komt voor dat `::: vsa-notatie` vergeten wordt, of de afsluitende `:::`. De bouw
 
 8. Color highlighting theme voor `::: vsa-notatie` voor vscode, inclusief aangeven van fouten. Vooral ook voorkomen dat teksten cursief worden weergegeven omdat we markdown-achtige symbolen gebruiken als `_` en `*`.

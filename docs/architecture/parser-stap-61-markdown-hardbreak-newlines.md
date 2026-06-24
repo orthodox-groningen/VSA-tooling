@@ -5,7 +5,7 @@ De toon-8 bestanden gebruiken Markdown hardbreaks: twee spaties vóór newline.
 Voorbeelden in de bron:
 
 ```markdown
-... {\ge_}.  
+... {\ge_}. 
 Drie ...
 ```
 

@@ -1,12 +1,10 @@
-# Stap 131 - project-site baseURL
+# Stap 132 - demo-site kwaliteitscontrole
 
-Deze patch corrigeert de GitHub Pages URL's voor een project-site.
-
-Correct:
+Voegt toe:
 
 ```text
-https://orthodox-groningen.github.io/VSA-tooling/
-https://orthodox-groningen.github.io/VSA-tooling/preview/
+scripts/check-demo-site-quality.py
+tests/test_step132_demo_site_quality_check.py
 ```
 
-Geen parser- of rendererwijzigingen.
+Nog niet automatisch gekoppeld aan workflows.

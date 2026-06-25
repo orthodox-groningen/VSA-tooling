@@ -128,6 +128,19 @@ De uitleg in het Liturgikon is op één punt niet eenduidig. De tekst stelt dat 
 
 Het gebruik in het Liturgikon zelf wijst op de **absolute interpretatie**: de combinatie `+\` (dalende streep met kruis) komt voor als notatie voor een halve stap omlaag (zie bijv. het zaterdagse prokimen (p 180), het prokimen op p 181, en het prijslied op p. 188.), en niet als 1½ toon omlaag. Op grond hiervan is de absolute interpretatie vrijwel zeker de bedoelde: `+` en `b` zijn daarmee absolute modificatoren die het eindresultaat van de beweging een halve toon opschuiven, los van de bewegingsrichting.
 
+In Liturgikon lijkt zich met `+` en `b` niet altijd aan haar eigen beschrijving te houden. Als voorbeeld geldt het prokimen van de woensdagen (Liturgikon, p247), dat er als volgt uitziet (op de hoogte-markering op het eind na):
+
+::: vsa-notatie
+[//:] Mijn ziel ver{/heft_} {den_} {\Heer_},
+en ge{/juicht_} {\heeft} mijn {\geest_} {-&/in} {/&\God}, {\&/mijn} {\&+\Red_&_}{/der_}.
+:::
+
+Als dit gezongen zou worden conform de notatie beschrijving, dan zou de eindmarkering `[b/:]` moeten zijn,
+en niet `[/:]` zoals in het Liturgikon. Echter, in de praktijk wordt `{/der_}` gezongen als `{b/der_}`, 
+zodat het toch op `[/:]` uitkomt. Kennelijk moeten we `+\` dan lezen als dat er een kruis voor de volgende
+noot gedacht moet worden, want als je dan weer een stap omhoog gaat kom je weer op dezelfde toonhoogte uit
+als die van de noot voor die kruis. Maar dan is de betekenis van stappen als `/` plotseling ambigu geworden.
+
 ### Implementatie in VSA
 
 VSA volgt de absolute interpretatie. Het systeem gebruikt een halftoon-prefix die altijd vóór een basisbeweging staat:

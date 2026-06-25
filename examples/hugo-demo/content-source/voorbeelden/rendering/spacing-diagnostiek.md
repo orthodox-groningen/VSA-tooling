@@ -36,11 +36,11 @@ Gebruik deze pagina bij wijzigingen aan:
 ## 1. Aanpalende scopes binnen één woord
 
 ::: vsa-notatie
-[:] me{\\de}{/eeu_}wi{/ge} [:]
+[:] me{\\de}{/eeu_}wi{\ge} [\\:]
 :::
 
 ```text
-[:] me{\\de}{/eeu_}wi{/ge} [:]
+[:] me{\\de}{/eeu_}wi{\ge} [\\:]
 ```
 
 Let op:

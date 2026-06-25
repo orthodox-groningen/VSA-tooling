@@ -1,38 +1,7 @@
 <svg class="vsa-svg" xmlns="http://www.w3.org/2000/svg" width="684" height="282" viewBox="0 0 684 282">
 <rect width="100%" height="100%" fill="white"/>
 <g class="vsa-score">
-<!-- plain-text: &lt;!- - Liturgikon, 250 - -&gt; -->
-<!-- plain-text: Apostelen, -->
-<!-- plain-text: telaren en -->
-<!-- plain-text: , * 
-Hiërarchen, Heiligen en Ge -->
-<!-- plain-text: , * -->
-<!-- plain-text: de goede strijd vol -->
-<!-- plain-text: digd en het geloof -->
-<!-- plain-text: , * 
-gij hebt toegang tot de Ver -->
-<!-- plain-text: . * -->
-<!-- plain-text: tot -->
-<!-- plain-text: , als -->
-<!-- plain-text: , voor -->
-<!-- plain-text: , * 
-// opdat -->
-<!-- plain-text: len -->
-<!-- plain-text: ge -->
-<!-- plain-text: . -->
 <g class="vsa-line" data-vsa-line="1">
-<g class="vsa-unit vsa-unit-text" data-vsa-unit="1">
-<text class="vsa-text vsa-free-text" x="8.00" y="36.00" xml:space="preserve" font-family="DejaVu Sans" font-size="20.00">&lt;!--</text>
-</g>
-<g class="vsa-unit vsa-unit-text" data-vsa-unit="3">
-<text class="vsa-text vsa-free-text" x="57.62" y="36.00" xml:space="preserve" font-family="DejaVu Sans" font-size="20.00">Liturgikon,</text>
-</g>
-<g class="vsa-unit vsa-unit-text" data-vsa-unit="5">
-<text class="vsa-text vsa-free-text" x="173.50" y="36.00" xml:space="preserve" font-family="DejaVu Sans" font-size="20.00">250</text>
-</g>
-<g class="vsa-unit vsa-unit-text" data-vsa-unit="7">
-<text class="vsa-text vsa-free-text" x="222.06" y="36.00" xml:space="preserve" font-family="DejaVu Sans" font-size="20.00">--&gt;</text>
-</g>
 </g>
 <g class="vsa-line" data-vsa-line="2">
 <g class="vsa-unit vsa-pitch-marker" data-vsa-unit="1">

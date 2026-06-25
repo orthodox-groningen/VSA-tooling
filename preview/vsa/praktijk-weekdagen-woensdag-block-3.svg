@@ -1,34 +1,7 @@
 <svg class="vsa-svg" xmlns="http://www.w3.org/2000/svg" width="819" height="320" viewBox="0 0 819 320">
 <rect width="100%" height="100%" fill="white"/>
 <g class="vsa-score">
-<!-- plain-text: &lt;!- - Liturgikon, p247 - -&gt; -->
-<!-- plain-text: Gij die U vrij -->
-<!-- plain-text: het Kruis hebt verheven, o -->
-<!-- plain-text: , * -->
-<!-- plain-text: Uw erbarmingen aan Uw nieuwe Gemeente die naar U ge -->
-<!-- plain-text: . * 
-En ver -->
-<!-- plain-text: * -->
-<!-- plain-text: de strijd tegen de -->
-<!-- plain-text: . * 
-Want -->
-<!-- plain-text: * 
-// -->
-<!-- plain-text: het onoverwinnelijke Vredeswapen -->
-<!-- plain-text: . -->
 <g class="vsa-line" data-vsa-line="1">
-<g class="vsa-unit vsa-unit-text" data-vsa-unit="1">
-<text class="vsa-text vsa-free-text" x="8.00" y="36.00" xml:space="preserve" font-family="DejaVu Sans" font-size="20.00">&lt;!--</text>
-</g>
-<g class="vsa-unit vsa-unit-text" data-vsa-unit="3">
-<text class="vsa-text vsa-free-text" x="57.62" y="36.00" xml:space="preserve" font-family="DejaVu Sans" font-size="20.00">Liturgikon,</text>
-</g>
-<g class="vsa-unit vsa-unit-text" data-vsa-unit="5">
-<text class="vsa-text vsa-free-text" x="173.50" y="36.00" xml:space="preserve" font-family="DejaVu Sans" font-size="20.00">p247</text>
-</g>
-<g class="vsa-unit vsa-unit-text" data-vsa-unit="7">
-<text class="vsa-text vsa-free-text" x="234.76" y="36.00" xml:space="preserve" font-family="DejaVu Sans" font-size="20.00">--&gt;</text>
-</g>
 </g>
 <g class="vsa-line" data-vsa-line="2">
 <g class="vsa-unit vsa-pitch-marker" data-vsa-unit="1">
@@ -401,6 +374,10 @@ Want -->
 <text class="vsa-text vsa-free-text" x="602.71" y="302.00" xml:space="preserve" font-family="DejaVu Sans" font-size="20.00">.</text>
 </g>
 <g class="vsa-unit vsa-pitch-marker" data-vsa-unit="18">
+<g class="vsa-pitch-marker-upper-glyph vsa-upper-glyphs">
+<line class="vsa-glyph vsa-upper-glyph vsa-glyph-rise" x1="624.67" y1="282.16" x2="634.27" y2="277.84" stroke="black" stroke-width="1.00" stroke-linecap="round"/>
+<line class="vsa-glyph vsa-upper-glyph vsa-glyph-rise" x1="624.67" y1="278.48" x2="634.27" y2="274.16" stroke="black" stroke-width="1.00" stroke-linecap="round"/>
+</g>
 <line class="vsa-pitch-marker-dash" x1="624.97" y1="297.00" x2="633.97" y2="297.00" stroke="black" stroke-width="1.50" stroke-linecap="round"/>
 </g>
 </g>

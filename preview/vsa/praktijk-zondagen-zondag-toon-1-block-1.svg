@@ -1,32 +1,6 @@
 <svg class="vsa-svg" xmlns="http://www.w3.org/2000/svg" width="605" height="396" viewBox="0 0 605 396">
 <rect width="100%" height="100%" fill="white"/>
 <g class="vsa-score">
-<!-- plain-text: Ter -->
-<!-- plain-text: steen door de israëlie -->
-<!-- plain-text: geld -->
-<!-- plain-text: de soldaten Uw allerzuiverst lichaam be -->
-<!-- plain-text: O, Ver -->
-<!-- plain-text: , -->
-<!-- plain-text: Gij na drie -->
-<!-- plain-text: gestaan -->
-<!-- plain-text: aan de wereld het Leven te -->
-<!-- plain-text: Daarom -->
-<!-- plain-text: hemelse mach -->
-<!-- plain-text: : -->
-<!-- plain-text: Levenschenker, -->
-<!-- plain-text: re zij -->
-<!-- plain-text: , -->
-<!-- plain-text: Uw verrijze -->
-<!-- plain-text: , -->
-<!-- plain-text: , -->
-<!-- plain-text: re -->
-<!-- plain-text: ning -->
-<!-- plain-text: , -->
-<!-- plain-text: re zij -->
-<!-- plain-text: nig -->
-<!-- plain-text: ,
-// -->
-<!-- plain-text: enig Mens -->
 <g class="vsa-line" data-vsa-line="1">
 <g class="vsa-unit vsa-pitch-marker" data-vsa-unit="1">
 <line class="vsa-pitch-marker-dash" x1="13.50" y1="31.00" x2="22.50" y2="31.00" stroke="black" stroke-width="1.50" stroke-linecap="round"/>
@@ -142,6 +116,7 @@
 </g>
 <g class="vsa-unit vsa-unit-scope" data-vsa-unit="15">
 <g class="vsa-glyph-group vsa-upper-glyphs">
+<line class="vsa-glyph vsa-upper-glyph vsa-glyph-fall" x1="536.93" y1="49.57" x2="547.73" y2="54.43" stroke="black" stroke-width="1.00" stroke-linecap="round"/>
 </g>
 <g class="vsa-glyph-group vsa-lower-glyphs">
 <line class="vsa-glyph vsa-lower-glyph vsa-glyph-length" x1="536.53" y1="81.00" x2="548.13" y2="81.00" stroke="red" stroke-width="1.00" stroke-linecap="round"/>

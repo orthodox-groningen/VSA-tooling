@@ -51,6 +51,9 @@
 <text class="vsa-text vsa-sung-text" x="175.42" y="36.00" xml:space="preserve" font-family="DejaVu Sans" font-size="20.00">ken</text>
 </g>
 <g class="vsa-unit vsa-pitch-marker" data-vsa-unit="7">
+<g class="vsa-pitch-marker-upper-glyph vsa-upper-glyphs">
+<line class="vsa-glyph vsa-upper-glyph vsa-glyph-fall" x1="228.86" y1="11.84" x2="238.46" y2="16.16" stroke="black" stroke-width="1.00" stroke-linecap="round"/>
+</g>
 <line class="vsa-pitch-marker-dash" x1="229.16" y1="31.00" x2="238.16" y2="31.00" stroke="black" stroke-width="1.50" stroke-linecap="round"/>
 </g>
 </g>

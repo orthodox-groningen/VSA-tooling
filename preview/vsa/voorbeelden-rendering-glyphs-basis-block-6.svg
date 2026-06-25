@@ -1,7 +1,6 @@
 <svg class="vsa-svg" xmlns="http://www.w3.org/2000/svg" width="445" height="55" viewBox="0 0 445 55">
 <rect width="100%" height="100%" fill="white"/>
 <g class="vsa-score">
-<!-- plain-text: Christus -->
 <g class="vsa-line" data-vsa-line="1">
 <g class="vsa-unit vsa-pitch-marker" data-vsa-unit="1">
 <line class="vsa-pitch-marker-dash" x1="13.50" y1="31.00" x2="22.50" y2="31.00" stroke="black" stroke-width="1.50" stroke-linecap="round"/>
@@ -71,6 +70,9 @@
 <text class="vsa-text vsa-sung-text" x="364.03" y="36.00" xml:space="preserve" font-family="DejaVu Sans" font-size="20.00">God</text>
 </g>
 <g class="vsa-unit vsa-pitch-marker" data-vsa-unit="18">
+<g class="vsa-pitch-marker-upper-glyph vsa-upper-glyphs">
+<line class="vsa-glyph vsa-upper-glyph vsa-glyph-rise" x1="422.07" y1="16.16" x2="431.67" y2="11.84" stroke="black" stroke-width="1.00" stroke-linecap="round"/>
+</g>
 <line class="vsa-pitch-marker-dash" x1="422.37" y1="31.00" x2="431.37" y2="31.00" stroke="black" stroke-width="1.50" stroke-linecap="round"/>
 </g>
 </g>

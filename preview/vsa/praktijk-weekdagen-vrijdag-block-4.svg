@@ -1,25 +1,7 @@
 <svg class="vsa-svg" xmlns="http://www.w3.org/2000/svg" width="707" height="130" viewBox="0 0 707 130">
 <rect width="100%" height="100%" fill="white"/>
 <g class="vsa-score">
-<!-- plain-text: &lt;!- - Liturgikon, 248 - -&gt; -->
-<!-- plain-text: Ver -->
-<!-- plain-text: ; -->
-<!-- plain-text: neer voor de steun Zijner -->
-<!-- plain-text: , -->
-<!-- plain-text: . -->
 <g class="vsa-line" data-vsa-line="1">
-<g class="vsa-unit vsa-unit-text" data-vsa-unit="1">
-<text class="vsa-text vsa-free-text" x="8.00" y="36.00" xml:space="preserve" font-family="DejaVu Sans" font-size="20.00">&lt;!--</text>
-</g>
-<g class="vsa-unit vsa-unit-text" data-vsa-unit="3">
-<text class="vsa-text vsa-free-text" x="57.62" y="36.00" xml:space="preserve" font-family="DejaVu Sans" font-size="20.00">Liturgikon,</text>
-</g>
-<g class="vsa-unit vsa-unit-text" data-vsa-unit="5">
-<text class="vsa-text vsa-free-text" x="173.50" y="36.00" xml:space="preserve" font-family="DejaVu Sans" font-size="20.00">248</text>
-</g>
-<g class="vsa-unit vsa-unit-text" data-vsa-unit="7">
-<text class="vsa-text vsa-free-text" x="222.06" y="36.00" xml:space="preserve" font-family="DejaVu Sans" font-size="20.00">--&gt;</text>
-</g>
 </g>
 <g class="vsa-line" data-vsa-line="2">
 <g class="vsa-unit vsa-pitch-marker" data-vsa-unit="1">
@@ -143,6 +125,7 @@
 </g>
 <g class="vsa-unit vsa-unit-scope" data-vsa-unit="19">
 <g class="vsa-glyph-group vsa-upper-glyphs">
+<line class="vsa-glyph vsa-upper-glyph vsa-glyph-fall" x1="517.10" y1="87.57" x2="527.90" y2="92.43" stroke="black" stroke-width="1.00" stroke-linecap="round"/>
 </g>
 <g class="vsa-glyph-group vsa-lower-glyphs">
 <line class="vsa-glyph vsa-lower-glyph vsa-glyph-length" x1="516.70" y1="119.00" x2="528.30" y2="119.00" stroke="red" stroke-width="1.00" stroke-linecap="round"/>
@@ -184,9 +167,6 @@
 <text class="vsa-text vsa-free-text" x="665.75" y="112.00" xml:space="preserve" font-family="DejaVu Sans" font-size="20.00">.</text>
 </g>
 <g class="vsa-unit vsa-pitch-marker" data-vsa-unit="27">
-<g class="vsa-pitch-marker-upper-glyph vsa-upper-glyphs">
-<line class="vsa-glyph vsa-upper-glyph vsa-glyph-flat" x1="687.71" y1="90.00" x2="697.31" y2="90.00" stroke="black" stroke-width="1.00" stroke-linecap="round"/>
-</g>
 <line class="vsa-pitch-marker-dash" x1="688.01" y1="107.00" x2="697.01" y2="107.00" stroke="black" stroke-width="1.50" stroke-linecap="round"/>
 </g>
 </g>

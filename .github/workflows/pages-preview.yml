@@ -67,6 +67,12 @@ jobs:
             --destination ../../generated/preview/site \
             --baseURL "https://orthodox-groningen.github.io/VSA-tooling/preview/"
 
+      - name: Check publication output
+        run: |
+          python scripts/check-publication-output.py \
+            --site-dir generated/preview/site \
+            --url-prefix /VSA-tooling/preview/
+
       - name: Deploy preview directory
         uses: peaceiris/actions-gh-pages@v3
         with:

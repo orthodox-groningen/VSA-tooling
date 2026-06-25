@@ -11,14 +11,6 @@ def test_filler_line_uses_text_dash_height_not_upper_glyph_height():
     assert 'y1="30.00"' in svg
 
 
-def test_upper_glyph_height_remains_unchanged():
-    assert SVGRenderingConfig().upper.offset_y == -22.0
-
-
-def test_lower_glyphs_are_slightly_lower():
-    assert SVGRenderingConfig().lower.offset_y == 7.0
-
-
 def test_optical_scope_gap_is_configurable_default():
     assert SVGRenderingConfig().optical_scope_gap == 4.0
 

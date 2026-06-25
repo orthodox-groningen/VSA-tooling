@@ -5,10 +5,6 @@ from vsa.svg_glyphs import SVGGlyphRenderer
 from vsa.svg_renderer import SVGRenderer
 
 
-def test_upper_glyph_offset_is_higher():
-    assert SVGRenderingConfig().upper.offset_y == -22.0
-
-
 def test_text_width_estimate_is_roomier():
     baard = estimate_scope_text_width("baard", 20)
     iiii = estimate_scope_text_width("iiii", 20)

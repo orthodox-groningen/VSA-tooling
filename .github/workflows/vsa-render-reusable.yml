@@ -1,0 +1,83 @@
+name: Reusable VSA render
+
+on:
+  workflow_call:
+    inputs:
+      input_dir:
+        description: "Directory with Markdown/VSA source files in the caller repository"
+        required: true
+        type: string
+      output_dir:
+        description: "Generated Markdown output directory"
+        required: false
+        default: "generated/vsa/content"
+        type: string
+      assets_dir:
+        description: "Generated SVG assets directory"
+        required: false
+        default: "generated/vsa/static/vsa"
+        type: string
+      assets_url_prefix:
+        description: "URL prefix for generated SVG assets"
+        required: false
+        default: "/vsa"
+        type: string
+      output_mode:
+        description: "VSA output mode: img or shortcode"
+        required: false
+        default: "img"
+        type: string
+      max_line_width:
+        description: "Maximum SVG line width"
+        required: false
+        default: "800"
+        type: string
+      vsa_ref:
+        description: "VSA-tooling git ref to install"
+        required: false
+        default: "main"
+        type: string
+
+jobs:
+  render:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout caller repository
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install VSA tooling
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install "vsa-tool[rendering] @ git+https://github.com/orthodox-groningen/VSA-tooling.git@${{ inputs.vsa_ref }}"
+
+      - name: Install rendering fonts
+        if: runner.os == 'Linux'
+        run: sudo apt-get update && sudo apt-get install -y fonts-dejavu-core
+
+      - name: Validate VSA input
+        run: |
+          vsa validate "${{ inputs.input_dir }}"
+
+      - name: Render VSA Markdown and SVG
+        run: |
+          vsa build-markdown \
+            "${{ inputs.input_dir }}" \
+            "${{ inputs.output_dir }}" \
+            "${{ inputs.assets_dir }}" \
+            --assets-url-prefix "${{ inputs.assets_url_prefix }}" \
+            --output-mode "${{ inputs.output_mode }}" \
+            --max-line-width "${{ inputs.max_line_width }}"
+
+      - name: Upload generated VSA output
+        uses: actions/upload-artifact@v4
+        with:
+          name: vsa-generated
+          path: |
+            ${{ inputs.output_dir }}
+            ${{ inputs.assets_dir }}

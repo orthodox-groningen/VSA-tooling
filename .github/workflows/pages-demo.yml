@@ -67,6 +67,12 @@ jobs:
             --destination ../../generated/site \
             --baseURL "https://orthodox-groningen.github.io/VSA-tooling/"
 
+      - name: Check publication output
+        run: |
+          python scripts/check-publication-output.py \
+            --site-dir generated/site \
+            --url-prefix /VSA-tooling/
+
       - name: Deploy production root
         uses: peaceiris/actions-gh-pages@v3
         with:
@@ -74,3 +80,7 @@ jobs:
           publish_branch: gh-pages
           publish_dir: generated/site
           keep_files: true
+
+      - name: Show production URL
+        run: |
+          echo "Production URL: https://orthodox-groningen.github.io/VSA-tooling/"

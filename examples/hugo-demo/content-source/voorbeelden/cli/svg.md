@@ -4,7 +4,11 @@ title: "CLI: vsa svg"
 
 # CLI: `vsa svg`
 
-- [Home](../../../)
+- [Home]({{< navbuttons 
+    "Weekdagen  | ../weekdagen/"
+    "Zondagen   | ../zondagen/"
+    "Feesteigen | ../feesteigen/"
+>}}../)
 - [CLI overzicht](../)
 - [Vorige: vsa validate](../validate/)
 - [Volgende: vsa blocks](../blocks/)

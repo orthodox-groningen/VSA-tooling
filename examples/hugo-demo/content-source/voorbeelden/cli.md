@@ -4,7 +4,11 @@ title: "CLI demo's"
 
 # CLI demo's
 
-- [Home](../../)
+- [Home]({{< navbuttons 
+    "Weekdagen  | ../weekdagen/"
+    "Zondagen   | ../zondagen/"
+    "Feesteigen | ../feesteigen/"
+>}})
 - [Vorige: Markdown](../markdown/)
 - [Volgende: Rendering](../rendering/)
 

@@ -4,7 +4,11 @@ title: "CLI: vsa --config"
 
 # CLI: `--config`
 
-- [Home](../../../)
+- [Home]({{< navbuttons 
+    "Weekdagen  | ../weekdagen/"
+    "Zondagen   | ../zondagen/"
+    "Feesteigen | ../feesteigen/"
+>}}../)
 - [CLI overzicht](../)
 - [Vorige: vsa --version](../version/)
 

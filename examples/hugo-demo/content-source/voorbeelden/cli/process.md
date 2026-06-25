@@ -4,7 +4,11 @@ title: "CLI: vsa process"
 
 # CLI: `vsa process`
 
-- [Home](../../../)
+- [Home]({{< navbuttons 
+    "Weekdagen  | ../weekdagen/"
+    "Zondagen   | ../zondagen/"
+    "Feesteigen | ../feesteigen/"
+>}}../)
 - [CLI overzicht](../)
 - [Vorige: vsa parse](../parse/)
 - [Volgende: vsa build-markdown](../build-markdown/)

@@ -4,7 +4,11 @@ title: "CLI: vsa validate"
 
 # CLI: `vsa validate`
 
-- [Home](../../../)
+- [Home]({{< navbuttons 
+    "Weekdagen  | ../weekdagen/"
+    "Zondagen   | ../zondagen/"
+    "Feesteigen | ../feesteigen/"
+>}}../)
 - [CLI overzicht](../)
 - [Volgende: vsa svg](../svg/)
 

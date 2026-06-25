@@ -4,7 +4,11 @@ title: "Rendering: pitchmarkers"
 
 # Rendering: pitchmarkers
 
-- [Home](../../../)
+- [Home]({{< navbuttons 
+    "Weekdagen  | ../weekdagen/"
+    "Zondagen   | ../zondagen/"
+    "Feesteigen | ../feesteigen/"
+>}}../)
 - [Terug naar rendering](../)
 
 Deze pagina is bedoeld om pitchmarkers te controleren.

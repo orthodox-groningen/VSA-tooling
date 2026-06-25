@@ -4,7 +4,11 @@ title: "Renderingvoorbeelden"
 
 ## Rendering voorbeelden
 
-- [Home](../../)
+- [Home]({{< navbuttons 
+    "Weekdagen  | ../weekdagen/"
+    "Zondagen   | ../zondagen/"
+    "Feesteigen | ../feesteigen/"
+>}})
 - [Vorige: Markdown](../cli/)
 
 ---

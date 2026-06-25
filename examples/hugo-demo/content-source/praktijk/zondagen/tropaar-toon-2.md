@@ -4,7 +4,11 @@ title: "Tropaar van de zondag - toon 2"
 
 # Voorbeelden uit de praktijk
 
-- [Home](../../../)
+- [Home]({{< navbuttons 
+    "Weekdagen  | ../weekdagen/"
+    "Zondagen   | ../zondagen/"
+    "Feesteigen | ../feesteigen/"
+>}}../)
 - [Overzicht praktijkvoorbeelden](../)
 - [Vorige: Tropaar (toon 1)](../tropaar-toon-1/)
 - [Volgende: Tropaar (toon 3)](../tropaar-toon-3/)

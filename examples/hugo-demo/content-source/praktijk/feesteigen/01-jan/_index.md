@@ -3,9 +3,10 @@ title: "Januari"
 ---
 
 {{< navbuttons 
-    "Home   | ../../" 
-    "Omhoog | ../" 
->}}
+    "Weekdagen  | ../weekdagen/"
+    "Zondagen   | ../zondagen/"
+    "Feesteigen | ../feesteigen/"
+>}} 
 
 {{< navbuttons 
     "Jan | ../01-jan/"

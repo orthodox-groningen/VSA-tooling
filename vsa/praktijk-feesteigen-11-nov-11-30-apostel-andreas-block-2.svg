@@ -1,22 +1,6 @@
 <svg class="vsa-svg" xmlns="http://www.w3.org/2000/svg" width="764" height="244" viewBox="0 0 764 244">
 <rect width="100%" height="100%" fill="white"/>
 <g class="vsa-score">
-<!-- plain-text: Bezingen wij -->
-<!-- plain-text: , die de -->
-<!-- plain-text: ge -->
-<!-- plain-text: ,  
-de uit God -->
-<!-- plain-text: , -->
-<!-- plain-text: Eerstge -->
-<!-- plain-text: pene door de -->
-<!-- plain-text: ,  
-de broeder van -->
-<!-- plain-text: . -->
-<!-- plain-text: zoals tot -->
-<!-- plain-text: roept Andreas -->
-<!-- plain-text: :  
-// "Wij hebben Hem gevonden naar Wie -->
-<!-- plain-text: ." -->
 <g class="vsa-line" data-vsa-line="1">
 <g class="vsa-unit vsa-pitch-marker" data-vsa-unit="1">
 <g class="vsa-pitch-marker-upper-glyph vsa-upper-glyphs">
@@ -263,6 +247,7 @@ de broeder van -->
 </g>
 <g class="vsa-unit vsa-unit-scope" data-vsa-unit="15">
 <g class="vsa-glyph-group vsa-upper-glyphs">
+<line class="vsa-glyph vsa-upper-glyph vsa-glyph-rise" x1="462.36" y1="168.43" x2="473.16" y2="163.57" stroke="black" stroke-width="1.00" stroke-linecap="round"/>
 </g>
 <g class="vsa-glyph-group vsa-lower-glyphs">
 <line class="vsa-glyph vsa-lower-glyph vsa-glyph-length" x1="461.96" y1="195.00" x2="473.56" y2="195.00" stroke="red" stroke-width="1.00" stroke-linecap="round"/>

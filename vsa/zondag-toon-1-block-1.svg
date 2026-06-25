@@ -1,7 +1,6 @@
 <svg class="vsa-svg" xmlns="http://www.w3.org/2000/svg" width="270" height="55" viewBox="0 0 270 55">
 <rect width="100%" height="100%" fill="white"/>
 <g class="vsa-score">
-<!-- plain-text: is de Heer. -->
 <g class="vsa-line" data-vsa-line="1">
 <g class="vsa-unit vsa-pitch-marker" data-vsa-unit="1">
 <line class="vsa-pitch-marker-dash" x1="13.50" y1="31.00" x2="22.50" y2="31.00" stroke="black" stroke-width="1.50" stroke-linecap="round"/>
@@ -35,8 +34,8 @@
 </g>
 <g class="vsa-unit vsa-pitch-marker" data-vsa-unit="12">
 <g class="vsa-pitch-marker-upper-glyph vsa-upper-glyphs">
-<line class="vsa-glyph vsa-upper-glyph vsa-glyph-fall" x1="247.37" y1="11.84" x2="256.97" y2="16.16" stroke="black" stroke-width="1.00" stroke-linecap="round"/>
-<line class="vsa-glyph vsa-upper-glyph vsa-glyph-fall" x1="247.37" y1="8.16" x2="256.97" y2="12.48" stroke="black" stroke-width="1.00" stroke-linecap="round"/>
+<line class="vsa-glyph vsa-upper-glyph vsa-glyph-rise" x1="247.37" y1="16.16" x2="256.97" y2="11.84" stroke="black" stroke-width="1.00" stroke-linecap="round"/>
+<line class="vsa-glyph vsa-upper-glyph vsa-glyph-rise" x1="247.37" y1="12.48" x2="256.97" y2="8.16" stroke="black" stroke-width="1.00" stroke-linecap="round"/>
 </g>
 <line class="vsa-pitch-marker-dash" x1="247.67" y1="31.00" x2="256.67" y2="31.00" stroke="black" stroke-width="1.50" stroke-linecap="round"/>
 </g>

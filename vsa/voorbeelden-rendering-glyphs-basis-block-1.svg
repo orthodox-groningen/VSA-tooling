@@ -1,20 +1,6 @@
 <svg class="vsa-svg" xmlns="http://www.w3.org/2000/svg" width="728" height="401" viewBox="0 0 728 401">
 <rect width="100%" height="100%" fill="white"/>
 <g class="vsa-score">
-<!-- plain-text: bel -->
-<!-- plain-text: bel -->
-<!-- plain-text: bel -->
-<!-- plain-text: ander -->
-<!-- plain-text: bel dub -->
-<!-- plain-text: Gij -->
-<!-- plain-text: , -->
-<!-- plain-text: en altijd Maagd -->
-<!-- plain-text: ; -->
-<!-- plain-text: (als het goed is tenminste) een onbehoorlijk en onbetamelijk lang -->
-<!-- plain-text: . -->
-<!-- plain-text: , -->
-<!-- plain-text: , -->
-<!-- plain-text: . -->
 <g class="vsa-line" data-vsa-line="1">
 <g class="vsa-unit vsa-pitch-marker" data-vsa-unit="1">
 <line class="vsa-pitch-marker-dash" x1="13.50" y1="36.15" x2="22.50" y2="36.15" stroke="black" stroke-width="1.50" stroke-linecap="round"/>
@@ -667,6 +653,9 @@
 <g class="vsa-unit vsa-unit-scope" data-vsa-unit="17">
 <g class="vsa-glyph-group vsa-upper-glyphs">
 <line class="vsa-glyph vsa-upper-glyph vsa-glyph-rise" x1="469.65" y1="363.58" x2="480.45" y2="358.72" stroke="black" stroke-width="1.00" stroke-linecap="round"/>
+<line class="vsa-glyph vsa-upper-glyph vsa-glyph-rise" x1="469.65" y1="359.90" x2="480.45" y2="355.04" stroke="black" stroke-width="1.00" stroke-linecap="round"/>
+<line class="vsa-glyph vsa-upper-glyph vsa-glyph-rise" x1="469.65" y1="356.22" x2="480.45" y2="351.36" stroke="black" stroke-width="1.00" stroke-linecap="round"/>
+<line class="vsa-glyph vsa-upper-glyph vsa-glyph-rise" x1="469.65" y1="352.54" x2="480.45" y2="347.68" stroke="black" stroke-width="1.00" stroke-linecap="round"/>
 </g>
 <g class="vsa-glyph-group vsa-lower-glyphs">
 <line class="vsa-glyph vsa-lower-glyph vsa-glyph-length" x1="469.25" y1="390.15" x2="480.85" y2="390.15" stroke="red" stroke-width="1.00" stroke-linecap="round"/>
@@ -679,7 +668,8 @@
 </g>
 <g class="vsa-unit vsa-pitch-marker" data-vsa-unit="20">
 <g class="vsa-pitch-marker-upper-glyph vsa-upper-glyphs">
-<line class="vsa-glyph vsa-upper-glyph vsa-glyph-rise" x1="515.68" y1="363.31" x2="525.28" y2="358.99" stroke="black" stroke-width="1.00" stroke-linecap="round"/>
+<line class="vsa-glyph vsa-upper-glyph vsa-glyph-fall" x1="515.68" y1="358.99" x2="525.28" y2="363.31" stroke="black" stroke-width="1.00" stroke-linecap="round"/>
+<line class="vsa-glyph vsa-upper-glyph vsa-glyph-fall" x1="515.68" y1="355.31" x2="525.28" y2="359.63" stroke="black" stroke-width="1.00" stroke-linecap="round"/>
 </g>
 <line class="vsa-pitch-marker-dash" x1="515.98" y1="378.15" x2="524.98" y2="378.15" stroke="black" stroke-width="1.50" stroke-linecap="round"/>
 </g>

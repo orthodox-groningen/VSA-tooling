@@ -1,21 +1,6 @@
 <svg class="vsa-svg" xmlns="http://www.w3.org/2000/svg" width="659" height="244" viewBox="0 0 659 244">
 <rect width="100%" height="100%" fill="white"/>
 <g class="vsa-score">
-<!-- plain-text: Heili -->
-<!-- plain-text: ko -->
-<!-- plain-text: ,  
-gij zijt werkelijk de Hogepriester van -->
-<!-- plain-text: .  
-Volgens het E -->
-<!-- plain-text: lie hebt gij uw -->
-<!-- plain-text: ge -->
-<!-- plain-text: om onschuldigen te -->
-<!-- plain-text: den uit de -->
-<!-- plain-text: .  
-Daarin hebt gij de heiligheid -->
-<!-- plain-text: ,  
-// als de Uitdeler der Mysteriën van -->
-<!-- plain-text: . -->
 <g class="vsa-line" data-vsa-line="1">
 <g class="vsa-unit vsa-pitch-marker" data-vsa-unit="1">
 <g class="vsa-pitch-marker-upper-glyph vsa-upper-glyphs">
@@ -363,10 +348,6 @@ Daarin hebt gij de heiligheid -->
 <text class="vsa-text vsa-free-text" x="618.42" y="226.00" xml:space="preserve" font-family="DejaVu Sans" font-size="20.00">.</text>
 </g>
 <g class="vsa-unit vsa-pitch-marker" data-vsa-unit="22">
-<g class="vsa-pitch-marker-upper-glyph vsa-upper-glyphs">
-<line class="vsa-glyph vsa-upper-glyph vsa-glyph-fall" x1="640.38" y1="201.84" x2="649.98" y2="206.16" stroke="black" stroke-width="1.00" stroke-linecap="round"/>
-<line class="vsa-glyph vsa-upper-glyph vsa-glyph-fall" x1="640.38" y1="198.16" x2="649.98" y2="202.48" stroke="black" stroke-width="1.00" stroke-linecap="round"/>
-</g>
 <line class="vsa-pitch-marker-dash" x1="640.68" y1="221.00" x2="649.68" y2="221.00" stroke="black" stroke-width="1.50" stroke-linecap="round"/>
 </g>
 </g>

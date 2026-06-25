@@ -1,21 +1,6 @@
 <svg class="vsa-svg" xmlns="http://www.w3.org/2000/svg" width="563" height="282" viewBox="0 0 563 282">
 <rect width="100%" height="100%" fill="white"/>
 <g class="vsa-score">
-<!-- plain-text: De alreine Tempel van de Ver -->
-<!-- plain-text: , -->
-<!-- plain-text: kostelijk maagdelijk -->
-<!-- plain-text: ver -->
-<!-- plain-text: ,  
-de geheiligde Schatkamer van Gods -->
-<!-- plain-text: heden binnengeleid in het Huis des -->
-<!-- plain-text: .  
-Zij brengt daar de genade van Gods -->
-<!-- plain-text: ge -->
-<!-- plain-text: , -->
-<!-- plain-text: wijl Zijn Engelen -->
-<!-- plain-text: :  
-// Zie, daar is de hemelse -->
-<!-- plain-text: . -->
 <g class="vsa-line" data-vsa-line="1">
 <g class="vsa-unit vsa-pitch-marker" data-vsa-unit="1">
 <g class="vsa-pitch-marker-upper-glyph vsa-upper-glyphs">
@@ -337,6 +322,10 @@ Zij brengt daar de genade van Gods -->
 <text class="vsa-text vsa-free-text" x="409.48" y="264.00" xml:space="preserve" font-family="DejaVu Sans" font-size="20.00">.</text>
 </g>
 <g class="vsa-unit vsa-pitch-marker" data-vsa-unit="17">
+<g class="vsa-pitch-marker-upper-glyph vsa-upper-glyphs">
+<line class="vsa-glyph vsa-upper-glyph vsa-glyph-rise" x1="431.44" y1="244.16" x2="441.04" y2="239.84" stroke="black" stroke-width="1.00" stroke-linecap="round"/>
+<line class="vsa-glyph vsa-upper-glyph vsa-glyph-rise" x1="431.44" y1="240.48" x2="441.04" y2="236.16" stroke="black" stroke-width="1.00" stroke-linecap="round"/>
+</g>
 <line class="vsa-pitch-marker-dash" x1="431.74" y1="259.00" x2="440.74" y2="259.00" stroke="black" stroke-width="1.50" stroke-linecap="round"/>
 </g>
 </g>

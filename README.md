@@ -1,10 +1,9 @@
-# Stap 135 - HTML-commentaar policy
+# Stap 136 - VSA comment-only regels verwijderen zonder whitespace
 
-Deze patch voert broncommentaar binnen VSA-notatie in.
+Deze patch verfijnt stap 135.
 
-Kort:
+Gewijzigd:
 
-- `<!-- ... -->` blijft in de bron staan;
-- parser/validator/renderers negeren het;
-- SVG bevat geen commentaar of commentaartekst;
-- oude SVG `plain-text` metadata-comments vervallen.
+- `src/vsa/vsa_comments.py`
+- `tests/test_step136_vsa_comment_lines_no_whitespace.py`
+- `docs/architecture/parser-stap-136-vsa-comment-lines-no-whitespace.md`

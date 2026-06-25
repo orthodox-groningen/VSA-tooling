@@ -53,7 +53,7 @@ Die won{/der}{/baar} zijt {\in} {/Uw} {/&\&/Hei__&~&~}{\li}{\gen~},
    {\\&/Gij} {/zijt} {\&\de} {/Stad__} van {\God_}. — Ver{//los} …
 
 3. God heeft haar {/ge}{/grond}{\vest} {/voor} {/eeuw__}{\ig_}; 
-   {\\God}, wij ver{/wach}ten Uw barmhartigheid 
+   {\\God}, wij {/ver}{/wach}ten Uw barmhartigheid 
          in het mid{\den} {\van} {/uw__} {\volk}. — Ver{//los} …
 
 4. {-&/De} {/Al}{\&/ler}{/hoog_}{\ste_}

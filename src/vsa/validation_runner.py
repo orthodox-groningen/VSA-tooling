@@ -192,7 +192,7 @@ def _validate_vsa_text(source: str, text: str, result: ValidationResult,
         return
 
     semantic_options = _semantic_options_from_config(config)
-    diagnostics = SemanticValidator(document, semantic_options).validate()
+    diagnostics = SemanticValidator(document, semantic_options, source_text=semantic_text).validate()
 
     for diagnostic in diagnostics.items:
         line = source_line_offset + diagnostic.line

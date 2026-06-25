@@ -8,24 +8,23 @@ sources:
 ## Tweede Antifoon - weekdagen (Hemelum)
 
 ::: vsa-notatie
-1. De Heer {/be}{/mint} de poor{\ten} {/van} {/Si__}{\on_} 
-   {\\bo}{/ven} {/al}le ten{\ten} {\van} {/Ja__}{\cob_}.
+[:] Eer aan {/de} {/Va}{\der}, {/en} {/aan_} de {\Zoon_}, 
+   {\\en} {/aan} {/de} {\Hei_}lige {\Geest_}. [:]
 
-Ver{//los} {\\ons} {/Zoon} van {\God_} 
+1. [:] De Heer {/be}{/mint} de poor{\ten} {/van} {/Si__}{\on_} 
+   {\\bo}{/ven} {/al}le ten{\ten} {\van} {/Ja__}{\cob_}. [:]
+
+[:] Ver{//los} {\\ons} {/Zoon} van {\God_} 
 Die won{/der}{/baar} zijt {\in} {/Uw} {/&\&/Hei__&~&~}{\li}{\gen~}, 
-{\wij} die tot {/U} {/zin}gen: {\Al}{\le}{/lu_}{i_}{\a_}.
+{\wij} die tot {/U} {/zin}gen: {\Al}{\le}{/lu_}{i_}{\a_}. [:]
 
-2. O{/ver} {/u} zijn roem{\rij}{/ke} {/din_}gen ge{\zegd_}: 
-   {\\&/Gij} {/zijt} {\&\de} {/Stad__} van {\God_}. — Ver{//los} …
+2. [:] O{/ver} {/u} zijn roem{\rij}{/ke} {/din_}gen ge{\zegd_}: 
+   {\\&/Gij} {/zijt} {\&\de} {/Stad__} van {\God_}. [:] Ver{//los} {\\ons} …
 
-3. God heeft haar {/ge}{/grond}{\vest} {/voor} {/eeuw__}{\ig_}; 
-   {\\God}, wij ver{/wach}ten Uw barmhartigheid 
-         in het mid{\den} {\van} {/uw__} {\volk}. — Ver{//los} …
+3. [:] God heeft haar {/ge}{/grond}{\vest} {/voor} {/eeuw__}{\ig_}; 
+   {\\God}, wij {/ver}{/wach}ten Uw barmhartigheid 
+      in het mid{\den} {\van} {/uw__} {\volk}. [:] Ver{//los} {\\ons} …
 
-4. {-&/De} {/Al}{\&/ler}{/hoog_}{\ste_}
-   hei{\ligt} {\Zijn} {/Woon__}{\tent}. — Ver{//los} … 
-
-5. Eer aan {/de} {/Va}{\der}, {/en} {/aan_} de {\Zoon_}, 
-   {\\en} {/aan} {/de} {\Hei_}lige {\Geest_}. 
+4. [:] {-&/De} {/Al}{\&/ler}{/hoog_}{\ste_}
+   hei{\ligt} {\Zijn} {/Woon__}{\tent}. [:] Ver{//los} {\\ons} … 
 :::
-</details>

@@ -15,9 +15,9 @@ Hier is een overzicht van de verschillende glyphs;
 in volgende hoofdstukken wordt ook de VSA source ervan getoond.
 
 ::: vsa-notatie
-[:] {/op} {\neer} {-vlak} {~niets} {//dub}bel {///drie} {\\\\\vijf}
-[:] {+/op} {+\neer} {+-vlak} {+~niets} {#//dub}bel {♯\\\\\drie}
-[:] {b///op} {b\neer} {b-vlak} {b~niets} {♭//dub}bel {♭////drie}
+[:] {/op} {\neer} {-vlak} {~niets} {//dub}bel {////vier} {\\\\\vijf}
+[/:] {+//op} {+\neer} {+-vlak} {+~niets} {#//dub}bel {♯\\\\\drie}
+[//:] {b///op} {b\neer} {b-vlak} {b~niets} {♭//dub}bel {♭//drie}
 [/////:] {kort_} ander{half_.} {dub__}bel dub{bel__} {punt.} {pun..}{ten..} {\\\\\stapel}
 [:] Gij {\die} {/on}{/&\sterf}{\&/elijk} {/zijt_}, 
     {\en} {/om} {/on_}{\ze} {\Ver}{/&\los_&_}{\sing_} 

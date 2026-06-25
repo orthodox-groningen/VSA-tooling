@@ -189,23 +189,6 @@ class SVGRenderer:
 
         parts.append(f'<g class="vsa-unit vsa-unit-scope" data-vsa-unit="{item_index}">')
 
-        # EHM: runs from x (full column width includes the prefix zone).
-        parts.append('<g class="vsa-glyph-group vsa-upper-glyphs">')
-        running_x = x
-        for column in layout.columns:
-            parts.extend(self.glyphs.render_height_modifier([column.ehm], running_x, upper_y, column.width))
-            running_x += column.width
-        parts.append("</g>")
-
-        # ELM: runs from x_syllable with the syllable-zone column width.
-        parts.append('<g class="vsa-glyph-group vsa-lower-glyphs">')
-        elm_col_width = (layout.width - layout.prefix_extra) / len(layout.columns)
-        running_x = x_syllable
-        for column in layout.columns:
-            parts.extend(self.glyphs.render_length_modifier([column.elm], running_x, lower_y, elm_col_width))
-            running_x += elm_col_width
-        parts.append("</g>")
-
         parts.append(
             f'<text class="vsa-text vsa-sung-text" x="{x_syllable:.2f}" y="{baseline_y:.2f}" '
             f'xml:space="preserve" '
@@ -224,6 +207,23 @@ class SVGRenderer:
                     f'x2="{draw_end:.2f}" y2="{filler_y:.2f}" '
                     f'stroke="black" stroke-width="0.75" stroke-linecap="round"/>'
                 )
+
+        # EHM: runs from x (full column width includes the prefix zone).
+        parts.append('<g class="vsa-glyph-group vsa-upper-glyphs">')
+        running_x = x
+        for column in layout.columns:
+            parts.extend(self.glyphs.render_height_modifier([column.ehm], running_x, upper_y, column.width))
+            running_x += column.width
+        parts.append("</g>")
+
+        # ELM: runs from x_syllable with the syllable-zone column width.
+        parts.append('<g class="vsa-glyph-group vsa-lower-glyphs">')
+        elm_col_width = (layout.width - layout.prefix_extra) / len(layout.columns)
+        running_x = x_syllable
+        for column in layout.columns:
+            parts.extend(self.glyphs.render_length_modifier([column.elm], running_x, lower_y, elm_col_width))
+            running_x += elm_col_width
+        parts.append("</g>")
 
         parts.append("</g>")
         return x + layout.width + self.scope_gap
@@ -244,7 +244,7 @@ class SVGRenderer:
                     self.glyphs.render_height_modifier(
                         [ehm],
                         x + index * column_width,
-                        baseline_y + self.svg_config.upper.offset_y,
+                        baseline_y + self.svg_config.pitch_marker.ehm_offset_y,
                         column_width,
                     )
                 )

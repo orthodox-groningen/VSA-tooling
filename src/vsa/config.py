@@ -6,7 +6,7 @@ import tomllib
 @dataclass
 class UpperGlyphConfig:
     width_factor: float = 0.48
-    offset_y: float = -22.0
+    offset_y: float = -20.0 # was -22.0
     stroke_width_factor: float = 0.075
     color: str = "black"
 
@@ -14,7 +14,7 @@ class UpperGlyphConfig:
 @dataclass
 class LowerGlyphConfig:
     width_factor: float = 0.55
-    offset_y: float = 7.0
+    offset_y: float = 5.0 # was 7.0
     stroke_width_factor: float = 0.075
     color: str = "red"
 
@@ -24,13 +24,13 @@ class PitchMarkerConfig:
     width: float = 20.0
     dash_width_factor: float = 0.45
     offset_y: float = -5.0
-
+    ehm_offset_y: float = -12.0
 
 @dataclass
 class SVGRenderingConfig:
     font_family: str = "DejaVu Sans"
     font_size: float = 20.0
-    line_height: float = 38.0
+    line_height: float = 34.0 # was 38.0
     text_gap: float = 0.0
     scope_gap: float = 0.0
     optical_scope_gap: float = 4.0

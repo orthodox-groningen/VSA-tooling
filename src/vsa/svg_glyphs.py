@@ -32,7 +32,7 @@ class SVGGlyphRenderer:
         upper_width_factor: float = 0.48,
         lower_width_factor: float = 0.55,
         upper_stroke_width_factor: float = 0.075,
-        lower_stroke_width_factor: float = 0.075,
+        lower_stroke_width_factor: float = 0.19, # was 0.075
         upper_color: str = "black",
         lower_color: str = "red",
         prefix_symbols: dict[str, str] | None = None,
@@ -148,11 +148,11 @@ class SVGGlyphRenderer:
         if value in ["", "~", "-"]:
             return []
 
-        width = self._glyph_width(col_width, self.lower_width_factor, cap_factor=1.45)
+        width = self._glyph_width(col_width, self.lower_width_factor, cap_factor=1.65) # cap_factor was 1.45
         half_width = width / 2
 
         if value == "_.":
-            gap = self.unit * 0.35
+            gap = self.unit * 0.40 # was 0.35
             return [
                 self._line(
                     cx - half_width,
@@ -177,7 +177,7 @@ class SVGGlyphRenderer:
         if set(value) == {"_"}:
             parts = []
             for index in range(len(value)):
-                yy = y + index * (self.unit * 0.35)
+                yy = y + index * (self.unit * 0.40) # was 0.35
                 parts.append(
                     self._line(
                         cx - half_width,
@@ -262,6 +262,6 @@ class SVGGlyphRenderer:
         return (
             f'<text class="vsa-glyph-text" x="{x:.2f}" y="{y:.2f}" '
             f'xml:space="preserve"{anchor_attr} '
-            f'font-family="Consolas" font-size="{self.unit * 2.0:.2f}">'
+            f'font-family="Consolas" font-size="{self.unit * 2.4:.2f}">' # was 2.0
             f'{escape(value)}</text>'
         )

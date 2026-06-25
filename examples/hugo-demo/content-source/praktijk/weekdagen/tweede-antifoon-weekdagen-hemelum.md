@@ -8,16 +8,20 @@ sources:
 ## Tweede Antifoon - weekdagen (Hemelum)
 
 ::: vsa-notatie
+<!-- Liturgikon, pp.174 -->
 [:] Eer aan {/de} {/Va}{\der}, {/en} {/aan_} de {\Zoon_}, 
    {\\en} {/aan} {/de} {\Hei_}lige {\Geest_}. [:]
 
+<!-- Liturgikon, pp.270 -->
 1. [:] De Heer {/be}{/mint} de poor{\ten} {/van} {/Si__}{\on_} 
    {\\bo}{/ven} {/al}le ten{\ten} {\van} {/Ja__}{\cob_}. [:]
 
+<!-- Liturgikon, pp.270, met aanpassingen vanuit de praktijk in Groningen -->
 [:] Ver{//los} {\\ons} {/Zoon} van {\God_} 
 Die won{/der}{/baar} zijt {\in} {/Uw} {/&\&/Hei__&~&~}{\li}{\gen~}, 
 {\wij} die tot {/U} {/zin}gen: {\Al}{\le}{/lu_}{i_}{\a_}. [:]
 
+<!-- Liturgikon, pp.270-271 -->
 2. [:] O{/ver} {/u} zijn roem{\rij}{/ke} {/din_}gen ge{\zegd_}: 
    {\\&/Gij} {/zijt} {\&\de} {/Stad__} van {\God_}. [:] Ver{//los} {\\ons} …
 

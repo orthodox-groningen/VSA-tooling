@@ -6,27 +6,49 @@ sources:
 
 ## USTAV-liturgie-met-diaken
 
-Voor de uitroep van het Trishagiongebed:
-
-D:  Laat ons de Here bidden
-
-P:  Want heilig zijt Gij, onze God
-    en tot U zenden wij onze lof:
-    Vader, Zoon en Heilige Geest;
-    nu en altijd  (en iņde eeuwen der eeuwen)
-
-D:  *(heft orarion naar Christusikoon en roept:)*
-    Heer, red Uw vromen en verhoor ons
+<div style="font-size:120%; line-height:1.4;">
+    <div style="display:flex; align-items:flex-start; gap:0.1rem;">
+    <div style="min-width:3ch; flex-shrink:0;">D:</div>
+    <div>Laat ons de Here bidden</div>
+    </div>
+    <br>
+    <div style="display:flex; align-items:flex-start; gap:0.1rem;">
+    <div style="min-width:3ch; flex-shrink:0;">P:</div>
+    <div>
+        Want heilig zijt Gij, onze God<br>
+        en tot U zenden wij onze lof:<br>
+        Vader, Zoon en Heilige Geest;<br>
+        nu en altijd (en iņ de eeuwen der eeuwen)
+    </div>
+    </div>
+    <br>
+    <div style="display:flex; align-items:flex-start; gap:0.1rem;">
+    <div style="min-width:3ch; flex-shrink:0;">D:</div>
+    <div>
+        <em>(heft orarion naar Christusikoon en roept:)</em><br>
+        Heer, red Uw vromen en verhoor ons
+    </div>
+    </div>
+</div>
 
 ::: vsa-notatie
-K:  [//:] Heer, red Uw vromen en ver{\\&/hoor_&_} {/ons_} [//:]
+K: [//:] Heer, red Uw vromen en ver{\\&/hoor_&_} {/ons_} [//:]
 :::
 
-D:  *(keert verder rond in de Poort en roept:)*
-    En in de eeuwen der eeuwen.
+<div style="font-size:120%; line-height:1.4;">
+    <div style="display:flex; align-items:flex-start; gap:0.1rem;">
+    <div style="min-width:3ch; flex-shrink:0;">D:</div>
+    <div>
+        <em>(keert verder rond in de Poort en roept:)</em><br>
+        En in de eeuwen der eeuwen.
+    </div>
+    </div>
+</div>
 
-:::vsa-notatie
-K:  [//:] Amen [//:]
+::: vsa-notatie
+K: [//:] Amen [//:]
 :::
 
-*(hierna volgt het Trisagion)*
+<div style="font-size:120%; line-height:1.4;">
+    <em>(hierna volgt het Trisagion)</em>
+</div>

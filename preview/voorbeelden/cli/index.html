@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>CLI demo&#39;s</title>
+  <title>CLI</title>
   <link rel="stylesheet" href="/VSA-tooling/preview/css/site.css">
 </head>
 
@@ -25,74 +25,83 @@
   <main class="page">
     
 
-<h1 id="cli-demos">CLI demo&rsquo;s</h1>
-<ul>
-<li><a href="../../">Home</a>
-</li>
-<li><a href="../markdown/">Vorige: Markdown</a>
-</li>
-<li><a href="../rendering/">Volgende: Rendering</a>
-</li>
-</ul>
-<p>Deze sectie laat per <code>vsa</code>-commando zien hoe je het gebruikt.</p>
-<h2 id="commandos">Commando&rsquo;s</h2>
-<table>
-  <thead>
-      <tr>
-          <th>Pagina</th>
-          <th>Doel</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td><a href="validate/"><code>vsa validate</code></a>
-</td>
-          <td>controleren of VSA klopt</td>
-      </tr>
-      <tr>
-          <td><a href="svg/"><code>vsa svg</code></a>
-</td>
-          <td>SVG maken uit VSA</td>
-      </tr>
-      <tr>
-          <td><a href="blocks/"><code>vsa blocks</code></a>
-</td>
-          <td>VSA-blokken in Markdown inspecteren</td>
-      </tr>
-      <tr>
-          <td><a href="parse/"><code>vsa parse</code></a>
-</td>
-          <td>AST/debugstructuur bekijken</td>
-      </tr>
-      <tr>
-          <td><a href="process/"><code>vsa process</code></a>
-</td>
-          <td>SVG&rsquo;s maken uit Markdown</td>
-      </tr>
-      <tr>
-          <td><a href="build-markdown/"><code>vsa build-markdown</code></a>
-</td>
-          <td>Hugo Markdown + SVG bouwen</td>
-      </tr>
-      <tr>
-          <td><a href="version/"><code>vsa --version</code></a>
-</td>
-          <td>versie tonen</td>
-      </tr>
-      <tr>
-          <td><a href="config/"><code>--config</code></a>
-</td>
-          <td>configuratie en severity-overrides gebruiken</td>
-      </tr>
-  </tbody>
-</table>
-<h2 id="snelle-sanity-check">Snelle sanity check</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cmd" data-lang="cmd"><span style="display:flex;"><span>vsa validate examples\hugo-demo\content-source
-</span></span></code></pre></div><p>Verwachte output:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>OK
-</span></span></code></pre></div><h2 id="config-gebruiken">Config gebruiken</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cmd" data-lang="cmd"><span style="display:flex;"><span>vsa validate bestand.vsa --config vsa.toml
-</span></span></code></pre></div>
+<h2 id="commandline-interface-cli">Commandline Interface (CLI)</h2>
+<div class="nav-buttons"><a class="btn" href="../">
+      Home
+    </a><a class="btn" href="../cli/">
+      CLI
+    </a><a class="btn" href="../rendering/">
+      Rendering
+    </a><a class="btn" href="../../praktijk/">
+      Praktijk
+    </a>
+</div>
+
+<style>
+.nav-buttons {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 0.75rem;
+  margin: 1rem 0;
+}
+
+ 
+.nav-buttons .btn {
+  display: flex;
+  flex-direction: column;       
+  justify-content: center;      
+  align-items: center;          
+  text-align: center;
+  padding: 0.75rem 0.5rem;      
+  background: #eee;
+  border-radius: 6px;
+  text-decoration: none;
+  border: 1px solid #ccc;
+  color: #000;
+  transition: background 0.2s ease;
+}
+
+ 
+.nav-buttons .btn span {
+  display: block;
+  line-height: 1.25;
+  white-space: normal;
+}
+
+ 
+.nav-buttons .btn:hover {
+  background: #ddd;
+}
+
+</style>
+
+<hr>
+<!-- VSA-NAV:PAGES-HERE  -->
+
+
+
+  <h2>Onderliggende pagina's</h2>
+
+  <ul>
+    
+      <li><a href="/VSA-tooling/preview/voorbeelden/cli/config/">CLI: vsa --config</a></li>
+    
+      <li><a href="/VSA-tooling/preview/voorbeelden/cli/version/">CLI: vsa --version</a></li>
+    
+      <li><a href="/VSA-tooling/preview/voorbeelden/cli/blocks/">CLI: vsa blocks</a></li>
+    
+      <li><a href="/VSA-tooling/preview/voorbeelden/cli/build-markdown/">CLI: vsa build-markdown</a></li>
+    
+      <li><a href="/VSA-tooling/preview/voorbeelden/cli/parse/">CLI: vsa parse</a></li>
+    
+      <li><a href="/VSA-tooling/preview/voorbeelden/cli/process/">CLI: vsa process</a></li>
+    
+      <li><a href="/VSA-tooling/preview/voorbeelden/cli/svg/">CLI: vsa svg</a></li>
+    
+      <li><a href="/VSA-tooling/preview/voorbeelden/cli/validate/">CLI: vsa validate</a></li>
+    
+  </ul>
+
 
 
   </main>

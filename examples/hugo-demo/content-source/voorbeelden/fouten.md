@@ -4,11 +4,7 @@ title: "Foutvoorbeelden"
 
 # Foutvoorbeelden
 
-- [Home]({{< navbuttons 
-    "Weekdagen  | ../weekdagen/"
-    "Zondagen   | ../zondagen/"
-    "Feesteigen | ../feesteigen/"
->}})
+- [Home](../../)
 - [Vorige: Multiline](../multiline/)
 - [Volgende: Markdown](../markdown/)
 

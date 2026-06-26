@@ -4,11 +4,7 @@ title: "Rendering: spacing en lettergrepen"
 
 # Rendering: spacing en lettergrepen
 
-- [Home]({{< navbuttons 
-    "Weekdagen  | ../weekdagen/"
-    "Zondagen   | ../zondagen/"
-    "Feesteigen | ../feesteigen/"
->}}../)
+- [Home](../../../)
 - [Terug naar rendering](../)
 
 Deze pagina is bedoeld om spacing tussen tekst, zangelementen en lettergrepen te controleren.

@@ -4,11 +4,7 @@ title: "Basisvoorbeelden"
 
 # Basisvoorbeelden
 
-- [Home]({{< navbuttons 
-    "Weekdagen  | ../weekdagen/"
-    "Zondagen   | ../zondagen/"
-    "Feesteigen | ../feesteigen/"
->}})
+- [Home](../../)
 - [Voorbeelden](../)
 - [Volgende: Multiline](../multiline/)
 

@@ -4,11 +4,7 @@ title: "Multiline voorbeelden"
 
 # Multiline voorbeelden
 
-- [Home]({{< navbuttons 
-    "Weekdagen  | ../weekdagen/"
-    "Zondagen   | ../zondagen/"
-    "Feesteigen | ../feesteigen/"
->}})
+- [Home](../../)
 - [Vorige: Basis](../basis/)
 - [Volgende: Fouten](../fouten/)
 

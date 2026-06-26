@@ -4,11 +4,7 @@ title: "Rendering: basisglyphs"
 
 # Rendering: basisglyphs
 
-- [Home]({{< navbuttons 
-    "Weekdagen  | ../weekdagen/"
-    "Zondagen   | ../zondagen/"
-    "Feesteigen | ../feesteigen/"
->}}../)
+- [Home](../../../)
 - [Terug naar rendering](../)
 
 Deze pagina is bedoeld om losse glyphs visueel te controleren.

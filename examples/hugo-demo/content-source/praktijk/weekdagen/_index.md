@@ -3,12 +3,15 @@ title: "Weekdagen"
 ---
 
 {{< navbuttons 
+    "Home       | ../../"
+    "Omhoog     | ../"
     "Weekdagen  | ../weekdagen/"
     "Zondagen   | ../zondagen/"
     "Feesteigen | ../feesteigen/"
 >}}
 
 ---
+
 
 - [Antifonen - weekdagen (Hemelum)](antifonen-hemelum/)
 - [Antifonen - weekdagen (Liturgikon)](antifonen/)

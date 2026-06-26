@@ -4,11 +4,7 @@ title: "Kondak van de zondag - toon 2"
 
 # Voorbeelden uit de praktijk
 
-- [Home]({{< navbuttons 
-    "Weekdagen  | ../weekdagen/"
-    "Zondagen   | ../zondagen/"
-    "Feesteigen | ../feesteigen/"
->}}../)
+- [Home](../../../)
 - [Overzicht praktijkvoorbeelden](../)
 - [Vorige: Kondak (toon 1)](../kondak-toon-1/)
 - [Volgende: Kondak (toon 3)](../kondak-toon-3/)

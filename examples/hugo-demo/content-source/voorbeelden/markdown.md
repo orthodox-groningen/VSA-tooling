@@ -4,11 +4,7 @@ title: "Markdown en Hugo"
 
 # Markdown en Hugo
 
-- [Home]({{< navbuttons 
-    "Weekdagen  | ../weekdagen/"
-    "Zondagen   | ../zondagen/"
-    "Feesteigen | ../feesteigen/"
->}})
+- [Home](../../)
 - [Vorige: Fouten](../fouten/)
 - [Volgende: CLI](../cli/)
 

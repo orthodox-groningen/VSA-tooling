@@ -4,11 +4,7 @@ title: "CLI: vsa --version"
 
 # CLI: `vsa --version`
 
-- [Home]({{< navbuttons 
-    "Weekdagen  | ../weekdagen/"
-    "Zondagen   | ../zondagen/"
-    "Feesteigen | ../feesteigen/"
->}}../)
+- [Home](../../../)
 - [CLI overzicht](../)
 - [Vorige: vsa build-markdown](../build-markdown/)
 

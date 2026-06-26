@@ -5,6 +5,8 @@ import shutil
 
 from .block_parser import START_MARKER, END_MARKER, parse_markdown_blocks
 from .config import VSAConfig
+from .markdown_directives import process_directives
+from .markdown_include import resolve_includes
 from .svg_renderer import SVGRenderer
 from .validation_runner import validate_file
 from .markdown_processor import ProcessValidationError
@@ -68,6 +70,8 @@ def build_markdown_site(
         target_markdown.parent.mkdir(parents=True, exist_ok=True)
 
         source = markdown_file.read_text(encoding="utf-8")
+        source = resolve_includes(source, source_path=markdown_file)
+        source = process_directives(source)
 
         rewritten, svg_paths = _rewrite_markdown_file(
             source=source,

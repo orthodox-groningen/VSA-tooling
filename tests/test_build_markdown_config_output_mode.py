@@ -40,4 +40,4 @@ output-mode = "shortcode"
 
     content = (output_dir / "demo.md").read_text(encoding="utf-8")
 
-    assert '{{< vsa src="/vsa/demo-block-1.svg" >}}' in content
+    assert '{{< vsa src="/vsa/demo-block-1.svg" alt="VSA notatie" >}}' in content

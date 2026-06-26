@@ -70,7 +70,13 @@ def build_markdown_site(
         target_markdown.parent.mkdir(parents=True, exist_ok=True)
 
         source = markdown_file.read_text(encoding="utf-8")
-        source = resolve_includes(source, source_path=markdown_file)
+        source = resolve_includes(
+            source,
+            source_path=markdown_file,
+            svg_assets_dir=assets_dir,
+            svg_assets_url_prefix=assets_url_prefix,
+            content_root=input_dir,
+        )
         source = process_directives(source)
 
         rewritten, svg_paths = _rewrite_markdown_file(
@@ -185,12 +191,19 @@ def _rewrite_markdown_file(
 
         img_src = f"{assets_url_prefix.rstrip('/')}/{svg_name.replace(chr(92), '/')}"
 
+        alt = block.metadata.get("alt", "VSA notatie")
+        scale = block.metadata.get("scale")
+        natural_width = _svg_natural_width(svg)
+        style_attr = _scale_style(scale, natural_width)
+
         if output_mode == "shortcode":
-            replacement = f'{{{{< vsa src="{img_src}" >}}}}'
+            px = _scale_px(scale, natural_width)
+            scale_param = f' scale="{px}"' if px else ""
+            replacement = f'{{{{< vsa src="{img_src}" alt="{alt}"{scale_param} >}}}}'
         else:
             replacement = (
                 f'<img class="vsa-notation" '
-                f'src="{img_src}" alt="VSA notatie">'
+                f'src="{img_src}" alt="{alt}"{style_attr}>'
             )
 
         result_lines.append(replacement)
@@ -228,3 +241,35 @@ def _opening_or_closing_fence(stripped: str):
 
 def _closes_fence(stripped: str, fence_marker: str):
     return stripped.startswith(fence_marker)
+
+
+_SVG_WIDTH_RE = re.compile(r"<svg\b[^>]*\bwidth=\"(\d+(?:\.\d+)?)\"")
+
+
+def _svg_natural_width(svg_text: str) -> float | None:
+    """Extract the natural pixel width from a rendered SVG string."""
+    m = _SVG_WIDTH_RE.search(svg_text)
+    return float(m.group(1)) if m else None
+
+
+def _scale_px(scale: str | None, natural_width: float | None) -> str | None:
+    """Convert a percentage scale to an absolute pixel width string (e.g. '680px').
+
+    Returns None when scale is absent, and falls back to the original value
+    (e.g. '85%') when natural_width is unavailable.
+    """
+    if not scale:
+        return None
+    if natural_width is not None:
+        try:
+            pct = float(scale.rstrip("%"))
+            return f"{round(natural_width * pct / 100)}px"
+        except ValueError:
+            pass
+    return scale
+
+
+def _scale_style(scale: str | None, natural_width: float | None) -> str:
+    """Return an inline style attribute string, or empty string when no scale."""
+    value = _scale_px(scale, natural_width)
+    return f' style="width: {value}"' if value else ""

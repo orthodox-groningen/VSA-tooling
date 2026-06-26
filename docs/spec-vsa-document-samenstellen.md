@@ -123,7 +123,7 @@ De verwerker lost dit van buiten naar binnen op.
 ````
 boek.md :::include hoofdstuk-1.md::: :::include hoofdstuk-2.md:::
 
-hoofdstuk-1.md (in submap hoofdstuk-1/) :::pagebreak::: :::include melodie.vsa::: :::include noot.md:::
+hoofdstuk-1.md (in submap hoofdstuk-1/) :::pagebreak::: :::include "melodie.vsa"::: :::include noot.md:::
 ````
 
 Verwerking: `boek.md` → `hoofdstuk-1.md` → `melodie.vsa` + `noot.md`

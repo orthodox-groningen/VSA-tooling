@@ -2,33 +2,20 @@
 title: "Zondag - toon 5"
 ---
 
+:::web-only:::
 # Zondag - Toon 5
 
 Bron: koormap Groningen
 
+:::end-web-only:::
+:::keep-together scale="100%":::
 ## Tropaar (Toon 5)
 
-::: vsa-notatie
-[////:] {Komt_} ge{/lo_}{\\vi}{gen_}
-{//laat} ons aanbidden en be{-&\&\zin_&-&-}{/gen_},
-het met de {Va_}der en de Geest me{\\de}{/eeu_}wi{\ge} {\woord_},
-{///dat_} uit de Maagd omwille van onze verlossing {\is}{/ge} {/bo_}{\\ren_}
-{//want} Hij heeft zich ver{-&\&\waar_&~&~}{/digd_},
-om zich in het vlees aan het Kruis te {\\ver}{/&\hef_&~}{\fen_},
-{///Hij_} heeft de {/dood_} {\\on}der{gaan_}.
-{//en} door Zijn roemrijke ver{rij_}{\&\ze}{/nis}
-// {/heeft} Hij de {\do_}{\den_} {\op_}{/&\ge}{\wekt_} [/:]
-:::
+:::include "tropaar-zondag-toon-5.vsa" alt="Tropaar van de zondag, Toon 5" scale="85%":::
 
 ## Kondak (Toon 5)
 
-::: vsa-notatie
-[///:] In de {ha_}des {\zijt} {/Gij} {/ne_}{\\der}ge{daald_}
-{//Gij}, mijn Ver{-&\&\lo_&-&-}{/sser},
-als Al{mach_}tige hebt Gij de poorten {\\ver}{/&\brij_&~}{\zeld_},
-{///als} {Schep_}per hebt Gij de {\do}{/den} {/op_}{\\ge}{wekt_}
-{//en} de prikkel des doods ver{-&\&\nie_&~&~}{/tigd_},
-{Gij_} hebt Adam van de vloek bevrijd, o {\\Mens}{/lie_}{\ven}{\de_},
-{///laat_} ons daarom {\tot} {/U} {/roe_}{\\pen_}:
-// {//kom} en ver{\&\los_&_} {\&/ons_&~}, {\o} {\Heer_}. [:]
-:::
+:::include "kondak-zondag-toon-5.vsa" alt="Kondak van de zondag, Toon 5" scale="85%":::
+
+:::include "tropaarmelodie-toon-5a.jpg" alt="Tropaarmelodie (Toon 5)" scale="67%":::
+:::end-keep-together:::

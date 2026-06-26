@@ -88,7 +88,7 @@ def process_directives(text: str) -> str:
                     f" ':::{name}:::' binnen open ':::{current_name}:::'"
                 )
             state = new_state
-            result_lines.append(f"{{{{< {name} >}}}}")
+            result_lines.append(f"{{{{% {name} %}}}}")
             continue
 
         kt_match = _KEEP_TOGETHER_OPEN.match(stripped)
@@ -102,9 +102,9 @@ def process_directives(text: str) -> str:
             state = _State.KEEP_TOGETHER
             scale = _parse_scale(kt_match.group(1))
             if scale:
-                result_lines.append(f'{{{{< keep-together scale="{scale}" >}}}}')
+                result_lines.append(f'{{{{% keep-together scale="{scale}" %}}}}')
             else:
-                result_lines.append("{{< keep-together >}}")
+                result_lines.append("{{% keep-together %}}")
             continue
 
         if stripped in _CLOSING:
@@ -121,7 +121,7 @@ def process_directives(text: str) -> str:
                     f" maar zag '{end_tag}'"
                 )
             name = _SHORTCODE[state]
-            result_lines.append(f"{{{{< /{name} >}}}}")
+            result_lines.append(f"{{{{% /{name} %}}}}")
             state = _State.NORMAL
             continue
 

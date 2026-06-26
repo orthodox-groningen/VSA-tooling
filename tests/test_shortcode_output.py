@@ -54,7 +54,7 @@ def test_build_markdown_generates_shortcode_output_when_requested(tmp_path: Path
 
     content = (output_dir / "demo.md").read_text(encoding="utf-8")
 
-    assert '{{< vsa src="/vsa/demo-block-1.svg" >}}' in content
+    assert '{{< vsa src="/vsa/demo-block-1.svg" alt="VSA notatie" >}}' in content
 
 
 def test_build_markdown_generates_img_output_when_requested(tmp_path: Path):

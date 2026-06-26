@@ -1,1 +1,2 @@
-<div class="keep-together"{{ with .Get "scale" }} style="--vsa-scale: {{ . }}"{{ end }}>{{ .Inner | markdownify }}</div>
+{{- $scale := .Get "scale" -}}
+<div class="keep-together"{{ if $scale }} style="width: {{ $scale }}"{{ end }}>{{ .Inner }}</div>

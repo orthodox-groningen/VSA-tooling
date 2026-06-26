@@ -3,8 +3,7 @@ title: "Praktijkvoorbeelden"
 ---
 
 {{< navbuttons 
-    "Home       | ../../"
-    "Omhoog     | ../"
+    "Home       | ../"
     "Weekdagen  | weekdagen/"
     "Zondagen   | zondagen/"
     "Feesteigen | feesteigen/"

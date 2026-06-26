@@ -5,9 +5,9 @@ title: "Juli"
 {{< navbuttons 
     "Home       | ../../../"
     "Omhoog     | ../"
-    "Weekdagen  | ../weekdagen/"
-    "Zondagen   | ../zondagen/"
-    "Feesteigen | ../feesteigen/"
+    "Weekdagen  | ../../weekdagen/"
+    "Zondagen   | ../../zondagen/"
+    "Feesteigen | ../../feesteigen/"
 >}}
 
 ---

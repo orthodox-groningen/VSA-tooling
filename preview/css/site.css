@@ -179,3 +179,39 @@ svg,
     padding: 0.35rem 0.45rem;
   }
 }
+
+/* Print / A4 */
+@media print {
+  @page {
+    size: A4;
+    margin: 2cm;
+  }
+
+  .pagebreak {
+    page-break-before: always;
+  }
+
+  .site-header,
+  .site-nav,
+  .nav-buttons,
+  footer {
+    display: none;
+  }
+
+  .web-only { display: none; }
+
+  .keep-together {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  .keep-together .vsa-notation {
+    width: var(--vsa-scale, auto);
+  }
+}
+
+.print-only { display: none; }
+
+@media print {
+  .print-only { display: block; }
+}

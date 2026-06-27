@@ -43,7 +43,7 @@ Status: `Geïmplementeerd`
 
 ### 1.3 Halve-stap modifiers en commentaar
 
-Status: `Open`
+Status: `Geïmplementeerd`
 
 - Onderzoeken of `+`, `-`, `/+`, `+\` syntactisch/semantisch nodig zijn.
 - Commentaarvormen specificeren; validator moet commentaar overslaan.

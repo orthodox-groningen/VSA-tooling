@@ -6,6 +6,7 @@ sources:
 
 ## USTAV-liturgie-met-diaken
 
+<!-- Dit hoort HTML te zijn - dat is geen fout van een generator of zo -->
 <div style="font-size:120%; line-height:1.4;">
     <div style="display:flex; align-items:flex-start; gap:0.1rem;">
     <div style="min-width:3ch; flex-shrink:0;">D:</div>

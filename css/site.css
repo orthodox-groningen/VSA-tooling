@@ -179,3 +179,47 @@ svg,
     padding: 0.35rem 0.45rem;
   }
 }
+
+/* Print / A4 */
+@media print {
+  @page {
+    size: A4;
+    margin: 2cm;
+  }
+
+  .pagebreak {
+    page-break-before: always;
+  }
+
+  .site-header,
+  .site-nav,
+  .nav-buttons,
+  footer {
+    display: none;
+  }
+
+  .web-only { display: none; }
+
+  .keep-together {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  /* Lege alinea's uit markdown mogen geen extra ruimte in de afdruk geven. */
+  .keep-together > p:empty,
+  .print-only > p:empty {
+    display: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .keep-together .vsa-notation {
+    width: var(--vsa-scale, auto);
+  }
+}
+
+.print-only { display: none; }
+
+@media print {
+  .print-only { display: block; }
+}

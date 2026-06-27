@@ -84,12 +84,12 @@ Voorbeeld op `praktijk/zondagen/zondag-toon-3.md` naast de `:::include` van hetz
 
 Coria-HTML (`*.coria.html`) staat naast de `.vsa` in content-source; build kopieert naar `static/coria/`.
 
-Zie [gebruikersdocumentatie MusicXML](../../../../docs/user/musicxml-export.md).
+Zie [gebruikersdocumentatie MusicXML](https://github.com/orthodox-groningen/VSA-tooling/blob/main/docs/user/musicxml-export.md).
 
 ## Profielen
 
 - **`playback`** (default): MIDI-instrument, voice/stem, beaming — werkt in Coria.
 - **`engraving`**: expliciete maatstrepen, typografie in `<defaults>`, gedetailleerde melisma-lijnen.
 
-Zie [gebruikersdocumentatie MusicXML](../../../../docs/user/musicxml-export.md)
+Zie [gebruikersdocumentatie MusicXML](https://github.com/orthodox-groningen/VSA-tooling/blob/main/docs/user/musicxml-export.md)
 voor alle instelbare velden en Coria-integratie.

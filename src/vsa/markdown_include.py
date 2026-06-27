@@ -123,24 +123,27 @@ def resolve_includes(
             result_lines.append(":::")
 
         elif suffix in {".svg"} | _RASTER_SUFFIXES:
-            alt_attr = f' alt="{alt}"' if alt is not None else ' alt=""'
-            if suffix == ".svg":
-                svg_text = included_path.read_text(encoding="utf-8")
-                style_attr = _scale_style(scale, _svg_natural_width(svg_text))
-            else:
-                # Raster images: percentage width (no built-in size reading)
-                style_attr = f' style="width: {scale}"' if scale else ""
+            alt_val = alt if alt is not None else ""
+            natural_width = (
+                _svg_natural_width(included_path.read_text(encoding="utf-8"))
+                if suffix == ".svg"
+                else None
+            )
             if svg_assets_dir is not None:
                 asset_name = _svg_asset_name(included_path, content_root)
                 dest = svg_assets_dir / asset_name
                 dest.parent.mkdir(parents=True, exist_ok=True)
                 shutil.copy2(included_path, dest)
                 url = f"{svg_assets_url_prefix.rstrip('/')}/{asset_name}"
+                result_lines.append(
+                    _vsa_shortcode(url, alt_val or None, scale, natural_width)
+                )
             else:
-                url = rel_path
-            result_lines.append(
-                f'<img src="{url}" class="vsa-notation"{alt_attr}{style_attr} />'
-            )
+                style_attr = _scale_style(scale, natural_width)
+                alt_attr = f' alt="{alt_val}"' if alt is not None else ' alt=""'
+                result_lines.append(
+                    f'<img src="{rel_path}" class="vsa-notation"{alt_attr}{style_attr} />'
+                )
 
     return "\n".join(result_lines) + "\n"
 
@@ -216,3 +219,30 @@ def _scale_style(scale: str | None, natural_width: float | None) -> str:
         except ValueError:
             pass
     return f' style="width: {scale}"'
+
+
+def _scale_px(scale: str | None, natural_width: float | None) -> str | None:
+    if not scale:
+        return None
+    if natural_width is not None:
+        try:
+            pct = float(scale.rstrip("%"))
+            return f"{round(natural_width * pct / 100)}px"
+        except ValueError:
+            pass
+    return scale
+
+
+def _vsa_shortcode(
+    src: str,
+    alt: str | None,
+    scale: str | None,
+    natural_width: float | None = None,
+) -> str:
+    """Emit Hugo vsa shortcode; relURL in the shortcode adds the site baseURL."""
+    alt_val = alt if alt is not None else "VSA notatie"
+    scale_param = ""
+    px = _scale_px(scale, natural_width)
+    if px:
+        scale_param = f' scale="{px}"'
+    return f'{{{{< vsa src="{src}" alt="{alt_val}"{scale_param} >}}}}'

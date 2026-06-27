@@ -110,8 +110,7 @@ def test_include_svg_copies_to_assets_dir(tmp_path):
         content_root=content_root,
     )
 
-    assert 'src="/vsa/dienst-melodie.svg"' in result
-    assert 'class="vsa-notation"' in result
+    assert '{{< vsa src="/vsa/dienst-melodie.svg"' in result
     assert (assets_dir / "dienst-melodie.svg").exists()
     assert (assets_dir / "dienst-melodie.svg").read_text(encoding="utf-8") == "<svg><text>noot</text></svg>"
 
@@ -140,7 +139,7 @@ def test_include_svg_outside_content_root_uses_stem(tmp_path):
         content_root=content_root,
     )
 
-    assert 'src="/vsa/icoon.svg"' in result
+    assert '{{< vsa src="/vsa/icoon.svg"' in result
     assert (assets_dir / "icoon.svg").exists()
 
 
@@ -168,7 +167,7 @@ def test_include_raster_image_copies_to_assets_dir(tmp_path):
         content_root=content_root,
     )
 
-    assert 'src="/vsa/praktijk-tropaarmelodie-toon-1.jpg"' in result
+    assert '{{< vsa src="/vsa/praktijk-tropaarmelodie-toon-1.jpg"' in result
     assert 'alt="Tropaarmelodie (Toon 1)"' in result
     assert (assets_dir / "praktijk-tropaarmelodie-toon-1.jpg").exists()
 
@@ -188,14 +187,35 @@ def test_include_raster_without_assets_dir_relative_fallback(tmp_path):
 
 def test_include_scale_on_svg(tmp_path):
     svg_file = tmp_path / "noot.svg"
-    svg_file.write_text("<svg/>", encoding="utf-8")
+    svg_file.write_text('<svg width="100"></svg>', encoding="utf-8")
 
     source = tmp_path / "doc.md"
     text = ':::include noot.svg scale="60%":::\n'
 
     result = resolve_includes(text, source)
 
-    assert 'style="width: 60%"' in result
+    assert 'style="width: 60px"' in result
+
+
+def test_include_scale_on_svg_with_assets_dir_uses_shortcode(tmp_path):
+    svg_file = tmp_path / "noot.svg"
+    svg_file.write_text('<svg width="100"></svg>', encoding="utf-8")
+
+    assets_dir = tmp_path / "static" / "vsa"
+    assets_dir.mkdir(parents=True)
+
+    source = tmp_path / "doc.md"
+    text = ':::include noot.svg scale="60%":::\n'
+
+    result = resolve_includes(
+        text,
+        source,
+        svg_assets_dir=assets_dir,
+        svg_assets_url_prefix="/vsa",
+    )
+
+    assert '{{< vsa src="/vsa/noot.svg"' in result
+    assert 'scale="60px"' in result
 
 
 def test_include_scale_on_vsa(tmp_path):
@@ -219,8 +239,9 @@ def test_include_alt_and_scale_together(tmp_path):
 
     result = resolve_includes(text, source)
 
+    assert 'src="foto.jpg"' in result
     assert 'alt="Beschrijving"' in result
-    assert 'style="width: 80%"' in result
+    assert 'scale="80%"' in result or 'style="width: 80%"' in result
 
 
 def test_recursive_include(tmp_path):

@@ -62,12 +62,15 @@ Build kopieert `.coria.html` naar `static/coria/…/tropaar-zondag-toon-3.html`.
 
 Parameters:
 
-| Parameter | Betekenis |
-|-----------|-----------|
-| `label="…"` | Linktekst (default: `Oefenen in Coria`) |
-| `mode="html"` | Forceer Coria-HTML (fout als `.coria.html` ontbreekt) |
-| `mode="mxl"` | Forceer MXL deep-link |
-| `mode="auto"` | HTML indien aanwezig, anders MXL (default) |
+| Parameter        | Betekenis                                             |
+| ---------------- | ----------------------------------------------------- |
+| `label="…"`      | Linktekst (default: `Oefenen in Coria`)               |
+| `mode="html"`    | Forceer Coria-HTML (fout als `.coria.html` ontbreekt) |
+| `mode="mxl"`     | Forceer MXL deep-link                                 |
+| `mode="auto"`    | HTML indien aanwezig, anders MXL (default)            |
+
+Volledige parameterdocumentatie:
+[exporttype coria](https://orthodox-groningen.github.io/bron/reference/exporttype-coria/).
 
 ### Hugo-shortcodes (edge cases)
 
@@ -88,34 +91,34 @@ De meeste instellingen staan in YAML-frontmatter bovenaan je `.vsa`-bestand
 
 ### Muziek
 
-| Instelling | Wat het doet | Standaard |
-|------------|--------------|-----------|
-| `do` | Grondtoon (bijv. `F4`) | `F4` |
-| `mode` | `major` of `minor` | `major` |
-| `tempo` | Tempo in BPM (alleen zichtbaar als je het expliciet zet) | `100` |
-| `meter` | Maatsoort, bijv. `4/4` (optioneel) | — |
-| `reciting-mode` | Ongescopte tekst: `quarters` (één kwartnoot per woord) of `whole` (één hele noot bij ≥4 woorden) | `quarters` |
-| **`musicxml-profile`** | **`playback`** (Coria/MuseScore) of **`engraving`** (partituurbewerking) | **`playback`** |
+| Instelling             | Wat het doet                                                                                     | Standaard      |
+| ---------------------- | ------------------------------------------------------------------------------------------------ | -------------- |
+| `do`                   | Grondtoon (bijv. `F4`)                                                                           | `F4`           |
+| `mode`                 | `major` of `minor`                                                                               | `major`        |
+| `tempo`                | Tempo in BPM (alleen zichtbaar als je het expliciet zet)                                         | `100`          |
+| `meter`                | Maatsoort, bijv. `4/4` (optioneel)                                                               | —              |
+| `reciting-mode`        | Ongescopte tekst: `quarters` (één kwartnoot per woord) of `whole` (één hele noot bij ≥4 woorden) | `quarters`     |
+| **`musicxml-profile`** | **`playback`** (Coria/MuseScore) of **`engraving`** (partituurbewerking)                         | **`playback`** |
 
 ### Identificatie (titels in het bestand)
 
-| Instelling | Voorbeeld |
-|------------|-----------|
-| `title` | Tropaar van de zondag, toon 3 |
-| `composer` | Traditioneel |
-| `language` | `nl` (alleen relevant bij profiel `engraving`) |
-| `tone` | Liturgische toon, bijv. `3` |
+| Instelling   | Voorbeeld                                      |
+| ------------ | ---------------------------------------------- |
+| `title`      | Tropaar van de zondag, toon 3                  |
+| `composer`   | Traditioneel                                   |
+| `language`   | `nl` (alleen relevant bij profiel `engraving`) |
+| `tone`       | Liturgische toon, bijv. `3`                    |
 
 ### Afspelen (profiel `playback`)
 
 Alleen nodig als je het geluid wilt aanpassen:
 
-| Instelling | Standaard | Tip |
-|------------|-----------|-----|
-| `part-name` | `Vocal` | Naam van de partij |
-| `midi-sound` | `keyboard.piano.grand` | Werkt goed in Coria; voor koorklank: `voice.choir.aahs` |
-| `midi-channel` | `1` | MIDI-kanaal |
-| `midi-program` | `1` | Instrumentnummer |
+| Instelling     | Standaard              | Tip                                                     |
+| -------------- | ---------------------- | ------------------------------------------------------- |
+| `part-name`    | `Vocal`                | Naam van de partij                                      |
+| `midi-sound`   | `keyboard.piano.grand` | Werkt goed in Coria; voor koorklank: `voice.choir.aahs` |
+| `midi-channel` | `1`                    | MIDI-kanaal                                             |
+| `midi-program` | `1`                    | Instrumentnummer                                        |
 
 ### Typografie (profiel `engraving`)
 

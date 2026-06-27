@@ -96,11 +96,14 @@ Status: `Geïmplementeerd`
 - Resolver: `src/vsa/content_assets.py`; directive: `src/vsa/markdown_coria.py`.
 - `.coria.html` siblings worden gekopieerd naar `static/coria/` bij build-markdown.
 
-### 2.2 Veralgemeniseerde `:::include` met exportkanalen
+### 2.2 Veralgemeniseerde `:::include` met exporttypes
 
-Status: `Open`
+Status: `Open` — **spec compleet in bron**; implementatie Spoor B
 
-Vervolg op `:::coria`: één transclusion-mechanisme met expliciete kanalen, bijv.:
+Normatieve contracten (parameters, validatie, fouten):
+[exportcontracten](https://orthodox-groningen.github.io/bron/reference/exportcontracten/).
+
+Vervolg op `:::coria`: één transclusion-mechanisme met expliciete exporttypes:
 
 ```markdown
 :::include svg "melodie.vsa" scale="85%" alt="…":::

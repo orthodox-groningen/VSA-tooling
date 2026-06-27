@@ -40,12 +40,12 @@ Het pad is **relatief aan het includerende bestand** (niet aan de projectroot).
 
 Ondersteunde bestandstypen:
 
-| Extensie | Behandeling |
-|----------|-------------|
-| `.md`, `.markdown` | Inhoud wordt als Markdown ingevoegd; eigen includes worden recursief opgelost |
-| `.vsa` | Wordt behandeld als een `:::vsa-notatie:::` blok en omgezet naar SVG |
-| `.svg` | Wordt ingevoegd als `<img src="...">` |
-| `.jpg`, `.jpeg`, `.png`, `.webp`, `.gif` | Wordt ingevoegd als `<img src="...">` |
+| Extensie                                 | Behandeling                                                                   |
+| ---------------------------------------- | ----------------------------------------------------------------------------- |
+| `.md`, `.markdown`                       | Inhoud wordt als Markdown ingevoegd; eigen includes worden recursief opgelost |
+| `.vsa`                                   | Wordt behandeld als een `:::vsa-notatie:::` blok en omgezet naar SVG          |
+| `.svg`                                   | Wordt ingevoegd als `<img src="...">`                                         |
+| `.jpg`, `.jpeg`, `.png`, `.webp`, `.gif` | Wordt ingevoegd als `<img src="...">`                                         |
 
 ### 3b. Coria-oefenlink
 
@@ -105,10 +105,10 @@ shortcode-templates renderen de innerlijke markdown via `Page.RenderString`
 
 Elk blok-directive eindigt met een **directief-specifieke sluitingstag**:
 
-| Opening | Sluiting |
-|---------|----------|
-| `:::web-only:::` | `:::end-web-only:::` |
-| `:::print-only:::` | `:::end-print-only:::` |
+| Opening               | Sluiting                  |
+| --------------------- | ------------------------- |
+| `:::web-only:::`      | `:::end-web-only:::`      |
+| `:::print-only:::`    | `:::end-print-only:::`    |
 | `:::keep-together:::` | `:::end-keep-together:::` |
 
 Een verkeerde of ontbrekende sluitingstag geeft een foutmelding met de naam
@@ -208,3 +208,29 @@ Hugo verwerkt daarna het gegenereerde Markdown-bestand tot HTML.
     .print-only { display: block; }
 }
 ```
+
+---
+
+## Exporttypes (normatief contract)
+
+Authoring-syntax voor **export** (niet conversie) is contractueel vastgelegd in de
+**bron**-repository:
+
+- [Exportcontracten](https://orthodox-groningen.github.io/bron/reference/exportcontracten/)
+- Per type: [svg](https://orthodox-groningen.github.io/bron/reference/exporttype-svg/),
+  [coria](https://orthodox-groningen.github.io/bron/reference/exporttype-coria/),
+  [mxl](https://orthodox-groningen.github.io/bron/reference/exporttype-mxl/)
+
+Conversie (`vsa svg`, `vsa musicxml`):
+[Conversiemechanismen](https://orthodox-groningen.github.io/bron/reference/conversiemechanismen/).
+
+### Implementatiestatus (VSA-tooling)
+
+| Syntax                           | Status                                         |
+| -------------------------------- | ---------------------------------------------- |
+| `:::include "melodie.vsa"`       | Geïmplementeerd (SVG via VSA-blok)             |
+| `:::coria "melodie.vsa"`         | Geïmplementeerd                                |
+| `:::include svg\|coria\|mxl "…"` | Gepland (Spoor B); zie [todo.md](todo.md) §2.2 |
+
+Parameters (`alt`, `scale`, `label`, `mode`) — volledige beschrijving per exporttype
+in bron-docs; korte samenvatting blijft in sectie 3 en 3b hierboven.

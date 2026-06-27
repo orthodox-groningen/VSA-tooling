@@ -1,0 +1,27 @@
+---
+description: Markdown-tabelkolommen aligneren in bronbestanden
+globs: "**/*.md"
+alwaysApply: true
+---
+
+# Markdown-tabel layout
+
+Bij **elke** markdown-tabel (schrijven, bewerken, review):
+
+1. **Kolommen aligneren in de bron** — alle cellen in kolom *n* even breed met **spaties** (padding rechts in de cel). De `|`-tekens moeten visueel in rechte kolommen staan.
+2. **Separator-regel** — per kolom: `-` herhalen tot de kolombreedte (minimaal 3). Optioneel alignment met `:---`, `:---:`, `---:`.
+3. **Pipes in celinhoud** — escape als `\|` (anders splitst de tabel).
+4. **Code fences** — tabellen binnen ` ``` ` worden niet geformatteerd; voorbeelden in fences mogen dezelfde padding volgen.
+
+Voorbeeld (correct):
+
+```markdown
+| Kolom A      | Kolom B     |
+| ------------ | ----------- |
+| korte waarde | langere tek |
+| x            | y           |
+```
+
+Na bulk-wijzigingen in VSA-tooling: `python scripts/align_markdown_tables.py <pad>`.
+
+Documentatie: **compleet en begrijpelijk boven compact**.

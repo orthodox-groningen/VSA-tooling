@@ -73,6 +73,12 @@ jobs:
             --max-line-width "${{ steps.target.outputs.max_line_width }}" \
             --output-mode shortcode
 
+      - name: Generate MXL for Coria links
+        run: |
+          vsa musicxml \
+            examples/hugo-demo/content-source \
+            examples/hugo-demo/static/vsa/mxl
+
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v3
         with:

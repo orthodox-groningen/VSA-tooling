@@ -173,6 +173,71 @@ integer ::= ? één of meer cijfers ? ;
 boolean ::= "true" | "false" ;
 ```
 
+### 4.1.2 YAML frontmatter in `.vsa`-bestanden
+
+Zelfstandige `.vsa`-bestanden (buiten een Hugo Markdown-blok) kunnen dezelfde
+metadata bevatten via een optionele YAML-kop aan het begin van het bestand,
+afgebakend door `---`. Dit maakt het mogelijk om `.vsa`-bestanden als
+zelfbeschrijvende eenheden te exporteren zonder de rest van een repository.
+
+```yaml
+---
+muziek:
+  do: F4
+  mode: major
+  tempo: 132
+identificatie:
+  title: Tropaar van de zondag, toon 1
+  composer: Traditioneel
+  language: nl
+---
+[:] Ter{/&/wijl_&_} {\\de} steen ...
+```
+
+De `muziek`-sectie bevat dezelfde parameters als de bloksyntax in §4.1. De
+`identificatie`-sectie bevat bibliografische metadata die wordt opgenomen in
+het MusicXML `<identification>`-blok (zie §8.2). De optionele `typografie`-
+sectie bevat lettertype-instellingen voor export-renderers (zie §8.2.10).
+
+Toekomstige secties (bijv. `liturgie`, `publicatie`) kunnen worden toegevoegd
+zonder de bestaande syntaxis te breken.
+
+| Sectie | Veld | Betekenis |
+|---|---|---|
+| `muziek` | `do` | grondtoon, bijv. `F4` |
+| `muziek` | `mode` | modus: `major` of `minor` |
+| `muziek` | `tempo` | tempo in BPM |
+| `muziek` | `meter` | maatsoort, bijv. `4/4` (optioneel) |
+| `muziek` | `reciting-mode` | ongescopte tekst in MusicXML: `quarters` (default) of `whole` |
+| `muziek` | `musicxml-profile` | exportprofiel: `playback` (default) of `engraving` (zie §8.2.11) |
+| `muziek` | `part-name` | partijnaam in MusicXML; default `Vocal` |
+| `muziek` | `midi-sound` | General MIDI-instrument (playback); default `keyboard.piano.grand` |
+| `muziek` | `midi-channel` | MIDI-kanaal 1–16; default `1` |
+| `muziek` | `midi-program` | MIDI-programmanummer; default `1` |
+| `muziek` | `midi-volume` | MIDI-volume 0–100 (playback); default `78.7402` |
+| `muziek` | `midi-pan` | MIDI-panning −100…100; default `0` |
+| `identificatie` | `title` | titel van het zangstuk |
+| `identificatie` | `subtitle` | ondertitel |
+| `identificatie` | `composer` | componist of bewerker |
+| `identificatie` | `lyricist` | tekstdichter |
+| `identificatie` | `rights` | auteursrechtinformatie |
+| `identificatie` | `language` | taalcode, bijv. `nl` |
+| `identificatie` | `tone` | liturgische toon, bijv. `1` |
+| `typografie` | `lyric-font` | lettertype voor lyrics; default `Source Sans 3` |
+| `typografie` | `lyric-size` | lettergrootte lyrics in punten; default `13` |
+| `typografie` | `music-font` | lettertype voor notenkoppen (`<music-font>`, optioneel) |
+| `typografie` | `music-size` | lettergrootte noten in punten (optioneel) |
+| `typografie` | `word-font` | lettertype voor tempo/titel; default `Source Sans 3` |
+| `typografie` | `word-size` | lettergrootte woordtekst in punten; default `12` |
+
+De `typografie`-velden zijn optioneel; ontbrekende waarden vallen terug op de
+defaults hierboven (ook zonder YAML-frontmatter, via blokmetadata-defaults).
+Renderers die een veld niet ondersteunen negeren het. Overschrijven kan in
+frontmatter of Hugo-blokmetadata, bijv. `typografie.lyric-size="14"`.
+
+Bestanden zonder `---`-kop worden behandeld als gewone VSA-tekst zonder
+metadata.
+
 ### 4.2 Algemene regels
 
 Een VSA-zangstuk is gewone Unicode-tekst waarin sommige tekstfragmenten worden voorzien van VSA-markering. In een zangstuk kunnen zangelement-scopes voorkomen. Die zijn van de vorm:
@@ -198,6 +263,10 @@ Voorbeeld:
 ```
 
 Tekst buiten scopes blijft gewone tekst en wordt ongewijzigd weergegeven, behalve dat `{` en `}` daar niet als gewone tekens gebruikt mogen worden.
+
+In ongescopte tekst mag `-` lettergrepen scheiden (bijv. `mel-se`). De
+SVG-renderer toont dit als gewone tekst; bij MusicXML-export wordt elk deel een
+eigen reciteernoot (zie §8.2.7).
 
 ### 4.3 Enkelvoudige Hoogte-Modifiers (EHMs)
 
@@ -1051,6 +1120,10 @@ Meerdere punten worden verticaal gestapeld.
 
 ### 8.2 MusicXML-export
 
+> **Implementatiestatus:** geïmplementeerd in `vsa-tool` als `vsa musicxml`.
+> Zie `src/vsa/musicxml_renderer.py`, `src/vsa/pitch_resolver.py` en
+> `src/vsa/duration_model.py`.
+
 #### 8.2.1 Doel
 
 Export naar MusicXML is bedoeld als een lossless of near-lossless vertaling van de muzikale structuur van VSA naar een gestandaardiseerd muziekuitwisselingsformaat.
@@ -1073,6 +1146,14 @@ MusicXML-export gebruikt dezelfde defaults als de Hugo blokmetadata in hoofdstuk
 | `tempo`             | `100 BPM` |
 | `duration-model`    | `default` |
 | `validate-ending`   | `true`    |
+| `reciting-mode`     | `quarters` |
+| `musicxml-profile`  | `playback` |
+| `part-name`         | `Vocal` |
+| `midi-sound`        | `keyboard.piano.grand` |
+| `typografie.lyric-font` | `Source Sans 3` |
+| `typografie.lyric-size` | `13` pt |
+| `typografie.word-font`  | `Source Sans 3` |
+| `typografie.word-size`  | `12` pt |
 
 Maatsoort wordt niet uit VSA afgeleid. Als een MusicXML-export maatsoort nodig heeft, moet die als aanvullende blokparameter worden opgegeven, bijvoorbeeld `meter="4/4"`.
 
@@ -1140,9 +1221,39 @@ Conceptueel:
 N MusicXML note-elementen met gekoppelde lyric-informatie
 ```
 
-De exacte MusicXML-encoding van `syllabic`, `extend` en lyric-herhaling is implementatie-afhankelijk, zolang het resultaat dezelfde tekstbinding en melismatische structuur representeert.
+De exacte MusicXML-encoding van `syllabic`, `extend` en lyric-herhaling hangt af
+van het gekozen exportprofiel (§8.2.11). In beide profielen geldt: één
+tekstfragment op de eerste noot van het melisma; vervolgnoten dragen geen
+aparte syllabe-tekst.
 
-#### 8.2.7 Conversieregel per muzikale positie
+#### 8.2.7 Ongescopte tekst (reciteertoon)
+
+Tekst buiten zangelement-scopes heeft in VSA geen eigen toonhoogte of duur. Bij
+MusicXML-export wordt zulk tekstmateriaal omgezet naar **reciteertoon**: noten
+op de laatst bekende toonhoogte.
+
+Parameter `reciting-mode` (in blokmetadata of YAML-frontmatter onder `muziek`):
+
+| Waarde | Gedrag |
+|--------|--------|
+| `quarters` (default) | één kwartnoot per woord of lettergreep |
+| `whole` | bij ≥4 opeenvolgende woorden één hele noot met alle woorden als lyric (psalm/reciteerstijl; kan in MuseScore tot verschoven lyrics leiden) |
+
+**Lettergrepen met koppelteken**
+
+In ongescopte tekst mag een `-` woorden in lettergrepen splitsen, bijvoorbeeld
+`{//he}mel-se en {\aard}se`. Elk deel krijgt een eigen kwartnoot; de lyric
+volgt de gangbare notatie (`mel-` + `se`, met MusicXML `syllabic`
+`begin`/`end`). Dit geldt alleen voor `-` in platte tekst tussen scopes, niet
+binnen `{...}`-scopes (daar is `-` een ELM).
+
+Leestekens (`,`, `.`, `:`, …) worden aan het voorafgaande woord of de
+voorafgaande noot geplakt.
+
+Barline-markeringen `*`, `/` en `//` in platte tekst sluiten de huidige maat
+af.
+
+#### 8.2.8 Conversieregel per muzikale positie
 
 Voor elke muzikale positie geldt:
 
@@ -1154,7 +1265,7 @@ Voor elke muzikale positie geldt:
 | zangelement                              | lyric                      |
 | meerdere posities binnen één zangelement | melisma                    |
 
-#### 8.2.8 Foutafhandeling bij export
+#### 8.2.9 Foutafhandeling bij export
 
 MusicXML-export moet worden geweigerd of als ongeldig gemarkeerd wanneer:
 
@@ -1169,6 +1280,188 @@ In alle gevallen moet een foutmelding minimaal bevatten:
 - wat er fout is;
 - bestand, regelnummer en positie;
 - een voorstel voor oplossing.
+
+#### 8.2.10 Typografie
+
+De optionele `typografie`-sectie in YAML-frontmatter (§4.1.2) of de equivalente
+blokparameters worden bij MusicXML-export **alleen in het `engraving`-profiel**
+(§8.2.11) vertaald naar `<defaults>`-elementen:
+
+| Metadata | MusicXML |
+|----------|----------|
+| `typografie.lyric-font` | `<lyric-font font-family="…">` |
+| `typografie.lyric-size` | `<lyric-font font-size="…">` |
+| `typografie.music-font` | `<music-font font-family="…">` |
+| `typografie.music-size` | `<music-font font-size="…">` |
+| `typografie.word-font` | `<word-font font-family="…">` |
+| `typografie.word-size` | `<word-font font-size="…">` |
+
+Grootte-eenheden zijn **punten** (pt), conform MusicXML.
+
+Standaard typografie (blokmetadata §4.1.2):
+
+| Veld | Default |
+|------|---------|
+| `typografie.lyric-font` | `Source Sans 3` |
+| `typografie.lyric-size` | `13` |
+| `typografie.word-font` | `Source Sans 3` |
+| `typografie.word-size` | `12` |
+
+Notenkoppen (`music-font`, `music-size`) hebben geen VSA-default; de
+doelrenderer (bijv. MuseScore) gebruikt zijn eigen notatiefont.
+
+> **Beperking:** programma's als MuseScore importeren font-hints uit MusicXML
+> in hun stijlsysteem. De uiteindelijke weergave kan door de gebruiker of door
+> partituuropmaak-instellingen worden overschreven. In het `playback`-profiel
+> worden typografie-hints niet geëmitteerd (conform MuseScore-roundtrip).
+
+#### 8.2.11 MusicXML-exportprofielen
+
+MusicXML kan op verschillende manieren worden geëncodeerd terwijl dezelfde
+muzikale inhoud behouden blijft. `vsa-tool` ondersteunt twee profielen,
+selecteerbaar via `musicxml-profile` in blokmetadata, YAML-frontmatter
+(`muziek.musicxml-profile`) of CLI (`--musicxml-profile`).
+
+| Profiel | Doel | Default |
+|---------|------|---------|
+| `playback` | Afspelen in webviewers (bijv. [Coria](https://coria.nl)), MuseScore-import zonder handmatige opschoning | **ja** |
+| `engraving` | Partituurbewerking met expliciete maatstrepen, typografie-hints en gedetailleerde melisma-extend | nee |
+
+##### 8.2.11.1 Gemeenschappelijk gedrag
+
+Ongeacht profiel geldt §8.2.3–§8.2.9: pitch-resolutie, ELM→duur, reciteertoon,
+syllabische splitsing met `-`, slur over melisma, barlines op `*`, `/`, `//` en
+formele control tokens, en conditionele tempo-markering (alleen bij expliciet
+`tempo` in metadata).
+
+##### 8.2.11.2 Profiel `playback`
+
+Geoptimaliseerd voor compatibiliteit met MuseScore-roundtrip en Coria. Het
+volgt structureel het patroon van door MuseScore opgeslagen MusicXML 4.0
+partwise-bestanden.
+
+| Aspect | Gedrag |
+|--------|--------|
+| `<part-list>` | `score-instrument`, `midi-device`, `midi-instrument` (General MIDI) |
+| `<defaults>` | **niet** geëmitteerd |
+| `<encoding><supports>` | `accidental`, `beam`, `stem` = yes; `print` new-page/new-system = no |
+| `<note>` | `<voice>1</voice>`, `<stem>up</stem>` op elke noot |
+| Beaming | Automatisch voor opeenvolgende `eighth`- en `16th`-noten in één maat |
+| Melisma-lyrics | Alleen op eerste noot: `<text>` + `<extend/>` (zonder `type`); midden- en eindnoten **geen** `<lyric>` |
+| Slur | `type="start"` met `orientation="over"` en `placement="above"`; `type="stop"` op laatste noot |
+| Maatstrepen | Alleen `light-light` (dubbele streep `//`) en `light-heavy` (slot); **geen** expliciete `regular` tussen maten |
+| `xml:lang` op lyrics | niet geëmitteerd |
+
+MIDI-parameters (blokmetadata / `muziek`-sectie):
+
+| Veld | Default | MusicXML-locatie |
+|------|---------|------------------|
+| `part-name` | `Vocal` | `<part-name>` |
+| `midi-sound` | `keyboard.piano.grand` | `<instrument-sound>` |
+| `midi-channel` | `1` | `<midi-channel>` |
+| `midi-program` | `1` | `<midi-program>` |
+| `midi-volume` | `78.7402` | `<volume>` |
+| `midi-pan` | `0` | `<pan>` |
+
+> **Opmerking:** `keyboard.piano.grand` is de default omdat MuseScore-roundtrip
+> en Coria daarmee zijn getest. Voor koorklank kan `voice.choir.aahs` worden
+> ingesteld.
+
+##### 8.2.11.3 Profiel `engraving`
+
+Geoptimaliseerd voor partituurweergave en handmatige nabewerking in MuseScore.
+
+| Aspect | Gedrag |
+|--------|--------|
+| `<part-list>` | Alleen `<part-name>` (geen MIDI) |
+| `<defaults>` | Pagina-/systeemlayout + typografie (§8.2.10) |
+| `<encoding><supports>` | niet geëmitteerd |
+| `<note>` | Geen `<voice>`, `<stem>` of `<beam>` |
+| Melisma-lyrics | Eerste noot: `<extend type="start">`; midden: `<extend type="continue">`; laatste: `<extend type="stop">` (zonder tekst) |
+| Maatstrepen | Expliciete `regular` op elke enkele streep; `light-light` en `light-heavy` waar van toepassing |
+| `xml:lang` | Op lyrics wanneer `identificatie.language` is gezet |
+
+##### 8.2.11.4 Validatie
+
+Automatische regressietests vergelijken nootstructuur (pitch, duur, lyric-tekst)
+tegen fixture-bestanden die het **`engraving`-profiel** beschrijven. Coria-
+compatibiliteit van het **`playback`-profiel** wordt structureel getest (MIDI,
+voice/stem, beaming, melisma-encoding) maar vereist handmatige verificatie in
+Coria of MuseScore voor volledige garantie.
+
+##### 8.2.11.5 Uitvoerformaat: `.mxl` (default) en `.musicxml`
+
+`vsa musicxml` schrijft standaard **Compressed MusicXML** (`.mxl`). Met
+`--format musicxml` of een uitvoerpad dat op `.musicxml` eindigt, wordt
+ongekomprimeerde MusicXML geschreven.
+
+| Bestand in ZIP (`.mxl`) | Inhoud |
+|-------------------------|--------|
+| `META-INF/container.xml` | Verwijzing naar `score.xml` |
+| `score.xml` | Dezelfde partwise-XML als bij `.musicxml` |
+
+Bij map-export is `.mxl` eveneens de default. Geen extra afhankelijkheden
+(stdlib `zipfile`).
+
+##### 8.2.11.6 Coria-integratie (Hugo)
+
+In **content-source** gebruik je de build-time directive:
+
+```markdown
+:::coria "tropaar-zondag-toon-3.vsa" label="Oefenen in Coria":::
+```
+
+Padregels zijn identiek aan `:::include`. Implementatie:
+`src/vsa/markdown_coria.py`, `src/vsa/content_assets.py`.
+
+[Coria](https://coria.nl) publicatiewijzen:
+
+**1. Coria-export-HTML (aanbevolen voor koorleden)**
+
+Sibling `{stem}.coria.html` naast de `.vsa` in content-source. Build kopieert
+naar `static/coria/…/{stem}.html`. Directive emitteert `{{< coria-html >}}`.
+
+**2. Deep-link naar `.mxl` (`play_from_url`)**
+
+Fallback wanneer geen `.coria.html` aanwezig is. MXL onder `static/vsa/mxl/…`
+(wordt apart gegenereerd). Directive emitteert `{{< coria >}}`.
+
+Site-build: `build-markdown` (directive + `.coria.html`-kopie) vóór
+`vsa musicxml` (MXL-generatie). Lokaal (`baseURL /`) werkt `play_from_url`
+niet: Coria haalt het bestand server-side op.
+
+### 8.3 Geïntegreerde partituur-export (HTML/PDF) — voorziene uitbreiding
+
+> **Implementatiestatus:** nog niet geïmplementeerd.
+
+Naast losse SVG-tekst (§8.1) en MusicXML voor bewerking (§8.2) is een
+**geïntegreerde partituur-export** gepland: een renderer die VSA omzet naar
+HTML en/of PDF waarin **notenbalk en lyrics tegelijk** voorkomen.
+
+Doelgroep: **koorzangers** die niet alleen van de notenbalk kunnen zingen en
+behoefte hebben aan de volledige VSA-visuele taal in de lyric-regel:
+
+- hoogte-modifiers (EHM) boven tekst;
+- lengte-modifiers (ELM) onder tekst;
+- toonhoogte-markeringen (`[:]`, `[//:]`, …);
+- configureerbare typografie via dezelfde `typografie`-frontmatter.
+
+```text
+.vsa + frontmatter
+       ├── vsa musicxml   →  MusicXML / MuseScore (bewerken, afspelen)
+       ├── vsa svg        →  tekst + VSA-glyphs (web, Hugo)
+       └── vsa score      →  HTML/PDF: notenbalk + VSA-lyrics   [gepland]
+```
+
+Dit pad volgt de layoutlogica van de SVG-renderer waar mogelijk, aangevuld met
+een notenbalkcomponent. EHMs/ELMs en pitch-markers horen **niet** in MusicXML
+te worden gerepliceerd; daarvoor is deze export bedoeld.
+
+Open ontwerpbesluiten (voor implementatie):
+
+- keuze notatie-engine voor de balk (bijv. Verovio, LilyPond, eigen SVG);
+- paginaformaat en regelafbreking (systeem-indeling);
+- synchronisatie tussen reciteertoon-noten op de balk en VSA-glyphs in lyrics.
 
 ---
 

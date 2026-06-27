@@ -4,7 +4,7 @@ Design decisions verified here:
 - '#' (kruis) and 'b' (mol) are the canonical prefix symbols.
 - '+' and '♯' are aliases for '#'; '♭' is an alias for 'b'.
 - A halftoon-prefix is only valid when immediately followed by a base-EHM
-  (/, //, \, \\, -, ~, etc.) — never standalone.
+  (/, //, \\, \\\\, -, ~, etc.) — never standalone.
 - zangelement-char is unchanged: 'b', '#', '♭', '♯' may appear in
   zangelement text when not immediately followed by a base-EHM.
 """
@@ -178,7 +178,7 @@ class TestZangelementCharUnchanged:
 
 class TestParserCompoundWithHalftoon:
     def test_compound_backslash_and_plus_backslash(self):
-        """{\&+\tekst_&_} — compound height modifier with a halftoon prefix."""
+        r"""{\&+\tekst_&_} — compound height modifier with a halftoon prefix."""
         node = Parser("{\\&+\\tekst_&_}").parse().nodes[0]
         assert node.height_modifier == ["\\", "+\\"]
         assert node.text == "tekst"

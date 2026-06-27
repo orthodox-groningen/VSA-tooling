@@ -3,8 +3,11 @@ from pathlib import Path
 import re
 import shutil
 
+from .content_assets import CORIA_HTML_SOURCE_SUFFIX
+
 from .block_parser import START_MARKER, END_MARKER, parse_markdown_blocks
 from .config import VSAConfig
+from .markdown_coria import resolve_coria_directives
 from .markdown_directives import process_directives
 from .markdown_include import resolve_includes
 from .svg_renderer import SVGRenderer
@@ -36,10 +39,16 @@ def build_markdown_site(
     max_line_width=800.0,
     output_mode="img",
     config: VSAConfig | None = None,
+    coria_assets_dir=None,
 ):
     input_dir = Path(input_dir)
     output_dir = Path(output_dir)
     assets_dir = Path(assets_dir)
+    if coria_assets_dir is None:
+        coria_assets_dir = assets_dir.parent / "coria"
+    else:
+        coria_assets_dir = Path(coria_assets_dir)
+    coria_assets_dir.mkdir(parents=True, exist_ok=True)
 
     markdown_files = sorted(
         list(input_dir.rglob("*.md")) +
@@ -77,6 +86,11 @@ def build_markdown_site(
             svg_assets_url_prefix=assets_url_prefix,
             content_root=input_dir,
         )
+        source = resolve_coria_directives(
+            source,
+            markdown_file,
+            content_root=input_dir,
+        )
         source = process_directives(source)
 
         rewritten, svg_paths = _rewrite_markdown_file(
@@ -94,6 +108,8 @@ def build_markdown_site(
         written_svg.extend(str(path) for path in svg_paths)
 
     written_static = _copy_content_assets(input_dir, output_dir)
+    written_coria = _copy_coria_html_assets(input_dir, coria_assets_dir)
+    written_static.extend(written_coria)
 
     return MarkdownBuildResult(
         markdown_files=written_markdown,
@@ -122,6 +138,26 @@ def _copy_content_assets(input_dir: Path, output_dir: Path) -> list[str]:
         written_static.append(str(target))
 
     return written_static
+
+
+def _copy_coria_html_assets(input_dir: Path, coria_assets_dir: Path) -> list[str]:
+    """Copy ``*.coria.html`` siblings from content-source to ``static/coria/``."""
+    written: list[str] = []
+
+    for source in sorted(input_dir.rglob(f"*{CORIA_HTML_SOURCE_SUFFIX}")):
+        if not source.is_file():
+            continue
+
+        relative = source.relative_to(input_dir)
+        published = relative.with_name(
+            relative.name[: -len(CORIA_HTML_SOURCE_SUFFIX)] + ".html"
+        )
+        target = coria_assets_dir / published
+        target.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copy2(source, target)
+        written.append(str(target))
+
+    return written
 
 
 def _rewrite_markdown_file(

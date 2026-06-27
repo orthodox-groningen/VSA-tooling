@@ -1,4 +1,15 @@
-<!-- Tropaar van de zondag - toon 2 -->
+---
+identificatie:
+  title: Tropaar van de zondag, toon 2
+  tone: 2
+  composer: Traditioneel
+  bron: koormap Groningen
+  language: nl
+muziek:
+  do: F4
+  mode: major
+  tempo: 132
+---
 [/:] Toen {/Gij_} tot de dood {/zijt} {/ne_}{\der}ge{\daald_},
 {\Gij} onsterfelijk {\le_}{\ven_}
 {/hebt} Gij de {/ha_}des gedood door het hemellicht {/der} {/God_}{\heid}, o {\Heer_}

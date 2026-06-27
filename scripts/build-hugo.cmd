@@ -24,6 +24,10 @@ echo [3/5] Generate Markdown + SVG
   generated\hugo\static\vsa ^
   --config examples\hugo-demo\vsa-demo-config.yml
 if errorlevel 1 exit /b 1
+"%PY%" -m vsa.cli musicxml ^
+  examples\hugo-demo\content-source ^
+  generated\hugo\static\vsa\mxl
+if errorlevel 1 exit /b 1
 "%PY%" scripts\update-nav-placeholders.py generated\hugo\content
 if errorlevel 1 exit /b 1
 "%PY%" scripts\update-spacing-diagnostics-metadata.py generated\hugo\content\voorbeelden\rendering\spacing-diagnostiek.md

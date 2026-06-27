@@ -7,7 +7,7 @@ title: "CLI: vsa svg"
 - [Home](../../../)
 - [CLI overzicht](../)
 - [Vorige: vsa validate](../validate/)
-- [Volgende: vsa blocks](../blocks/)
+- [Volgende: vsa musicxml](../musicxml/)
 
 ## Waarvoor gebruik je dit?
 

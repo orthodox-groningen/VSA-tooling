@@ -1,4 +1,16 @@
-<!-- Tropaar van de zondag - toon 5 -->
+---
+identificatie:
+  title: Tropaar van de zondag, toon 5
+  tone: 5
+  composer: Traditioneel
+  bron: koormap Groningen
+  language: nl
+muziek:
+  do: F4
+  mode: major
+  tempo: 132
+---
+
 [////:] {Komt_} ge{/lo_}{\\vi}{gen_}
 {//laat} ons aanbidden en be{-&\&\zin_&-&-}{/gen_},
 het met de {Va_}der en de Geest me{\\de}{/eeu_}wi{\ge} {\woord_},

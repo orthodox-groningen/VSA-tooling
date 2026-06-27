@@ -14,6 +14,16 @@ DEFAULT_METADATA = {
     "tempo": "100",
     "validate-ending": "true",
     "duration-model": "default",
+    "reciting-mode": "quarters",
+    "musicxml-profile": "playback",
+    "part-name": "Vocal",
+    "midi-sound": "keyboard.piano.grand",
+    "midi-channel": "1",
+    "midi-program": "1",
+    "typografie.lyric-font": "Source Sans 3",
+    "typografie.lyric-size": "13",
+    "typografie.word-font": "Source Sans 3",
+    "typografie.word-size": "12",
 }
 
 

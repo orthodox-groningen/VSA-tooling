@@ -6,7 +6,7 @@ title: "CLI: vsa blocks"
 
 - [Home](../../../)
 - [CLI overzicht](../)
-- [Vorige: vsa svg](../svg/)
+- [Vorige: vsa musicxml](../musicxml/)
 - [Volgende: vsa parse](../parse/)
 
 ## Waarvoor gebruik je dit?

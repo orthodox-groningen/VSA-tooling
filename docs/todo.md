@@ -84,3 +84,53 @@ Status: `Open`
 
 - CR, LF en CRLF moeten consistent worden behandeld in parsing, validatie en rendering.
 - Bronregelgrenzen moeten behouden blijven zodat bronregelgrenzen correct kunnen worden gerapporteerd in diagnostiek.
+
+## 2. Document authoring en bron-repo
+
+### 2.1 `:::coria` build-time directive
+
+Status: `Geïmplementeerd`
+
+- `:::coria "melodie.vsa" [label="…"] [mode="auto|html|mxl"]:::` in content-source.
+- Pad relatief aan includerende `.md`, zoals `:::include`.
+- Resolver: `src/vsa/content_assets.py`; directive: `src/vsa/markdown_coria.py`.
+- `.coria.html` siblings worden gekopieerd naar `static/coria/` bij build-markdown.
+
+### 2.2 Veralgemeniseerde `:::include` met exportkanalen
+
+Status: `Open`
+
+Vervolg op `:::coria`: één transclusion-mechanisme met expliciete kanalen, bijv.:
+
+```markdown
+:::include svg "melodie.vsa" scale="85%" alt="…":::
+:::include coria "melodie.vsa" label="Oefenen in Coria":::
+:::include mxl "melodie.vsa":::
+```
+
+Doel: minder directive-soorten in bronbestanden; aansluiting op toekomstige
+**bron-repo per zangstuk** (één map met `.vsa`, `.coria.html`, `page.md`).
+Default sibling-conventie (`bron.vsa` in dezelfde map) kan dan later worden
+toegevoegd.
+
+`:::coria` blijft ondersteund als alias of wordt gemigreerd naar `include coria`.
+
+### 2.3 Geneste blok-directives (web-only / keep-together)
+
+Status: `Open` — **bespreek bij volgende ronde output-samenstelling**
+
+Bij Hugo-build (`vsa build-markdown`) faalt content met geneste directives, bijv.:
+
+```text
+Geneste directives zijn niet toegestaan: ':::web-only:::' binnen open ':::keep-together:::'
+```
+
+Implementatie: `src/vsa/markdown_directives.py` verbiedt nesting expliciet.
+In de praktijk komt dit voor wanneer `:::web-only:::` (bijv. Coria-link) binnen
+`:::keep-together:::` staat — zie `examples/hugo-demo/content-source/praktijk/zondagen/zondag-toon-1.md`.
+
+Te onderzoeken bij herziening van [spec-vsa-document-samenstellen.md](spec-vsa-document-samenstellen.md):
+
+- Moet nesting toegestaan worden (en zo ja, welke combinaties)?
+- Of moet de authoring-conventie worden aangepast (sibling i.p.v. genest)?
+- Hoe gedraagt geneste content zich bij `@media print` vs. browser?

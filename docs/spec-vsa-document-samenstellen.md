@@ -45,6 +45,19 @@ Ondersteunde bestandstypen:
 | `.md`, `.markdown` | Inhoud wordt als Markdown ingevoegd; eigen includes worden recursief opgelost |
 | `.vsa` | Wordt behandeld als een `:::vsa-notatie:::` blok en omgezet naar SVG |
 | `.svg` | Wordt ingevoegd als `<img src="...">` |
+| `.jpg`, `.jpeg`, `.png`, `.webp`, `.gif` | Wordt ingevoegd als `<img src="...">` |
+
+### 3b. Coria-oefenlink
+
+    :::coria "pad/naar/melodie.vsa" [label="…"] [mode="auto|html|mxl"]:::
+
+Pad relatief aan het includerende bestand, zoals bij `:::include`.
+
+- Als `{stem}.coria.html` naast de `.vsa` staat: link naar Coria-export-HTML
+  (partij al gekozen). Build kopieert naar `static/coria/…`.
+- Anders: link naar gegenereerde `.mxl` via Coria `play_from_url`.
+
+Wordt bij `build-markdown` omgezet naar Hugo-shortcode `coria-html` of `coria`.
 
 ### 4. Conditionele inhoud
 

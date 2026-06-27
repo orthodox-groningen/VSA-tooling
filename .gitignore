@@ -16,6 +16,7 @@ examples/hugo-demo/static/vsa/
 
 # Local SVG experiments
 /*.svg
+zzz/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

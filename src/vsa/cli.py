@@ -7,13 +7,22 @@ import sys
 from importlib.metadata import PackageNotFoundError, version
 from pathlib import Path
 
-from .block_parser import parse_markdown_blocks
+from .block_parser import DEFAULT_METADATA, parse_markdown_blocks
 from .config import load_config
 from .markdown_builder import build_markdown_site
 from .markdown_processor import ProcessValidationError, process_path
+from .musicxml_package import (
+    _MUSICXML_SUFFIX,
+    _MXL_SUFFIX,
+    _KNOWN_SUFFIXES,
+    musicxml_output_suffix,
+    write_musicxml_output,
+)
+from .musicxml_renderer import MusicXMLExportError, MusicXMLRenderer
 from .parser import Parser
 from .svg_renderer import SVGRenderer
 from .validation_runner import validate_path
+from .yaml_frontmatter import frontmatter_to_block_metadata, parse_vsa_frontmatter
 
 
 def main(argv=None):
@@ -75,6 +84,53 @@ def _build_parser():
         default=None,
     )
 
+    musicxml = subparsers.add_parser("musicxml")
+    musicxml.add_argument(
+        "input",
+        help="VSA-bestand (.vsa), Markdown-bestand (.md) of map.",
+    )
+    musicxml.add_argument(
+        "output",
+        help=(
+            "Uitvoerbestand (.mxl standaard, of .musicxml) voor een enkel "
+            "invoerbestand, of uitvoermap voor meerdere bestanden."
+        ),
+    )
+    musicxml.add_argument("--config", default=None)
+    musicxml.add_argument(
+        "--format",
+        choices=["musicxml", "mxl"],
+        default=None,
+        help=(
+            "Uitvoerformaat: .mxl (default) of .musicxml. "
+            "Bij een enkel bestand overschrijft een expliciete extensie dit."
+        ),
+    )
+    musicxml.add_argument(
+        "--do",
+        default=None,
+        help="Grondtoon, bijv. F4 (overschrijft bestand-metadata).",
+    )
+    musicxml.add_argument(
+        "--mode",
+        default=None,
+        help="Modus, bijv. major of minor (overschrijft bestand-metadata).",
+    )
+    musicxml.add_argument(
+        "--tempo",
+        default=None,
+        help="Tempo in BPM (overschrijft bestand-metadata).",
+    )
+    musicxml.add_argument(
+        "--musicxml-profile",
+        choices=["playback", "engraving"],
+        default=None,
+        help=(
+            "MusicXML-exportprofiel: playback (default, Coria/MuseScore) "
+            "of engraving (expliciete maatstrepen, typografie)."
+        ),
+    )
+
     return parser
 
 
@@ -106,6 +162,9 @@ def _run(args):
 
     if args.command == "build-markdown":
         return _cmd_build_markdown(args, config)
+
+    if args.command == "musicxml":
+        return _cmd_musicxml(args, config)
 
     print(f"Onbekend commando: {args.command}", file=sys.stderr)
     return 1
@@ -242,6 +301,154 @@ def _cmd_build_markdown(args, config):
     print(f"{len(result.markdown_files)} Markdownbestand(en) geschreven")
     print(f"{len(result.svg_files)} SVG-bestand(en) geschreven")
     return 0
+
+
+def _cmd_musicxml(args, config):
+    input_path = Path(args.input)
+
+    cli_overrides: dict[str, str] = {}
+    if args.do:
+        cli_overrides["do"] = args.do
+    if args.mode:
+        cli_overrides["mode"] = args.mode
+    if args.tempo:
+        cli_overrides["tempo"] = args.tempo
+    if args.musicxml_profile:
+        cli_overrides["musicxml-profile"] = args.musicxml_profile
+
+    output_suffix = _musicxml_batch_suffix(args)
+
+    if input_path.is_dir():
+        output_dir = Path(args.output)
+        output_dir.mkdir(parents=True, exist_ok=True)
+        written = 0
+        for vsa_file in sorted(input_path.rglob("*.vsa")):
+            rel = vsa_file.relative_to(input_path)
+            out_file = output_dir / rel.with_suffix(output_suffix)
+            out_file.parent.mkdir(parents=True, exist_ok=True)
+            rc = _export_vsa_to_musicxml(vsa_file, out_file, cli_overrides)
+            if rc != 0:
+                return rc
+            written += 1
+        for md_file in sorted(input_path.rglob("*.md")):
+            rel = md_file.relative_to(input_path)
+            out_subdir = output_dir / rel.with_suffix("")
+            rc, block_count = _export_md_to_musicxml(
+                md_file, out_subdir, cli_overrides, output_suffix=output_suffix
+            )
+            if rc != 0:
+                return rc
+            written += block_count
+        label = "MXL" if output_suffix == _MXL_SUFFIX else "MusicXML"
+        print(f"{written} {label}-bestand(en) geschreven")
+        return 0
+
+    output_path = Path(args.output)
+
+    if input_path.suffix.lower() == ".vsa":
+        out_path = _resolve_musicxml_output_path(output_path, args)
+        rc = _export_vsa_to_musicxml(input_path, out_path, cli_overrides)
+        if rc == 0:
+            print(f"MusicXML geschreven naar: {out_path}")
+        return rc
+
+    if input_path.suffix.lower() in {".md", ".markdown"}:
+        output_path.mkdir(parents=True, exist_ok=True)
+        rc, written = _export_md_to_musicxml(
+            input_path, output_path, cli_overrides, output_suffix=output_suffix
+        )
+        if rc == 0 and written:
+            label = "MXL" if output_suffix == _MXL_SUFFIX else "MusicXML"
+            print(f"{written} {label}-bestand(en) geschreven")
+        return rc
+
+    print(
+        f"Onbekend bestandstype: '{input_path.suffix}'. "
+        "Gebruik .vsa, .md of een map.",
+        file=sys.stderr,
+    )
+    return 1
+
+
+def _musicxml_batch_suffix(args) -> str:
+    return musicxml_output_suffix(format_name=args.format)
+
+
+def _resolve_musicxml_output_path(output_path: Path, args) -> Path:
+    if output_path.suffix.lower() in _KNOWN_SUFFIXES:
+        return output_path
+    return output_path.with_suffix(_musicxml_batch_suffix(args))
+
+
+def _export_vsa_to_musicxml(
+    input_path: Path,
+    output_path: Path,
+    cli_overrides: dict[str, str],
+) -> int:
+    text = input_path.read_text(encoding="utf-8")
+    frontmatter, vsa_body = parse_vsa_frontmatter(text)
+    fm_meta = frontmatter_to_block_metadata(frontmatter)
+
+    metadata = dict(DEFAULT_METADATA)
+    metadata.update(fm_meta)
+    metadata.update(cli_overrides)
+
+    explicit_keys = set(fm_meta.keys()) | set(cli_overrides.keys())
+
+    document = Parser(preserve_vsa_source_newlines(vsa_body)).parse()
+
+    try:
+        renderer = MusicXMLRenderer(metadata=metadata, explicit_keys=explicit_keys)
+        xml_str = renderer.render(document)
+    except MusicXMLExportError as exc:
+        print(f"{input_path}: fout bij MusicXML-export: {exc}", file=sys.stderr)
+        return 1
+
+    write_musicxml_output(output_path, xml_str)
+    return 0
+
+
+def _export_md_to_musicxml(
+    input_path: Path,
+    output_dir: Path,
+    cli_overrides: dict[str, str],
+    *,
+    output_suffix: str = _MUSICXML_SUFFIX,
+) -> tuple[int, int]:
+    text = input_path.read_text(encoding="utf-8")
+    blocks = parse_markdown_blocks(text)
+
+    if not blocks:
+        print(f"{input_path}: geen VSA-blokken gevonden.", file=sys.stderr)
+        return 0, 0
+
+    output_dir.mkdir(parents=True, exist_ok=True)
+    stem = input_path.stem
+    written = 0
+
+    for i, block in enumerate(blocks):
+        metadata = block.effective_metadata()
+        metadata.update(cli_overrides)
+        document = block.parse_body()
+
+        explicit_keys = set(block.metadata.keys()) | set(cli_overrides.keys())
+
+        try:
+            renderer = MusicXMLRenderer(metadata=metadata, explicit_keys=explicit_keys)
+            xml_str = renderer.render(document)
+        except MusicXMLExportError as exc:
+            print(
+                f"{input_path} (blok {i + 1}): fout bij MusicXML-export: {exc}",
+                file=sys.stderr,
+            )
+            return 1, written
+
+        suffix = f"-{i + 1}" if len(blocks) > 1 else ""
+        out_file = output_dir / f"{stem}{suffix}{output_suffix}"
+        write_musicxml_output(out_file, xml_str)
+        written += 1
+
+    return 0, written
 
 
 def _print_validation_messages(messages):

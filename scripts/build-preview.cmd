@@ -18,6 +18,10 @@ if errorlevel 1 exit /b 1
   examples\hugo-demo\static\vsa ^
   --output-mode shortcode
 if errorlevel 1 exit /b 1
+"%PY%" -m vsa.cli musicxml ^
+  examples\hugo-demo\content-source ^
+  examples\hugo-demo\static\vsa\mxl
+if errorlevel 1 exit /b 1
 "%PY%" scripts\update-nav-placeholders.py generated\preview\content
 if errorlevel 1 exit /b 1
 "%PY%" scripts\update-spacing-diagnostics-metadata.py generated\preview\content\voorbeelden\rendering\spacing-diagnostiek.md

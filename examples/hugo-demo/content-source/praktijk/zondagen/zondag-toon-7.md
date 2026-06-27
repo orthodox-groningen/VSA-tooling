@@ -12,10 +12,12 @@ Bron: koormap Groningen
 ## Tropaar (Toon 7)
 
 :::include "tropaar-zondag-toon-7.vsa" alt="Tropaar van de zondag, Toon 7" scale="85%":::
+:::coria   "tropaar-zondag-toon-7.vsa" label="Deze tropaar oefenen in Coria":::
 
 ## Kondak (Toon 7)
 
 :::include "kondak-zondag-toon-7.vsa" alt="Kondak van de zondag, Toon 7" scale="85%":::
+:::coria   "kondak-zondag-toon-7.vsa" label="Deze kondak oefenen in Coria":::
 
 :::include "tropaarmelodie-toon-7.jpg" alt="Tropaarmelodie (Toon 7)" scale="100%":::
 :::end-keep-together:::

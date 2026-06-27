@@ -1,6 +1,6 @@
 # Plan: Samenstelling, uitgaveprofielen en export-includes
 
-Status: **export-spec afgerond in bron** (juni 2026); Spoor B code (`:::include svg|coria|mxl`) nog open.
+Status: **Spoor B geïmplementeerd** (juni 2026): `:::include svg|coria|mxl` + demo-pagina; expliciete conversiestap in CI nog open.
 
 Normatieve contracten:
 [bron — exportcontracten](https://orthodox-groningen.github.io/bron/reference/exportcontracten/),

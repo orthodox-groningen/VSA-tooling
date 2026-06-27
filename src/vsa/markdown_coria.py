@@ -85,7 +85,11 @@ def resolve_coria_directives(
     return "\n".join(result_lines) + "\n"
 
 
-def _coria_shortcode(public_path: str, label: str) -> str:
+DEFAULT_MXL_DOWNLOAD_LABEL = "Download MusicXML"
+
+
+def emit_coria_shortcode(public_path: str, label: str) -> str:
+    """Hugo shortcode for Coria HTML or MXL deep-link."""
     if public_path.startswith(f"{DEFAULT_CORIA_HTML_URL_PREFIX}/"):
         tag = "coria-html"
     else:
@@ -93,14 +97,22 @@ def _coria_shortcode(public_path: str, label: str) -> str:
     return f'{{{{< {tag} src="{public_path}" label="{label}" >}}}}'
 
 
-def _parse_label(params: str | None) -> str | None:
+def emit_mxl_download_shortcode(public_path: str, label: str) -> str:
+    return f'{{{{< mxl-download src="{public_path}" label="{label}" >}}}}'
+
+
+def _coria_shortcode(public_path: str, label: str) -> str:
+    return emit_coria_shortcode(public_path, label)
+
+
+def parse_coria_label(params: str | None) -> str | None:
     if not params:
         return None
     match = _LABEL_ATTR.search(params)
     return match.group(1) if match else None
 
 
-def _parse_mode(params: str | None) -> CoriaMode:
+def parse_coria_mode(params: str | None) -> CoriaMode:
     if not params:
         return CoriaMode.AUTO
     match = _MODE_ATTR.search(params)
@@ -111,6 +123,14 @@ def _parse_mode(params: str | None) -> CoriaMode:
         return CoriaMode(value)
     except ValueError as exc:
         raise CoriaDirectiveError(f"Onbekende coria mode: {value!r}") from exc
+
+
+def _parse_label(params: str | None) -> str | None:
+    return parse_coria_label(params)
+
+
+def _parse_mode(params: str | None) -> CoriaMode:
+    return parse_coria_mode(params)
 
 
 def _opening_or_closing_fence(stripped: str) -> str:

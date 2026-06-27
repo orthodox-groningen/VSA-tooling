@@ -98,7 +98,7 @@ Status: `Geïmplementeerd`
 
 ### 2.2 Veralgemeniseerde `:::include` met exporttypes
 
-Status: `Open` — **spec compleet in bron**; implementatie Spoor B
+Status: `Geïmplementeerd` — expliciete conversiestap en MXL-kopie naar static nog open
 
 Normatieve contracten (parameters, validatie, fouten):
 [exportcontracten](https://orthodox-groningen.github.io/bron/reference/exportcontracten/).

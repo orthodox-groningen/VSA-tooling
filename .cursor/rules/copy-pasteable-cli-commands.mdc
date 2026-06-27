@@ -1,0 +1,24 @@
+---
+description: CLI-voorbeelden voor de gebruiker altijd plakbaar in cmd/PowerShell
+alwaysApply: true
+---
+
+# Kopieerbare command-line blokken
+
+Als je **commando's voor de gebruiker** geeft om lokaal uit te voeren (testen, build, deploy, git, enz.):
+
+1. Zet ze in een **enkel codeblok** dat in één keer gekopieerd en geplakt kan worden.
+2. Gebruik **Windows-paden** (`\`) en syntax die werkt in **cmd.exe**; waar nuttig ook een PowerShell-variant noemen.
+3. Begin met `cd /d` naar de juiste repo-map als context niet duidelijk is.
+4. Geen afgekapte regels (`...`), geen “voer daarna X uit” zonder het commando erbij.
+5. Korte toelichting **boven** het blok; het blok zelf is alleen uitvoerbare regels (eventueel `@echo off` en `REM`-regels voor stappen).
+
+Voorbeeld:
+
+```cmd
+cd /d C:\Git\orthodox-groningen\VSA-tooling
+vsa validate examples\hugo-demo\content-source
+vsa build-markdown examples\hugo-demo\content-source generated\hugo\content examples\hugo-demo\static\vsa
+```
+
+Geen bulletlijst met losse `commando`-fragmenten zonder volledig plakblok.

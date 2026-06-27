@@ -23,4 +23,6 @@ title: "Zondagen"
 | [Toon 7](tropaar-toon-7/) | [Toon 7](kondak-toon-7/) | [Toon 7](zondag-toon-7/) |
 | [Toon 8](tropaar-toon-8/) | [Toon 8](kondak-toon-8/) | [Toon 8](zondag-toon-8/) |
 
+[Demo exporttypes (svg · coria · mxl)](export-demo/)
+
 ---

@@ -379,3 +379,95 @@ def test_include_inside_code_fence_is_ignored(tmp_path):
 
     assert ":::include fragment.md:::" in result
     assert "Mag niet verschijnen." not in result
+
+
+def test_include_svg_export_equivalent_to_plain_vsa(tmp_path):
+    vsa_file = tmp_path / "melodie.vsa"
+    vsa_file.write_text("[:] {/Hei_} is de Heer. [//:]", encoding="utf-8")
+    source = tmp_path / "doc.md"
+
+    plain = resolve_includes(':::include "melodie.vsa" alt="Test":::\n', source)
+    explicit = resolve_includes(
+        ':::include svg "melodie.vsa" alt="Test":::\n', source
+    )
+    assert plain == explicit
+
+
+def test_include_coria_with_html_sibling(tmp_path):
+    content = tmp_path / "content"
+    md_dir = content / "praktijk"
+    md_dir.mkdir(parents=True)
+    vsa = md_dir / "melodie.vsa"
+    vsa.write_text("{/a_}", encoding="utf-8")
+    vsa.with_name("melodie.coria.html").write_text("<html></html>", encoding="utf-8")
+    md = md_dir / "page.md"
+    md.write_text(':::include coria "melodie.vsa" label="Oefenen":::\n', encoding="utf-8")
+
+    result = resolve_includes(
+        md.read_text(encoding="utf-8"),
+        md,
+        content_root=content,
+    )
+
+    assert 'coria-html src="/coria/praktijk/melodie.html"' in result
+    assert 'label="Oefenen"' in result
+
+
+def test_include_coria_falls_back_to_mxl(tmp_path):
+    content = tmp_path / "content"
+    md_dir = content / "praktijk"
+    md_dir.mkdir(parents=True)
+    vsa = md_dir / "melodie.vsa"
+    vsa.write_text("{/a_}", encoding="utf-8")
+    md = md_dir / "page.md"
+    md.write_text(':::include coria "melodie.vsa":::\n', encoding="utf-8")
+
+    result = resolve_includes(
+        md.read_text(encoding="utf-8"),
+        md,
+        content_root=content,
+    )
+
+    assert 'coria src="/vsa/mxl/praktijk/melodie.mxl"' in result
+    assert "coria-html" not in result
+
+
+def test_include_mxl_download(tmp_path):
+    content = tmp_path / "content"
+    md_dir = content / "praktijk"
+    md_dir.mkdir(parents=True)
+    vsa = md_dir / "melodie.vsa"
+    vsa.write_text("{/a_}", encoding="utf-8")
+    md = md_dir / "page.md"
+    md.write_text(':::include mxl "melodie.vsa" label="MXL":::\n', encoding="utf-8")
+
+    result = resolve_includes(
+        md.read_text(encoding="utf-8"),
+        md,
+        content_root=content,
+    )
+
+    assert 'mxl-download src="/vsa/mxl/praktijk/melodie.mxl"' in result
+    assert 'label="MXL"' in result
+
+
+def test_include_unknown_exporttype_raises(tmp_path):
+    source = tmp_path / "doc.md"
+    with pytest.raises(IncludeError, match="Onbekend exporttype"):
+        resolve_includes(':::include foo "melodie.vsa":::\n', source)
+
+
+def test_include_exporttype_with_md_raises(tmp_path):
+    included = tmp_path / "fragment.md"
+    included.write_text("Tekst.\n", encoding="utf-8")
+    source = tmp_path / "doc.md"
+    with pytest.raises(IncludeError, match="verwacht een .vsa-bron"):
+        resolve_includes(':::include svg "fragment.md":::\n', source)
+
+
+def test_include_coria_requires_content_root(tmp_path):
+    vsa = tmp_path / "melodie.vsa"
+    vsa.write_text("{/a_}", encoding="utf-8")
+    source = tmp_path / "doc.md"
+    with pytest.raises(IncludeError, match="content_root"):
+        resolve_includes(':::include coria "melodie.vsa":::\n', source)

@@ -2,12 +2,34 @@ import re
 import shutil
 from pathlib import Path
 
+from .content_assets import (
+    ContentAssetError,
+    DEFAULT_CORIA_HTML_URL_PREFIX,
+    DEFAULT_MXL_URL_PREFIX,
+    resolve_asset,
+)
+from .markdown_coria import (
+    DEFAULT_MXL_DOWNLOAD_LABEL,
+    CoriaDirectiveError,
+    emit_coria_shortcode,
+    emit_mxl_download_shortcode,
+    parse_coria_label,
+    parse_coria_mode,
+)
 from .yaml_frontmatter import frontmatter_to_block_metadata, parse_vsa_frontmatter
 
-# Path is either a quoted string (allowing spaces) or an unquoted token.
-# Optional parameters follow, separated by whitespace.
+EXPORT_TYPES = frozenset({"svg", "coria", "mxl"})
+
+# Optional exporttype, then path (quoted or unquoted), then optional parameters.
+INCLUDE_EXPORT_PATTERN = re.compile(
+    r'^:::include\s+(svg|coria|mxl)\s+(?:"([^"]+)"|(\S+))(?:\s+(.+?))?:::$'
+)
 INCLUDE_PATTERN = re.compile(
     r'^:::include\s+(?:"([^"]+)"|(\S+))(?:\s+(.+?))?:::$'
+)
+# Detect mistyped exporttype keywords (word + path, not a plain file include).
+INCLUDE_UNKNOWN_EXPORT_PATTERN = re.compile(
+    r'^:::include\s+(\w+)\s+(?:"([^"]+)"|(\S+))(?:\s+(.+?))?:::$'
 )
 
 _ALT_ATTR = re.compile(r'alt="([^"]*)"')
@@ -27,24 +49,16 @@ def resolve_includes(
     svg_assets_dir: Path | None = None,
     svg_assets_url_prefix: str = "/vsa",
     content_root: Path | None = None,
+    mxl_url_prefix: str = DEFAULT_MXL_URL_PREFIX,
+    coria_html_url_prefix: str = DEFAULT_CORIA_HTML_URL_PREFIX,
 ) -> str:
-    """Resolve :::include path [alt="..."]::: directives recursively.
+    """Resolve :::include [exporttype] path [params]::: directives recursively.
 
-    Supported extensions and their treatment:
-      .md / .markdown  — recursive transclusion
-      .vsa             — wrapped as ::: vsa-notatie ::: block; alt becomes
-                         block metadata so the rendered img uses it
-      .svg             — copied to svg_assets_dir (absolute URL) or kept
-                         relative (fallback when svg_assets_dir is None)
-      .jpg/.jpeg/.png/.webp/.gif
-                       — same as .svg: copied to svg_assets_dir when provided
+    Exporttypes ``svg``, ``coria``, and ``mxl`` refer to a ``.vsa`` source path.
+    Extension-based includes (``.md``, ``.vsa`` without exporttype, ``.svg``, …)
+    behave as before.
 
-    The optional alt="..." parameter sets the alt text of the emitted <img>.
-    For .vsa files it is injected as '# alt: ...' metadata inside the block.
-
-    content_root is used to derive collision-free filenames for asset copies.
-    Detects circular references via include_stack.
-    Code fences are respected.
+    ``content_root`` is required for exporttypes ``coria`` and ``mxl``.
     """
     if include_stack is None:
         include_stack = [source_path.resolve()]
@@ -72,14 +86,27 @@ def resolve_includes(
             result_lines.append(line)
             continue
 
-        match = INCLUDE_PATTERN.match(stripped)
-        if not match:
+        parsed = _parse_include_directive(stripped)
+        if parsed is None:
             result_lines.append(line)
             continue
 
-        rel_path = (match.group(1) or match.group(2)).strip()
-        params_str = match.group(3)
+        export_type, rel_path, params_str = parsed
         included_path = (source_path.parent / rel_path).resolve()
+
+        if export_type is not None:
+            _resolve_export_include(
+                export_type,
+                rel_path,
+                included_path,
+                params_str,
+                source_path,
+                result_lines,
+                content_root=content_root,
+                mxl_url_prefix=mxl_url_prefix,
+                coria_html_url_prefix=coria_html_url_prefix,
+            )
+            continue
 
         if included_path in include_stack:
             chain = " → ".join(str(p) for p in include_stack) + f" → {included_path}"
@@ -111,23 +138,18 @@ def resolve_includes(
                 svg_assets_dir=svg_assets_dir,
                 svg_assets_url_prefix=svg_assets_url_prefix,
                 content_root=content_root,
+                mxl_url_prefix=mxl_url_prefix,
+                coria_html_url_prefix=coria_html_url_prefix,
             )
             result_lines.extend(expanded.splitlines())
 
         elif suffix == ".vsa":
-            raw = included_path.read_text(encoding="utf-8")
-            frontmatter, vsa_body = parse_vsa_frontmatter(raw)
-            fm_meta = frontmatter_to_block_metadata(frontmatter)
-            result_lines.append("::: vsa-notatie")
-            for key, value in sorted(fm_meta.items()):
-                result_lines.append(f"# {key}: {value}")
-            if alt:
-                result_lines.append(f"# alt: {alt}")
-            if scale:
-                result_lines.append(f"# scale: {scale}")
-            if vsa_body:
-                result_lines.extend(vsa_body.splitlines())
-            result_lines.append(":::")
+            _append_vsa_notation_block(
+                result_lines,
+                included_path,
+                alt=alt,
+                scale=scale,
+            )
 
         elif suffix in {".svg"} | _RASTER_SUFFIXES:
             alt_val = alt if alt is not None else ""
@@ -153,6 +175,128 @@ def resolve_includes(
                 )
 
     return "\n".join(result_lines) + "\n"
+
+
+def _parse_include_directive(stripped: str) -> tuple[str | None, str, str | None] | None:
+    match = INCLUDE_EXPORT_PATTERN.match(stripped)
+    if match:
+        return (
+            match.group(1),
+            (match.group(2) or match.group(3)).strip(),
+            match.group(4),
+        )
+
+    match = INCLUDE_UNKNOWN_EXPORT_PATTERN.match(stripped)
+    if match:
+        keyword = match.group(1)
+        rel_path = (match.group(2) or match.group(3)).strip()
+        if (
+            keyword not in EXPORT_TYPES
+            and "." not in keyword
+            and rel_path.lower().endswith(".vsa")
+        ):
+            raise IncludeError(f"Onbekend exporttype: {keyword!r}")
+
+    match = INCLUDE_PATTERN.match(stripped)
+    if match:
+        return None, (match.group(1) or match.group(2)).strip(), match.group(3)
+
+    return None
+
+
+def _resolve_export_include(
+    export_type: str,
+    rel_path: str,
+    included_path: Path,
+    params_str: str | None,
+    source_path: Path,
+    result_lines: list[str],
+    *,
+    content_root: Path | None,
+    mxl_url_prefix: str,
+    coria_html_url_prefix: str,
+) -> None:
+    if included_path.suffix.lower() != ".vsa":
+        raise IncludeError(
+            f"Exporttype '{export_type}' verwacht een .vsa-bron, kreeg: '{rel_path}'"
+            f" (vanuit {source_path})"
+        )
+
+    if not included_path.exists():
+        raise IncludeError(
+            f"Bestand niet gevonden: '{rel_path}' (vanuit {source_path})"
+        )
+
+    if export_type == "svg":
+        _append_vsa_notation_block(
+            result_lines,
+            included_path,
+            alt=_parse_alt(params_str),
+            scale=_parse_scale(params_str),
+        )
+        return
+
+    if content_root is None:
+        raise IncludeError(
+            f"content_root is verplicht voor exporttype '{export_type}'"
+            f" (directive: {rel_path!r})"
+        )
+
+    try:
+        if export_type == "coria":
+            try:
+                coria_mode = parse_coria_mode(params_str)
+            except CoriaDirectiveError as exc:
+                raise IncludeError(str(exc)) from exc
+            asset = resolve_asset(
+                included_path,
+                content_root,
+                "coria",
+                mxl_url_prefix=mxl_url_prefix,
+                coria_html_url_prefix=coria_html_url_prefix,
+                coria_mode=coria_mode,
+            )
+            label = parse_coria_label(params_str) or "Oefenen in Coria"
+            result_lines.append(emit_coria_shortcode(asset.public_url_path, label))
+            return
+
+        if export_type == "mxl":
+            asset = resolve_asset(
+                included_path,
+                content_root,
+                "mxl",
+                mxl_url_prefix=mxl_url_prefix,
+                coria_html_url_prefix=coria_html_url_prefix,
+            )
+            label = parse_coria_label(params_str) or DEFAULT_MXL_DOWNLOAD_LABEL
+            result_lines.append(emit_mxl_download_shortcode(asset.public_url_path, label))
+            return
+    except ContentAssetError as exc:
+        raise IncludeError(f"{source_path}: {exc}") from exc
+
+    raise IncludeError(f"Onbekend exporttype: {export_type!r}")
+
+
+def _append_vsa_notation_block(
+    result_lines: list[str],
+    included_path: Path,
+    *,
+    alt: str | None,
+    scale: str | None,
+) -> None:
+    raw = included_path.read_text(encoding="utf-8")
+    frontmatter, vsa_body = parse_vsa_frontmatter(raw)
+    fm_meta = frontmatter_to_block_metadata(frontmatter)
+    result_lines.append("::: vsa-notatie")
+    for key, value in sorted(fm_meta.items()):
+        result_lines.append(f"# {key}: {value}")
+    if alt:
+        result_lines.append(f"# alt: {alt}")
+    if scale:
+        result_lines.append(f"# scale: {scale}")
+    if vsa_body:
+        result_lines.extend(vsa_body.splitlines())
+    result_lines.append(":::")
 
 
 def _parse_alt(params_str: str | None) -> str | None:

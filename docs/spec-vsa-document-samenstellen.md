@@ -36,6 +36,11 @@ Wordt door `vsa build-markdown` omgezet naar SVG en ingevoegd als shortcode of `
 
     :::include pad/naar/bestand.ext:::
 
+    :::include <exporttype> "pad/naar/melodie.vsa" [parameters]:::
+
+Exporttypes: `svg`, `coria`, `mxl` — alleen voor `.vsa`-bronverwijzingen.
+`:::coria` blijft een alias voor `:::include coria`. Zie [exportcontracten](https://orthodox-groningen.github.io/bron/reference/exportcontracten/).
+
 Het pad is **relatief aan het includerende bestand** (niet aan de projectroot).
 
 Ondersteunde bestandstypen:
@@ -230,7 +235,7 @@ Conversie (`vsa svg`, `vsa musicxml`):
 | -------------------------------- | ---------------------------------------------- |
 | `:::include "melodie.vsa"`       | Geïmplementeerd (SVG via VSA-blok)             |
 | `:::coria "melodie.vsa"`         | Geïmplementeerd                                |
-| `:::include svg\|coria\|mxl "…"` | Gepland (Spoor B); zie [todo.md](todo.md) §2.2 |
+| `:::include svg\|coria\|mxl "…"` | Geïmplementeerd; zie demo `export-demo.md` |
 
 Parameters (`alt`, `scale`, `label`, `mode`) — volledige beschrijving per exporttype
 in bron-docs; korte samenvatting blijft in sectie 3 en 3b hierboven.

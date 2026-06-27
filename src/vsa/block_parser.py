@@ -114,7 +114,7 @@ def _parse_metadata_line(line: str):
         return None
 
     hash_match = re.match(
-        r"^#\s*([A-Za-z0-9_-]+)\s*:\s*(.*?)\s*$",
+        r"^#\s*([A-Za-z0-9_.-]+)\s*:\s*(.*?)\s*$",
         line,
     )
 

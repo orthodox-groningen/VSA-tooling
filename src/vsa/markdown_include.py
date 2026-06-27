@@ -2,6 +2,8 @@ import re
 import shutil
 from pathlib import Path
 
+from .yaml_frontmatter import frontmatter_to_block_metadata, parse_vsa_frontmatter
+
 # Path is either a quoted string (allowing spaces) or an unquoted token.
 # Optional parameters follow, separated by whitespace.
 INCLUDE_PATTERN = re.compile(
@@ -114,12 +116,17 @@ def resolve_includes(
 
         elif suffix == ".vsa":
             raw = included_path.read_text(encoding="utf-8")
+            frontmatter, vsa_body = parse_vsa_frontmatter(raw)
+            fm_meta = frontmatter_to_block_metadata(frontmatter)
             result_lines.append("::: vsa-notatie")
+            for key, value in sorted(fm_meta.items()):
+                result_lines.append(f"# {key}: {value}")
             if alt:
                 result_lines.append(f"# alt: {alt}")
             if scale:
                 result_lines.append(f"# scale: {scale}")
-            result_lines.extend(raw.splitlines())
+            if vsa_body:
+                result_lines.extend(vsa_body.splitlines())
             result_lines.append(":::")
 
         elif suffix in {".svg"} | _RASTER_SUFFIXES:

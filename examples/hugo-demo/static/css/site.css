@@ -205,6 +205,14 @@ svg,
     page-break-inside: avoid;
   }
 
+  /* Lege alinea's uit markdown mogen geen extra ruimte in de afdruk geven. */
+  .keep-together > p:empty,
+  .print-only > p:empty {
+    display: none;
+    margin: 0;
+    padding: 0;
+  }
+
   .keep-together .vsa-notation {
     width: var(--vsa-scale, auto);
   }

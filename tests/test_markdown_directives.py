@@ -20,26 +20,33 @@ def test_pagebreak():
 def test_web_only_block():
     text = ":::web-only:::\nAlleen web.\n:::end-web-only:::\n"
     result = process_directives(text)
-    assert "{{% web-only %}}" in result
-    assert "{{% /web-only %}}" in result
+    assert "{{< web-only >}}" in result
+    assert "{{< /web-only >}}" in result
     assert "Alleen web." in result
     assert ":::web-only:::" not in result
     assert ":::end-web-only:::" not in result
 
 
+def test_opening_shortcode_does_not_insert_blank_line():
+    text = ":::web-only:::\n# Titel\n:::end-web-only:::\n"
+    result = process_directives(text)
+    assert "{{< web-only >}}\n# Titel" in result
+    assert "{{< web-only >}}\n\n# Titel" not in result
+
+
 def test_print_only_block():
     text = ":::print-only:::\nAlleen print.\n:::end-print-only:::\n"
     result = process_directives(text)
-    assert "{{% print-only %}}" in result
-    assert "{{% /print-only %}}" in result
+    assert "{{< print-only >}}" in result
+    assert "{{< /print-only >}}" in result
     assert "Alleen print." in result
 
 
 def test_keep_together_block():
     text = ":::keep-together:::\nSamen op één pagina.\n:::end-keep-together:::\n"
     result = process_directives(text)
-    assert "{{% keep-together %}}" in result
-    assert "{{% /keep-together %}}" in result
+    assert "{{< keep-together >}}" in result
+    assert "{{< /keep-together >}}" in result
     assert "Samen op één pagina." in result
     assert ":::keep-together:::" not in result
     assert ":::end-keep-together:::" not in result
@@ -48,9 +55,9 @@ def test_keep_together_block():
 def test_keep_together_with_scale():
     text = ':::keep-together scale="70%":::\nInhoud.\n:::end-keep-together:::\n'
     result = process_directives(text)
-    assert '{{% keep-together scale="70%" %}}' in result
-    assert "{{% /keep-together %}}" in result
-    assert "scale" not in result.split("{{% /keep-together %}}")[1]
+    assert '{{< keep-together scale="70%" >}}' in result
+    assert "{{< /keep-together >}}" in result
+    assert "scale" not in result.split("{{< /keep-together >}}")[1]
 
 
 def test_keep_together_without_scale_has_no_scale_attr():
@@ -68,12 +75,12 @@ def test_multiple_directives_in_sequence():
     )
     result = process_directives(text)
     assert '<div class="pagebreak"></div>' in result
-    assert "{{% web-only %}}" in result
-    assert "{{% /web-only %}}" in result
-    assert "{{% print-only %}}" in result
-    assert "{{% /print-only %}}" in result
-    assert "{{% keep-together %}}" in result
-    assert "{{% /keep-together %}}" in result
+    assert "{{< web-only >}}" in result
+    assert "{{< /web-only >}}" in result
+    assert "{{< print-only >}}" in result
+    assert "{{< /print-only >}}" in result
+    assert "{{< keep-together >}}" in result
+    assert "{{< /keep-together >}}" in result
 
 
 def test_directives_inside_code_fence_ignored():
@@ -88,7 +95,7 @@ def test_directives_inside_code_fence_ignored():
     assert ":::web-only:::" in result
     assert ":::end-web-only:::" in result
     assert '<div class="pagebreak"></div>' not in result
-    assert "{{% web-only %}}" not in result
+    assert "{{< web-only >}}" not in result
 
 
 def test_unclosed_web_only_raises():

@@ -52,7 +52,21 @@ tekst
     assert blocks[1].body == "{twee}"
 
 
-def test_block_body_can_be_parsed_to_ast():
+def test_parse_block_with_dotted_hash_metadata():
+    markdown = """::: vsa-notatie
+# identificatie.title: Tropaar
+# do: G4
+
+[\\:] {/tekst_}
+:::
+"""
+
+    block = parse_markdown_blocks(markdown)[0]
+
+    assert block.metadata["identificatie.title"] == "Tropaar"
+    assert block.metadata["do"] == "G4"
+    assert block.body.startswith("[\\:]")
+    assert "identificatie.title" not in block.body
     markdown = """::: vsa-notatie
 {/tekst_}
 :::

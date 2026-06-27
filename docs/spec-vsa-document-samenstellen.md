@@ -93,6 +93,12 @@ Wordt bij `build-markdown` omgezet naar Hugo-shortcode `coria-html` of `coria`.
   proportioneel mee omdat de SVGs een `viewBox` hebben. Gebruik dit wanneer
   twee of meer SVGs samen op één pagina moeten passen.
 
+Blok-directives worden Hugo-shortcodes (`{{< web-only >}}`, enz.). De
+shortcode-templates renderen de innerlijke markdown via `Page.RenderString`
+(zonder extra lege regels in de bron). Witruimte in content-source is daarmee
+**niet** van invloed op de afdruk-layout; alleen expliciete HTML/CSS (zoals
+`scale` op `keep-together`) beïnvloedt paginering.
+
 ---
 
 ## Sluitingstags

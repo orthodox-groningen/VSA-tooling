@@ -57,6 +57,31 @@ def test_include_vsa_with_alt(tmp_path):
     assert "{/Hei_}" in result
 
 
+def test_include_vsa_strips_yaml_frontmatter(tmp_path):
+    vsa_file = tmp_path / "melodie.vsa"
+    vsa_file.write_text(
+        "---\n"
+        "muziek:\n"
+        "  do: G4\n"
+        "  mode: minor\n"
+        "identificatie:\n"
+        "  title: Test\n"
+        "---\n"
+        "\n"
+        "[:] {/Hei_} is de Heer. [//:]",
+        encoding="utf-8",
+    )
+
+    source = tmp_path / "doc.md"
+    result = resolve_includes(':::include "melodie.vsa":::\n', source)
+
+    assert "identificatie:" not in result
+    assert "---" not in result
+    assert "# do: G4" in result
+    assert "# identificatie.title: Test" in result
+    assert "{/Hei_}" in result
+
+
 def test_include_svg_relative_fallback(tmp_path):
     """Without svg_assets_dir, a relative src is emitted (test/non-Hugo context)."""
     svg_file = tmp_path / "afbeelding.svg"

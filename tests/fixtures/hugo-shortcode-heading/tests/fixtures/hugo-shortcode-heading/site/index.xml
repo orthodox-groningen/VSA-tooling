@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>t</title>
+    <link>/</link>
+    <description>Recent content on t</description>
+    <generator>Hugo</generator>
+    <language>nl</language>
+    <atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>test</title>
+      <link>/page/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/page/</guid>
+      <description>&lt;!-- raw HTML omitted --&gt;&#xA;&lt;h1 id=&#34;zondag---toon-3&#34;&gt;Zondag - Toon 3&lt;/h1&gt;&#xA;&lt;p&gt;Bron: koormap&lt;/p&gt;&#xA;&lt;!-- raw HTML omitted --&gt;&#xA;&lt;!-- raw HTML omitted --&gt;&#xA;&lt;h2 id=&#34;tropaar-toon-3&#34;&gt;Tropaar (Toon 3)&lt;/h2&gt;&#xA;&lt;p&gt;Some text&lt;/p&gt;&#xA;&lt;!-- raw HTML omitted --&gt;</description>
+    </item>
+  </channel>
+</rss>

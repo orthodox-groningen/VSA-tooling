@@ -1,1 +1,1 @@
-<div class="print-only">{{ .Inner }}</div>
+<div class="print-only">{{ .Page.RenderString (printf "\n%s" .Inner) }}</div>

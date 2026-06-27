@@ -88,7 +88,7 @@ def process_directives(text: str) -> str:
                     f" ':::{name}:::' binnen open ':::{current_name}:::'"
                 )
             state = new_state
-            result_lines.append(f"{{{{% {name} %}}}}")
+            result_lines.append(_opening_shortcode(name))
             continue
 
         kt_match = _KEEP_TOGETHER_OPEN.match(stripped)
@@ -102,9 +102,9 @@ def process_directives(text: str) -> str:
             state = _State.KEEP_TOGETHER
             scale = _parse_scale(kt_match.group(1))
             if scale:
-                result_lines.append(f'{{{{% keep-together scale="{scale}" %}}}}')
+                result_lines.append(_opening_shortcode("keep-together", f'scale="{scale}"'))
             else:
-                result_lines.append("{{% keep-together %}}")
+                result_lines.append(_opening_shortcode("keep-together"))
             continue
 
         if stripped in _CLOSING:
@@ -121,7 +121,7 @@ def process_directives(text: str) -> str:
                     f" maar zag '{end_tag}'"
                 )
             name = _SHORTCODE[state]
-            result_lines.append(f"{{{{% /{name} %}}}}")
+            result_lines.append(_closing_shortcode(name))
             state = _State.NORMAL
             continue
 
@@ -141,6 +141,16 @@ def _parse_scale(params_str: str | None) -> str | None:
         return None
     m = _SCALE_ATTR.search(params_str)
     return m.group(1) if m else None
+
+
+def _opening_shortcode(name: str, params: str = "") -> str:
+    if params:
+        return "{{< " + name + " " + params + " >}}"
+    return "{{< " + name + " >}}"
+
+
+def _closing_shortcode(name: str) -> str:
+    return "{{< /" + name + " >}}"
 
 
 def _opening_or_closing_fence(stripped: str) -> str:

@@ -7,8 +7,6 @@ title: "Demo: exporttypes"
 
 Demonstratie van exportmechanismen op één `.vsa`-bron.
 Conversie (`vsa svg`, `vsa musicxml`) gebeurt in de build; deze pagina toont export.
-
-Zie ook [Zondag toon 3](zondag-toon-3/) voor de klassieke `:::include` / `:::coria` syntax.
 :::end-web-only:::
 
 :::keep-together scale="100%":::

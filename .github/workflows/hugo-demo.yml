@@ -13,6 +13,13 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Checkout bron repository
+        uses: actions/checkout@v4
+        with:
+          repository: orthodox-groningen/bron
+          path: vendor/bron
+          ref: main
+
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
@@ -31,6 +38,9 @@ jobs:
       - name: Run tests
         run: |
           python -m pytest
+
+      - name: Sync zondag bronbestanden
+        run: python scripts/sync_bron_zondagen.py --bron-root vendor/bron
 
       - name: Validate VSA demo content
         run: |

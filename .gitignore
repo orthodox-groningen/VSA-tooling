@@ -14,6 +14,12 @@ examples/hugo-demo/.hugo_build.lock
 # Generated SVG assets
 examples/hugo-demo/static/vsa/
 
+# Zondag-zangstukken: gesynchroniseerd uit orthodox-groningen/bron (sync_bron_zondagen.py)
+examples/hugo-demo/content-source/praktijk/zondagen/tropaar-zondag-toon-*.vsa
+examples/hugo-demo/content-source/praktijk/zondagen/kondak-zondag-toon-*.vsa
+examples/hugo-demo/content-source/praktijk/zondagen/tropaarmelodie-toon-*.jpg
+examples/hugo-demo/content-source/praktijk/zondagen/*.coria.html
+
 # Local SVG experiments
 /*.svg
 zzz/

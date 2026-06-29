@@ -1,10 +1,28 @@
 """Tests for Coria play URL helper and Hugo shortcode."""
 
-import pytest
 from pathlib import Path
 from urllib.parse import parse_qs, urlparse
 
+import pytest
+
 from vsa.coria import coria_play_url
+
+BRON_CORIA_CANDIDATES = (
+    Path(
+        "vendor/bron/zangstukken/troparion-zondag-toon-3/sources/vsa/groningen.coria.html"
+    ),
+    Path(
+        "../bron/zangstukken/troparion-zondag-toon-3/sources/vsa/groningen.coria.html"
+    ),
+)
+
+
+def bron_coria_html_path() -> Path | None:
+    """Pad naar Coria-HTML voor tropaar toon 3 in een bron-checkout."""
+    for path in BRON_CORIA_CANDIDATES:
+        if path.is_file():
+            return path
+    return None
 
 
 def test_coria_play_url_encodes_score_url():
@@ -39,14 +57,15 @@ def test_coria_html_shortcode_links_to_hosted_html():
     assert "coria.nl/play_from_url" not in text
     assert 'rel="noopener noreferrer"' in text
 
+
 def test_coria_html_example_exists_for_tropaar_toon_3():
-    candidates = [
-        Path("vendor/bron/zangstukken/troparion-zondag-toon-3/sources/vsa/groningen.coria.html"),
-        Path("../bron/zangstukken/troparion-zondag-toon-3/sources/vsa/groningen.coria.html"),
-    ]
-    for path in candidates:
-        if path.is_file():
-            assert "song_data" in path.read_text(encoding="utf-8")
-            return
-    pytest.skip("bron-checkout niet aanwezig (vendor/bron of sibling ../bron)")
-    
+    path = bron_coria_html_path()
+    if path is None:
+        if Path("vendor/bron").is_dir():
+            pytest.fail(
+                "vendor/bron is aanwezig maar "
+                "troparion-zondag-toon-3/sources/vsa/groningen.coria.html ontbreekt"
+            )
+        pytest.skip("bron-checkout niet aanwezig (vendor/bron of sibling ../bron)")
+
+    assert "song_data" in path.read_text(encoding="utf-8")

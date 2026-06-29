@@ -7,17 +7,22 @@ echo === VSA + Hugo build ===
 echo.
 echo Python: %PY%
 echo.
-echo [1/5] Clean generated Hugo artifacts
+echo [1/6] Sync zondag bronbestanden
+"%PY%" scripts\sync_bron_zondagen.py --bron-root ..\bron
+if errorlevel 1 exit /b 1
+echo OK
+echo.
+echo [2/6] Clean generated Hugo artifacts
 "%PY%" scripts\clean-hugo-build-artifacts.py
 if errorlevel 1 exit /b 1
 echo OK
 echo.
-echo [2/5] Validate content
+echo [3/6] Validate content
 "%PY%" -m vsa.cli validate examples\hugo-demo\content-source
 if errorlevel 1 exit /b 1
 echo OK
 echo.
-echo [3/5] Generate Markdown + SVG
+echo [4/6] Generate Markdown + SVG
 "%PY%" -m vsa.cli build-markdown ^
   examples\hugo-demo\content-source ^
   generated\hugo\content ^
@@ -36,14 +41,14 @@ if errorlevel 1 exit /b 1
 if errorlevel 1 exit /b 1
 echo OK
 echo.
-echo [4/5] Prepare Hugo input
+echo [5/6] Prepare Hugo input
 if exist examples\hugo-demo\content rmdir /s /q examples\hugo-demo\content
 xcopy /e /i /y generated\hugo\content examples\hugo-demo\content >nul
 if exist examples\hugo-demo\static\vsa rmdir /s /q examples\hugo-demo\static\vsa
 xcopy /e /i /y generated\hugo\static\vsa examples\hugo-demo\static\vsa >nul
 echo OK
 echo.
-echo [5/5] Build Hugo site
+echo [6/6] Build Hugo site
 hugo ^
   --source examples\hugo-demo ^
   --contentDir ..\..\generated\hugo\content ^

@@ -419,7 +419,6 @@ def _export_md_to_musicxml(
     blocks = parse_markdown_blocks(text)
 
     if not blocks:
-        print(f"{input_path}: geen VSA-blokken gevonden.", file=sys.stderr)
         return 0, 0
 
     output_dir.mkdir(parents=True, exist_ok=True)

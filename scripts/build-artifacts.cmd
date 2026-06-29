@@ -7,16 +7,21 @@ echo.
 echo === Build local artifacts ===
 echo.
 
-echo [1/4] Clean generated artifacts
+echo [1/5] Sync zondag bronbestanden
+python scripts\sync_bron_zondagen.py --bron-root ..\bron
+if errorlevel 1 exit /b 1
+
+echo.
+echo [2/5] Clean generated artifacts
 if exist generated\artifacts rmdir /s /q generated\artifacts
 
 echo.
-echo [2/4] Validate content
+echo [3/5] Validate content
 vsa validate examples\hugo-demo\content-source
 if errorlevel 1 exit /b 1
 
 echo.
-echo [3/4] Generate Markdown and SVG
+echo [4/5] Generate Markdown and SVG
 vsa build-markdown ^
   examples\hugo-demo\content-source ^
   generated\artifacts\content ^
@@ -24,7 +29,7 @@ vsa build-markdown ^
 if errorlevel 1 exit /b 1
 
 echo.
-echo [4/4] Done
+echo [5/5] Done
 echo.
 echo Generated:
 echo - generated\artifacts\content

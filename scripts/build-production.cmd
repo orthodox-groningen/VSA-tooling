@@ -8,6 +8,8 @@ echo === Build production candidate ===
 echo.
 if exist generated\production rmdir /s /q generated\production
 if exist examples\hugo-demo\static\vsa rmdir /s /q examples\hugo-demo\static\vsa
+call scripts\sync-bron-zondagen.cmd
+if errorlevel 1 exit /b 1
 "%PY%" -m vsa.cli validate examples\hugo-demo\content-source
 if errorlevel 1 exit /b 1
 "%PY%" scripts\assert-real-font-metrics.py

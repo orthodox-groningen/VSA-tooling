@@ -8,7 +8,7 @@ echo === Build local artifacts ===
 echo.
 
 echo [1/5] Sync zondag bronbestanden
-python scripts\sync_bron_zondagen.py --bron-root ..\bron
+call scripts\sync-bron-zondagen.cmd
 if errorlevel 1 exit /b 1
 
 echo.

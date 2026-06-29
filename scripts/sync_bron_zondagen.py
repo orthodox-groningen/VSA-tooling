@@ -45,8 +45,8 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--bron-root",
         type=Path,
-        required=True,
-        help="Pad naar bron-checkout (bevat zangstukken/).",
+        default=None,
+        help="Pad naar bron-checkout (default: vendor/bron of sibling ../bron).",
     )
     parser.add_argument(
         "--output-dir",
@@ -144,9 +144,26 @@ def sync_zangstuk(
     return 0
 
 
+def resolve_bron_root(explicit: Path | None = None) -> Path:
+    if explicit is not None:
+        return explicit.resolve()
+
+    repo = find_repo_root(Path(__file__).parent)
+    for candidate in (repo / "vendor" / "bron", repo.parent / "bron"):
+        if (candidate / "zangstukken").is_dir():
+            return candidate.resolve()
+
+    print(
+        "Fout: bron-repo niet gevonden. Checkout naar vendor/bron, "
+        "gebruik sibling ../bron, of geef --bron-root op.",
+        file=sys.stderr,
+    )
+    raise SystemExit(1)
+
+
 def main() -> int:
     args = parse_args()
-    bron_root = args.bron_root.resolve()
+    bron_root = resolve_bron_root(args.bron_root)
     zangstukken_dir = bron_root / "zangstukken"
 
     if not zangstukken_dir.is_dir():

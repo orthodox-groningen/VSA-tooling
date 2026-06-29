@@ -8,7 +8,8 @@ echo.
 echo Python: %PY%
 echo.
 echo [1/6] Sync zondag bronbestanden
-"%PY%" scripts\sync_bron_zondagen.py --bron-root ..\bron
+call scripts\sync-bron-zondagen.cmd
+if errorlevel 1 exit /b 1
 if errorlevel 1 exit /b 1
 echo OK
 echo.

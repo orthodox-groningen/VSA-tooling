@@ -8,6 +8,12 @@ def test_assert_real_font_metrics_script_exists():
     assert ASSERT.exists()
 
 
+def test_build_hugo_syncs_bron_before_build():
+    text = BUILD.read_text(encoding="utf-8")
+    assert "sync-bron-zondagen.cmd" in text
+    assert text.find("sync-bron-zondagen") < text.find("build-markdown")
+
+
 def test_build_hugo_uses_venv_python_when_available():
     text = BUILD.read_text(encoding="utf-8")
     assert 'if exist .venv\\Scripts\\python.exe set "PY=.venv\\Scripts\\python.exe"' in text

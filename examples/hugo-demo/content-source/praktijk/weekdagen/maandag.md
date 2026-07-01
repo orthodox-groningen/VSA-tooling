@@ -2,7 +2,7 @@
 title: "Maandag - de Heilige Engelen"
 source: "Liturgikon"
 ---
-
+<!-- 
 {{< navbuttons 
     "Antifonen | ../antifonen-hemelum/"
     "Maandag   | ../maandag/"
@@ -13,7 +13,7 @@ source: "Liturgikon"
     "Zaterdag  | ../zaterdag/"
 >}}
 
----
+--- -->
 
 ## Maandag - de Heilige Engelen
 
@@ -31,7 +31,7 @@ Behoed ons door uw bovenzinnelijke {heer_}{/lijk_}{\heid_}, *
 // redt ons uit de gevaren, Aanvoerders der Krachten uit den {-&/ho_&_}{\ge_}. [//:]
 :::
 </details>
-
+<!-- 
 <details>
   <summary>THEOTOKION (Toon 4)</summary>
 
@@ -47,7 +47,7 @@ Verheug u, Ge{ze_}{/gen_}{\de_}, *
 {/ver}heug u, Ver{heer_}{lijk_}{\te_}: * 
 de Heer is {-&/met_&_} {\u_}. [//:]
 :::
-</details>
+</details> -->
 
 <details>
   <summary>KONDAKION (Toon 2)</summary>
@@ -72,11 +72,11 @@ vuurvlammen tot Uw {/die_}{\na_}{\ren_}. [/:]
 :::
 Gij gebruikt wolken als voertuig, Gij wandelt op de wieken der wind. 
 Den Heer zij roem in eeuwigheid; dat de Heer Zich verheuge over Zijn werken.
-
+<!-- 
 #### ALLELUIA Ps. 148
 
 Looft den Heer uit de hemelen, 
 looft Hem in den hoge. 
 Looft Hem, al Zijn Engelen; 
-looft Hem, al Zijn Krachten.
+looft Hem, al Zijn Krachten. -->
 </details>

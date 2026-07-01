@@ -16,7 +16,7 @@ en door ar-moe-de rijk ge{-&/wor_&_}{\den_},
 
 ### KONDAKION t. 2
 ::: vsa-notatie
-[/:] God-de-lij-ke {/Roe_}per, {/Ba}{/zuin_} van de {\Geest_}
+[/:] God-de-lij-ke {/Roe_}per, {/Ba}{/zuin_} {\van} de {\Geest_}
 en plan-ter {\van_} het ge{\loof_},
 {/Uit}{/roei_}er van {/het} {/bij_}{\ge_}{\loof_},
 Be-min-de der Hei-li-ge Drie-{\een_}{\heid_}

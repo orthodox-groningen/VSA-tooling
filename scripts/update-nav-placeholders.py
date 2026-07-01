@@ -133,26 +133,66 @@ def child_section_items(directory: Path) -> list[str]:
 def child_page_items(directory: Path) -> list[str]:
     pages = [
         item for item in sorted(directory.glob("*.md"), key=sort_key)
-        if item.name != "_index.md"
+        if is_nav_listed_page(item)
     ] if directory.exists() else []
 
     if not pages:
         return ["<!-- Geen items voor PAGES. -->"]
 
-    return [f"- [{title_for_page(item)}]({item.stem}/)" for item in pages]
+    return [f"- [{title_for_page(item)}]({page_nav_href(item)})" for item in pages]
 
 
 def child_page_items_here(directory: Path) -> list[str]:
     """Toont alleen pagina’s in dezelfde directory, zonder recursie."""
     pages = [
         item for item in sorted(directory.glob("*.md"), key=sort_key)
-        if item.name != "_index.md"
+        if is_nav_listed_page(item)
     ]
 
     if not pages:
         return ["<!-- Geen items voor PAGES-HERE. -->"]
 
-    return [f"- [{title_for_page(item)}]({item.stem}/)" for item in pages]
+    return [f"- [{title_for_page(item)}]({page_nav_href(item)})" for item in pages]
+
+
+def is_nav_listed_page(path: Path) -> bool:
+    if path.name == "_index.md":
+        return False
+    flags = frontmatter_flags(path)
+    if flags.get("draft"):
+        return False
+    if flags.get("vsa_nav_exclude"):
+        return False
+    return True
+
+
+def page_nav_href(path: Path) -> str:
+    """Hugo permalink-stem (lowercase) — nodig voor case-sensitive publicatie (Linux)."""
+    return f"{path.stem.lower()}/"
+
+
+def frontmatter_flags(path: Path) -> dict[str, bool]:
+    if not path.exists():
+        return {}
+
+    text = path.read_text(encoding="utf-8")
+    if not text.startswith("---"):
+        return {}
+
+    flags: dict[str, bool] = {}
+    for line in text.splitlines()[1:]:
+        if line.strip() == "---":
+            break
+        if ":" not in line:
+            continue
+        key, value = line.split(":", 1)
+        key = key.strip().lower()
+        if key not in ("draft", "vsa_nav_exclude"):
+            continue
+        normalized = value.strip().strip("\"'").lower()
+        flags[key] = normalized in ("true", "yes", "1")
+
+    return flags
 
 
 def title_for_dir(path: Path) -> str:

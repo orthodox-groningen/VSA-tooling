@@ -10,7 +10,7 @@ sources:
 <details>
   <summary>1e Antifoon (weekdagen)</summary>
 
-Losse representatie in [parochie-lokaal](../../lokaal/antifoon-1-weekdagen/liturgikon-weekdagen/hemelum/); hier via include:
+Losse representatie in [parochie-lokaal](https://github.com/orthodox-groningen/bron/blob/main/docs/manuals/parochie-lokaal-zangstukken.md) (`content-source/lokaal/…`); hier via include:
 
 :::include svg "../../lokaal/antifoon-1-weekdagen/liturgikon-weekdagen/hemelum/repr/hemelum.vsa" alt="1e antifoon weekdagen (Hemelum)":::
 

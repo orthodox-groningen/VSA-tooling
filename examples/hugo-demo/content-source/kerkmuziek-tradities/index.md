@@ -11,6 +11,7 @@ Deze pagina is een **oriëntatie**: wat er zoal is, waar je het kunt **beluister
 {{< navbuttons
     "Home                 | ../"
     "Liturgikon-notatie   | ../liturgikon-notatie/"
+    "Zangstuk-identificatie | ../zangstuk-identificatie/"
     "Voorbeelden          | ../voorbeelden/"
     "Praktijk             | ../praktijk/"
 >}}
@@ -106,7 +107,7 @@ Het makkelijkst om **obikhod, kievan en znamenny naast elkaar** te horen:
 | --- | --- |
 | Relatieve toonhoogte boven/onder tekst | `{/}` `{\\}` scopes en halftoon-prefix `#` / `b` |
 | Eén melodielijn in het boek | VSA-notatie is **één stem**; meerstemmigheid zit in de **uitvoering**, niet in het Liturgikon |
-| Veel tradities, één liturgische tekst | Verschillende **varianten** en **uitvoeringsvormen** (terminologie: zie geplande `terminologie.md` in bron-repo) |
+| Veel tradities, één liturgische tekst | Verschillende **varianten** en **uitvoeringsvormen** — zie [Zangstuk-identificatie](../zangstuk-identificatie/) |
 
 VSA is bedoeld om **parochiepraktijk** digitaal vast te leggen — niet om znamenny-kryuki of volledige vierstemmige partituren te vervangen.
 

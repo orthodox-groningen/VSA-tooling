@@ -30,7 +30,8 @@ de eenvoudigste voorbeelden genomen.
 
 Zie [Kerkmuziektradities en bronnen](../kerkmuziek-tradities/) voor een overzicht 
 van Slavische en andere zangtradities, waar je ze kunt beluisteren, en waar 
-openbaar partituur- en scanmateriaal te vinden is.
+openbaar partituur- en scanmateriaal te vinden is. Voor **variant**, **uitvoeringsvorm** 
+en **aliassen** (meertalig, case-insensitive): [Zangstuk-identificatie](../zangstuk-identificatie/).
 
 Alle russische componisten hebben ook kerkmuziek geschreven. 
 Veel daarvan draagt een concertkarakter of is slechts voor grotere koren geschikt. 

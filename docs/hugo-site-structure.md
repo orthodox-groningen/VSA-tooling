@@ -4,11 +4,17 @@
 
 ```text
 content-source/
-├── kerkmuziek-tradities/   # tradities, luisterlinks, partituren (oriëntatie)
-├── liturgikon-notatie/     # Liturgikon-notatie uitleg (1968)
+├── kerkmuziek-tradities/
+├── liturgikon-notatie/
+├── zangstuk-identificatie/
+├── lokaal/                 # parochie-lokaal zangmateriaal (manifest + .vsa)
 ├── voorbeelden/
 └── praktijk/
 ```
+
+Zie [parochie-lokaal-vsa.md](parochie-lokaal-vsa.md) en [bron — parochie-lokaal](https://github.com/orthodox-groningen/bron/blob/main/docs/manuals/parochie-lokaal-zangstukken.md).
+
+Repo-docs: [docs/zangstuk-identificatie.md](zangstuk-identificatie.md) (link naar bron).
 
 ## `voorbeelden/`
 

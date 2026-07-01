@@ -23,6 +23,8 @@ bron/
 ├── LICENSE-CODE             # MIT — eventuele scripts/tools
 ├── .gitignore
 ├── docs/
+│   ├── specs/
+│   │   └── terminologie.md       # vier niveaus, aliassen (canoniek in bron)
 │   ├── zangstuk-formaat.md       # specificatie van zangstuk.yaml en .vsa
 │   └── bron-repo-specificatie.md # dit document
 ├── zangstukken/

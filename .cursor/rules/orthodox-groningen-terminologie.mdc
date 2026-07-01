@@ -1,34 +1,33 @@
 ---
-description: Normatieve terminologie voor alle orthodox-groningen repo's (R1–R5)
+description: Normatieve terminologie orthodox-groningen — lees bron, dupliceer niet
 alwaysApply: true
 ---
 
 # Terminologie orthodox-groningen
 
-**Canonieke glossary:** `bron/docs/specs/terminologie.md` (spiegel in VSA-tooling: `docs/specs/terminologie.md`).
+**Canonieke glossary (alleen hier):** `bron/docs/specs/terminologie.md`
+→ https://github.com/orthodox-groningen/bron/blob/main/docs/specs/terminologie.md
+
+**Dupliceer normatieve specs niet** in andere repo's — link ernaar. Alleen tool-specifieke docs horen in tool-repo's (bijv. VSA-syntax in VSA-tooling).
 
 Bindend voor docs, metadata, yaml, code-commentaar, issues en PR-teksten in **alle** repo's van github.com/orthodox-groningen.
 
-## Gebruiksregels
+## Gebruiksregels (R1–R5)
 
-1. **Gedefinieerde term** → gebruik **precies** de betekenis uit de glossary (R1).
-2. **Concept met term** → gebruik **die term**, geen verwarrend gangbaar synoniem (R2).
-3. **Geen ad-hoc termen** → wijzigingen alleen via glossary-PR op `bron` (R3).
-4. **Ids canoniek** → opslag/paden: `[a-z0-9_-]+`; aliassen alleen op invoergrens (R5).
+1. **Gedefinieerde term** → precies de betekenis uit de glossary.
+2. **Concept met term** → gebruik die term (geen verwarrend gangbaar synoniem).
+3. **Geen ad-hoc termen** → wijzigingen alleen via PR op `bron`.
+4. **Ids canoniek** → opslag/paden: `[a-z0-9_-]+`; aliassen alleen op invoergrens.
 
 ## Vier niveaus
 
 `zangstuk-id` → `variant-id` → `uitvoeringsvorm-id` → `representatie-id` (0..n).
 
-- **Variant:** andere melodie, zelfde liturgische functie (bijv. `kastorski` vs `obikhod`).
-- **Uitvoeringsvorm (uv):** wat je hoort; operationele test: niet tegelijk als één versie uitvoerbaar.
-- **Representatie:** concrete notatie (`.vsa`, scan) onder één uitvoeringsvorm.
-
 ## Verboden / verouderd
 
 - `uv-id` → `uitvoeringsvorm-id`
-- term **uitvoeringsalternatief** → **uitvoeringsvorm**
+- afkorting `uv` → schrijf **uitvoeringsvorm** uit
+- **uitvoeringsalternatief** → **uitvoeringsvorm**
 - `variant-id: standaard` → expliciet id
-- fictieve voorbeelden (`russisch-klomp`, …) → feitelijke ids (`kastorski`, `obikhod`)
 
-Bij twijfel: lees `docs/specs/terminologie.md` § disambiguatie variant.
+Documentatie-eigendom: `bron/docs/specs/documentatie-eigendom.md`.

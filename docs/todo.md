@@ -137,3 +137,27 @@ Te onderzoeken bij herziening van [spec-vsa-document-samenstellen.md](spec-vsa-d
 - Moet nesting toegestaan worden (en zo ja, welke combinaties)?
 - Of moet de authoring-conventie worden aangepast (sibling i.p.v. genest)?
 - Hoe gedraagt geneste content zich bij `@media print` vs. browser?
+
+## 3. Zangstuk-identificatie en parochie-lokaal materiaal
+
+### 3.1 Terminologie (vier niveaus + aliassen)
+
+Status: **Afgerond** (werkversie)
+
+- Normatief: [bron/docs/specs/terminologie.md](https://github.com/orthodox-groningen/bron/blob/main/docs/specs/terminologie.md) (stub: [specs/terminologie.md](specs/terminologie.md)).
+- [documentatie-eigendom](https://github.com/orthodox-groningen/bron/blob/main/docs/specs/documentatie-eigendom.md): geen duplicaten; VSA-specs in `docs/spec/`.
+- Alias-resolver in code: **open** (fase 2).
+
+### 3.2 Parochie-lokaal model (map `lokaal/`, manifest, promotie)
+
+Status: **Geïmplementeerd** (demo + docs)
+
+- [parochie-lokaal-zangstukken.md](parochie-lokaal-zangstukken.md)
+- Demo: `examples/hugo-demo/content-source/lokaal/` + include in `antifonen-hemelum.md`
+- Tests: [test_hugo_lokaal_zangstukken.py](../tests/test_hugo_lokaal_zangstukken.py)
+
+### 3.3 Hugo rootSections (github.io-links)
+
+Status: **Afgerond**
+
+`internal-link-url.html` bevat `kerkmuziek-tradities` en `zangstuk-identificatie`.

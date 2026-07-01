@@ -1,0 +1,7 @@
+# Parochie-lokaal manifest (subset) — variant-niveau
+zangstuk_id: antifoon-1-weekdagen
+variant_id: liturgikon-weekdagen
+title: "1e antifoon weekdagen (Liturgikon-melodielijn)"
+
+aliases:
+  - { text: "1e antifoon weekdagen", lang: nl }

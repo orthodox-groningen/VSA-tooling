@@ -3,7 +3,7 @@
 {{- if $passThrough -}}
 {{- $dest -}}
 {{- else -}}
-{{- $rootSections := slice "liturgikon-notatie" "voorbeelden" "praktijk" "zondag" -}}
+{{- $rootSections := slice "kerkmuziek-tradities" "liturgikon-notatie" "zangstuk-identificatie" "voorbeelden" "praktijk" "zondag" -}}
 {{- $clean := strings.TrimPrefix "/" $dest -}}
 {{- $firstSegment := index (split (strings.TrimSuffix "/" $clean) "/") 0 -}}
 {{- if in $rootSections $firstSegment -}}

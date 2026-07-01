@@ -2,7 +2,7 @@
 title: "Woensdag — het Heilig Kruis"
 source: "Liturgikon"
 ---
-
+<!-- 
 {{< navbuttons 
     "Antifonen | ../antifonen-hemelum/"
     "Maandag   | ../maandag/"
@@ -13,7 +13,7 @@ source: "Liturgikon"
     "Zaterdag  | ../zaterdag/"
 >}}
 
----
+--- -->
 
 ## Woensdag — het Heilig Kruis
 
@@ -26,7 +26,7 @@ source: "Liturgikon"
 {\en} bescherm Uw Gemeente {\door_} {Uw_} {\Kruis_}. [:]
 :::
 </details>
-
+<!-- 
 <details>
   <summary>THEOTOKION (Toon 1, als vrijdag)</summary>
 
@@ -37,7 +37,7 @@ source: "Liturgikon"
 wij worden be{/&/waakt_&_} {\\door} het Kruis {/van} {/Uw} {/Zoon_}; * 
 {\daar}om willen wij U vroom ver{/hef__}{\fen_}. [//:]
 :::
-</details>
+</details> -->
 
 <details>
   <summary>KONDAKION (Toon 1 - als vrijdag)</summary>
@@ -56,10 +56,12 @@ Want {/&/Gij_&_} {\\zijt} {/on}{/ze} {/Hel_}{per_} *
 <details>
   <summary>Uw Heilig Kruis</summary>
 
+::: vsa-notatie
 <!-- Liturgikon, p58 -->
 [\:] Uw {/hei_}{\lig_} {/Kruis_} *
 {/&/ver}{/e}{\ren} {/wij}, {\\o} {/&\Mees_&_}{\&/ter}; *
 {/en} Uw {\hei_}{\li_}{\&/ge} {/&/Ver}{\rij_}{\ze.}{\&/&/nis.&.&~} {\lo_}{\ven_} {/wij}. [:]
+:::
 </details>
 
 <details>
@@ -69,13 +71,12 @@ Want {/&/Gij_&_} {\\zijt} {/on}{/ze} {/Hel_}{per_} *
 <!-- Liturgikon, p247 -->
 [//:] Mijn ziel ver{/heft_} {den_} {\Heer_},
 en ge{/juicht_} {\heeft} mijn {\geest_} {-&/in} {/&\God}, {\&/mijn} {\&+\Red_&_}{b/der_}. [/:]
-<!--de `b/` op het eind staat niet in het Liturgikon. Wij beschouwen dat als een typo in het Liturgikon -->
 :::
-Machtigen heeft Hij neergehaald van de troon, 
-maar geringen heeft Hij verheven.
-
+Machtigen heeft Hij neergehaald van de troon,  
+maar geringen heeft Hij verheven.  
+<!-- 
 #### ALLELUIA Ps. 131 (Woensdag)
 
 Sta op, Heer, ga in tot Uw rust: Gij en de Ark Uwer heiligheid. 
-Want de Heer heeft Sion uitverkoren; Hij heeft haar gekozen tot Woning voor Zichzelf.
+Want de Heer heeft Sion uitverkoren; Hij heeft haar gekozen tot Woning voor Zichzelf. -->
 </details>

@@ -2,7 +2,7 @@
 title: "Zaterdag — de Koren der Heiligen/Gestorvenen"
 source: "Liturgikon"
 ---
-
+<!-- 
 {{< navbuttons 
     "Antifonen | ../antifonen-hemelum/"
     "Maandag   | ../maandag/"
@@ -13,7 +13,7 @@ source: "Liturgikon"
     "Zaterdag  | ../zaterdag/"
 >}}
 
----
+--- -->
 
 ## Zaterdag — de Koren der Heiligen/Gestorvenen
 
@@ -32,7 +32,7 @@ gij hebt toegang tot de Ver{\los_}{\ser_}. *
 // opdat {\on}{/ze} {/zie}len {\mo}{/gen} {\wor_}{\den} ge{\red_}. [:]
 :::
 </details>
-
+<!-- 
 <details>
   <summary>THEOTOKION (Toon 2)</summary>
 
@@ -43,7 +43,7 @@ wij vereren U met de hymne der {\En_}ge{\len_} *
 {//om} {\&/U} {/vroom_} {\te} {/ver}{\&\hef_&_}{\fen_}. [:]
 :::
 </details>
-
+ -->
 <details>
   <summary>KONTAKION (Toon 8)</summary>
 
@@ -65,13 +65,13 @@ Bewaar om hun {/ge}{/be}den Uw {/Kerk} in {\die}pe {\vre_}{\de_}, *
 [///:] Verblijdt u {\in_} {\\den_} {/Heer_}, * {/en} juicht, Ge{/rech__}{\ten_}. [//:]
 ::: 
 
-Gij zijt mijn toevlucht en mijn vreugde in de beproeving die mij omgeeft.
-Die op den Heer vertrouwen, omringt Hij met genaden.
-
+Gij zijt mijn toevlucht en mijn vreugde in de beproeving die mij omgeeft.  
+Die op den Heer vertrouwen, omringt Hij met genaden.  
+<!-- 
 #### ALLELUIA Ps. 64
 
 Zalig die Gij hebt uitverkoren en opgenomen, om in Uw Voorhoven te wonen.
-Zij zullen roepen, ja een hymne zingen.
+Zij zullen roepen, ja een hymne zingen. -->
 </details>
 
 ### Voor de gestorvenen
@@ -111,10 +111,10 @@ Dit is voor de gestorvenen
 [///:] Verblijdt u {\in_} {\\den_} {/Heer_}, * {/en} juicht, Ge{/rech__}{\ten_}. [//:]
 ::: 
 
-Zalig zij wier overtredingen zijn vergeven, en wier zonden zijn bedekt.
-Zalig de mens, wien de Heer de zonden niet toerekent.
+Zalig zij wier overtredingen zijn vergeven, en wier zonden zijn bedekt.  
+Zalig de mens, wien de Heer de zonden niet toerekent.  
 </details>
-
+<!-- 
 <details>
   <summary>Zaterdag Alleluia (Ps. 64)</summary>
 
@@ -122,4 +122,4 @@ Zalig de mens, wien de Heer de zonden niet toerekent.
 
 Ps.  64: Zalig die Gij hebt uitverkoren en opgenomen, om in Uw voorhoven te wonen.
 Ps. 134: Hun gedachtenis leeft van geslacht tot geslacht.
-</details>
+</details> -->

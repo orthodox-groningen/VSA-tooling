@@ -2,7 +2,7 @@
 title: "Dinsdag — H. Joannes de Doper"
 source: "Liturgikon"
 ---
-
+<!-- 
 {{< navbuttons 
     "Antifonen | ../antifonen-hemelum/"
     "Maandag   | ../maandag/"
@@ -13,7 +13,7 @@ source: "Liturgikon"
     "Zaterdag  | ../zaterdag/"
 >}}
 
----
+--- -->
 
 ## Dinsdag — H. Joannes de Doper
 
@@ -35,7 +35,7 @@ om de zonden der wereld weg te {\ne_}{\men_}, *
 // {//en} ons de gro{\te} {/ont}{/fer_}{\ming} {/te} {\&\schen_&_}{\ken_}. [:]
 :::
 </details>
-
+<!-- 
 <details>
   <summary>THEOTOKION (Toon 2)</summary>
 
@@ -46,7 +46,7 @@ altijd-maagdelijk {\Moe_}der {\Gods_}: *
 {/want} {/gij_} hebt God in {/het} {/vlees_} {\ge_}{\baard_}. * 
 Daarom willen wij allen, zoals het {\past}, {/u} {/vroom_} {\&/ver}{\&\hef_&_}{\fen_}. [:]
 :::
-</details>
+</details> -->
 
 <details>
   <summary>KONDAKION (Toon 3)</summary>
@@ -70,11 +70,11 @@ in de Jordaan {\met} {/de} {/hand} {/aan_}{\raak_}{\te_}, *
 [//:] De Rechtvaardige zal zich ver{\blij_}{/&/den} {in_} {\den_} {\Heer_} * 
 {//&/en} {\&\op} {\Hem_} {\&/ver}{/&\trou_&_}{\wen}. [:] 
 :::
-God, verhoor mijn gebed als ik mij tot U richt; maak mijn ziel vrij van vrees voor de vijand. 
-Beschut mij tegen de samenzwering der booswichten; tegen de menigte van hen die onrecht bedrijven.
-
+God, verhoor mijn gebed als ik mij tot U richt; maak mijn ziel vrij van vrees voor de vijand.  
+Beschut mij tegen de samenzwering der booswichten; tegen de menigte van hen die onrecht bedrijven.  
+<!-- 
 #### ALLELUIA Ps. 91
 
-De Gerechte zal bloeien als een palmboom; als een ceder van de Libanon zal hij uitgroeien. 
-Zij worden geplant in het Huis des Heren, en zullen bloeien in de voorhoven van onze God.
+De Gerechte zal bloeien als een palmboom; als een ceder van de Libanon zal hij uitgroeien.  
+Zij worden geplant in het Huis des Heren, en zullen bloeien in de voorhoven van onze God.  -->
 </details>

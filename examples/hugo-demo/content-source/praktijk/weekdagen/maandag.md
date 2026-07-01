@@ -70,13 +70,13 @@ bidt voor ons om het goede en de grote ge{\na_}{\de_}, *
 [//:] Gij maakt stormen tot Uw {/En_}{\&\ge}{/len_},
 vuurvlammen tot Uw {/die_}{\na_}{\ren_}. [/:]
 :::
-Gij gebruikt wolken als voertuig, Gij wandelt op de wieken der wind. 
-Den Heer zij roem in eeuwigheid; dat de Heer Zich verheuge over Zijn werken.
+Gij gebruikt wolken als voertuig, Gij wandelt op de wieken der wind.  
+Den Heer zij roem in eeuwigheid; dat de Heer Zich verheuge over Zijn werken.  
 <!-- 
 #### ALLELUIA Ps. 148
 
-Looft den Heer uit de hemelen, 
-looft Hem in den hoge. 
-Looft Hem, al Zijn Engelen; 
-looft Hem, al Zijn Krachten. -->
+Looft den Heer uit de hemelen,  
+looft Hem in den hoge.  
+Looft Hem, al Zijn Engelen;  
+looft Hem, al Zijn Krachten.  -->
 </details>

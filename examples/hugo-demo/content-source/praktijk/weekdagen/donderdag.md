@@ -2,7 +2,7 @@
 title: "Donderdag — H. Apostelen"
 source: "Liturgikon"
 ---
-
+<!-- 
 {{< navbuttons 
     "Antifonen | ../antifonen-hemelum/"
     "Maandag   | ../maandag/"
@@ -13,7 +13,7 @@ source: "Liturgikon"
     "Zaterdag  | ../zaterdag/"
 >}}
 
----
+--- -->
 
 ## Donderdag — H. Apostelen
 
@@ -28,7 +28,7 @@ bidt tot de barm{\har_}{\ti}{\ge} {\God_}, *
 // moge schenken aan {\on}{\ze} {/&/&/&\&\&\&/zie~&~&~&~&~&~&_}{\len_}. [:]
 :::
 </details>
-
+<!-- 
 <details>
   <summary>THEOTOKION (Toon 3)</summary>
 
@@ -41,7 +41,7 @@ alleen zuivere en enig ge{/ze_}{gen_}{\de}. *
 Daarom willen wij {\u} {/zon}{/der} {/op_}{\hou_}{\den_} * 
 bezingen {\en} {\ver}{/&/&/&\&\&\&/hef~&~&~&~&~&~&_}{\fen_}. [:]
 :::
-</details>
+</details> -->
 
 <details>
   <summary>KONDAKION (Toon 2)</summary>
@@ -65,11 +65,11 @@ Want hun moeiten en dood hebt Gij {\ho_}ger ge{\schat} *
 [///:] Over heel de aarde klinkt hun {\&\\bood_&_}{/schap_}: * 
 {/tot} aan de grenzen der wereld hun {/woor__}{\den_}. [//:]
 :::
-Elke dag openbaart een woord aan de volgende dag; * van nacht tot nacht wordt kennis verkondigd. 
-De hemelen verhalen de heerlijkheid Gods, * het uitspansel verkondigt het werk Zijner handen.
-
+Elke dag openbaart een woord aan de volgende dag; * van nacht tot nacht wordt kennis verkondigd.  
+De hemelen verhalen de heerlijkheid Gods, * het uitspansel verkondigt het werk Zijner handen.  
+<!-- 
 ### ALLELUIA Ps. 88
 
 De hemelen belijden Uw wonderen, o Heer; en Uw waarachtigheid in de Kerk der Heiligen. 
-God is verheerlijkt in de raad der Heiligen; groot en ontzagwekkend boven allen die rond Hem staan.
+God is verheerlijkt in de raad der Heiligen; groot en ontzagwekkend boven allen die rond Hem staan. -->
 </details>

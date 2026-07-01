@@ -299,7 +299,7 @@
 <line class="vsa-filler-line" x1="431.72" y1="234.00" x2="440.72" y2="234.00" stroke="black" stroke-width="0.75" stroke-linecap="round"/>
 <g class="vsa-glyph-group vsa-upper-glyphs">
 <line class="vsa-glyph vsa-upper-glyph vsa-glyph-flat" x1="402.72" y1="220.00" x2="413.52" y2="220.00" stroke="black" stroke-width="1.00" stroke-linecap="round"/>
-<line class="vsa-glyph vsa-upper-glyph vsa-glyph-rise" x1="427.12" y1="222.43" x2="437.92" y2="217.57" stroke="black" stroke-width="1.00" stroke-linecap="round"/>
+<line class="vsa-glyph vsa-upper-glyph vsa-glyph-fall" x1="427.12" y1="217.57" x2="437.92" y2="222.43" stroke="black" stroke-width="1.00" stroke-linecap="round"/>
 </g>
 <g class="vsa-glyph-group vsa-lower-glyphs">
 <line class="vsa-glyph vsa-lower-glyph vsa-glyph-length" x1="401.52" y1="245.00" x2="414.72" y2="245.00" stroke="red" stroke-width="1.00" stroke-linecap="round"/>
@@ -309,7 +309,7 @@
 <g class="vsa-unit vsa-unit-scope" data-vsa-unit="16">
 <text class="vsa-text vsa-sung-text" x="448.72" y="240.00" xml:space="preserve" font-family="DejaVu Sans" font-size="20.00">den</text>
 <g class="vsa-glyph-group vsa-upper-glyphs">
-<line class="vsa-glyph vsa-upper-glyph vsa-glyph-fall" x1="463.16" y1="217.57" x2="473.96" y2="222.43" stroke="black" stroke-width="1.00" stroke-linecap="round"/>
+<line class="vsa-glyph vsa-upper-glyph vsa-glyph-rise" x1="463.16" y1="222.43" x2="473.96" y2="217.57" stroke="black" stroke-width="1.00" stroke-linecap="round"/>
 </g>
 <g class="vsa-glyph-group vsa-lower-glyphs">
 <line class="vsa-glyph vsa-lower-glyph vsa-glyph-length" x1="461.96" y1="245.00" x2="475.16" y2="245.00" stroke="red" stroke-width="1.00" stroke-linecap="round"/>

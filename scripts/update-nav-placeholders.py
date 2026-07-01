@@ -52,6 +52,21 @@ def update_file_text(text: str, path: Path, root: Path) -> str:
     for kind in kinds:
         updated = update_generated_block(updated, kind, render_items(kind, path, root))
 
+    return remove_orphan_generated_blocks(updated)
+
+
+def remove_orphan_generated_blocks(text: str) -> str:
+    """Verwijder generated-blokken zonder bijbehorende marker (legacy PAGES naast PAGES-HERE)."""
+    present = set(MARKER_RE.findall(text))
+    updated = text
+    for kind in ("HOME", "UP", "SIBLINGS", "CHILDREN", "PAGES", "PAGES-HERE"):
+        if kind in present:
+            continue
+        pattern = re.compile(
+            GENERATED_BLOCK_RE_TEMPLATE.format(kind=re.escape(kind)),
+            flags=re.DOTALL,
+        )
+        updated = pattern.sub("", updated)
     return updated
 
 

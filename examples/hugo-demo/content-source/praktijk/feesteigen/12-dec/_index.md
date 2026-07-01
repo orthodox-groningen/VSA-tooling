@@ -30,7 +30,4 @@ title: "December"
 --- 
 
 <!-- VSA-NAV:PAGES-HERE  -->
-<!-- VSA-NAV-GENERATED:PAGES-START -->
-- [H. Nicolaas van Myra (6 December)](12-06-nicolaas-van-myra/)
-<!-- VSA-NAV-GENERATED:PAGES-END -->
 

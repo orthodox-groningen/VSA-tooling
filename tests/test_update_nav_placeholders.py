@@ -63,3 +63,25 @@ def test_praktijk_index_nav_uses_lowercase_ustav_href(tmp_path: Path):
     )
     assert "ustav-liturgie-met-diaken/" in updated
     assert "USTAV-liturgie-met-diaken/" not in updated
+
+
+def test_orphan_pages_block_removed_when_only_pages_here_marker(tmp_path: Path):
+    nav = _nav_module()
+    root = tmp_path / "content"
+    section = root / "praktijk" / "feesteigen" / "11-nov"
+    section.mkdir(parents=True)
+    (section / "11-21-tempelgang-moeder-gods.md").write_text(
+        "---\ntitle: Tempelgang\n---\n",
+        encoding="utf-8",
+    )
+    text = (
+        "---\ntitle: November\n---\n\n"
+        "<!-- VSA-NAV:PAGES-HERE -->\n"
+        "<!-- VSA-NAV-GENERATED:PAGES-START -->\n"
+        "- [Oud](11-21-tempelgang-moeder-gods/)\n"
+        "<!-- VSA-NAV-GENERATED:PAGES-END -->\n"
+    )
+    updated = nav.update_file_text(text, section / "_index.md", root)
+    assert updated.count("VSA-NAV-GENERATED:PAGES-START") == 0
+    assert "VSA-NAV-GENERATED:PAGES-HERE-START" in updated
+    assert updated.count("11-21-tempelgang-moeder-gods/") == 1

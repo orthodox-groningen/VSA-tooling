@@ -1,32 +1,60 @@
 from pathlib import Path
 import re
 
+import pytest
+
 
 ROOT = Path(__file__).resolve().parents[1]
-ORG_ROOT = ROOT.parent
-BRON_GLOSSARY = ORG_ROOT / "bron" / "docs" / "specs" / "terminologie.md"
 VSA_STUB = ROOT / "docs" / "specs" / "terminologie.md"
 CURSOR_RULE = ROOT / ".cursor" / "rules" / "orthodox-groningen-terminologie.mdc"
 
-ORG_REPOS = [
-    "bron",
+OPTIONAL_SIBLING_ORG_REPOS = (
     "catalogus",
     "heiligen",
     "koor",
     "materiaal-met-copyright",
     "paas-agenda-2025",
     "vow",
-    "VSA-tooling",
-]
+)
 
 
 def read(path: Path) -> str:
     return path.read_text(encoding="utf-8", errors="ignore").replace("\r\n", "\n")
 
 
+def resolve_bron_root() -> Path | None:
+    """CI: vendor/bron; lokaal monorepo: ../bron."""
+    for candidate in (ROOT / "vendor" / "bron", ROOT.parent / "bron"):
+        if (candidate / "docs" / "specs" / "terminologie.md").is_file():
+            return candidate.resolve()
+    return None
+
+
+def bron_root_or_skip() -> Path:
+    root = resolve_bron_root()
+    if root is None:
+        pytest.skip("bron-checkout niet aanwezig (vendor/bron of sibling ../bron)")
+    return root
+
+
+def iter_repos_with_cursor_rule() -> list[tuple[str, Path]]:
+    """Alleen repo's die daadwerkelijk aanwezig zijn (CI ≠ volledige monorepo)."""
+    present: list[tuple[str, Path]] = [("VSA-tooling", ROOT)]
+    bron = resolve_bron_root()
+    if bron is not None:
+        present.append(("bron", bron))
+    org_root = ROOT.parent
+    for repo in OPTIONAL_SIBLING_ORG_REPOS:
+        path = org_root / repo
+        if path.is_dir():
+            present.append((repo, path))
+    return present
+
+
 def test_bron_has_normative_glossary_with_usage_rules():
-    text = read(BRON_GLOSSARY)
-    assert BRON_GLOSSARY.is_file()
+    bron = bron_root_or_skip()
+    glossary = bron / "docs" / "specs" / "terminologie.md"
+    text = read(glossary)
     for needle in (
         "**Status:** normatief",
         "## 0. Gebruiksregels",
@@ -53,7 +81,8 @@ def test_zangstuk_identificatie_points_to_bron():
 
 
 def test_documentatie_eigendom_in_bron():
-    doc = read(ORG_ROOT / "bron" / "docs" / "specs" / "documentatie-eigendom.md")
+    bron = bron_root_or_skip()
+    doc = read(bron / "docs" / "specs" / "documentatie-eigendom.md")
     assert "**D1 — één bron**" in doc
     assert "VSA-tooling" in doc
 
@@ -74,10 +103,10 @@ def test_docs_avoid_deprecated_terminology():
     assert offenders == []
 
 
-def test_cursor_terminologie_rule_in_all_org_repos():
+def test_cursor_terminologie_rule_in_present_org_repos():
     missing = []
-    for repo in ORG_REPOS:
-        rule = ORG_ROOT / repo / ".cursor" / "rules" / "orthodox-groningen-terminologie.mdc"
+    for repo, base in iter_repos_with_cursor_rule():
+        rule = base / ".cursor" / "rules" / "orthodox-groningen-terminologie.mdc"
         if not rule.is_file():
             missing.append(repo)
             continue

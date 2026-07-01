@@ -150,7 +150,7 @@ Status: **Afgerond** (werkversie)
 
 ### 3.2 Parochie-lokaal model (map `lokaal/`, manifest, promotie)
 
-Status: **Geïmplementeerd** (demo + docs)
+Status: **Geïmplementeerd** (demo + docs); term **manifest** normatief in bron §16
 
 - [parochie-lokaal-zangstukken.md](parochie-lokaal-zangstukken.md)
 - Demo: `examples/hugo-demo/content-source/lokaal/` + include in `antifonen-hemelum.md`
@@ -161,3 +161,9 @@ Status: **Geïmplementeerd** (demo + docs)
 Status: **Afgerond**
 
 `internal-link-url.html` bevat `kerkmuziek-tradities` en `zangstuk-identificatie`.
+
+### 3.4 Term manifest — bron-repository (toekomst)
+
+Status: **Open — afwachten**
+
+Als geneste yaml (variant → uitvoeringsvorm → representatie) in `bron` wordt ingevoerd: beoordelen of [terminologie §16 manifest](https://github.com/orthodox-groningen/bron/blob/main/docs/specs/terminologie.md#16-manifest) ongewijzigd geldt (zelfde bestandsnamen en niveaus) of uitbreiding nodig is. Zie ook bron §22 open punten.

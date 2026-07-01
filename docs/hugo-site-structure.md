@@ -4,6 +4,8 @@
 
 ```text
 content-source/
+├── kerkmuziek-tradities/   # tradities, luisterlinks, partituren (oriëntatie)
+├── liturgikon-notatie/     # Liturgikon-notatie uitleg (1968)
 ├── voorbeelden/
 └── praktijk/
 ```

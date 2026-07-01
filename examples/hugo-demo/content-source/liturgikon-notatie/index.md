@@ -28,6 +28,10 @@ Maar ook in deze melodieën is veel verscheidenheid, zodat een bepaalde keuze
 gedaan moest worden. Om voor de hand liggende redenen zijn hiervoor meestal 
 de eenvoudigste voorbeelden genomen.
 
+Zie [Kerkmuziektradities en bronnen](../kerkmuziek-tradities/) voor een overzicht 
+van Slavische en andere zangtradities, waar je ze kunt beluisteren, en waar 
+openbaar partituur- en scanmateriaal te vinden is.
+
 Alle russische componisten hebben ook kerkmuziek geschreven. 
 Veel daarvan draagt een concertkarakter of is slechts voor grotere koren geschikt. 
 Maar onder hun werk bevinden zich ook onsterfelijk‑schone eenvoudige melodieën. 

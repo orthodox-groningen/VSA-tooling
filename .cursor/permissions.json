@@ -1,0 +1,15 @@
+{
+  "terminalAllowlist": [
+    "scripts\\",
+    "call .venv\\Scripts\\activate"
+  ],
+  "autoRun": {
+    "allow_instructions": [
+      "Allow vsa validate, vsa build-markdown, scripts\\test.cmd, scripts\\ci.cmd, and scripts\\build-hugo.cmd when running tests or builds the user requested.",
+      "Allow python scripts\\ for maintenance scripts explicitly mentioned in scripts\\README.md."
+    ],
+    "block_instructions": [
+      "Block scripts or agents from redactionally rewriting examples\\hugo-demo\\content-source; only update generated\\ paths for nav/spacing metadata."
+    ]
+  }
+}

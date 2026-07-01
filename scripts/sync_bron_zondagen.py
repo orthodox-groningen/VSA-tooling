@@ -25,7 +25,7 @@ MELODIE_EXPORT: dict[int, tuple[str, str]] = {
     2: ("koormap.jpg", "tropaarmelodie-toon-2.jpg"),
     3: ("koormap.jpg", "tropaarmelodie-toon-3.jpg"),
     4: ("koormap.jpg", "tropaarmelodie-toon-4.jpg"),
-    5: ("koormap-5a.jpg", "tropaarmelodie-toon-5a.jpg"),
+    5: ("koormap-5.jpg", "tropaarmelodie-toon-5.jpg"),
     6: ("koormap.jpg", "tropaarmelodie-toon-6.jpg"),
     7: ("koormap.jpg", "tropaarmelodie-toon-7.jpg"),
     8: ("koormap.jpg", "tropaarmelodie-toon-8.jpg"),

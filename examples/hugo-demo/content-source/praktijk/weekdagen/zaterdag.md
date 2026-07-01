@@ -107,8 +107,6 @@ waar {/geen} {/smart}, {/droef}heid {\noch} {\tra}nen {\zijn_}, *
 <details>
   <summary>PROKIMEN Ps. 31, Toon 8</summary>
 
-Dit is voor de gestorvenen
-
 ::: vsa-notatie
 <!-- Liturgikon, 251 -->
 [///:] Verblijdt u {\in_} {\\den_} {/Heer_}, * {/en} juicht, Ge{/rech__}{\ten_}. [//:]

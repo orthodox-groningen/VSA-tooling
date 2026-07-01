@@ -62,13 +62,13 @@ def test_sync_melodie_toon_5(tmp_path: Path) -> None:
         bron,
         "troparion-melodie-toon-5",
         5,
-        scan_name="koormap-5a.jpg",
+        scan_name="koormap-5.jpg",
     )
 
     count = sync_zangstuk(bron / "troparion-melodie-toon-5", out, None, dry_run=False)
 
     assert count == 1
-    assert (out / "tropaarmelodie-toon-5a.jpg").read_bytes() == b"fake-jpg"
+    assert (out / "tropaarmelodie-toon-5.jpg").read_bytes() == b"fake-jpg"
 
 
 def test_sync_respects_tones_filter(tmp_path: Path) -> None:

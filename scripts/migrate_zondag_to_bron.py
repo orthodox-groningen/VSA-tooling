@@ -15,7 +15,7 @@ MELODIE_SOURCE: dict[int, tuple[str, str]] = {
     2: ("tropaarmelodie-toon-2.jpg", "koormap.jpg"),
     3: ("tropaarmelodie-toon-3.jpg", "koormap.jpg"),
     4: ("tropaarmelodie-toon-4.jpg", "koormap.jpg"),
-    5: ("tropaarmelodie-toon-5a.jpg", "koormap-5a.jpg"),
+    5: ("tropaarmelodie-toon-5.jpg", "koormap-5.jpg"),
     6: ("tropaarmelodie-toon-6.jpg", "koormap.jpg"),
     7: ("tropaarmelodie-toon-7.jpg", "koormap.jpg"),
     8: ("tropaarmelodie-toon-8.jpg", "koormap.jpg"),

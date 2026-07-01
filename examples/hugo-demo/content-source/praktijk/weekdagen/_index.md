@@ -12,9 +12,9 @@ title: "Weekdagen"
 
 ---
 
-
-- [Antifonen - weekdagen (Hemelum)](antifonen-hemelum/)
 - [Antifonen - weekdagen (Liturgikon)](antifonen/)
+- [Antifonen - weekdagen (Hemelum)](antifonen-hemelum/)
+- [Prokimena - weekdagen (Liturgikon)](prokimena-weekdagen/)
 
 ---
 

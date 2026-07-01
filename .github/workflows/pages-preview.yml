@@ -70,6 +70,9 @@ jobs:
             examples/hugo-demo/content-source \
             examples/hugo-demo/static/vsa/mxl
 
+      - name: Update navigation placeholders
+        run: python scripts/update-nav-placeholders.py generated/preview/content
+
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v3
         with:

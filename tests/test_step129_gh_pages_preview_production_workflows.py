@@ -20,6 +20,12 @@ def test_preview_workflow_uses_preview_baseurl():
     assert '--baseURL "https://orthodox-groningen.github.io/VSA-tooling/preview/"' in text
 
 
+def test_preview_workflow_updates_navigation_placeholders():
+    text = PREVIEW.read_text(encoding="utf-8")
+
+    assert "update-nav-placeholders.py generated/preview/content" in text
+
+
 def test_production_workflow_remains_manual():
     text = PRODUCTION.read_text(encoding="utf-8")
 

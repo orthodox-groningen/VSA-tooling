@@ -11,7 +11,7 @@ heeft de waar-heid u-wer da-den aan uw {kud_}{/de} ge{\toond_}.
 {/Daar}om zijt gij door {ne_}derigheid {\groot_}, 
 en door ar-moe-de rijk ge{-&/wor_&_}{\den_}, 
 {/Va}der en Ho-ge-pries-ter Jo{han_.}{\nes_}, 
-// bid Chris-tus God on-ze zie-len te {-&/red_&_}{\den_}. [//:]
+// bid Chris-tus God on-ze zie-len te {-&\red_&_}{/den_}. [//:]
 :::
 
 ### KONDAKION t. 2

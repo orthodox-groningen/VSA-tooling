@@ -11,8 +11,7 @@ heeft de waarheid uwer daden U aan uw {kud_}{/de} ge{\toond_}.
 {/Daar}om zijt gij door {ne_}derigheid {\groot_}, 
 en door armoede rijk ge{-&/wor_&_}{\den_}, 
 {/Va}der en Hogepriester {Ni__}ko{\laas_}, 
-bid Christus {God_}, 
-// onze zielen te {-&/red_&_}{\den_}. [//:]
+// bid Christus {God_}, onze zielen te {-&/red_&_}{\den_}. [//:]
 :::
 
 ### KONDAKION t. 3

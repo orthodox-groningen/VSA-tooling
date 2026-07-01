@@ -73,6 +73,9 @@ Die op den Heer vertrouwen, omringt Hij met genaden.
 Zalig die Gij hebt uitverkoren en opgenomen, om in Uw Voorhoven te wonen.
 Zij zullen roepen, ja een hymne zingen. -->
 </details>
+:::pagebreak:::
+
+## Zaterdag — de Koren der Heiligen/Gestorvenen
 
 ### Voor de gestorvenen
 

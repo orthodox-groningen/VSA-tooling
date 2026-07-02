@@ -33,7 +33,7 @@ sources:
 </div>
 
 ::: vsa-notatie
-K: [//:] Heer, red Uw vromen en ver{\\&/hoor_&_} {/ons_} [//:]
+K: [//:] Heer, red Uw vro-men en ver{\\&/hoor_&_} {/ons_} [//:]
 :::
 
 <div style="font-size:120%; line-height:1.4;">

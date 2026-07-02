@@ -5,21 +5,21 @@ source: "Liturgikon"
 
 ### TROPARION t. 4
 ::: vsa-notatie
-[//:] Gij zijt de Eerstgeroepene der A{pos_}{/te_}{\len_}, 
-{/en} de broeder van {Pe_}{\tros_}. 
-Bid daarom, heilige Andreas, tot de {Mees_}ter {/van} het heel{\al_}, 
-{/om} aan de wereld vrede te {schen__}{\ken_}, 
-// en aan onze zielen de grote ge{-&/na_&_}{\de_}. [//:]
+[//:] Gij zijt de Eerst-ge-roe-pe-ne der A{pos_}{/te_}{\len_}, 
+{/en} de broe-der van {Pe_}{\tros_}. 
+Bid daar-om, hei-li-ge An-dre-as, tot de {Mees_}ter {/van} het heel{\al_}, 
+{/om} aan de we-reld vre-de te {schen__}{\ken_}, 
+// en aan onze zie-len de gro-te ge{-&/na_&_}{\de_}. [//:]
 :::
 
 ### KONDAKION t. 2
 ::: vsa-notatie
-[/:] Bezingen wij {/hem_}, die de {/Man}{/haf_}{\ti}ge {\heet}, 
+[/:] Be-zin-gen wij {/hem_}, die de {/Man}{/haf_}{\ti}ge {\heet}, 
 de uit God {\spre_}{ken_}{\de_}, 
-{/de} Eerstge{/roe_}pene door de {/Ver}{/&\los_&_}{\ser_}, 
-de broeder van {\Pe_}{\tros_}. 
-{/Want} zoals tot {/hem_} roept Andreas {/nog} {/steeds_} {\tot_} {\ons_}: 
-// "Wij hebben Hem gevonden naar Wie {\wij} {/zo}{/zeer_} {\&/ver}{\&\lang_&_}{\den_}." [:]
+{/de} Eerst-ge{/roe_}pe-ne door de {/Ver}{/&\los_&_}{\ser_}, 
+de broe-der van {\Pe_}{\tros_}. 
+{/Want} zoals tot {/hem_} roept An-dre-as {/nog} {/steeds_} {\tot_} {\ons_}: 
+// "Wij heb-ben Hem ge-von-den naar Wie {\wij} {/zo}{/zeer_} {\&/ver}{\&\lang_&_}{\den_}." [:]
 :::
 
 1 Kor. 4; 9–16 

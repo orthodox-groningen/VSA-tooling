@@ -18,7 +18,7 @@ en door ar-moe-de rijk ge{-&/wor_&_}{\den_},
 ::: vsa-notatie
 [/:] God-de-lij-ke {/Roe_}per, {/Ba}{/zuin_} {\van} de {\Geest_}
 en plan-ter {\van_} het ge{\loof_},
-{/Uit}{/roei_}er van {/het} {/bij_}{\ge_}{\loof_},
+{//Uit_}roei-er van {/het} {/bij_}{\ge_}{\loof_},
 Be-min-de der Hei-li-ge Drie-{\een_}{\heid_}
 {/Gro}te {/Va_}der, Hiër-arch {/Jo}{/&\han_&_}{\nes_},
 gij die voor God staat met de {\En_}ge{\len_}

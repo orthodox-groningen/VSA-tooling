@@ -5,24 +5,24 @@ source: "Liturgikon, p282"
 
 ### TROPARION t. 4
 ::: vsa-notatie
-[//:] Heden is het begin van Gods welbe{-&/ha_&_}{\gen_}: 
-{/de} voorbereidende Verkondiging van de Verlossing der {men__}{\sen_}. 
+[//:] He-den is het be-gin van Gods we-lbe{-&/ha_&_}{\gen_}: 
+{/de} voor-be-rei-den-de Ver-kon-di-ging van de Ver-los-sing der {men__}{\sen_}. 
 De Maagd komt in de {Tem_}{/pel_} {\Gods_} 
-{/en} verkondigt reeds aan allen de {Chris__}{\tus_}. 
-Tot haar willen ook wij met de Engel {-&/roe_&_}{\pen}: 
+{/en} ver-kon-digt reeds aan al-len de {Chris__}{\tus_}. 
+Tot haar wil-len ook wij met de En-gel {-&/roe_&_}{\pen}: 
 {/Ver}{heug__} {\U_}, 
-// Vervulling van het Heilsplan van de {-&/Schep_&_}{\per_}. [//:]
+// Ver-vul-ling van het Heils-plan van de {-&/Schep_&_}{\per_}. [//:]
 :::
 
 ### KONDAKION t. 4
 ::: vsa-notatie
-[//:] De alreine Tempel van de Ver{-&/los_&_}{\ser_}, 
-{/het} kostelijk maagdelijk {Bruids__}ver{\trek_}, 
-de geheiligde Schatkamer van Gods {heer_}{/lijk_}{\heid_} 
-{/wordt} heden binnengeleid in het Huis des {He__}{\ren_}. 
-Zij brengt daar de genade van Gods {Hei_}{/li}ge {\Geest_}, 
-{/ter}wijl Zijn Engelen {zin__}{\gen_}: 
-// Zie, daar is de hemelse {-&/woon_&_}{\tent_}. [//:]
+[//:] De al-rei-ne Tem-pel van de Ver{-&/los_&_}{\ser_}, 
+{/het} kos-te-lijk maag-de-lijk {Bruids__}ver{\trek_}, 
+de ge-hei-lig-de Schat-ka-mer van Gods {heer_}{/lijk_}{\heid_} 
+{/wordt} he-den bin-nen-ge-leid in het Huis des {He__}{\ren_}. 
+Zij brengt daar de ge-na-de van Gods {Hei_}{/li}ge {\Geest_}, 
+{/ter}wijl Zijn En-ge-len {zin__}{\gen_}: 
+// Zie, daar is de he-mel-se {-&/woon_&_}{\tent_}. [//:]
 :::
 
 Hebr. 9; 1–7 

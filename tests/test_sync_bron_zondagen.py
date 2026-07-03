@@ -28,7 +28,7 @@ def _write_zangstuk(
     zdir = root / zangstuk_id
     zdir.mkdir(parents=True)
     (zdir / "zangstuk.yaml").write_text(
-        yaml.dump({"id": zangstuk_id, "tone": tone}, allow_unicode=True),
+        yaml.dump({"id": zangstuk_id, "toon": tone}, allow_unicode=True),
         encoding="utf-8",
     )
     if zangstuk_id.startswith("troparion-melodie-"):
@@ -69,6 +69,25 @@ def test_sync_melodie_toon_5(tmp_path: Path) -> None:
 
     assert count == 1
     assert (out / "tropaarmelodie-toon-5.jpg").read_bytes() == b"fake-jpg"
+
+
+def test_load_tone_accepts_legacy_tone_field(tmp_path: Path) -> None:
+    bron = tmp_path / "bron" / "zangstukken"
+    out = tmp_path / "out"
+    zdir = bron / "kondak-zondag-toon-1"
+    zdir.mkdir(parents=True)
+    (zdir / "zangstuk.yaml").write_text(
+        yaml.dump({"id": "kondak-zondag-toon-1", "tone": 1}, allow_unicode=True),
+        encoding="utf-8",
+    )
+    vsa_dir = zdir / "sources" / "vsa"
+    vsa_dir.mkdir(parents=True)
+    (vsa_dir / "groningen.vsa").write_text("[:] test {/x}.", encoding="utf-8")
+
+    count = sync_zangstuk(zdir, out, None, dry_run=False)
+
+    assert count == 1
+    assert (out / "kondak-zondag-toon-1.vsa").is_file()
 
 
 def test_sync_respects_tones_filter(tmp_path: Path) -> None:

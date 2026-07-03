@@ -73,9 +73,11 @@ def parse_args() -> argparse.Namespace:
 def _load_tone(zangstuk_dir: Path) -> int:
     yaml_path = zangstuk_dir / "zangstuk.yaml"
     data = yaml.safe_load(yaml_path.read_text(encoding="utf-8"))
-    tone = data.get("tone")
+    tone = data.get("toon")
     if tone is None:
-        raise ValueError(f"Geen tone in {yaml_path}")
+        tone = data.get("tone")  # verouderd; bron gebruikt canoniek `toon`
+    if tone is None:
+        raise ValueError(f"Geen toon in {yaml_path}")
     return int(tone)
 
 

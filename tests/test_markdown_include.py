@@ -501,7 +501,7 @@ def test_include_bron_pdf_logical_reference(tmp_path: Path):
     )
     assert 'class="scan-pdf"' in result
     assert (assets / "koormap-003.pdf").is_file()
-    assert 'src="../../vsa/koormap-003.pdf"' in result
+    assert 'src="../../../vsa/koormap-003.pdf"' in result
 
 
 def test_relative_static_vsa_href_with_relative_source_path(tmp_path: Path):
@@ -509,5 +509,14 @@ def test_relative_static_vsa_href_with_relative_source_path(tmp_path: Path):
     page_dir = content_root / "praktijk" / "zondagen"
     page_dir.mkdir(parents=True)
     source = page_dir / "demo.md"
+    href = _relative_static_vsa_href(source, content_root, "koormap-003.pdf")
+    assert href == "../../../vsa/koormap-003.pdf"
+
+
+def test_relative_static_vsa_href_for_section_index(tmp_path: Path):
+    content_root = tmp_path / "content-source"
+    section = content_root / "praktijk" / "zondagen"
+    section.mkdir(parents=True)
+    source = section / "_index.md"
     href = _relative_static_vsa_href(source, content_root, "koormap-003.pdf")
     assert href == "../../vsa/koormap-003.pdf"

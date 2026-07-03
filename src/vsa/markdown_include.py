@@ -411,9 +411,16 @@ def _relative_static_vsa_href(
     *,
     static_segment: str = "vsa",
 ) -> str:
-    """Site-root-relative href to static/vsa (Hugo serves static/ at site root)."""
-    rel_dir = source_path.parent.resolve().relative_to(content_root.resolve())
-    ups = len(rel_dir.parts)
+    """Site-root-relative href to static/vsa (Hugo serves static/ at site root).
+
+    Hugo leaf pages become ``…/slug/index.html``; depth = padsegmenten onder
+    content-root tot en met de pagina-slug (niet alleen de map van het .md-bestand).
+    """
+    rel_page = source_path.resolve().relative_to(content_root.resolve())
+    if rel_page.name.startswith("_index."):
+        ups = len(rel_page.parent.parts)
+    else:
+        ups = len(rel_page.with_suffix("").parts)
     prefix = "../" * ups if ups else ""
     return f"{prefix}{static_segment}/{asset_name.replace(chr(92), '/')}"
 

@@ -396,7 +396,7 @@ def _svg_asset_name(asset_path: Path, content_root: Path | None) -> str:
     """Derive a flat, collision-free filename for a copied asset."""
     if content_root is not None:
         try:
-            relative = asset_path.relative_to(content_root)
+            relative = asset_path.resolve().relative_to(content_root.resolve())
             stem = "-".join(relative.with_suffix("").parts)
             return _safe_name(stem) + asset_path.suffix.lower()
         except ValueError:
@@ -412,7 +412,7 @@ def _relative_static_vsa_href(
     static_segment: str = "vsa",
 ) -> str:
     """Site-root-relative href to static/vsa (Hugo serves static/ at site root)."""
-    rel_dir = source_path.parent.relative_to(content_root.resolve())
+    rel_dir = source_path.parent.resolve().relative_to(content_root.resolve())
     ups = len(rel_dir.parts)
     prefix = "../" * ups if ups else ""
     return f"{prefix}{static_segment}/{asset_name.replace(chr(92), '/')}"

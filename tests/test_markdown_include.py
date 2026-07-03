@@ -1,7 +1,7 @@
 import pytest
 from pathlib import Path
 
-from vsa.markdown_include import resolve_includes, IncludeError
+from vsa.markdown_include import IncludeError, _relative_static_vsa_href, resolve_includes
 
 
 def test_passthrough_when_no_includes(tmp_path):
@@ -501,3 +501,13 @@ def test_include_bron_pdf_logical_reference(tmp_path: Path):
     )
     assert 'class="scan-pdf"' in result
     assert (assets / "koormap-003.pdf").is_file()
+    assert 'src="../../vsa/koormap-003.pdf"' in result
+
+
+def test_relative_static_vsa_href_with_relative_source_path(tmp_path: Path):
+    content_root = tmp_path / "content-source"
+    page_dir = content_root / "praktijk" / "zondagen"
+    page_dir.mkdir(parents=True)
+    source = page_dir / "demo.md"
+    href = _relative_static_vsa_href(source, content_root, "koormap-003.pdf")
+    assert href == "../../vsa/koormap-003.pdf"

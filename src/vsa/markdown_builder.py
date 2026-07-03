@@ -14,6 +14,13 @@ from .svg_renderer import SVGRenderer
 from .validation_runner import validate_file
 from .markdown_processor import ProcessValidationError
 
+try:
+    from .catalogus_bridge import discover_bron_root as _discover_bron_root
+except ImportError:  # pragma: no cover - catalogus niet geïnstalleerd
+
+    def _discover_bron_root(content_root=None):  # type: ignore[misc]
+        return None
+
 
 CONTENT_ASSET_SUFFIXES = {
     ".jpg",
@@ -80,12 +87,14 @@ def build_markdown_site(
         target_markdown.parent.mkdir(parents=True, exist_ok=True)
 
         source = markdown_file.read_text(encoding="utf-8")
+        bron_root = _discover_bron_root(input_dir)
         source = resolve_includes(
             source,
             source_path=markdown_file,
             svg_assets_dir=assets_dir,
             svg_assets_url_prefix=assets_url_prefix,
             content_root=input_dir,
+            bron_root=bron_root,
         )
         source = resolve_coria_directives(
             source,

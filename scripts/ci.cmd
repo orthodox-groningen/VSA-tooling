@@ -8,13 +8,7 @@ echo === VSA CI ===
 echo.
 
 echo [1/6] Install package and test dependencies
-python -m pip install --upgrade pip
-if errorlevel 1 exit /b 1
-
-python -m pip install -e .
-if errorlevel 1 exit /b 1
-
-python -m pip install pytest
+call scripts\bootstrap.cmd
 if errorlevel 1 exit /b 1
 
 echo.

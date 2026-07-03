@@ -8,11 +8,11 @@ source: "koormap Groningen"
 ## Tropaar (Toon 1)
 
 :::include svg "tropaar-zondag-toon-1.vsa" alt="Tropaar van de zondag, Toon 1" scale="85%":::
-<!-- :::include coria "tropaar-zondag-toon-1.vsa" label="Deze tropaar oefenen in Coria"::: -->
+:::include coria "tropaar-zondag-toon-1.vsa" label="Deze tropaar oefenen in Coria"::: <!-- coria statement -->
 
 ## Kondak (Toon 1)
 
 :::include svg "kondak-zondag-toon-1.vsa" alt="Kondak van de zondag, Toon 1" scale="85%":::
-<!-- :::include coria "kondak-zondag-toon-1.vsa" label="Deze kondak oefenen in Coria"::: -->
+:::include coria "kondak-zondag-toon-1.vsa" label="Deze kondak oefenen in Coria"::: <!-- coria statement -->
 
 :::include "tropaarmelodie-toon-1.jpg" alt="Tropaarmelodie (Toon 1)" scale="100%":::

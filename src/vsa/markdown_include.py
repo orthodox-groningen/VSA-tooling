@@ -203,7 +203,12 @@ def resolve_includes(
                 dest = svg_assets_dir / asset_name
                 dest.parent.mkdir(parents=True, exist_ok=True)
                 shutil.copy2(included_path, dest)
-                url = f"{svg_assets_url_prefix.rstrip('/')}/{asset_name}"
+                if content_root is not None:
+                    url = _relative_static_vsa_href(
+                        source_path, content_root, asset_name
+                    )
+                else:
+                    url = f"{svg_assets_url_prefix.rstrip('/')}/{asset_name}"
                 title_attr = f' title="{alt_val}"' if alt_val else ""
                 result_lines.append(
                     f'<embed src="{url}" type="application/pdf" class="scan-pdf"{title_attr} />'
@@ -397,6 +402,20 @@ def _svg_asset_name(asset_path: Path, content_root: Path | None) -> str:
         except ValueError:
             pass
     return _safe_name(asset_path.stem) + asset_path.suffix.lower()
+
+
+def _relative_static_vsa_href(
+    source_path: Path,
+    content_root: Path,
+    asset_name: str,
+    *,
+    static_segment: str = "vsa",
+) -> str:
+    """Site-root-relative href to static/vsa (Hugo serves static/ at site root)."""
+    rel_dir = source_path.parent.relative_to(content_root.resolve())
+    ups = len(rel_dir.parts)
+    prefix = "../" * ups if ups else ""
+    return f"{prefix}{static_segment}/{asset_name.replace(chr(92), '/')}"
 
 
 def _safe_name(value: str) -> str:

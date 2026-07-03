@@ -9,7 +9,7 @@ sources:
 
 Gestructureerd in [parochie-lokaal](https://github.com/orthodox-groningen/bron/blob/main/docs/manuals/parochie-lokaal-zangstukken.md) (`content-source/lokaal/…`); includes via **catalogus** (`id:…`).
 
-Overzicht: [Antifonen - weekdagen (catalogus-demo)](antifonen-weekdagen-catalogus/).
+Overzicht: [Antifonen - weekdagen (catalogus-demo)](../antifonen-weekdagen-catalogus/).
 
 <details>
   <summary>1e Antifoon (weekdagen)</summary>

@@ -15,7 +15,7 @@ Liturgische **positie** (1e / 2e / 3e) × **gelegenheid** (`weekdagen`) = aparte
 | `antifoon-2-weekdagen` | ✅ | ✅ |
 | `antifoon-3-weekdagen` | ✅ | — |
 
-Weekdag-antifonen: **geen** Groningen-koormap (Groningen wel [zondag-antifonen](../zondagen/antifonen-zondag-groningen/)).
+Weekdag-antifonen: **geen** Groningen-koormap (Groningen wel [zondag-antifonen](../../zondagen/antifonen-zondag-groningen/)).
 
 <details>
   <summary>1e antifoon — Liturgikon</summary>
@@ -54,5 +54,5 @@ Weekdag-antifonen: **geen** Groningen-koormap (Groningen wel [zondag-antifonen](
 
 ---
 
-- [Antifonen - weekdagen (Liturgikon)](antifonen/)
-- [Antifonen - weekdagen (Hemelum)](antifonen-hemelum/)
+- [Antifonen - weekdagen (Liturgikon)](../antifonen/)
+- [Antifonen - weekdagen (Hemelum)](../antifonen-hemelum/)

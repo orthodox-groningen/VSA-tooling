@@ -21,6 +21,7 @@ CONTENT_ASSET_SUFFIXES = {
     ".png",
     ".webp",
     ".gif",
+    ".pdf",
 }
 
 

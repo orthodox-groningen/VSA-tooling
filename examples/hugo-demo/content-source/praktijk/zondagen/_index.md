@@ -25,4 +25,6 @@ title: "Zondagen"
 
 [Demo exporttypes (svg · coria · mxl)](export-demo/)
 
+- [Antifonen - zondag (Groningen, koormap)](antifonen-zondag-groningen/)
+
 ---

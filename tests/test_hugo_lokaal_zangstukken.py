@@ -21,6 +21,9 @@ def test_lokaal_manifest_files_exist():
     base = HUGO_CONTENT / "lokaal/antifoon-1-weekdagen/liturgikon-weekdagen"
     assert (base / "variant.yaml").is_file()
     assert (base / "hemelum/uitvoeringsvorm.yaml").is_file()
+    base2 = HUGO_CONTENT / "lokaal/antifoon-2-weekdagen/liturgikon-weekdagen"
+    assert (base2 / "variant.yaml").is_file()
+    assert (base2 / "hemelum/repr/hemelum.vsa").is_file()
 
 
 def test_validate_content_source_includes_lokaal():
@@ -30,12 +33,12 @@ def test_validate_content_source_includes_lokaal():
 
 def test_antifonen_hemelum_references_lokaal_include():
     text = HEMELUM_MD.read_text(encoding="utf-8")
-    assert "lokaal/antifoon-1-weekdagen" in text
+    assert "lokaal/antifoon-1-weekdagen" in text or "id:antifoon-1-weekdagen" in text
     assert ":::include svg" in text
-    assert "hemelum.vsa" in text
+    assert "hemelum" in text.lower()
 
 
-def test_build_markdown_generates_svg_for_lokaal_include(tmp_path: Path):
+def test_build_markdown_generates_svg_for_id_include(tmp_path: Path):
     input_dir = tmp_path / "content-source"
     output_dir = tmp_path / "content-generated"
     assets_dir = tmp_path / "static" / "vsa"
@@ -48,9 +51,24 @@ def test_build_markdown_generates_svg_for_lokaal_include(tmp_path: Path):
     )
     vsa_src.parent.mkdir(parents=True)
     vsa_src.write_text(LOKAAL_VSA.read_text(encoding="utf-8"), encoding="utf-8")
+    base = input_dir / "lokaal/antifoon-1-weekdagen/liturgikon-weekdagen"
+    base.mkdir(parents=True, exist_ok=True)
+    (base / "variant.yaml").write_text(
+        (HUGO_CONTENT / "lokaal/antifoon-1-weekdagen/liturgikon-weekdagen/variant.yaml").read_text(
+            encoding="utf-8"
+        ),
+        encoding="utf-8",
+    )
+    (base / "hemelum/uitvoeringsvorm.yaml").write_text(
+        (
+            HUGO_CONTENT
+            / "lokaal/antifoon-1-weekdagen/liturgikon-weekdagen/hemelum/uitvoeringsvorm.yaml"
+        ).read_text(encoding="utf-8"),
+        encoding="utf-8",
+    )
 
     (page_dir / "demo.md").write_text(
-        ':::include svg "../../lokaal/antifoon-1-weekdagen/liturgikon-weekdagen/hemelum/repr/hemelum.vsa":::\n',
+        ':::include svg id:antifoon-1-weekdagen/liturgikon-weekdagen/Hemelum:::\n',
         encoding="utf-8",
     )
 

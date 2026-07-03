@@ -471,3 +471,33 @@ def test_include_coria_requires_content_root(tmp_path):
     source = tmp_path / "doc.md"
     with pytest.raises(IncludeError, match="content_root"):
         resolve_includes(':::include coria "melodie.vsa":::\n', source)
+
+
+def test_include_bron_pdf_logical_reference(tmp_path: Path):
+    bron_root = tmp_path / "bron"
+    zangstuk_dir = bron_root / "zangstukken" / "antifoon-1-zondag"
+    scan = zangstuk_dir / "sources" / "scan" / "koormap-003.pdf"
+    scan.parent.mkdir(parents=True)
+    scan.write_bytes(b"%PDF-1.4 test")
+    (zangstuk_dir / "zangstuk.yaml").write_text(
+        "id: antifoon-1-zondag\n"
+        "title: 1e antifoon (zondag)\n"
+        "sources:\n"
+        "  - id: groningen\n"
+        "    file: sources/scan/koormap-003.pdf\n",
+        encoding="utf-8",
+    )
+    content_root = tmp_path / "content-source"
+    page_dir = content_root / "praktijk" / "zondagen"
+    page_dir.mkdir(parents=True)
+    source = page_dir / "demo.md"
+    assets = tmp_path / "static" / "vsa"
+    result = resolve_includes(
+        ':::include bron:antifoon-1-zondag/groningen alt="scan":::\n',
+        source,
+        content_root=content_root,
+        bron_root=bron_root,
+        svg_assets_dir=assets,
+    )
+    assert 'class="scan-pdf"' in result
+    assert (assets / "koormap-003.pdf").is_file()

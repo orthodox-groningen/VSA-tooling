@@ -146,7 +146,7 @@ Status: **Afgerond** (werkversie)
 
 - Normatief: [bron/docs/specs/terminologie.md](https://github.com/orthodox-groningen/bron/blob/main/docs/specs/terminologie.md) (stub: [specs/terminologie.md](specs/terminologie.md)).
 - [documentatie-eigendom](https://github.com/orthodox-groningen/bron/blob/main/docs/specs/documentatie-eigendom.md): geen duplicaten; VSA-specs in `docs/spec/`.
-- Alias-resolver in code: **open** (fase 2).
+- Alias-resolver in code: **geïmplementeerd** in [bron/catalogus](https://github.com/orthodox-groningen/bron/blob/main/docs/reference/catalogus-cli.md) (fase 2); id-gebaseerde `:::include` in VSA-tooling (fase 3, basis).
 
 ### 3.2 Parochie-lokaal model (map `lokaal/`, manifest, promotie)
 

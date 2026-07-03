@@ -86,12 +86,14 @@ Define verifiable success criteria (tests, validate, build) and loop until they 
 | venv     | `.venv` (via bootstrap)               |
 | Tests    | pytest                                |
 | Hugo     | 0.147.9 (CI; lokaal voor demo-build)  |
-| bron     | checkout onder `vendor/bron` (CI/sync)|
+| bron      | checkout onder `vendor/bron` of sibling `../bron` (CI/sync; **catalogus**-pakket) |
 
 ```cmd
 cd /d C:\Git\orthodox-groningen\VSA-tooling
 scripts\bootstrap.cmd
 ```
+
+`bootstrap.cmd` installeert **catalogus** uit `vendor\bron` of `..\bron` vóór `vsa-tool`.
 
 **Rendering (SVG):** `pip install -r requirements-rendering.txt` (Pillow, DejaVu in `assets/fonts/`).
 

@@ -41,7 +41,15 @@ Wordt door `vsa build-markdown` omgezet naar SVG en ingevoegd als shortcode of `
 Exporttypes: `svg`, `coria`, `mxl` — alleen voor `.vsa`-bronverwijzingen.
 `:::coria` blijft een alias voor `:::include coria`. Zie [exportcontracten](https://orthodox-groningen.github.io/bron/reference/exportcontracten/).
 
-Het pad is **relatief aan het includerende bestand** (niet aan de projectroot).
+Het pad is **relatief aan het includerende bestand** (niet aan de projectroot), **of**
+een logische referentie via **catalogus** (fase 3):
+
+    :::include svg id:zangstuk-id/variant-id/uitvoeringsvorm-id [parameters]:::
+    :::include svg lokaal:…:::
+    :::include svg bron:zangstuk-id/source-id:::
+
+Segmenten mogen aliassen zijn (`Hemelum` → `hemelum`). Zie
+[catalogus-cli](https://orthodox-groningen.github.io/bron/reference/catalogus-cli/).
 
 Ondersteunde bestandstypen:
 
@@ -236,6 +244,7 @@ Conversie (`vsa svg`, `vsa musicxml`):
 | `:::include "melodie.vsa"`       | Geïmplementeerd (SVG via VSA-blok)             |
 | `:::coria "melodie.vsa"`         | Geïmplementeerd                                |
 | `:::include svg\|coria\|mxl "…"` | Geïmplementeerd; zie demo `export-demo.md` |
+| `:::include svg id:…` / `lokaal:…` / `bron:…` | Geïmplementeerd (fase 3); zie demo `antifonen-hemelum.md` |
 
 Parameters (`alt`, `scale`, `label`, `mode`) — volledige beschrijving per exporttype
 in bron-docs; korte samenvatting blijft in sectie 3 en 3b hierboven.

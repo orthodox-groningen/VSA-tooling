@@ -18,6 +18,17 @@ from .markdown_coria import (
 )
 from .yaml_frontmatter import frontmatter_to_block_metadata, parse_vsa_frontmatter
 
+try:
+    from .catalogus_bridge import (
+        discover_bron_root,
+        resolve_logical_vsa_path,
+    )
+    from catalogus.include_ref import is_logical_reference
+except ImportError:  # pragma: no cover - catalogus niet geïnstalleerd
+    is_logical_reference = None  # type: ignore[assignment]
+    discover_bron_root = None  # type: ignore[assignment]
+    resolve_logical_vsa_path = None  # type: ignore[assignment]
+
 EXPORT_TYPES = frozenset({"svg", "coria", "mxl"})
 
 # Optional exporttype, then path (quoted or unquoted), then optional parameters.
@@ -36,6 +47,7 @@ _ALT_ATTR = re.compile(r'alt="([^"]*)"')
 _SCALE_ATTR = re.compile(r'scale="([^"]*)"')
 
 _RASTER_SUFFIXES = {".jpg", ".jpeg", ".png", ".webp", ".gif"}
+_DOCUMENT_SUFFIXES = {".pdf"}
 
 
 class IncludeError(Exception):
@@ -49,6 +61,7 @@ def resolve_includes(
     svg_assets_dir: Path | None = None,
     svg_assets_url_prefix: str = "/vsa",
     content_root: Path | None = None,
+    bron_root: Path | None = None,
     mxl_url_prefix: str = DEFAULT_MXL_URL_PREFIX,
     coria_html_url_prefix: str = DEFAULT_CORIA_HTML_URL_PREFIX,
 ) -> str:
@@ -57,6 +70,9 @@ def resolve_includes(
     Exporttypes ``svg``, ``coria``, and ``mxl`` refer to a ``.vsa`` source path.
     Extension-based includes (``.md``, ``.vsa`` without exporttype, ``.svg``, …)
     behave as before.
+
+    Logische referenties ``id:…``, ``lokaal:…`` en ``bron:…`` worden via
+    **catalogus** opgelost naar een ``.vsa``-pad (fase 3).
 
     ``content_root`` is required for exporttypes ``coria`` and ``mxl``.
     """
@@ -92,7 +108,12 @@ def resolve_includes(
             continue
 
         export_type, rel_path, params_str = parsed
-        included_path = (source_path.parent / rel_path).resolve()
+        included_path = _resolve_include_path(
+            rel_path,
+            source_path=source_path,
+            content_root=content_root,
+            bron_root=bron_root,
+        )
 
         if export_type is not None:
             _resolve_export_include(
@@ -118,7 +139,7 @@ def resolve_includes(
             )
 
         suffix = included_path.suffix.lower()
-        supported = {".md", ".markdown", ".vsa", ".svg"} | _RASTER_SUFFIXES
+        supported = {".md", ".markdown", ".vsa", ".svg"} | _RASTER_SUFFIXES | _DOCUMENT_SUFFIXES
 
         if suffix not in supported:
             raise IncludeError(
@@ -138,6 +159,7 @@ def resolve_includes(
                 svg_assets_dir=svg_assets_dir,
                 svg_assets_url_prefix=svg_assets_url_prefix,
                 content_root=content_root,
+                bron_root=bron_root,
                 mxl_url_prefix=mxl_url_prefix,
                 coria_html_url_prefix=coria_html_url_prefix,
             )
@@ -174,6 +196,24 @@ def resolve_includes(
                     f'<img src="{rel_path}" class="vsa-notation"{alt_attr}{style_attr} />'
                 )
 
+        elif suffix in _DOCUMENT_SUFFIXES:
+            alt_val = alt if alt is not None else included_path.stem.replace("-", " ")
+            if svg_assets_dir is not None:
+                asset_name = _svg_asset_name(included_path, content_root)
+                dest = svg_assets_dir / asset_name
+                dest.parent.mkdir(parents=True, exist_ok=True)
+                shutil.copy2(included_path, dest)
+                url = f"{svg_assets_url_prefix.rstrip('/')}/{asset_name}"
+                title_attr = f' title="{alt_val}"' if alt_val else ""
+                result_lines.append(
+                    f'<embed src="{url}" type="application/pdf" class="scan-pdf"{title_attr} />'
+                )
+            else:
+                title_attr = f' title="{alt_val}"' if alt_val else ""
+                result_lines.append(
+                    f'<a href="{rel_path}" class="scan-pdf"{title_attr}>{alt_val}</a>'
+                )
+
     return "\n".join(result_lines) + "\n"
 
 
@@ -202,6 +242,40 @@ def _parse_include_directive(stripped: str) -> tuple[str | None, str, str | None
         return None, (match.group(1) or match.group(2)).strip(), match.group(3)
 
     return None
+
+
+def _resolve_include_path(
+    rel_path: str,
+    *,
+    source_path: Path,
+    content_root: Path | None,
+    bron_root: Path | None,
+) -> Path:
+    if is_logical_reference is not None and is_logical_reference(rel_path):
+        if content_root is None:
+            raise IncludeError(
+                f"content_root is verplicht voor logische referentie {rel_path!r}"
+                f" (vanuit {source_path})"
+            )
+        if resolve_logical_vsa_path is None:
+            raise IncludeError(
+                "catalogus is niet geïnstalleerd; installeer bron-repo pakket "
+                "(pip install -e vendor/bron of ../bron)"
+            )
+        effective_bron_root = bron_root
+        if effective_bron_root is None and discover_bron_root is not None:
+            effective_bron_root = discover_bron_root(content_root)
+        try:
+            return resolve_logical_vsa_path(
+                rel_path,
+                content_root=content_root,
+                bron_root=effective_bron_root,
+            )
+        except Exception as exc:
+            raise IncludeError(
+                f"Catalogus-referentie {rel_path!r} (vanuit {source_path}): {exc}"
+            ) from exc
+    return (source_path.parent / rel_path).resolve()
 
 
 def _resolve_export_include(

@@ -5,49 +5,44 @@ source: "Liturgikon (pp.174-175)"
 
 ## Antifonen - weekdagen (tijdeigen)
 
+Variant **liturgikon-weekdagen**; uitvoeringsvorm **liturgikon** (tekst uit Liturgikon) of **hemelum** (parochiepraktijk — zie [Hemelum](antifonen-hemelum/)).  
+Weekdag-antifonen in Groningen: geen koormap-materiaal (anders dan [zondag](../zondagen/antifonen-zondag-groningen/)).
+
 <details>
-  <summary>1e Antifoon (weekdagen)</summary>
+  <summary>1e Antifoon (weekdagen) — Liturgikon</summary>
 
-::: vsa-notatie
-<!-- Liturgikon, p174 -->
-[:] Door de {/ge}{/be_}den van de {\\hei}{/li}{/ge} {\Moe}{/der} {/&\&/&\&\Gods_&~&~&~&~}, {\o} {Hei_}{-&/land}, {/&\red_&_} {\ons_}. [:]
-:::
+:::include svg id:antifoon-1-weekdagen/liturgikon-weekdagen/Liturgikon alt="1e antifoon weekdagen (Liturgikon)":::
 
-::: vsa-notatie
-<!-- Liturgikon, p174 -->
-5. [:] Eer aan {/de} {/Va}der, de {\\Zoon} {/en} {/de} {/Hei_}lige {\Geest},
-{\\nu} en {/al}{/tijd} en in de eeuwen der {\eeuw}{\en}, {/A_}{\men_}.  (Door de ....) 
-:::
 </details>
 
 <details>
-  <summary>2e Antifoon (weekdagen)</summary>
+  <summary>2e Antifoon (weekdagen) — Liturgikon</summary>
 
-::: vsa-notatie
-<!-- Liturgikon, p174 -->
-5. [:] Eer aan {/de} {/Va}{\der}, {/en} {/aan_} de {\Zoon_}, 
-{\\en} {/aan} {/de} {\Hei_}lige {\Geest_}. [:]
+:::include svg id:antifoon-2-weekdagen/liturgikon-weekdagen/Liturgikon alt="2e antifoon weekdagen (Liturgikon)":::
 
-Ver{//los} {\\ons} {/Zoon} van {\God_} (enz)
-:::
+</details>
+
+<details>
+  <summary>Eengeboren Zoon (na 2e antifoon weekdagen)</summary>
 
 ::: vsa-notatie
 <!-- Liturgikon, p174 -->
 [//:] Nu en altijd en in de eeuwen {\der} {/eeuw}{\en}. {\A_}{/men_}. [/:]
 
-[/:] {\EEN}GE{/BO_}REN Zoon en Woord van God, 
-Gij {\die} {/on}{/&\sterf}{\&/elijk} {/zijt_}, 
-{\en} {/om} {/on_}{\ze} {\Ver}{/&\los_&_}{\sing_} 
-Vlees zijt {/ge}{/wor_}den uit de Moeder Gods 
-en altijd Maagd {\Ma}{/&\&\ri~&~&_}{/a_}; 
-{\Die} {/zon_}der verandering Mens geworden 
-{\en} ge{/&\krui}{\&/sigd} {/zijt__}; 
-{\&/de} {/dood_} {\door} te sterven hebt {\ver}{/&\&\tre~&~&_}{/den}. 
-{//Een_} van de heilige {\Drie}{/&\&\een~&~&_}{/heid_}, 
-{\Die} ver{/heer|}lijkt zijt met de Vader 
-{\en} {/de} {/&\Hei}{\li}{/ge} {/Geest_}. 
+[/:] {\EEN}GE{/BO_}REN Zoon en Woord van God,
+Gij {\die} {/on}{/&\sterf}{\&/elijk} {/zijt_},
+{\en} {/om} {/on_}{\ze} {\Ver}{/&\los_&_}{\sing_}
+Vlees zijt {/ge}{/wor_}den uit de Moeder Gods
+en altijd Maagd {\Ma}{/&\&\ri~&~&_}{/a_};
+{\Die} {/zon_}der verandering Mens geworden
+{\en} ge{/&\krui}{\&/sigd} {/zijt__};
+{\&/de} {/dood_} {\door} te sterven hebt {\ver}{/&\&\tre~&~&_}{/den}.
+{//Een_} van de heilige {\Drie}{/&\&\een~&~&_}{/heid_},
+{\Die} ver{/heer|}lijkt zijt met de Vader
+{\en} {/de} {/&\Hei}{\li}{/ge} {/Geest_}.
 {\&/O} {/Chris_}{\&\tus}, {/on_}{\ze_} {\God__}, {/&/ver}{/&\&\&\los_.&_&_&_} {/ons__}. [/:]
 :::
+
 </details>
 
 <details>
@@ -62,14 +57,14 @@ en altijd Maagd {\Ma}{/&\&\ri~&~&_}{/a_};
 :::
 
 Bij de Kleine Intocht soms nog eens: Verlos ons …
+
 </details>
 
 <details>
-  <summary>3e Antifoon (weekdagen)</summary>
+  <summary>3e Antifoon (weekdagen) — Liturgikon</summary>
 
-::: vsa-notatie
-<!-- Liturgikon, p175 -->
-4. [//:] Eer aan de Vader, de Zoon en de {Hei_}lige {/Geest_}, 
-nu en altijd en in de eeuwen der eeuwen. {\A_}{men_}. [//:]
-:::
+:::include svg id:antifoon-3-weekdagen/liturgikon-weekdagen/Liturgikon alt="3e antifoon weekdagen (Liturgikon)":::
+
 </details>
+
+Overzicht met Hemelum: [Antifonen - weekdagen (catalogus-demo)](antifonen-weekdagen-catalogus/).

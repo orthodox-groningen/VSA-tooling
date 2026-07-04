@@ -8,9 +8,14 @@ content-source/
 ├── liturgikon-notatie/
 ├── zangstuk-identificatie/
 ├── lokaal/                 # parochie-lokaal zangmateriaal (manifest + .vsa)
+├── sjablonen/              # herbruikbare liturgie-sjablonen (zoek=; niet auto-publish)
+├── samenstellingen/        # concrete sessies per dienst (zoek= → resolve; niet auto-publish)
 ├── voorbeelden/
 └── praktijk/
 ```
+
+**Build:** `build-markdown` slaat **`sjablonen/`** en **`samenstellingen/`** over.
+Workflow: **`vsa resolve-catalogus`** → kopieer opgeloste inhoud naar publishbare map.
 
 Zie [parochie-lokaal-vsa.md](parochie-lokaal-vsa.md) en [bron — parochie-lokaal](https://github.com/orthodox-groningen/bron/blob/main/docs/manuals/parochie-lokaal-zangstukken.md).
 

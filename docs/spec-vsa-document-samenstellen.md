@@ -47,6 +47,12 @@ een logische referentie via **catalogus** (fase 3):
     :::include svg id:zangstuk-id/variant-id/uitvoeringsvorm-id [parameters]:::
     :::include svg lokaal:…:::
     :::include svg bron:zangstuk-id/source-id:::
+    :::include svg zoek="Troparion" [parameters]:::
+
+**Fase 4 — catalogus-zoek:** `zoek="…"` in sjablonen/sessies; **`vsa resolve-catalogus`**
+vervangt vóór build door `bron:…` / `lokaal:…`. Open `zoek=` in build → **fout**.
+Zie [catalogus-samenstelling-zangstuk](https://orthodox-groningen.github.io/bron/specs/catalogus-samenstelling-zangstuk/)
+en [parochie-lokaal-vsa.md](parochie-lokaal-vsa.md).
 
 Segmenten mogen aliassen zijn (`Hemelum` → `hemelum`). Zie
 [catalogus-cli](https://orthodox-groningen.github.io/bron/reference/catalogus-cli/).
@@ -245,6 +251,8 @@ Conversie (`vsa svg`, `vsa musicxml`):
 | `:::coria "melodie.vsa"`         | Geïmplementeerd                                |
 | `:::include svg\|coria\|mxl "…"` | Geïmplementeerd; zie demo `export-demo.md` |
 | `:::include svg id:…` / `lokaal:…` / `bron:…` | Geïmplementeerd (fase 3); zie demo `antifonen-hemelum.md` |
+| `:::include <type> zoek="…"` | Geïmplementeerd (fase 4); resolve via `vsa resolve-catalogus` |
+| `coria` / `mxl` op `bron:` catalogus-pad | Beperkt — `.vsa` buiten content-root |
 
 Parameters (`alt`, `scale`, `label`, `mode`) — volledige beschrijving per exporttype
 in bron-docs; korte samenvatting blijft in sectie 3 en 3b hierboven.

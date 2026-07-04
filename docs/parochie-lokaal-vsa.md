@@ -56,14 +56,13 @@ Handleiding Rene: [sjabloon schrijven](https://github.com/orthodox-groningen/bro
 
 **Harde regel:** open `zoek=` in een bestand dat door build-markdown gaat → **fout**.
 
-#### Voorbeeld (invoer — sessie)
+#### Voorbeeld (invoer — sessie, mixed session)
 
 ```markdown
 ---
 default:
   gelegenheid: geboorte-moeder-gods
   gelegenheidstype: vast-feest
-  uitvoeringsvorm: Groningen
 ---
 
 ### Kondakion
@@ -72,12 +71,17 @@ default:
 :::include coria zoek="Kondakion" label="Oefenen" mode="auto":::
 ```
 
+Geen `default.uitvoeringsvorm` — feest-stukken uit bron (`liturgikon`); lokaal-stukken
+(zoals Cherubijnenhymne) via disambiguation in `zoek=` of aparte sessie-defaults.
+
 #### Voorbeeld (uitvoer na resolve)
 
 ```markdown
 :::include svg bron:kondak-geboorte-moeder-gods/kondak-geboorte-moeder-gods/liturgikon alt="Kondakion":::
-:::include coria bron:kondak-geboorte-moeder-gods/kondak-geboorte-moeder-gods/liturgikon label="Oefenen" mode="auto":::
 ```
+
+**Coria op `bron:`** — catalogus-pad klopt, maar build faalt zolang `.vsa` buiten
+`--content-root` ligt. **SVG** op `bron:` werkt; **coria** op `lokaal:` werkt.
 
 #### Exporttypes
 

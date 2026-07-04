@@ -3,6 +3,8 @@ from pathlib import Path
 
 from .block_parser import parse_markdown_blocks
 from .config import VSAConfig
+from .include_vsa import prepare_markdown_block_body
+from .parser import Parser
 from .svg_renderer import SVGRenderer
 from .validation_runner import validate_file
 
@@ -56,12 +58,17 @@ def process_markdown_file(
     processed = []
 
     for index, block in enumerate(blocks, start=1):
+        expanded_body, _ = prepare_markdown_block_body(
+            block.body,
+            markdown_path=input_path,
+            markdown_text=text,
+        )
         output_file = output_dir / f"{relative_stem}-block-{index}.svg"
 
         renderer = SVGRenderer()
         renderer.max_line_width = max_line_width
 
-        svg = renderer.render_document(block.parse_body())
+        svg = renderer.render_document(block.parse_body(expanded_body))
         output_file.write_text(svg, encoding="utf-8")
 
         processed.append(

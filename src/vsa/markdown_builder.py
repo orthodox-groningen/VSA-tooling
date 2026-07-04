@@ -10,6 +10,7 @@ from .config import VSAConfig
 from .markdown_coria import resolve_coria_directives
 from .markdown_directives import process_directives
 from .markdown_include import resolve_includes
+from .include_vsa import prepare_markdown_block_body
 from .svg_renderer import SVGRenderer
 from .validation_runner import validate_file
 from .markdown_processor import ProcessValidationError
@@ -105,6 +106,7 @@ def build_markdown_site(
 
         rewritten, svg_paths = _rewrite_markdown_file(
             source=source,
+            source_path=markdown_file,
             source_relative=relative,
             assets_dir=assets_dir,
             assets_url_prefix=assets_url_prefix,
@@ -172,6 +174,7 @@ def _copy_coria_html_assets(input_dir: Path, coria_assets_dir: Path) -> list[str
 
 def _rewrite_markdown_file(
     source,
+    source_path,
     source_relative,
     assets_dir,
     assets_url_prefix,
@@ -221,6 +224,11 @@ def _rewrite_markdown_file(
 
         end_index = index
         block = blocks[block_index - 1]
+        expanded_body, _ = prepare_markdown_block_body(
+            block.body,
+            markdown_path=source_path,
+            markdown_text=source,
+        )
 
         svg_name = _svg_name(source_relative, block_index)
 
@@ -230,7 +238,7 @@ def _rewrite_markdown_file(
         renderer = SVGRenderer()
         renderer.max_line_width = max_line_width
 
-        svg = renderer.render_document(block.parse_body())
+        svg = renderer.render_document(block.parse_body(expanded_body))
         svg_path.write_text(svg, encoding="utf-8")
 
         svg_paths.append(svg_path)

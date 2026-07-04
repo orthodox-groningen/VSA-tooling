@@ -8,6 +8,7 @@ from .parser import HALFTOON_CANONICAL, Parser
 from .semantic_validator import SemanticValidationOptions, SemanticValidator
 from .recoverable_syntax_validator import RecoverableSyntaxValidator
 from .errors import VSAError
+from .include_vsa import IncludeVsaError, IncludeVsaWarning, prepare_markdown_block_body, prepare_vsa_body
 from .vsa_comments import strip_vsa_html_comments
 
 # Characters that form the base of an EHM (direction or same-tone).
@@ -113,7 +114,27 @@ def validate_file(path: str | Path, config: VSAConfig | None = None) -> Validati
     if path.suffix.lower() in [".md", ".markdown"]:
         _validate_markdown(path, text, result, config=config)
     else:
-        _validate_vsa_text(str(path), text, result, config=config, source_line_offset=0)
+        try:
+            expanded, warnings = prepare_vsa_body(text, path)
+        except IncludeVsaError as exc:
+            result.add_error(
+                source=str(path),
+                code="VSA-INCLUDE-VSA-ERROR",
+                message_nl=exc.message_nl,
+                line=exc.line,
+                category="include",
+                hint_nl="Controleer @include-vsa id=, lokaal= of zoek= en catalogus-registratie.",
+            )
+            return result
+        for warning in warnings:
+            _add_include_vsa_warning(result, str(path), warning)
+        _validate_vsa_text(
+            str(path),
+            expanded,
+            result,
+            config=config,
+            source_line_offset=0,
+        )
 
     return result
 
@@ -133,13 +154,53 @@ def _validate_markdown(path: Path, text: str, result: ValidationResult,
         return
 
     for block in blocks:
+        try:
+            expanded, warnings = prepare_markdown_block_body(
+                block.body,
+                markdown_path=path,
+                markdown_text=text,
+            )
+        except IncludeVsaError as exc:
+            result.add_error(
+                source=str(path),
+                code="VSA-INCLUDE-VSA-ERROR",
+                message_nl=exc.message_nl,
+                line=block.start_line + exc.line - 1,
+                category="include",
+                hint_nl="Controleer @include-vsa id=, lokaal= of zoek= en catalogus-registratie.",
+            )
+            continue
+        for warning in warnings:
+            _add_include_vsa_warning(
+                result,
+                str(path),
+                IncludeVsaWarning(
+                    code=warning.code,
+                    message_nl=warning.message_nl,
+                    line=block.start_line + warning.line - 1,
+                ),
+            )
         _validate_vsa_text(
             source=str(path),
-            text=block.body,
+            text=expanded,
             result=result,
             config=config,
             source_line_offset=block.start_line,
         )
+
+
+def _add_include_vsa_warning(
+    result: ValidationResult,
+    source: str,
+    warning: IncludeVsaWarning,
+) -> None:
+    result.add_warning(
+        source=source,
+        code=warning.code,
+        message_nl=warning.message_nl,
+        line=warning.line,
+        category="include",
+    )
 
 
 def _validate_vsa_text(source: str, text: str, result: ValidationResult,

@@ -1,6 +1,6 @@
 # `@include-vsa` — VSA inline includes
 
-Status: **gepland** (tool-spec VSA-tooling).
+Status: **geïmplementeerd** (`id=` / `lokaal=`); **`zoek=`** wacht op `catalogus.zoek` in bron.
 
 Normatief zoek-contract: [bron — catalogus-zoek-api.md](https://github.com/orthodox-groningen/bron/blob/main/docs/specs/catalogus-zoek-api.md).
 
@@ -75,6 +75,7 @@ Markdown-sessies gebruiken **`default.*`** in **`.md`**-frontmatter — zelfde
 
 | Onderdeel | Status |
 | --------- | ------ |
-| `expand_include_vsa` in VSA-tooling | **Gepland** |
-| `@include-vsa zoek=` | **Gepland** (na `catalogus.zoek`) |
-| `@include-vsa id=` / `lokaal=` | **Gepland** (via bestaande `resolve_vsa_path`) |
+| `expand_include_vsa` in [`include_vsa.py`](../../src/vsa/include_vsa.py) | **Geïmplementeerd** |
+| `@include-vsa id=` / `lokaal=` | **Geïmplementeerd** |
+| `@include-vsa zoek=` | **Gepland** (stub; `catalogus.zoek` nog niet live) |
+| Integratie validate / svg / musicxml / build-markdown | **Geïmplementeerd** |

@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from .markdown_newline_policy import preserve_vsa_source_newlines
+from .include_vsa import IncludeVsaError, prepare_markdown_block_body, prepare_vsa_body
 import argparse
 import json
 import sys
@@ -195,7 +196,14 @@ def _cmd_validate(args, config):
 
 
 def _cmd_parse(args):
-    text = Path(args.path).read_text(encoding="utf-8")
+    path = Path(args.path)
+    text = path.read_text(encoding="utf-8")
+    if path.suffix.lower() == ".vsa":
+        try:
+            text, _ = prepare_vsa_body(text, path)
+        except IncludeVsaError as exc:
+            print(f"{path}: {exc.message_nl}", file=sys.stderr)
+            return 1
     document = Parser(preserve_vsa_source_newlines(text)).parse()
 
     if args.ast:
@@ -231,8 +239,14 @@ def _cmd_blocks(args):
 
 
 def _cmd_svg(args, config):
-    text = Path(args.input).read_text(encoding="utf-8")
-    document = Parser(preserve_vsa_source_newlines(text)).parse()
+    input_path = Path(args.input)
+    text = input_path.read_text(encoding="utf-8")
+    try:
+        body, _ = prepare_vsa_body(text, input_path)
+    except IncludeVsaError as exc:
+        print(f"{input_path}: {exc.message_nl}", file=sys.stderr)
+        return 1
+    document = Parser(preserve_vsa_source_newlines(body)).parse()
 
     renderer = SVGRenderer(svg_config=config.rendering.svg)
     renderer.max_line_width = (
@@ -387,6 +401,11 @@ def _export_vsa_to_musicxml(
 ) -> int:
     text = input_path.read_text(encoding="utf-8")
     frontmatter, vsa_body = parse_vsa_frontmatter(text)
+    try:
+        vsa_body, _ = prepare_vsa_body(text, input_path)
+    except IncludeVsaError as exc:
+        print(f"{input_path}: {exc.message_nl}", file=sys.stderr)
+        return 1
     fm_meta = frontmatter_to_block_metadata(frontmatter)
 
     metadata = dict(DEFAULT_METADATA)
@@ -428,7 +447,16 @@ def _export_md_to_musicxml(
     for i, block in enumerate(blocks):
         metadata = block.effective_metadata()
         metadata.update(cli_overrides)
-        document = block.parse_body()
+        try:
+            expanded_body, _ = prepare_markdown_block_body(
+                block.body,
+                markdown_path=input_path,
+                markdown_text=text,
+            )
+        except IncludeVsaError as exc:
+            print(f"{input_path} (blok {i + 1}): {exc.message_nl}", file=sys.stderr)
+            return 1, written
+        document = block.parse_body(expanded_body)
 
         explicit_keys = set(block.metadata.keys()) | set(cli_overrides.keys())
 

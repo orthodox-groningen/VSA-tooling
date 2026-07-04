@@ -39,8 +39,8 @@ class MarkdownBlock:
         result.update(self.metadata)
         return result
 
-    def parse_body(self):
-        return Parser(self.body).parse()
+    def parse_body(self, body: str | None = None):
+        return Parser(body if body is not None else self.body).parse()
 
 
 def parse_markdown_blocks(markdown: str):

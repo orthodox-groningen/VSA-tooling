@@ -9,7 +9,12 @@ from .block_parser import START_MARKER, END_MARKER, parse_markdown_blocks
 from .config import VSAConfig
 from .markdown_coria import resolve_coria_directives
 from .markdown_directives import process_directives
-from .markdown_include import resolve_includes
+from .markdown_include import IncludeError, resolve_includes
+from .resolve_catalogus import (
+    ResolveCatalogusError,
+    has_unresolved_zoek_includes,
+    resolve_catalogus_markdown,
+)
 from .include_vsa import prepare_markdown_block_body
 from .svg_renderer import SVGRenderer
 from .validation_runner import validate_file
@@ -31,6 +36,22 @@ CONTENT_ASSET_SUFFIXES = {
     ".gif",
     ".pdf",
 }
+
+# Catalogus-sjablonen/sessies: wel valideren/resolve-catalogus, nog geen Hugo-build.
+BUILD_EXCLUDE_DIR_NAMES = frozenset({"samenstellingen", "sjablonen"})
+
+
+def _discover_markdown_files(input_dir: Path) -> list[Path]:
+    files = sorted(
+        list(input_dir.rglob("*.md")) + list(input_dir.rglob("*.markdown"))
+    )
+    return [
+        path
+        for path in files
+        if not BUILD_EXCLUDE_DIR_NAMES.intersection(
+            path.relative_to(input_dir).parts
+        )
+    ]
 
 
 @dataclass
@@ -59,10 +80,7 @@ def build_markdown_site(
         coria_assets_dir = Path(coria_assets_dir)
     coria_assets_dir.mkdir(parents=True, exist_ok=True)
 
-    markdown_files = sorted(
-        list(input_dir.rglob("*.md")) +
-        list(input_dir.rglob("*.markdown"))
-    )
+    markdown_files = _discover_markdown_files(input_dir)
 
     all_messages = []
 
@@ -89,6 +107,16 @@ def build_markdown_site(
 
         source = markdown_file.read_text(encoding="utf-8")
         bron_root = _discover_bron_root(input_dir)
+        if has_unresolved_zoek_includes(source):
+            try:
+                source = resolve_catalogus_markdown(
+                    source,
+                    source_path=markdown_file,
+                    content_root=input_dir,
+                    bron_root=bron_root,
+                ).text
+            except ResolveCatalogusError as exc:
+                raise IncludeError(exc.message_nl) from exc
         source = resolve_includes(
             source,
             source_path=markdown_file,

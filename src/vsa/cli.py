@@ -24,7 +24,7 @@ from .parser import Parser
 from .svg_renderer import SVGRenderer
 from .validation_display import format_validation_message
 from .validation_runner import validate_path
-from .yaml_frontmatter import frontmatter_to_block_metadata, parse_vsa_frontmatter
+from .resolve_catalogus import ResolveCatalogusError, write_resolved_markdown
 
 
 def main(argv=None):
@@ -89,6 +89,33 @@ def _build_parser():
         "--output-mode",
         choices=["img", "shortcode"],
         default=None,
+    )
+
+    resolve_catalogus = subparsers.add_parser(
+        "resolve-catalogus",
+        help="Los :::include zoek= op naar catalogus-paden in markdown.",
+    )
+    resolve_catalogus.add_argument("path", help="Markdown-bestand met zoek= includes")
+    resolve_catalogus.add_argument(
+        "--content-root",
+        default=None,
+        help="Content-root (default: auto via lokaal/ in bovenliggende mappen)",
+    )
+    resolve_catalogus.add_argument(
+        "--bron-root",
+        default=None,
+        help="Bron-repo root (default: auto via vendor/bron of ../bron)",
+    )
+    resolve_catalogus.add_argument(
+        "-o",
+        "--output",
+        default=None,
+        help="Uitvoerbestand (default: overschrijf invoer)",
+    )
+    resolve_catalogus.add_argument(
+        "--dry-run",
+        action="store_true",
+        help="Toon resultaat zonder bestand te schrijven",
     )
 
     musicxml = subparsers.add_parser("musicxml")
@@ -331,12 +358,15 @@ def _cmd_resolve_catalogus(args) -> int:
     if not source_path.is_file():
         print(f"Bestand niet gevonden: {source_path}", file=sys.stderr)
         return 1
+    content_root = Path(args.content_root) if args.content_root else None
+    bron_root = Path(args.bron_root) if args.bron_root else None
+    output_path = Path(args.output) if args.output else None
     try:
         result = write_resolved_markdown(
             source_path,
-            content_root=args.content_root,
-            bron_root=args.bron_root,
-            output_path=args.output,
+            content_root=content_root,
+            bron_root=bron_root,
+            output_path=output_path,
             dry_run=args.dry_run,
         )
     except ResolveCatalogusError as exc:

@@ -12,4 +12,5 @@ gh-pages:/preview/
   automatische preview-site
 ```
 
-De oude testverwachtingen voor `actions/configure-pages` en `actions/deploy-pages` zijn vervangen door `peaceiris/actions-gh-pages@v3`.
+De workflowtests controleren `actions/upload-pages-artifact` en
+`actions/deploy-pages` plus gedeelde site-cache tussen preview en productie.

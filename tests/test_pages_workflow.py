@@ -15,16 +15,17 @@ def test_pages_workflow_is_manual_only():
     assert "push:" not in text
 
 
-def test_pages_workflow_deploys_production_root_to_gh_pages():
+def test_pages_workflow_deploys_production_root_via_deploy_pages():
     text = WORKFLOW.read_text(encoding="utf-8")
 
-    assert "peaceiris/actions-gh-pages@v3" in text
-    assert "publish_branch: gh-pages" in text
-    assert "publish_dir: generated/site" in text
-    assert "destination_dir: preview" not in text
+    assert "actions/upload-pages-artifact@v3" in text
+    assert "actions/deploy-pages@v4" in text
+    assert "generated/site/" in text
+    assert "pages-site/preview/" not in text
 
 
-def test_pages_workflow_preserves_existing_gh_pages_files():
+def test_pages_workflow_preserves_existing_site_state():
     text = WORKFLOW.read_text(encoding="utf-8")
 
-    assert "keep_files: true" in text
+    assert "actions/cache/restore@v4" in text
+    assert "actions/cache/save@v4" in text

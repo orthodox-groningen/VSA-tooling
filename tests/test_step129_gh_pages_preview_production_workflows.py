@@ -8,10 +8,9 @@ PRODUCTION = Path(".github/workflows/pages-demo.yml")
 def test_preview_workflow_deploys_preview_directory_to_gh_pages():
     text = PREVIEW.read_text(encoding="utf-8")
 
-    assert "peaceiris/actions-gh-pages@v3" in text
-    assert "publish_branch: gh-pages" in text
-    assert "destination_dir: preview" in text
-    assert "keep_files: true" in text
+    assert "actions/upload-pages-artifact@v3" in text
+    assert "actions/deploy-pages@v4" in text
+    assert "pages-site/preview/" in text
 
 
 def test_preview_workflow_uses_preview_baseurl():
@@ -36,12 +35,14 @@ def test_production_workflow_remains_manual():
 def test_production_workflow_deploys_root_to_gh_pages():
     text = PRODUCTION.read_text(encoding="utf-8")
 
-    assert "peaceiris/actions-gh-pages@v3" in text
-    assert "publish_branch: gh-pages" in text
-    assert "publish_dir: generated/site" in text
-    assert "destination_dir: preview" not in text
+    assert "actions/upload-pages-artifact@v3" in text
+    assert "actions/deploy-pages@v4" in text
+    assert "generated/site/" in text
 
 
-def test_workflows_do_not_use_deploy_pages_artifacts():
-    assert "actions/deploy-pages" not in PREVIEW.read_text(encoding="utf-8")
-    assert "actions/deploy-pages" not in PRODUCTION.read_text(encoding="utf-8")
+def test_workflows_share_pages_deploy_permissions_and_concurrency():
+    for path in (PREVIEW, PRODUCTION):
+        text = path.read_text(encoding="utf-8")
+        assert "pages: write" in text
+        assert "id-token: write" in text
+        assert "group: pages-vsa-tooling" in text

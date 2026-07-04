@@ -42,18 +42,22 @@ Zet in GitHub handmatig:
 
 ```text
 Settings → Pages → Build and deployment
-Source: Deploy from a branch
-Branch: gh-pages
-Folder: /
+Source: GitHub Actions
 ```
 
-## Waarom niet actions/deploy-pages?
+Preview en productie publiceren via `actions/deploy-pages` met gedeelde site-state
+(`actions/cache` + eenmalige bootstrap vanuit `gh-pages`).
 
-De bestaande `actions/deploy-pages` publiceert steeds één volledig Pages artifact.
+## Waarom deploy-pages met cache?
 
-Dat maakt het lastig om automatisch `/preview/` te verversen zonder de handmatige productie-root te overschrijven.
+`actions/deploy-pages` publiceert steeds één volledig Pages-artifact. Preview en
+productie delen daarom één samengestelde site-root (`pages-site/`): preview onder
+`/preview/`, productie onder `/`. De cache bewaart die samengestelde staat tussen
+runs; alleen preview-updates overschrijven `pages-site/preview/`, productie-updates
+alleen de root (de map `preview/` blijft staan).
 
-Met `gh-pages` + `destination_dir: preview` kan preview apart worden bijgewerkt.
+De oude `peaceiris`-push naar `gh-pages` veroorzaakte een tweede, conflicterende
+`pages build and deployment`-run van GitHub zelf.
 
 ## Workflows
 
@@ -64,4 +68,4 @@ Met `gh-pages` + `destination_dir: preview` kan preview apart worden bijgewerkt.
 - `.github/workflows/pages-demo.yml`
   - draait handmatig
   - publiceert productie-root
-  - behoudt bestaande bestanden met `keep_files: true`
+  - behoudt preview via gedeelde site-cache

@@ -4,16 +4,21 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
+  pages: write
+  id-token: write
 
 concurrency:
-  group: pages-production
+  group: pages-vsa-tooling
   cancel-in-progress: true
 
 jobs:
   production:
     name: Build and deploy production
     runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
 
     steps:
       - name: Checkout repository
@@ -86,13 +91,46 @@ jobs:
             --site-dir generated/site \
             --url-prefix /VSA-tooling/
 
-      - name: Deploy production root
-        uses: peaceiris/actions-gh-pages@v3
+      - name: Restore published site state
+        uses: actions/cache/restore@v4
+        id: pages_site_cache
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_branch: gh-pages
-          publish_dir: generated/site
-          keep_files: true
+          path: pages-site
+          key: pages-site-${{ github.run_id }}
+          restore-keys: |
+            pages-site-
+
+      - name: Bootstrap site state from gh-pages branch
+        if: steps.pages_site_cache.outputs.cache-hit != 'true'
+        uses: actions/checkout@v4
+        with:
+          ref: gh-pages
+          path: pages-site
+        continue-on-error: true
+
+      - name: Prepare site root
+        run: mkdir -p pages-site
+
+      - name: Merge production build
+        run: rsync -a generated/site/ pages-site/
+
+      - name: Save published site state
+        uses: actions/cache/save@v4
+        with:
+          path: pages-site
+          key: pages-site-${{ github.run_id }}
+
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: pages-site
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
 
       - name: Show production URL
         run: |

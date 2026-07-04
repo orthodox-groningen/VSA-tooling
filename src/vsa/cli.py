@@ -170,6 +170,9 @@ def _run(args):
     if args.command == "build-markdown":
         return _cmd_build_markdown(args, config)
 
+    if args.command == "resolve-catalogus":
+        return _cmd_resolve_catalogus(args)
+
     if args.command == "musicxml":
         return _cmd_musicxml(args, config)
 
@@ -320,6 +323,43 @@ def _cmd_build_markdown(args, config):
 
     print(f"{len(result.markdown_files)} Markdownbestand(en) geschreven")
     print(f"{len(result.svg_files)} SVG-bestand(en) geschreven")
+    return 0
+
+
+def _cmd_resolve_catalogus(args) -> int:
+    source_path = Path(args.path)
+    if not source_path.is_file():
+        print(f"Bestand niet gevonden: {source_path}", file=sys.stderr)
+        return 1
+    try:
+        result = write_resolved_markdown(
+            source_path,
+            content_root=args.content_root,
+            bron_root=args.bron_root,
+            output_path=args.output,
+            dry_run=args.dry_run,
+        )
+    except ResolveCatalogusError as exc:
+        location = f"{source_path}:{exc.line}: " if exc.line else f"{source_path}: "
+        print(f"{location}{exc.message_nl}", file=sys.stderr)
+        return 1
+
+    for warning in result.warnings:
+        print(
+            f"{source_path}:{warning.line}: WARNING: {warning.code}: "
+            f"{warning.message_nl}",
+            file=sys.stderr,
+        )
+
+    if result.resolved_queries:
+        print(
+            f"Opgelost: {len(result.resolved_queries)} unieke zoek= "
+            f"({', '.join(result.resolved_queries)})"
+        )
+    else:
+        print("Geen zoek= includes gevonden.")
+    if args.dry_run:
+        print("(dry-run — bestand niet geschreven)")
     return 0
 
 

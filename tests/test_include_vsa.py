@@ -125,15 +125,25 @@ def test_expand_cycle_detection(tmp_path: Path) -> None:
         prepare_vsa_body(vsa.read_text(encoding="utf-8"), vsa)
 
 
-def test_zoek_not_implemented(tmp_path: Path) -> None:
+def test_zoek_with_catalogus_fixture(tmp_path: Path) -> None:
     root = tmp_path / "content-source"
-    root.mkdir()
-    (root / "lokaal").mkdir()
-    host = root / "host.vsa"
-    host.write_text('---\ndefault:\n  gelegenheid: test\n---\n@include-vsa zoek="Troparion"\n', encoding="utf-8")
+    fixture = Path(__file__).resolve().parents[1].parent / "bron" / "tests" / "fixtures" / "alias-index"
+    if not fixture.is_dir():
+        pytest.skip("bron fixture ontbreekt")
+    (root / "lokaal").mkdir(parents=True)
+    import shutil
 
-    with pytest.raises(IncludeVsaError, match="niet geïmplementeerd"):
-        prepare_vsa_body(host.read_text(encoding="utf-8"), host)
+    shutil.copytree(fixture / "lokaal" / "cherubijnenhymne", root / "lokaal" / "cherubijnenhymne")
+    host = root / "host.vsa"
+    host.write_text(
+        '---\ndefault:\n  uitvoeringsvorm: Groningen\n---\n'
+        '@include-vsa zoek="Cherubijnenhymne (Kastorski)"\n',
+        encoding="utf-8",
+    )
+
+    expanded, _ = prepare_vsa_body(host.read_text(encoding="utf-8"), host)
+    assert "@include-vsa" not in expanded
+    assert "Wij die door het" in expanded
 
 
 def test_source_file_unchanged_after_expand(tmp_path: Path) -> None:

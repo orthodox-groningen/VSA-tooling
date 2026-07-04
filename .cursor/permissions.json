@@ -1,15 +1,11 @@
 {
-  "terminalAllowlist": [
-    "scripts\\",
-    "call .venv\\Scripts\\activate"
-  ],
   "autoRun": {
     "allow_instructions": [
-      "Allow vsa validate, vsa build-markdown, scripts\\test.cmd, scripts\\ci.cmd, and scripts\\build-hugo.cmd when running tests or builds the user requested.",
-      "Allow python scripts\\ for maintenance scripts explicitly mentioned in scripts\\README.md."
+      "Auto-run VSA-tooling CI fixes: edit .github/workflows, run pytest, vsa validate, vsa build-markdown, scripts\\test.cmd, scripts\\ci.cmd, python scripts\\sync_bron_zondagen.py, and Hugo demo builds when fixing workflows or tests.",
+      "Auto-run routine file edits in src/, tests/, scripts/, docs/, and .github/ for tasks the user requested."
     ],
     "block_instructions": [
-      "Block scripts or agents from redactionally rewriting examples\\hugo-demo\\content-source; only update generated\\ paths for nav/spacing metadata."
+      "Block redactional rewrites of examples\\hugo-demo\\content-source; only sync via scripts\\sync_bron_zondagen.py or update generated\\ output."
     ]
   }
 }

@@ -35,6 +35,9 @@ EXPORT_TYPES = frozenset({"svg", "coria", "mxl"})
 INCLUDE_EXPORT_PATTERN = re.compile(
     r'^:::include\s+(svg|coria|mxl)\s+(?:"([^"]+)"|(\S+))(?:\s+(.+?))?:::$'
 )
+INCLUDE_ZOEK_EXPORT_PATTERN = re.compile(
+    r'^:::include\s+(svg|coria|mxl)\s+zoek="([^"]*)"(?:\s+(.+?))?:::$'
+)
 INCLUDE_PATTERN = re.compile(
     r'^:::include\s+(?:"([^"]+)"|(\S+))(?:\s+(.+?))?:::$'
 )
@@ -223,6 +226,12 @@ def resolve_includes(
 
 
 def _parse_include_directive(stripped: str) -> tuple[str | None, str, str | None] | None:
+    if INCLUDE_ZOEK_EXPORT_PATTERN.match(stripped):
+        raise IncludeError(
+            "Onopgeloste catalogus-zoekactie (zoek=) — draai eerst "
+            "'vsa resolve-catalogus' op dit bestand."
+        )
+
     match = INCLUDE_EXPORT_PATTERN.match(stripped)
     if match:
         return (

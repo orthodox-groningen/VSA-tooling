@@ -16,7 +16,7 @@ refrein: [:] Door de {/ge}{/be_}den van de {\\hei}{/li}{/ge} {\Moe}{/der} {/&\&/
 
 <!-- Liturgikon, 274 -->
 2. Ps. 131: [:] Wij {/had}{/den} ervan ge{\hoord} {/in} {/E_.}fra{\ta_};
-   {\\wij} hebben de Ark ge{/von}den {\in} {\het} {/woud_}{\veld_}. [:]  (refrein)
+   {\\wij} hebben de Ark {/ge}{/von}den {\in} {\het} {/woud_}{\veld_}. [:]  (refrein)
 
 3. Ps. 86: [:] O{/ver} {/u} zijn roem{\rij}{/ke} {/din_}gen ge{\zegd_}; 
    {\\&/gij} {/zijt} {\&\de} {/Stad_.} van {\God_}. [:] (refrein)
@@ -85,7 +85,7 @@ en Hij {/ver}{\leent} ons het eeuwige {-&/Le_&_}{\ven_}. [//:]
 
 ::: vsa-notatie
 [//:] Joachim en {-&/An}{\na}
-werden van de schande der kinder{loos_}heid be{\vrijd_}
+{/wer}den van de schande der kinder{loos_}heid be{\vrijd_}
 door uw Ge{-&/boor_&_}{\te_},
 {/waar}door ook Adam en Eva zijn verlost uit het be{derf_.} des {\doods_}.
 Daarom is dit ook een {feest_} {/voor} uw {\volk_}

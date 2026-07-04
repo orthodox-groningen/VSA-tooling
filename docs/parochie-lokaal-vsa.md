@@ -36,7 +36,8 @@ Prefix `lokaal:` of `bron:` beperkt de zoekscope; `id:` doorzoekt beide (lokaal 
 
 ### `:::include` met `zoek=` (catalogus)
 
-Status: **gepland** — resolve-stap vóór build.
+Status: **geïmplementeerd** — resolve-stap vóór build (of auto-resolve in `build-markdown`
+voor publishbare paden).
 
 Normatief contract (bron): [catalogus-samenstelling-zangstuk.md](https://github.com/orthodox-groningen/bron/blob/main/docs/specs/catalogus-samenstelling-zangstuk.md).
 
@@ -74,39 +75,38 @@ default:
 #### Voorbeeld (uitvoer na resolve)
 
 ```markdown
-:::include svg bron:troparion-geboorte-moeder-gods/obikhod/groningen alt="Kondakion":::
-:::include coria bron:troparion-geboorte-moeder-gods/obikhod/groningen label="Oefenen" mode="auto":::
+:::include svg bron:kondak-geboorte-moeder-gods/kondak-geboorte-moeder-gods/liturgikon alt="Kondakion":::
+:::include coria bron:kondak-geboorte-moeder-gods/kondak-geboorte-moeder-gods/liturgikon label="Oefenen" mode="auto":::
 ```
 
 #### Exporttypes
 
 | Exporttype | Status | Opmerking |
 | ---------- | ------ | --------- |
-| `svg` | gepland / deels | Notatie inline |
-| `coria` | gepland / deels | Oefenlink |
-| `mxl` | gepland | Download MusicXML |
-| `mp3-player` | **gepland** | Audio-inline — contract nog in bron |
+| `svg` | **Geïmplementeerd** | Notatie inline |
+| `coria` | **Geïmplementeerd** | Oefenlink |
+| `mxl` | **Geïmplementeerd** | Download MusicXML (vanuit VSA-pad) |
+| `mp3-player` | **Gepland** | Audio-inline — contract nog in bron |
 
 Meerdere regels met **dezelfde** `zoek=` → één catalogus-zoekactie, meerdere includes.
 
-#### Implementatie-notities
+#### Implementatie
 
-- Parser: uitbreiding `markdown_include.py` — herken `zoek="…"` i.p.v. pad;
-  weiger resolve in `build-markdown`.
-- Resolve: nieuw commando **`vsa resolve-catalogus`** (of subcommando van `build-markdown --resolve-only`).
-- Afhankelijkheid: `catalogus` uit bron-repo (`catalogus zoek` — nog te bouwen).
+- Parser: `markdown_include.py` — weigert open `zoek=` in build.
+- Resolve: **`vsa resolve-catalogus`** (CLI).
+- Afhankelijkheid: **`catalogus`** uit bron-repo (`catalogus zoek`).
 
 ---
 
 ## `vsa resolve-catalogus`
 
-Status: **gepland**.
+Status: **geïmplementeerd**.
 
 Doel: markdown met **`zoek=`** omzetten naar markdown met **catalogus-pad** —
-**verplichte tussenstap** vóór `vsa validate` / `vsa build-markdown` op sjablonen
-en sessies.
+tussenstap vóór `vsa validate` / `vsa build-markdown` op sjablonen en sessies
+(tenzij `build-markdown` auto-resolve voor publishbare bestanden).
 
-### Bedoelde syntax
+### Syntax
 
 ```cmd
 cd /d C:\Git\orthodox-groningen\VSA-tooling
@@ -122,7 +122,7 @@ vsa resolve-catalogus examples\hugo-demo\content-source\samenstellingen\geboorte
 | `--bron-root` | Bron-repository (`zangstukken/`) |
 | `--output` | Optioneel ander uitvoerbestand; default: overschrijven invoer of `.resolved.md` |
 | `--dry-run` | Alleen rapport, geen schrijven |
-| `--interactive` | Review bij ambiguïteit (GUI later) |
+| `--interactive` | Review bij ambiguïteit (**gepland**; nu: `AmbiguousError` + `catalogus zoek --lijst`) |
 
 ### Wat het commando doet
 
@@ -130,7 +130,7 @@ vsa resolve-catalogus examples\hugo-demo\content-source\samenstellingen\geboorte
 2. Alle `:::include … zoek="…"` regels vinden (niet in code fences).
 3. Per `zoek=` + context: **`catalogus zoek`** (bron-package).
 4. Bij unieke match: vervang `zoek="…"` door `bron:…` / `lokaal:…`.
-5. Bij ambiguïteit: fout of interactieve keuze.
+5. Bij ambiguïteit: **`AmbiguousError`** (strict); review via `catalogus zoek --lijst`.
 6. Schrijf opgelost bestand.
 
 ### Relatie tot `catalogus` CLI
@@ -143,7 +143,7 @@ vsa resolve-catalogus examples\hugo-demo\content-source\samenstellingen\geboorte
 
 Zie [bron — catalogus CLI](https://github.com/orthodox-groningen/bron/blob/main/docs/reference/catalogus-cli.md).
 
-### Pipeline (doel)
+### Pipeline
 
 ```text
 sjabloon.md (zoek=, geen gelegenheid)
@@ -151,11 +151,12 @@ sjabloon.md (zoek=, geen gelegenheid)
     → vsa resolve-catalogus
     → sessie-opgelost.md (bron:/lokaal:)
     → vsa validate
+    → (kopie naar publishbare map — demo slaat samenstellingen/ over)
     → vsa build-markdown
     → Hugo
 ```
 
-GUI (later): dezelfde stappen — resolve vóór preview/export.
+GUI (gepland): dezelfde stappen — resolve vóór preview/export.
 
 ---
 
@@ -178,12 +179,12 @@ Inline (kort fragment):
 | Stap | Parochie-lokaal |
 | ---- | ---------------- |
 | Sync bron | Niet nodig — bestanden in git |
-| **`vsa resolve-catalogus`** | **Gepland** — verplicht als `zoek=` aanwezig |
+| **`vsa resolve-catalogus`** | **Geïmplementeerd** — verplicht als `zoek=` aanwezig (of auto in build) |
 | `vsa validate` | Deelt `content-source` recursief |
 | `build-markdown` | Includes op pad / catalogus-pad — **geen** open `zoek=` |
-| Hugo | Ongewijzigd |
+| Hugo | Ongewijzigd; **`samenstellingen/`** en **`sjablonen/`** worden overgeslagen |
 
-Lokaal bouwen (vandaag — zonder `zoek=`):
+Lokaal bouwen (pagina's buiten `samenstellingen/` / `sjablonen/`):
 
 ```cmd
 cd /d C:\Git\orthodox-groningen\VSA-tooling

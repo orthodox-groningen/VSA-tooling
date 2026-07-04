@@ -1,73 +1,59 @@
 # `@include-vsa` — VSA inline includes
 
-Status: **geïmplementeerd** (`id=` / `lokaal=`); **`zoek=`** wacht op `catalogus.zoek` in bron.
+Status: **geïmplementeerd** (`id=` / `lokaal=` / **`zoek=`**).
 
-Normatief zoek-contract: [bron — catalogus-zoek-api.md](https://github.com/orthodox-groningen/bron/blob/main/docs/specs/catalogus-zoek-api.md).
-
-Verschil met markdown [`:::include`](../spec-vsa-document-samenstellen.md): transclusie
-(aparte blokken/SVG) vs. **inline tekstsplice** in één notatiestroom. Brondocument
-blijft **ongewijzigd**; expand is in-memory.
+Normatief zoek-contract (bron): [catalogus-zoek-api.md](https://github.com/orthodox-groningen/bron/blob/main/docs/specs/catalogus-zoek-api.md).
 
 ---
 
-## Syntax (voorgesteld)
+## Syntax
 
-```text
+In VSA-notatie (één regel):
+
+```vsa
 refrein: @include-vsa zoek="Troparion"
-refrein: @include-vsa id=troparion-geboorte-moeder-gods/obikhod/groningen
-refrein: @include-vsa lokaal=troparion-geboorte-moeder-gods/obikhod/groningen
+refrein: @include-vsa id=troparion-geboorte-moeder-gods/troparion-geboorte-moeder-gods/liturgikon
+refrein: @include-vsa lokaal=cherubijnenhymne/kastorski/groningen/groningen-vsa
 ```
 
 Parameters **`zoek=`**, **`id=`**, **`lokaal=`** — wederzijds exclusief; geen pad.
 
 Alleen de substring `@include-vsa …` wordt vervangen; `refrein: ` blijft staan.
-Lege regels aan begin/eind van de ingesloten body worden weggelaten.
 
 ---
 
-## Catalogus / parochie-context
+## Resolve
 
-Zoeken draait met **`content-root`** = parochie content-source en optioneel
-**`bron-root`**. **`lokaal/`** gaat vóór **`zangstukken/`** in bron — zie bron-spec
-§ parochie-context.
-
-| Parameter | Resolver |
-| --------- | -------- |
+| Parameter | Bron |
+| --------- | ---- |
+| `id=` | `catalogus` — beide herkomsten; lokaal wint bij conflict |
+| `lokaal=` | `catalogus` — parochie `lokaal/` |
 | `zoek=` | `catalogus.zoek` (+ `ZoekContext` uit ouder-`.vsa` `default:`) |
-| `id=` | `AliasIndex.resolve_vsa_path("id:…")` |
-| `lokaal=` | `AliasIndex.resolve_vsa_path("lokaal:…")` |
 
----
-
-## Ambiguïteit en waarschuwingen
+Expand: lees doel-`.vsa`, strip frontmatter, splice body **in-memory** (brondocument ongewijzigd).
 
 | Uitkomst catalogus | `@include-vsa` / `vsa validate` |
 | ------------------ | ------------------------------- |
-| **`AmbiguousError`** (meerdere kandidaten) | **Fout** — geen expand |
-| **`NotFoundError`** | **Fout** |
-| **`ZoekResult`** met **`has_ook_in_bron`** | **Waarschuwing** — expand gaat door; auteur verifieert parochie-lokaal vs. bron |
-| Eén match, geen bron-duplicaat | Geen waarschuwing |
+| Geen match | **Fout** |
+| Meerdere matches | **Fout** (`AmbiguousError`) |
+| Eén match + `ook_gevonden_in_bron` | **Waarschuwing** (build mag doorgaan) |
 
-**Auteur-workflow bij ambiguïteit:**
+Bij ambiguïteit:
 
-1. `catalogus zoek "…" --lijst --content-root … --bron-root …` (eventueel met `default.*`-flags).
+1. `catalogus zoek --lijst` met dezelfde context.
 2. Verfijn `zoek=` of `default.*` in ouder-`.vsa`.
 3. Of schakel over naar **`@include-vsa lokaal=…`** / **`id=…`** na review.
 
-Waarschuwingstekst (NL, indicatief): *«Ook gevonden in bron: … — controleer of
-lokaal:… de bedoelde uitvoeringsvorm is.»*
-
 ---
 
-## Context: `default:` in ouder-`.vsa`
+## Context (`default.*`)
 
-Voor standalone samengestelde `.vsa`-bestanden (antifoon met ingesloten troparion):
 `default.*` in **dezelfde** frontmatter als `@include-vsa`. Conventie:
-[bron — zangstuk-formaat § parochie-samenstelling](https://github.com/orthodox-groningen/bron/blob/main/docs/specs/zangstuk-formaat.md).
 
-Markdown-sessies gebruiken **`default.*`** in **`.md`**-frontmatter — zelfde
-`ZoekContext`-sleutels, andere bronbestand-laag. Geen conflict; zie bron-spec
-§ twee contextlagen.
+- **`zoek=`** in sjablonen/sessies: liturgische rol in de zoekstring; feest in `default.gelegenheid`.
+- **`@include-vsa zoek=`** in `.vsa`: context uit **ouder**-`.vsa` frontmatter.
+
+Zie [catalogus-zoek-api — twee contextlagen](https://github.com/orthodox-groningen/bron/blob/main/docs/specs/catalogus-zoek-api.md).
 
 ---
 
@@ -77,5 +63,5 @@ Markdown-sessies gebruiken **`default.*`** in **`.md`**-frontmatter — zelfde
 | --------- | ------ |
 | `expand_include_vsa` in [`include_vsa.py`](../../src/vsa/include_vsa.py) | **Geïmplementeerd** |
 | `@include-vsa id=` / `lokaal=` | **Geïmplementeerd** |
-| `@include-vsa zoek=` | **Gepland** (stub; `catalogus.zoek` nog niet live) |
+| `@include-vsa zoek=` | **Geïmplementeerd** |
 | Integratie validate / svg / musicxml / build-markdown | **Geïmplementeerd** |

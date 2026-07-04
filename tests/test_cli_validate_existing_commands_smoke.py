@@ -38,3 +38,18 @@ def test_cli_parse_ast_smoke(capsys, tmp_path: Path):
 
     assert exit_code == 0
     assert '"type": "Document"' in output
+
+
+def test_cli_musicxml_batch_smoke(capsys, tmp_path: Path):
+    input_dir = tmp_path / "content-source"
+    vsa_dir = input_dir / "demo"
+    vsa_dir.mkdir(parents=True)
+    (vsa_dir / "demo.vsa").write_text("{tekst}", encoding="utf-8")
+    output_dir = tmp_path / "mxl"
+
+    exit_code = main(["musicxml", str(input_dir), str(output_dir)])
+    output = capsys.readouterr().out
+
+    assert exit_code == 0
+    assert "MXL-bestand(en) geschreven" in output
+    assert list(output_dir.rglob("*.mxl"))

@@ -25,6 +25,7 @@ from .svg_renderer import SVGRenderer
 from .validation_display import format_validation_message
 from .validation_runner import validate_path
 from .resolve_catalogus import ResolveCatalogusError, write_resolved_markdown
+from .yaml_frontmatter import frontmatter_to_block_metadata, parse_vsa_frontmatter
 
 
 def main(argv=None):

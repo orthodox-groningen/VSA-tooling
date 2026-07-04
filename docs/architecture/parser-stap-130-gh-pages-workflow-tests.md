@@ -12,5 +12,5 @@ gh-pages:/preview/
   automatische preview-site
 ```
 
-De workflowtests controleren `actions/upload-pages-artifact` en
-`actions/deploy-pages` plus gedeelde site-cache tussen preview en productie.
+De workflowtests controleren `peaceiris/actions-gh-pages@v3`, geen
+`actions/deploy-pages`, en gedeelde `pages-gh-pages`-concurrency zonder cancel.

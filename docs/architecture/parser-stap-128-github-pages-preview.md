@@ -25,22 +25,22 @@ De workflow `.github/workflows/pages-preview.yml`:
 De preview-workflow wijzigt alleen:
 
 ```text
-pages-site/preview/
+gh-pages:/preview/
 ```
 
-De rest van de gepubliceerde site (productie-root) blijft in de gedeelde cache staan.
+De rest van de `gh-pages` branch blijft staan.
 
 ## GitHub Pages instelling
 
-Deze aanpak verwacht:
+Deze aanpak verwacht dat GitHub Pages publiceert vanuit:
 
 ```text
-Settings → Pages → Build and deployment
-Source: GitHub Actions
+Branch: gh-pages
+Folder: /
+Source: Deploy from a branch
 ```
 
-Publicatie verloopt via `actions/deploy-pages` (niet meer via directe commits op
-`gh-pages`).
+Niet “GitHub Actions” — zie [ci-reliability.md](ci-reliability.md).
 
 ## Productie
 

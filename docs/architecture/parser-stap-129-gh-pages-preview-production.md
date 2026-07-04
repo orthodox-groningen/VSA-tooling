@@ -5,13 +5,13 @@
 Preview automatisch publiceren bij iedere commit:
 
 ```text
-https://orthodox-groningen.github.io/preview/
+https://orthodox-groningen.github.io/VSA-tooling/preview/
 ```
 
 Productie blijft handmatig via workflow dispatch:
 
 ```text
-https://orthodox-groningen.github.io/
+https://orthodox-groningen.github.io/VSA-tooling/
 ```
 
 ## Belangrijk ontwerpbesluit
@@ -36,36 +36,43 @@ Productie wordt gepubliceerd naar:
 gh-pages:/
 ```
 
-## GitHub Pages instelling
+## GitHub Pages instelling (verplicht)
 
 Zet in GitHub handmatig:
 
 ```text
 Settings → Pages → Build and deployment
-Source: GitHub Actions
+Source: Deploy from a branch
+Branch: gh-pages
+Folder: /
 ```
 
-Preview en productie publiceren via `actions/deploy-pages` met gedeelde site-state
-(`actions/cache` + eenmalige bootstrap vanuit `gh-pages`).
+Gebruik **niet** “GitHub Actions” als Pages-bron. Met `peaceiris/actions-gh-pages` pushen
+de workflows direct naar `gh-pages`; een tweede `pages build and deployment`-run of
+`actions/deploy-pages` leidt tot conflicten en intermittente deploy-fouten.
 
-## Waarom deploy-pages met cache?
+## Waarom niet actions/deploy-pages?
 
-`actions/deploy-pages` publiceert steeds één volledig Pages-artifact. Preview en
-productie delen daarom één samengestelde site-root (`pages-site/`): preview onder
-`/preview/`, productie onder `/`. De cache bewaart die samengestelde staat tussen
-runs; alleen preview-updates overschrijven `pages-site/preview/`, productie-updates
-alleen de root (de map `preview/` blijft staan).
+De officiële `actions/deploy-pages` publiceert steeds één volledig artifact en deelt geen
+betrouwbare partiële updates tussen `/preview/` en `/`. Bovendien faalt de deploy-stap
+regelmatig met generieke API-fouten (“Deployment failed, try again later”).
 
-De oude `peaceiris`-push naar `gh-pages` veroorzaakte een tweede, conflicterende
-`pages build and deployment`-run van GitHub zelf.
+Met `gh-pages` + `destination_dir: preview` kan preview apart worden bijgewerkt terwijl
+productie-root behouden blijft (`keep_files: true`).
 
 ## Workflows
 
 - `.github/workflows/pages-preview.yml`
   - draait automatisch op `push`
   - publiceert naar `/preview/`
+  - geen pytest (al gedekt door `python-tests.yml` / `hugo-demo.yml`)
 
 - `.github/workflows/pages-demo.yml`
   - draait handmatig
   - publiceert productie-root
-  - behoudt preview via gedeelde site-cache
+  - behoudt bestaande bestanden met `keep_files: true`
+
+Beide workflows delen `concurrency.group: pages-gh-pages` met
+`cancel-in-progress: false` om halve git-pushes naar `gh-pages` te vermijden.
+
+Zie ook [ci-reliability.md](ci-reliability.md).

@@ -21,13 +21,22 @@ def test_pages_preview_builds_with_preview_baseurl():
     assert '--baseURL "https://orthodox-groningen.github.io/VSA-tooling/preview/"' in text
 
 
-def test_pages_preview_deploys_preview_directory_via_deploy_pages():
+def test_pages_preview_deploys_preview_directory_to_gh_pages():
+    text = WORKFLOW.read_text(encoding="utf-8")
+    reusable = Path(".github/workflows/pages-deploy-reusable.yml").read_text(
+        encoding="utf-8"
+    )
+
+    assert "pages-deploy-reusable.yml" in text
+    assert "destination_dir: preview" in text
+    assert "peaceiris/actions-gh-pages@v3" in reusable
+    assert "keep_files:" in reusable
+
+
+def test_pages_preview_skips_redundant_pytest():
     text = WORKFLOW.read_text(encoding="utf-8")
 
-    assert "actions/upload-pages-artifact@v3" in text
-    assert "actions/deploy-pages@v4" in text
-    assert "pages-site/preview/" in text
-    assert "actions/cache/restore@v4" in text
+    assert "pytest" not in text
 
 
 def test_pages_preview_keeps_manual_production_workflow_separate():
@@ -35,4 +44,4 @@ def test_pages_preview_keeps_manual_production_workflow_separate():
 
     assert "workflow_dispatch" in production
     assert "push:" not in production
-    assert "pages-site/preview/" not in production
+    assert "destination_dir: preview" not in production

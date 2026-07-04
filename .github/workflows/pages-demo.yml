@@ -4,21 +4,12 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
-  pages: write
-  id-token: write
-
-concurrency:
-  group: pages-vsa-tooling
-  cancel-in-progress: true
+  contents: write
 
 jobs:
-  production:
-    name: Build and deploy production
+  build:
+    name: Build production site
     runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
 
     steps:
       - name: Checkout repository
@@ -85,53 +76,21 @@ jobs:
             --destination ../../generated/site \
             --baseURL "https://orthodox-groningen.github.io/VSA-tooling/"
 
-      - name: Check publication output
-        run: |
-          python scripts/check-publication-output.py \
-            --site-dir generated/site \
-            --url-prefix /VSA-tooling/
-
-      - name: Restore published site state
-        uses: actions/cache/restore@v4
-        id: pages_site_cache
+      - name: Upload production site
+        uses: actions/upload-artifact@v4
         with:
-          path: pages-site
-          key: pages-site-${{ github.run_id }}
-          restore-keys: |
-            pages-site-
+          name: pages-production-site
+          path: generated/site
+          if-no-files-found: error
 
-      - name: Bootstrap site state from gh-pages branch
-        if: steps.pages_site_cache.outputs.cache-hit != 'true'
-        uses: actions/checkout@v4
-        with:
-          ref: gh-pages
-          path: pages-site
-        continue-on-error: true
-
-      - name: Prepare site root
-        run: mkdir -p pages-site
-
-      - name: Merge production build
-        run: rsync -a generated/site/ pages-site/
-
-      - name: Save published site state
-        uses: actions/cache/save@v4
-        with:
-          path: pages-site
-          key: pages-site-${{ github.run_id }}
-
-      - name: Configure GitHub Pages
-        uses: actions/configure-pages@v5
-
-      - name: Upload Pages artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: pages-site
-
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
-
-      - name: Show production URL
-        run: |
-          echo "Production URL: https://orthodox-groningen.github.io/VSA-tooling/"
+  deploy:
+    name: Deploy production
+    needs: build
+    uses: ./.github/workflows/pages-deploy-reusable.yml
+    with:
+      artifact_name: pages-production-site
+      publish_dir: site
+      url_prefix: /VSA-tooling/
+      pages_url: https://orthodox-groningen.github.io/VSA-tooling/
+    permissions:
+      contents: write

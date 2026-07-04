@@ -15,17 +15,22 @@ def test_pages_workflow_is_manual_only():
     assert "push:" not in text
 
 
-def test_pages_workflow_deploys_production_root_via_deploy_pages():
+def test_pages_workflow_deploys_production_root_to_gh_pages():
     text = WORKFLOW.read_text(encoding="utf-8")
+    reusable = Path(".github/workflows/pages-deploy-reusable.yml").read_text(
+        encoding="utf-8"
+    )
 
-    assert "actions/upload-pages-artifact@v3" in text
-    assert "actions/deploy-pages@v4" in text
-    assert "generated/site/" in text
-    assert "pages-site/preview/" not in text
+    assert "pages-deploy-reusable.yml" in text
+    assert "artifact_name: pages-production-site" in text
+    assert "peaceiris/actions-gh-pages@v3" in reusable
+    assert "publish_branch: gh-pages" in reusable
+    assert "destination_dir: preview" not in text
 
 
-def test_pages_workflow_preserves_existing_site_state():
-    text = WORKFLOW.read_text(encoding="utf-8")
+def test_pages_workflow_preserves_existing_gh_pages_files():
+    reusable = Path(".github/workflows/pages-deploy-reusable.yml").read_text(
+        encoding="utf-8"
+    )
 
-    assert "actions/cache/restore@v4" in text
-    assert "actions/cache/save@v4" in text
+    assert "keep_files:" in reusable

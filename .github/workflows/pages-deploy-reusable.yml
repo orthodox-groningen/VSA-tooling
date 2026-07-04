@@ -1,0 +1,126 @@
+# Herbruikbare GitHub Pages-deploy voor orthodox-groningen.
+#
+# Aanroepen vanuit een caller-workflow na build + upload-artifact:
+#
+#   jobs:
+#     deploy:
+#       needs: build
+#       uses: orthodox-groningen/VSA-tooling/.github/workflows/pages-deploy-reusable.yml@main
+#       with:
+#         artifact_name: pages-site
+#         publish_dir: site
+#         destination_dir: preview
+#         url_prefix: /mijn-repo/preview/
+#         pages_url: https://orthodox-groningen.github.io/mijn-repo/preview/
+#       permissions:
+#         contents: write
+#
+# GitHub Pages-instelling per repo: Deploy from a branch → gh-pages → / (niet "GitHub Actions").
+
+name: Reusable GitHub Pages deploy
+
+on:
+  workflow_call:
+    inputs:
+      artifact_name:
+        description: "Artifact name from upload-artifact in the caller build job"
+        required: true
+        type: string
+      publish_dir:
+        description: "Directory with built site files (download path for the artifact)"
+        required: false
+        default: site
+        type: string
+      destination_dir:
+        description: "Subdirectory on gh-pages (leeg = repository root)"
+        required: false
+        default: ""
+        type: string
+      url_prefix:
+        description: "Public URL path prefix for publication check, e.g. /VSA-tooling/preview/"
+        required: true
+        type: string
+      keep_files:
+        description: "peaceiris keep_files — true when preview and production share gh-pages"
+        required: false
+        default: true
+        type: boolean
+      skip_publication_check:
+        description: "Skip scripts/check-publication-output.py (only if caller already checked)"
+        required: false
+        default: false
+        type: boolean
+      pages_url:
+        description: "Optional URL echoed after deploy"
+        required: false
+        default: ""
+        type: string
+      vsa_tooling_ref:
+        description: "VSA-tooling git ref for check-publication-output.py"
+        required: false
+        default: main
+        type: string
+      concurrency_group:
+        description: "Concurrency group suffix (scoped per repository)"
+        required: false
+        default: gh-pages
+        type: string
+
+permissions:
+  contents: write
+
+concurrency:
+  group: pages-${{ inputs.concurrency_group }}
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    name: Check and deploy to GitHub Pages
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Download site artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: ${{ inputs.artifact_name }}
+          path: ${{ inputs.publish_dir }}
+
+      - name: Checkout VSA-tooling (publication check)
+        if: ${{ !inputs.skip_publication_check }}
+        uses: actions/checkout@v4
+        with:
+          repository: orthodox-groningen/VSA-tooling
+          path: vendor/vsa-tooling
+          ref: ${{ inputs.vsa_tooling_ref }}
+
+      - name: Check publication output
+        if: ${{ !inputs.skip_publication_check }}
+        run: |
+          python vendor/vsa-tooling/scripts/check-publication-output.py \
+            --site-dir "${{ inputs.publish_dir }}" \
+            --url-prefix "${{ inputs.url_prefix }}"
+
+      - name: Deploy to GitHub Pages (subdirectory)
+        if: inputs.destination_dir != ''
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: gh-pages
+          publish_dir: ${{ inputs.publish_dir }}
+          destination_dir: ${{ inputs.destination_dir }}
+          keep_files: ${{ inputs.keep_files }}
+
+      - name: Deploy to GitHub Pages (root)
+        if: inputs.destination_dir == ''
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: gh-pages
+          publish_dir: ${{ inputs.publish_dir }}
+          keep_files: ${{ inputs.keep_files }}
+
+      - name: Show site URL
+        if: inputs.pages_url != ''
+        run: |
+          echo "Site URL: ${{ inputs.pages_url }}"
+          echo "GitHub Pages source moet 'Deploy from a branch' (gh-pages, /) zijn — niet 'GitHub Actions'."

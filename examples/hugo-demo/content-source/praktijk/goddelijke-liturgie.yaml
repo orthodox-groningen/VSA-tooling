@@ -1,3 +1,9 @@
+# LEGACY — geen sjabloon of compositie-schema.
+# Ruwe VOKN-koormap-inventarisatie voor de hugo-demo.
+# Nieuw werk: markdown-sjablonen (sjablonen/goddelijke-liturgie-groningen.md).
+# Zie bron: docs/manuals/catalogus/sjabloon-schrijven.md
+#      bron: docs/plans/samenvatting-project.md
+
 - type: item
   title: "(1) Vredeslitanie"
   zangstuk: "Vredeslitanie"

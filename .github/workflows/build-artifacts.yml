@@ -45,7 +45,7 @@ jobs:
 
       - name: Validate content
         run: |
-          vsa validate examples/hugo-demo/content-source
+          vsa validate --summary examples/hugo-demo/content-source
 
       - name: Generate Markdown and SVG
         run: |

@@ -62,7 +62,7 @@ jobs:
 
       - name: Validate VSA demo content
         run: |
-          vsa validate examples/hugo-demo/content-source
+          vsa validate --summary examples/hugo-demo/content-source
 
       - name: Clean generated static VSA assets
         run: |

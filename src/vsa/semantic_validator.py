@@ -3,16 +3,12 @@ from dataclasses import dataclass, field
 from .diagnostics import DiagnosticCollection
 from .height_markers import (
     height_marker_refs,
+    height_marker_mismatch_detail,
     _pitch_of_ehm_list,
     _marker_for_pitch,
 )
 
 DOC_BASE = "docs/user-guide-config-severity.md"
-
-
-def _format_pitch(pitch: float) -> str:
-    """Geeft een leesbare representatie van een pitchwaarde: '2' i.p.v. '2.0'."""
-    return str(int(pitch)) if pitch == int(pitch) else str(pitch)
 
 
 @dataclass
@@ -119,8 +115,11 @@ class SemanticValidator:
         De eerste markering geeft de beginhoogte. Elke volgende markering
         (rol 'local_height') wordt vergeleken met de cumulatieve hoogte op
         basis van alle EHMs van de tussenliggende zangelementen.
-        Bij een mismatch wordt de berekende hoogte aangehouden voor verdere
-        validatie, zodat alle fouten in één keer zichtbaar zijn.
+
+        Na elke markering — ook bij een mismatch — wordt de *gedeclareerde*
+        hoogte als uitgangspunt voor het volgende segment genomen. Zo worden
+        vervolgfouten die alleen voortkomen uit een eerdere foute markering
+        niet apart gerapporteerd.
         """
         markers = self._height_markers()
         if len(markers) < 2:
@@ -132,23 +131,19 @@ class SemanticValidator:
         prev_index: int = markers[0].index
 
         for ref in markers[1:]:
+            computed_pitch = current_pitch
             for node in nodes[prev_index + 1 : ref.index]:
                 if type(node).__name__ == "ScopeNode":
                     ehm = getattr(node, "height_modifier", [])
-                    current_pitch += _pitch_of_ehm_list(ehm)
+                    computed_pitch += _pitch_of_ehm_list(ehm)
 
             declared: float = _pitch_of_ehm_list(ref.ehm)
-            if declared != current_pitch:
-                correct = _marker_for_pitch(current_pitch)
+            if declared != computed_pitch:
+                correct = _marker_for_pitch(computed_pitch)
                 line, col = self._line_column(ref.node.start)
-                pitch_str = _format_pitch(current_pitch)
-                declared_str = _format_pitch(declared)
                 diagnostics.add(
                     code=code,
-                    message_nl=(
-                        f"Hoogte-markering declareert hoogte {declared_str}, "
-                        f"maar de berekende hoogte op deze positie is {pitch_str}."
-                    ),
+                    message_nl=height_marker_mismatch_detail(declared, computed_pitch),
                     line=line,
                     column=col,
                     severity=self._severity(code),
@@ -157,4 +152,5 @@ class SemanticValidator:
                     doc_url=DOC_BASE,
                 )
 
+            current_pitch = declared
             prev_index = ref.index

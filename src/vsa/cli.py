@@ -22,6 +22,7 @@ from .musicxml_package import (
 from .musicxml_renderer import MusicXMLExportError, MusicXMLRenderer
 from .parser import Parser
 from .svg_renderer import SVGRenderer
+from .validation_display import format_validation_message
 from .validation_runner import validate_path
 from .yaml_frontmatter import frontmatter_to_block_metadata, parse_vsa_frontmatter
 
@@ -50,6 +51,11 @@ def _build_parser():
     validate = subparsers.add_parser("validate")
     validate.add_argument("path")
     validate.add_argument("--config", default=None)
+    validate.add_argument(
+        "--summary",
+        action="store_true",
+        help="Compacte eenregelige foutmeldingen (zonder broncontext).",
+    )
 
     parse = subparsers.add_parser("parse")
     parse.add_argument("path")
@@ -185,7 +191,7 @@ def _cmd_validate(args, config):
     result = validate_path(args.path, config=config)
 
     if result.messages:
-        _print_validation_messages(result.messages)
+        _print_validation_messages(result.messages, summary=args.summary)
 
     if result.ok:
         if not result.messages:
@@ -478,14 +484,34 @@ def _export_md_to_musicxml(
     return 0, written
 
 
-def _print_validation_messages(messages):
-    for message in messages:
-        severity = getattr(message, "severity", "error").upper()
+def _print_validation_messages(messages, *, summary=False):
+    source_lines: dict[str, list[str]] = {}
 
-        print(
-            f"{message.source}:{message.line}:{message.column}: "
-            f"{severity}: {message.code}: {message.message_nl}"
-        )
+    for message in messages:
+        source_line = None
+        if not summary:
+            source_line = _validation_context_line(message.source, message.line, source_lines)
+
+        for line in format_validation_message(
+            message,
+            summary=summary,
+            source_line=source_line,
+        ):
+            print(line)
+
+
+def _validation_context_line(source: str, line_number: int, cache: dict[str, list[str]]) -> str | None:
+    if source not in cache:
+        path = Path(source)
+        if not path.is_file():
+            return None
+        cache[source] = path.read_text(encoding="utf-8").splitlines()
+
+    lines = cache[source]
+    if line_number < 1 or line_number > len(lines):
+        return None
+
+    return lines[line_number - 1]
 
 
 if __name__ == "__main__":

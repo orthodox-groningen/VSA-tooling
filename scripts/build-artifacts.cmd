@@ -17,7 +17,7 @@ if exist generated\artifacts rmdir /s /q generated\artifacts
 
 echo.
 echo [3/5] Validate content
-vsa validate examples\hugo-demo\content-source
+vsa validate --summary examples\hugo-demo\content-source
 if errorlevel 1 exit /b 1
 
 echo.

@@ -30,7 +30,7 @@ if errorlevel 1 exit /b 1
 
 echo.
 echo [5/6] Validate demo content directory
-"%PY%" -m vsa.cli validate examples\hugo-demo\content-source
+"%PY%" -m vsa.cli validate --summary examples\hugo-demo\content-source
 if errorlevel 1 exit /b 1
 
 echo.

@@ -53,7 +53,7 @@ jobs:
         run: python scripts/sync_bron_zondagen.py --bron-root vendor/bron
 
       - name: Validate VSA content
-        run: vsa validate examples/hugo-demo/content-source
+        run: vsa validate --summary examples/hugo-demo/content-source
 
       - name: Clean generated static VSA assets
         run: rm -rf examples/hugo-demo/static/vsa

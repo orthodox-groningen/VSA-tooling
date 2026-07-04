@@ -139,14 +139,13 @@ class TestHeightMarkerValidation:
         )
         assert "[////:]" in mismatch.hint_nl
 
-    def test_mismatch_message_contains_declared_and_computed(self):
+    def test_mismatch_message_contains_computed_delta(self):
         result = _validate("[//:] {/noot}{/mies} [:]")
         mismatch = next(
             d for d in result.diagnostics
             if d.code == "VSA-SEMANTIC-HEIGHT-MARKER-MISMATCH"
         )
-        assert "0" in mismatch.message_nl   # gedeclareerde hoogte
-        assert "4" in mismatch.message_nl   # berekende hoogte
+        assert mismatch.message_nl == "computed = marker + 4"
 
     def test_consistent_falling_sequence(self):
         # start=-1, -1-1=-3, markering=-3 → OK
@@ -170,13 +169,22 @@ class TestHeightMarkerValidation:
         assert result.ok
 
     def test_multiple_mismatches_all_reported(self):
-        # Twee foute lokale markeringen → beide fouten zichtbaar
+        # Twee onafhankelijke foute lokale markeringen → beide fouten zichtbaar
         result = _validate("[//:] {/aap} [//:] {/noot} [//:]")
         mismatches = [
             d for d in result.diagnostics
             if d.code == "VSA-SEMANTIC-HEIGHT-MARKER-MISMATCH"
         ]
         assert len(mismatches) == 2
+
+    def test_cascade_mismatches_after_wrong_marker_are_suppressed(self):
+        # Eén foute markering; latere [:] zijn alleen fout door die cascade
+        result = _validate("[//:] {/aap}{/noot} [:] [:]")
+        mismatches = [
+            d for d in result.diagnostics
+            if d.code == "VSA-SEMANTIC-HEIGHT-MARKER-MISMATCH"
+        ]
+        assert len(mismatches) == 1
 
     def test_halftone_consistent(self):
         # [:] {+\aap.}{#\noot_}{b\mies} [b\\:]

@@ -30,6 +30,21 @@ def _pitch_of_ehm_list(ehm_list: list[str]) -> float:
     return sum(_pitch_of_ehm(e) for e in ehm_list)
 
 
+def _format_pitch_delta(delta: float) -> str:
+    if delta == int(delta):
+        return str(int(delta))
+    return str(delta)
+
+
+def height_marker_mismatch_detail(declared: float, computed: float) -> str:
+    """Compacte diagnostische tekst: computed = marker ± N."""
+    delta = computed - declared
+    if delta == 0:
+        return "computed = marker"
+    sign = "+" if delta > 0 else "-"
+    return f"computed = marker {sign} {_format_pitch_delta(abs(delta))}"
+
+
 def _marker_for_pitch(pitch: float) -> str:
     """Geeft de canonieke hoogte-markeringsstring voor een gegeven pitchwaarde.
 

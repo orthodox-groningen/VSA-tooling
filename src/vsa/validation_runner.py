@@ -9,7 +9,10 @@ from .semantic_validator import SemanticValidationOptions, SemanticValidator
 from .recoverable_syntax_validator import RecoverableSyntaxValidator
 from .errors import VSAError
 from .include_vsa import IncludeVsaError, IncludeVsaWarning, prepare_markdown_block_body, prepare_vsa_body
-from .vsa_comments import strip_vsa_html_comments
+from .vsa_comments import (
+    semantic_offset_to_source,
+    strip_vsa_html_comments_with_offset_map,
+)
 
 # Characters that form the base of an EHM (direction or same-tone).
 _BASE_MODIFIER_CHARS: frozenset[str] = frozenset("/\\-~")
@@ -205,16 +208,24 @@ def _add_include_vsa_warning(
 
 def _validate_vsa_text(source: str, text: str, result: ValidationResult,
                        config: VSAConfig | None = None, source_line_offset: int = 0):
-    semantic_text = strip_vsa_html_comments(text)
+    semantic_text, offset_map = strip_vsa_html_comments_with_offset_map(text)
     syntax_diagnostics = RecoverableSyntaxValidator(semantic_text).validate()
 
     for diagnostic in syntax_diagnostics.items:
+        line, column = _source_line_column(
+            text,
+            semantic_text,
+            offset_map,
+            diagnostic.line,
+            diagnostic.column,
+            source_line_offset,
+        )
         result.add_error(
             source=source,
             code=diagnostic.code,
             message_nl=diagnostic.message_nl,
-            line=source_line_offset + diagnostic.line,
-            column=diagnostic.column,
+            line=line,
+            column=column,
             category=getattr(diagnostic, "category", "syntax"),
             hint_nl=getattr(diagnostic, "hint_nl", ""),
             doc_url=getattr(diagnostic, "doc_url", ""),
@@ -226,11 +237,19 @@ def _validate_vsa_text(source: str, text: str, result: ValidationResult,
     scope_issue = _first_scope_issue(semantic_text)
     if scope_issue is not None:
         line, column, code, message_nl, hint_nl = scope_issue
+        line, column = _source_line_column(
+            text,
+            semantic_text,
+            offset_map,
+            line,
+            column,
+            source_line_offset,
+        )
         result.add_error(
             source=source,
             code=code,
             message_nl=message_nl,
-            line=source_line_offset + line,
+            line=line,
             column=column,
             category="syntax",
             hint_nl=hint_nl,
@@ -241,11 +260,19 @@ def _validate_vsa_text(source: str, text: str, result: ValidationResult,
         document = Parser(semantic_text).parse()
     except VSAError as exc:
         line, column = _line_column_from_exception(semantic_text, exc)
+        line, column = _source_line_column(
+            text,
+            semantic_text,
+            offset_map,
+            line,
+            column,
+            source_line_offset,
+        )
         result.add_error(
             source=source,
             code="VSA-PARSE-ERROR",
             message_nl=str(exc),
-            line=source_line_offset + line,
+            line=line,
             column=column,
             category="syntax",
             hint_nl="Controleer de VSA-syntax rond deze positie.",
@@ -256,15 +283,22 @@ def _validate_vsa_text(source: str, text: str, result: ValidationResult,
     diagnostics = SemanticValidator(document, semantic_options, source_text=semantic_text).validate()
 
     for diagnostic in diagnostics.items:
-        line = source_line_offset + diagnostic.line
+        line = diagnostic.line
         column = diagnostic.column
 
         if diagnostic.code == "VSA-SEMANTIC-MODIFIER-COUNT-MISMATCH":
             location = _first_modifier_count_mismatch_location(semantic_text)
             if location is not None:
-                rel_line, rel_column = location
-                line = source_line_offset + rel_line
-                column = rel_column
+                line, column = location
+
+        line, column = _source_line_column(
+            text,
+            semantic_text,
+            offset_map,
+            line,
+            column,
+            source_line_offset,
+        )
 
         if diagnostic.severity == "error":
             result.add_error(
@@ -474,6 +508,34 @@ def _line_column_from_position(text: str, position: int):
     else:
         column = position - last_newline
     return line, column
+
+
+def _offset_from_line_column(text: str, line: int, column: int) -> int:
+    if line <= 1:
+        return max(0, column - 1)
+
+    current_line = 1
+    index = 0
+    while index < len(text) and current_line < line:
+        if text[index] == "\n":
+            current_line += 1
+        index += 1
+
+    return min(len(text), index + max(0, column - 1))
+
+
+def _source_line_column(
+    text: str,
+    semantic_text: str,
+    offset_map: list[int],
+    semantic_line: int,
+    semantic_column: int,
+    source_line_offset: int,
+) -> tuple[int, int]:
+    semantic_offset = _offset_from_line_column(semantic_text, semantic_line, semantic_column)
+    source_offset = semantic_offset_to_source(offset_map, semantic_offset)
+    line, column = _line_column_from_position(text, source_offset)
+    return source_line_offset + line, column
 
 
 def _best_effort_error_column(text: str):

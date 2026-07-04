@@ -62,7 +62,7 @@ jobs:
 
       - name: Validate VSA input
         run: |
-          vsa validate "${{ inputs.input_dir }}"
+          vsa validate --summary "${{ inputs.input_dir }}"
 
       - name: Render VSA Markdown and SVG
         run: |

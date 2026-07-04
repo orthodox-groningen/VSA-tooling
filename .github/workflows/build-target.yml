@@ -58,14 +58,14 @@ jobs:
       - name: Build preview
         if: ${{ inputs.target == 'preview' }}
         run: |
-          vsa validate examples/hugo-demo/content-source
+          vsa validate --summary examples/hugo-demo/content-source
           vsa build-markdown             examples/hugo-demo/content-source             generated/preview/content             examples/hugo-demo/static/vsa
           hugo             --source examples/hugo-demo             --contentDir ../../generated/preview/content             --destination ../../generated/preview/site
 
       - name: Build production candidate
         if: ${{ inputs.target == 'production' }}
         run: |
-          vsa validate examples/hugo-demo/content-source
+          vsa validate --summary examples/hugo-demo/content-source
           vsa build-markdown             examples/hugo-demo/content-source             generated/production/content             examples/hugo-demo/static/vsa             --max-line-width 900
           hugo             --source examples/hugo-demo             --contentDir ../../generated/production/content             --destination ../../generated/production/site             --minify
 

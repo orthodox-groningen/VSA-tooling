@@ -57,7 +57,7 @@ jobs:
 
       - name: Build preview output
         run: |
-          vsa validate examples/hugo-demo/content-source
+          vsa validate --summary examples/hugo-demo/content-source
           vsa build-markdown             examples/hugo-demo/content-source             generated/release/content             generated/release/static/vsa
 
       - name: Upload Python package artifacts

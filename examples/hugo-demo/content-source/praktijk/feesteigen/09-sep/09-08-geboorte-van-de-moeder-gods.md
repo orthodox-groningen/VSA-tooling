@@ -75,12 +75,12 @@ nu en altijd en in de eeuwen der eeuwen. {\A_}{men_}. [//:]
 
 ::: vsa-notatie
 [//:] Uw Geboorte, o {Moe_.}{/der} {\Gods_},
-{/heeft} de Vreugde geopenbaard aan {/heel} {\de} {\we__}{reld_}.
+{/heeft} de Vreugde geopenbaard aan heel de {\we__}{reld_}.
 Want uit U is opgegaan de Zon der Gerechtigheid: Christus {on_}{/ze} {\God_};
 {/Hij} heeft ons van de vervloeking be{\vrijd_}
 en schenkt ons Zijn {-&/ze_&_}{\gen_}.
 {/Hij} heeft de dood te{niet_.} ge{\daan_}
-en Hij {/ver}{\leent} ons het eeuwige {-&/Le_&_}{\ven_}. [//:]
+en Hij verleent ons het eeuwige {-&/Le_&_}{\ven_}. [//:]
 :::
 
 ## KONTAKION t. 4

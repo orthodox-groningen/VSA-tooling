@@ -36,6 +36,9 @@ jobs:
       - name: Bootstrap
         run: bash scripts/bootstrap.sh
 
+      - name: Install TEv2 tooling
+        run: npm ci
+
       - name: Install rendering fonts
         if: runner.os == 'Linux'
         run: sudo apt-get update && sudo apt-get install -y fonts-dejavu-core
@@ -60,6 +63,7 @@ jobs:
         run: |
           vsa validate --summary examples/hugo-demo/content-source
           vsa build-markdown             examples/hugo-demo/content-source             generated/preview/content             examples/hugo-demo/static/vsa
+          python scripts/tev2_hugo.py --content-root generated/preview/content
           hugo             --source examples/hugo-demo             --contentDir ../../generated/preview/content             --destination ../../generated/preview/site
 
       - name: Build production candidate
@@ -67,6 +71,7 @@ jobs:
         run: |
           vsa validate --summary examples/hugo-demo/content-source
           vsa build-markdown             examples/hugo-demo/content-source             generated/production/content             examples/hugo-demo/static/vsa             --max-line-width 900
+          python scripts/tev2_hugo.py --content-root generated/production/content
           hugo             --source examples/hugo-demo             --contentDir ../../generated/production/content             --destination ../../generated/production/site             --minify
 
       - name: Upload preview artifact

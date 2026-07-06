@@ -30,6 +30,9 @@ jobs:
       - name: Bootstrap
         run: bash scripts/bootstrap.sh
 
+      - name: Install TEv2 tooling
+        run: npm ci
+
       - name: Install rendering fonts
         if: runner.os == 'Linux'
         run: sudo apt-get update && sudo apt-get install -y fonts-dejavu-core
@@ -62,6 +65,9 @@ jobs:
 
       - name: Update navigation placeholders
         run: python scripts/update-nav-placeholders.py generated/preview/content
+
+      - name: Generate TEv2 terminology
+        run: python scripts/tev2_hugo.py --content-root generated/preview/content
 
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v3

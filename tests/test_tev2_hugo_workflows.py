@@ -1,0 +1,27 @@
+from pathlib import Path
+import re
+
+
+HUGO_WORKFLOWS = [
+    ".github/workflows/build-artifacts.yml",
+    ".github/workflows/build-target.yml",
+    ".github/workflows/hugo-demo.yml",
+    ".github/workflows/pages-demo.yml",
+    ".github/workflows/pages-preview.yml",
+    ".github/workflows/site-build.yml",
+]
+
+
+def test_tev2_hugo_script_exists():
+    assert Path("scripts/tev2_hugo.py").exists()
+
+
+def test_hugo_workflows_install_and_run_tev2_before_hugo_build():
+    for workflow in HUGO_WORKFLOWS:
+        text = Path(workflow).read_text(encoding="utf-8")
+
+        assert "npm ci" in text
+        assert "scripts/tev2_hugo.py" in text
+        hugo_command = re.search(r"(?m)^\s+hugo\s", text)
+        assert hugo_command is not None
+        assert text.index("scripts/tev2_hugo.py") < hugo_command.start()

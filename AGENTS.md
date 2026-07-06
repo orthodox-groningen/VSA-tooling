@@ -80,13 +80,13 @@ Define verifiable success criteria (tests, validate, build) and loop until they 
 
 ## Ontwikkelomgeving
 
-| Vereiste | Versie / tool                         |
-| -------- | ------------------------------------- |
-| Python   | ≥ 3.12                                |
-| venv     | `.venv` (via bootstrap)               |
-| Tests    | pytest                                |
-| Hugo     | 0.147.9 (CI; lokaal voor demo-build)  |
-| bron      | checkout onder `vendor/bron` of sibling `../bron` (CI/sync; **catalogus**-pakket) |
+| Vereiste | Versie / tool                                                                     |
+| -------- | --------------------------------------------------------------------------------- |
+| Python   | ≥ 3.12                                                                            |
+| venv     | `.venv` (via bootstrap)                                                           |
+| Tests    | pytest                                                                            |
+| Hugo     | 0.147.9 (CI; lokaal voor demo-build)                                              |
+| bron     | checkout onder `vendor/bron` of sibling `../bron` (CI/sync; **catalogus**-pakket) |
 
 ```cmd
 cd /d C:\Git\orthodox-groningen\VSA-tooling
@@ -198,14 +198,15 @@ gh pr create --title "feat(vsa): korte beschrijving" --body "## Summary
 
 ## CI/CD
 
-| Workflow                  | Doel                                           |
-| ------------------------- | ---------------------------------------------- |
-| `python-tests.yml`        | Windows: bootstrap + pytest                    |
-| `vsa-ci.yml`              | Windows: `scripts\ci.cmd`                      |
-| `hugo-demo.yml`           | Linux: pytest, sync bron, validate, Hugo build |
-| `pages-preview.yml`       | GitHub Pages preview                           |
-| `pages-demo.yml`          | Demo-site publicatie                           |
-| `vsa-render-reusable.yml` | Herbruikbaar voor andere org-repo's            |
+| Workflow                    | Doel                                                |
+| --------------------------- | --------------------------------------------------- |
+| `vsa-ci.yml`                | Windows: `scripts\ci.cmd` (pytest, validate, build) |
+| `site-build.yml`            | Linux: pytest, sync bron, validate, Hugo-build      |
+| `pages-preview.yml`         | GitHub Pages preview (elke push, alle branches)     |
+| `pages-demo.yml`            | Demo-site publicatie (handmatig)                    |
+| `release-artifacts.yml`     | Release-package + demo-artifact (handmatig)         |
+| `pages-deploy-reusable.yml` | Herbruikbare Pages-deploy voor org-repo's           |
+| `vsa-render-reusable.yml`   | Herbruikbaar VSA-renderen voor andere org-repo's    |
 
 CI checkt `bron` uit naar `vendor/bron` (`ref: main`).
 

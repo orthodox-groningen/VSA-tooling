@@ -5,15 +5,25 @@ def test_vsa_ci_workflow_exists():
     assert Path(".github/workflows/vsa-ci.yml").exists()
 
 
-def test_hugo_demo_workflow_exists():
-    assert Path(".github/workflows/hugo-demo.yml").exists()
+def test_site_build_workflow_exists():
+    assert Path(".github/workflows/site-build.yml").exists()
 
 
-def test_legacy_hugo_workflow_is_dispatch_only():
-    path = Path(".github/workflows/hugo.yml")
+def test_removed_duplicate_workflows_are_gone():
+    removed = (
+        ".github/workflows/hugo.yml",
+        ".github/workflows/build-target.yml",
+        ".github/workflows/python-tests.yml",
+        ".github/workflows/build-artifacts.yml",
+        ".github/workflows/hugo-demo.yml",
+    )
 
-    assert path.exists()
+    for path in removed:
+        assert not Path(path).exists(), path
 
-    text = path.read_text(encoding="utf-8")
 
-    assert "workflow_dispatch" in text
+def test_site_build_runs_on_push_and_pull_request():
+    text = Path(".github/workflows/site-build.yml").read_text(encoding="utf-8")
+
+    assert "push:" in text
+    assert "pull_request:" in text

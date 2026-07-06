@@ -13,6 +13,7 @@ def test_pages_preview_runs_on_push():
 
     assert "on:" in text
     assert "push:" in text
+    assert "branches:" not in text
 
 
 def test_pages_preview_builds_with_preview_baseurl():

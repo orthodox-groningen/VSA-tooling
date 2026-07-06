@@ -27,7 +27,10 @@ def build_config(content_root: Path, temp_dir: Path) -> Path:
     config = yaml.safe_load(BASE_CONFIG.read_text(encoding="utf-8"))
     content_pattern = posix_path(content_root)
 
-    config["hrgt"]["input"] = [f"{content_pattern}/terminologie/**/*.md"]
+    config["hrgt"]["input"] = [
+        f"{content_pattern}/glossarium.md",
+        f"{content_pattern}/terminologie/**/*.md",
+    ]
     config["trrt"]["input"] = [f"{content_pattern}/**/*.md"]
 
     config_path = temp_dir / "terminology-config.yaml"

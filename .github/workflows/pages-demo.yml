@@ -100,3 +100,4 @@ jobs:
       pages_url: https://orthodox-groningen.github.io/VSA-tooling/
     permissions:
       contents: write
+      pages: write

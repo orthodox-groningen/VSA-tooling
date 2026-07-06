@@ -1,32 +1,33 @@
 # Pages enable fix
 
-De Pages workflow faalde bij:
+## Symptoom
+
+De ingebouwde workflow **pages build and deployment** faalt op **Deploy to GitHub Pages**
+(kort na een geslaagde peaceiris-push naar `gh-pages`). De preview/productie-URL werkt vaak
+wel; de rode run is een configuratieconflict, geen ontbrekende site-inhoud.
+
+## Oorzaak
+
+Pages staat op **GitHub Actions** als bron, terwijl `peaceiris/actions-gh-pages` direct naar
+de branch `gh-pages` pusht. GitHub start dan een tweede deploy-mechanisme dat faalt.
+
+## Oplossing (canoniek)
 
 ```text
-Setup Pages
+Settings → Pages → Build and deployment → Source → Deploy from a branch
+Branch: gh-pages
+Folder: /
 ```
 
-met:
+**Niet** "GitHub Actions" gebruiken naast peaceiris. Zie ook
+[CI-architectuur](../../architecture/ci.md).
 
-```text
-Get Pages site failed
-```
+## Automatisch herstellen
 
-De workflow zet nu:
+`pages-deploy-reusable.yml` zet vóór elke deploy via de GitHub API de legacy-bron. Handmatig:
+**Actions → Configure GitHub Pages (legacy gh-pages) → Run workflow**.
 
-```yaml
-with:
-  enablement: true
-```
+## Verouderd (niet meer gebruiken)
 
-bij:
-
-```yaml
-actions/configure-pages@v5
-```
-
-Als GitHub dit niet toestaat, moet Pages handmatig worden ingesteld:
-
-```text
-Settings → Pages → Build and deployment → Source → GitHub Actions
-```
+`actions/configure-pages` + `actions/deploy-pages` — conflicteert met peaceiris en gedeelde
+`gh-pages` (preview `/preview/`, productie `/`).

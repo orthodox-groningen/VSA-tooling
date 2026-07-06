@@ -1,32 +1,39 @@
 # Pages enable fix
 
-De Pages workflow faalde bij:
+## Symptoom
+
+De ingebouwde workflow **pages build and deployment** faalt op **Deploy to GitHub Pages**
+(kort na een geslaagde peaceiris-push naar `gh-pages`). De preview/productie-URL werkt vaak
+wel; de rode run is een configuratieconflict, geen ontbrekende site-inhoud.
+
+## Oorzaak
+
+Pages staat op **GitHub Actions** als bron, terwijl `peaceiris/actions-gh-pages` direct naar
+de branch `gh-pages` pusht. GitHub start dan een tweede deploy-mechanisme dat faalt.
+
+## Oplossing (canoniek)
 
 ```text
-Setup Pages
+Settings → Pages → Build and deployment → Source → Deploy from a branch
+Branch: gh-pages
+Folder: /
 ```
 
-met:
+**Niet** "GitHub Actions" gebruiken naast peaceiris. Zie ook
+[CI-architectuur](ci-reliability.md) en [reuse-vsa-tooling.md](../reuse-vsa-tooling.md).
+
+## Automatisch herstellen
+
+Na merge van de workflowfix roept `pages-deploy-reusable.yml` vóór elke deploy de GitHub API
+aan om de legacy-bron te bevestigen.
+
+Handmatig (eenmalig) via Actions:
 
 ```text
-Get Pages site failed
+Actions → Configure GitHub Pages (legacy gh-pages) → Run workflow
 ```
 
-De workflow zet nu:
+## Verouderd (niet meer gebruiken)
 
-```yaml
-with:
-  enablement: true
-```
-
-bij:
-
-```yaml
-actions/configure-pages@v5
-```
-
-Als GitHub dit niet toestaat, moet Pages handmatig worden ingesteld:
-
-```text
-Settings → Pages → Build and deployment → Source → GitHub Actions
-```
+`actions/configure-pages` + `actions/deploy-pages` was een eerdere poging. Dat mechanisme
+conflicteert met peaceiris + gedeelde `gh-pages` (preview in `/preview/`, productie in `/`).

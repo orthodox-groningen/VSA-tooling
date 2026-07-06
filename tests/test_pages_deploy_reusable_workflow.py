@@ -29,6 +29,15 @@ def test_pages_deploy_reusable_uses_peaceiris_not_deploy_pages():
     assert "actions/upload-pages-artifact" not in text
 
 
+def test_pages_deploy_reusable_configures_legacy_pages_source():
+    text = REUSABLE.read_text(encoding="utf-8")
+
+    assert "pages: write" in text
+    assert "build_type\":\"legacy\"" in text
+    assert "gh-pages" in text
+    assert "Ensure GitHub Pages source is gh-pages branch" in text
+
+
 def test_pages_deploy_reusable_has_concurrency_without_cancel():
     text = REUSABLE.read_text(encoding="utf-8")
 

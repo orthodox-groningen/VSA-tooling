@@ -68,6 +68,7 @@ on:
 
 permissions:
   contents: write
+  pages: write
 
 concurrency:
   group: pages-${{ inputs.concurrency_group }}
@@ -99,6 +100,24 @@ jobs:
           python vendor/vsa-tooling/scripts/check-publication-output.py \
             --site-dir "${{ inputs.publish_dir }}" \
             --url-prefix "${{ inputs.url_prefix }}"
+
+      - name: Ensure GitHub Pages source is gh-pages branch
+        run: |
+          http_code=$(curl -sS -o /tmp/pages-response.json -w "%{http_code}" \
+            -X PUT \
+            -H "Accept: application/vnd.github+json" \
+            -H "Authorization: Bearer ${GITHUB_TOKEN}" \
+            -H "X-GitHub-Api-Version: 2022-11-28" \
+            "https://api.github.com/repos/${GITHUB_REPOSITORY}/pages" \
+            -d '{"build_type":"legacy","source":{"branch":"gh-pages","path":"/"}}')
+          cat /tmp/pages-response.json
+          if [ "$http_code" -lt 200 ] || [ "$http_code" -ge 300 ]; then
+            echo "::warning::Kon Pages-bron niet op gh-pages zetten (HTTP ${http_code}). Zet handmatig: Settings → Pages → Deploy from a branch → gh-pages → /."
+          else
+            echo "Pages-bron ingesteld op branch gh-pages (/)."
+          fi
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Deploy to GitHub Pages (subdirectory)
         if: inputs.destination_dir != ''

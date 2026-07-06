@@ -40,6 +40,8 @@ if errorlevel 1 exit /b 1
 if errorlevel 1 exit /b 1
 "%PY%" scripts\assert-real-font-metrics.py
 if errorlevel 1 exit /b 1
+call scripts\tev2-hugo.cmd
+if errorlevel 1 exit /b 1
 echo OK
 echo.
 echo [5/6] Prepare Hugo input

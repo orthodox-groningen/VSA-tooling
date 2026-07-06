@@ -5,6 +5,7 @@ MANIFEST.md
 generated/
 public/
 resources/
+node_modules/
 
 # CI / lokaal: bron-checkout (GitHub Actions) — niet committen
 vendor/
@@ -16,6 +17,7 @@ vendor/
 examples/hugo-demo/public/
 examples/hugo-demo/content/
 examples/hugo-demo/.hugo_build.lock
+examples/hugo-demo/glossaries/mrg.*.yaml
 
 # Generated SVG assets
 examples/hugo-demo/static/vsa/

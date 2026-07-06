@@ -29,6 +29,8 @@ if errorlevel 1 exit /b 1
 if errorlevel 1 exit /b 1
 "%PY%" scripts\update-spacing-diagnostics-metadata.py generated\hugo\content\voorbeelden\rendering\spacing-diagnostiek.md
 if errorlevel 1 exit /b 1
+call scripts\tev2-hugo.cmd
+if errorlevel 1 exit /b 1
 echo.
 echo [3/3] Start Hugo server
 hugo server ^

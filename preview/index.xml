@@ -8,6 +8,34 @@
     <language>nl</language>
     <atom:link href="https://orthodox-groningen.github.io/VSA-tooling/preview/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>Glossarium</title>
+      <link>https://orthodox-groningen.github.io/VSA-tooling/preview/glossarium/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://orthodox-groningen.github.io/VSA-tooling/preview/glossarium/</guid>
+      <description>&lt;h1 id=&#34;terminologie&#34;&gt;Terminologie&lt;/h1&gt;&#xA;&lt;!-- Dit glossarium wordt gegenereerd uit de TEv2 machine-readable glossary van deze demo. --&gt;&#xA;&lt;h3 id=&#34;toon&#34;&gt;&lt;a href=&#34;https://orthodox-groningen.github.io/VSA-tooling/preview/terminologie/toon&#34;&gt;Toon&lt;/a&gt;&#xA;&lt;/h3&gt;&#xA;&lt;p&gt;een melodische modus of toonreeks waarmee liturgische &lt;a href=&#34;https://orthodox-groningen.github.io/VSA-tooling/preview/terminologie/zangstuk&#34; title=&#34;Zangstuk: een afgebakend gezang of muzikale tekst die als zelfstandig publicatieonderdeel in de Hugo-demo kan worden opgenomen.&#34;&gt;zangstukken&lt;/a&gt; worden geordend en gezongen.&lt;/p&gt;&#xA;&lt;h3 id=&#34;vereenvoudigde-slavische-accentnotatie&#34;&gt;&lt;a href=&#34;https://orthodox-groningen.github.io/VSA-tooling/preview/terminologie/vsa&#34;&gt;Vereenvoudigde Slavische Accentnotatie&lt;/a&gt;&#xA;&lt;/h3&gt;&#xA;&lt;p&gt;de zangnotatie en tooling waarmee liturgische &lt;a href=&#34;https://orthodox-groningen.github.io/VSA-tooling/preview/terminologie/zangstuk&#34; title=&#34;Zangstuk: een afgebakend gezang of muzikale tekst die als zelfstandig publicatieonderdeel in de Hugo-demo kan worden opgenomen.&#34;&gt;zangteksten&lt;/a&gt; in deze repository als bronbestand, rendering en publicatievorm worden beheerd.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title></title>
+      <link>https://orthodox-groningen.github.io/VSA-tooling/preview/terminologie/toon/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://orthodox-groningen.github.io/VSA-tooling/preview/terminologie/toon/</guid>
+      <description>&lt;h1 id=&#34;toon&#34;&gt;Toon&lt;/h1&gt;&#xA;&lt;p&gt;Een toon ordent de melodische vorm van een liturgisch &lt;a href=&#34;https://orthodox-groningen.github.io/VSA-tooling/preview/terminologie/zangstuk&#34; title=&#34;Zangstuk: een afgebakend gezang of muzikale tekst die als zelfstandig publicatieonderdeel in de Hugo-demo kan worden opgenomen.&#34;&gt;zangstuk&lt;/a&gt;. De demo gebruikt tonen onder meer in de zondagse praktijkvoorbeelden.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title></title>
+      <link>https://orthodox-groningen.github.io/VSA-tooling/preview/terminologie/vsa/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://orthodox-groningen.github.io/VSA-tooling/preview/terminologie/vsa/</guid>
+      <description>&lt;h1 id=&#34;vsa&#34;&gt;VSA&lt;/h1&gt;&#xA;&lt;p&gt;VSA is de notatie- en toolset waarmee &lt;a href=&#34;https://orthodox-groningen.github.io/VSA-tooling/preview/terminologie/zangstuk&#34; title=&#34;Zangstuk: een afgebakend gezang of muzikale tekst die als zelfstandig publicatieonderdeel in de Hugo-demo kan worden opgenomen.&#34;&gt;zangstukken&lt;/a&gt; in deze repository worden vastgelegd, gevalideerd en naar publiceerbare vormen worden omgezet.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title></title>
+      <link>https://orthodox-groningen.github.io/VSA-tooling/preview/terminologie/zangstuk/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://orthodox-groningen.github.io/VSA-tooling/preview/terminologie/zangstuk/</guid>
+      <description>&lt;h1 id=&#34;zangstuk&#34;&gt;Zangstuk&lt;/h1&gt;&#xA;&lt;p&gt;Een zangstuk is een inhoudelijk afgebakend gezang of muzikale tekst. In de Hugo-demo kan een zangstuk bronmateriaal, &lt;a href=&#34;https://orthodox-groningen.github.io/VSA-tooling/preview/terminologie/vsa&#34; title=&#34;Vereenvoudigde Slavische Accentnotatie: de zangnotatie en tooling waarmee liturgische Zangteksten in deze repository als bronbestand, rendering en publicatievorm worden beheerd.&#34;&gt;VSA-notatie&lt;/a&gt; en gegenereerde uitvoer bevatten.&lt;/p&gt;</description>
+    </item>
+    <item>
       <title>21 nov. Tempelgang van de Moeder Gods</title>
       <link>https://orthodox-groningen.github.io/VSA-tooling/preview/praktijk/feesteigen/11-nov/11-21-tempelgang-moeder-gods/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>

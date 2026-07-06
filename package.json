@@ -2,7 +2,17 @@
   "name": "vsa-tooling-demo",
   "private": true,
   "scripts": {
+    "tev2:hugo": "scripts\\tev2-hugo.cmd",
+    "tev2:mrgt": "mrgt -c examples\\hugo-demo\\terminology-config.yaml",
+    "tev2:hrgt": "hrgt -c examples\\hugo-demo\\terminology-config.yaml",
+    "tev2:trrt": "trrt -c examples\\hugo-demo\\terminology-config.yaml",
     "vsa-build": "scripts\\build-hugo.cmd",
     "vsa-serve": "scripts\\serve-hugo.cmd"
+  },
+  "devDependencies": {
+    "@tno-terminology-design/hrgt": "1.2.0",
+    "@tno-terminology-design/mrg-import": "1.2.0",
+    "@tno-terminology-design/mrgt": "1.2.0",
+    "@tno-terminology-design/trrt": "1.2.0"
   }
 }

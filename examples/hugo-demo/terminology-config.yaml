@@ -1,0 +1,28 @@
+# TEv2 tools configuration for the VSA Hugo demo.
+
+scopedir: examples/hugo-demo
+onNotExist: throw
+output: .
+
+mrgt:
+  vsntag: demo
+
+hrgt:
+  scopedir: examples/hugo-demo
+  output: .
+  interpreter: default
+  converter: markdown-section-3
+  sorter: glossaryterm
+  force: true
+  input:
+    - "generated/hugo/content/terminologie/**/*.md"
+
+trrt:
+  scopedir: examples/hugo-demo
+  output: .
+  interpreter: default
+  converter: html-hovertext-link
+  converter[error]: "{{ref.showtext}}{{log 'TRRT error converter:' err.dir '/' err.file '@' err.line ':' err.pos '[' ref.showtext ']' level='warn'}}"
+  force: true
+  input:
+    - "generated/hugo/content/**/*.md"

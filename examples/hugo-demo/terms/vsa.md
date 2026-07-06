@@ -4,7 +4,7 @@ term: vsa
 termType: concept
 glossaryTerm: "Vereenvoudigde Slavische Accentnotatie"
 glossaryAbbr: VSA
-glossaryText: "de zangnotatie en tooling waarmee liturgische zangteksten in deze repository als bronbestand, rendering en publicatievorm worden beheerd."
+glossaryText: "de zangnotatie en tooling waarmee liturgische [zangteksten](zangstuk@) in deze repository als bronbestand, rendering en publicatievorm worden beheerd."
 glossaryNotes:
   - "Binnen deze repository verwijst VSA naar de eigen notatie- en publicatieketen, niet naar TEv2 zelf."
 formPhrases:

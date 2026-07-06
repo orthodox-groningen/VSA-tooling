@@ -3,7 +3,7 @@ slug: toon
 term: toon
 termType: concept
 glossaryTerm: Toon
-glossaryText: "een melodische modus of toonreeks waarmee liturgische zangstukken worden geordend en gezongen."
+glossaryText: "een melodische modus of toonreeks waarmee liturgische [zangstukken](@) worden geordend en gezongen."
 formPhrases:
   - toon
   - tonen

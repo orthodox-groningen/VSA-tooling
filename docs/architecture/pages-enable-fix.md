@@ -24,14 +24,15 @@ Folder: /
 
 ## Automatisch herstellen
 
-Na merge van de workflowfix roept `pages-deploy-reusable.yml` vóór elke deploy de GitHub API
-aan om de legacy-bron te bevestigen.
-
-Handmatig (eenmalig) via Actions:
+Niet mogelijk met de standaard `GITHUB_TOKEN` (vereist repo-admin). Eenmalig handmatig:
 
 ```text
-Actions → Configure GitHub Pages (legacy gh-pages) → Run workflow
+Settings → Pages → Build and deployment → Source → Deploy from a branch
+Branch: gh-pages
+Folder: /
 ```
+
+Daarna verdwijnt de rode run **pages build and deployment**; peaceiris-deploys blijven werken.
 
 ## Verouderd (niet meer gebruiken)
 

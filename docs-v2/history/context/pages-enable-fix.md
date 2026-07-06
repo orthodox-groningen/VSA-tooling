@@ -22,10 +22,15 @@ Folder: /
 **Niet** "GitHub Actions" gebruiken naast peaceiris. Zie ook
 [CI-architectuur](../../architecture/ci.md).
 
-## Automatisch herstellen
+## Herstellen
 
-`pages-deploy-reusable.yml` zet vóór elke deploy via de GitHub API de legacy-bron. Handmatig:
-**Actions → Configure GitHub Pages (legacy gh-pages) → Run workflow**.
+Eenmalig handmatig (repo-admin):
+
+```text
+Settings → Pages → Build and deployment → Source → Deploy from a branch
+Branch: gh-pages
+Folder: /
+```
 
 ## Verouderd (niet meer gebruiken)
 

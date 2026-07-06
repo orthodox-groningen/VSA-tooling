@@ -69,6 +69,7 @@ on:
 permissions:
   contents: write
   pages: write
+  administration: write
 
 concurrency:
   group: pages-${{ inputs.concurrency_group }}
@@ -112,10 +113,10 @@ jobs:
             -d '{"build_type":"legacy","source":{"branch":"gh-pages","path":"/"}}')
           cat /tmp/pages-response.json
           if [ "$http_code" -lt 200 ] || [ "$http_code" -ge 300 ]; then
-            echo "::warning::Kon Pages-bron niet op gh-pages zetten (HTTP ${http_code}). Zet handmatig: Settings → Pages → Deploy from a branch → gh-pages → /."
-          else
-            echo "Pages-bron ingesteld op branch gh-pages (/)."
+            echo "::error::Kon Pages-bron niet op gh-pages zetten (HTTP ${http_code}). Zet handmatig: Settings → Pages → Deploy from a branch → gh-pages → /."
+            exit 1
           fi
+          echo "Pages-bron ingesteld op branch gh-pages (/)."
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 

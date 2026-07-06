@@ -9,6 +9,7 @@ on:
 
 permissions:
   pages: write
+  administration: write
 
 jobs:
   configure:

@@ -13,6 +13,7 @@ def test_pages_configure_legacy_is_workflow_dispatch():
 
     assert "workflow_dispatch:" in text
     assert "pages: write" in text
+    assert "administration: write" in text
 
 
 def test_pages_configure_legacy_sets_gh_pages_branch():

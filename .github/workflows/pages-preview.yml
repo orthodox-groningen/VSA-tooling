@@ -102,3 +102,4 @@ jobs:
     permissions:
       contents: write
       pages: write
+      administration: write

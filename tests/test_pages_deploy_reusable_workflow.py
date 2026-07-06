@@ -33,6 +33,7 @@ def test_pages_deploy_reusable_configures_legacy_pages_source():
     text = REUSABLE.read_text(encoding="utf-8")
 
     assert "pages: write" in text
+    assert "administration: write" in text
     assert "build_type\":\"legacy\"" in text
     assert "gh-pages" in text
     assert "Ensure GitHub Pages source is gh-pages branch" in text

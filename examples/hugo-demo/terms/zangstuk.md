@@ -11,4 +11,4 @@ formPhrases:
 
 # Zangstuk
 
-Een zangstuk is een inhoudelijk afgebakend gezang of muzikale tekst. In de Hugo-demo kan een zangstuk bronmateriaal, VSA-notatie en gegenereerde uitvoer bevatten.
+Een zangstuk is een inhoudelijk afgebakend gezang of muzikale tekst. In de Hugo-demo kan een zangstuk bronmateriaal, [VSA-notatie](@) en gegenereerde uitvoer bevatten.

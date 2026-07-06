@@ -11,4 +11,4 @@ formPhrases:
 
 # Toon
 
-Een toon ordent de melodische vorm van een liturgisch zangstuk. De demo gebruikt tonen onder meer in de zondagse praktijkvoorbeelden.
+Een toon ordent de melodische vorm van een liturgisch [zangstuk](@). De demo gebruikt tonen onder meer in de zondagse praktijkvoorbeelden.

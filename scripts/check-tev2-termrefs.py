@@ -18,6 +18,22 @@ def iter_markdown_files(root: Path) -> list[Path]:
     return sorted(path for path in root.rglob("*.md") if path.is_file())
 
 
+def strip_yaml_frontmatter(text: str) -> tuple[str, int]:
+    if not text.startswith("---"):
+        return text, 0
+
+    lines = text.splitlines(keepends=True)
+    if not lines or lines[0].strip() != "---":
+        return text, 0
+
+    for index, line in enumerate(lines[1:], start=1):
+        if line.strip() == "---":
+            offset = sum(len(part) for part in lines[: index + 1])
+            return "".join(lines[index + 1 :]), offset
+
+    return text, 0
+
+
 def line_col(text: str, index: int) -> tuple[int, int]:
     line = text.count("\n", 0, index) + 1
     previous_newline = text.rfind("\n", 0, index)
@@ -40,8 +56,9 @@ def main() -> int:
     findings: list[str] = []
     for path in iter_markdown_files(root):
         text = path.read_text(encoding="utf-8")
-        for match in TERMREF_RE.finditer(text):
-            line, column = line_col(text, match.start())
+        body, offset = strip_yaml_frontmatter(text)
+        for match in TERMREF_RE.finditer(body):
+            line, column = line_col(text, offset + match.start())
             findings.append(f"{path}:{line}:{column}: {match.group(0)}")
 
     if findings:

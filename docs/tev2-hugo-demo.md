@@ -2,7 +2,8 @@
 
 De Hugo-demo in `examples/hugo-demo` is ingericht als TEv2 scope met een
 Scope Administration File (`saf.yaml`), TEv2 toolconfiguratie
-(`terminology-config.yaml`), curated texts in `terms/`, en een glossariumbron in
+(`terminology-config.yaml`), curated texts in
+`content-source/terminologie/`, en een glossariumbron in
 `content-source/terminologie/glossarium.md`.
 
 ## Tools
@@ -41,8 +42,11 @@ gegenereerde Markdown heeft gemaakt en voordat Hugo de site bouwt.
 ## Pipeline
 
 1. MRGT leest `examples/hugo-demo/saf.yaml` en de curated texts in
-   `examples/hugo-demo/terms`, en genereert MRG-bestanden in
+   `examples/hugo-demo/content-source/terminologie`, en genereert MRG-bestanden in
    `examples/hugo-demo/glossaries`.
+   Niet-term pagina's zoals `_index.md` en `glossarium.md` hebben
+   `excludeFromMRG: yes`, zodat ze wel Hugo-content zijn maar niet in de MRG
+   terechtkomen.
 2. HRGT verwerkt MRGRefs in `generated/hugo/content/terminologie/**/*.md`, zoals
    het glossarium.
 3. TRRT verwerkt TermRefs in `generated/hugo/content/**/*.md`, zodat de Hugo-site

@@ -67,7 +67,7 @@ jobs:
             examples/hugo-demo/static/vsa/mxl
 
       - name: Generate TEv2 terminology
-        run: python scripts/tev2_hugo.py --content-root generated/hugo/content
+        run: python scripts/tev2_hugo.py --content-root generated/hugo/content --url-prefix /VSA-tooling/
 
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v3

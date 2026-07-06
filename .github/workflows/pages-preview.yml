@@ -67,7 +67,7 @@ jobs:
         run: python scripts/update-nav-placeholders.py generated/preview/content
 
       - name: Generate TEv2 terminology
-        run: python scripts/tev2_hugo.py --content-root generated/preview/content
+        run: python scripts/tev2_hugo.py --content-root generated/preview/content --url-prefix /VSA-tooling/preview/
 
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v3

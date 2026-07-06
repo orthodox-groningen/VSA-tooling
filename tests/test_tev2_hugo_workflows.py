@@ -25,3 +25,17 @@ def test_hugo_workflows_install_and_run_tev2_before_hugo_build():
         hugo_command = re.search(r"(?m)^\s+hugo\s", text)
         assert hugo_command is not None
         assert text.index("scripts/tev2_hugo.py") < hugo_command.start()
+
+
+def test_pages_workflows_pass_public_url_prefix_to_tev2():
+    preview = Path(".github/workflows/pages-preview.yml").read_text(encoding="utf-8")
+    production = Path(".github/workflows/pages-demo.yml").read_text(encoding="utf-8")
+
+    assert (
+        "python scripts/tev2_hugo.py --content-root generated/preview/content "
+        "--url-prefix /VSA-tooling/preview/"
+    ) in preview
+    assert (
+        "python scripts/tev2_hugo.py --content-root generated/hugo/content "
+        "--url-prefix /VSA-tooling/"
+    ) in production

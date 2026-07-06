@@ -6,12 +6,14 @@ import subprocess
 import sys
 import tempfile
 from pathlib import Path
+from urllib.parse import urlparse
 
 import yaml
 
 
 ROOT = Path(__file__).resolve().parents[1]
 BASE_CONFIG = ROOT / "examples" / "hugo-demo" / "terminology-config.yaml"
+GLOSSARY_DIR = ROOT / "examples" / "hugo-demo" / "glossaries"
 
 
 def posix_path(path: Path) -> str:
@@ -21,6 +23,44 @@ def posix_path(path: Path) -> str:
 def run(command: list[str]) -> None:
     print("+ " + " ".join(command), flush=True)
     subprocess.run(command, cwd=ROOT, check=True)
+
+
+def normalize_url_prefix(prefix: str) -> str:
+    if not prefix.startswith("/"):
+        prefix = "/" + prefix
+    if not prefix.endswith("/"):
+        prefix += "/"
+    return prefix
+
+
+def prefixed_navurl(navurl: str, url_prefix: str) -> str:
+    parsed = urlparse(navurl)
+    path = parsed.path if parsed.scheme else navurl
+    path = "/" + path.lstrip("/")
+    if url_prefix == "/":
+        prefixed_path = path
+    else:
+        prefixed_path = f"{url_prefix.rstrip('/')}{path}"
+    return f"http://localhost:1313{prefixed_path}"
+
+
+def rewrite_mrg_navurls(url_prefix: str) -> None:
+    for path in sorted(GLOSSARY_DIR.glob("mrg.vsa*.yaml")):
+        data = yaml.safe_load(path.read_text(encoding="utf-8"))
+        changed = False
+        for entry in data.get("entries", []):
+            navurl = entry.get("navurl")
+            if not navurl:
+                continue
+            updated = prefixed_navurl(navurl, url_prefix)
+            if updated != navurl:
+                entry["navurl"] = updated
+                changed = True
+        if changed:
+            path.write_text(
+                yaml.safe_dump(data, sort_keys=False, allow_unicode=True),
+                encoding="utf-8",
+            )
 
 
 def build_config(content_root: Path, temp_dir: Path) -> Path:
@@ -51,7 +91,13 @@ def main() -> int:
         default=Path("generated/hugo/content"),
         help="Generated Hugo Markdown content root. Defaults to generated/hugo/content.",
     )
+    parser.add_argument(
+        "--url-prefix",
+        default="/",
+        help="Public URL path prefix for generated TEv2 links. Defaults to /.",
+    )
     args = parser.parse_args()
+    url_prefix = normalize_url_prefix(args.url_prefix)
 
     content_root = args.content_root
     if not content_root.is_absolute():
@@ -78,6 +124,7 @@ def main() -> int:
         print()
         print("[TEv2 1/4] Generate machine-readable glossary")
         run([npx, "mrgt", "-c", str(config_path)])
+        rewrite_mrg_navurls(url_prefix)
 
         print()
         print("[TEv2 2/4] Generate human-readable glossary fragments")

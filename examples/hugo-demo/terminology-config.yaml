@@ -15,6 +15,7 @@ hrgt:
   sorter: glossaryterm
   force: true
   input:
+    - "generated/hugo/content/glossarium.md"
     - "generated/hugo/content/terminologie/**/*.md"
 
 trrt:

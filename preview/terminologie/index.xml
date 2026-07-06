@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Terminologie on VSA Demo</title>
+    <link>https://orthodox-groningen.github.io/VSA-tooling/preview/terminologie/</link>
+    <description>Recent content in Terminologie on VSA Demo</description>
+    <generator>Hugo</generator>
+    <language>nl</language>
+    <atom:link href="https://orthodox-groningen.github.io/VSA-tooling/preview/terminologie/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Glossarium</title>
+      <link>https://orthodox-groningen.github.io/VSA-tooling/preview/terminologie/glossarium/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://orthodox-groningen.github.io/VSA-tooling/preview/terminologie/glossarium/</guid>
+      <description>&lt;h1 id=&#34;glossarium&#34;&gt;Glossarium&lt;/h1&gt;&#xA;&lt;p&gt;Dit glossarium wordt gegenereerd uit de TEv2 machine-readable glossary van deze demo.&lt;/p&gt;&#xA;&lt;p&gt;{% hrg=&amp;ldquo;vsa&amp;rdquo; converter=&amp;ldquo;markdown-section-3&amp;rdquo; sorter=&amp;ldquo;glossaryterm&amp;rdquo; %}&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

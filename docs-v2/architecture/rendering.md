@@ -1,37 +1,34 @@
 # Renderingarchitectuur
 
-## Doel
+Rendering zet een gevalideerde AST om naar concrete output.
 
-Renderers zetten een gevalideerd AST om naar uitvoerformaten.
+## Outputvormen
 
-## Uitvoerformaten
+| Output       | Doel                                                   |
+| ------------ | ------------------------------------------------------ |
+| SVG          | Visuele VSA-weergave.                                  |
+| JSON         | Inspectie, tests en debugging van parser/AST-output.   |
+| Markdown     | Gebruik in documentatie en Hugo-content.               |
+| Hugo         | Demo- en publicatiesite.                               |
 
-- SVG;
-- Markdown/Hugo;
-- shortcode-output;
-- JSON/diagnostics.
+## SVG-rendering
 
-## Principe
+De SVG-renderer gebruikt de AST positioneel. Tekst, scopes, hoogte-informatie en lengte-informatie worden in een layoutmodel geplaatst.
 
-Rendering volgt het AST en de validatieresultaten. De renderer voert geen semantische reparaties uit en bevat geen speciale parserlogica.
+Belangrijke ontwerpkeuzes:
 
-## SVG
+- geen semantiek in SVG-code stoppen;
+- tekstspacing bronbewust behandelen;
+- multiline-layout en autosizing als rendererzorg beschouwen;
+- diagnostiek niet verbergen achter visuele output;
+- veilige metadata gebruiken en oude plain-text comments vermijden.
 
-SVG-rendering is positioneel: tekst, hoogte-informatie en lengtemodifiers worden op basis van hun posities in het grid geplaatst.
+## Layout
 
-## Hugo
-
-Hugo-output gebruikt expliciete output-modi, zodat dezelfde broninhoud als afbeelding, shortcode of andere representatie kan worden gepubliceerd.
-
-## Traceerbaarheid
-
-Gebaseerd op onder meer:
-
-- `docs/architecture/parser-stap-13-svg-glyphs.md`
-- `docs/architecture/parser-stap-15-scope-grid.md`
-- `docs/architecture/parser-stap-16-svg-autosize.md`
-- `docs/architecture/parser-stap-21-hugo-shortcodes.md`
-- `docs/architecture/parser-stap-22-config-output-mode.md`
-- `docs/architecture/parser-stap-46-rendering-specs.md`
-- `docs/architecture/parser-stap-47-svg-rendering-baseline.md`
-- `docs/architecture/parser-stap-108-svg-multiple-height-markers.md`
+| Aspect             | Architectuurkeuze                                      |
+| ------------------ | ------------------------------------------------------ |
+| Scope-grid         | Scope-inhoud wordt op vaste visuele posities geplaatst. |
+| Tekstflow          | Inline tekst blijft in bronvolgorde.                   |
+| Spacing            | Spacing wordt berekend met tekstmetrics waar beschikbaar. |
+| Breedte            | SVG-breedte kan automatisch of via CLI/config worden bepaald. |
+| Comments           | SVG-comments mogen geen onveilige of foutgevoelige plain text bevatten. |

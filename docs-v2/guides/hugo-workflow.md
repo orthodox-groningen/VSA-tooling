@@ -18,24 +18,24 @@ content-source/
 
 ## Buildgedrag
 
-`build-markdown` slaat deze mappen over:
+`build-markdown` verwerkt bron-Markdown en genereert publiceerbare Hugo-content.
 
 ```text
-sjablonen/
-samenstellingen/
-```
-
-De workflow is:
-
-```text
-vsa resolve-catalogus
-  ↓
-opgeloste inhoud kopiëren naar publishbare map
+content-source
   ↓
 vsa build-markdown
   ↓
+content + static assets
+  ↓
 Hugo build
 ```
+
+## Mappen die niet direct gepubliceerd worden
+
+| Map              | Functie                                  |
+| ---------------- | ---------------------------------------- |
+| `sjablonen/`     | herbruikbare bronfragmenten              |
+| `samenstellingen/` | bron voor samengestelde uitgaven       |
 
 ## Navigatie-placeholders
 
@@ -50,12 +50,22 @@ Plaats expliciete markers waar automatisch gegenereerde navigatie moet komen.
 <!-- VSA-NAV:PAGES-HERE -->
 ```
 
-Gegenereerde blokken niet handmatig aanpassen.
+Gegenereerde navigatieblokken niet handmatig aanpassen.
 
 ## Pagina uitsluiten van navigatie
 
 ```yaml
 vsa_nav_exclude: true
+```
+
+## Lokale preview
+
+```cmd
+scripts\build-hugo.cmd
+```
+
+```cmd
+scripts\serve-hugo.cmd
 ```
 
 ## Bronnen

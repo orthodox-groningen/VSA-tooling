@@ -1,36 +1,28 @@
 # Publicatiearchitectuur
 
-## Doel
+Publicatie bestaat uit lokale build, Hugo-demo, preview-output en productie-output.
 
-Publicatie maakt onderscheid tussen preview, productie en herbruikbaar gebruik vanuit andere repositories.
+## Publicatiestromen
+
+| Stroom             | Doel                                             |
+| ------------------ | ------------------------------------------------ |
+| Lokale build       | Snel controleren of tooling en demo werken.      |
+| Hugo-demo          | VSA-output tonen in documentatiecontext.         |
+| Preview Pages      | Branch- of previewpublicatie onder `/preview/`.  |
+| Productie Pages    | Handmatige of gecontroleerde productiepublicatie. |
 
 ## Publicatiecontrole
 
-Voor deployment wordt gecontroleerd dat gegenereerde output bruikbaar is. Controlepunten zijn onder andere:
+Voor publicatie moet output gecontroleerd worden.
 
-- `index.html` bestaat;
-- interne `href`- en `src`-verwijzingen bestaan;
-- projectpaden kloppen voor GitHub Pages;
-- oude SVG-metadata-comments komen niet terug;
-- browser- of XML-foutteksten worden niet gepubliceerd.
-
-## Preview en productie
-
-```text
-Preview:   /VSA-tooling/preview/
-Productie: /VSA-tooling/
-```
+| Controle             | Reden                                                |
+| -------------------- | ---------------------------------------------------- |
+| `index.html` bestaat | Sitebuild is daadwerkelijk voltooid.                 |
+| Links bestaan        | Geen gebroken interne verwijzingen publiceren.       |
+| Base-URL klopt       | GitHub Pages-projectpad moet correct zijn.           |
+| Geen oude comments   | Verouderde SVG plain-text metadata mag niet terugkomen. |
+| Geen fouttekst       | Browser/XML-foutmeldingen mogen niet gepubliceerd worden. |
 
 ## Hergebruik
 
-Andere repositories kunnen de VSA-rendering gebruiken via een herbruikbare GitHub Actions-workflow of via installatie van de tool.
-
-## Traceerbaarheid
-
-Gebaseerd op onder meer:
-
-- `docs/architecture/parser-stap-24-github-actions.md`
-- `docs/architecture/parser-stap-26-github-pages.md`
-- `docs/architecture/parser-stap-128-github-pages-preview.md`
-- `docs/architecture/parser-stap-129-gh-pages-preview-production.md`
-- `docs/architecture/parser-stap-137-publication-checks-and-reusable-tool.md`
+Andere repositories moeten de VSA-rendering kunnen gebruiken via een herbruikbare workflow of via installatie van de tool uit de repository.

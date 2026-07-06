@@ -1,44 +1,44 @@
 # Architectuuroverzicht
 
-## Verwerkingsketen
+De VSA-tooling verwerkt platte tekst met VSA-scopes en directives naar gestructureerde output, vooral SVG en markdown/Hugo-output.
 
 ```text
-Markdown / VSA-tekst
+bronbestand
   ↓
-Lexer / tokenizer
+lexer / scanner
   ↓
-Parser
+tokens
+  ↓
+parser
   ↓
 AST
   ↓
-Semantische validatie
+validator
   ↓
-Renderers
-  ├─ SVG
-  ├─ Markdown/Hugo
-  └─ JSON/diagnostics
+renderer
+  ├── SVG
+  ├── JSON
+  └── markdown / Hugo
 ```
 
-## Ontwerpprincipe
+## Principes
 
-De parser bouwt een expliciet documentmodel op. Semantische betekenis wordt daarna door de validator gecontroleerd. Rendering blijft zo veel mogelijk positioneel en mag geen semantische reparaties uitvoeren.
+| Principe                         | Betekenis                                                            |
+| -------------------------------- | -------------------------------------------------------------------- |
+| Parser vóór renderer             | Syntax en structuur worden bepaald vóór rendering.                   |
+| AST als contract                 | Renderer en validator werken op dezelfde expliciete structuur.       |
+| Semantiek buiten SVG-code        | Validatieregels horen niet in de renderer thuis.                     |
+| Positionele markers              | Hoogte- en controletokens staan als nodes in de documentstroom.      |
+| Recoverable validatie            | De validator verzamelt fouten waar mogelijk in plaats van direct te stoppen. |
+| Traceerbare consolidatie         | Ontwerpgeschiedenis blijft behouden en wordt niet inhoudelijk gewist. |
 
-## Laagverdeling
+## Lagen
 
-| Laag | Verantwoordelijkheid |
-|------|----------------------|
-| Tokenizer | Herkennen van tekst, scopes, markers en directives |
-| Parser | Opbouwen van het AST |
-| Validator | Controleren van syntactisch geldige maar semantisch problematische constructies |
-| Renderer | Omzetten naar SVG, Markdown, Hugo of JSON |
-| Publicatie | Controleren en publiceren van gegenereerde output |
-
-## Traceerbaarheid
-
-Gebaseerd op onder meer:
-
-- `docs/architecture/parser-fases.md`
-- `docs/architecture/height-marker-model.md`
-- `docs/architecture/parser-stap-37-diagnostic-severity.md`
-- `docs/architecture/parser-stap-46-rendering-specs.md`
-- `docs/architecture/parser-stap-137-publication-checks-and-reusable-tool.md`
+| Laag             | Verantwoordelijkheid                                      |
+| ---------------- | ---------------------------------------------------------- |
+| Lexer / scanner  | Herkennen van tekst, scopes en bracket-tokens.             |
+| Parser           | Opbouwen van AST-nodes uit tokens.                         |
+| AST              | Interne representatie van documentstructuur.               |
+| Validator        | Controleren van semantische consistentie.                  |
+| Renderer         | Genereren van SVG, JSON en markdown/Hugo-output.           |
+| Publicatie       | Bouwen en controleren van demo- en Pages-output.           |

@@ -1,18 +1,17 @@
 # Architectuur
 
-Deze map bevat de actuele ontwerpdocumentatie van de VSA-tooling.
+Deze map beschrijft de actuele technische opbouw van de VSA-tooling.
 
-De documenten beschrijven waarom het systeem zo is opgebouwd. Normatieve regels staan in `../specification/`; historische stapdocumenten worden later onder `../history/` ondergebracht.
+| Document           | Onderwerp                                      |
+| ------------------ | ---------------------------------------------- |
+| `overview.md`      | Hoofdlijn van de verwerking                    |
+| `parser.md`        | Lexer, parser en AST-opbouw                    |
+| `ast.md`           | Belangrijkste AST-concepten                    |
+| `directives.md`    | Bracket-directives en dispatch                 |
+| `validation.md`    | Semantische validatie en diagnostiek           |
+| `rendering.md`     | SVG- en markdown-rendering                     |
+| `publication.md`   | Hugo, preview, productie en publicatiechecks   |
+| `ci.md`            | Tests, CI en betrouwbaarheid                   |
+| `source-trace.md`  | Herkomst van de geconsolideerde architectuur   |
 
-## Documenten
-
-| Document | Onderwerp |
-|----------|-----------|
-| `overview.md` | Globale architectuur en verwerkingsketen |
-| `parser.md` | Parserfasen, tokenisering en AST-opbouw |
-| `ast.md` | Documentmodel en positionele nodes |
-| `validation.md` | Semantische validatie en diagnostics |
-| `directives.md` | Bracket-directives en control tokens |
-| `rendering.md` | Renderingarchitectuur voor SVG/Markdown/Hugo |
-| `publication.md` | Publicatie, preview/productie en herbruikbare workflow |
-| `ci.md` | Tests, CI en betrouwbaarheid |
+Historische stapdocumenten blijven bronmateriaal en horen uiteindelijk onder `history/`.

@@ -1,35 +1,39 @@
-# AST-architectuur
+# AST-model
 
-## Uitgangspunt
+De AST is het interne contract tussen parser, validator en renderer.
 
-Het AST beschrijft de documentstroom expliciet. Markers zijn nodes in die stroom, niet impliciete begin- of eindtoestanden.
+## Hoofdconcepten
 
-## Conceptueel model
+| Node                       | Betekenis                                                     |
+| -------------------------- | ------------------------------------------------------------- |
+| `Document`                 | Root-node van het volledige document.                         |
+| `TextNode`                 | Gewone tekst buiten of binnen verwerkbare context.            |
+| `ScopeNode`                | VSA-scope met tekst en modifiers.                             |
+| `PitchMarkerNode`          | Hoogte- of toonmarkering als positionele node.                |
+| `ControlTokenNode`         | Control directive zoals wrap- of renderaanwijzing.            |
+| `Diagnostic`               | Validatie- of parsermelding met locatie en ernst.             |
+
+## Hoogtemarkers
+
+Hoogtemarkers zijn positionele nodes in de documentstroom.
 
 ```text
 Document
   nodes:
-    TextNode
-    ScopeNode
-    HeightMarkerNode
-    ControlTokenNode
-    DirectiveNode
+    PitchMarkerNode("/")
+    TextNode("Heer, ")
+    ScopeNode(...)
+    PitchMarkerNode("\\")
+    TextNode("U")
 ```
 
-## Hoogtemarkers
+De eerste markering kan semantisch een beginhoogte aanduiden, maar rendering blijft positioneel. De renderer mag dus niet afhankelijk zijn van een speciale begin- of eindmarker-case.
 
-Hoogtemarkers worden positioneel gemodelleerd. De eerste hoogtemarker kan semantisch een speciale rol hebben als beginhoogte, maar de renderer behandelt markers niet als speciale begin- of eindconstructies.
+## AST-contract
 
-## Scope-inhoud
-
-Scopes dragen tekst, hoogte-informatie en lengte-informatie. De validator controleert of de posities daarvan semantisch bij elkaar passen.
-
-## Traceerbaarheid
-
-Gebaseerd op onder meer:
-
-- `docs/architecture/height-marker-model.md`
-- `docs/architecture/parser-stap-111-control-token-ast-node.md`
-- `docs/architecture/parser-stap-117-height-marker-ast-contract.md`
-- `docs/architecture/parser-stap-118-height-marker-ast-helpers.md`
-- `docs/architecture/parser-stap-106b-height-marker-ast-compatibility.md`
+| Regel                             | Reden                                               |
+| --------------------------------- | --------------------------------------------------- |
+| Nodes blijven expliciet           | Validator en renderer kunnen hetzelfde model lezen. |
+| Markers zijn geen wrappers        | Markers horen bij posities, niet bij documentgrenzen. |
+| Broninformatie blijft beschikbaar | Diagnostiek moet naar invoerposities verwijzen.     |
+| Renderer wijzigt geen AST         | Rendering is output, geen semantische transformatie. |

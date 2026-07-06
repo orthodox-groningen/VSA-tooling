@@ -1,33 +1,36 @@
 # Validatiearchitectuur
 
-## Doel
+Validatie controleert de AST op regels die verder gaan dan zuivere syntax.
 
-De validator controleert semantische regels nadat de parser een AST heeft opgebouwd.
+## Validatielagen
 
-## Verantwoordelijkheden
+| Laag                  | Controleert                                               |
+| --------------------- | --------------------------------------------------------- |
+| Parser                | Herkenbare syntax en structurele AST-opbouw.              |
+| Semantische validator | Consistentie van modifiers, markers en scopes.            |
+| Publicatiecheck       | Outputkwaliteit, links, base-URL en publiceerbaarheid.    |
 
-De validator controleert onder andere:
+## Recoverable validatie
 
-- of hoogte- en lengtemodifiers hetzelfde aantal posities beschrijven;
-- of markerconstructies semantisch geldig zijn;
-- of control tokens op toegestane plekken voorkomen;
-- of diagnostics de juiste severity krijgen.
+De validator verzamelt waar mogelijk meerdere fouten in één run. Dat is belangrijk voor gebruikersdocumentatie en CI, omdat één fout anders steeds de volgende fouten verbergt.
 
-## Diagnostics
+## Voorbeelden van semantische controles
 
-Validatie levert gestructureerde diagnostics op. Waar mogelijk zijn fouten herstelbaar, zodat meerdere problemen tegelijk gerapporteerd kunnen worden.
+| Controle                         | Regel                                                        |
+| -------------------------------- | ------------------------------------------------------------ |
+| Modifieraantallen                | Hoogte- en lengtemodifiers moeten dezelfde posities beschrijven. |
+| Eindmarkering                    | Ontbrekende eindmarkering is toegestaan.                     |
+| Neutrale eindmarkering           | `[:]`, `[-:]` en `[~:]` zijn neutraal equivalent.            |
+| Niet-neutrale eindmarkering      | Kan later tegen berekende eindtoon worden gecontroleerd.     |
+| Scope-inhoud                     | Lege of inconsistent gemarkeerde scopes leveren diagnostiek. |
 
-## Parser versus validator
+## Diagnostiek
 
-De parser stopt niet onnodig vroeg op semantische problemen. Hij levert een bruikbaar AST aan, waarna de validator alle relevante semantische problemen verzamelt.
+Diagnostiek moet bruikbaar zijn voor CLI, tests en eventueel editorintegratie.
 
-## Traceerbaarheid
-
-Gebaseerd op onder meer:
-
-- `docs/architecture/parser-stap-19-validate-map.md`
-- `docs/architecture/parser-stap-37-diagnostic-severity.md`
-- `docs/architecture/parser-stap-43-rich-diagnostics-metadata.md`
-- `docs/architecture/parser-stap-107-semantic-multiple-height-markers.md`
-- `docs/architecture/parser-stap-121-height-marker-validator-contract.md`
-- `docs/architecture/parser-stap-122-validator-height-marker-helpers.md`
+| Eigenschap        | Doel                                         |
+| ----------------- | -------------------------------------------- |
+| Code              | Stabiele herkenning in tests en documentatie. |
+| Severity          | Onderscheid tussen fout, waarschuwing en info. |
+| Locatie           | Terugwijzen naar bronregel en kolom.          |
+| Context           | Uitleg geven zonder broninhoud te herschrijven. |

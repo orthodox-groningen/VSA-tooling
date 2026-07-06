@@ -1,120 +1,396 @@
 # Syntax
 
-Status: **geconsolideerde werkversie**.
+Dit document beschrijft de normatieve VSA-syntax.
 
-## Scope
+Bronbasis: `docs/spec/vsa-spec-v1.0.1.md`, aangevuld met latere documenten over control tokens, comments en includes waar die syntax uitbreiden.
 
-Dit document beschrijft wat letterlijk in VSA-brontekst mag staan.
+## 4. Syntax
 
-Semantische betekenis, validatie en rendering staan in aparte documenten.
+### 4.1 Hugo Markdown bloksyntax
 
-## VSA-blok
+VSA-zangstukken worden beschreven in een zo genaamd `Hugo Markdown blok` (zie hoofdstuk 4.1.1. voor de formele syntax, en hoofdstuk 5 voor de semantiek). We geven hier alvast een voorbeeld:
 
-Een VSA-zangstuk staat in een fenced blok:
-
-```text
+```markdown
 ::: vsa-notatie
-[:] {/Hei_}{/lig_} is de Heer. [:]
+do="F4"
+mode="major"
+tempo="100"
+validate-ending="true"
+duration-model="default"
+
+[:] {/Hei_}{/lig_} is de Heer. [//:]
 :::
 ```
 
-Een blok kan metadata bevatten. Bekende metadata zijn onder andere:
+De blokparameters behoren niet tot de zichtbare VSA-notatie, maar leveren context voor validatie, rendering en export. Absolute toonhoogten, modi, tempi e.d. worden als parameters gespecificeerd, en niet in het zangstuk (in het voorbeeld: `[:] {/Hei_}{/lig_} is de Heer. [//:]`). Dit sluit aan bij de praktijk waarin alleen zangstukken op papier staan, en de eigenlijke toon waarop gezongen wordt, de modi en tempi worden aangegeven door de koorleider.
 
-| Parameter | Betekenis |
-|---|---|
-| `do` | absolute starttoon voor interpretatie en export |
-| `mode` | modusdefinitie voor toonladderinterpretatie |
-| `tempo` | tempo voor MusicXML-export |
-| `validate-ending` | eindtooncontrole aan/uit |
-| `duration-model` | mapping van lengte naar exportduur |
+Een aantal parameters van de bloksyntax hebben normatieve defaultwaarde, wat het mogelijk maakt om blokken waarin deze parameters niet zijn gespecificeerd, toch speelbaar te maken. Het gaat om de volgende parameters:
 
-## Vrije tekst
+| Parameter         | Default waarde | Betekenis                                                                     |
+| ----------------- | -------------- | ----------------------------------------------------------------------------- |
+| `do`              | `F4`           | absolute starttoon voor interpretatie en MusicXML-export                      |
+| `mode`            | `major`        | modusdefinitie voor toonladderinterpretatie                                   |
+| `tempo`           | `100`          | tempo voor MusicXML-export                                                    |
+| `validate-ending` | `true`         | controleer een aanwezige eindtoonhoogte-markering tegen de berekende eindtoon |
+| `duration-model`  | `default`      | mapping van ELM-duurwaarden naar MusicXML-durationwaarden                     |
 
-Tekst buiten scopes blijft gewone gezongen of weergegeven tekst.
+Andere parameters mogen eveneens voorkomen, bijvoorbeeld `title`, `subtitle`, `composer`, `language`, `meter`, `tone` of renderer-specifieke metadata. Zie Appendix 3 voor voorbeelden. De blokmetadata heeft voorrang op implementatie-defaults.
 
-Tekst mag vóór, tussen en na hoogte-markeringen voorkomen.
+#### 4.1.1 EBNF voor Hugo Markdown bloksyntax
 
-## Scope
+```ebnf
+vsa-codeblok ::=
+    "::: vsa-notatie"
+    { newline parameter }
+    newline
+    zangstuk
+    newline
+    ":::" ;
 
-Een scope is een zangelement tussen accolades:
+parameter ::= bekende-parameter | vrije-parameter ;
 
-```text
-{/Hei_}
+bekende-parameter ::=
+      do-parameter
+    | mode-parameter
+    | tempo-parameter
+    | validate-ending-parameter
+    | duration-model-parameter ;
+
+do-parameter ::= 'do="' absolute-toonhoogte '"' ;
+
+absolute-toonhoogte ::= toonnaam [ alteratie ] octaaf ;
+toonnaam ::= "A" | "B" | "C" | "D" | "E" | "F" | "G" ;
+alteratie ::= "#" | "♯" | "b" | "♭" ;
+octaaf ::= "0" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" ;
+
+mode-parameter ::= 'mode="' identifier '"' ;
+tempo-parameter ::= 'tempo="' integer '"' ;
+validate-ending-parameter ::= 'validate-ending="' boolean '"' ;
+duration-model-parameter ::= 'duration-model="' identifier '"' ;
+
+vrije-parameter ::= identifier '="' parameter-waarde '"' ;
+parameter-waarde ::= ? elk Unicode-karakter behalve '"' en newline ? ;
+identifier ::= ? ASCII-letter, gevolgd door ASCII-letters, cijfers of '-' ? ;
+integer ::= ? één of meer cijfers ? ;
+boolean ::= "true" | "false" ;
 ```
 
-Een scope bevat tekst en optioneel hoogte- en lengte-informatie.
+### 4.1.2 YAML frontmatter in `.vsa`-bestanden
 
-## Hoogte-modifiers
+Zelfstandige `.vsa`-bestanden (buiten een Hugo Markdown-blok) kunnen dezelfde
+metadata bevatten via een optionele YAML-kop aan het begin van het bestand,
+afgebakend door `---`. Dit maakt het mogelijk om `.vsa`-bestanden als
+zelfbeschrijvende eenheden te exporteren zonder de rest van een repository.
 
-Hoogte-modifiers staan bij de gezongen tekst en geven relatieve melodische beweging aan.
+```yaml
+---
+muziek:
+  do: F4
+  mode: major
+  tempo: 132
+identificatie:
+  title: Tropaar van de zondag, toon 1
+  composer: Traditioneel
+  language: nl
+---
+[:] Ter{/&/wijl_&_} {\\de} steen ...
+```
+
+De `muziek`-sectie bevat dezelfde parameters als de bloksyntax in §4.1. De
+`identificatie`-sectie bevat bibliografische metadata die wordt opgenomen in
+het MusicXML `<identification>`-blok (zie §8.2). De optionele `typografie`-
+sectie bevat lettertype-instellingen voor export-renderers (zie §8.2.10).
+
+Toekomstige secties (bijv. `liturgie`, `publicatie`) kunnen worden toegevoegd
+zonder de bestaande syntaxis te breken.
+
+| Sectie          | Veld               | Betekenis                                                          |
+| --------------- | ------------------ | ------------------------------------------------------------------ |
+| `muziek`        | `do`               | grondtoon, bijv. `F4`                                              |
+| `muziek`        | `mode`             | modus: `major` of `minor`                                          |
+| `muziek`        | `tempo`            | tempo in BPM                                                       |
+| `muziek`        | `meter`            | maatsoort, bijv. `4/4` (optioneel)                                 |
+| `muziek`        | `reciting-mode`    | ongescopte tekst in MusicXML: `quarters` (default) of `whole`      |
+| `muziek`        | `musicxml-profile` | exportprofiel: `playback` (default) of `engraving` (zie §8.2.11)   |
+| `muziek`        | `part-name`        | partijnaam in MusicXML; default `Vocal`                            |
+| `muziek`        | `midi-sound`       | General MIDI-instrument (playback); default `keyboard.piano.grand` |
+| `muziek`        | `midi-channel`     | MIDI-kanaal 1–16; default `1`                                      |
+| `muziek`        | `midi-program`     | MIDI-programmanummer; default `1`                                  |
+| `muziek`        | `midi-volume`      | MIDI-volume 0–100 (playback); default `78.7402`                    |
+| `muziek`        | `midi-pan`         | MIDI-panning −100…100; default `0`                                 |
+| `identificatie` | `title`            | titel van het zangstuk                                             |
+| `identificatie` | `subtitle`         | ondertitel                                                         |
+| `identificatie` | `composer`         | componist of bewerker                                              |
+| `identificatie` | `lyricist`         | tekstdichter                                                       |
+| `identificatie` | `rights`           | auteursrechtinformatie                                             |
+| `identificatie` | `language`         | taalcode, bijv. `nl`                                               |
+| `identificatie` | `tone`             | liturgische toon, bijv. `1`                                        |
+| `typografie`    | `lyric-font`       | lettertype voor lyrics; default `Source Sans 3`                    |
+| `typografie`    | `lyric-size`       | lettergrootte lyrics in punten; default `13`                       |
+| `typografie`    | `music-font`       | lettertype voor notenkoppen (`<music-font>`, optioneel)            |
+| `typografie`    | `music-size`       | lettergrootte noten in punten (optioneel)                          |
+| `typografie`    | `word-font`        | lettertype voor tempo/titel; default `Source Sans 3`               |
+| `typografie`    | `word-size`        | lettergrootte woordtekst in punten; default `12`                   |
+
+De `typografie`-velden zijn optioneel; ontbrekende waarden vallen terug op de
+defaults hierboven (ook zonder YAML-frontmatter, via blokmetadata-defaults).
+Renderers die een veld niet ondersteunen negeren het. Overschrijven kan in
+frontmatter of Hugo-blokmetadata, bijv. `typografie.lyric-size="14"`.
+
+Bestanden zonder `---`-kop worden behandeld als gewone VSA-tekst zonder
+metadata.
+
+### 4.2 Algemene regels
+
+Een VSA-zangstuk is gewone Unicode-tekst waarin sommige tekstfragmenten worden voorzien van VSA-markering. In een zangstuk kunnen zangelement-scopes voorkomen. Die zijn van de vorm:
+
+```text
+{<hoogte-modifier><zangelement><lengte-modifier>}
+```
+
+Daarbij geldt:
+
+- een scope begint met `{` en eindigt met `}`;
+- binnen een scope mag geen whitespace voorkomen;
+- het zangelement (gezongen tekstframgment) is verplicht;
+- de hoogte-modifier is optioneel;
+- de lengte-modifier is optioneel;
+- tekens die als modifierteken worden gebruikt, mogen niet in het zangelement voorkomen;
+- leestekens zoals komma’s, dubbele punten en uitroeptekens horen buiten scopes te staan.
+
+Voorbeeld:
+
+```text
+{/Hei_}{\&/li}{/ge}
+```
+
+Tekst buiten scopes blijft gewone tekst en wordt ongewijzigd weergegeven, behalve dat `{` en `}` daar niet als gewone tekens gebruikt mogen worden.
+
+In ongescopte tekst mag `-` lettergrepen scheiden (bijv. `mel-se`). De
+SVG-renderer toont dit als gewone tekst; bij MusicXML-export wordt elk deel een
+eigen reciteernoot (zie §8.2.7).
+
+### 4.3 Enkelvoudige Hoogte-Modifiers (EHMs)
+
+Een EHM beschrijft één relatieve toonhoogtebeweging of een lege grafische positie. Een EHM is ofwel een enkelvoudige basisbeweging, ofwel een halftoon-prefix gevolgd door een basisbeweging.
+
+#### 4.3.1 Basisbewegingen
+
+| EHM     | Voorbeeld      | Betekenis                 | Visuele rendering (glyph)              |
+| ------- | -------------- | ------------------------- | -------------------------------------- |
+| `/`     | `{/tekst}`     | één ladderstap omhoog     | één schuine streep omhoog              |
+| `//`    | `{//tekst}`    | twee ladderstappen omhoog | twee gestapelde schuine strepen omhoog |
+| `///`   | `{///tekst}`   | drie ladderstappen omhoog | drie gestapelde schuine strepen omhoog |
+| `////`  | `{////tekst}`  | vier ladderstappen omhoog | vier gestapelde schuine strepen omhoog |
+| `/////` | `{/////tekst}` | vijf ladderstappen omhoog | vijf gestapelde schuine strepen omhoog |
+| `-`     | `{-tekst}`     | zelfde toonhoogte         | horizontaal streepje                   |
+| `\`     | `{\tekst}`     | één ladderstap omlaag     | één schuine streep omlaag              |
+| `\\`    | `{\\tekst}`    | twee ladderstappen omlaag | twee gestapelde schuine strepen omlaag |
+| `\\\`   | `{\\\tekst}`   | drie ladderstappen omlaag | drie gestapelde schuine strepen omlaag |
+| `\\\\`  | `{\\\\tekst}`  | vier ladderstappen omlaag | vier gestapelde schuine strepen omlaag |
+| `\\\\\` | `{\\\\\tekst}` | vijf ladderstappen omlaag | vijf gestapelde schuine strepen omlaag |
+| `~`     | `{~tekst}`     | zelfde toonhoogte         | geen zichtbare glyph                   |
+
+#### 4.3.2 Halftoon-prefix
+
+Een halftoon-prefix modificeert het resultaat van de basisbeweging met een halve toon omhoog (`#`) of omlaag (`b`). De prefix staat altijd onmiddellijk vóór een basisbeweging; een standalone prefix is niet geldig.
+
+| Prefix | Alias(es) | Betekenis | Visuele rendering           |
+| ------ | --------- | --------- | --------------------------- |
+| `#`    | `+`, `♯`  | +½ toon   | `+` links van de basisglyph |
+| `b`    | `♭`       | −½ toon   | `♭` links van de basisglyph |
+
+Voorbeelden van gecombineerde EHMs:
+
+| EHM   | Basisbeweging | Prefix | Netto beweging        | Voorbeeld    |
+| ----- | ------------- | ------ | --------------------- | ------------ |
+| `#/`  | +1 trede      | +½     | +1½ toon omhoog       | `{#/tekst}`  |
+| `b/`  | +1 trede      | −½     | +½ toon omhoog        | `{b/tekst}`  |
+| `#\`  | −1 trede      | +½     | −½ toon omlaag        | `{#\tekst}`  |
+| `b\`  | −1 trede      | −½     | −1½ toon omlaag       | `{b\tekst}`  |
+| `#-`  | 0 (unisono)   | +½     | +½ toon (chromatisch) | `{#-tekst}`  |
+| `b-`  | 0 (unisono)   | −½     | −½ toon (chromatisch) | `{b-tekst}`  |
+| `#//` | +2 treden     | +½     | +2½ toon omhoog       | `{#//tekst}` |
+| `b\\` | −2 treden     | −½     | −2½ toon omlaag       | `{b\\tekst}` |
+
+Alle combinaties van een halftoon-prefix met een basisbeweging zijn syntactisch geldig. De semantische geldigheid hangt af van de do-context en modus (zie §5.9).
+
+### 4.4 Enkelvoudige Lengte-Modifiers (ELMs)
+
+Een ELM beschrijft de duur van één muzikale positie ten opzichte van de standaardduur.
+
+| ELM  | Voorbeeld   | Duur                | Visuele glyph                                               |
+| ---- | ----------- | ------------------- | ----------------------------------------------------------- |
+| `_`  | `{tekst_}`  | 2 × standaardduur   | één horizontale lijn onder het zangelement                  |
+| `_.` | `{tekst_.}` | 3 × standaardduur   | volle lijn boven, halve lijn (linkerhelft) direct daaronder |
+| `__` | `{tekst__}` | 4 × standaardduur   | twee gestapelde horizontale lijnen                          |
+| `.`  | `{tekst.}`  | 1/2 × standaardduur | één punt onder het zangelement                              |
+| `..` | `{tekst..}` | 1/4 × standaardduur | twee gestapelde punten                                      |
+| `-`  | `{tekst-}`  | standaardduur       | implementatie-afhankelijke standaardduur-glyph              |
+| `~`  | `{tekst~}`  | standaardduur       | geen zichtbare glyph                                        |
+
+### 4.5 Samengestelde modifiers
+
+Een samengestelde modifier bestaat uit twee of meer EHMs of twee of meer ELMs, gescheiden door `&`.
 
 Voorbeelden:
 
 ```text
-{/Hei}
-{//lig}
-{\Heer}
-{+/U}
-{-\ons}
+{/&\tekst}
+{tekst_&_}
+{/&\&/tekst_&~&~}
 ```
 
-Samengestelde hoogte-modifiers gebruiken `&`:
+Elke enkelvoudige modifier binnen een samengestelde modifier representeert precies één muzikale positie.
+
+### 4.6 Toonhoogte-markering
+
+Een toonhoogte-markering heeft de vorm:
 
 ```text
-{/&//Heer}
+[<EHM>:]
 ```
-
-## Lengte-modifiers
-
-Lengte-modifiers geven duur of verlenging aan.
-
-Voorbeelden:
-
-```text
-{Heer_}
-{Heer__}
-{Heer.}
-{Heer..}
-{Heer~}
-```
-
-Samengestelde lengte-modifiers gebruiken eveneens `&`.
-
-## Hoogte-markeringen
-
-Hoogte-markeringen staan tussen rechte haken en eindigen met `:`.
-
 Voorbeelden:
 
 ```text
 [:]
-[/:]
 [//:]
-[\:]
 ```
 
-Binnen één `vsa-notatie`blok mogen meerdere hoogte-markeringen voorkomen.
+Elke toonhoogte-markering geeft een toonhoogte aan ten opzichte van de basistoon
+van de do-context.
+
+Voor de eerste toonhoogte-markering wordt de do-context extern gespecificeerd: 
+- in de praktijk van het zingen door de koorlei(st)er.
+- binnen de context van conversies, bijvoorbeeld naar MusicXML, wordt dat gespecificeerd 
+door de feitelijke conversie - dat is buiten de scope van de pure VSA.
+
+Elke volgende toonhoogte-markering geeft aan dat de zang op die positie op die hoogte moet zitten.
+Dat betekent
+- in de praktijk dat zangers een check hebben of ze daar op de goede hoogte zitten;
+- in de context van conversies, bijvoorbeeld naar MusicXML, dat het mogelijk is om een controle uit te voeren op de toonhoogte van het converteerde materiaal.
+
+Het is een gangbare praktijk om zowel voor als na een zangstuk een toonhoogte-markering te schrijven.
+Indien twee zangstukken elkaar opvolgen, kan dat dus ook (vanuit VSA perspectief) gezien worden
+als een enkel zangstuk met tussenliggende toonhoogte-markeringen.
+
+De tekst `:]` is de syntactische afsluiter van een toonhoogte-markering. Hij wordt visueel gerenderd als een horizontale lijn rond het verticale midden van de tekstregel, met daarboven de rendering van de EHM.
+
+### 4.7 Absolute toonhoogte binnen Hugo blokmetadata
+
+Een absolute toonhoogte bestaat uit:
+
+```text
+<toonnaam><optionele alteratie><octaaf>
+```
 
 Voorbeelden:
 
 ```text
-[:] Heer, ontferm U
-Heer, ontferm U [:]
-Heer, [:] ontferm [/:] U [\:]
+C4
+F#3
+E♭5
+Bb2
 ```
 
-## Commentaar
-
-Binnen een VSA-blok mag HTML-commentaar voorkomen:
+Ondersteunde toonnamen:
 
 ```text
-<!-- dit is commentaar -->
+A B C D E F G
 ```
 
-Commentaar blijft broninformatie en is geen VSA-tekst.
+Ondersteunde alteraties:
 
-## Syntax versus semantiek
+```text
+#  ♯  b  ♭
+```
 
-Syntax bepaalt of de brontekst grammaticaal herkenbaar is.
+Ondersteunde octaven:
 
-Semantiek bepaalt of die tekst muzikaal en positioneel betekenisvol is.
+```text
+0 1 2 3 4 5 6 7 8
+```
+
+### 4.8 EBNF
+
+De VSA grammatica wordt beschreven in ISO-14977 EBNF, aangevuld met informele karakterklassen tussen `? ... ?`.
+
+Betekenis van gebruikte EBNF-notatie:
+
+| Schrijfwijze | Betekenis                   |
+| :----------: | --------------------------- |
+| `(* ... *)`  | commentaar                  |
+| `[ ... ]`    | optioneel, nul of één keer  |
+| `{ ... }`    | herhaling, nul of meer keer |
+| `( ... )`    | groepering                  |
+| `? ... ?`    | informele karakterklasse    |
+
+Let op: in EBNF wordt `\` als escape-teken gebruikt. Om het teken `\` zelf te noteren, wordt het in EBNF verdubbeld.
+
+```ebnf
+
+zangstuk ::=
+    { whitespace }
+    { toonhoogte-markering | non-scopechar | scope }
+    { whitespace } ;
+
+toonhoogte-markering ::=
+    "["
+    [ EHM ]
+    ":]" ;
+
+non-scopechar ::=
+    ? elk Unicode-karakter behalve "{" en "}" ? ;
+
+scope ::=
+    "{"
+    [ hoogte-modifier ]
+    zangelement
+    [ lengte-modifier ]
+    "}" ;
+
+hoogte-modifier ::= EHM { "&" EHM } ;
+lengte-modifier ::= ELM { "&" ELM } ;
+
+EHM ::= base-EHM | halftoon-prefix base-EHM ;
+
+halftoon-prefix ::= "#" | "♯" | "+" | "b" | "♭" ;
+
+base-EHM ::=
+      "~"
+    | "-"
+    | "/"
+    | "//"
+    | "///"
+    | "////"
+    | "/////"
+    | "\\"
+    | "\\\\"
+    | "\\\\\\"
+    | "\\\\\\\\"
+    | "\\\\\\\\\\" ;
+
+ELM ::=
+      "~"
+    | "-"
+    | "_"
+    | "_."
+    | "__"
+    | "."
+    | ".."
+    | ".." ;
+
+zangelement ::=
+    zangelement-char
+    { zangelement-char } ;
+
+zangelement-char ::=
+    ? elk Unicode-karakter behalve
+      whitespace,
+      "{", "}",
+      "&", "~", "+", "-", "\\", "/", "_", "." ? ;
+```
+
+Deze grammatica valideert uitsluitend de VSA-inhoud binnen het codeblok. De blokmetadata wordt apart geparseerd volgens de EBNF in hoofdstuk 4.1.1. Semantische regels worden na het parsen gecontroleerd.
+
+---

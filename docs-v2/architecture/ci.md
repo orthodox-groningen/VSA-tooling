@@ -1,29 +1,33 @@
 # CI-architectuur
 
-## Doel
+De CI-architectuur is gericht op vroeg falen, herhaalbaarheid en één duidelijk publicatiemechanisme.
 
-CI bewaakt parsergedrag, rendering, documentatievoorbeelden en publicatiekwaliteit.
+## Lagen
 
-## Testlagen
+| Laag              | Workflows                                                           | Doel                                                       |
+| ----------------- | ------------------------------------------------------------------- | ---------------------------------------------------------- |
+| Tests / validatie | `python-tests.yml`, `vsa-ci.yml`, `hugo-demo.yml`, `site-build.yml` | Regressie, bron-sync, validate en Hugo-build zonder deploy |
+| Preview deploy    | `pages-preview.yml`                                                 | Gecontroleerde preview naar `gh-pages:/preview/`           |
+| Productie deploy  | `pages-demo.yml`                                                    | Gecontroleerde productie naar `gh-pages:/`                 |
 
-| Laag | Doel |
-|------|------|
-| Parsertests | AST en tokenverwerking controleren |
-| Validatietests | Diagnostics en semantische regels controleren |
-| Renderingtests | SVG/Markdown/Hugo-output controleren |
-| Documentatietests | Voorbeelden en documentstructuur controleren |
-| Publicatietests | Preview/productie-output controleren |
+## Pages-beleid
 
-## Betrouwbaarheid
+Canonieke GitHub Pages-instelling:
 
-CI moet regressies vroeg zichtbaar maken. Documentatievoorbeelden zijn onderdeel van de kwaliteitscontrole en mogen niet losstaan van de implementatie.
+```text
+Source: Deploy from a branch
+Branch: gh-pages
+Folder: /
+```
 
-## Traceerbaarheid
+Niet combineren met een tweede Pages-mechanisme via `actions/deploy-pages`, omdat dat dubbele deployments en instabiliteit kan veroorzaken.
 
-Gebaseerd op onder meer:
+## Betrouwbaarheidsregels
 
-- `docs/architecture/ci-pytest-fix.md`
-- `docs/architecture/ci-reliability.md`
-- `docs/architecture/parser-stap-12-ci.md`
-- `docs/architecture/parser-stap-30-doc-test-fix.md`
-- `docs/architecture/parser-stap-130-gh-pages-workflow-tests.md`
+| Regel                         | Effect                                      |
+| ----------------------------- | ------------------------------------------- |
+| Fail-fast vóór deploy         | Fouten worden gevonden voordat Pages wijzigt. |
+| Eén publicatiemechanisme      | Minder race conditions en minder dubbele runs. |
+| Concurrency op Pages          | Deploys breken elkaar niet af.              |
+| Lokaal pad gelijk aan CI      | Lokale diagnose sluit aan op GitHub Actions. |
+| Reusable workflows            | Andere repos kunnen hetzelfde pad volgen.   |

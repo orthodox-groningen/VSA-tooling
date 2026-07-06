@@ -1,15 +1,15 @@
 # Guides
 
-Taakgerichte gebruikersdocumentatie.
+Taakgerichte gebruikersdocumentatie voor werken met de VSA-tool.
 
-## Pagina's
+| Pagina                              | Doel                                             |
+| ----------------------------------- | ------------------------------------------------ |
+| [Quick start](quick-start.md)       | lokaal starten en eerste controle uitvoeren      |
+| [CLI-taken](cli-taken.md)           | het juiste commando per taak kiezen              |
+| [Validatie](validation.md)          | VSA-invoer controleren en foutmeldingen oplossen |
+| [Hugo-workflow](hugo-workflow.md)   | Markdown verwerken voor de Hugo-demo             |
+| [MusicXML](musicxml.md)             | VSA exporteren naar `.mxl` of `.musicxml`        |
+| [Rendering-fonts](rendering-fonts.md) | fonts en font-metrics voor SVG-rendering       |
+| [Testvoorbeelden](testing.md)       | voorbeelden en regressietests gebruiken          |
 
-| Pagina | Doel |
-|--------|------|
-| [Quick start](quick-start.md) | snel lokaal starten |
-| [CLI-taken](cli-taken.md) | commando kiezen per taak |
-| [Validatie](validation.md) | invoer controleren en severity-config gebruiken |
-| [Hugo-workflow](hugo-workflow.md) | Hugo-demo en navigatie-placeholders |
-| [Testvoorbeelden](testing.md) | voorbeelden en regressietests gebruiken |
-
-Deze documenten zijn informatief. Normatieve regels staan in `../specification/`.
+Deze pagina's zijn informatief. Normatieve regels staan in `../specification/`.

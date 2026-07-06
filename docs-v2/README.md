@@ -18,8 +18,6 @@ Deze map bevat de herstructurering van de bestaande projectdocumentatie.
 | `architecture/` | Actuele ontwerp- en architectuurbeschrijving |
 | `reference/` | Naslagmateriaal |
 | `history/` | Historische ontwerpstappen en besluitvorming |
-| `process/` | Werkafspraken, migratie en kwaliteitscontrole |
-| `inventory/` | Fase-1 inventarisatie |
 
 ## Werkregel
 

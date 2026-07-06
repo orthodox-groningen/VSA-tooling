@@ -44,6 +44,12 @@ OK
 vsa svg examples\minimal\050_svg_demo.vsa generated\vsa\050_svg_demo.svg
 ```
 
+## 6. Controleer de hele keten
+
+```cmd
+scripts\ci.cmd
+```
+
 ## Bronnen
 
 Gebaseerd op:

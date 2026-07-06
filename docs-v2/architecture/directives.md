@@ -1,47 +1,30 @@
-# Directive-architectuur
+# Directives en bracket-dispatch
 
-## Doel
-
-Bracket-directives worden via een generiek framework verwerkt, zodat nieuwe tokens later zonder parservervuiling kunnen worden toegevoegd.
+Bracket-directives zijn tokens tussen `[` en `]`. Zij moeten vroeg in de parsing worden herkend, zodat wraptokens, hoogte-markers en toekomstige directives niet door elkaar lopen.
 
 ## Categorieën
 
-### Hoogtemarkers
+| Categorie       | Voorbeelden              | Betekenis                                      |
+| --------------- | ------------------------ | ---------------------------------------------- |
+| Hoogtemarkers   | `[:]`, `[/:]`, `[//:]`   | Positionele toon- of hoogte-informatie.        |
+| Control tokens  | `[*]`, `[/]`             | Structurele of renderergerichte controle.      |
+| Optionele vorm  | `[*?]`, `[/?]`           | Voorwaardelijke of tolerante control tokens.   |
+| Toekomstig      | `[token:param]`          | Uitbreidbare generieke directivevorm.          |
+
+## Dispatchmodel
 
 ```text
-[:]
-[/:]
-[//:]
-```
-
-### Control tokens
-
-```text
-[*]
-[/]
-[*?]
-[/?]
-```
-
-## Uitbreidingsrichting
-
-Het model houdt rekening met toekomstige tokens zoals:
-
-```text
-[token]
-[token:param]
-[token:param:param]
+bracket-token
+  ↓
+classificeer token
+  ├── hoogte-marker
+  ├── control-token
+  ├── onbekende directive
+  └── syntaxfout
 ```
 
 ## Ontwerpregel
 
-Nieuwe bracketconstructies krijgen een eigen herkenning, AST-representatie en validatieregel. Ze worden niet als tekstuele voorbewerking opgelost.
+De parser moet eerst bepalen welk type bracket-token is aangetroffen. Pas daarna mag inhoudelijke verwerking plaatsvinden.
 
-## Traceerbaarheid
-
-Gebaseerd op onder meer:
-
-- `docs/architecture/parser-stap-115-directive-framework.md`
-- `docs/architecture/parser-stap-116-control-token-registry.md`
-- `docs/architecture/parser-stap-112-control-token-dispatch.md`
-- `docs/architecture/parser-stap-113-control-token-semantics.md`
+Dat voorkomt dat tokens zoals `[/]` of `[*]` per ongeluk als gewone hoogte- of wrapsyntax worden geïnterpreteerd.

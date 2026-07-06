@@ -1,15 +1,11 @@
 # Parserarchitectuur
 
-## Doel
-
-De parser zet platte VSA-tekst om naar een AST dat geschikt is voor validatie en rendering.
-
-## Fasen
+De parser zet VSA-brontekst om naar een AST. De verwerking verloopt bewust in fasen: eerst syntactische structuur, daarna semantische validatie, daarna rendering.
 
 ```text
 tekst
   ↓
-lexer
+lexer / bracket-scanner
   ↓
 tokens
   ↓
@@ -18,32 +14,31 @@ parser
 AST
 ```
 
-## Basiselementen
+## Kernverantwoordelijkheden
 
-De parser moet in ieder geval deze onderdelen herkennen:
+| Onderdeel          | Verantwoordelijkheid                                      |
+| ------------------ | ---------------------------------------------------------- |
+| Tekstscanner       | Gewone tekst behouden, inclusief relevante spacing.        |
+| Scopeparser        | `{...}`-scopes herkennen en als scopes modelleren.         |
+| Modifierparser     | Hoogte- en lengtemodifiers binnen scopes herkennen.        |
+| Bracket-dispatch   | `[...]`-tokens routeren naar het juiste parserpad.         |
+| AST-opbouw         | Nodes maken zonder renderlogica.                           |
+| Foutlokalisatie    | Posities bewaren voor bruikbare diagnostiek.               |
 
-- vrije tekst;
-- scopes `{...}`;
-- pitch/height markers zoals `[:]`, `[/:]`, `[//:]`;
-- lengte- en hoogtemodifiers binnen scopes;
-- bracket-directives en control tokens.
+## Parserbeleid
 
-## Dispatch
+De parser moet geen semantische reparaties uitvoeren die later onzichtbaar worden. Als invoer syntactisch herkenbaar is maar inhoudelijk problematisch, hoort dat bij de validator.
 
-Bracketconstructies worden niet als losse speciale gevallen behandeld. De parser gebruikt een dispatchmodel waarin markers, directives en control tokens elk hun eigen herkenning en AST-representatie krijgen.
+Niet doen:
 
-## Parsergrens
+- markers tekstueel voorbewerken voordat de parser ze ziet;
+- begin- of eindmarkers speciaal behandelen in de renderer;
+- semantische fouten onderdrukken door parser-rewrites;
+- scope-inhoud renderen voordat de AST compleet is.
 
-De parser controleert structuur. Betekenisvolle regels zoals aantallen posities, severity en herstelbare fouten horen in de validator.
+Wel doen:
 
-## Traceerbaarheid
-
-Gebaseerd op onder meer:
-
-- `docs/architecture/parser-fases.md`
-- `docs/architecture/parser-stap-105-parser-bracket-token-stream.md`
-- `docs/architecture/parser-stap-109-wraptoken-dispatch.md`
-- `docs/architecture/parser-stap-112-control-token-dispatch.md`
-- `docs/architecture/parser-stap-114-dispatch-design.md`
-- `docs/architecture/parser-stap-119-height-marker-parser-contract.md`
-- `docs/architecture/parser-stap-120-height-marker-parser-helpers.md`
+- bracket-tokens vroeg herkennen;
+- expliciete AST-nodes maken;
+- bronposities bewaren;
+- parsercontracten klein en testbaar houden.

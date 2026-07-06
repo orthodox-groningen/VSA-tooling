@@ -3,9 +3,6 @@ import re
 
 
 HUGO_WORKFLOWS = [
-    ".github/workflows/build-artifacts.yml",
-    ".github/workflows/build-target.yml",
-    ".github/workflows/hugo-demo.yml",
     ".github/workflows/pages-demo.yml",
     ".github/workflows/pages-preview.yml",
     ".github/workflows/site-build.yml",

@@ -8,9 +8,6 @@ HUGO_DEMO_CONTENT = "examples/hugo-demo/content-source"
 
 # Workflows die hugo-demo content bouwen of scripts\\ci.cmd aanroepen.
 HUGO_DEMO_BUILD_WORKFLOWS = (
-    "build-artifacts.yml",
-    "build-target.yml",
-    "hugo-demo.yml",
     "pages-demo.yml",
     "pages-preview.yml",
     "release-artifacts.yml",

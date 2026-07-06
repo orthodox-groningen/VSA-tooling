@@ -65,7 +65,7 @@ productie-root behouden blijft (`keep_files: true`).
 - `.github/workflows/pages-preview.yml`
   - draait automatisch op `push`
   - publiceert naar `/preview/`
-  - geen pytest (al gedekt door `python-tests.yml` / `hugo-demo.yml`)
+  - geen pytest (al gedekt door `vsa-ci.yml` / `site-build.yml`)
 
 - `.github/workflows/pages-demo.yml`
   - draait handmatig

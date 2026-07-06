@@ -27,5 +27,5 @@ def test_hugo_demo_contains_top_level_glossary_source():
 
 def test_github_actions_workflow_exists():
     assert Path(
-        ".github/workflows/hugo.yml"
+        ".github/workflows/site-build.yml"
     ).exists()

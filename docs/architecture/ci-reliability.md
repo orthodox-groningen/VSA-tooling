@@ -5,14 +5,20 @@ Strategie om GitHub Actions-fouten te verminderen. Doel: **falen vóór deploy**
 
 ## 1. Scheiding build vs. publicatie
 
-| Laag              | Workflows                                                           | Doel                                                                      |
-| ----------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------------- |
-| Tests / validatie | `python-tests.yml`, `vsa-ci.yml`, `hugo-demo.yml`, `site-build.yml` | Regressie, bron-sync, validate, Hugo-build zonder deploy                  |
-| Preview deploy    | `pages-preview.yml`                                                 | Alleen sync → validate → build → peaceiris push naar `gh-pages:/preview/` |
-| Productie deploy  | `pages-demo.yml` (handmatig)                                        | Zelfde pipeline, push naar `gh-pages:/`                                   |
+| Laag                | Workflows                              | Doel                                                                      |
+| ------------------- | -------------------------------------- | ------------------------------------------------------------------------- |
+| Tests / validatie   | `vsa-ci.yml`, `site-build.yml`         | Regressie, bron-sync, validate, Hugo-build zonder deploy                  |
+| Preview deploy      | `pages-preview.yml`                    | Sync → validate → build → peaceiris push naar `gh-pages:/preview/`        |
+| Productie deploy    | `pages-demo.yml` (handmatig)           | Zelfde pipeline, push naar `gh-pages:/`                                   |
+| Release (handmatig) | `release-artifacts.yml`                | Python-package + demo-artifact bij release                                |
 
-Preview-deploy draait **geen pytest** meer: dezelfde push triggert al `python-tests` en
-`hugo-demo`. Minder stappen = minder faalpunten en snellere preview.
+Preview-deploy draait op **elke push** (alle branches): de gedeelde URL
+`gh-pages:/preview/` toont steeds de laatst gepushte commit, zodat je per branch
+kunt controleren of die deployable is. Parallelle validatie zonder deploy loopt via
+`site-build.yml` (Linux) en `vsa-ci.yml` (Windows).
+
+Verwijderde dubbele workflows (2026-07): `python-tests.yml`, `hugo-demo.yml`,
+`build-artifacts.yml`, `build-target.yml`, `hugo.yml`.
 
 ## 2. Eén GitHub Pages-mechanisme
 
@@ -65,7 +71,7 @@ scripts\build-preview.cmd
 
 1. Controleer Pages-instelling (branch `gh-pages`, niet GitHub Actions).
 2. Her-run de mislukte workflow (peaceiris is meestal stabieler dan deploy-pages).
-3. Kijk of `hugo-demo` / `vsa-ci` op dezelfde commit al groen waren — zo niet, eerst
+3. Kijk of `site-build` / `vsa-ci` op dezelfde commit al groen waren — zo niet, eerst
    die fout oplossen.
 
 ## 8. Herbruikbare Pages-deploy (org-breed)
@@ -81,7 +87,7 @@ Voorbeeld en parameters: [VSA-tooling hergebruiken](../reuse-vsa-tooling.md#gith
 
 ## 9. Verdere verbeteringen (optioneel)
 
-- `workflow_run`: preview pas deployen als `hugo-demo` groen is (minder dubbele builds,
+- `workflow_run`: preview pas deployen als `site-build` groen is (minder dubbele builds,
   iets langere feedback).
 - Dependabot voor GitHub Actions-versies.
 - Notificatie alleen op workflow `pages-preview.yml`, niet op elke parallelle job.

@@ -1,3 +1,7 @@
+# Release artifacts — handmatig met versienummer (workflow_dispatch).
+# Doel: pytest, Python wheel/sdist (dist/), demo-markdown/SVG als download-artifact.
+# Geen Pages-deploy. Lokaal: scripts\test.cmd en python -m build.
+
 name: Release artifacts
 
 on:

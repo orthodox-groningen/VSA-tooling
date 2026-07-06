@@ -35,3 +35,5 @@ Niet combineren met een tweede Pages-mechanisme via `actions/deploy-pages`, omda
 | Reusable workflows            | Andere repos kunnen hetzelfde pad volgen.      |
 
 Zie ook [CI-betrouwbaarheid](../../docs/architecture/ci-reliability.md) voor Pages-troubleshooting en verwijderde dubbele workflows.
+
+**Workflow-keuze:** [.github/workflows/README.md](../../.github/workflows/README.md).

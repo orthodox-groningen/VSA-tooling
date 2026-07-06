@@ -198,6 +198,8 @@ gh pr create --title "feat(vsa): korte beschrijving" --body "## Summary
 
 ## CI/CD
 
+Overzicht **wanneer welke workflow** draait: [.github/workflows/README.md](.github/workflows/README.md).
+
 | Workflow                    | Doel                                                |
 | --------------------------- | --------------------------------------------------- |
 | `vsa-ci.yml`                | Windows: `scripts\ci.cmd` (pytest, validate, build) |

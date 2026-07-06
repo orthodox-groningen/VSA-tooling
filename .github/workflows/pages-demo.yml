@@ -1,3 +1,8 @@
+# Productie deploy — alleen handmatig (workflow_dispatch).
+# Doel: productie-site naar gh-pages:/ ; map preview/ blijft staan (keep_files).
+# URL: https://orthodox-groningen.github.io/VSA-tooling/
+# Start: Actions → Run workflow. Eerst vsa-ci + site-build groen op dezelfde commit.
+
 name: Deploy Hugo demo to GitHub Pages
 
 on:

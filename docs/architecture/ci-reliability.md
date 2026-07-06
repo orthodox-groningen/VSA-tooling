@@ -3,6 +3,8 @@
 Strategie om GitHub Actions-fouten te verminderen. Doel: **falen vóór deploy**,
 **één publicatiemechanisme**, **geen dubbel werk op dezelfde push**.
 
+**Workflow-keuze (praktisch):** [.github/workflows/README.md](../../.github/workflows/README.md).
+
 ## 1. Scheiding build vs. publicatie
 
 | Laag                | Workflows                              | Doel                                                                      |

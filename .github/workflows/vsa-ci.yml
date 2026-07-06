@@ -1,3 +1,7 @@
+# VSA CI — Windows-validatie bij elke push/PR.
+# Doel: scripts\ci.cmd (pytest, bron-sync, validate, build-markdown). Geen Hugo-site, geen Pages.
+# Lokaal: scripts\ci.cmd
+
 name: VSA CI
 
 on:

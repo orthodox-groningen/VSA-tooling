@@ -1,3 +1,7 @@
+# Site build — Linux Hugo-build bij push/PR, zonder Pages-deploy.
+# Doel: volledige site-pipeline (shortcode, MusicXML, TEv2, Hugo); op main productie-instellingen.
+# Artefacten: site-preview/site-production. Lokaal: scripts\build-preview.cmd / build-production.cmd
+
 name: Site build
 
 on:

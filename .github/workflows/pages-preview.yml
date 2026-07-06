@@ -1,3 +1,8 @@
+# Preview deploy — bij elke push (alle branches) naar gh-pages:/preview/.
+# Doel: controleren of de branch deployable is op de gedeelde preview-URL.
+# URL: https://orthodox-groningen.github.io/VSA-tooling/preview/
+# Geen pytest (zie vsa-ci + site-build). Deploy via pages-deploy-reusable.yml.
+
 name: Deploy preview to GitHub Pages
 
 on:

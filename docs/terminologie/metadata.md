@@ -3,7 +3,7 @@ slug: metadata
 term: metadata
 termType: concept
 glossaryTerm: Metadata
-glossaryText: "gegevens zijn metadata als en slechts als zij als gestructureerde blokparameters of YAML-frontmatter bij VSA-bronmateriaal staan, verwerking of identificatie sturen en zelf niet tot de zichtbare VSA-notatie behoren."
+glossaryText: "gegevens die als gestructureerde blokparameters of YAML-frontmatter bij VSA-bronmateriaal staan, verwerking of identificatie sturen en zelf niet tot de zichtbare VSA-notatie behoren."
 formPhrases:
   - metadata
   - metadata-items

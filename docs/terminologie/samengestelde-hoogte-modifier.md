@@ -4,7 +4,7 @@ term: samengestelde-hoogte-modifier
 termType: concept
 isa: hoogte-modifier
 glossaryTerm: Samengestelde hoogte-modifier
-glossaryText: "een hoogte-modifier is een samengestelde hoogte-modifier als en slechts als hij uit twee of meer geldige EHM's bestaat die onderling door `&` zijn gescheiden."
+glossaryText: "een hoogte-modifier die uit twee of meer geldige EHM's bestaat die onderling door `&` zijn gescheiden."
 formPhrases:
   - samengestelde hoogte-modifier
   - samengestelde hoogte-modifiers

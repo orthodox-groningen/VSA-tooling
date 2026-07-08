@@ -3,7 +3,7 @@ slug: diagnostic
 term: diagnostic
 termType: concept
 glossaryTerm: Diagnostic
-glossaryText: "een melding is een diagnostic als en slechts als zij door parser of validator wordt geproduceerd en ten minste een foutcode, severity, bronlocatie en uitleg of context bij een vastgestelde afwijking bevat."
+glossaryText: "een melding die door parser of validator wordt geproduceerd en ten minste een foutcode, severity, bronlocatie en uitleg of context bij een vastgestelde afwijking bevat."
 glossaryAlias: Diagnostische melding
 formPhrases:
   - diagnostic

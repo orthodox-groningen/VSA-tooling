@@ -3,7 +3,7 @@ slug: severity
 term: severity
 termType: concept
 glossaryTerm: Severity
-glossaryText: "een waarde is een severity als en slechts als zij aan een diagnostic is gekoppeld en aangeeft of de vastgestelde afwijking als blokkerende fout of als waarschuwing moet worden behandeld."
+glossaryText: "een waarde die aan een diagnostic is gekoppeld en aangeeft of de vastgestelde afwijking als blokkerende fout of als waarschuwing moet worden behandeld."
 glossaryAlias: Ernstniveau
 formPhrases:
   - severity

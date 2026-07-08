@@ -4,7 +4,7 @@ term: ast
 termType: concept
 glossaryTerm: Abstract Syntax Tree
 glossaryAbbr: AST
-glossaryText: "een gegevensstructuur is de AST als en slechts als zij de expliciete nodeboom is die de parser uit VSA-invoer produceert en die validator en renderer zonder semantische herinterpretatie kunnen lezen."
+glossaryText: "een expliciete nodeboom die door de parser uit VSA-invoer wordt geproduceerd en die validator en renderer zonder semantische herinterpretatie kunnen lezen."
 glossaryAlias: Syntactische boom
 formPhrases:
   - ast

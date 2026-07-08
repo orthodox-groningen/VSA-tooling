@@ -3,7 +3,7 @@ slug: bracket-directive
 term: bracket-directive
 termType: concept
 glossaryTerm: Bracket-directive
-glossaryText: "een tekstfragment is een bracket-directive als en slechts als het als een afzonderlijk VSA-token tussen `[` en `]` voorkomt en door bracket-dispatch wordt geclassificeerd voordat de inhoudelijke parsing verdergaat."
+glossaryText: "een tekstfragment dat als afzonderlijk VSA-token tussen `[` en `]` voorkomt en door bracket-dispatch wordt geclassificeerd voordat de inhoudelijke parsing verdergaat."
 glossaryAlias: Bracket-token
 formPhrases:
   - bracket-directive

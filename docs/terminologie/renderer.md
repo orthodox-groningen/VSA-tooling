@@ -3,7 +3,7 @@ slug: renderer
 term: renderer
 termType: concept
 glossaryTerm: Renderer
-glossaryText: "een component is een renderer als en slechts als hij een gevalideerde AST of daarvan afgeleid layoutmodel omzet naar concrete uitvoer, zoals SVG, JSON, Markdown, Hugo-output of MusicXML, zonder de AST semantisch te wijzigen."
+glossaryText: "een component die een gevalideerde AST of daarvan afgeleid layoutmodel omzet naar concrete uitvoer, zoals SVG, JSON, Markdown, Hugo-output of MusicXML, zonder de AST semantisch te wijzigen."
 formPhrases:
   - renderer
   - renderers

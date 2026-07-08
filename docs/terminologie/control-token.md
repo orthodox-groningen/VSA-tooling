@@ -4,7 +4,7 @@ term: control-token
 termType: concept
 isa: bracket-directive
 glossaryTerm: Control-token
-glossaryText: "een bracket-directive is een control-token als en slechts als de tokenwaarde een ondersteunde control-tokenvorm is, zoals `[*]`, `[/]`, `[*?]` of `[/?]`, en niet als pitch-marker wordt geparseerd."
+glossaryText: "een bracket-directive waarvan de tokenwaarde een ondersteunde control-tokenvorm is, zoals `[*]`, `[/]`, `[*?]` of `[/?]`, en die niet als pitch-marker wordt geparseerd."
 formPhrases:
   - control-token
   - control-tokens

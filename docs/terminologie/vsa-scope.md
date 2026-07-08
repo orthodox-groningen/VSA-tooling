@@ -3,7 +3,7 @@ slug: vsa-scope
 term: vsa-scope
 termType: concept
 glossaryTerm: VSA-scope
-glossaryText: "een tekstfragment is een VSA-scope als en slechts als het met `{` begint, met `}` eindigt, geen whitespace binnen de accolades bevat en door de parser kan worden opgesplitst in optionele hoogte-modifier, verplicht zangelement en optionele lengte-modifier."
+glossaryText: "een tekstfragment dat met `{` begint, met `}` eindigt, geen whitespace binnen de accolades bevat en door de parser kan worden opgesplitst in optionele hoogte-modifier, verplicht zangelement en optionele lengte-modifier."
 glossaryAlias: Scope
 formPhrases:
   - vsa-scope

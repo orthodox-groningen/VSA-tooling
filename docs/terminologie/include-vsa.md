@@ -3,7 +3,7 @@ slug: include-vsa
 term: include-vsa
 termType: concept
 glossaryTerm: "@include-vsa"
-glossaryText: "een substring is een `@include-vsa`-directive als en slechts als zij met `@include-vsa` begint, exact een ondersteunde resolverparameter bevat (`zoek=`, `id=` of `lokaal=`) en tijdens verwerking door de body van het doelbestand wordt vervangen."
+glossaryText: "een substring die met `@include-vsa` begint, exact een ondersteunde resolverparameter bevat (`zoek=`, `id=` of `lokaal=`) en tijdens verwerking door de body van het doelbestand wordt vervangen."
 glossaryAlias: VSA-inline-include
 formPhrases:
   - "@include-vsa"

@@ -3,7 +3,7 @@ slug: modifier
 term: modifier
 termType: concept
 glossaryTerm: Modifier
-glossaryText: "een tekenreeks is een modifier als en slechts als zij binnen een VSA-scope als hoogte-modifier voor het zangelement of als lengte-modifier na het zangelement wordt geparseerd."
+glossaryText: "een tekenreeks die binnen een VSA-scope als hoogte-modifier voor het zangelement of als lengte-modifier na het zangelement wordt geparseerd."
 formPhrases:
   - modifier
   - modifiers

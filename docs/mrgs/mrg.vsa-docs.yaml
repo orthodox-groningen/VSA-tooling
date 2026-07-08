@@ -23,7 +23,7 @@ entries:
     termType: "concept"
     glossaryTerm: "Abstract Syntax Tree"
     glossaryAbbr: "AST"
-    glossaryText: "een gegevensstructuur is de AST als en slechts als zij de expliciete nodeboom is die de parser uit VSA-invoer produceert en die validator en renderer zonder semantische herinterpretatie kunnen lezen."
+    glossaryText: "een expliciete nodeboom die door de parser uit VSA-invoer wordt geproduceerd en die validator en renderer zonder semantische herinterpretatie kunnen lezen."
     glossaryAlias: "Syntactische boom"
     formPhrases:
       - "ast"
@@ -43,7 +43,7 @@ entries:
     term: "bracket-directive"
     termType: "concept"
     glossaryTerm: "Bracket-directive"
-    glossaryText: "een tekstfragment is een bracket-directive als en slechts als het als een afzonderlijk VSA-token tussen `[` en `]` voorkomt en door bracket-dispatch wordt geclassificeerd voordat de inhoudelijke parsing verdergaat."
+    glossaryText: "een tekstfragment dat als afzonderlijk VSA-token tussen `[` en `]` voorkomt en door bracket-dispatch wordt geclassificeerd voordat de inhoudelijke parsing verdergaat."
     glossaryAlias: "Bracket-token"
     formPhrases:
       - "bracket-directive"
@@ -62,7 +62,7 @@ entries:
     termType: "concept"
     isa: "bracket-directive"
     glossaryTerm: "Control-token"
-    glossaryText: "een bracket-directive is een control-token als en slechts als de tokenwaarde een ondersteunde control-tokenvorm is, zoals `[*]`, `[/]`, `[*?]` of `[/?]`, en niet als pitch-marker wordt geparseerd."
+    glossaryText: "een bracket-directive waarvan de tokenwaarde een ondersteunde control-tokenvorm is, zoals `[*]`, `[/]`, `[*?]` of `[/?]`, en die niet als pitch-marker wordt geparseerd."
     formPhrases:
       - "control-token"
       - "control-tokens"
@@ -77,7 +77,7 @@ entries:
     term: "diagnostic"
     termType: "concept"
     glossaryTerm: "Diagnostic"
-    glossaryText: "een melding is een diagnostic als en slechts als zij door parser of validator wordt geproduceerd en ten minste een foutcode, severity, bronlocatie en uitleg of context bij een vastgestelde afwijking bevat."
+    glossaryText: "een melding die door parser of validator wordt geproduceerd en ten minste een foutcode, severity, bronlocatie en uitleg of context bij een vastgestelde afwijking bevat."
     glossaryAlias: "Diagnostische melding"
     formPhrases:
       - "diagnostic"
@@ -97,7 +97,7 @@ entries:
     isa: "hoogte-modifier"
     glossaryTerm: "Enkelvoudige hoogte-modifier"
     glossaryAbbr: "EHM"
-    glossaryText: "een hoogte-modifier is een enkelvoudige hoogte-modifier als en slechts als hij uit precies een geldige EHM bestaat: een basis-hoogtebeweging, eventueel voorafgegaan door een halftoon-prefix."
+    glossaryText: "een hoogte-modifier die uit precies een geldige EHM bestaat: een basis-hoogtebeweging, eventueel voorafgegaan door een halftoon-prefix."
     formPhrases:
       - "enkelvoudige-hoogte-modifier"
       - "enkelvoudige-hoogte-modifiers"
@@ -116,7 +116,7 @@ entries:
     isa: "lengte-modifier"
     glossaryTerm: "Enkelvoudige lengte-modifier"
     glossaryAbbr: "ELM"
-    glossaryText: "een lengte-modifier is een enkelvoudige lengte-modifier als en slechts als hij uit precies een geldige ELM bestaat en daarmee precies een duurpositie representeert."
+    glossaryText: "een lengte-modifier die uit precies een geldige ELM bestaat en daarmee precies een duurpositie representeert."
     formPhrases:
       - "enkelvoudige-lengte-modifier"
       - "enkelvoudige-lengte-modifiers"
@@ -134,7 +134,7 @@ entries:
     termType: "concept"
     isa: "modifier"
     glossaryTerm: "Hoogte-modifier"
-    glossaryText: "een modifier is een hoogte-modifier als en slechts als hij voor het zangelement in een VSA-scope staat en bestaat uit een geldige EHM of uit meerdere geldige EHM's gescheiden door `&`."
+    glossaryText: "een modifier die voor het zangelement in een VSA-scope staat en bestaat uit een geldige EHM of uit meerdere geldige EHM's gescheiden door `&`."
     glossaryAlias: "Height modifier"
     formPhrases:
       - "hoogte-modifier"
@@ -152,7 +152,7 @@ entries:
     term: "hugo-output"
     termType: "concept"
     glossaryTerm: "Hugo-output"
-    glossaryText: "een artifactset is Hugo-output als en slechts als zij door een VSA-buildstap gegenereerde Hugo-compatibele Markdown en de daarbij verwezen assets bevat."
+    glossaryText: "een artifactset die door een VSA-buildstap gegenereerde Hugo-compatibele Markdown en de daarbij verwezen assets bevat."
     glossaryAlias: "Hugo-content"
     formPhrases:
       - "hugo-output"
@@ -170,7 +170,7 @@ entries:
     term: "include-vsa"
     termType: "concept"
     glossaryTerm: "@include-vsa"
-    glossaryText: "een substring is een `@include-vsa`-directive als en slechts als zij met `@include-vsa` begint, exact een ondersteunde resolverparameter bevat (`zoek=`, `id=` of `lokaal=`) en tijdens verwerking door de body van het doelbestand wordt vervangen."
+    glossaryText: "een substring die met `@include-vsa` begint, exact een ondersteunde resolverparameter bevat (`zoek=`, `id=` of `lokaal=`) en tijdens verwerking door de body van het doelbestand wordt vervangen."
     glossaryAlias: "VSA-inline-include"
     formPhrases:
       - "include-vsa"
@@ -189,7 +189,7 @@ entries:
     termType: "concept"
     isa: "modifier"
     glossaryTerm: "Lengte-modifier"
-    glossaryText: "een modifier is een lengte-modifier als en slechts als hij na het zangelement in een VSA-scope staat en bestaat uit een geldige ELM of uit meerdere geldige ELM's gescheiden door `&`."
+    glossaryText: "een modifier die na het zangelement in een VSA-scope staat en bestaat uit een geldige ELM of uit meerdere geldige ELM's gescheiden door `&`."
     glossaryAlias: "Length modifier"
     formPhrases:
       - "lengte-modifier"
@@ -207,7 +207,7 @@ entries:
     term: "metadata"
     termType: "concept"
     glossaryTerm: "Metadata"
-    glossaryText: "gegevens zijn metadata als en slechts als zij als gestructureerde blokparameters of YAML-frontmatter bij VSA-bronmateriaal staan, verwerking of identificatie sturen en zelf niet tot de zichtbare VSA-notatie behoren."
+    glossaryText: "gegevens die als gestructureerde blokparameters of YAML-frontmatter bij VSA-bronmateriaal staan, verwerking of identificatie sturen en zelf niet tot de zichtbare VSA-notatie behoren."
     formPhrases:
       - "metadata"
       - "metadata-items"
@@ -222,7 +222,7 @@ entries:
     term: "modifier"
     termType: "concept"
     glossaryTerm: "Modifier"
-    glossaryText: "een tekenreeks is een modifier als en slechts als zij binnen een VSA-scope als hoogte-modifier voor het zangelement of als lengte-modifier na het zangelement wordt geparseerd."
+    glossaryText: "een tekenreeks die binnen een VSA-scope als hoogte-modifier voor het zangelement of als lengte-modifier na het zangelement wordt geparseerd."
     formPhrases:
       - "modifier"
       - "modifiers"
@@ -237,7 +237,7 @@ entries:
     term: "parser"
     termType: "concept"
     glossaryTerm: "Parser"
-    glossaryText: "een component is een parser als en slechts als hij VSA-brontekst of tokens volgens de grammatica omzet naar expliciete AST-nodes, bronlocaties behoudt en geen semantische reparaties of renderlogica uitvoert."
+    glossaryText: "een component die VSA-brontekst of tokens volgens de grammatica omzet naar expliciete AST-nodes, bronlocaties behoudt en geen semantische reparaties of renderlogica uitvoert."
     formPhrases:
       - "parser"
       - "parsers"
@@ -252,7 +252,7 @@ entries:
     term: "pitch-marker"
     termType: "concept"
     glossaryTerm: "Pitch-marker"
-    glossaryText: "een bracket-directive is een pitch-marker als en slechts als zij de vorm `[<EHM>:]` heeft, waarbij `<EHM>` leeg is of een geldige enkelvoudige hoogte-modifier bevat."
+    glossaryText: "een bracket-directive met de vorm `[<EHM>:]`, waarbij `<EHM>` leeg is of een geldige enkelvoudige hoogte-modifier bevat."
     glossaryAlias: "Hoogte-markering"
     formPhrases:
       - "pitch-marker"
@@ -274,7 +274,7 @@ entries:
     term: "publicatie"
     termType: "concept"
     glossaryTerm: "Publicatie"
-    glossaryText: "een proces is publicatie als en slechts als het gegenereerde demo-, preview- of productie-output bouwt, controleert en beschikbaar maakt voor GitHub Pages of hergebruik."
+    glossaryText: "een proces dat gegenereerde demo-, preview- of productie-output bouwt, controleert en beschikbaar maakt voor GitHub Pages of hergebruik."
     formPhrases:
       - "publicatie"
       - "publicaties"
@@ -289,7 +289,7 @@ entries:
     term: "renderer"
     termType: "concept"
     glossaryTerm: "Renderer"
-    glossaryText: "een component is een renderer als en slechts als hij een gevalideerde AST of daarvan afgeleid layoutmodel omzet naar concrete uitvoer, zoals SVG, JSON, Markdown, Hugo-output of MusicXML, zonder de AST semantisch te wijzigen."
+    glossaryText: "een component die een gevalideerde AST of daarvan afgeleid layoutmodel omzet naar concrete uitvoer, zoals SVG, JSON, Markdown, Hugo-output of MusicXML, zonder de AST semantisch te wijzigen."
     formPhrases:
       - "renderer"
       - "renderers"
@@ -305,7 +305,7 @@ entries:
     termType: "concept"
     isa: "hoogte-modifier"
     glossaryTerm: "Samengestelde hoogte-modifier"
-    glossaryText: "een hoogte-modifier is een samengestelde hoogte-modifier als en slechts als hij uit twee of meer geldige EHM's bestaat die onderling door `&` zijn gescheiden."
+    glossaryText: "een hoogte-modifier die uit twee of meer geldige EHM's bestaat die onderling door `&` zijn gescheiden."
     formPhrases:
       - "samengestelde-hoogte-modifier"
       - "samengestelde-hoogte-modifiers"
@@ -321,7 +321,7 @@ entries:
     termType: "concept"
     isa: "lengte-modifier"
     glossaryTerm: "Samengestelde lengte-modifier"
-    glossaryText: "een lengte-modifier is een samengestelde lengte-modifier als en slechts als hij uit twee of meer geldige ELM's bestaat die onderling door `&` zijn gescheiden."
+    glossaryText: "een lengte-modifier die uit twee of meer geldige ELM's bestaat die onderling door `&` zijn gescheiden."
     formPhrases:
       - "samengestelde-lengte-modifier"
       - "samengestelde-lengte-modifiers"
@@ -336,7 +336,7 @@ entries:
     term: "severity"
     termType: "concept"
     glossaryTerm: "Severity"
-    glossaryText: "een waarde is een severity als en slechts als zij aan een diagnostic is gekoppeld en aangeeft of de vastgestelde afwijking als blokkerende fout of als waarschuwing moet worden behandeld."
+    glossaryText: "een waarde die aan een diagnostic is gekoppeld en aangeeft of de vastgestelde afwijking als blokkerende fout of als waarschuwing moet worden behandeld."
     glossaryAlias: "Ernstniveau"
     formPhrases:
       - "severity"
@@ -354,7 +354,7 @@ entries:
     term: "validator"
     termType: "concept"
     glossaryTerm: "Validator"
-    glossaryText: "een component is een validator als en slechts als hij een geparseerde AST of VSA-invoer toetst aan semantische en normatieve regels en overtredingen als diagnostics rapporteert zonder ze stilzwijgend te repareren."
+    glossaryText: "een component die een geparseerde AST of VSA-invoer toetst aan semantische en normatieve regels en overtredingen als diagnostics rapporteert zonder ze stilzwijgend te repareren."
     formPhrases:
       - "validator"
       - "validators"
@@ -370,7 +370,7 @@ entries:
     termType: "concept"
     glossaryTerm: "Vereenvoudigde Slavische Accentnotatie"
     glossaryAbbr: "VSA"
-    glossaryText: "een notatie- of toolingketen valt onder VSA als en slechts als zij VSA-brontekst met scopes, modifiers en bracket-directives gebruikt om liturgische zangteksten te valideren, renderen of publiceren."
+    glossaryText: "een notatie- of toolingketen die VSA-brontekst met scopes, modifiers en bracket-directives gebruikt om liturgische zangteksten te valideren, renderen of publiceren."
     glossaryNotes:
       - "Binnen deze repository verwijst VSA naar de eigen notatie- en publicatieketen."
     formPhrases:
@@ -390,7 +390,7 @@ entries:
     term: "vsa-scope"
     termType: "concept"
     glossaryTerm: "VSA-scope"
-    glossaryText: "een tekstfragment is een VSA-scope als en slechts als het met `{` begint, met `}` eindigt, geen whitespace binnen de accolades bevat en door de parser kan worden opgesplitst in optionele hoogte-modifier, verplicht zangelement en optionele lengte-modifier."
+    glossaryText: "een tekstfragment dat met `{` begint, met `}` eindigt, geen whitespace binnen de accolades bevat en door de parser kan worden opgesplitst in optionele hoogte-modifier, verplicht zangelement en optionele lengte-modifier."
     glossaryAlias: "Scope"
     formPhrases:
       - "vsa-scope"
@@ -408,7 +408,7 @@ entries:
     term: "vsa-toml"
     termType: "concept"
     glossaryTerm: "vsa.toml"
-    glossaryText: "een bestand is `vsa.toml` als en slechts als het het projectconfiguratiebestand met die naam is en herkende VSA-toolinginstellingen bevat voor rendering, output of validatie."
+    glossaryText: "een projectconfiguratiebestand met de naam `vsa.toml` dat herkende VSA-toolinginstellingen bevat voor rendering, output of validatie."
     glossaryAlias: "Projectconfiguratie"
     formPhrases:
       - "vsa-toml"
@@ -426,7 +426,7 @@ entries:
     term: "zangstuk"
     termType: "concept"
     glossaryTerm: "Zangstuk"
-    glossaryText: "een inhoudelijke eenheid is een zangstuk als en slechts als zij een afgebakend gezang of muzikale tekst vormt die zelfstandig kan worden geidentificeerd, vastgelegd, verwerkt of gepubliceerd."
+    glossaryText: "een inhoudelijke eenheid die een afgebakend gezang of muzikale tekst vormt en zelfstandig kan worden geidentificeerd, vastgelegd, verwerkt of gepubliceerd."
     formPhrases:
       - "zangstuk"
       - "zangstukken"

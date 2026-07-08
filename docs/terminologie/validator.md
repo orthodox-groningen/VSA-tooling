@@ -3,7 +3,7 @@ slug: validator
 term: validator
 termType: concept
 glossaryTerm: Validator
-glossaryText: "een component is een validator als en slechts als hij een geparseerde AST of VSA-invoer toetst aan semantische en normatieve regels en overtredingen als diagnostics rapporteert zonder ze stilzwijgend te repareren."
+glossaryText: "een component die een geparseerde AST of VSA-invoer toetst aan semantische en normatieve regels en overtredingen als diagnostics rapporteert zonder ze stilzwijgend te repareren."
 formPhrases:
   - validator
   - validators

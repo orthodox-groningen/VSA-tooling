@@ -3,7 +3,7 @@ slug: parser
 term: parser
 termType: concept
 glossaryTerm: Parser
-glossaryText: "een component is een parser als en slechts als hij VSA-brontekst of tokens volgens de grammatica omzet naar expliciete AST-nodes, bronlocaties behoudt en geen semantische reparaties of renderlogica uitvoert."
+glossaryText: "een component die VSA-brontekst of tokens volgens de grammatica omzet naar expliciete AST-nodes, bronlocaties behoudt en geen semantische reparaties of renderlogica uitvoert."
 formPhrases:
   - parser
   - parsers

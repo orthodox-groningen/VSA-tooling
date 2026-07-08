@@ -4,7 +4,7 @@ term: hoogte-modifier
 termType: concept
 isa: modifier
 glossaryTerm: Hoogte-modifier
-glossaryText: "een modifier is een hoogte-modifier als en slechts als hij voor het zangelement in een VSA-scope staat en bestaat uit een geldige EHM of uit meerdere geldige EHM's gescheiden door `&`."
+glossaryText: "een modifier die voor het zangelement in een VSA-scope staat en bestaat uit een geldige EHM of uit meerdere geldige EHM's gescheiden door `&`."
 glossaryAlias: Height modifier
 formPhrases:
   - hoogte-modifier

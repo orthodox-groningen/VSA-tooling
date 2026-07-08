@@ -3,7 +3,7 @@ slug: vsa-toml
 term: vsa-toml
 termType: concept
 glossaryTerm: vsa.toml
-glossaryText: "een bestand is `vsa.toml` als en slechts als het het projectconfiguratiebestand met die naam is en herkende VSA-toolinginstellingen bevat voor rendering, output of validatie."
+glossaryText: "een projectconfiguratiebestand met de naam `vsa.toml` dat herkende VSA-toolinginstellingen bevat voor rendering, output of validatie."
 glossaryAlias: Projectconfiguratie
 formPhrases:
   - vsa.toml

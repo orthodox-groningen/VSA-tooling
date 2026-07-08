@@ -3,7 +3,7 @@ slug: zangstuk
 term: zangstuk
 termType: concept
 glossaryTerm: Zangstuk
-glossaryText: "een inhoudelijke eenheid is een zangstuk als en slechts als zij een afgebakend gezang of muzikale tekst vormt die zelfstandig kan worden geidentificeerd, vastgelegd, verwerkt of gepubliceerd."
+glossaryText: "een inhoudelijke eenheid die een afgebakend gezang of muzikale tekst vormt en zelfstandig kan worden geidentificeerd, vastgelegd, verwerkt of gepubliceerd."
 formPhrases:
   - zangstuk
   - zangstukken

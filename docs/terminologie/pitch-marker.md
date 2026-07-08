@@ -3,7 +3,7 @@ slug: pitch-marker
 term: pitch-marker
 termType: concept
 glossaryTerm: Pitch-marker
-glossaryText: "een bracket-directive is een pitch-marker als en slechts als zij de vorm `[<EHM>:]` heeft, waarbij `<EHM>` leeg is of een geldige enkelvoudige hoogte-modifier bevat."
+glossaryText: "een bracket-directive met de vorm `[<EHM>:]`, waarbij `<EHM>` leeg is of een geldige enkelvoudige hoogte-modifier bevat."
 glossaryAlias: Hoogte-markering
 formPhrases:
   - pitch-marker

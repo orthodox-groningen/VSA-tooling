@@ -3,7 +3,7 @@ slug: hugo-output
 term: hugo-output
 termType: concept
 glossaryTerm: Hugo-output
-glossaryText: "een artifactset is Hugo-output als en slechts als zij door een VSA-buildstap gegenereerde Hugo-compatibele Markdown en de daarbij verwezen assets bevat."
+glossaryText: "een artifactset die door een VSA-buildstap gegenereerde Hugo-compatibele Markdown en de daarbij verwezen assets bevat."
 glossaryAlias: Hugo-content
 formPhrases:
   - hugo-output

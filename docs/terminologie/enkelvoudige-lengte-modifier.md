@@ -5,7 +5,7 @@ termType: concept
 isa: lengte-modifier
 glossaryTerm: Enkelvoudige lengte-modifier
 glossaryAbbr: ELM
-glossaryText: "een lengte-modifier is een enkelvoudige lengte-modifier als en slechts als hij uit precies een geldige ELM bestaat en daarmee precies een duurpositie representeert."
+glossaryText: "een lengte-modifier die uit precies een geldige ELM bestaat en daarmee precies een duurpositie representeert."
 formPhrases:
   - enkelvoudige lengte-modifier
   - enkelvoudige lengte-modifiers

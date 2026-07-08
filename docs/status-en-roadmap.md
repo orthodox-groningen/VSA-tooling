@@ -34,8 +34,8 @@ De parser, validator, SVG-renderer, MusicXML-export en Hugo-buildketen zijn aanw
 | README/projectingang | Verbeterd, maar jong | De README is nu herschreven; hij moet actueel blijven bij workflow-keuzes. |
 | Roadmap | Nieuw gecentraliseerd | Dit document vervangt nog niet automatisch alle oude todo's. |
 | Directive-nesting | Open besluit | `web-only` binnen `keep-together` faalt nu bewust; praktijkmateriaal wil dit soms wel. |
-| Enkele hoogte-marker | Specificatie expliciteren | De eerste marker geldt nu als beginhoogte. Als er maar een marker in een blok staat, is dat dus geen controleerbare eindmarker. |
 | Commentaar in VSA | Deels opgelost | HTML-commentaar en comment-only regels zijn aangepakt, maar een compleet commentaarmodel is nog nuttig. |
+| VSA-blok-afbakening | Authoring-usability | Vergeten `::: vsa-notatie` of afsluitende `:::` moet vroeg en duidelijk worden gemeld. |
 | `bron:` met Coria/MXL | Beperkt | SVG op `bron:` werkt; Coria/MXL buiten `content-root` is nog niet glad. |
 | AST/source maps | Later | Nodig voor betere foutposities, editor-integratie en eventueel roundtrip tooling. |
 | Editor-ondersteuning | Niet aanwezig | VS Code highlighting en foutmarkering zouden dagelijks gebruik veel prettiger maken. |
@@ -46,12 +46,9 @@ De parser, validator, SVG-renderer, MusicXML-export en Hugo-buildketen zijn aanw
 
 Nu is nesting verboden. Dat voorkomt ambiguiteit, maar botst met natuurlijke authoring, bijvoorbeeld een Coria-link of `web-only` content binnen een `keep-together` blok.
 
-Te beslissen:
+Feitelijk vraagt dit om goed na te denken over `exports` en waarvoor ze dienen. Daarbij moet niet zozeer gekeken worden naar formaten (web, pdf, print, ...), maar eerst naar het soort gebruik dat wordt voorzien, en op basis daarvan kijken welke formaten daarbij nodig zijn, en wat daar dan in gaat moeten. 
 
-- Welke combinaties mogen genest worden?
-- Is nesting semantisch nodig, of volstaat een sibling-conventie?
-- Hoe moet nesting zich gedragen in browserweergave en bij print?
-- Moet `keep-together` alleen layout sturen, of ook inhoudsgroepen vormen?
+Het kan dus zomaar zijn dat document-directives helemaal op de schop moeten en daar is nesting dan een onderdeel van.
 
 ### 2. Commentaarmodel
 
@@ -88,17 +85,24 @@ Te beslissen:
 
 ## Nuttigste volgende stappen
 
-### Stap 1: directive-nesting beslissen en vastleggen
+### Stap 1: nadenken over het gebruik van exports
 
-Doel: een duidelijke regel voor `web-only`, `print-only`, `keep-together`, `include` en `coria` in samengestelde documenten.
+Doel: het specificeren van de soorten van gebruik die we willen ondersteunen, en op basis daarvan beslissen
+
+- welke soorten `exports` daarbij nodig zijn,
+- welke bestandsformaten of presentaties (web, papier, ...) daarvoor ondersteund gaan worden
+- hoe deze moeten worden samengesteld, en welke directives of andere syntax daarbij nodig is.
+
+Ook is een onderdeel om bestaande directives te reviewen om vast te stellen of ze behouden, gewijzigd of verwijderd moeten worden.
 
 Waarom: deze keuze bepaalt hoe auteurs echte liturgische documenten schrijven.
 
 Resultaat:
 
+- Een korte exportspecificatie: gebruiksdoelen, exporttypes en beoogde outputvormen.
+- Een besluit over de rol van bestaande directives (`web-only`, `print-only`, `keep-together`, `include`, `coria`).
 - Update van `docs/spec-vsa-document-samenstellen.md`.
-- Tests voor toegestane en verboden combinaties.
-- Eventuele implementatie in `src/vsa/markdown_directives.py`.
+- Pas daarna tests en eventuele implementatie-aanpassingen.
 
 ### Stap 2: parochie-workflow glad maken
 
@@ -137,7 +141,19 @@ Resultaat:
 - Regressietest toevoegen of aanwijzen voor het bekende voorbeeld met een foute laatste marker.
 - Eventueel `docs/to-do-van-mij.md` verder opschonen zodra het persoonlijke todo-bestand wordt geconsolideerd.
 
-### Stap 5: editor-ondersteuning voorbereiden
+### Stap 5: authoring-fouten rond VSA-blokken expliciet maken
+
+Doel: vergeten `::: vsa-notatie` of afsluitende `:::` in Markdown vroeg herkennen en met een duidelijke melding teruggeven.
+
+Waarom: dit zijn typische schrijffouten bij auteurs; zonder gerichte diagnose lijkt de build of parser dan onverklaarbaar stuk te lopen.
+
+Resultaat:
+
+- Specificeren hoe Markdown met ontbrekende VSA-openings- of sluitingsdirective wordt herkend.
+- Duidelijke foutmelding met bestand, regel en herstelhint.
+- Regressietests voor ontbrekende opening en ontbrekende afsluiting.
+
+### Stap 6: editor-ondersteuning voorbereiden
 
 Doel: syntax highlighting en later foutmarkering voor VSA in VS Code.
 

@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Multiline voorbeelden</title>
+  <title>Multiline</title>
   <link rel="stylesheet" href="/VSA-tooling/preview/css/site.css">
 </head>
 
@@ -13,12 +13,6 @@
       <a href="/VSA-tooling/preview/">Home</a>
       <a href="/VSA-tooling/preview/glossarium/">Glossarium</a>
       <a href="/VSA-tooling/preview/voorbeelden/">Voorbeelden</a>
-      <a href="/VSA-tooling/preview/voorbeelden/basis/">Basis</a>
-      <a href="/VSA-tooling/preview/voorbeelden/multiline/">Multiline</a>
-      <a href="/VSA-tooling/preview/voorbeelden/fouten/">Fouten</a>
-      <a href="/VSA-tooling/preview/voorbeelden/markdown/">Markdown</a>
-      <a href="/VSA-tooling/preview/voorbeelden/cli/">CLI</a>
-      <a href="/VSA-tooling/preview/voorbeelden/rendering/">Rendering</a>
       <a href="/VSA-tooling/preview/praktijk/">Praktijk</a>
     </nav>
   </header>
@@ -26,23 +20,63 @@
   <main class="page">
     
 
-<h1 id="multiline-voorbeelden">Multiline voorbeelden</h1>
-<ul>
-<li><a href="../../">Home</a>
-</li>
-<li><a href="../basis/">Vorige: Basis</a>
-</li>
-<li><a href="../fouten/">Volgende: Fouten</a>
-</li>
-</ul>
+<h1 id="multiline">Multiline</h1>
+<p>Een voorbeeld waarin een langere VSA-regel automatisch over meerdere regels kan worden gezet.</p>
+<div class="nav-buttons"><a class="btn" href="../basis/">
+      Vorige: Basis
+    </a><a class="btn" href="../">
+      Voorbeelden
+    </a><a class="btn" href="../fouten/">
+      Volgende: Fouten
+    </a>
+</div>
+
+<style>
+.nav-buttons {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 0.75rem;
+  margin: 1rem 0;
+}
+
+ 
+.nav-buttons .btn {
+  display: flex;
+  flex-direction: column;       
+  justify-content: center;      
+  align-items: center;          
+  text-align: center;
+  padding: 0.75rem 0.5rem;      
+  background: #eee;
+  border-radius: 6px;
+  text-decoration: none;
+  border: 1px solid #ccc;
+  color: #000;
+  transition: background 0.2s ease;
+}
+
+ 
+.nav-buttons .btn span {
+  display: block;
+  line-height: 1.25;
+  white-space: normal;
+}
+
+ 
+.nav-buttons .btn:hover {
+  background: #ddd;
+}
+
+</style>
+
 <h2 id="invoer">Invoer</h2>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>[:] {/Hei_}{/lig_} is de Heer en Hij is heilig en wonderbaar in al Zijn werken. [//:]
-</span></span></code></pre></div><h2 id="svg">SVG</h2>
+</span></span></code></pre></div><h2 id="resultaat">Resultaat</h2>
 <div class="vsa-container"><img class="vsa-notation" src="/VSA-tooling/preview/vsa/voorbeelden-multiline-block-1.svg" alt="VSA notatie" loading="lazy"></div>
 
 <h2 id="commando">Commando</h2>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cmd" data-lang="cmd"><span style="display:flex;"><span>vsa svg examples\minimal\100_multiline_demo.vsa output.svg --max-line-width 400
-</span></span></code></pre></div><h2 id="wat-doet---max-line-width">Wat doet <code>--max-line-width</code>?</h2>
+</span></span></code></pre></div><h2 id="uitleg">Uitleg</h2>
 <p>De renderer breekt regels automatisch af als ze te breed worden.</p>
 
 

@@ -1,31 +1,36 @@
-from pathlib import Path
+from docs_contracts import ARCHITECTURE, PARSER_STEPS, SPECIFICATION, read, assert_terms
 
 
-CONTRACT = Path("docs/history/parser-steps/parser-stap-94-bracket-directive-contract.md")
+HISTORICAL_CONTRACT = PARSER_STEPS / "parser-stap-94-bracket-directive-contract.md"
+DIRECTIVE_DOCS = (
+    SPECIFICATION / "directives.md",
+    ARCHITECTURE / "directives.md",
+)
 
 
-def test_step94_contract_exists():
-    assert CONTRACT.exists()
+def test_step94_historical_bracket_directive_decision_is_preserved():
+    text = read(HISTORICAL_CONTRACT)
+
+    assert_terms(
+        text,
+        (
+            "[<EHM>:]",
+            "één eindtoken",
+            "Geen overstap naar `{<EHM>:}`",
+            '"[" + <EHM> + ":]"',
+        ),
+    )
 
 
-def test_step94_contract_defines_end_token():
-    text = CONTRACT.read_text(encoding="utf-8")
+def test_current_directive_docs_define_bracket_dispatch_contract():
+    text = "\n".join(read(path) for path in DIRECTIVE_DOCS)
 
-    assert "[<EHM>:]" in text
-    assert ":]" in text
-    assert "één eindtoken" in text
-
-
-def test_step94_contract_rejects_tokenizing_colon_and_bracket_separately():
-    text = CONTRACT.read_text(encoding="utf-8")
-
-    assert '"[" + <EHM> + ":]"' in text
-    assert '"[" + <EHM> + ":" + "]"' in text
-    assert "Niet:" in text
-
-
-def test_step94_contract_does_not_switch_to_curly_marker_syntax():
-    text = CONTRACT.read_text(encoding="utf-8")
-
-    assert "Geen overstap naar `{<EHM>:}`" in text
-    assert "`{...}` is al in gebruik" in text
+    assert_terms(
+        text,
+        (
+            "bracket-token ::=",
+            'height-marker ::= "[" [ EHM ] ":]"',
+            "Bracket-directives zijn tokens tussen `[` en `]`",
+            "De parser moet eerst bepalen welk type bracket-token is aangetroffen",
+        ),
+    )

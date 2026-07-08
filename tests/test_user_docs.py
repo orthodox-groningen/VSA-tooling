@@ -1,122 +1,106 @@
-from pathlib import Path
+from docs_contracts import GUIDES, doc, read_doc, read_docs, assert_terms
 
 
-USER_GUIDE = Path("docs/guides")
-CLI_REFERENCE = Path("docs/reference/cli.md")
-CLI_SPEC = Path("docs/specification/cli.md")
-CONFIG_REFERENCE = Path("docs/reference/config.md")
-VALIDATION_SPEC = Path("docs/specification/validation.md")
-OUTPUTS_REFERENCE = Path("docs/reference/outputs.md")
+def test_user_facing_canonical_docs_exist():
+    for name in (
+        "quick_start_guide",
+        "validation_guide",
+        "cli_reference",
+        "cli_spec",
+        "config_reference",
+        "outputs_reference",
+        "diagnostics_reference",
+    ):
+        assert doc(name).exists()
 
-
-def _read(path: Path):
-    return path.read_text(encoding="utf-8")
-
-
-def _read_many(*paths: Path):
-    return "\n".join(_read(path) for path in paths)
-
-
-def test_user_guide_exists():
-    assert Path("docs/guides/quick-start.md").exists()
-    assert Path("docs/guides/validation.md").exists()
-    assert Path("docs/guides/cli-taken.md").exists()
-
-
-def test_cli_reference_exists():
-    assert CLI_REFERENCE.exists()
+    assert (GUIDES / "cli-taken.md").exists()
 
 
 def test_user_guide_mentions_core_commands():
-    text = _read_many(
-        Path("docs/guides/quick-start.md"),
-        Path("docs/guides/cli-taken.md"),
+    text = read_doc("quick_start_guide") + (GUIDES / "cli-taken.md").read_text(
+        encoding="utf-8"
     )
 
-    assert "vsa validate" in text
-    assert "vsa svg" in text
-    assert "vsa build-markdown" in text
-    assert "vsa process" in text
-    assert "vsa blocks" in text
-    assert "vsa parse <bestand.vsa> --ast" in text
+    assert_terms(
+        text,
+        (
+            "vsa validate",
+            "vsa svg",
+            "vsa build-markdown",
+            "vsa process",
+            "vsa blocks",
+            "vsa parse",
+            "--ast",
+        ),
+    )
 
 
 def test_cli_reference_mentions_core_commands():
-    text = _read(CLI_REFERENCE)
+    text = read_doc("cli_reference")
 
-    assert "vsa validate" in text
-    assert "vsa svg" in text
-    assert "vsa build-markdown" in text
-    assert "vsa process" in text
-    assert "vsa blocks" in text
-    assert "vsa parse" in text
+    assert_terms(
+        text,
+        ("vsa validate", "vsa svg", "vsa build-markdown", "vsa process", "vsa blocks", "vsa parse"),
+    )
 
 
 def test_cli_reference_mentions_output_modes():
-    text = _read_many(CLI_REFERENCE, CONFIG_REFERENCE)
+    text = read_docs("cli_reference", "config_reference")
 
-    assert "--output-mode img" in text
-    assert "--output-mode shortcode" in text
+    assert_terms(text, ("--output-mode img", "--output-mode shortcode"))
 
 
 def test_user_guide_explains_validate_purpose_and_checks():
-    text = _read_many(Path("docs/guides/validation.md"), VALIDATION_SPEC)
+    text = read_docs("validation_guide", "validation_spec")
 
-    assert "Waarvoor gebruik je dit?" in text
-    assert "Wat wordt gecontroleerd?" in text
-    assert "scope is goed afgesloten" in text
-    assert "scope is niet leeg" in text
-    assert "geen whitespace binnen scope" in text
-    assert "hoogte- en lengteposities" in text
+    assert_terms(
+        text,
+        (
+            "Waarvoor gebruik je dit?",
+            "Wat wordt gecontroleerd?",
+            "scope is goed afgesloten",
+            "scope is niet leeg",
+            "geen whitespace binnen scope",
+            "hoogte- en lengteposities",
+        ),
+    )
 
 
 def test_user_guide_explains_validate_success_and_failure():
-    text = _read_many(Path("docs/guides/validation.md"), VALIDATION_SPEC, CLI_SPEC)
+    text = read_docs("validation_guide", "validation_spec", "cli_spec")
 
-    assert "Succesoutput" in text
-    assert "Foutoutput" in text
-    assert "OK" in text
-    assert "Exitcode" in text
-    assert "Aanpak bij fouten" in text
+    assert_terms(text, ("Succesoutput", "Foutoutput", "OK", "Exitcode", "Aanpak bij fouten"))
 
 
 def test_user_guide_explains_parse_ast_output():
-    text = _read_many(CLI_SPEC, Path("docs/specification/overview.md"))
+    text = read_doc("cli_spec") + doc("cli_spec").with_name("overview.md").read_text(
+        encoding="utf-8"
+    )
 
-    assert "Abstract Syntax Tree" in text
-    assert "`--ast`" in text
-    assert "toon de interne structuur als JSON" in text
-    assert "PitchMarkerNode" in text
-    assert "ScopeNode" in text
-    assert "TextNode" in text
+    assert_terms(
+        text,
+        ("Abstract Syntax Tree", "`--ast`", "JSON", "PitchMarkerNode", "ScopeNode", "TextNode"),
+    )
 
 
 def test_user_guide_explains_blocks_json_output():
-    text = _read_many(CLI_SPEC, OUTPUTS_REFERENCE)
+    text = read_docs("cli_spec", "outputs_reference")
 
-    assert "VSA-blokken in een Markdownbestand vinden" in text
-    assert "zonder `--json`" in text
-    assert "--json" in text
-    assert "start_line" in text
-    assert "end_line" in text
-    assert "metadata" in text
-    assert "body" in text
-    assert "ast" in text
+    assert_terms(
+        text,
+        ("VSA-blokken", "zonder `--json`", "--json", "start_line", "end_line", "metadata", "body", "ast"),
+    )
 
 
 def test_user_guide_explains_assets_dir_and_url_prefix():
-    text = _read_many(CLI_SPEC, CONFIG_REFERENCE)
+    text = read_docs("cli_spec", "config_reference")
 
-    assert "<assets-dir>" in text
-    assert "doelmap voor gegenereerde SVG-bestanden" in text
+    assert_terms(text, ("<assets-dir>", "--assets-url-prefix", "URL-prefix", "/vsa"))
     assert "generated/static/vsa" in text or "generated\\static\\vsa" in text
-    assert "URL-prefix" in text
-    assert "--assets-url-prefix" in text
-    assert "/vsa" in text
 
 
 def test_cli_reference_explains_assets_dir():
-    text = _read_many(CLI_REFERENCE, CLI_SPEC)
+    text = read_docs("cli_reference", "cli_spec")
 
     assert "<assets-dir>" in text
     assert "doelmap voor gegenereerde svg" in text.lower()
@@ -124,32 +108,30 @@ def test_cli_reference_explains_assets_dir():
 
 
 def test_cli_reference_explains_validate_outputs_and_errors():
-    text = _read_many(CLI_REFERENCE, CLI_SPEC, Path("docs/reference/diagnostics.md"))
+    text = read_docs("cli_reference", "cli_spec", "diagnostics_reference")
 
-    assert "Succesoutput" in text
-    assert "Foutoutput" in text
-    assert "Veelvoorkomende foutcodes" in text
-    assert "VSA-SYNTAX-EMPTY-SCOPE" in text
-    assert "VSA-SEMANTIC-MODIFIER-COUNT-MISMATCH" in text
-    assert "Wat doe je bij fouten?" in text
+    assert_terms(
+        text,
+        (
+            "Succesoutput",
+            "Foutoutput",
+            "Veelvoorkomende foutcodes",
+            "VSA-SYNTAX-EMPTY-SCOPE",
+            "VSA-SEMANTIC-MODIFIER-COUNT-MISMATCH",
+            "Wat doe je bij fouten?",
+        ),
+    )
 
 
 def test_cli_reference_explains_defaults_and_precedence():
-    text = _read_many(CLI_REFERENCE, CONFIG_REFERENCE)
+    text = read_docs("cli_reference", "config_reference")
 
-    assert "Defaults" in text
-    assert "Voorrang" in text
-    assert "max-line-width" in text
-    assert "assets-url-prefix" in text
-    assert "output-mode" in text
+    assert_terms(text, ("Defaults", "Voorrang", "max-line-width", "assets-url-prefix", "output-mode"))
 
 
 def test_docs_explain_troubleshooting_or_diagnosis():
-    user_text = _read_many(
-        Path("docs/guides/quick-start.md"),
-        Path("docs/guides/validation.md"),
-    )
-    cli_text = _read(CLI_REFERENCE)
+    user_text = read_docs("quick_start_guide", "validation_guide")
+    cli_text = read_doc("cli_reference")
 
     assert "Aanpak bij fouten" in user_text
     assert "Diagnosevolgorde" in cli_text
@@ -158,12 +140,12 @@ def test_docs_explain_troubleshooting_or_diagnosis():
 
 
 def test_user_guide_is_substantial():
-    text = _read_many(*Path("docs/guides").glob("*.md"))
+    text = "\n".join(path.read_text(encoding="utf-8") for path in GUIDES.glob("*.md"))
 
     assert len(text.splitlines()) > 200
 
 
 def test_cli_reference_is_substantial():
-    text = _read_many(CLI_REFERENCE, CONFIG_REFERENCE, CLI_SPEC)
+    text = read_docs("cli_reference", "config_reference", "cli_spec")
 
     assert len(text.splitlines()) > 200

@@ -1,9 +1,8 @@
-from pathlib import Path
+from docs_contracts import read_doc, assert_terms
 
 
 def test_todo_mentions_bracket_tokens_are_not_supported_yet():
-    text = Path("docs/history/addenda/todo.md").read_text(encoding="utf-8")
+    text = read_doc("todo_addendum")
 
-    assert "[/?]" in text
-    assert "nog niet ondersteund" in text
+    assert_terms(text, ("[/?]", "nog niet ondersteund"))
     assert "bracket-token dispatch" in text.lower()

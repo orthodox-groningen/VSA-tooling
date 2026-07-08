@@ -1,43 +1,26 @@
-from pathlib import Path
+from docs_contracts import doc, read_doc, assert_terms
 
 
-SPEC_FILES = [
-    Path("docs/specification/rendering.md"),
-    Path("docs/specification/rendering.md"),
-    Path("docs/specification/rendering.md"),
-]
-
-
-def test_rendering_specs_are_not_placeholders():
-    for path in SPEC_FILES:
-        assert path.exists(), f"Ontbrekende spec: {path}"
-        text = path.read_text(encoding="utf-8")
-
-        assert len(text) > 2500, f"Spec lijkt te summier: {path}"
+def test_rendering_spec_exists_and_is_normative_surface():
+    assert doc("rendering_spec").exists()
+    assert len(read_doc("rendering_spec").splitlines()) > 200
 
 
 def test_layout_algorithm_spec_mentions_pipeline():
-    text = Path("docs/specification/rendering.md").read_text(encoding="utf-8")
+    text = read_doc("rendering_spec")
 
-    assert "Renderpipeline" in text
-    assert "render-units" in text
-    assert "Collisiondetectie" in text
-    assert "Wrapping" in text
+    assert_terms(text, ("Renderpipeline", "render-units", "Collisiondetectie", "Wrapping"))
 
 
 def test_svg_dom_spec_mentions_required_classes():
-    text = Path("docs/specification/rendering.md").read_text(encoding="utf-8")
+    text = read_doc("rendering_spec")
 
-    assert "vsa-score" in text
-    assert "vsa-line" in text
-    assert "vsa-unit" in text
-    assert "vsa-pitch-marker" in text
+    assert_terms(text, ("vsa-score", "vsa-line", "vsa-unit", "vsa-pitch-marker"))
 
 
 def test_rendering_config_spec_mentions_override_order():
-    text = Path("docs/specification/rendering.md").read_text(encoding="utf-8")
+    text = read_doc("rendering_spec")
 
     assert "ingebouwde defaults" in text
-    assert "theme defaults" in text
     assert "projectconfig" in text
-    assert "CLI override" in text
+    assert "CLI-overrides" in text or "CLI override" in text

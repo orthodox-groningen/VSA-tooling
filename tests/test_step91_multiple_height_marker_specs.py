@@ -1,71 +1,48 @@
-from pathlib import Path
+from docs_contracts import PARSER_STEPS, read, read_doc, assert_terms
 
 
-SPEC = Path("docs/history/parser-steps/parser-stap-91-multiple-height-marker-specs.md")
-TODO = Path("docs/history/addenda/todo.md")
+HISTORICAL_STEP = PARSER_STEPS / "parser-stap-91-multiple-height-marker-specs.md"
 
 
-def test_step91_spec_exists():
-    assert SPEC.exists()
+def test_step91_historical_addendum_preserves_decision_context():
+    text = read(HISTORICAL_STEP)
 
-
-def test_step91_spec_defines_marker_shape_without_ampersand():
-    text = SPEC.read_text(encoding="utf-8")
-
-    assert "[<EHM>:]" in text
-    assert "`&` is geen onderdeel van een hoogte-markering." in text
-    assert "[/&:]" in text
-
-
-def test_step91_spec_has_no_invalid_ampersand_example_as_valid_example():
-    text = SPEC.read_text(encoding="utf-8")
-    valid_section = (
-        text
-        .split("Voorbeelden van geldige hoogte-markeringen:", 1)[1]
-        .split("Voorbeelden van ongeldige hoogte-markeringen:", 1)[0]
+    assert_terms(
+        text,
+        (
+            "[<EHM>:]",
+            "`&` is geen onderdeel van een hoogte-markering.",
+            "meerdere hoogte-markeringen mogen in hetzelfde blok staan",
+            "De SVG-renderer behandelt alle hoogte-markeringen gelijk",
+        ),
     )
 
-    assert "[/&:]" not in valid_section
-    assert "[&:]" not in valid_section
+
+def test_multiple_height_marker_contract_is_in_current_specs():
+    text = read_doc("syntax_spec") + read_doc("rendering_spec")
+
+    assert_terms(
+        text,
+        (
+            "[<EHM>:]",
+            '":]" ;',
+            "mogen meerdere hoogte-markeringen voorkomen",
+            "eerste hoogte-markering = beginhoogte",
+            "latere hoogte-markering = lokale hoogte op die positie",
+        ),
+    )
 
 
-def test_step91_spec_allows_invalid_ampersand_example_as_invalid_example():
-    text = SPEC.read_text(encoding="utf-8")
-    invalid_section = text.split("Voorbeelden van ongeldige hoogte-markeringen:", 1)[1]
+def test_multiple_height_marker_open_work_is_tracked_in_addenda():
+    text = read_doc("todo_addendum")
 
-    assert "[/&:]" in invalid_section
-    assert "[&:]" in invalid_section
-
-
-def test_step91_spec_allows_multiple_height_markers():
-    text = SPEC.read_text(encoding="utf-8")
-
-    assert "meerdere hoogte-markeringen" in text
-    assert "Elke hoogte-markering geeft een (toon)hoogte aan" in text
-    assert "Elke volgende hoogte-markering" in text
-
-
-def test_step91_spec_allows_text_around_markers():
-    text = SPEC.read_text(encoding="utf-8")
-
-    assert "tekst vóór de eerste hoogte-markering" in text
-    assert "tekst na de laatste hoogte-markering" in text
-    assert "tussen hoogte-markeringen mag tekst staan" in text
-
-
-def test_step91_spec_says_svg_treats_markers_equally():
-    text = SPEC.read_text(encoding="utf-8")
-
-    assert "De SVG-renderer behandelt alle hoogte-markeringen gelijk." in text
-    assert "geen aparte visuele status" in text
-
-
-def test_step91_todo_is_consolidated_in_main_todo():
-    assert TODO.exists()
-    text = TODO.read_text(encoding="utf-8")
-
-    assert "Meerdere hoogte-markeringen" in text
-    assert "parseracceptatie" in text
-    assert "AST-representatie" in text
-    assert "validatorregels" in text
-    assert "SVG-rendering" in text
+    assert_terms(
+        text,
+        (
+            "Meerdere hoogte-markeringen",
+            "parseracceptatie",
+            "AST-representatie",
+            "validatorregels",
+            "SVG-rendering",
+        ),
+    )

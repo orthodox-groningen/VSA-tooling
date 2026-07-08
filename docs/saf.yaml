@@ -1,0 +1,25 @@
+scope:
+  scopetag: vsa-docs
+  scopedir: https://github.com/orthodox-groningen/VSA-tooling/tree/main/docs
+  curatedir: terminologie
+  glossarydir: mrgs
+  defaultvsn: docs
+  defaulttype: concept
+  website: https://orthodox-groningen.github.io/VSA-tooling/
+  navpath: /terminologie
+  navid: slug
+  license: ../LICENSE
+  mappings:
+    trrt:
+      converters:
+        html-hovertext-link: '<a href="{{localize entry.navurl}}{{#if ref.trait}}#{{ref.trait}}{{/if}}" title="{{#if entry.hoverText}}{{entry.hoverText}}{{else}}{{#if entry.glossaryTerm}}{{entry.glossaryTerm}}{{else}}{{capFirst entry.term}}{{/if}}: {{noRefs entry.glossaryText type="markdown"}}{{/if}}">{{ref.showtext}}</a>'
+
+scopes: []
+
+versions:
+  - vsntag: docs
+    altvsntags:
+      - latest
+    termselection:
+      - "*"
+      - "-excludeFromMRG[yes]"

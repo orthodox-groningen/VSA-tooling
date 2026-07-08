@@ -1,0 +1,29 @@
+# TEv2 tools configuration for the VSA documentation scope.
+
+scopedir: docs
+onNotExist: throw
+output: .
+
+mrgt:
+  vsntag: docs
+
+hrgt:
+  scopedir: docs
+  output: .
+  interpreter: default
+  converter: markdown-section-3
+  sorter: glossaryterm
+  force: true
+  input:
+    - "docs/glossary.md"
+    - "docs/terminologie/**/*.md"
+
+trrt:
+  scopedir: docs
+  output: .
+  interpreter: default
+  converter: html-hovertext-link
+  converter[error]: "{{ref.showtext}}{{log 'TRRT error converter:' err.dir '/' err.file '@' err.line ':' err.pos '[' ref.showtext ']' level='warn'}}"
+  force: true
+  input:
+    - "docs/**/*.md"

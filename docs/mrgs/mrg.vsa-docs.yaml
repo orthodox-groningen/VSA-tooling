@@ -1,0 +1,88 @@
+terminology:
+  scopetag: "vsa-docs"
+  scopedir: "https://github.com/orthodox-groningen/VSA-tooling/tree/main/docs"
+  curatedir: "terminologie"
+  glossarydir: "mrgs"
+  defaultvsn: "docs"
+  defaulttype: "concept"
+  website: "https://orthodox-groningen.github.io/VSA-tooling/"
+  navpath: "/terminologie"
+  navid: "slug"
+  license: "../LICENSE"
+  mappings:
+    trrt:
+      converters:
+        html-hovertext-link: "<a href=\"{{localize entry.navurl}}{{#if ref.trait}}#{{ref.trait}}{{/if}}\" title=\"{{#if entry.hoverText}}{{entry.hoverText}}{{else}}{{#if entry.glossaryTerm}}{{entry.glossaryTerm}}{{else}}{{capFirst entry.term}}{{/if}}: {{noRefs entry.glossaryText type=\"markdown\"}}{{/if}}\">{{ref.showtext}}</a>"
+  vsntag: "docs"
+  altvsntags:
+    - "latest"
+scopes: []
+entries:
+  - slug: "pitch-marker"
+    term: "pitch-marker"
+    termType: "concept"
+    glossaryTerm: "Pitch-marker"
+    glossaryText: "een bracket-directive in VSA die een relatieve toonhoogte of toonpositie in de tokenstroom markeert."
+    formPhrases:
+      - "pitch-marker"
+      - "pitch-markers"
+      - "hoogte-markering"
+      - "hoogte-markeringen"
+    scopetag: "vsa-docs"
+    locator: "pitch-marker.md"
+    navurl: "https://orthodox-groningen.github.io/VSA-tooling/terminologie/pitch-marker"
+    headingids:
+      - "pitch-marker"
+    termid: "concept:pitch-marker"
+    vsntag: "docs"
+  - slug: "vsa"
+    term: "vsa"
+    termType: "concept"
+    glossaryTerm: "Vereenvoudigde Slavische Accentnotatie"
+    glossaryAbbr: "VSA"
+    glossaryText: "de notatie en tooling waarmee liturgische zangteksten als bronbestand, rendering en publicatievorm worden beheerd."
+    glossaryNotes:
+      - "Binnen deze repository verwijst VSA naar de eigen notatie- en publicatieketen."
+    formPhrases:
+      - "vsa"
+      - "vsa-tooling"
+      - "vsa-notatie"
+    scopetag: "vsa-docs"
+    locator: "vsa.md"
+    navurl: "https://orthodox-groningen.github.io/VSA-tooling/terminologie/vsa"
+    headingids:
+      - "vsa"
+    termid: "concept:vsa"
+    vsntag: "docs"
+  - slug: "vsa-scope"
+    term: "vsa-scope"
+    termType: "concept"
+    glossaryTerm: "VSA-scope"
+    glossaryText: "een door accolades begrensd deel van VSA-brontekst waarin gezongen tekst en modifiers bij elkaar horen."
+    formPhrases:
+      - "vsa-scope"
+      - "scope"
+      - "scopes"
+      - "vsa-scopes"
+    scopetag: "vsa-docs"
+    locator: "vsa-scope.md"
+    navurl: "https://orthodox-groningen.github.io/VSA-tooling/terminologie/vsa-scope"
+    headingids:
+      - "vsa-scope"
+    termid: "concept:vsa-scope"
+    vsntag: "docs"
+  - slug: "zangstuk"
+    term: "zangstuk"
+    termType: "concept"
+    glossaryTerm: "Zangstuk"
+    glossaryText: "een afgebakend gezang of muzikale tekst die als zelfstandig inhoudelijk onderdeel kan worden vastgelegd, verwerkt of gepubliceerd."
+    formPhrases:
+      - "zangstuk"
+      - "zangstukken"
+    scopetag: "vsa-docs"
+    locator: "zangstuk.md"
+    navurl: "https://orthodox-groningen.github.io/VSA-tooling/terminologie/zangstuk"
+    headingids:
+      - "zangstuk"
+    termid: "concept:zangstuk"
+    vsntag: "docs"

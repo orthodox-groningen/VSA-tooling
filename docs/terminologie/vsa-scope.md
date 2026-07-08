@@ -3,14 +3,15 @@ slug: vsa-scope
 term: vsa-scope
 termType: concept
 glossaryTerm: VSA-scope
-glossaryText: "een door accolades begrensd deel van VSA-brontekst waarin gezongen tekst en modifiers bij elkaar horen."
+glossaryText: "een tekstfragment is een VSA-scope als en slechts als het met `{` begint, met `}` eindigt, geen whitespace binnen de accolades bevat en door de parser kan worden opgesplitst in optionele hoogte-modifier, verplicht zangelement en optionele lengte-modifier."
+glossaryAlias: Scope
 formPhrases:
-  - scope
-  - scopes
   - vsa-scope
   - vsa-scopes
+  - scope
+  - scopes
 ---
 
 # VSA-scope
 
-Een VSA-scope koppelt gezongen tekst aan modifiers. De parser gebruikt scopes om de tekst en muzikale markeringen in de bronnotatie structureel te herkennen.
+Een VSA-scope koppelt gezongen tekst aan modifiers. De parser gebruikt scopes om de tekst en muzikale markeringen in de bronnotatie structureel te herkennen; een lege scope of een scope met whitespace binnen de accolades voldoet niet aan dit begrip.

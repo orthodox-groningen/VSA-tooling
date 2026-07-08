@@ -54,20 +54,18 @@ control-token ::=
     | "[*?]" ;
 ```
 
-## Pitch marker
+## Toonhoogte-markering
 
-```ebnf
-pitch-marker ::= "[" [ EHM ] ":]" ;
-```
+`height-marker` in het bracket-token-schema stemt overeen met `toonhoogte-markering` in de normatieve EBNF (`docs/specification/syntax.md`).
 
 Voorbeelden:
 
-| Voorbeeld | Betekenis                         |
-| --------- | --------------------------------- |
-| `[:]`     | Neutrale hoogte                   |
-| `[/:]`    | Hoogtebeweging `/`                |
-| `[//:]`   | Hoogtebeweging `//`               |
-| `[\:]`   | Hoogtebeweging `\`               |
+| Voorbeeld | Betekenis             |
+| --------- | --------------------- |
+| `[:]`     | Neutrale hoogte       |
+| `[/:]`    | Hoogtebeweging `/`    |
+| `[//:]`   | Hoogtebeweging `//`   |
+| `[\:]`    | Hoogtebeweging `\`    |
 
 ## Frontmatter in `.vsa`
 
@@ -87,4 +85,4 @@ identificatie:
 
 ## Status
 
-Deze grammatica is referentieel. De normatieve specificatie staat in `docs-v2/specification/`.
+Deze grammatica is referentieel. De normatieve specificatie staat in `docs/specification/`.

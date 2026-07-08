@@ -17,4 +17,4 @@ Deze architectuurdocumenten zijn geconsolideerd uit de bestaande documentatie on
 
 ## Behoud van geschiedenis
 
-De vele `parser-stap-*.md` documenten blijven relevant als ontwerpgeschiedenis. In de nieuwe structuur horen zij uiteindelijk onder `docs-v2/history/`, met verwijzing vanuit de geconsolideerde architectuur.
+De vele `parser-stap-*.md` documenten blijven relevant als ontwerpgeschiedenis. In de nieuwe structuur horen zij uiteindelijk onder `docs/history/`, met verwijzing vanuit de geconsolideerde architectuur.

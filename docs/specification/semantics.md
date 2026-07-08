@@ -311,7 +311,7 @@ B3 C4 B3 C4 D4 C4 D4
 
 ### 5.12 Toonhoogte-markeringen
 
-Een toonhoogte-markering bevat alleen een relatieve hoogte-modifier en geeft daarmee aan op welke toonladdergraad de zang zicht bevindt ten opzichte van de do-context op de positie van die toonhoggte markering.
+Een toonhoogte-markering bevat alleen een relatieve hoogte-modifier en geeft daarmee aan op welke toonladdergraad de zang zicht bevindt ten opzichte van de do-context op de positie van die toonhoogte-markering.
 
 Elke hoogte-markering geeft een (toon)hoogte aan ten opzichte van de basistoon ('do').
 
@@ -321,7 +321,7 @@ Binnen de context van conversies, bijvoorbeeld naar MusicXML, wordt dat gespecif
 door de feitelijke conversie - dat is buiten de scope van VSA.
 
 Elke volgende hoogte-markering geeft aan dat de zang op die positie op die hoogte moet zitten. 
-Een latere hoogte-markering vervangt dus niet de eerdere markering als documentstructuur, maar introduceert een nieuwe pitch-positie in dezelfde melodische lijn.
+Een latere hoogte-markering vervangt dus niet de eerdere markering als documentstructuur, maar introduceert een nieuwe toonhoogte-positie in dezelfde melodische lijn.
 
 Het is een gangbare praktijk om voor een zangstuk een hoogte-markering te schrijven,
 en om dit ook aan het eind van een zangstuk te doen (ter controle voor zangers).

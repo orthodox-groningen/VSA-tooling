@@ -17,4 +17,4 @@ Deze referentiemap is geconsolideerd uit bestaande documenten in `docs/`.
 
 Deze map is bedoeld als lookup-referentie.
 
-Inhoudelijke normativiteit wordt in fase 3 primair geconsolideerd in `docs-v2/specification/`.
+Inhoudelijke normativiteit wordt in fase 3 primair geconsolideerd in `docs/specification/`.

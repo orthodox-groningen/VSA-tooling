@@ -18,4 +18,4 @@ Deze map bevat compacte referentiedocumentatie voor implementatie, controle en g
 
 Deze referentie is geconsolideerd uit de bestaande documentatie in `docs/`.
 
-De normatieve betekenis hoort primair in `docs-v2/specification/`; deze map is bedoeld als snelle lookup.
+De normatieve betekenis hoort primair in `docs/specification/`; deze map is bedoeld als snelle lookup.

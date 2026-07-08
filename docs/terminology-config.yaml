@@ -15,7 +15,6 @@ hrgt:
   sorter: glossaryterm
   force: true
   input:
-    - "docs/glossary.md"
     - "docs/terminologie/**/*.md"
 
 trrt:

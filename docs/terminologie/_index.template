@@ -9,4 +9,4 @@ excludeFromMRG: yes
 
 Deze pagina bevat de gegenereerde glossary voor de TEv2-documentatiescope.
 
-{% hrg="vsa-docs" converter="markdown-section-3" sorter="glossaryterm" %}
+{% hrg="vsa-docs" sorter="glossaryterm" %}

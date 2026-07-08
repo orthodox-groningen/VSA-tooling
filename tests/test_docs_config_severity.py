@@ -1,27 +1,22 @@
 from pathlib import Path
 
+from docs_contracts import doc, read_doc, assert_terms
+
 
 def test_config_severity_user_doc_exists():
-    path = Path("docs/reference/config.md")
-
-    assert path.exists()
+    assert doc("config_reference").exists()
 
 
 def test_config_severity_user_doc_mentions_commands():
-    text = Path("docs/reference/config.md").read_text(encoding="utf-8")
+    text = read_doc("config_reference")
 
-    assert "vsa validate" in text
-    assert "vsa process" in text
-    assert "vsa build-markdown" in text
-    assert "vsa.toml" in text
+    assert_terms(text, ("vsa validate", "vsa process", "vsa build-markdown", "vsa.toml"))
 
 
 def test_config_severity_user_doc_explains_error_and_warning():
-    text = Path("docs/reference/config.md").read_text(encoding="utf-8")
+    text = read_doc("config_reference")
 
-    assert "`error`" in text
-    assert "`warning`" in text
-    assert "Syntax-errors blijven altijd `error`" in text
+    assert_terms(text, ("`error`", "`warning`", "Syntax-errors blijven altijd `error`"))
 
 
 def test_cli_config_demo_page_exists_and_is_linked():
@@ -35,7 +30,7 @@ def test_cli_config_demo_page_exists_and_is_linked():
 def test_cli_config_demo_mentions_supported_commands():
     text = Path("examples/hugo-demo/content-source/voorbeelden/cli/config.md").read_text(encoding="utf-8")
 
-    assert "`vsa validate`" in text
-    assert "`vsa process`" in text
-    assert "`vsa build-markdown`" in text
-    assert "severity-overrides" in text
+    assert_terms(
+        text,
+        ("`vsa validate`", "`vsa process`", "`vsa build-markdown`", "severity-overrides"),
+    )

@@ -1,21 +1,17 @@
-from pathlib import Path
+from docs_contracts import doc, read_doc, assert_terms
 
 
 def test_todo_document_exists():
-    assert Path("docs/history/addenda/todo.md").exists()
+    assert doc("todo_addendum").exists()
 
 
 def test_todo_mentions_bracket_token_dispatch():
-    text = Path("docs/history/addenda/todo.md").read_text(encoding="utf-8")
+    text = read_doc("todo_addendum")
 
-    assert "Bracket-token dispatch" in text
-    assert "[/?]" in text
-    assert "MusicXML" in text
+    assert_terms(text, ("Bracket-token dispatch", "[/?]", "MusicXML"))
 
 
 def test_todo_mentions_newline_policy():
-    text = Path("docs/history/addenda/todo.md").read_text(encoding="utf-8")
+    text = read_doc("todo_addendum")
 
-    assert "CR" in text
-    assert "LF" in text
-    assert "bronregelgrenzen" in text
+    assert_terms(text, ("CR", "LF", "bronregelgrenzen"))

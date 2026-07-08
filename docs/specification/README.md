@@ -21,9 +21,3 @@ De specificatie beschrijft wat de notatie en tooling moeten betekenen. Architect
 | `cli.md`          | CLI-contract voor gebruikers- en buildcommando's                   |
 | `traceability.md` | herkomst van de geconsolideerde onderdelen                         |
 | `conformance.md`  | criteria waaraan parser, validator, renderer en CLI moeten voldoen |
-
-## Status
-
-Deze map is een geconsolideerde `docs-v2`-specificatie op basis van de bestaande documentatie in `docs/`.
-
-Bij inhoudelijke twijfel blijft de bestaande VSA-specificatie de primaire bron totdat deze map expliciet als vervanging wordt vastgesteld.

@@ -1,12 +1,6 @@
-# Documentatie v2
+# Documentatie
 
-Deze map bevat de herstructurering van de bestaande projectdocumentatie.
-
-## Status
-
-`docs/` blijft voorlopig ongewijzigd.
-
-`docs-v2/` wordt gebruikt om de nieuwe documentatiestructuur gecontroleerd op te bouwen.
+Deze map bevat de (geherstructureerde) projectdocumentatie.
 
 ## Startpunten
 
@@ -18,7 +12,3 @@ Deze map bevat de herstructurering van de bestaande projectdocumentatie.
 | `architecture/` | Actuele ontwerp- en architectuurbeschrijving |
 | `reference/` | Naslagmateriaal |
 | `history/` | Historische ontwerpstappen en besluitvorming |
-
-## Werkregel
-
-Er wordt geen inhoud uit `docs/` verwijderd of overschreven tijdens de opbouw van `docs-v2/`.

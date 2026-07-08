@@ -9,7 +9,7 @@ from pathlib import Path
 from urllib.parse import unquote
 
 ROOT = Path(__file__).resolve().parents[1]
-DOCS = ROOT / "docs-v2"
+DOCS = ROOT / "docs"
 REPORTS = DOCS / "reports"
 REPORTS.mkdir(parents=True, exist_ok=True)
 
@@ -261,7 +261,7 @@ def check_empty(files: list[Path]) -> dict:
 
 def main() -> int:
     if not DOCS.exists():
-        raise SystemExit("docs-v2 niet gevonden. Voer dit script uit vanuit de repository-root.")
+        raise SystemExit("docs niet gevonden. Voer dit script uit vanuit de repository-root.")
     files = md_files()
     link = check_links(files)
     readmes = check_readmes()
@@ -281,9 +281,9 @@ def main() -> int:
         ["Korte documenten", str(short["short_docs"]), "Zie short-documents.md"],
     ]
     write_report("phase3-review.md", "Fase-3 review", table(["Controle", "Aantal", "Rapport"], summary_rows))
-    write_report("migration-status.md", "Migratiestatus", "Fase 3 is reviewbaar. Corrigeer eerst de bevindingen in de rapporten voordat `docs-v2/` de nieuwe `docs/` wordt.")
+    write_report("migration-status.md", "Migratiestatus", "Fase 3 is reviewbaar. Corrigeer eerst de bevindingen in de rapporten voordat `docs/` de nieuwe `docs/` wordt.")
     write_report("missing-content.md", "Mogelijk ontbrekende inhoud", "Deze automatische controle kan inhoudelijke volledigheid niet bewijzen. Gebruik dit rapport samen met `inventory/`, `migration/` en de oude `docs/` als handmatige eindcontrole.")
-    print("Rapporten geschreven naar docs-v2\\reports")
+    print("Rapporten geschreven naar docs\\reports")
     return 0
 
 if __name__ == "__main__":

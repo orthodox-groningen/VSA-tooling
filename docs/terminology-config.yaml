@@ -1,0 +1,30 @@
+# TEv2 tools configuration for the VSA documentation scope.
+
+scopedir: docs
+onNotExist: throw
+output: .
+
+mrgt:
+  vsntag: docs
+
+hrgt:
+  scopedir: docs
+  output: .
+  interpreter: default
+  converter[1]: "| [{{#if glossaryTerm}}{{noRefs glossaryTerm}}{{else}}{{capFirst term}}{{/if}}]({{term}}.md) | {{#if glossaryText}}{{noRefs glossaryText}}{{else}}Geen `glossaryText` opgegeven voor deze term.{{/if}} |\n"
+  converter[2]: "{{#if glossaryAbbr}}| [{{glossaryAbbr}}]({{term}}.md) | Afkorting van [{{#if glossaryTerm}}{{noRefs glossaryTerm}}{{else}}{{capFirst term}}{{/if}}]({{term}}.md). |\n{{else}}{{log level='silent'}}{{/if}}"
+  converter[3]: "{{#if glossaryAlias}}| [{{glossaryAlias}}]({{term}}.md) | Alias voor [{{#if glossaryTerm}}{{noRefs glossaryTerm}}{{else}}{{capFirst term}}{{/if}}]({{term}}.md). |\n{{else}}{{log level='silent'}}{{/if}}"
+  sorter: glossaryterm
+  force: true
+  input:
+    - "docs/terminologie/**/*.md"
+
+trrt:
+  scopedir: docs
+  output: .
+  interpreter: default
+  converter: html-hovertext-link
+  converter[error]: "{{ref.showtext}}{{log 'TRRT error converter:' err.dir '/' err.file '@' err.line ':' err.pos '[' ref.showtext ']' level='warn'}}"
+  force: true
+  input:
+    - "docs/**/*.md"

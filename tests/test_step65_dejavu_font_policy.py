@@ -11,7 +11,7 @@ def test_default_render_font_is_dejavu_sans():
 
 def test_project_font_location_is_documented():
     assert Path("assets/fonts/README.md").exists()
-    assert Path("docs/rendering-fonts.md").exists()
+    assert Path("docs/guides/rendering-fonts.md").exists()
     assert Path("licenses/DejaVu-Fonts.txt").exists()
 
 

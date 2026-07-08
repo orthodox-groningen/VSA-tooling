@@ -11,7 +11,9 @@ hrgt:
   scopedir: examples/hugo-demo
   output: .
   interpreter: default
-  converter: markdown-section-3
+  converter[1]: "| [{{#if glossaryTerm}}{{noRefs glossaryTerm}}{{else}}{{capFirst term}}{{/if}}](terminologie/{{term}}/) | {{#if glossaryText}}{{noRefs glossaryText}}{{else}}Geen `glossaryText` opgegeven voor deze term.{{/if}} |\n"
+  converter[2]: "{{#if glossaryAbbr}}| [{{glossaryAbbr}}](terminologie/{{term}}/) | Afkorting van [{{#if glossaryTerm}}{{noRefs glossaryTerm}}{{else}}{{capFirst term}}{{/if}}](terminologie/{{term}}/). |\n{{else}}{{log level='silent'}}{{/if}}"
+  converter[3]: "{{#if glossaryAlias}}| [{{glossaryAlias}}](terminologie/{{term}}/) | Alias voor [{{#if glossaryTerm}}{{noRefs glossaryTerm}}{{else}}{{capFirst term}}{{/if}}](terminologie/{{term}}/). |\n{{else}}{{log level='silent'}}{{/if}}"
   sorter: glossaryterm
   force: true
   input:

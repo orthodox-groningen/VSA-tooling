@@ -1,7 +1,7 @@
 from pathlib import Path
 
 
-CONTRACT = Path("docs/architecture/parser-stap-94-bracket-directive-contract.md")
+CONTRACT = Path("docs/history/parser-steps/parser-stap-94-bracket-directive-contract.md")
 
 
 def test_step94_contract_exists():

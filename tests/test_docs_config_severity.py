@@ -2,22 +2,22 @@ from pathlib import Path
 
 
 def test_config_severity_user_doc_exists():
-    path = Path("docs/user-guide-config-severity.md")
+    path = Path("docs/reference/config.md")
 
     assert path.exists()
 
 
 def test_config_severity_user_doc_mentions_commands():
-    text = Path("docs/user-guide-config-severity.md").read_text(encoding="utf-8")
+    text = Path("docs/reference/config.md").read_text(encoding="utf-8")
 
     assert "vsa validate" in text
     assert "vsa process" in text
     assert "vsa build-markdown" in text
-    assert "--config" in text
+    assert "vsa.toml" in text
 
 
 def test_config_severity_user_doc_explains_error_and_warning():
-    text = Path("docs/user-guide-config-severity.md").read_text(encoding="utf-8")
+    text = Path("docs/reference/config.md").read_text(encoding="utf-8")
 
     assert "`error`" in text
     assert "`warning`" in text

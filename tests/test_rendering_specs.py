@@ -2,9 +2,9 @@ from pathlib import Path
 
 
 SPEC_FILES = [
-    Path("docs/spec/vsa-layout-algorithm.md"),
-    Path("docs/spec/vsa-svg-dom-structure.md"),
-    Path("docs/spec/vsa-rendering-config-model.md"),
+    Path("docs/specification/rendering.md"),
+    Path("docs/specification/rendering.md"),
+    Path("docs/specification/rendering.md"),
 ]
 
 
@@ -17,7 +17,7 @@ def test_rendering_specs_are_not_placeholders():
 
 
 def test_layout_algorithm_spec_mentions_pipeline():
-    text = Path("docs/spec/vsa-layout-algorithm.md").read_text(encoding="utf-8")
+    text = Path("docs/specification/rendering.md").read_text(encoding="utf-8")
 
     assert "Renderpipeline" in text
     assert "render-units" in text
@@ -26,7 +26,7 @@ def test_layout_algorithm_spec_mentions_pipeline():
 
 
 def test_svg_dom_spec_mentions_required_classes():
-    text = Path("docs/spec/vsa-svg-dom-structure.md").read_text(encoding="utf-8")
+    text = Path("docs/specification/rendering.md").read_text(encoding="utf-8")
 
     assert "vsa-score" in text
     assert "vsa-line" in text
@@ -35,7 +35,7 @@ def test_svg_dom_spec_mentions_required_classes():
 
 
 def test_rendering_config_spec_mentions_override_order():
-    text = Path("docs/spec/vsa-rendering-config-model.md").read_text(encoding="utf-8")
+    text = Path("docs/specification/rendering.md").read_text(encoding="utf-8")
 
     assert "ingebouwde defaults" in text
     assert "theme defaults" in text

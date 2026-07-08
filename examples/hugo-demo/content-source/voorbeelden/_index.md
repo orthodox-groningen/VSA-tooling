@@ -12,5 +12,3 @@ title: "Voorbeelden"
 >}}
 
 ---
-
-<!-- VSA-NAV:PAGES-HERE  -->

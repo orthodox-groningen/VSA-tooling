@@ -12,5 +12,3 @@ title: "Renderingvoorbeelden"
 >}}
 
 ---
-
-<!-- VSA-NAV:PAGES-HERE  -->

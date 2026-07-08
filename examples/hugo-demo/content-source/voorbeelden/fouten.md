@@ -1,14 +1,18 @@
 ---
-title: "Foutvoorbeelden"
+title: "Fouten"
 ---
 
-# Foutvoorbeelden
+# Fouten
 
-- [Home](../../)
-- [Vorige: Multiline](../multiline/)
-- [Volgende: Markdown](../markdown/)
+Een voorbeeld van ongeldige VSA-invoer en de foutmelding die de validator teruggeeft.
 
-## Ongeldige invoer
+{{< navbuttons
+    "Vorige: Multiline | ../multiline/"
+    "Voorbeelden | ../"
+    "Volgende: Markdown | ../markdown/"
+>}}
+
+## Invoer
 
 ```text
 {/&\tekst_}
@@ -26,10 +30,10 @@ vsa validate examples\expected-fail\semantic-mismatch.vsa
 VSA-SEMANTIC-MODIFIER-COUNT-MISMATCH
 ```
 
-## Wat betekent dat?
+## Uitleg
 
 Er zijn meer hoogteposities dan lengteposities.
 
-## Hoe los je dat op?
+## Oplossing
 
 Zorg dat beide modifiergroepen hetzelfde aantal muzikale posities bevatten.

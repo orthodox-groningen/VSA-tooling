@@ -1,28 +1,29 @@
 ---
-title: "Basisvoorbeelden"
+title: "Basis"
 ---
 
-# Basisvoorbeelden
+# Basis
 
-- [Home](../../)
-- [Voorbeelden](../)
-- [Volgende: Multiline](../multiline/)
+Een klein voorbeeld van VSA-invoer en de SVG-rendering die daaruit ontstaat.
 
-## Voorbeeld 1
+{{< navbuttons
+    "Voorbeelden | ../"
+    "Volgende: Multiline | ../multiline/"
+>}}
 
-### Invoer
+## Invoer
 
 ```text
 [:] {/Hei_}{/lig_} is de Heer. [//:]
 ```
 
-### SVG
+## Resultaat
 
 ::: vsa-notatie
 [:] {/Hei_}{/lig_} is de Heer. [//:]
 :::
 
-### Wat gebeurt hier?
+## Uitleg
 
 | Onderdeel | Betekenis |
 |------------|-----------|

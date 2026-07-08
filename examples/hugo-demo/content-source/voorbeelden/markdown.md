@@ -4,11 +4,15 @@ title: "Markdown en Hugo"
 
 # Markdown en Hugo
 
-- [Home](../../)
-- [Vorige: Fouten](../fouten/)
-- [Volgende: CLI](../cli/)
+Een voorbeeld van VSA in Markdown en de output die de Hugo-demo gebruikt.
 
-## Bron-Markdown
+{{< navbuttons
+    "Vorige: Fouten | ../fouten/"
+    "Voorbeelden | ../"
+    "Volgende: CLI | ../cli/"
+>}}
+
+## Invoer
 
 ````markdown
 ::: vsa-notatie
@@ -22,7 +26,7 @@ title: "Markdown en Hugo"
 vsa build-markdown examples\hugo-demo\content-source generated\content examples\hugo-demo\static\vsa
 ```
 
-## Gegenereerde Markdown
+## Resultaat
 
 Als de demo-site met shortcode-output wordt gebouwd, komt er in de gegenereerde Markdown ongeveer dit te staan:
 
@@ -34,13 +38,13 @@ Let op: in deze documentatie is de shortcode expres ontsnapt met `/* ... */`, zo
 
 Zonder escaping zou Hugo proberen de shortcode echt te renderen.
 
-## Gegenereerde SVG
+De gegenereerde SVG ziet er in de pagina zo uit:
 
 ::: vsa-notatie
 [:] {/Hei_}{/lig_} is de Heer. [//:]
 :::
 
-## Wat wordt waar opgeslagen?
+## Uitleg
 
 | Type | Voorbeeld |
 |------|------------|

@@ -1,12 +1,16 @@
 ---
-title: "Multiline voorbeelden"
+title: "Multiline"
 ---
 
-# Multiline voorbeelden
+# Multiline
 
-- [Home](../../)
-- [Vorige: Basis](../basis/)
-- [Volgende: Fouten](../fouten/)
+Een voorbeeld waarin een langere VSA-regel automatisch over meerdere regels kan worden gezet.
+
+{{< navbuttons
+    "Vorige: Basis | ../basis/"
+    "Voorbeelden | ../"
+    "Volgende: Fouten | ../fouten/"
+>}}
 
 ## Invoer
 
@@ -14,7 +18,7 @@ title: "Multiline voorbeelden"
 [:] {/Hei_}{/lig_} is de Heer en Hij is heilig en wonderbaar in al Zijn werken. [//:]
 ```
 
-## SVG
+## Resultaat
 
 ::: vsa-notatie
 [:] {/Hei_}{/lig_} is de Heer en Hij is heilig en wonderbaar in al Zijn werken. [//:]
@@ -26,6 +30,6 @@ title: "Multiline voorbeelden"
 vsa svg examples\minimal\100_multiline_demo.vsa output.svg --max-line-width 400
 ```
 
-## Wat doet `--max-line-width`?
+## Uitleg
 
 De renderer breekt regels automatisch af als ze te breed worden.

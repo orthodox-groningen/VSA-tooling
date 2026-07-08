@@ -24,9 +24,34 @@ def test_base_template_contains_navigation():
     ).read_text(encoding="utf-8")
 
     assert "Voorbeelden" in text
-    assert 'voorbeelden/basis/' in text
-    assert 'voorbeelden/cli/' in text
+    assert 'voorbeelden/" | relURL' in text
+    assert 'voorbeelden/basis/' not in text
+    assert 'voorbeelden/cli/' not in text
     assert "relURL" in text
+
+
+def test_examples_index_contains_section_navigation():
+    text = Path(
+        "examples/hugo-demo/content-source/voorbeelden/_index.md"
+    ).read_text(encoding="utf-8")
+
+    assert '"CLI        | cli/"' in text
+    assert '"Rendering  | rendering/"' in text
+    assert "VSA-NAV:PAGES-HERE" not in text
+
+
+def test_examples_pages_use_local_navigation():
+    pages = [
+        "examples/hugo-demo/content-source/voorbeelden/basis.md",
+        "examples/hugo-demo/content-source/voorbeelden/multiline.md",
+        "examples/hugo-demo/content-source/voorbeelden/fouten.md",
+        "examples/hugo-demo/content-source/voorbeelden/markdown.md",
+    ]
+
+    for page in pages:
+        text = Path(page).read_text(encoding="utf-8")
+        assert "{{< navbuttons" in text
+        assert '"Voorbeelden | ../"' in text
 
 
 def test_cli_demo_contains_validate_example():

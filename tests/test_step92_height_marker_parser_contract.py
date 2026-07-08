@@ -1,6 +1,6 @@
 from pathlib import Path
 
-CONTRACT = Path("docs/architecture/parser-stap-92-height-marker-parser-contract.md")
+CONTRACT = Path("docs/history/parser-steps/parser-stap-92-height-marker-parser-contract.md")
 
 
 def test_step92_contract_exists():

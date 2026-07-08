@@ -1,8 +1,8 @@
 from pathlib import Path
 
 
-SPEC = Path("docs/architecture/parser-stap-91-multiple-height-marker-specs.md")
-TODO = Path("docs/todo.md")
+SPEC = Path("docs/history/parser-steps/parser-stap-91-multiple-height-marker-specs.md")
+TODO = Path("docs/history/addenda/todo.md")
 
 
 def test_step91_spec_exists():

@@ -5,7 +5,9 @@ import pytest
 
 
 ROOT = Path(__file__).resolve().parents[1]
-VSA_STUB = ROOT / "docs" / "specs" / "terminologie.md"
+VSA_TERMINOLOGY_INDEX = ROOT / "docs" / "terminologie" / "_index.md"
+VSA_TERM = ROOT / "docs" / "terminologie" / "vsa.md"
+ZANGSTUK_TERM = ROOT / "docs" / "terminologie" / "zangstuk.md"
 CURSOR_RULE = ROOT / ".cursor" / "rules" / "orthodox-groningen-terminologie.mdc"
 
 OPTIONAL_SIBLING_ORG_REPOS = (
@@ -66,18 +68,23 @@ def test_bron_has_normative_glossary_with_usage_rules():
         assert needle in text, f"missing in bron glossary: {needle!r}"
 
 
-def test_vsa_terminologie_is_stub_not_full_copy():
-    text = read(VSA_STUB)
-    assert "github.com/orthodox-groningen/bron" in text
-    assert "stub" in text.lower()
+def test_vsa_terminologie_is_local_tev2_glossary_not_bron_copy():
+    text = read(VSA_TERMINOLOGY_INDEX) + read(VSA_TERM)
+    assert "TEv2-documentatiescope" in text
+    assert "Vereenvoudigde Slavische Accentnotatie" in text
+    assert "bracket-directive" in text
     assert "## 0. Gebruiksregels" not in text
-    assert len(text.splitlines()) < 30
+    assert "**Status:** normatief" not in text
 
 
-def test_zangstuk_identificatie_points_to_bron():
-    index = read(ROOT / "docs" / "zangstuk-identificatie.md")
-    assert "orthodox-groningen/bron" in index
-    assert index.count("| Niveau |") == 0
+def test_zangstuk_term_is_local_and_bron_glossary_remains_external():
+    text = read(ZANGSTUK_TERM)
+    assert "een inhoudelijk afgebakend gezang of muzikale tekst" in text
+    assert text.count("| Niveau |") == 0
+
+    bron = bron_root_or_skip()
+    bron_glossary = read(bron / "docs" / "specs" / "terminologie.md")
+    assert "Zangstuk" in bron_glossary
 
 
 def test_documentatie_eigendom_in_bron():

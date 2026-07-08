@@ -14,7 +14,10 @@ def test_install_rendering_deps_script_exists():
 
 
 def test_docs_mention_pillow_and_dejavu_ci():
-    text = Path("docs/rendering-fonts.md").read_text(encoding="utf-8")
+    text = (
+        Path("docs/guides/rendering-fonts.md").read_text(encoding="utf-8")
+        + Path("docs/history/parser-steps/parser-stap-66-pillow-dependency-ci.md").read_text(encoding="utf-8")
+    )
 
     assert "Pillow" in text
     assert "fonts-dejavu-core" in text

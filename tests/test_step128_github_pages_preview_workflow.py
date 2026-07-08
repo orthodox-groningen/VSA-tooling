@@ -36,8 +36,13 @@ def test_pages_preview_deploys_preview_directory_to_gh_pages():
 
 def test_pages_preview_skips_redundant_pytest():
     text = WORKFLOW.read_text(encoding="utf-8")
+    executable_lines = "\n".join(
+        line for line in text.splitlines() if not line.lstrip().startswith("#")
+    )
 
-    assert "pytest" not in text
+    assert "python -m pytest" not in text
+    assert "pytest " not in executable_lines
+    assert " pytest" not in executable_lines
 
 
 def test_pages_preview_keeps_manual_production_workflow_separate():

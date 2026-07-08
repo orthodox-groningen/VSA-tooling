@@ -225,3 +225,9 @@ Een wijziging is alleen een verbetering wanneer zij:
 Bij twijfel geldt altijd:
 
 > Behoud van de bestaande betekenis is belangrijker dan verbetering van de formulering.
+
+## Wijzigingen aan de specificatie
+
+Iedere inhoudelijke wijziging aan de specificatie begint met een Wijzigingsanalyse zoals beschreven in AI-INSTRUCTIONS.md.
+
+Pas nadat deze analyse is voltooid, wordt de daadwerkelijke wijziging voorgesteld.

@@ -5,17 +5,26 @@ De VSA-tooling verwerkt platte tekst met VSA-scopes en directives naar gestructu
 ```text
 bronbestand
   ↓
-lexer / scanner
+lexer
+(zet invoertekst om in een reeks betekenisvolle tokens)
   ↓
 tokens
+(de kleinste betekenisvolle bouwstenen die de parser ontvangt, bijv. `TEXT("De ")` of `EHM_VALUE("//")`)
   ↓
-parser
+parser 
+(bouwt uit de tokens een syntactische boom volgens de grammatica)
   ↓
-AST
+AST (Abstract Syntax Tree)
+(een implementatie-onafhankelijke representatie van de structuur en betekenis van het document)
   ↓
-validator
+validator 
+(controleert of de AST voldoet aan alle semantische en normatieve regels)
+  ↓
+layout engine 
+(bepaalt de abstracte positionering van tekst en notatie-elementen, onafhankelijk van het uiteindelijke uitvoerformaat)
   ↓
 renderer
+(zet de abstracte layout om naar een concreet uitvoerformaat, zoals)
   ├── SVG
   ├── JSON
   └── markdown / Hugo

@@ -1,5 +1,7 @@
 # Overzicht
 
+VSA (Vereenvoudigde Slavische Accentnotatie) is een tekstgebaseerde domeinspecifieke taal (Domain-Specific Language, DSL) voor het beschrijven van Slavische accentnotatie. De taal definieert een eenduidige, machineleesbare en menselijk leesbare notatie waarmee zangstukken kunnen worden vastgelegd, gevalideerd en gerenderd. De specificatie beschrijft uitsluitend de taal en haar semantiek.
+
 ## Status
 
 Dit document consolideert de algemene specificatie-informatie uit de bestaande VSA-documentatie.
@@ -8,7 +10,7 @@ De tekst hieronder is overgenomen en samengebracht uit de bestaande specificatie
 
 ## 1. Inleiding
 
-<!-- http://www.ivanmoody.co.uk/orthodoxliturgylinks.htm -->
+<!-- ter herinnering: http://www.ivanmoody.co.uk/orthodoxliturgylinks.htm bevat allerlei links over orthodoxe liturgie -->
 
 De Slavisch‑orthodoxe zangtraditie kent een lange geschiedenis van **staffloze neumen­notatie**, waarvan de bekendste vorm de klassieke **Znamenny‑notatie** is. Deze notatie gebruikt ideografische tekens (*kriuki* of *znamëna*) om melodische beweging, formules en expressie vast te leggen zonder exacte toonhoogtes. Een toegankelijke introductie is te vinden op [Znamenny chant](https://en.wikipedia.org/wiki/Znamenny_chant), en een overzicht van historische notatievormen op [Znamenny musical notation](https://en.wikipedia.org/wiki/Znamenny_notation).
 

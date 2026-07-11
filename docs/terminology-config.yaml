@@ -11,10 +11,10 @@ hrgt:
   scopedir: docs
   output: .
   interpreter: default
-  converter[1]: "| [{{#if glossaryTerm}}{{noRefs glossaryTerm}}{{else}}{{capFirst term}}{{/if}}]({{term}}.md) | {{#if glossaryText}}{{noRefs glossaryText}}{{else}}Geen `glossaryText` opgegeven voor deze term.{{/if}} |\n"
+  converter[1]: "| [{{#if glossaryTerm}}{{noRefs glossaryTerm}}{{else}}{{capFirst term}}{{/if}}](terms/{{term}}.md) | {{#if glossaryText}}{{noRefs glossaryText}}{{else}}Geen `glossaryText` opgegeven voor deze term.{{/if}}{{#if glossaryNotes}}<br>{{#each glossaryNotes}}{{#if @first}}{{#if @last}}Opmerking: {{noRefs this}}{{else}}**Opmerkingen:**<br>- {{noRefs this}}{{/if}}{{else}}<br>- {{noRefs this}}{{/if}}{{/each}}{{/if}}{{/if}} |\n"
   converter[2]: "{{#if glossaryAbbr}}| [{{glossaryAbbr}}]({{term}}.md) | Afkorting van [{{#if glossaryTerm}}{{noRefs glossaryTerm}}{{else}}{{capFirst term}}{{/if}}]({{term}}.md). |\n{{else}}{{log level='silent'}}{{/if}}"
   converter[3]: "{{#if glossaryAlias}}| [{{glossaryAlias}}]({{term}}.md) | Alias voor [{{#if glossaryTerm}}{{noRefs glossaryTerm}}{{else}}{{capFirst term}}{{/if}}]({{term}}.md). |\n{{else}}{{log level='silent'}}{{/if}}"
-  sorter: glossaryterm
+  sorter: "{{noRefs glossaryTerm}}"
   force: true
   input:
     - "docs/terminologie/**/*.md"

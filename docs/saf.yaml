@@ -23,6 +23,6 @@ versions:
     altvsntags:
       - latest
     termselection:
-      - "*@bron"
+      # - "*@bron"
       - "*"
       - "-excludeFromMRG[yes]"

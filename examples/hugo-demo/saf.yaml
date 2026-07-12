@@ -26,7 +26,7 @@ versions:
     altvsntags:
       - latest
     termselection:
-      - "*@bron"
-      - "*@vsa-tooling"
+      # - "*@bron"
+      # - "*@vsa-tooling"
       - "*"
       - "-excludeFromMRG[yes]"

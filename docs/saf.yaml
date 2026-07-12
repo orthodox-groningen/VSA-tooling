@@ -3,7 +3,7 @@ scope:
   scopedir: https://github.com/orthodox-groningen/VSA-tooling/tree/main/docs
   curatedir: terminologie
   glossarydir: mrgs
-  defaultvsn: docs
+  defaultvsn: vsa-tooling
   defaulttype: concept
   website: https://orthodox-groningen.github.io/VSA-tooling/
   navpath: /terminologie
@@ -19,7 +19,7 @@ scopes:
     scopedir: https://github.com/orthodox-groningen/bron/tree/main/docs
 
 versions:
-  - vsntag: docs
+  - vsntag: vsa-tooling
     altvsntags:
       - latest
     termselection:

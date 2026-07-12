@@ -3,7 +3,7 @@ scope:
   scopedir: https://github.com/orthodox-groningen/VSA-tooling/tree/main/examples/hugo-demo
   curatedir: content-source/terminologie
   glossarydir: glossaries
-  defaultvsn: demo
+  defaultvsn: hugo-demo
   defaulttype: concept
   website: http://localhost:1313/
   navpath: /terminologie

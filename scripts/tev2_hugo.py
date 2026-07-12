@@ -12,7 +12,7 @@ import yaml
 
 
 ROOT = Path(__file__).resolve().parents[1]
-BASE_CONFIG = ROOT / "examples" / "hugo-demo" / "terminology-config.yaml"
+BASE_CONFIG = ROOT / "examples" / "hugo-demo" / "tev2-config.yaml"
 GLOSSARY_DIR = ROOT / "examples" / "hugo-demo" / "glossaries"
 
 
@@ -73,7 +73,7 @@ def build_config(content_root: Path, temp_dir: Path) -> Path:
     ]
     config["trrt"]["input"] = [f"{content_pattern}/**/*.md"]
 
-    config_path = temp_dir / "terminology-config.yaml"
+    config_path = temp_dir / "tev2-config.yaml"
     config_path.write_text(
         yaml.safe_dump(config, sort_keys=False, allow_unicode=True),
         encoding="utf-8",

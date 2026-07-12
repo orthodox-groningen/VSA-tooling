@@ -1,5 +1,5 @@
 scope:
-  scopetag: vsa-docs
+  scopetag: vsa-tooling
   scopedir: https://github.com/orthodox-groningen/VSA-tooling/tree/main/docs
   curatedir: terminologie
   glossarydir: mrgs
@@ -14,12 +14,15 @@ scope:
       converters:
         html-hovertext-link: '<a href="{{localize entry.navurl}}{{#if ref.trait}}#{{ref.trait}}{{/if}}" title="{{#if entry.hoverText}}{{entry.hoverText}}{{else}}{{#if entry.glossaryTerm}}{{entry.glossaryTerm}}{{else}}{{capFirst entry.term}}{{/if}}: {{noRefs entry.glossaryText type="markdown"}}{{/if}}">{{ref.showtext}}</a>'
 
-scopes: []
+scopes:
+  - scopetag: bron
+    scopedir: https://github.com/orthodox-groningen/bron/tree/main/docs
 
 versions:
   - vsntag: docs
     altvsntags:
       - latest
     termselection:
+      - "*@bron"
       - "*"
       - "-excludeFromMRG[yes]"

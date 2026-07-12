@@ -6,11 +6,11 @@ def test_docs_glossary_template_contains_markdown_table_header():
 
     assert "| Term | Definitie |" in text
     assert "|------|-----------|" in text
-    assert '{% hrg="vsa-docs" sorter="glossaryterm" %}' in text
+    assert '{% hrg="vsa-tools" %}' in text
 
 
 def test_docs_glossary_alias_converter_uses_alias_text():
-    text = Path("docs/terminology-config.yaml").read_text(encoding="utf-8")
+    text = Path("docs/tev2-config.yaml").read_text(encoding="utf-8")
 
     assert "{{#if glossaryAlias}}" in text
     assert "[{{glossaryAlias}}]({{term}}.md)" in text
@@ -19,7 +19,7 @@ def test_docs_glossary_alias_converter_uses_alias_text():
 
 
 def test_hugo_glossary_alias_converter_uses_alias_text():
-    text = Path("examples/hugo-demo/terminology-config.yaml").read_text(
+    text = Path("examples/hugo-demo/tev2-config.yaml").read_text(
         encoding="utf-8"
     )
 

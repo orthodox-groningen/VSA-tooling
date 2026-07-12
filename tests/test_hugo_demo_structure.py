@@ -19,7 +19,7 @@ def test_hugo_demo_contains_content_source():
 
 def test_hugo_demo_contains_top_level_glossary_source():
     glossary = Path("examples/hugo-demo/content-source/glossarium.md")
-    config = Path("examples/hugo-demo/terminology-config.yaml")
+    config = Path("examples/hugo-demo/tev2-config.yaml")
 
     assert glossary.exists()
     assert "generated/hugo/content/glossarium.md" in config.read_text(encoding="utf-8")

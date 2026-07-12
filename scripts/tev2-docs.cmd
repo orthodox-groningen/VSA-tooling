@@ -9,11 +9,11 @@ call scripts\prepare-docs-glossary.cmd
 if errorlevel 1 exit /b 1
 
 echo [2/3] Generate machine-readable glossary
-call npx.cmd mrgt -c docs\terminology-config.yaml
+call npx.cmd mrgt -c docs\tev2-config.yaml
 if errorlevel 1 exit /b 1
 
 echo [3/3] Generate terminologie index glossary
-call npx.cmd hrgt -c docs\terminology-config.yaml
+call npx.cmd hrgt -c docs\tev2-config.yaml
 if errorlevel 1 exit /b 1
 
 echo.

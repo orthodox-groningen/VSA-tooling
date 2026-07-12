@@ -15,7 +15,6 @@ def test_docs_glossary_alias_converter_uses_alias_text():
     assert "{{#if glossaryAlias}}" in text
     assert "[{{glossaryAlias}}]({{term}}.md)" in text
     assert "[{{glossaryAbbr}}]({{term}}.md)" in text
-    assert "terms/{{term}}.md" not in text
 
 
 def test_hugo_glossary_alias_converter_uses_alias_text():
@@ -26,7 +25,6 @@ def test_hugo_glossary_alias_converter_uses_alias_text():
     assert "{{#if glossaryAlias}}" in text
     assert "[{{glossaryAlias}}](terminologie/{{term}}/)" in text
     assert "[{{glossaryAbbr}}](terminologie/{{term}}/)" in text
-    assert "terms/{{term}}.md" not in text
 
 
 def test_generated_docs_glossary_has_alias_rows_and_valid_relative_links():

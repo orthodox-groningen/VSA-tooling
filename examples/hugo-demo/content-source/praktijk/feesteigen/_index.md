@@ -8,6 +8,7 @@ title: "Feesteigen"
     "Weekdagen  | ../weekdagen/"
     "Zondagen   | ../zondagen/"
     "Feesteigen | ../feesteigen/"
+    "Hemelum    | ../hemelum-eigen/"
 >}}
 
 ---

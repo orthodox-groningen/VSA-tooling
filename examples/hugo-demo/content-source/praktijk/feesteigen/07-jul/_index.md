@@ -8,6 +8,7 @@ title: "Juli"
     "Weekdagen  | ../../weekdagen/"
     "Zondagen   | ../../zondagen/"
     "Feesteigen | ../../feesteigen/"
+    "Hemelum    | ../../hemelum-eigen/"
 >}}
 
 ---

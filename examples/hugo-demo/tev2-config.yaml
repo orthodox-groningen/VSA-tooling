@@ -5,7 +5,7 @@ onNotExist: throw
 output: .
 
 mrgt:
-  vsntag: demo
+  vsntag: hugo-demo
 
 hrgt:
   scopedir: examples/hugo-demo

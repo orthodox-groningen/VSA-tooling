@@ -1,14 +1,14 @@
 # TEv2 tools configuration for the VSA documentation scope.
 
-scopedir: docs
+scopedir: vsa-tooling
 onNotExist: throw
 output: .
 
 mrgt:
-  vsntag: docs
+  vsntag: vsa-tooling
 
 hrgt:
-  scopedir: docs
+  scopedir: vsa-tooling
   output: .
   interpreter: default
   converter[1]: "| [{{#if glossaryTerm}}{{noRefs glossaryTerm}}{{else}}{{capFirst term}}{{/if}}](terms/{{term}}.md) | {{#if glossaryText}}{{noRefs glossaryText}}{{else}}Geen `glossaryText` opgegeven voor deze term.{{/if}}{{#if glossaryNotes}}<br>{{#each glossaryNotes}}{{#if this.heading}}{{#if @first}}**Opmerkingen:**<br>{{else}}<br>{{/if}}- **{{this.heading}}**:{{#each this.items}}<br>&nbsp;&nbsp;- {{this}}{{/each}}{{else}}{{#if @first}}{{#if @last}}**Opmerking**: {{this}}{{else}}**Opmerkingen:**<br>- {{this}}{{/if}}{{else}}<br>- {{this}}{{/if}}{{/if}}{{/each}}{{/if}} |"
@@ -20,7 +20,7 @@ hrgt:
     - "docs/terminologie/**/*.md"
 
 trrt:
-  scopedir: docs
+  scopedir: vsa-tooling
   output: .
   interpreter: default
   converter: html-hovertext-link

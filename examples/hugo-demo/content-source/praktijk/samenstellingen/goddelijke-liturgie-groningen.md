@@ -1,7 +1,7 @@
 ---
 sjabloon: goddelijke-liturgie-groningen
 default:
-  gelegenheidstype: vast-feest
+  toon: 4
   uitvoeringsvorm: Groningen
 ---
 
@@ -10,7 +10,6 @@ default:
 ### Troparion
 
 :::include svg zoek="Troparion" alt="Troparion" scale="85%":::
-:::include coria zoek="Troparion" label="Oefenen Troparion" mode="auto":::
 
 Tekst voor het koor (Rene).
 

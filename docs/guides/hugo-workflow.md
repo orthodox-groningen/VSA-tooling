@@ -10,8 +10,6 @@ content-source/
 ├── liturgikon-notatie/
 ├── zangstuk-identificatie/
 ├── lokaal/
-├── sjablonen/
-├── samenstellingen/
 ├── voorbeelden/
 └── praktijk/
 ```
@@ -29,13 +27,6 @@ content + static assets
   ↓
 Hugo build
 ```
-
-## Mappen die niet direct gepubliceerd worden
-
-| Map              | Functie                                  |
-| ---------------- | ---------------------------------------- |
-| `sjablonen/`     | herbruikbare bronfragmenten              |
-| `samenstellingen/` | bron voor samengestelde uitgaven       |
 
 ## Navigatie-placeholders
 

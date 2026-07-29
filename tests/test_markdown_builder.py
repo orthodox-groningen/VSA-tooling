@@ -55,3 +55,18 @@ def test_build_markdown_site_copies_content_assets(tmp_path: Path):
 
     assert len(result.static_files) == 1
     assert (output_dir / "liturgikon-notatie" / "liturgikon-voorbeelden.jpg").read_bytes() == b"fake-jpeg"
+
+
+def test_build_markdown_site_removes_stale_output_files(tmp_path: Path):
+    input_dir = tmp_path / "content-source"
+    output_dir = tmp_path / "content-generated"
+    assets_dir = tmp_path / "static" / "vsa"
+    input_dir.mkdir()
+    output_dir.mkdir()
+    (input_dir / "current.md").write_text("# Current", encoding="utf-8")
+    (output_dir / "removed.md").write_text("# Stale", encoding="utf-8")
+
+    build_markdown_site(input_dir, output_dir, assets_dir)
+
+    assert (output_dir / "current.md").exists()
+    assert not (output_dir / "removed.md").exists()

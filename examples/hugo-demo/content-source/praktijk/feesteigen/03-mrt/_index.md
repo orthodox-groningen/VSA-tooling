@@ -8,7 +8,7 @@ title: "Maart"
     "Weekdagen  | ../../weekdagen/"
     "Zondagen   | ../../zondagen/"
     "Feesteigen | ../../feesteigen/"
-    "Hemelum    | ../hemelum-eigen/"
+    "Hemelum    | ../../hemelum-eigen/"
 >}}
 
 ---

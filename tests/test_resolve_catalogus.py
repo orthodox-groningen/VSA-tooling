@@ -111,7 +111,7 @@ def test_cli_exposes_resolve_catalogus_command() -> None:
     args = parser.parse_args(
         [
             "resolve-catalogus",
-            "examples/hugo-demo/content-source/samenstellingen/geboorte-moeder-gods-2026.md",
+            "examples/hugo-demo/content-source/praktijk/samenstellingen/geboorte-moeder-gods-2026.md",
             "--dry-run",
         ]
     )

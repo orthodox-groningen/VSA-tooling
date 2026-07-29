@@ -34,3 +34,12 @@ def test_pages_workflow_preserves_existing_gh_pages_files():
     )
 
     assert "keep_files:" in reusable
+
+
+def test_pages_workflow_updates_navigation_before_terminology_generation():
+    text = WORKFLOW.read_text(encoding="utf-8")
+
+    navigation = "python scripts/update-nav-placeholders.py generated/hugo/content"
+    terminology = "python scripts/tev2_hugo.py --content-root generated/hugo/content"
+    assert navigation in text
+    assert text.index(navigation) < text.index(terminology)

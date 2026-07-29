@@ -38,7 +38,7 @@ CONTENT_ASSET_SUFFIXES = {
 }
 
 # Catalogus-sjablonen/sessies: wel valideren/resolve-catalogus, nog geen Hugo-build.
-BUILD_EXCLUDE_DIR_NAMES = frozenset({"samenstellingen", "sjablonen"})
+BUILD_EXCLUDE_DIR_NAMES = frozenset({})
 
 
 def _discover_markdown_files(input_dir: Path) -> list[Path]:
@@ -93,6 +93,11 @@ def build_markdown_site(
     if all_messages:
         raise ProcessValidationError(all_messages)
 
+    # The output directory is a build artifact. Start from a clean tree so
+    # pages removed from the source cannot survive a later build and leave
+    # stale navigation links behind.
+    if output_dir.exists():
+        shutil.rmtree(output_dir)
     output_dir.mkdir(parents=True, exist_ok=True)
     assets_dir.mkdir(parents=True, exist_ok=True)
 

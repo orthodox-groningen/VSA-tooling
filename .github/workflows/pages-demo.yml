@@ -71,6 +71,9 @@ jobs:
             examples/hugo-demo/content-source \
             examples/hugo-demo/static/vsa/mxl
 
+      - name: Update navigation placeholders
+        run: python scripts/update-nav-placeholders.py generated/hugo/content
+
       - name: Generate TEv2 terminology
         run: python scripts/tev2_hugo.py --content-root generated/hugo/content --url-prefix /VSA-tooling/
 

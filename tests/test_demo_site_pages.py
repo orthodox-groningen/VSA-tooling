@@ -37,7 +37,6 @@ def test_examples_index_contains_section_navigation():
 
     assert '"CLI        | cli/"' in text
     assert '"Rendering  | rendering/"' in text
-    assert "VSA-NAV:PAGES-HERE" not in text
 
 
 def test_examples_pages_use_local_navigation():

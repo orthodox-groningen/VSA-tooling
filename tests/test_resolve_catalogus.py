@@ -16,7 +16,7 @@ from vsa.resolve_catalogus import (
 REPO_ROOT = Path(__file__).resolve().parents[1]
 BRON_ROOT = REPO_ROOT.parent / "bron"
 HUGO_CONTENT = REPO_ROOT / "examples" / "hugo-demo" / "content-source"
-SESSION = HUGO_CONTENT / "samenstellingen" / "geboorte-moeder-gods-2026.md"
+SESSION = HUGO_CONTENT / "praktijk" / "samenstellingen" / "geboorte-moeder-gods-2026.md"
 
 
 @pytest.mark.skipif(not BRON_ROOT.is_dir(), reason="bron sibling checkout ontbreekt")

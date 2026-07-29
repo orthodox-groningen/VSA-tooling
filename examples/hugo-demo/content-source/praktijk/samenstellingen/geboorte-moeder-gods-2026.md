@@ -12,7 +12,7 @@ default:
 ### Troparion
 
 :::include svg zoek="Troparion" alt="Troparion" scale="85%":::
-:::include coria zoek="Troparion" label="Oefenen Troparion" mode="auto":::
+<!-- :::include coria zoek="Troparion" label="Oefenen Troparion" mode="auto"::: -->
 
 Tekst voor het koor — Geboorte Moeder Gods (8 september).
 

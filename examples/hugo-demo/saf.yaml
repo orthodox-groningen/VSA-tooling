@@ -2,7 +2,7 @@ scope:
   scopetag: hugo-demo
   scopedir: https://github.com/orthodox-groningen/VSA-tooling/tree/main/examples/hugo-demo
   curatedir: content-source/terminologie
-  glossarydir: glossaries
+  glossarydir: tev2-glossaries
   defaultvsn: hugo-demo
   defaulttype: concept
   website: http://localhost:1313/

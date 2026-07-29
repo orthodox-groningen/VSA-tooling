@@ -13,7 +13,7 @@ import yaml
 
 ROOT = Path(__file__).resolve().parents[1]
 BASE_CONFIG = ROOT / "examples" / "hugo-demo" / "tev2-config.yaml"
-GLOSSARY_DIR = ROOT / "examples" / "hugo-demo" / "glossaries"
+GLOSSARY_DIR = ROOT / "examples" / "hugo-demo" / "tev2-glossaries"
 
 
 def posix_path(path: Path) -> str:

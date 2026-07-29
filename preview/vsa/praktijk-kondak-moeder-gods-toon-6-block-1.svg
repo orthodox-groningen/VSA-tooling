@@ -1,48 +1,51 @@
-<svg class="vsa-svg" xmlns="http://www.w3.org/2000/svg" width="644" height="288" viewBox="0 0 644 288">
+<svg class="vsa-svg" xmlns="http://www.w3.org/2000/svg" width="678" height="288" viewBox="0 0 678 288">
 <rect width="100%" height="100%" fill="white"/>
 <g class="vsa-score">
 <g class="vsa-line" data-vsa-line="1">
-<g class="vsa-unit vsa-unit-text" data-vsa-unit="1">
-<text class="vsa-text vsa-free-text" x="8.00" y="36.00" xml:space="preserve" font-family="DejaVu Sans" font-size="20.00">Be-scher-ming</text>
+<g class="vsa-unit vsa-pitch-marker" data-vsa-unit="1">
+<line class="vsa-pitch-marker-dash" x1="13.50" y1="31.00" x2="22.50" y2="31.00" stroke="black" stroke-width="1.50" stroke-linecap="round"/>
 </g>
 <g class="vsa-unit vsa-unit-text" data-vsa-unit="3">
-<text class="vsa-text vsa-free-text" x="162.63" y="36.00" xml:space="preserve" font-family="DejaVu Sans" font-size="20.00">der</text>
+<text class="vsa-text vsa-free-text" x="42.40" y="36.00" xml:space="preserve" font-family="DejaVu Sans" font-size="20.00">Be-scher-ming</text>
 </g>
 <g class="vsa-unit vsa-unit-text" data-vsa-unit="5">
-<text class="vsa-text vsa-free-text" x="206.26" y="36.00" xml:space="preserve" font-family="DejaVu Sans" font-size="20.00">Chris-te-nen</text>
+<text class="vsa-text vsa-free-text" x="197.03" y="36.00" xml:space="preserve" font-family="DejaVu Sans" font-size="20.00">der</text>
 </g>
 <g class="vsa-unit vsa-unit-text" data-vsa-unit="7">
-<text class="vsa-text vsa-free-text" x="339.75" y="36.00" xml:space="preserve" font-family="DejaVu Sans" font-size="20.00">die</text>
+<text class="vsa-text vsa-free-text" x="240.66" y="36.00" xml:space="preserve" font-family="DejaVu Sans" font-size="20.00">Chris-te-nen</text>
 </g>
 <g class="vsa-unit vsa-unit-text" data-vsa-unit="9">
-<text class="vsa-text vsa-free-text" x="380.73" y="36.00" xml:space="preserve" font-family="DejaVu Sans" font-size="20.00">ons</text>
+<text class="vsa-text vsa-free-text" x="374.15" y="36.00" xml:space="preserve" font-family="DejaVu Sans" font-size="20.00">die</text>
 </g>
-<g class="vsa-unit vsa-unit-scope" data-vsa-unit="11">
-<text class="vsa-text vsa-sung-text" x="426.46" y="36.00" xml:space="preserve" font-family="DejaVu Sans" font-size="20.00">nim</text>
+<g class="vsa-unit vsa-unit-text" data-vsa-unit="11">
+<text class="vsa-text vsa-free-text" x="415.13" y="36.00" xml:space="preserve" font-family="DejaVu Sans" font-size="20.00">ons</text>
+</g>
+<g class="vsa-unit vsa-unit-scope" data-vsa-unit="13">
+<text class="vsa-text vsa-sung-text" x="460.86" y="36.00" xml:space="preserve" font-family="DejaVu Sans" font-size="20.00">nim</text>
 <g class="vsa-glyph-group vsa-upper-glyphs">
-<line class="vsa-glyph vsa-upper-glyph vsa-glyph-fall" x1="440.92" y1="13.57" x2="451.72" y2="18.43" stroke="black" stroke-width="1.00" stroke-linecap="round"/>
+<line class="vsa-glyph vsa-upper-glyph vsa-glyph-fall" x1="475.32" y1="13.57" x2="486.12" y2="18.43" stroke="black" stroke-width="1.00" stroke-linecap="round"/>
 </g>
 <g class="vsa-glyph-group vsa-lower-glyphs">
-<line class="vsa-glyph vsa-lower-glyph vsa-glyph-length" x1="439.72" y1="41.00" x2="452.92" y2="41.00" stroke="red" stroke-width="1.00" stroke-linecap="round"/>
+<line class="vsa-glyph vsa-lower-glyph vsa-glyph-length" x1="474.12" y1="41.00" x2="487.32" y2="41.00" stroke="red" stroke-width="1.00" stroke-linecap="round"/>
 </g>
-</g>
-<g class="vsa-unit vsa-unit-text" data-vsa-unit="12">
-<text class="vsa-text vsa-free-text" x="466.18" y="36.00" xml:space="preserve" font-family="DejaVu Sans" font-size="20.00">mer</text>
 </g>
 <g class="vsa-unit vsa-unit-text" data-vsa-unit="14">
-<text class="vsa-text vsa-free-text" x="516.60" y="36.00" xml:space="preserve" font-family="DejaVu Sans" font-size="20.00">be</text>
-</g>
-<g class="vsa-unit vsa-unit-scope" data-vsa-unit="15">
-<text class="vsa-text vsa-sung-text" x="541.62" y="36.00" xml:space="preserve" font-family="DejaVu Sans" font-size="20.00">schaamt</text>
-<g class="vsa-glyph-group vsa-upper-glyphs">
-<line class="vsa-glyph vsa-upper-glyph vsa-glyph-rise" x1="580.18" y1="18.43" x2="590.98" y2="13.57" stroke="black" stroke-width="1.00" stroke-linecap="round"/>
-</g>
-<g class="vsa-glyph-group vsa-lower-glyphs">
-<line class="vsa-glyph vsa-lower-glyph vsa-glyph-length" x1="578.98" y1="41.00" x2="592.18" y2="41.00" stroke="red" stroke-width="1.00" stroke-linecap="round"/>
-</g>
+<text class="vsa-text vsa-free-text" x="500.58" y="36.00" xml:space="preserve" font-family="DejaVu Sans" font-size="20.00">mer</text>
 </g>
 <g class="vsa-unit vsa-unit-text" data-vsa-unit="16">
-<text class="vsa-text vsa-free-text" x="629.54" y="36.00" xml:space="preserve" font-family="DejaVu Sans" font-size="20.00">,</text>
+<text class="vsa-text vsa-free-text" x="551.00" y="36.00" xml:space="preserve" font-family="DejaVu Sans" font-size="20.00">be</text>
+</g>
+<g class="vsa-unit vsa-unit-scope" data-vsa-unit="17">
+<text class="vsa-text vsa-sung-text" x="576.02" y="36.00" xml:space="preserve" font-family="DejaVu Sans" font-size="20.00">schaamt</text>
+<g class="vsa-glyph-group vsa-upper-glyphs">
+<line class="vsa-glyph vsa-upper-glyph vsa-glyph-rise" x1="614.58" y1="18.43" x2="625.38" y2="13.57" stroke="black" stroke-width="1.00" stroke-linecap="round"/>
+</g>
+<g class="vsa-glyph-group vsa-lower-glyphs">
+<line class="vsa-glyph vsa-lower-glyph vsa-glyph-length" x1="613.38" y1="41.00" x2="626.58" y2="41.00" stroke="red" stroke-width="1.00" stroke-linecap="round"/>
+</g>
+</g>
+<g class="vsa-unit vsa-unit-text" data-vsa-unit="18">
+<text class="vsa-text vsa-free-text" x="663.94" y="36.00" xml:space="preserve" font-family="DejaVu Sans" font-size="20.00">,</text>
 </g>
 </g>
 <g class="vsa-line" data-vsa-line="2">
@@ -400,6 +403,9 @@
 </g>
 <g class="vsa-unit vsa-unit-text" data-vsa-unit="23">
 <text class="vsa-text vsa-free-text" x="513.74" y="274.00" xml:space="preserve" font-family="DejaVu Sans" font-size="20.00">.</text>
+</g>
+<g class="vsa-unit vsa-pitch-marker" data-vsa-unit="25">
+<line class="vsa-pitch-marker-dash" x1="536.00" y1="269.00" x2="545.00" y2="269.00" stroke="black" stroke-width="1.50" stroke-linecap="round"/>
 </g>
 </g>
 </g>

@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Foutvoorbeelden</title>
+  <title>Fouten</title>
   <link rel="stylesheet" href="/VSA-tooling/css/site.css">
 </head>
 
@@ -13,12 +13,6 @@
       <a href="/VSA-tooling/">Home</a>
       <a href="/VSA-tooling/glossarium/">Glossarium</a>
       <a href="/VSA-tooling/voorbeelden/">Voorbeelden</a>
-      <a href="/VSA-tooling/voorbeelden/basis/">Basis</a>
-      <a href="/VSA-tooling/voorbeelden/multiline/">Multiline</a>
-      <a href="/VSA-tooling/voorbeelden/fouten/">Fouten</a>
-      <a href="/VSA-tooling/voorbeelden/markdown/">Markdown</a>
-      <a href="/VSA-tooling/voorbeelden/cli/">CLI</a>
-      <a href="/VSA-tooling/voorbeelden/rendering/">Rendering</a>
       <a href="/VSA-tooling/praktijk/">Praktijk</a>
     </nav>
   </header>
@@ -26,24 +20,64 @@
   <main class="page">
     
 
-<h1 id="foutvoorbeelden">Foutvoorbeelden</h1>
-<ul>
-<li><a href="../../">Home</a>
-</li>
-<li><a href="../multiline/">Vorige: Multiline</a>
-</li>
-<li><a href="../markdown/">Volgende: Markdown</a>
-</li>
-</ul>
-<h2 id="ongeldige-invoer">Ongeldige invoer</h2>
+<h1 id="fouten">Fouten</h1>
+<p>Een voorbeeld van ongeldige VSA-invoer en de foutmelding die de validator teruggeeft.</p>
+<div class="nav-buttons"><a class="btn" href="../multiline/">
+      Vorige: Multiline
+    </a><a class="btn" href="../">
+      Voorbeelden
+    </a><a class="btn" href="../markdown/">
+      Volgende: Markdown
+    </a>
+</div>
+
+<style>
+.nav-buttons {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 0.75rem;
+  margin: 1rem 0;
+}
+
+ 
+.nav-buttons .btn {
+  display: flex;
+  flex-direction: column;       
+  justify-content: center;      
+  align-items: center;          
+  text-align: center;
+  padding: 0.75rem 0.5rem;      
+  background: #eee;
+  border-radius: 6px;
+  text-decoration: none;
+  border: 1px solid #ccc;
+  color: #000;
+  transition: background 0.2s ease;
+}
+
+ 
+.nav-buttons .btn span {
+  display: block;
+  line-height: 1.25;
+  white-space: normal;
+}
+
+ 
+.nav-buttons .btn:hover {
+  background: #ddd;
+}
+
+</style>
+
+<h2 id="invoer">Invoer</h2>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>{/&amp;\tekst_}
 </span></span></code></pre></div><h2 id="commando">Commando</h2>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cmd" data-lang="cmd"><span style="display:flex;"><span>vsa validate examples\expected-fail\semantic-mismatch.vsa
 </span></span></code></pre></div><h2 id="voorbeeldfout">Voorbeeldfout</h2>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>VSA-SEMANTIC-MODIFIER-COUNT-MISMATCH
-</span></span></code></pre></div><h2 id="wat-betekent-dat">Wat betekent dat?</h2>
+</span></span></code></pre></div><h2 id="uitleg">Uitleg</h2>
 <p>Er zijn meer hoogteposities dan lengteposities.</p>
-<h2 id="hoe-los-je-dat-op">Hoe los je dat op?</h2>
+<h2 id="oplossing">Oplossing</h2>
 <p>Zorg dat beide modifiergroepen hetzelfde aantal muzikale posities bevatten.</p>
 
 

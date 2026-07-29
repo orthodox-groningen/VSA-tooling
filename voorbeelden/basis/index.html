@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Basisvoorbeelden</title>
+  <title>Basis</title>
   <link rel="stylesheet" href="/VSA-tooling/css/site.css">
 </head>
 
@@ -13,12 +13,6 @@
       <a href="/VSA-tooling/">Home</a>
       <a href="/VSA-tooling/glossarium/">Glossarium</a>
       <a href="/VSA-tooling/voorbeelden/">Voorbeelden</a>
-      <a href="/VSA-tooling/voorbeelden/basis/">Basis</a>
-      <a href="/VSA-tooling/voorbeelden/multiline/">Multiline</a>
-      <a href="/VSA-tooling/voorbeelden/fouten/">Fouten</a>
-      <a href="/VSA-tooling/voorbeelden/markdown/">Markdown</a>
-      <a href="/VSA-tooling/voorbeelden/cli/">CLI</a>
-      <a href="/VSA-tooling/voorbeelden/rendering/">Rendering</a>
       <a href="/VSA-tooling/praktijk/">Praktijk</a>
     </nav>
   </header>
@@ -26,22 +20,59 @@
   <main class="page">
     
 
-<h1 id="basisvoorbeelden">Basisvoorbeelden</h1>
-<ul>
-<li><a href="../../">Home</a>
-</li>
-<li><a href="../">Voorbeelden</a>
-</li>
-<li><a href="../multiline/">Volgende: Multiline</a>
-</li>
-</ul>
-<h2 id="voorbeeld-1">Voorbeeld 1</h2>
-<h3 id="invoer">Invoer</h3>
+<h1 id="basis">Basis</h1>
+<p>Een klein voorbeeld van VSA-invoer en de SVG-rendering die daaruit ontstaat.</p>
+<div class="nav-buttons"><a class="btn" href="../">
+      Voorbeelden
+    </a><a class="btn" href="../multiline/">
+      Volgende: Multiline
+    </a>
+</div>
+
+<style>
+.nav-buttons {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 0.75rem;
+  margin: 1rem 0;
+}
+
+ 
+.nav-buttons .btn {
+  display: flex;
+  flex-direction: column;       
+  justify-content: center;      
+  align-items: center;          
+  text-align: center;
+  padding: 0.75rem 0.5rem;      
+  background: #eee;
+  border-radius: 6px;
+  text-decoration: none;
+  border: 1px solid #ccc;
+  color: #000;
+  transition: background 0.2s ease;
+}
+
+ 
+.nav-buttons .btn span {
+  display: block;
+  line-height: 1.25;
+  white-space: normal;
+}
+
+ 
+.nav-buttons .btn:hover {
+  background: #ddd;
+}
+
+</style>
+
+<h2 id="invoer">Invoer</h2>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>[:] {/Hei_}{/lig_} is de Heer. [//:]
-</span></span></code></pre></div><h3 id="svg">SVG</h3>
+</span></span></code></pre></div><h2 id="resultaat">Resultaat</h2>
 <div class="vsa-container"><img class="vsa-notation" src="/VSA-tooling/vsa/voorbeelden-basis-block-1.svg" alt="VSA notatie" loading="lazy"></div>
 
-<h3 id="wat-gebeurt-hier">Wat gebeurt hier?</h3>
+<h2 id="uitleg">Uitleg</h2>
 <table>
   <thead>
       <tr>

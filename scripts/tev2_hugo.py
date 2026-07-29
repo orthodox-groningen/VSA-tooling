@@ -45,7 +45,7 @@ def prefixed_navurl(navurl: str, url_prefix: str) -> str:
 
 
 def rewrite_mrg_navurls(url_prefix: str) -> None:
-    for path in sorted(GLOSSARY_DIR.glob("mrg.vsa*.yaml")):
+    for path in sorted(GLOSSARY_DIR.glob("mrg.*.yaml")):
         data = yaml.safe_load(path.read_text(encoding="utf-8"))
         changed = False
         for entry in data.get("entries", []):

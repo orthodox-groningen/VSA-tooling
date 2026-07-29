@@ -9,6 +9,7 @@ title: "Hemelum-eigen"
     "Zondagen   | ../zondagen/"
     "Feesteigen | ../feesteigen/"
     "Hemelum    | ../hemelum-eigen/"
+    "Samenstellingen | ../samenstellingen/"
 >}}
 
 ---

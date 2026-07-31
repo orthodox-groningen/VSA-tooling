@@ -47,13 +47,13 @@ Gij hebt uit den hoge uw geest gezonden op E{-&/li_&_}{\sa_} *
 en doet zo ook genezing opwellen voor allen die u ver{-&\e_&_}{/ren_} [//:]
 :::
 
-**Eer aan de Vader ... **
+**Eer aan de Vader ...**
 
 ### Kondak Profeet Elia (Toon 2)
 
 ::: vsa-notatie
 <!-- Kondak Profeet Elia, Toon 2 -->
-[/:] Profeet en {/Schouw}er van Gods machti{/ge_} {/&\da_&_}{\den_}, *
+[/:] Profeet en {/Schouw_}er van Gods machti{/ge_} {/&\da_&_}{\den_}, *
 vermaarde E{\li_}{\a_}, *
 {/die} door uw {/woord_} de regenwolken {/ge}{/van_}{\gen_} {\hield_}, **
 bid {\voor} {/ons} {/tot} de {\e}nig {/mens}{\lie_}{\ven_}{\de_} [:]

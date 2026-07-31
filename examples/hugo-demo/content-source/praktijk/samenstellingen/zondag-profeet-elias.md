@@ -11,7 +11,7 @@ default:
 <!-- Tropaar Zondag (Toon 8) -->
 [:] Uit {/de} {/ho}{/ge} zijt {\Gij} neergedaald, o Barm{\har}ti{\ge_}. 
 Drie {/da}{/gen} {/zijt} Gij {\in} het graf ge{\ble_}{\ven_} 
-om {/ons} {/van} {/het} lij{\den} \te ver{\los_}{\sen_}. 
+om {/ons} {/van} {/het} lij{\den} te ver{\los_}{\sen_}. 
 Gij {/zijt} {/ons} {/le}ven {\en} onze verrijzenis, Heer, {\e_}re zij {\U_}. [:]
 :::
 
@@ -31,6 +31,8 @@ hebt gij ook vol vreugde het Evangelie gebracht in de {\ha_}{\des_}: *
 om de zonden der wereld weg te {\ne_}{\men_}, * 
 // {//en} ons de gro{\te} {/ont}{/fer_}{\ming} {/te} {\&\schen_&_}{\ken_}. [:]
 :::
+
+<br><br><br><br><br><br><br><br><br><br>
 
 ### Tropaar Profeet Elia (Toon 4)
 

@@ -12,7 +12,7 @@ def test_markdown_hardbreak_spaces_before_newline_are_stripped():
 
 def test_vsa_block_with_markdown_hardbreaks_preserves_real_lines():
     markdown = r"""::: vsa-notatie
-[:] Uit {/de} {/ho}{/ge} zijt {\Gij} neergedaald, o Barm{\har}ti{\ge_}.  
+[:] Uit {/de} {/ho}{/ge} zijt {\Gij} neergedaald, o Barm{\har_}ti{\ge_}.  
 Drie {/da}{/gen} {/zijt} Gij {\in} het graf ge{\ble_}{\ven_}  
 om {/ons} {/van} {/het} lij{\den} \te ver{\los_}{\sen_}.  
 Gij {/zijt} {/ons} {/le}ven {\en} onze verrijzenis, Heer, {\e_}re zij {\U_}. [:]
@@ -27,7 +27,7 @@ Gij {/zijt} {/ons} {/le}ven {\en} onze verrijzenis, Heer, {\e_}re zij {\U_}. [:]
 
 def test_tropaar_toon_8_like_source_yields_four_layout_lines_without_wrapping():
     source = preserve_vsa_source_newlines(
-        r"""[:] Uit {/de} {/ho}{/ge} zijt {\Gij} neergedaald, o Barm{\har}ti{\ge_}.  
+        r"""[:] Uit {/de} {/ho}{/ge} zijt {\Gij} neergedaald, o Barm{\har_}ti{\ge_}.  
 Drie {/da}{/gen} {/zijt} Gij {\in} het graf ge{\ble_}{\ven_}  
 om {/ons} {/van} {/het} lij{\den} \te ver{\los_}{\sen_}.  
 Gij {/zijt} {/ons} {/le}ven {\en} onze verrijzenis, Heer, {\e_}re zij {\U_}. [:]"""
@@ -41,7 +41,7 @@ Gij {/zijt} {/ons} {/le}ven {\en} onze verrijzenis, Heer, {\e_}re zij {\U_}. [:]
 
 def test_no_line_contains_drie_after_first_hardbreak():
     source = preserve_vsa_source_newlines(
-        r"""[:] Uit {/de} {/ho}{/ge} zijt {\Gij} neergedaald, o Barm{\har}ti{\ge_}.  
+        r"""[:] Uit {/de} {/ho}{/ge} zijt {\Gij} neergedaald, o Barm{\har_}ti{\ge_}.  
 Drie {/da}{/gen} {/zijt} Gij {\in} het graf"""
     )
 

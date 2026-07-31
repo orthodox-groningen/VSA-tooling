@@ -58,7 +58,7 @@ tweede regel
 
 def test_tone8_like_multiline_block_keeps_physical_lines():
     markdown = r"""::: vsa-notatie
-[:] Uit {/de} {/ho}{/ge} zijt {\Gij} neergedaald, o Barm{\har}ti{\ge_}.
+[:] Uit {/de} {/ho}{/ge} zijt {\Gij} neergedaald, o Barm{\har_}ti{\ge_}.
 Drie {/da}{/gen} {/zijt} Gij {\in} het graf ge{\ble_}{\ven_}
 Gij {/zijt} {/ons} {/le}ven {\en} onze verrijzenis, Heer, {\e_}re zij {\U_}. [:]
 :::

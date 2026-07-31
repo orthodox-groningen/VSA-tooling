@@ -32,7 +32,7 @@ om de zonden der wereld weg te {\ne_}{\men_}, *
 // {//en} ons de gro{\te} {/ont}{/fer_}{\ming} {/te} {\&\schen_&_}{\ken_}. [:]
 :::
 
-<br><br><br><br><br><br><br><br><br><br>
+<!--   -->
 
 ### Tropaar Profeet Elia (Toon 4)
 

@@ -20,6 +20,7 @@
 <line class="vsa-glyph vsa-upper-glyph vsa-glyph-rise" x1="193.85" y1="18.43" x2="204.65" y2="13.57" stroke="black" stroke-width="1.00" stroke-linecap="round"/>
 </g>
 <g class="vsa-glyph-group vsa-lower-glyphs">
+<line class="vsa-glyph vsa-lower-glyph vsa-glyph-length" x1="192.65" y1="41.00" x2="205.85" y2="41.00" stroke="red" stroke-width="1.00" stroke-linecap="round"/>
 </g>
 </g>
 <g class="vsa-unit vsa-unit-text" data-vsa-unit="8">

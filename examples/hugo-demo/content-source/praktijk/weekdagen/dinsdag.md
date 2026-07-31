@@ -1,5 +1,6 @@
 ---
 title: "Dinsdag — H. Joannes de Doper"
+alias: "Dinsdag — H. Johannes de Doper"
 source: "Liturgikon"
 ---
 <!-- 
@@ -21,7 +22,7 @@ source: "Liturgikon"
   <summary>TROPARION (Toon 2)</summary>
 
 ::: vsa-notatie
-<!-- Liturgikon, p245 -->
+<!-- Tropaar - Dinsdag - H. Joannes de Doper - (Toon 2 - Liturgikon, p245) -->
 [/:] Het {/aan_}denken der {/Ge}{/&\rech_&_}{\ten_} * 
 wordt gevierd met {\hym_}{\nen_}. * 
 {/Maar} {/gij_} hebt het getuigenis des Heren, {/o} {/Voor_}{\lo_}{\per_}, * 
@@ -40,7 +41,7 @@ om de zonden der wereld weg te {\ne_}{\men_}, *
   <summary>THEOTOKION (Toon 2)</summary>
 
 ::: vsa-notatie
-<!-- Liturgikon, p246 -->
+<!-- Theotokion - Dinsdag - H. Joannes de Doper - (Toon 2 - Liturgikon, p246) -->
 [/:] Door {/U_} hebben wij deel gekregen aan {/de} {/god_}{\de}lijke na{\tuur_}, * 
 altijd-maagdelijk {\Moe_}der {\Gods_}: * 
 {/want} {/gij_} hebt God in {/het} {/vlees_} {\ge_}{\baard_}. * 
@@ -52,7 +53,7 @@ Daarom willen wij allen, zoals het {\past}, {/u} {/vroom_} {\&/ver}{\&\hef_&_}{\
   <summary>KONDAKION (Toon 3)</summary>
 
 ::: vsa-notatie
-<!-- Liturgikon, p246 -->
+<!-- Kondak - Dinsdag - H. Joannes de Doper - (Toon 3 - Liturgikon, p246) -->
 [\\:] Gods {/Pro}{/feet} en Voorloper {\der} {/ge}{/&/na}{de_}: * 
 Joannes, geboren uit de on{\vrucht_}{\&\ba}{\re_}, * 
 is de {/ver}{/vul}ling van alle {\pro}{/fe}{/&/tie}{ën_}. * 
@@ -66,7 +67,7 @@ in de Jordaan {\met} {/de} {/hand} {/aan_}{\raak_}{\te_}, *
   <summary>PROKIMEN (Ps. 63, Toon 7) en Alleluia (Ps. 91)</summary>
 
 ::: vsa-notatie
-<!-- Liturgikon, p246 -->
+<!--Prokimen -  Dinsdag - H. Joannes de Doper - (Toon 7 - Liturgikon, p246) -->
 [//:] De Rechtvaardige zal zich ver{\blij_}{/&/den} {in_} {\den_} {\Heer_} * 
 {//&/en} {\&\op} {\Hem_} {\&/ver}{/&\trou_&_}{\wen}. [:] 
 :::

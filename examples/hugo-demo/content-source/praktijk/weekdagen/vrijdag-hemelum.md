@@ -23,7 +23,7 @@ sources:
   <summary>TROPARION (Toon 1, als woensdag)</summary>
 
 ::: vsa-notatie
-<!-- Hemelum, V. Jewsewy -->
+<!-- Tropaar - Vrijdag - H. Kruis - (Toon 1 - Hemelum, V. Jewsewy) -->
 T.1 [:] Heer red Uw {/&/volk_&_} {\\en} ze{/gen} {/Uw} {/erf_}{deel_}, * 
 {\schenk} schenk aan de orthodoxe christenen de over{\win_}{\ning_}, **
 {//en} bescherm uw Gemeente {/door_} {Uw_} {\Kruis_}. [//:]
@@ -34,7 +34,7 @@ T.1 [:] Heer red Uw {/&/volk_&_} {\\en} ze{/gen} {/Uw} {/erf_}{deel_}, *
   <summary>THEOTOKION (Toon 1, als woensdag)</summary>
 
 ::: vsa-notatie
-<!-- Liturgikon, p247 -->
+<!-- Theotokion - Vrijdag - H. Kruis - (Toon 1 - Liturgikon, p247) -->
 [:] Wij {/al_}{/len_} {\\die} uw bescherming ondervin{/den}, {/Al}{/rei_}{ne_}, * 
 {\en} die door uw smeking van onze tegenstanders {\zijn_} be{\vrijd_}: * 
 wij worden be{/&/waakt_&_} {\\door} het Kruis {/van} {/Uw} {/Zoon_}; * 
@@ -46,7 +46,7 @@ wij worden be{/&/waakt_&_} {\\door} het Kruis {/van} {/Uw} {/Zoon_}; *
   <summary>KONDAKION (Toon 1 - als woensdag)</summary>
 
 ::: vsa-notatie
-<!-- Liturgikon, p247 -->
+<!-- Kondak - Vrijdag - H. Kruis - (Toon 1 - Liturgikon, p247) -->
 [:] Gij die U vrij{/wil_}{/lig_} {\\op} het Kruis hebt verheven, o {/Chris}{/tus} {/God_}, * 
 {\schenk} Uw erbarmingen aan Uw nieuwe Gemeente die naar U ge{\noemd_} {\is_}. * 
 En ver{/blijd_} {/ons_} {\\met} {/&/Uw} {/kracht_} * 
@@ -71,7 +71,7 @@ Want {/&/Gij_&_} {\\zijt} {/on}{/ze} {/Hel_}{per_} *
   <summary>Prokimen (Ps. 98, Toon 7) en Alleluia (Ps. 73)</summary>
 
 ::: vsa-notatie
-<!-- Liturgikon, 248 -->
+<!-- Prokimen - Vrijdag - H. Kruis - (Toon 7 - Liturgikon, p248) -->
 [//:] Ver{\heft_} {/den} {/Heer} {on_}{\zen_} {\God_};
 {//valt} neer voor de steun Zijner {-&/voe}{\ten}, {\want} {\Hij_} {\&/is} {/&\hei_&_}{\lig_}. [:]
 :::

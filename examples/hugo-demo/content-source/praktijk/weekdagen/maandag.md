@@ -21,7 +21,7 @@ source: "Liturgikon"
   <summary>TROPARION (Toon 4)</summary>
 
 ::: vsa-notatie
-<!-- Liturgikon, p244 -->
+<!-- Tropaar - Maandag - H. Engelen - (Toon 4 - Liturgikon, 244) -->
 [//:] Gij Aanvoerders der hemelse {Heer_}{/scha_}{\ren_}, * 
 {/wij} onwaardigen {bid_}den tot {\u_}, * 
 dat gij ons beschermt door uw ge{-&/be_&_}{\den_}, * 
@@ -36,7 +36,7 @@ Behoed ons door uw bovenzinnelijke {heer_}{/lijk_}{\heid_}, *
   <summary>THEOTOKION (Toon 4)</summary>
 
 ::: vsa-notatie
-<!-- Liturgikon, p244 -->
+<!-- Theotokion - Maandag - H. Engelen - (Toon 4 - Liturgikon, 244) -->
 [//:] Tot haar die opgevoed is in de {-&/Tem_&_}{\pel_}, * 
 {/in} het Heilige der {Hei_}li{\gen_}; * 
 die het geloof en de wijsheid en de altijddurende maagdelijkheid {heeft_} {/be_}{\waard_}, * 
@@ -53,7 +53,7 @@ de Heer is {-&/met_&_} {\u_}. [//:]
   <summary>KONDAKION (Toon 2)</summary>
 
 ::: vsa-notatie
-<!-- Liturgikon, p244 -->
+<!-- Kondak - Maandag - H. Engelen - (Toon 2 - Liturgikon, 244) -->
 [//:] Aanvoerders van {/Gods} {/Heer_}{\scha_}{\ren_}, * 
 Liturgen der goddelijke {\heer_}lijk{\heid_}, * 
 {/Be}geleiders der {/men_}sen en Leiders {/der} {/En_}{\ge_}{\len_}, * 
@@ -66,7 +66,7 @@ bidt voor ons om het goede en de grote ge{\na_}{\de_}, *
   <summary>Prokimen (Ps. 103, Toon 4) en Alleluia (Ps. 148)</summary>
 
 ::: vsa-notatie
-<!-- Liturgikon, p245 -->
+<!-- Prokimen - Maandag - H. Engelen - (Toon 4 - Liturgikon, 244) -->
 [//:] Gij maakt stormen tot Uw {/En_}{\&\ge}{/len_},
 vuurvlammen tot Uw {/die_}{\na_}{\ren_}. [/:]
 :::

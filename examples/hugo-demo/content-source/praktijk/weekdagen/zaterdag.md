@@ -23,7 +23,7 @@ source: "Liturgikon"
   <summary>TROPARION (Toon 2)</summary>
 
 ::: vsa-notatie
-<!-- Liturgikon, 250 -->
+<!-- Tropaar - Zaterdag - Koren der Heiligen/Gestorvenen (Toon 2 - Liturgikon, p250) -->
 [/:] Apostelen, {/Mar}telaren en {/Pro}{/&\fe_&_}{\ten_}, * 
 Hiërarchen, Heiligen en Ge{\rech_}{\ten_}, * 
 {/die} de goede strijd vol{/ein}digd en het geloof {/be}{/&\waard_&_} {\hebt_}, * 
@@ -37,7 +37,7 @@ gij hebt toegang tot de Ver{\los_}{\ser_}. *
   <summary>THEOTOKION (Toon 2)</summary>
 
 ::: vsa-notatie
-<!-- Liturgikon, 250 -->
+<!-- Theotokion - Zaterdag - Koren der Heiligen/Gestorvenen (Toon 2 - Liturgikon, p250) -->
 [/:] Heilige {/Moe_}der van het on{/toe}{/gan_}{\ke}lijk {\Licht_}, * 
 wij vereren U met de hymne der {\En_}ge{\len_} * 
 {//om} {\&/U} {/vroom_} {\te} {/ver}{\&\hef_&_}{\fen_}. [:]
@@ -48,7 +48,7 @@ wij vereren U met de hymne der {\En_}ge{\len_} *
   <summary>KONTAKION (Toon 8)</summary>
 
 ::: vsa-notatie
-<!-- Liturgikon, 250 -->
+<!-- Kondak - Zaterdag - Koren der Heiligen/Gestorvenen (Toon 8 - Liturgikon, p250) -->
 [:] Als {/het} {/eer}ste{/lin}gen{\of}fer {\der} na{\tuur_} * 
 offert de we{/reld} {/U}, den {/Heer} en {\Schep}per {\van_} het heel{\al_}, * 
 de {/God}{/dra}gende {/Mar}{\te}{\la_}{\ren_}. * 
@@ -61,7 +61,7 @@ Bewaar om hun {/ge}{/be}den Uw {/Kerk} in {\die}pe {\vre_}{\de_}, *
   <summary>PROKIMEN (Ps. 31, Toon 8) en Alleluia</summary>
 
 ::: vsa-notatie
-<!-- Liturgikon, 250 -->
+<!-- Prokimen - Zaterdag - Koren der Heiligen/Gestorvenen (Toon 8 - Liturgikon, p250) -->
 [///:] Verblijdt u {\in_} {\\den_} {/Heer_}, * {/en} juicht, Ge{/rech__}{\ten_}. [//:]
 ::: 
 
@@ -83,7 +83,7 @@ Zij zullen roepen, ja een hymne zingen. -->
   <summary>TROPARION (Toon 2)</summary>
 
 ::: vsa-notatie
-<!-- Liturgikon, 250 -->
+<!-- Tropaar - Zaterdag - Koren der Heiligen/Gestorvenen (Toon 2 - Liturgikon, p250) -->
 [:] Ge{/denk_}, Heer, in Uw goedheid Uw dienaren en die{/na}{/&\res_&_}{\sen_}, * 
 en vergeef hun wat zij in dit leven hebben ge{\zon_}{\digd_}. * 
 {/Want} {/nie_}mand is zonder zon{/de}, {/bui_}{\ten_} {\U_}, * 
@@ -96,7 +96,7 @@ Die de macht bezit om ook aan hen, die zijn overge{\gaan},
   <summary>KONDAKION (Toon 8)</summary>
 
 ::: vsa-notatie
-<!-- Liturgikon, 251 -->
+<!-- Kondak - Zaterdag - Koren der Heiligen/Gestorvenen (Toon 8 - Liturgikon, p251) -->
 [:] Met {/Uw} {/Hei}ligen laat {/rus}{\ten}, o {\Chris_}{\tus_}, * 
 de {/zie}{/len} van Uw dienaren en {/die}{\na}{\res_}{\sen_}, * 
 waar {/geen} {/smart}, {/droef}heid {\noch} {\tra}nen {\zijn_}, * 
@@ -108,7 +108,7 @@ waar {/geen} {/smart}, {/droef}heid {\noch} {\tra}nen {\zijn_}, *
   <summary>PROKIMEN Ps. 31, Toon 8</summary>
 
 ::: vsa-notatie
-<!-- Liturgikon, 251 -->
+<!-- Prokimen - Zaterdag - Koren der Heiligen/Gestorvenen (Toon 8 - Liturgikon, p251) -->
 [///:] Verblijdt u {\in_} {\\den_} {/Heer_}, * {/en} juicht, Ge{/rech__}{\ten_}. [//:]
 ::: 
 

@@ -21,7 +21,7 @@ source: "Liturgikon"
   <summary>TROPARION (Toon 3)</summary>
 
 ::: vsa-notatie
-<!-- Liturgikon, 248 -->
+<!-- Tropaar - Donderdag - H. Apostelen - (Toon 3 - Liturgikon, 248) -->
 [\\:] Hei{/li}{/ge} {\&/A}{/&/pos}te{len_}, * 
 bidt tot de barm{\har_}{\ti}{\ge} {\God_}, * 
 {/dat} {/Hij} de verge{\ving} {/der} {/&/zon}{den_} * 
@@ -33,7 +33,7 @@ bidt tot de barm{\har_}{\ti}{\ge} {\God_}, *
   <summary>THEOTOKION (Toon 3)</summary>
 
 ::: vsa-notatie
-<!-- Liturgikon, 249 -->
+<!-- Theotokion - Donderdag - H. Apostelen - (Toon 3 - Liturgikon, 249) -->
 [\\:] {-&/Uit} {/U} {\&/be}{/&/zit}ten {wij_} * 
 het Woord des Vaders, Christus onze {\God_}, {\in} {\het} {\vlees_}, * 
 {//Moe}{\&/der} {/&/Gods} {en} {Maagd_}, * 
@@ -47,7 +47,7 @@ bezingen {\en} {\ver}{/&/&/&\&\&\&/hef~&~&~&~&~&~&_}{\fen_}. [:]
   <summary>KONDAKION (Toon 2)</summary>
 
 ::: vsa-notatie
-<!-- Liturgikon, 249 -->
+<!-- Kondak - Donderdag - H. Apostelen - (Toon 2 - Liturgikon, 249) -->
 [/:] De on{/wan}kelbare, door God sprekende {/Ver}{/kon_}{\di_}{\gers_}, * 
 Uw uitgelezen {\Leer_}lin{\gen_}, * 
 {/neemt} Gij {/op_}, Heer, in de genietingen van Uw goederen {/en} {/in_} {\Uw_} {\rust_}.* 
@@ -61,7 +61,7 @@ Want hun moeiten en dood hebt Gij {\ho_}ger ge{\schat} *
   <summary>PROKIMEN (Ps. 18, Toon 8) en Alleluia (Ps. 88)</summary>
 
 ::: vsa-notatie
-<!-- Liturgikon, 249 -->
+<!-- Prokimen - Donderdag - H. Apostelen - (Toon 8 - Liturgikon, 249) -->
 [///:] Over heel de aarde klinkt hun {\&\\bood_&_}{/schap_}: * 
 {/tot} aan de grenzen der wereld hun {/woor__}{\den_}. [//:]
 :::

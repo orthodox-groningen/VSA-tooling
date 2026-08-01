@@ -10,9 +10,13 @@
       
       
       
-        <link rel="canonical" href="https://orthodox-groningen.github.io/VSA-tooling/terminologie/vsa/">
+        <link rel="canonical" href="https://orthodox-groningen.github.io/VSA-tooling/guides/musicxml-export/">
       
       
+        <link rel="prev" href="../validation/">
+      
+      
+        <link rel="next" href="../rendering-fonts/">
       
       
         
@@ -23,7 +27,7 @@
     
     
       
-        <title>VSA - VSA-tooling — documentatie</title>
+        <title>MusicXML exporteren - VSA-tooling — documentatie</title>
       
     
     
@@ -66,7 +70,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#vsa" class="md-skip">
+        <a href="#musicxml-exporteren" class="md-skip">
           Ga naar inhoud
         </a>
       
@@ -112,7 +116,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              VSA
+              MusicXML exporteren
             
           </span>
         </div>
@@ -230,10 +234,12 @@
   
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
+      <li class="md-tabs__item md-tabs__item--active">
         <a href="../../manuals/" class="md-tabs__link">
           
   
@@ -294,7 +300,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../guides/reuse-vsa-tooling/" class="md-tabs__link">
+        <a href="../reuse-vsa-tooling/" class="md-tabs__link">
           
   
   
@@ -312,7 +318,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../" class="md-tabs__link">
+      <a href="../../terminologie/" class="md-tabs__link">
         
   
   
@@ -516,28 +522,31 @@
       
   
   
+    
   
   
+  
     
     
     
     
+      
+        
+        
       
       
         
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
         
           
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
-        
-          
-          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
             
   
   
@@ -555,7 +564,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             
@@ -629,7 +638,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../guides/user-guide/" class="md-nav__link">
+      <a href="../user-guide/" class="md-nav__link">
         
   
   
@@ -657,7 +666,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../guides/cli-taken/" class="md-nav__link">
+      <a href="../cli-taken/" class="md-nav__link">
         
   
   
@@ -685,7 +694,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../guides/validation/" class="md-nav__link">
+      <a href="../validation/" class="md-nav__link">
         
   
   
@@ -710,10 +719,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../guides/musicxml-export/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MusicXML exporteren
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -729,6 +765,170 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Inhoudsopgave">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Inhoudsopgave
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#snel-starten" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Snel starten
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#oefenen-in-coria" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Oefenen in Coria
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Oefenen in Coria">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#in-content-source-coria-aanbevolen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        In content-source: :::coria (aanbevolen)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hugo-shortcodes-edge-cases" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hugo-shortcodes (edge cases)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#wat-kun-je-instellen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Wat kun je instellen?
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Wat kun je instellen?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#muziek" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Muziek
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#identificatie-titels-in-het-bestand" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Identificatie (titels in het bestand)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#afspelen-profiel-playback" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Afspelen (profiel playback)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#typografie-profiel-engraving" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Typografie (profiel engraving)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#voorbeeld-frontmatter" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Voorbeeld frontmatter
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#twee-exportprofielen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Twee exportprofielen
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tips" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tips
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -741,7 +941,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../guides/rendering-fonts/" class="md-nav__link">
+      <a href="../rendering-fonts/" class="md-nav__link">
         
   
   
@@ -769,7 +969,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../guides/parochie-lokaal-vsa/" class="md-nav__link">
+      <a href="../parochie-lokaal-vsa/" class="md-nav__link">
         
   
   
@@ -797,7 +997,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../guides/testing-and-regression/" class="md-nav__link">
+      <a href="../testing-and-regression/" class="md-nav__link">
         
   
   
@@ -825,7 +1025,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../guides/liturgikon-notatie/" class="md-nav__link">
+      <a href="../liturgikon-notatie/" class="md-nav__link">
         
   
   
@@ -853,7 +1053,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../guides/hugo-navigation-placeholders/" class="md-nav__link">
+      <a href="../hugo-navigation-placeholders/" class="md-nav__link">
         
   
   
@@ -1876,7 +2076,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../guides/reuse-vsa-tooling/" class="md-nav__link">
+      <a href="../reuse-vsa-tooling/" class="md-nav__link">
         
   
   
@@ -1904,7 +2104,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../guides/tev2-docs/" class="md-nav__link">
+      <a href="../tev2-docs/" class="md-nav__link">
         
   
   
@@ -1939,7 +2139,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../" class="md-nav__link">
+      <a href="../../terminologie/" class="md-nav__link">
         
   
   
@@ -2124,6 +2324,158 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Inhoudsopgave
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#snel-starten" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Snel starten
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#oefenen-in-coria" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Oefenen in Coria
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Oefenen in Coria">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#in-content-source-coria-aanbevolen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        In content-source: :::coria (aanbevolen)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hugo-shortcodes-edge-cases" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hugo-shortcodes (edge cases)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#wat-kun-je-instellen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Wat kun je instellen?
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Wat kun je instellen?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#muziek" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Muziek
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#identificatie-titels-in-het-bestand" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Identificatie (titels in het bestand)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#afspelen-profiel-playback" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Afspelen (profiel playback)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#typografie-profiel-engraving" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Typografie (profiel engraving)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#voorbeeld-frontmatter" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Voorbeeld frontmatter
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#twee-exportprofielen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Twee exportprofielen
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tips" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tips
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -2140,7 +2492,7 @@
 
 
   
-    <a href="https://github.com/orthodox-groningen/VSA-tooling/edit/main/docs/terminologie/vsa.md" title="Wijzig deze pagina" class="md-content__button md-icon" rel="edit">
+    <a href="https://github.com/orthodox-groningen/VSA-tooling/edit/main/docs/guides/musicxml-export.md" title="Wijzig deze pagina" class="md-content__button md-icon" rel="edit">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
     </a>
@@ -2148,8 +2500,233 @@
   
 
 
-<h1 id="vsa">VSA<a class="headerlink" href="#vsa" title="Permanent link">&para;</a></h1>
-<p>VSA is de notatie- en toolset waarmee zangstukken in deze repository worden vastgelegd, gevalideerd en naar publiceerbare vormen worden omgezet. Algemeen liturgisch tekstbeheer zonder VSA-syntax valt hier niet onder.</p>
+<h1 id="musicxml-exporteren">MusicXML exporteren<a class="headerlink" href="#musicxml-exporteren" title="Permanent link">&para;</a></h1>
+<p>Met <code>vsa musicxml</code> zet je VSA om naar <strong><code>.mxl</code></strong> (gecomprimeerd MusicXML, standaard)
+of naar platte <strong><code>.musicxml</code></strong>. Open het in MuseScore of speel af op
+<a href="https://coria.nl">Coria</a>.</p>
+<h2 id="snel-starten">Snel starten<a class="headerlink" href="#snel-starten" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>vsa musicxml mijn-lied.vsa mijn-lied.mxl
+</code></pre></div>
+<p>Zonder extensie krijg je ook <code>.mxl</code>:</p>
+<div class="highlight"><pre><span></span><code>vsa musicxml mijn-lied.vsa output\mijn-lied
+</code></pre></div>
+<p>Platte MusicXML (bijv. voor MuseScore-bewerking):</p>
+<div class="highlight"><pre><span></span><code>vsa musicxml mijn-lied.vsa mijn-lied.musicxml
+</code></pre></div>
+<p>Of expliciet:</p>
+<div class="highlight"><pre><span></span><code>vsa musicxml mijn-lied.vsa mijn-lied --format musicxml
+</code></pre></div>
+<p>Bij map-export (standaard <code>.mxl</code> per <code>.vsa</code>-bestand):</p>
+<div class="highlight"><pre><span></span><code>vsa musicxml content-source\praktijk output\mxl
+</code></pre></div>
+<h2 id="oefenen-in-coria">Oefenen in Coria<a class="headerlink" href="#oefenen-in-coria" title="Permanent link">&para;</a></h2>
+<h3 id="in-content-source-coria-aanbevolen">In content-source: <code>:::coria</code> (aanbevolen)<a class="headerlink" href="#in-content-source-coria-aanbevolen" title="Permanent link">&para;</a></h3>
+<p>Zelfde padregels als <code>:::include</code> — alleen de <code>.vsa</code>-naam naast je <code>.md</code>:</p>
+<div class="highlight"><pre><span></span><code>:::include &quot;tropaar-zondag-toon-3.vsa&quot; alt=&quot;Tropaar&quot; scale=&quot;85%&quot;:::
+:::coria &quot;tropaar-zondag-toon-3.vsa&quot; label=&quot;Oefenen in Coria&quot;:::
+</code></pre></div>
+<p>Bij <code>vsa build-markdown</code>:</p>
+<ol>
+<li>Pad oplossen t.o.v. het <code>.md</code>-bestand.</li>
+<li>Als <code>{stem}.coria.html</code> naast de <code>.vsa</code> staat → link naar Coria-HTML (partij al gekozen).</li>
+<li>Anders → MXL-link via <code>play_from_url</code>.</li>
+</ol>
+<p>Optioneel Coria-HTML naast de bron (handmatig uit Coria):</p>
+<div class="highlight"><pre><span></span><code>praktijk/zondagen/tropaar-zondag-toon-3.vsa
+praktijk/zondagen/tropaar-zondag-toon-3.coria.html
+</code></pre></div>
+<p>Build kopieert <code>.coria.html</code> naar <code>static/coria/…/tropaar-zondag-toon-3.html</code>.</p>
+<p>Parameters:</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Betekenis</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>label="…"</code></td>
+<td>Linktekst (default: <code>Oefenen in Coria</code>)</td>
+</tr>
+<tr>
+<td><code>mode="html"</code></td>
+<td>Forceer Coria-HTML (fout als <code>.coria.html</code> ontbreekt)</td>
+</tr>
+<tr>
+<td><code>mode="mxl"</code></td>
+<td>Forceer MXL deep-link</td>
+</tr>
+<tr>
+<td><code>mode="auto"</code></td>
+<td>HTML indien aanwezig, anders MXL (default)</td>
+</tr>
+</tbody>
+</table>
+<p>Volledige parameterdocumentatie:
+<a href="https://orthodox-groningen.github.io/bron/reference/exporttype-coria/">exporttype coria</a>.</p>
+<h3 id="hugo-shortcodes-edge-cases">Hugo-shortcodes (edge cases)<a class="headerlink" href="#hugo-shortcodes-edge-cases" title="Permanent link">&para;</a></h3>
+<p>De build emitteert <code>{{&lt; coria-html &gt;}}</code> of <code>{{&lt; coria &gt;}}</code> met het juiste pad.
+Handmatig shortcodes schrijven is niet nodig in content-source.</p>
+<p>In Python:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">vsa.coria</span><span class="w"> </span><span class="kn">import</span> <span class="n">coria_play_url</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">vsa.content_assets</span><span class="w"> </span><span class="kn">import</span> <span class="n">resolve_asset</span>
+</code></pre></div>
+<h2 id="wat-kun-je-instellen">Wat kun je instellen?<a class="headerlink" href="#wat-kun-je-instellen" title="Permanent link">&para;</a></h2>
+<p>De meeste instellingen staan in YAML-frontmatter bovenaan je <code>.vsa</code>-bestand
+(zie ook <a href="../../specification/rendering/">specificatie §4.1.2</a>).</p>
+<h3 id="muziek">Muziek<a class="headerlink" href="#muziek" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Instelling</th>
+<th>Wat het doet</th>
+<th>Standaard</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>do</code></td>
+<td>Grondtoon (bijv. <code>F4</code>)</td>
+<td><code>F4</code></td>
+</tr>
+<tr>
+<td><code>mode</code></td>
+<td><code>major</code> of <code>minor</code></td>
+<td><code>major</code></td>
+</tr>
+<tr>
+<td><code>tempo</code></td>
+<td>Tempo in BPM (alleen zichtbaar als je het expliciet zet)</td>
+<td><code>100</code></td>
+</tr>
+<tr>
+<td><code>meter</code></td>
+<td>Maatsoort, bijv. <code>4/4</code> (optioneel)</td>
+<td>—</td>
+</tr>
+<tr>
+<td><code>reciting-mode</code></td>
+<td>Ongescopte tekst: <code>quarters</code> (één kwartnoot per woord) of <code>whole</code> (één hele noot bij ≥4 woorden)</td>
+<td><code>quarters</code></td>
+</tr>
+<tr>
+<td><strong><code>musicxml-profile</code></strong></td>
+<td><strong><code>playback</code></strong> (Coria/MuseScore) of <strong><code>engraving</code></strong> (partituurbewerking)</td>
+<td><strong><code>playback</code></strong></td>
+</tr>
+</tbody>
+</table>
+<h3 id="identificatie-titels-in-het-bestand">Identificatie (titels in het bestand)<a class="headerlink" href="#identificatie-titels-in-het-bestand" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Instelling</th>
+<th>Voorbeeld</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>title</code></td>
+<td>Tropaar van de zondag, toon 3</td>
+</tr>
+<tr>
+<td><code>composer</code></td>
+<td>Traditioneel</td>
+</tr>
+<tr>
+<td><code>language</code></td>
+<td><code>nl</code> (alleen relevant bij profiel <code>engraving</code>)</td>
+</tr>
+<tr>
+<td><code>tone</code></td>
+<td>Liturgische toon, bijv. <code>3</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="afspelen-profiel-playback">Afspelen (profiel <code>playback</code>)<a class="headerlink" href="#afspelen-profiel-playback" title="Permanent link">&para;</a></h3>
+<p>Alleen nodig als je het geluid wilt aanpassen:</p>
+<table>
+<thead>
+<tr>
+<th>Instelling</th>
+<th>Standaard</th>
+<th>Tip</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>part-name</code></td>
+<td><code>Vocal</code></td>
+<td>Naam van de partij</td>
+</tr>
+<tr>
+<td><code>midi-sound</code></td>
+<td><code>keyboard.piano.grand</code></td>
+<td>Werkt goed in Coria; voor koorklank: <code>voice.choir.aahs</code></td>
+</tr>
+<tr>
+<td><code>midi-channel</code></td>
+<td><code>1</code></td>
+<td>MIDI-kanaal</td>
+</tr>
+<tr>
+<td><code>midi-program</code></td>
+<td><code>1</code></td>
+<td>Instrumentnummer</td>
+</tr>
+</tbody>
+</table>
+<h3 id="typografie-profiel-engraving">Typografie (profiel <code>engraving</code>)<a class="headerlink" href="#typografie-profiel-engraving" title="Permanent link">&para;</a></h3>
+<p>Lettertypes en groottes voor MuseScore. Alleen actief als je
+<code>musicxml-profile: engraving</code> kiest:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">typografie</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">lyric-font</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Source Sans 3</span>
+<span class="w">  </span><span class="nt">lyric-size</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;13&quot;</span>
+<span class="w">  </span><span class="nt">word-font</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Source Sans 3</span>
+<span class="w">  </span><span class="nt">word-size</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;12&quot;</span>
+</code></pre></div>
+<h2 id="voorbeeld-frontmatter">Voorbeeld frontmatter<a class="headerlink" href="#voorbeeld-frontmatter" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><span class="nn">---</span>
+<span class="nt">muziek</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">do</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">F4</span>
+<span class="w">  </span><span class="nt">mode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">major</span>
+<span class="w">  </span><span class="nt">tempo</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">132</span>
+<span class="w">  </span><span class="nt">musicxml-profile</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">playback</span>
+<span class="w">  </span><span class="nt">midi-sound</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">voice.choir.aahs</span>
+<span class="nt">identificatie</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Tropaar van de zondag, toon 3</span>
+<span class="w">  </span><span class="nt">composer</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Traditioneel</span>
+<span class="w">  </span><span class="nt">tone</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;3&quot;</span>
+<span class="nn">---</span>
+<span class="p p-Indicator">[:]</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Ter{/&amp;/wijl_&amp;_} ...</span>
+</code></pre></div>
+<h2 id="twee-exportprofielen">Twee exportprofielen<a class="headerlink" href="#twee-exportprofielen" title="Permanent link">&para;</a></h2>
+<p>Standaard gebruikt <code>vsa musicxml</code> het <strong><code>playback</code></strong>-profiel. Dat is bedoeld
+voor afspelen en import zonder handmatige opschoning — onder andere Coria en
+MuseScore na roundtrip.</p>
+<p>Kies <strong><code>engraving</code></strong> als je de partituur verder wilt bewerken en expliciete
+maatstrepen, typografie-hints of gedetailleerde melisma-lijnen nodig hebt:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">muziek</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">musicxml-profile</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">engraving</span>
+</code></pre></div>
+<p>Of via de commandoregel:</p>
+<div class="highlight"><pre><span></span><code>vsa musicxml lied.vsa lied.mxl --musicxml-profile engraving
+</code></pre></div>
+<h2 id="tips">Tips<a class="headerlink" href="#tips" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>Koorleden zonder extra klikken?</strong> Plaats <code>{stem}.coria.html</code> naast de <code>.vsa</code>
+  en gebruik <code>:::coria "bestand.vsa":::</code> in content-source.</li>
+<li><strong>Coria laadt het <code>.mxl</code> niet?</strong> Controleer of je niet per ongeluk
+  <code>engraving</code> hebt gekozen; gebruik <code>playback</code> (de default). Op een website moet
+  het <code>.mxl</code>-bestand via HTTPS bereikbaar zijn.</li>
+<li><strong>Tempo staat er niet in?</strong> Zet <code>tempo</code> expliciet in frontmatter; anders
+  wordt geen tempo-markering geëxporteerd.</li>
+<li><strong>Lettergrepen in reciteertoon:</strong> gebruik een koppelteken in het woord
+  (<code>mel-se</code> → twee kwartnoten met syllabic begin/eind).</li>
+<li><strong>Meer detail?</strong> Zie <a href="../../specification/rendering/">specificatie §8.2</a>
+  en <a href="../../specification/rendering/">§8.2.11 profielen</a>.</li>
+</ul>
 
 
 
@@ -2171,7 +2748,7 @@
   
   
   
-  <p class="page-git-date">Bijgewerkt: 2026-07-08</p>
+  <p class="page-git-date">Bijgewerkt: 2026-08-01</p>
   
 
               </article>

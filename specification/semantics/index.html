@@ -10,9 +10,13 @@
       
       
       
-        <link rel="canonical" href="https://orthodox-groningen.github.io/VSA-tooling/terminologie/vsa/">
+        <link rel="canonical" href="https://orthodox-groningen.github.io/VSA-tooling/specification/semantics/">
       
       
+        <link rel="prev" href="../syntax/">
+      
+      
+        <link rel="next" href="../validation/">
       
       
         
@@ -23,7 +27,7 @@
     
     
       
-        <title>VSA - VSA-tooling — documentatie</title>
+        <title>Semantiek - VSA-tooling — documentatie</title>
       
     
     
@@ -66,7 +70,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#vsa" class="md-skip">
+        <a href="#semantiek" class="md-skip">
           Ga naar inhoud
         </a>
       
@@ -112,7 +116,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              VSA
+              Semantiek
             
           </span>
         </div>
@@ -250,11 +254,13 @@
   
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
-        <a href="../../specification/" class="md-tabs__link">
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../" class="md-tabs__link">
           
   
   
@@ -312,7 +318,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../" class="md-tabs__link">
+      <a href="../../terminologie/" class="md-tabs__link">
         
   
   
@@ -885,28 +891,31 @@
       
   
   
+    
   
   
+  
     
     
     
     
+      
+        
+        
       
       
         
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
         
           
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
-        
-          
-          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
             
   
   
@@ -924,7 +933,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_4">
             <span class="md-nav__icon md-icon"></span>
             
@@ -942,7 +951,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../specification/" class="md-nav__link">
+      <a href="../" class="md-nav__link">
         
   
   
@@ -970,7 +979,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../specification/overview/" class="md-nav__link">
+      <a href="../overview/" class="md-nav__link">
         
   
   
@@ -998,7 +1007,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../specification/syntax/" class="md-nav__link">
+      <a href="../syntax/" class="md-nav__link">
         
   
   
@@ -1023,10 +1032,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../specification/semantics/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Semantiek
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -1042,6 +1078,253 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Inhoudsopgave">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Inhoudsopgave
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#5-semantiek" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Semantiek
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Semantiek">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-overzicht" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 Overzicht
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-muzikale-positie" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 Muzikale positie
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53-impliciete-modifiers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3 Impliciete modifiers
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#54-samengestelde-modifiers-en-melisma" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.4 Samengestelde modifiers en melisma
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#55-do-context" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.5 Do-context
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#56-toonladder-en-toonladdergraden" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.6 Toonladder en toonladdergraden
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#57-modusdefinitie" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.7 Modusdefinitie
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5.7 Modusdefinitie">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#majeurmodus" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Majeurmodus
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#natuurlijke-mineurmodus" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Natuurlijke mineurmodus
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#andere-modi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Andere modi
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#58-interpretatie-van-ehms" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.8 Interpretatie van EHMs
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5.8 Interpretatie van EHMs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#basisbewegingen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Basisbewegingen
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#halftoon-prefix-combinaties-voorbeelden" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Halftoon-prefix combinaties (voorbeelden)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#59-geldigheid-van-halftoon-prefix-combinaties" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.9 Geldigheid van halftoon-prefix combinaties
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#510-interpretatie-van-elms" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.10 Interpretatie van ELMs
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#511-absolute-en-relatieve-toonhoogte" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.11 Absolute en relatieve toonhoogte
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#512-toonhoogte-markeringen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.12 Toonhoogte-markeringen
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#513-tekstmarkeringen-buiten-scopes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.13 Tekstmarkeringen buiten scopes
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1054,7 +1337,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../specification/validation/" class="md-nav__link">
+      <a href="../validation/" class="md-nav__link">
         
   
   
@@ -1082,7 +1365,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../specification/directives/" class="md-nav__link">
+      <a href="../directives/" class="md-nav__link">
         
   
   
@@ -1110,7 +1393,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../specification/rendering/" class="md-nav__link">
+      <a href="../rendering/" class="md-nav__link">
         
   
   
@@ -1138,7 +1421,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../specification/cli/" class="md-nav__link">
+      <a href="../cli/" class="md-nav__link">
         
   
   
@@ -1166,7 +1449,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../specification/conformance/" class="md-nav__link">
+      <a href="../conformance/" class="md-nav__link">
         
   
   
@@ -1194,7 +1477,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../specification/error-handling/" class="md-nav__link">
+      <a href="../error-handling/" class="md-nav__link">
         
   
   
@@ -1222,7 +1505,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../specification/examples/" class="md-nav__link">
+      <a href="../examples/" class="md-nav__link">
         
   
   
@@ -1250,7 +1533,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../specification/versioning/" class="md-nav__link">
+      <a href="../versioning/" class="md-nav__link">
         
   
   
@@ -1278,7 +1561,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../specification/traceability/" class="md-nav__link">
+      <a href="../traceability/" class="md-nav__link">
         
   
   
@@ -1306,7 +1589,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../specification/open-points/" class="md-nav__link">
+      <a href="../open-points/" class="md-nav__link">
         
   
   
@@ -1939,7 +2222,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../" class="md-nav__link">
+      <a href="../../terminologie/" class="md-nav__link">
         
   
   
@@ -2124,6 +2407,241 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Inhoudsopgave
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#5-semantiek" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Semantiek
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Semantiek">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-overzicht" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 Overzicht
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-muzikale-positie" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 Muzikale positie
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53-impliciete-modifiers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3 Impliciete modifiers
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#54-samengestelde-modifiers-en-melisma" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.4 Samengestelde modifiers en melisma
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#55-do-context" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.5 Do-context
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#56-toonladder-en-toonladdergraden" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.6 Toonladder en toonladdergraden
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#57-modusdefinitie" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.7 Modusdefinitie
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5.7 Modusdefinitie">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#majeurmodus" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Majeurmodus
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#natuurlijke-mineurmodus" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Natuurlijke mineurmodus
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#andere-modi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Andere modi
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#58-interpretatie-van-ehms" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.8 Interpretatie van EHMs
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5.8 Interpretatie van EHMs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#basisbewegingen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Basisbewegingen
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#halftoon-prefix-combinaties-voorbeelden" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Halftoon-prefix combinaties (voorbeelden)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#59-geldigheid-van-halftoon-prefix-combinaties" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.9 Geldigheid van halftoon-prefix combinaties
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#510-interpretatie-van-elms" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.10 Interpretatie van ELMs
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#511-absolute-en-relatieve-toonhoogte" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.11 Absolute en relatieve toonhoogte
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#512-toonhoogte-markeringen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.12 Toonhoogte-markeringen
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#513-tekstmarkeringen-buiten-scopes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.13 Tekstmarkeringen buiten scopes
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -2140,7 +2658,7 @@
 
 
   
-    <a href="https://github.com/orthodox-groningen/VSA-tooling/edit/main/docs/terminologie/vsa.md" title="Wijzig deze pagina" class="md-content__button md-icon" rel="edit">
+    <a href="https://github.com/orthodox-groningen/VSA-tooling/edit/main/docs/specification/semantics.md" title="Wijzig deze pagina" class="md-content__button md-icon" rel="edit">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
     </a>
@@ -2148,8 +2666,385 @@
   
 
 
-<h1 id="vsa">VSA<a class="headerlink" href="#vsa" title="Permanent link">&para;</a></h1>
-<p>VSA is de notatie- en toolset waarmee zangstukken in deze repository worden vastgelegd, gevalideerd en naar publiceerbare vormen worden omgezet. Algemeen liturgisch tekstbeheer zonder VSA-syntax valt hier niet onder.</p>
+<h1 id="semantiek">Semantiek<a class="headerlink" href="#semantiek" title="Permanent link">&para;</a></h1>
+<p>Dit document beschrijft de betekenis van syntactisch geldige VSA-notatie.</p>
+<p>Bronbasis: <code>docs/spec/vsa-spec-v1.0.1.md</code>, aangevuld met latere documenten over hoogte-markeringen en control tokens.</p>
+<h2 id="5-semantiek">5. Semantiek<a class="headerlink" href="#5-semantiek" title="Permanent link">&para;</a></h2>
+<h3 id="51-overzicht">5.1 Overzicht<a class="headerlink" href="#51-overzicht" title="Permanent link">&para;</a></h3>
+<p>De VSA-notatie wordt geïnterpreteerd via een gelaagd toonmodel:</p>
+<div class="highlight"><pre><span></span><code>blokmetadata (`do`, `mode`, enz.)
+    ↓
+do-context
+    ↓
+modus
+    ↓
+toonladder
+    ↓
+EHM-sequenties
+    ↓
+muzikale posities
+    ↓
+rendering of export
+</code></pre></div>
+<p>De absolute toonhoogte maakt geen deel uit van de VSA-kernsyntax. Zij wordt, indien nodig voor interpretatie of MusicXML-export, geleverd via de blokmetadata.</p>
+<h3 id="52-muzikale-positie">5.2 Muzikale positie<a class="headerlink" href="#52-muzikale-positie" title="Permanent link">&para;</a></h3>
+<p>Een muzikale positie is de kleinste muzikale eenheid binnen VSA.</p>
+<p>Elke muzikale positie heeft:</p>
+<ul>
+<li>een relatieve toonhoogtebeweging, bepaald door één EHM;</li>
+<li>een duur, bepaald door één ELM;</li>
+<li>een koppeling aan één zangelement.</li>
+</ul>
+<p>Een zangelement-scope zonder samengestelde modifiers bevat precies één muzikale positie.</p>
+<p>Voorbeeld:</p>
+<div class="highlight"><pre><span></span><code>{/tekst_}
+</code></pre></div>
+<p>Dit betekent:</p>
+<ul>
+<li>zangelement: <code>tekst</code>;</li>
+<li>toonhoogtebeweging: <code>/</code>;</li>
+<li>duur: <code>_</code>.</li>
+</ul>
+<h3 id="53-impliciete-modifiers">5.3 Impliciete modifiers<a class="headerlink" href="#53-impliciete-modifiers" title="Permanent link">&para;</a></h3>
+<p>Als in een scope geen hoogte-modifier aanwezig is, wordt impliciet één <code>~</code> gebruikt.</p>
+<p>Als in een scope geen lengte-modifier aanwezig is, wordt impliciet één <code>~</code> gebruikt.</p>
+<p>Voorbeeld:</p>
+<div class="highlight"><pre><span></span><code>{tekst}
+</code></pre></div>
+<p>is semantisch gelijk aan:</p>
+<div class="highlight"><pre><span></span><code>{~tekst~}
+</code></pre></div>
+<p>Als slechts één van beide modifiers aanwezig is, bepaalt die modifier het aantal muzikale posities. De ontbrekende modifier wordt aangevuld met evenveel <code>~</code>-posities.</p>
+<p>Voorbeeld:</p>
+<div class="highlight"><pre><span></span><code>{/&amp;\tekst}
+</code></pre></div>
+<p>is semantisch gelijk aan:</p>
+<div class="highlight"><pre><span></span><code>{/&amp;\tekst~&amp;~}
+</code></pre></div>
+<h3 id="54-samengestelde-modifiers-en-melisma">5.4 Samengestelde modifiers en melisma<a class="headerlink" href="#54-samengestelde-modifiers-en-melisma" title="Permanent link">&para;</a></h3>
+<p>Wanneer een zangelement meerdere muzikale posities bevat, wordt hetzelfde zangelement over meerdere opeenvolgende tonen gezongen. Dit heet een <strong>melisma</strong>.</p>
+<p>Een melisma wordt gespecificeerd door 
+- een (optionele) hoogte modifier, die is samengesteld uit een rij EHMs die gescheiden zijn door <code>&amp;</code>.
+- een zangelement
+- een (optionele) lengte modifier, die is samengesteld uit een rij ELMs die gescheiden zijn door <code>&amp;</code>.</p>
+<p>Voor een melisma moet (natuurlijk) altijd tenminste of de hoogte modifier, of de lengte modifier aanwezig zijn; immers, als ze er beide niet zijn is het gewoon een gezongen toon. Als een van beide ontbreekt, wordt hij geacht een rij <code>~</code> te zijn (gescheiden door <code>&amp;</code>s) met evenveel muzikale posities als de gespecificeerde modifier.</p>
+<p>Voorbeelden:</p>
+<div class="highlight"><pre><span></span><code>{-&amp;/tekst~&amp;_}
+</code></pre></div>
+<p>Dit bevat twee muzikale posities:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Positie</th>
+<th>EHM</th>
+<th>ELM</th>
+<th>Betekenis</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">1</td>
+<td><code>-</code></td>
+<td><code>~</code></td>
+<td>zelfde toonhoogte, standaardduur</td>
+</tr>
+<tr>
+<td style="text-align: center;">2</td>
+<td><code>/</code></td>
+<td><code>_</code></td>
+<td>één ladderstap omhoog, dubbele duur</td>
+</tr>
+</tbody>
+</table>
+<p>Het zangelement <code>tekst</code> wordt over beide posities gezongen.</p>
+<p>Als zowel een hoogte-modifier als een lengte-modifier aanwezig zijn, moeten zij hetzelfde aantal muzikale posities bevatten.</p>
+<h3 id="55-do-context">5.5 Do-context<a class="headerlink" href="#55-do-context" title="Permanent link">&para;</a></h3>
+<p>De do-context is de grondtooncontext waarbinnen relatieve toonhoogtebewegingen worden geïnterpreteerd. In de zangpraktijk wordt deze context doorgaans niet expliciet genoteerd: de koorleid(st)er bepaalt de inzet op basis van de lokale traditie en vaak op basis van de toon waarop priester of diaken inzet. Koorleden volgen die context in de praktijk meestal stilzwijgend.</p>
+<p>Voor visuele VSA-rendering hoeft de absolute do-context daarom niet in de zangtekst aanwezig te zijn. Voor MusicXML-export, automatische weergave of afspelen is wel een absolute starttoon nodig. Die wordt gespecificeerd in de Hugo blokmetadata:</p>
+<div class="highlight"><pre><span></span><code>::: vsa-notatie
+do=&quot;C4&quot;
+mode=&quot;major&quot;
+:::
+</code></pre></div>
+<p>Hier levert <code>do="C4"</code> de absolute starttoon voor interpretatie en export. De toonhoogte-markeringen in de VSA-tekst zelf bevatten uitsluitend relatieve hoogte-modifiers.</p>
+<h3 id="56-toonladder-en-toonladdergraden">5.6 Toonladder en toonladdergraden<a class="headerlink" href="#56-toonladder-en-toonladdergraden" title="Permanent link">&para;</a></h3>
+<p>Binnen een do-context wordt een geordende reeks toonladdergraden afgeleid:</p>
+<div class="highlight"><pre><span></span><code>do → re → mi → fa → sol → la → ti → do
+</code></pre></div>
+<p>Deze graden vormen een cyclische structuur.</p>
+<p>De afstand tussen opeenvolgende graden is niet uniform. De stapstructuur wordt bepaald door de gekozen modus.</p>
+<h3 id="57-modusdefinitie">5.7 Modusdefinitie<a class="headerlink" href="#57-modusdefinitie" title="Permanent link">&para;</a></h3>
+<p>Een modus definieert de intervalstructuur van de toonladder binnen een do-context.</p>
+<p>Een modus specificeert voor elke overgang tussen opeenvolgende graden of deze overgang een grote stap of een kleine stap is.</p>
+<p>De zeven overgangen zijn:</p>
+<div class="highlight"><pre><span></span><code>do→re, re→mi, mi→fa, fa→sol, sol→la, la→ti, ti→do
+</code></pre></div>
+<p>Een modus kan worden weergegeven als een patroon van zeven staptypen:</p>
+<div class="highlight"><pre><span></span><code>G = grote stap
+K = kleine stap
+</code></pre></div>
+<h4 id="majeurmodus">Majeurmodus<a class="headerlink" href="#majeurmodus" title="Permanent link">&para;</a></h4>
+<p>In de majeurmodus zijn de kleine stappen:</p>
+<ul>
+<li><code>mi → fa</code>;</li>
+<li><code>ti → do</code>.</li>
+</ul>
+<p>Representatie:</p>
+<div class="highlight"><pre><span></span><code>G G K G G G K
+</code></pre></div>
+<h4 id="natuurlijke-mineurmodus">Natuurlijke mineurmodus<a class="headerlink" href="#natuurlijke-mineurmodus" title="Permanent link">&para;</a></h4>
+<p>In de natuurlijke mineurmodus zijn de kleine stappen:</p>
+<ul>
+<li><code>re → mi</code>;</li>
+<li><code>sol → la</code>.</li>
+</ul>
+<p>Representatie:</p>
+<div class="highlight"><pre><span></span><code>G K G G K G G
+</code></pre></div>
+<h4 id="andere-modi">Andere modi<a class="headerlink" href="#andere-modi" title="Permanent link">&para;</a></h4>
+<p>Andere modi kunnen worden gedefinieerd door het stappatroon te wijzigen.</p>
+<p>Voorbeelden:</p>
+<div class="highlight"><pre><span></span><code>Dorisch:   G K G G G K G
+Frygisch:  K G G G K G G
+Lydisch:   G G G K G G K
+</code></pre></div>
+<p>De do-context bepaalt dus het startpunt. De modus bepaalt de interne structuur van de toonladder.</p>
+<h3 id="58-interpretatie-van-ehms">5.8 Interpretatie van EHMs<a class="headerlink" href="#58-interpretatie-van-ehms" title="Permanent link">&para;</a></h3>
+<p>Een EHM is een operator op de actuele toonladderpositie. Een EHM bestaat uit een optionele halftoon-prefix en een basisbeweging. Het semantische effect is:</p>
+<div class="highlight"><pre><span></span><code>netto beweging = basisbeweging + prefix_delta
+</code></pre></div>
+<p>waarbij <code>prefix_delta</code> gelijk is aan +½ toon voor prefix <code>#</code> (of alias <code>+</code>, <code>♯</code>) en −½ toon voor prefix <code>b</code> (of alias <code>♭</code>).</p>
+<h4 id="basisbewegingen">Basisbewegingen<a class="headerlink" href="#basisbewegingen" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>EHM</th>
+<th>Semantisch effect</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>/</code></td>
+<td>verplaats één graad omhoog</td>
+</tr>
+<tr>
+<td><code>//</code></td>
+<td>verplaats twee graden omhoog</td>
+</tr>
+<tr>
+<td><code>///</code></td>
+<td>verplaats drie graden omhoog</td>
+</tr>
+<tr>
+<td><code>////</code></td>
+<td>verplaats vier graden omhoog</td>
+</tr>
+<tr>
+<td><code>/////</code></td>
+<td>verplaats vijf graden omhoog</td>
+</tr>
+<tr>
+<td><code>\</code></td>
+<td>verplaats één graad omlaag</td>
+</tr>
+<tr>
+<td><code>\\</code></td>
+<td>verplaats twee graden omlaag</td>
+</tr>
+<tr>
+<td><code>\\\</code></td>
+<td>verplaats drie graden omlaag</td>
+</tr>
+<tr>
+<td><code>\\\\</code></td>
+<td>verplaats vier graden omlaag</td>
+</tr>
+<tr>
+<td><code>\\\\\</code></td>
+<td>verplaats vijf graden omlaag</td>
+</tr>
+<tr>
+<td><code>-</code></td>
+<td>behoud de huidige toonhoogte</td>
+</tr>
+<tr>
+<td><code>~</code></td>
+<td>behoud de huidige toonhoogte</td>
+</tr>
+</tbody>
+</table>
+<h4 id="halftoon-prefix-combinaties-voorbeelden">Halftoon-prefix combinaties (voorbeelden)<a class="headerlink" href="#halftoon-prefix-combinaties-voorbeelden" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>EHM</th>
+<th>Basisbeweging</th>
+<th>Prefix</th>
+<th>Netto effect</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>#/</code></td>
+<td>+1 graad</td>
+<td>+½</td>
+<td>+1 graad + ½ toon omhoog</td>
+</tr>
+<tr>
+<td><code>b/</code></td>
+<td>+1 graad</td>
+<td>−½</td>
+<td>+1 graad − ½ toon (= +½ toon)</td>
+</tr>
+<tr>
+<td><code>#\</code></td>
+<td>−1 graad</td>
+<td>+½</td>
+<td>−1 graad + ½ toon (= −½ toon)</td>
+</tr>
+<tr>
+<td><code>b\</code></td>
+<td>−1 graad</td>
+<td>−½</td>
+<td>−1 graad − ½ toon</td>
+</tr>
+<tr>
+<td><code>#-</code></td>
+<td>0 graden</td>
+<td>+½</td>
+<td>+½ toon (chromatisch omhoog)</td>
+</tr>
+<tr>
+<td><code>b-</code></td>
+<td>0 graden</td>
+<td>−½</td>
+<td>−½ toon (chromatisch omlaag)</td>
+</tr>
+</tbody>
+</table>
+<p>EHMs worden sequentieel toegepast. Bij blokmetadata <code>do="C4"</code> en <code>mode="major"</code> produceert de EHM-reeks <code>/</code>, <code>\\</code>, <code>///</code> de toonreeks:</p>
+<div class="highlight"><pre><span></span><code>C4 → D4 → B3 → E4
+</code></pre></div>
+<p>Hierbij wordt uitgegaan van opeenvolgende toonladderstappen binnen de gekozen modus.</p>
+<h3 id="59-geldigheid-van-halftoon-prefix-combinaties">5.9 Geldigheid van halftoon-prefix combinaties<a class="headerlink" href="#59-geldigheid-van-halftoon-prefix-combinaties" title="Permanent link">&para;</a></h3>
+<p>Een EHM met halftoon-prefix is semantisch geldig als het resulterende interval (basisbeweging ± ½ toon) zinvol is binnen de do-context en modus. Een prefix mag nooit standalone voorkomen; hij moet altijd onmiddellijk voorafgaan aan een basisbeweging.</p>
+<p>Semantische geldigheid vereist dat:</p>
+<ol>
+<li>de basisbeweging zelf geldig is binnen de huidige toonladderpositie en modus;</li>
+<li>de aanvullende ½ toon een gedefinieerd interval oplevert (de modus staat een dergelijke chromatische aanpassing toe).</li>
+</ol>
+<p>Als aan voorwaarde 2 niet is voldaan, is de EHM een semantische fout.</p>
+<p>Voorbeeld van zo'n semantische fout:</p>
+<div class="highlight"><pre><span></span><code>::: vsa-notatie
+do=&quot;C4&quot;
+mode=&quot;major&quot;
+
+[//:] {#/tekst}
+:::
+</code></pre></div>
+<p>Als de actuele positie op <code>mi</code> staat en de overgang <code>mi → fa</code> al een kleine stap is, dan brengt <code>#/</code> de melodie een extra ½ toon buiten de toonladder. Als de modus hiervoor geen gedefinieerde subpositie heeft, is dit een semantische fout.</p>
+<p>De onderscheiding tussen een halftoon-prefix op een basisbeweging en een zelfstandige chromatische aanpassing (<code>#-</code>, <code>b-</code>) heeft ook semantisch gevolgen voor MusicXML-export: <code>b-</code> beschrijft een chromatische verschuiving op de huidige positie, terwijl <code>b/</code> een combinatie is van een ladderstap en een halvering.</p>
+<h3 id="510-interpretatie-van-elms">5.10 Interpretatie van ELMs<a class="headerlink" href="#510-interpretatie-van-elms" title="Permanent link">&para;</a></h3>
+<p>Een ELM bepaalt de duur van één muzikale positie ten opzichte van de standaardduur.</p>
+<table>
+<thead>
+<tr>
+<th>ELM</th>
+<th>Duur</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>-</code></td>
+<td>1 × standaardduur</td>
+</tr>
+<tr>
+<td><code>~</code></td>
+<td>1 × standaardduur</td>
+</tr>
+<tr>
+<td><code>_</code></td>
+<td>2 × standaardduur</td>
+</tr>
+<tr>
+<td><code>_.</code></td>
+<td>3 x standaardduur</td>
+</tr>
+<tr>
+<td><code>__</code></td>
+<td>4 × standaardduur</td>
+</tr>
+<tr>
+<td><code>.</code></td>
+<td>1/2 × standaardduur</td>
+</tr>
+<tr>
+<td><code>..</code></td>
+<td>1/4 × standaardduur</td>
+</tr>
+</tbody>
+</table>
+<p>Voor MusicXML-export wordt de standaardduur gemapt naar een kwartnoot, tenzij extern anders gespecificeerd.</p>
+<h3 id="511-absolute-en-relatieve-toonhoogte">5.11 Absolute en relatieve toonhoogte<a class="headerlink" href="#511-absolute-en-relatieve-toonhoogte" title="Permanent link">&para;</a></h3>
+<p>VSA legt toonhoogten primair relatief vast. Elke muzikale positie bevat een EHM die de toonhoogteverandering ten opzichte van de voorgaande muzikale positie specificeert.</p>
+<p>Een absolute toonhoogte kan nodig zijn voor interpretatie, validatie of MusicXML-export, maar staat niet in de toonhoogte-markering. Zij wordt via blokmetadata geleverd.</p>
+<p>Voorbeeld:</p>
+<div class="highlight"><pre><span></span><code>::: vsa-notatie
+do=&quot;C4&quot;
+mode=&quot;major&quot;
+
+[:] {\O}, {/Hei__}{\&amp;/li}{/ge} {\&amp;/God__&amp;__}
+:::
+</code></pre></div>
+<p>produceert, bij interpretatie in majeur met <code>C4</code> als <code>do</code>, de toonreeks:</p>
+<div class="highlight"><pre><span></span><code>B3 C4 B3 C4 D4 C4 D4
+</code></pre></div>
+<h3 id="512-toonhoogte-markeringen">5.12 Toonhoogte-markeringen<a class="headerlink" href="#512-toonhoogte-markeringen" title="Permanent link">&para;</a></h3>
+<p>Een toonhoogte-markering bevat alleen een relatieve hoogte-modifier en geeft daarmee aan op welke toonladdergraad de zang zicht bevindt ten opzichte van de do-context op de positie van die toonhoogte-markering.</p>
+<p>Elke hoogte-markering geeft een (toon)hoogte aan ten opzichte van de basistoon ('do').</p>
+<p>Voor de eerste hoogte-markering wordt de hoogte (of basistoon) extern gegeven. 
+In de praktijk van het zingen wordt dit aangegeven door de koorlei(st)er.
+Binnen de context van conversies, bijvoorbeeld naar MusicXML, wordt dat gespecificeerd 
+door de feitelijke conversie - dat is buiten de scope van VSA.</p>
+<p>Elke volgende hoogte-markering geeft aan dat de zang op die positie op die hoogte moet zitten. 
+Een latere hoogte-markering vervangt dus niet de eerdere markering als documentstructuur, maar introduceert een nieuwe toonhoogte-positie in dezelfde melodische lijn.</p>
+<p>Het is een gangbare praktijk om voor een zangstuk een hoogte-markering te schrijven,
+en om dit ook aan het eind van een zangstuk te doen (ter controle voor zangers).
+Indien twee zangstukken elkaar opvolgen, kan dat vanuit VSA perspectief dan ook
+gezien worden als een enkel zangstuk met tussenliggende hoogte-markeringen.</p>
+<p>Een beginmarkering <code>[:]</code> betekent dat de zang op de do-context begint. Een markering <code>[//:]</code> betekent dat de zang twee ladderstappen boven de do-context begint.</p>
+<p>Een eindmarkering kan worden gebruikt als visuele afsluiting en als semantische eindcontrole. Een ontbrekende eindmarkering is toegestaan en betekent dat er geen expliciete eindtooncontrole is genoteerd. Een eindmarkering <code>[:]</code> is niet leeg in semantische zin: zij betekent dat de zang op de do-context eindigt en is equivalent aan <code>[-:]</code> c.q. <code>[~:]</code>. Een markering <code>[//:]</code> betekent dat de zang twee ladderstappen boven de do-context eindigt. Een implementatie mag een aanwezige eindmarkering controleren tegen de berekende eindtoon van het zangstuk.</p>
+<h3 id="513-tekstmarkeringen-buiten-scopes">5.13 Tekstmarkeringen buiten scopes<a class="headerlink" href="#513-tekstmarkeringen-buiten-scopes" title="Permanent link">&para;</a></h3>
+<p>Bepaalde tekstfragmenten buiten scopes kunnen door implementaties semantisch worden geïnterpreteerd.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Tekst</th>
+<th>Betekenis</th>
+<th>MusicXML</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><code>*</code></td>
+<td>rustpunt of ademhaling</td>
+<td>ademteken</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>/</code></td>
+<td>frasescheiding of maatstreep</td>
+<td>maatstreep</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>//</code></td>
+<td>sterke frasescheiding</td>
+<td>dubbele maatstreep</td>
+</tr>
+</tbody>
+</table>
+<p>Deze markeringen maken geen deel uit van de kernsyntax van VSA-scopes,
+maar mogen door renderers of weergavecomponenten en exporteurs semantisch worden verwerkt.</p>
+<hr />
 
 
 

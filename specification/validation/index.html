@@ -10,9 +10,13 @@
       
       
       
-        <link rel="canonical" href="https://orthodox-groningen.github.io/VSA-tooling/terminologie/vsa/">
+        <link rel="canonical" href="https://orthodox-groningen.github.io/VSA-tooling/specification/validation/">
       
       
+        <link rel="prev" href="../semantics/">
+      
+      
+        <link rel="next" href="../directives/">
       
       
         
@@ -23,7 +27,7 @@
     
     
       
-        <title>VSA - VSA-tooling — documentatie</title>
+        <title>Validatie - VSA-tooling — documentatie</title>
       
     
     
@@ -66,7 +70,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#vsa" class="md-skip">
+        <a href="#validatie" class="md-skip">
           Ga naar inhoud
         </a>
       
@@ -112,7 +116,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              VSA
+              Validatie
             
           </span>
         </div>
@@ -250,11 +254,13 @@
   
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
-        <a href="../../specification/" class="md-tabs__link">
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../" class="md-tabs__link">
           
   
   
@@ -312,7 +318,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../" class="md-tabs__link">
+      <a href="../../terminologie/" class="md-tabs__link">
         
   
   
@@ -885,28 +891,31 @@
       
   
   
+    
   
   
+  
     
     
     
     
+      
+        
+        
       
       
         
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
         
           
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
-        
-          
-          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
             
   
   
@@ -924,7 +933,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_4">
             <span class="md-nav__icon md-icon"></span>
             
@@ -942,7 +951,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../specification/" class="md-nav__link">
+      <a href="../" class="md-nav__link">
         
   
   
@@ -970,7 +979,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../specification/overview/" class="md-nav__link">
+      <a href="../overview/" class="md-nav__link">
         
   
   
@@ -998,7 +1007,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../specification/syntax/" class="md-nav__link">
+      <a href="../syntax/" class="md-nav__link">
         
   
   
@@ -1026,7 +1035,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../specification/semantics/" class="md-nav__link">
+      <a href="../semantics/" class="md-nav__link">
         
   
   
@@ -1051,10 +1060,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../specification/validation/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Validatie
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -1070,6 +1106,87 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Inhoudsopgave">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Inhoudsopgave
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#6-validatie-en-fouten" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Validatie en fouten
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Validatie en fouten">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-verwerkingspipeline" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1 Verwerkingspipeline
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-syntactische-fouten" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2 Syntactische fouten
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#63-semantische-fouten" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.3 Semantische fouten
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#severity-overrides" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Severity-overrides
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1082,7 +1199,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../specification/directives/" class="md-nav__link">
+      <a href="../directives/" class="md-nav__link">
         
   
   
@@ -1110,7 +1227,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../specification/rendering/" class="md-nav__link">
+      <a href="../rendering/" class="md-nav__link">
         
   
   
@@ -1138,7 +1255,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../specification/cli/" class="md-nav__link">
+      <a href="../cli/" class="md-nav__link">
         
   
   
@@ -1166,7 +1283,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../specification/conformance/" class="md-nav__link">
+      <a href="../conformance/" class="md-nav__link">
         
   
   
@@ -1194,7 +1311,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../specification/error-handling/" class="md-nav__link">
+      <a href="../error-handling/" class="md-nav__link">
         
   
   
@@ -1222,7 +1339,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../specification/examples/" class="md-nav__link">
+      <a href="../examples/" class="md-nav__link">
         
   
   
@@ -1250,7 +1367,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../specification/versioning/" class="md-nav__link">
+      <a href="../versioning/" class="md-nav__link">
         
   
   
@@ -1278,7 +1395,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../specification/traceability/" class="md-nav__link">
+      <a href="../traceability/" class="md-nav__link">
         
   
   
@@ -1306,7 +1423,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../specification/open-points/" class="md-nav__link">
+      <a href="../open-points/" class="md-nav__link">
         
   
   
@@ -1939,7 +2056,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../" class="md-nav__link">
+      <a href="../../terminologie/" class="md-nav__link">
         
   
   
@@ -2124,6 +2241,75 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Inhoudsopgave
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#6-validatie-en-fouten" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Validatie en fouten
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Validatie en fouten">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-verwerkingspipeline" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1 Verwerkingspipeline
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-syntactische-fouten" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2 Syntactische fouten
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#63-semantische-fouten" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.3 Semantische fouten
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#severity-overrides" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Severity-overrides
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -2140,7 +2326,7 @@
 
 
   
-    <a href="https://github.com/orthodox-groningen/VSA-tooling/edit/main/docs/terminologie/vsa.md" title="Wijzig deze pagina" class="md-content__button md-icon" rel="edit">
+    <a href="https://github.com/orthodox-groningen/VSA-tooling/edit/main/docs/specification/validation.md" title="Wijzig deze pagina" class="md-content__button md-icon" rel="edit">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
     </a>
@@ -2148,8 +2334,188 @@
   
 
 
-<h1 id="vsa">VSA<a class="headerlink" href="#vsa" title="Permanent link">&para;</a></h1>
-<p>VSA is de notatie- en toolset waarmee zangstukken in deze repository worden vastgelegd, gevalideerd en naar publiceerbare vormen worden omgezet. Algemeen liturgisch tekstbeheer zonder VSA-syntax valt hier niet onder.</p>
+<h1 id="validatie">Validatie<a class="headerlink" href="#validatie" title="Permanent link">&para;</a></h1>
+<p>Dit document beschrijft de normatieve validatieregels en het severity-model.</p>
+<h2 id="6-validatie-en-fouten">6. Validatie en fouten<a class="headerlink" href="#6-validatie-en-fouten" title="Permanent link">&para;</a></h2>
+<h3 id="61-verwerkingspipeline">6.1 Verwerkingspipeline<a class="headerlink" href="#61-verwerkingspipeline" title="Permanent link">&para;</a></h3>
+<p>Een implementatie verwerkt een VSA-zangstuk bij voorkeur in deze volgorde:</p>
+<div class="highlight"><pre><span></span><code>tekst
+  ↓
+lexen/parsen
+  ↓
+Abstract Syntax Tree (AST)
+  ↓
+syntactische validatie
+  ↓
+semantische validatie
+  ↓
+rendering of export
+</code></pre></div>
+<p>Een renderer of exporteur mag uitsluitend werken op een zangstuk dat syntactisch en semantisch geldig is.</p>
+<h3 id="62-syntactische-fouten">6.2 Syntactische fouten<a class="headerlink" href="#62-syntactische-fouten" title="Permanent link">&para;</a></h3>
+<p>Een syntactische fout treedt op wanneer de invoer niet voldoet aan de grammatica.
+Hier is een aantal voorbeelden:</p>
+<table>
+<thead>
+<tr>
+<th>Voorbeeld</th>
+<th>Fout</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>{tekst</code></td>
+<td>ontbrekende afsluitende accolade</td>
+</tr>
+<tr>
+<td><code>{tekst&amp;&amp;_}</code></td>
+<td>ongeldige modifier-syntax</td>
+</tr>
+<tr>
+<td><code>{tekst _}</code></td>
+<td>whitespace binnen een zangelement-scope</td>
+</tr>
+<tr>
+<td><code>{te/tekst}</code></td>
+<td>modifierteken <code>/</code> binnen zangelement</td>
+</tr>
+<tr>
+<td><code>{}</code></td>
+<td>ontbrekend zangelement</td>
+</tr>
+</tbody>
+</table>
+<p>Syntactische fouten worden gedetecteerd vóór semantische validatie.</p>
+<h3 id="63-semantische-fouten">6.3 Semantische fouten<a class="headerlink" href="#63-semantische-fouten" title="Permanent link">&para;</a></h3>
+<p>Een semantische fout treedt op wanneer de invoer syntactisch geldig is,
+maar niet voldoet aan de betekenisregels van VSA.
+De laatste twee voorbeelden gaan uit van een do-context 
+met parameters <code>do="C4"</code> en <code>mode="major"</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Voorbeeld</th>
+<th>Fout</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>{/&amp;\tekst_}</code></td>
+<td>hoogte-modifier bevat twee posities; lengte-modifier bevat één positie</td>
+</tr>
+<tr>
+<td><code>[//:] tekst [/:]</code></td>
+<td>eindmarkering komt niet overeen met berekende eindtoon, indien eindcontrole actief is</td>
+</tr>
+<tr>
+<td><code>[//:] {+/tekst}</code></td>
+<td>halve stap toegepast op een overgang waarvoor geen verdere onderverdeling is gedefinieerd</td>
+</tr>
+<tr>
+<td><code>[///:] {-\tekst}</code></td>
+<td>halve stap toegepast op een overgang waarvoor geen verdere onderverdeling is gedefinieerd</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="severity-overrides">Severity-overrides<a class="headerlink" href="#severity-overrides" title="Permanent link">&para;</a></h2>
+<p>Onderstaande regels komen uit de bestaande configuratiedocumentatie en horen bij het validatiecontract.</p>
+<h1 id="vsa-configuratie-severity-overrides">VSA configuratie: severity-overrides<a class="headerlink" href="#vsa-configuratie-severity-overrides" title="Permanent link">&para;</a></h1>
+<p>Deze pagina vult de gebruikershandleiding aan.</p>
+<h2 id="waarvoor-gebruik-je-dit">Waarvoor gebruik je dit?<a class="headerlink" href="#waarvoor-gebruik-je-dit" title="Permanent link">&para;</a></h2>
+<p>Gebruik severity-overrides als je sommige semantische aandachtspunten tijdelijk als waarschuwing wilt behandelen.</p>
+<p>Standaard blijft semantiek hard:</p>
+<div class="highlight"><pre><span></span><code>semantic diagnostic = error
+</code></pre></div>
+<p>Met config kun je specifieke foutcodes zachter maken:</p>
+<div class="highlight"><pre><span></span><code>semantic diagnostic = warning
+</code></pre></div>
+<h2 id="voorbeeld-vsatoml">Voorbeeld <code>vsa.toml</code><a class="headerlink" href="#voorbeeld-vsatoml" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><span class="k">[validation.severity]</span>
+<span class="n">VSA-SEMANTIC-MODIFIER-COUNT-MISMATCH</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;warning&quot;</span>
+</code></pre></div>
+<h2 id="geldige-severity-waarden">Geldige severity-waarden<a class="headerlink" href="#geldige-severity-waarden" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Waarde</th>
+<th>Betekenis</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>error</code></td>
+<td>validatie faalt</td>
+</tr>
+<tr>
+<td><code>warning</code></td>
+<td>melding tonen, maar verwerking mag doorgaan</td>
+</tr>
+</tbody>
+</table>
+<h2 id="welke-commandos-gebruiken-dit">Welke commando's gebruiken dit?<a class="headerlink" href="#welke-commandos-gebruiken-dit" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Commando</th>
+<th>Werkt met severity-config?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>vsa validate</code></td>
+<td>ja</td>
+</tr>
+<tr>
+<td><code>vsa process</code></td>
+<td>ja</td>
+</tr>
+<tr>
+<td><code>vsa build-markdown</code></td>
+<td>ja</td>
+</tr>
+<tr>
+<td><code>vsa svg</code></td>
+<td>nee, parseert/render rechtstreeks</td>
+</tr>
+<tr>
+<td><code>vsa blocks</code></td>
+<td>nee, inspecteert blokken</td>
+</tr>
+<tr>
+<td><code>vsa parse</code></td>
+<td>nee, toont parseroutput</td>
+</tr>
+</tbody>
+</table>
+<h2 id="validate">Validate<a class="headerlink" href="#validate" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>vsa validate bestand.vsa --config vsa.toml
+</code></pre></div>
+<p>Bij alleen warnings:</p>
+<div class="highlight"><pre><span></span><code>WARNING: VSA-SEMANTIC-MODIFIER-COUNT-MISMATCH
+</code></pre></div>
+<p>De exitcode is dan <code>0</code>.</p>
+<p>Bij errors blijft de exitcode <code>1</code>.</p>
+<h2 id="process">Process<a class="headerlink" href="#process" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>vsa process input.md generated\vsa --config vsa.toml
+</code></pre></div>
+<p>Bij alleen warnings worden SVG-bestanden gegenereerd.</p>
+<h2 id="build-markdown">Build-markdown<a class="headerlink" href="#build-markdown" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>vsa build-markdown content generated\content static\vsa --config vsa.toml
+</code></pre></div>
+<p>Bij alleen warnings worden Markdown en SVG-bestanden gegenereerd.</p>
+<h2 id="wat-blijft-altijd-hard">Wat blijft altijd hard?<a class="headerlink" href="#wat-blijft-altijd-hard" title="Permanent link">&para;</a></h2>
+<p>Syntax-errors blijven altijd <code>error</code>.</p>
+<p>Dat betekent:</p>
+<div class="highlight"><pre><span></span><code>{onafgesloten
+</code></pre></div>
+<p>blijft validatie en generatie stoppen.</p>
+<h2 id="praktisch-advies">Praktisch advies<a class="headerlink" href="#praktisch-advies" title="Permanent link">&para;</a></h2>
+<p>Gebruik warnings tijdelijk bij migratie of experimenten.</p>
+<p>Gebruik errors voor CI, demo-sites en publicatie wanneer de notatie stabiel moet zijn.</p>
+<h2 id="verouderde-pitchmarker-foutcodes">Verouderde pitchmarker-foutcodes<a class="headerlink" href="#verouderde-pitchmarker-foutcodes" title="Permanent link">&para;</a></h2>
+<p>De oude foutcodes <code>VSA-SEMANTIC-MISSING-FINAL-PITCH-MARKER</code> en <code>VSA-SEMANTIC-EMPTY-FINAL-PITCH-MARKER</code> zijn obsolete.</p>
+<p>Een ontbrekende eindmarkering is toegestaan. Een eindmarkering <code>[:]</code> is geldig en betekent neutrale hoogte, equivalent aan <code>[-:]</code> c.q. <code>[~:]</code>.</p>
 
 
 

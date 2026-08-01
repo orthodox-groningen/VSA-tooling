@@ -10,9 +10,13 @@
       
       
       
-        <link rel="canonical" href="https://orthodox-groningen.github.io/VSA-tooling/terminologie/vsa/">
+        <link rel="canonical" href="https://orthodox-groningen.github.io/VSA-tooling/specification/conformance/">
       
       
+        <link rel="prev" href="../cli/">
+      
+      
+        <link rel="next" href="../error-handling/">
       
       
         
@@ -23,7 +27,7 @@
     
     
       
-        <title>VSA - VSA-tooling — documentatie</title>
+        <title>Conformance - VSA-tooling — documentatie</title>
       
     
     
@@ -66,7 +70,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#vsa" class="md-skip">
+        <a href="#conformance" class="md-skip">
           Ga naar inhoud
         </a>
       
@@ -112,7 +116,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              VSA
+              Conformance
             
           </span>
         </div>
@@ -250,11 +254,13 @@
   
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
-        <a href="../../specification/" class="md-tabs__link">
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../" class="md-tabs__link">
           
   
   
@@ -312,7 +318,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../" class="md-tabs__link">
+      <a href="../../terminologie/" class="md-tabs__link">
         
   
   
@@ -885,28 +891,31 @@
       
   
   
+    
   
   
+  
     
     
     
     
+      
+        
+        
       
       
         
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
         
           
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
-        
-          
-          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
             
   
   
@@ -924,7 +933,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_4">
             <span class="md-nav__icon md-icon"></span>
             
@@ -942,7 +951,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../specification/" class="md-nav__link">
+      <a href="../" class="md-nav__link">
         
   
   
@@ -970,7 +979,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../specification/overview/" class="md-nav__link">
+      <a href="../overview/" class="md-nav__link">
         
   
   
@@ -998,7 +1007,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../specification/syntax/" class="md-nav__link">
+      <a href="../syntax/" class="md-nav__link">
         
   
   
@@ -1026,7 +1035,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../specification/semantics/" class="md-nav__link">
+      <a href="../semantics/" class="md-nav__link">
         
   
   
@@ -1054,7 +1063,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../specification/validation/" class="md-nav__link">
+      <a href="../validation/" class="md-nav__link">
         
   
   
@@ -1082,7 +1091,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../specification/directives/" class="md-nav__link">
+      <a href="../directives/" class="md-nav__link">
         
   
   
@@ -1110,7 +1119,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../specification/rendering/" class="md-nav__link">
+      <a href="../rendering/" class="md-nav__link">
         
   
   
@@ -1138,7 +1147,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../specification/cli/" class="md-nav__link">
+      <a href="../cli/" class="md-nav__link">
         
   
   
@@ -1163,10 +1172,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../specification/conformance/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Conformance
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -1182,6 +1218,37 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Inhoudsopgave">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Inhoudsopgave
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#doel" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Doel
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1194,7 +1261,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../specification/error-handling/" class="md-nav__link">
+      <a href="../error-handling/" class="md-nav__link">
         
   
   
@@ -1222,7 +1289,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../specification/examples/" class="md-nav__link">
+      <a href="../examples/" class="md-nav__link">
         
   
   
@@ -1250,7 +1317,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../specification/versioning/" class="md-nav__link">
+      <a href="../versioning/" class="md-nav__link">
         
   
   
@@ -1278,7 +1345,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../specification/traceability/" class="md-nav__link">
+      <a href="../traceability/" class="md-nav__link">
         
   
   
@@ -1306,7 +1373,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../specification/open-points/" class="md-nav__link">
+      <a href="../open-points/" class="md-nav__link">
         
   
   
@@ -1939,7 +2006,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../" class="md-nav__link">
+      <a href="../../terminologie/" class="md-nav__link">
         
   
   
@@ -2124,6 +2191,25 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Inhoudsopgave
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#doel" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Doel
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -2140,7 +2226,7 @@
 
 
   
-    <a href="https://github.com/orthodox-groningen/VSA-tooling/edit/main/docs/terminologie/vsa.md" title="Wijzig deze pagina" class="md-content__button md-icon" rel="edit">
+    <a href="https://github.com/orthodox-groningen/VSA-tooling/edit/main/docs/specification/conformance.md" title="Wijzig deze pagina" class="md-content__button md-icon" rel="edit">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
     </a>
@@ -2148,8 +2234,82 @@
   
 
 
-<h1 id="vsa">VSA<a class="headerlink" href="#vsa" title="Permanent link">&para;</a></h1>
-<p>VSA is de notatie- en toolset waarmee zangstukken in deze repository worden vastgelegd, gevalideerd en naar publiceerbare vormen worden omgezet. Algemeen liturgisch tekstbeheer zonder VSA-syntax valt hier niet onder.</p>
+<h1 id="conformance">Conformance<a class="headerlink" href="#conformance" title="Permanent link">&para;</a></h1>
+<h2 id="doel">Doel<a class="headerlink" href="#doel" title="Permanent link">&para;</a></h2>
+<p>Dit hoofdstuk definieert wanneer een implementatie conform de VSA-specificatie is.</p>
+<p>Conformance heeft uitsluitend betrekking op het extern waarneembare gedrag van een implementatie. Interne architectuur, datastructuren en programmeertaal zijn volledig implementatie-onafhankelijk.</p>
+<hr />
+<h1 id="conforming-implementation">Conforming implementation<a class="headerlink" href="#conforming-implementation" title="Permanent link">&para;</a></h1>
+<p>Een implementatie mag zichzelf uitsluitend aanduiden als <em>VSA-conform</em> indien alle relevante conformance-eisen uit deze specificatie worden nageleefd.</p>
+<p>Een implementatie hoeft niet noodzakelijk alle onderdelen van VSA te ondersteunen. Conformance wordt daarom per component gedefinieerd.</p>
+<hr />
+<h1 id="conforming-parser">Conforming parser<a class="headerlink" href="#conforming-parser" title="Permanent link">&para;</a></h1>
+<p>Een parser is conform indien deze:</p>
+<ul>
+<li>de normatieve grammatica accepteert;</li>
+<li>alle geldige VSA-documenten correct parseert;</li>
+<li>ongeldige syntax detecteert;</li>
+<li>syntaxfouten rapporteert overeenkomstig de specificatie;</li>
+<li>dezelfde AST produceert als voorgeschreven door de semantiek van de specificatie.</li>
+</ul>
+<p>De interne parserarchitectuur is niet voorgeschreven.</p>
+<hr />
+<h1 id="conforming-validator">Conforming validator<a class="headerlink" href="#conforming-validator" title="Permanent link">&para;</a></h1>
+<p>Een validator is conform indien deze:</p>
+<ul>
+<li>alle normatieve validatieregels toepast;</li>
+<li>fouten classificeert volgens de voorgeschreven severity;</li>
+<li>geen documenten accepteert die volgens de specificatie ongeldig zijn;</li>
+<li>geen geldige documenten afwijst.</li>
+</ul>
+<p>Extra waarschuwingen zijn toegestaan, mits deze niet strijdig zijn met de specificatie.</p>
+<hr />
+<h1 id="conforming-renderer">Conforming renderer<a class="headerlink" href="#conforming-renderer" title="Permanent link">&para;</a></h1>
+<p>Een renderer is conform indien:</p>
+<ul>
+<li>de semantische betekenis van het document behouden blijft;</li>
+<li>alle normatieve renderregels worden gevolgd;</li>
+<li>de relatieve positie van tekst, hoogte- en lengtemarkeringen behouden blijft;</li>
+<li>de geproduceerde uitvoer visueel equivalent is aan de normatieve beschrijving.</li>
+</ul>
+<p>Kleine verschillen in typografie, lettertype, afronding of SVG-optimalisatie zijn toegestaan zolang de betekenis niet verandert.</p>
+<hr />
+<h1 id="conforming-cli">Conforming CLI<a class="headerlink" href="#conforming-cli" title="Permanent link">&para;</a></h1>
+<p>Een command-line interface is conform indien:</p>
+<ul>
+<li>alle normatieve commando's ondersteunt;</li>
+<li>voorgeschreven foutcodes gebruikt;</li>
+<li>de gespecificeerde invoer en uitvoer respecteert;</li>
+<li>dezelfde resultaten produceert als andere conforme implementaties.</li>
+</ul>
+<p>Extra commando's zijn toegestaan zolang zij bestaande functionaliteit niet wijzigen.</p>
+<hr />
+<h1 id="implementatievrijheid">Implementatievrijheid<a class="headerlink" href="#implementatievrijheid" title="Permanent link">&para;</a></h1>
+<p>De specificatie schrijft niet voor:</p>
+<ul>
+<li>programmeertaal;</li>
+<li>datastructuren;</li>
+<li>parsertechniek;</li>
+<li>rendererarchitectuur;</li>
+<li>interne API's;</li>
+<li>opslagformaat;</li>
+<li>buildproces.</li>
+</ul>
+<p>Implementaties mogen hierin vrij afwijken zolang het extern waarneembare gedrag conform deze specificatie blijft.</p>
+<hr />
+<h1 id="extensies">Extensies<a class="headerlink" href="#extensies" title="Permanent link">&para;</a></h1>
+<p>Implementaties mogen aanvullende functionaliteit aanbieden.</p>
+<p>Een extensie mag echter:</p>
+<ul>
+<li>de betekenis van bestaande VSA-documenten niet wijzigen;</li>
+<li>geldige VSA-documenten niet ongeldig maken;</li>
+<li>normatief gedrag niet overschrijven.</li>
+</ul>
+<p>Extensies behoren duidelijk als zodanig herkenbaar te zijn.</p>
+<hr />
+<h1 id="referentie-implementatie">Referentie-implementatie<a class="headerlink" href="#referentie-implementatie" title="Permanent link">&para;</a></h1>
+<p>De officiële VSA-tooling is de referentie-implementatie van deze specificatie.</p>
+<p>De referentie-implementatie dient als praktische bevestiging van de specificatie, maar vormt niet de normatieve bron. Bij eventuele verschillen is de specificatie leidend.</p>
 
 
 

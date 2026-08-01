@@ -1,0 +1,3217 @@
+
+<!doctype html>
+<html lang="nl" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Documentatie van de VSA-toolchain (parser, validatie, SVG/MusicXML, hergebruik)">
+      
+      
+      
+        <link rel="canonical" href="https://orthodox-groningen.github.io/VSA-tooling/docs-preview/specification/semantics/">
+      
+      
+        <link rel="prev" href="../syntax/">
+      
+      
+        <link rel="next" href="../validation/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Semantiek - VSA-tooling — documentatie</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#semantiek" class="md-skip">
+          Ga naar inhoud
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+        <aside class="md-banner">
+          <div class="md-banner__inner md-grid md-typeset">
+            
+            
+  
+  <strong>Preview</strong>
+   — branch <code>focus-on-tooling</code>
+  , gebouwd 2026-08-01 20:35 UTC.
+  <a href="https://orthodox-groningen.github.io/VSA-tooling/docs/">Live documentatie (main)</a>.
+  
+
+          </div>
+          
+        </aside>
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="VSA-tooling — documentatie" class="md-header__button md-logo" aria-label="VSA-tooling — documentatie" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            VSA-tooling — documentatie
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Semantiek
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Zoeken" placeholder="Zoeken" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Zoeken">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Leegmaken" aria-label="Leegmaken" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Zoeken initialiseren
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/orthodox-groningen/VSA-tooling" title="Ga naar repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    orthodox-groningen/VSA-tooling
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../getting-started/" class="md-tabs__link">
+          
+  
+  
+  Starten
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../guides/" class="md-tabs__link">
+          
+  
+  
+  Handleidingen
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../" class="md-tabs__link">
+          
+  
+  
+  Specificatie
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../reference/" class="md-tabs__link">
+          
+  
+  
+  Referentie
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../guides/reuse-vsa-tooling/" class="md-tabs__link">
+          
+  
+  
+  Integratie
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../plans/" class="md-tabs__link">
+          
+  
+  
+  Plannen
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigatie" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="VSA-tooling — documentatie" class="md-nav__button md-logo" aria-label="VSA-tooling — documentatie" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    VSA-tooling — documentatie
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/orthodox-groningen/VSA-tooling" title="Ga naar repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    orthodox-groningen/VSA-tooling
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Starten
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Starten
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting started
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/quick-start/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quick start
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Handleidingen
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Handleidingen
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Guides
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/user-guide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    VSA Tool gebruikershandleiding
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/cli-taken/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CLI-taken
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/validation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Validatie
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/musicxml/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MusicXML
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/musicxml-export/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MusicXML exporteren
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/rendering-fonts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Rendering-fonts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/parochie-lokaal-vsa/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Parochie-lokaal — VSA-tooling
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/testing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Testvoorbeelden en regressietests
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/testing-and-regression/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Testvoorbeelden en regressietests voor VSA Tooling
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/liturgikon-notatie/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Liturgikon-notatie
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_12" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_12" id="__nav_3_12_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hugo (demo)
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_12_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_12">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Hugo (demo)
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/hugo-workflow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hugo-workflow
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/hugo-site-structure/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hugo demo-site structuur
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/hugo-navigation-placeholders/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hugo navigatie-placeholders
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/tev2-hugo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TEv2 in de Hugo-demo
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Specificatie
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Specificatie
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Specificatie
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overzicht
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../syntax/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Syntax
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Semantiek
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Semantiek
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Inhoudsopgave">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Inhoudsopgave
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#5-semantiek" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Semantiek
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Semantiek">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-overzicht" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 Overzicht
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-muzikale-positie" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 Muzikale positie
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53-impliciete-modifiers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3 Impliciete modifiers
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#54-samengestelde-modifiers-en-melisma" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.4 Samengestelde modifiers en melisma
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#55-do-context" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.5 Do-context
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#56-toonladder-en-toonladdergraden" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.6 Toonladder en toonladdergraden
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#57-modusdefinitie" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.7 Modusdefinitie
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5.7 Modusdefinitie">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#majeurmodus" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Majeurmodus
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#natuurlijke-mineurmodus" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Natuurlijke mineurmodus
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#andere-modi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Andere modi
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#58-interpretatie-van-ehms" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.8 Interpretatie van EHMs
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5.8 Interpretatie van EHMs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#basisbewegingen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Basisbewegingen
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#halftoon-prefix-combinaties-voorbeelden" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Halftoon-prefix combinaties (voorbeelden)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#59-geldigheid-van-halftoon-prefix-combinaties" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.9 Geldigheid van halftoon-prefix combinaties
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#510-interpretatie-van-elms" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.10 Interpretatie van ELMs
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#511-absolute-en-relatieve-toonhoogte" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.11 Absolute en relatieve toonhoogte
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#512-toonhoogte-markeringen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.12 Toonhoogte-markeringen
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#513-tekstmarkeringen-buiten-scopes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.13 Tekstmarkeringen buiten scopes
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../validation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Validatie
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../directives/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Directives en document-samenstelling
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../rendering/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Rendering en export
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cli/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CLI-contract
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../conformance/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Conformance
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../error-handling/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Error Handling
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../examples/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Voorbeelden en niet-normatieve toelichting
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../versioning/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Versioning
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../traceability/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Traceerbaarheid
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../open-points/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Open specificatiepunten
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Referentie
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Referentie
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Referentie
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/cli/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CLI-referentie
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/grammar/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Grammatica-referentie
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/tokens/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tokenreferentie
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/metadata/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Metadatareferentie
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/config/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Configuratiereferentie
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/diagnostics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Diagnostics-referentie
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/outputs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Outputreferentie
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/include-vsa/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    @include-vsa referentie
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/traceability/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Traceerbaarheid
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Integratie
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Integratie
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/reuse-vsa-tooling/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    VSA-tooling gebruiken vanuit andere repositories
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Plannen
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Plannen
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../plans/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Plans
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../plans/uitkleden-vsa-tooling/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Plan: VSA-tooling uitkleden tot tooling + docs-site
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../plans/uitgaveprofielen/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Plan: Samenstelling, uitgaveprofielen en export-includes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../plans/gebruikseisen-dragers/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Gebruikseisen dragers (papier / tablet / telefoon)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../plans/vsa-polyphony-proposal/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Voorstel voor toekomstige meerstemmige uitbreiding van VSA
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Inhoudsopgave">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Inhoudsopgave
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#5-semantiek" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Semantiek
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Semantiek">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-overzicht" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 Overzicht
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-muzikale-positie" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 Muzikale positie
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53-impliciete-modifiers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3 Impliciete modifiers
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#54-samengestelde-modifiers-en-melisma" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.4 Samengestelde modifiers en melisma
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#55-do-context" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.5 Do-context
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#56-toonladder-en-toonladdergraden" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.6 Toonladder en toonladdergraden
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#57-modusdefinitie" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.7 Modusdefinitie
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5.7 Modusdefinitie">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#majeurmodus" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Majeurmodus
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#natuurlijke-mineurmodus" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Natuurlijke mineurmodus
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#andere-modi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Andere modi
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#58-interpretatie-van-ehms" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.8 Interpretatie van EHMs
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5.8 Interpretatie van EHMs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#basisbewegingen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Basisbewegingen
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#halftoon-prefix-combinaties-voorbeelden" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Halftoon-prefix combinaties (voorbeelden)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#59-geldigheid-van-halftoon-prefix-combinaties" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.9 Geldigheid van halftoon-prefix combinaties
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#510-interpretatie-van-elms" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.10 Interpretatie van ELMs
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#511-absolute-en-relatieve-toonhoogte" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.11 Absolute en relatieve toonhoogte
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#512-toonhoogte-markeringen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.12 Toonhoogte-markeringen
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#513-tekstmarkeringen-buiten-scopes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.13 Tekstmarkeringen buiten scopes
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+  
+                  
+
+
+  
+    <a href="https://github.com/orthodox-groningen/VSA-tooling/edit/main/docs/specification/semantics.md" title="Wijzig deze pagina" class="md-content__button md-icon" rel="edit">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="semantiek">Semantiek<a class="headerlink" href="#semantiek" title="Permanent link">&para;</a></h1>
+<p>Dit document beschrijft de betekenis van syntactisch geldige VSA-notatie.</p>
+<p>Bronbasis: <code>docs/spec/vsa-spec-v1.0.1.md</code>, aangevuld met latere documenten over hoogte-markeringen en control tokens.</p>
+<h2 id="5-semantiek">5. Semantiek<a class="headerlink" href="#5-semantiek" title="Permanent link">&para;</a></h2>
+<h3 id="51-overzicht">5.1 Overzicht<a class="headerlink" href="#51-overzicht" title="Permanent link">&para;</a></h3>
+<p>De VSA-notatie wordt geïnterpreteerd via een gelaagd toonmodel:</p>
+<div class="highlight"><pre><span></span><code>blokmetadata (`do`, `mode`, enz.)
+    ↓
+do-context
+    ↓
+modus
+    ↓
+toonladder
+    ↓
+EHM-sequenties
+    ↓
+muzikale posities
+    ↓
+rendering of export
+</code></pre></div>
+<p>De absolute toonhoogte maakt geen deel uit van de VSA-kernsyntax. Zij wordt, indien nodig voor interpretatie of MusicXML-export, geleverd via de blokmetadata.</p>
+<h3 id="52-muzikale-positie">5.2 Muzikale positie<a class="headerlink" href="#52-muzikale-positie" title="Permanent link">&para;</a></h3>
+<p>Een muzikale positie is de kleinste muzikale eenheid binnen VSA.</p>
+<p>Elke muzikale positie heeft:</p>
+<ul>
+<li>een relatieve toonhoogtebeweging, bepaald door één EHM;</li>
+<li>een duur, bepaald door één ELM;</li>
+<li>een koppeling aan één zangelement.</li>
+</ul>
+<p>Een zangelement-scope zonder samengestelde modifiers bevat precies één muzikale positie.</p>
+<p>Voorbeeld:</p>
+<div class="highlight"><pre><span></span><code>{/tekst_}
+</code></pre></div>
+<p>Dit betekent:</p>
+<ul>
+<li>zangelement: <code>tekst</code>;</li>
+<li>toonhoogtebeweging: <code>/</code>;</li>
+<li>duur: <code>_</code>.</li>
+</ul>
+<h3 id="53-impliciete-modifiers">5.3 Impliciete modifiers<a class="headerlink" href="#53-impliciete-modifiers" title="Permanent link">&para;</a></h3>
+<p>Als in een scope geen hoogte-modifier aanwezig is, wordt impliciet één <code>~</code> gebruikt.</p>
+<p>Als in een scope geen lengte-modifier aanwezig is, wordt impliciet één <code>~</code> gebruikt.</p>
+<p>Voorbeeld:</p>
+<div class="highlight"><pre><span></span><code>{tekst}
+</code></pre></div>
+<p>is semantisch gelijk aan:</p>
+<div class="highlight"><pre><span></span><code>{~tekst~}
+</code></pre></div>
+<p>Als slechts één van beide modifiers aanwezig is, bepaalt die modifier het aantal muzikale posities. De ontbrekende modifier wordt aangevuld met evenveel <code>~</code>-posities.</p>
+<p>Voorbeeld:</p>
+<div class="highlight"><pre><span></span><code>{/&amp;\tekst}
+</code></pre></div>
+<p>is semantisch gelijk aan:</p>
+<div class="highlight"><pre><span></span><code>{/&amp;\tekst~&amp;~}
+</code></pre></div>
+<h3 id="54-samengestelde-modifiers-en-melisma">5.4 Samengestelde modifiers en melisma<a class="headerlink" href="#54-samengestelde-modifiers-en-melisma" title="Permanent link">&para;</a></h3>
+<p>Wanneer een zangelement meerdere muzikale posities bevat, wordt hetzelfde zangelement over meerdere opeenvolgende tonen gezongen. Dit heet een <strong>melisma</strong>.</p>
+<p>Een melisma wordt gespecificeerd door 
+- een (optionele) hoogte modifier, die is samengesteld uit een rij EHMs die gescheiden zijn door <code>&amp;</code>.
+- een zangelement
+- een (optionele) lengte modifier, die is samengesteld uit een rij ELMs die gescheiden zijn door <code>&amp;</code>.</p>
+<p>Voor een melisma moet (natuurlijk) altijd tenminste of de hoogte modifier, of de lengte modifier aanwezig zijn; immers, als ze er beide niet zijn is het gewoon een gezongen toon. Als een van beide ontbreekt, wordt hij geacht een rij <code>~</code> te zijn (gescheiden door <code>&amp;</code>s) met evenveel muzikale posities als de gespecificeerde modifier.</p>
+<p>Voorbeelden:</p>
+<div class="highlight"><pre><span></span><code>{-&amp;/tekst~&amp;_}
+</code></pre></div>
+<p>Dit bevat twee muzikale posities:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Positie</th>
+<th>EHM</th>
+<th>ELM</th>
+<th>Betekenis</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">1</td>
+<td><code>-</code></td>
+<td><code>~</code></td>
+<td>zelfde toonhoogte, standaardduur</td>
+</tr>
+<tr>
+<td style="text-align: center;">2</td>
+<td><code>/</code></td>
+<td><code>_</code></td>
+<td>één ladderstap omhoog, dubbele duur</td>
+</tr>
+</tbody>
+</table>
+<p>Het zangelement <code>tekst</code> wordt over beide posities gezongen.</p>
+<p>Als zowel een hoogte-modifier als een lengte-modifier aanwezig zijn, moeten zij hetzelfde aantal muzikale posities bevatten.</p>
+<h3 id="55-do-context">5.5 Do-context<a class="headerlink" href="#55-do-context" title="Permanent link">&para;</a></h3>
+<p>De do-context is de grondtooncontext waarbinnen relatieve toonhoogtebewegingen worden geïnterpreteerd. In de zangpraktijk wordt deze context doorgaans niet expliciet genoteerd: de koorleid(st)er bepaalt de inzet op basis van de lokale traditie en vaak op basis van de toon waarop priester of diaken inzet. Koorleden volgen die context in de praktijk meestal stilzwijgend.</p>
+<p>Voor visuele VSA-rendering hoeft de absolute do-context daarom niet in de zangtekst aanwezig te zijn. Voor MusicXML-export, automatische weergave of afspelen is wel een absolute starttoon nodig. Die wordt gespecificeerd in de Hugo blokmetadata:</p>
+<div class="highlight"><pre><span></span><code>::: vsa-notatie
+do=&quot;C4&quot;
+mode=&quot;major&quot;
+:::
+</code></pre></div>
+<p>Hier levert <code>do="C4"</code> de absolute starttoon voor interpretatie en export. De toonhoogte-markeringen in de VSA-tekst zelf bevatten uitsluitend relatieve hoogte-modifiers.</p>
+<h3 id="56-toonladder-en-toonladdergraden">5.6 Toonladder en toonladdergraden<a class="headerlink" href="#56-toonladder-en-toonladdergraden" title="Permanent link">&para;</a></h3>
+<p>Binnen een do-context wordt een geordende reeks toonladdergraden afgeleid:</p>
+<div class="highlight"><pre><span></span><code>do → re → mi → fa → sol → la → ti → do
+</code></pre></div>
+<p>Deze graden vormen een cyclische structuur.</p>
+<p>De afstand tussen opeenvolgende graden is niet uniform. De stapstructuur wordt bepaald door de gekozen modus.</p>
+<h3 id="57-modusdefinitie">5.7 Modusdefinitie<a class="headerlink" href="#57-modusdefinitie" title="Permanent link">&para;</a></h3>
+<p>Een modus definieert de intervalstructuur van de toonladder binnen een do-context.</p>
+<p>Een modus specificeert voor elke overgang tussen opeenvolgende graden of deze overgang een grote stap of een kleine stap is.</p>
+<p>De zeven overgangen zijn:</p>
+<div class="highlight"><pre><span></span><code>do→re, re→mi, mi→fa, fa→sol, sol→la, la→ti, ti→do
+</code></pre></div>
+<p>Een modus kan worden weergegeven als een patroon van zeven staptypen:</p>
+<div class="highlight"><pre><span></span><code>G = grote stap
+K = kleine stap
+</code></pre></div>
+<h4 id="majeurmodus">Majeurmodus<a class="headerlink" href="#majeurmodus" title="Permanent link">&para;</a></h4>
+<p>In de majeurmodus zijn de kleine stappen:</p>
+<ul>
+<li><code>mi → fa</code>;</li>
+<li><code>ti → do</code>.</li>
+</ul>
+<p>Representatie:</p>
+<div class="highlight"><pre><span></span><code>G G K G G G K
+</code></pre></div>
+<h4 id="natuurlijke-mineurmodus">Natuurlijke mineurmodus<a class="headerlink" href="#natuurlijke-mineurmodus" title="Permanent link">&para;</a></h4>
+<p>In de natuurlijke mineurmodus zijn de kleine stappen:</p>
+<ul>
+<li><code>re → mi</code>;</li>
+<li><code>sol → la</code>.</li>
+</ul>
+<p>Representatie:</p>
+<div class="highlight"><pre><span></span><code>G K G G K G G
+</code></pre></div>
+<h4 id="andere-modi">Andere modi<a class="headerlink" href="#andere-modi" title="Permanent link">&para;</a></h4>
+<p>Andere modi kunnen worden gedefinieerd door het stappatroon te wijzigen.</p>
+<p>Voorbeelden:</p>
+<div class="highlight"><pre><span></span><code>Dorisch:   G K G G G K G
+Frygisch:  K G G G K G G
+Lydisch:   G G G K G G K
+</code></pre></div>
+<p>De do-context bepaalt dus het startpunt. De modus bepaalt de interne structuur van de toonladder.</p>
+<h3 id="58-interpretatie-van-ehms">5.8 Interpretatie van EHMs<a class="headerlink" href="#58-interpretatie-van-ehms" title="Permanent link">&para;</a></h3>
+<p>Een EHM is een operator op de actuele toonladderpositie. Een EHM bestaat uit een optionele halftoon-prefix en een basisbeweging. Het semantische effect is:</p>
+<div class="highlight"><pre><span></span><code>netto beweging = basisbeweging + prefix_delta
+</code></pre></div>
+<p>waarbij <code>prefix_delta</code> gelijk is aan +½ toon voor prefix <code>#</code> (of alias <code>+</code>, <code>♯</code>) en −½ toon voor prefix <code>b</code> (of alias <code>♭</code>).</p>
+<h4 id="basisbewegingen">Basisbewegingen<a class="headerlink" href="#basisbewegingen" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>EHM</th>
+<th>Semantisch effect</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>/</code></td>
+<td>verplaats één graad omhoog</td>
+</tr>
+<tr>
+<td><code>//</code></td>
+<td>verplaats twee graden omhoog</td>
+</tr>
+<tr>
+<td><code>///</code></td>
+<td>verplaats drie graden omhoog</td>
+</tr>
+<tr>
+<td><code>////</code></td>
+<td>verplaats vier graden omhoog</td>
+</tr>
+<tr>
+<td><code>/////</code></td>
+<td>verplaats vijf graden omhoog</td>
+</tr>
+<tr>
+<td><code>\</code></td>
+<td>verplaats één graad omlaag</td>
+</tr>
+<tr>
+<td><code>\\</code></td>
+<td>verplaats twee graden omlaag</td>
+</tr>
+<tr>
+<td><code>\\\</code></td>
+<td>verplaats drie graden omlaag</td>
+</tr>
+<tr>
+<td><code>\\\\</code></td>
+<td>verplaats vier graden omlaag</td>
+</tr>
+<tr>
+<td><code>\\\\\</code></td>
+<td>verplaats vijf graden omlaag</td>
+</tr>
+<tr>
+<td><code>-</code></td>
+<td>behoud de huidige toonhoogte</td>
+</tr>
+<tr>
+<td><code>~</code></td>
+<td>behoud de huidige toonhoogte</td>
+</tr>
+</tbody>
+</table>
+<h4 id="halftoon-prefix-combinaties-voorbeelden">Halftoon-prefix combinaties (voorbeelden)<a class="headerlink" href="#halftoon-prefix-combinaties-voorbeelden" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>EHM</th>
+<th>Basisbeweging</th>
+<th>Prefix</th>
+<th>Netto effect</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>#/</code></td>
+<td>+1 graad</td>
+<td>+½</td>
+<td>+1 graad + ½ toon omhoog</td>
+</tr>
+<tr>
+<td><code>b/</code></td>
+<td>+1 graad</td>
+<td>−½</td>
+<td>+1 graad − ½ toon (= +½ toon)</td>
+</tr>
+<tr>
+<td><code>#\</code></td>
+<td>−1 graad</td>
+<td>+½</td>
+<td>−1 graad + ½ toon (= −½ toon)</td>
+</tr>
+<tr>
+<td><code>b\</code></td>
+<td>−1 graad</td>
+<td>−½</td>
+<td>−1 graad − ½ toon</td>
+</tr>
+<tr>
+<td><code>#-</code></td>
+<td>0 graden</td>
+<td>+½</td>
+<td>+½ toon (chromatisch omhoog)</td>
+</tr>
+<tr>
+<td><code>b-</code></td>
+<td>0 graden</td>
+<td>−½</td>
+<td>−½ toon (chromatisch omlaag)</td>
+</tr>
+</tbody>
+</table>
+<p>EHMs worden sequentieel toegepast. Bij blokmetadata <code>do="C4"</code> en <code>mode="major"</code> produceert de EHM-reeks <code>/</code>, <code>\\</code>, <code>///</code> de toonreeks:</p>
+<div class="highlight"><pre><span></span><code>C4 → D4 → B3 → E4
+</code></pre></div>
+<p>Hierbij wordt uitgegaan van opeenvolgende toonladderstappen binnen de gekozen modus.</p>
+<h3 id="59-geldigheid-van-halftoon-prefix-combinaties">5.9 Geldigheid van halftoon-prefix combinaties<a class="headerlink" href="#59-geldigheid-van-halftoon-prefix-combinaties" title="Permanent link">&para;</a></h3>
+<p>Een EHM met halftoon-prefix is semantisch geldig als het resulterende interval (basisbeweging ± ½ toon) zinvol is binnen de do-context en modus. Een prefix mag nooit standalone voorkomen; hij moet altijd onmiddellijk voorafgaan aan een basisbeweging.</p>
+<p>Semantische geldigheid vereist dat:</p>
+<ol>
+<li>de basisbeweging zelf geldig is binnen de huidige toonladderpositie en modus;</li>
+<li>de aanvullende ½ toon een gedefinieerd interval oplevert (de modus staat een dergelijke chromatische aanpassing toe).</li>
+</ol>
+<p>Als aan voorwaarde 2 niet is voldaan, is de EHM een semantische fout.</p>
+<p>Voorbeeld van zo'n semantische fout:</p>
+<div class="highlight"><pre><span></span><code>::: vsa-notatie
+do=&quot;C4&quot;
+mode=&quot;major&quot;
+
+[//:] {#/tekst}
+:::
+</code></pre></div>
+<p>Als de actuele positie op <code>mi</code> staat en de overgang <code>mi → fa</code> al een kleine stap is, dan brengt <code>#/</code> de melodie een extra ½ toon buiten de toonladder. Als de modus hiervoor geen gedefinieerde subpositie heeft, is dit een semantische fout.</p>
+<p>De onderscheiding tussen een halftoon-prefix op een basisbeweging en een zelfstandige chromatische aanpassing (<code>#-</code>, <code>b-</code>) heeft ook semantisch gevolgen voor MusicXML-export: <code>b-</code> beschrijft een chromatische verschuiving op de huidige positie, terwijl <code>b/</code> een combinatie is van een ladderstap en een halvering.</p>
+<h3 id="510-interpretatie-van-elms">5.10 Interpretatie van ELMs<a class="headerlink" href="#510-interpretatie-van-elms" title="Permanent link">&para;</a></h3>
+<p>Een ELM bepaalt de duur van één muzikale positie ten opzichte van de standaardduur.</p>
+<table>
+<thead>
+<tr>
+<th>ELM</th>
+<th>Duur</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>-</code></td>
+<td>1 × standaardduur</td>
+</tr>
+<tr>
+<td><code>~</code></td>
+<td>1 × standaardduur</td>
+</tr>
+<tr>
+<td><code>_</code></td>
+<td>2 × standaardduur</td>
+</tr>
+<tr>
+<td><code>_.</code></td>
+<td>3 x standaardduur</td>
+</tr>
+<tr>
+<td><code>__</code></td>
+<td>4 × standaardduur</td>
+</tr>
+<tr>
+<td><code>.</code></td>
+<td>1/2 × standaardduur</td>
+</tr>
+<tr>
+<td><code>..</code></td>
+<td>1/4 × standaardduur</td>
+</tr>
+</tbody>
+</table>
+<p>Voor MusicXML-export wordt de standaardduur gemapt naar een kwartnoot, tenzij extern anders gespecificeerd.</p>
+<h3 id="511-absolute-en-relatieve-toonhoogte">5.11 Absolute en relatieve toonhoogte<a class="headerlink" href="#511-absolute-en-relatieve-toonhoogte" title="Permanent link">&para;</a></h3>
+<p>VSA legt toonhoogten primair relatief vast. Elke muzikale positie bevat een EHM die de toonhoogteverandering ten opzichte van de voorgaande muzikale positie specificeert.</p>
+<p>Een absolute toonhoogte kan nodig zijn voor interpretatie, validatie of MusicXML-export, maar staat niet in de toonhoogte-markering. Zij wordt via blokmetadata geleverd.</p>
+<p>Voorbeeld:</p>
+<div class="highlight"><pre><span></span><code>::: vsa-notatie
+do=&quot;C4&quot;
+mode=&quot;major&quot;
+
+[:] {\O}, {/Hei__}{\&amp;/li}{/ge} {\&amp;/God__&amp;__}
+:::
+</code></pre></div>
+<p>produceert, bij interpretatie in majeur met <code>C4</code> als <code>do</code>, de toonreeks:</p>
+<div class="highlight"><pre><span></span><code>B3 C4 B3 C4 D4 C4 D4
+</code></pre></div>
+<h3 id="512-toonhoogte-markeringen">5.12 Toonhoogte-markeringen<a class="headerlink" href="#512-toonhoogte-markeringen" title="Permanent link">&para;</a></h3>
+<p>Een toonhoogte-markering bevat alleen een relatieve hoogte-modifier en geeft daarmee aan op welke toonladdergraad de zang zicht bevindt ten opzichte van de do-context op de positie van die toonhoogte-markering.</p>
+<p>Elke hoogte-markering geeft een (toon)hoogte aan ten opzichte van de basistoon ('do').</p>
+<p>Voor de eerste hoogte-markering wordt de hoogte (of basistoon) extern gegeven. 
+In de praktijk van het zingen wordt dit aangegeven door de koorlei(st)er.
+Binnen de context van conversies, bijvoorbeeld naar MusicXML, wordt dat gespecificeerd 
+door de feitelijke conversie - dat is buiten de scope van VSA.</p>
+<p>Elke volgende hoogte-markering geeft aan dat de zang op die positie op die hoogte moet zitten. 
+Een latere hoogte-markering vervangt dus niet de eerdere markering als documentstructuur, maar introduceert een nieuwe toonhoogte-positie in dezelfde melodische lijn.</p>
+<p>Het is een gangbare praktijk om voor een zangstuk een hoogte-markering te schrijven,
+en om dit ook aan het eind van een zangstuk te doen (ter controle voor zangers).
+Indien twee zangstukken elkaar opvolgen, kan dat vanuit VSA perspectief dan ook
+gezien worden als een enkel zangstuk met tussenliggende hoogte-markeringen.</p>
+<p>Een beginmarkering <code>[:]</code> betekent dat de zang op de do-context begint. Een markering <code>[//:]</code> betekent dat de zang twee ladderstappen boven de do-context begint.</p>
+<p>Een eindmarkering kan worden gebruikt als visuele afsluiting en als semantische eindcontrole. Een ontbrekende eindmarkering is toegestaan en betekent dat er geen expliciete eindtooncontrole is genoteerd. Een eindmarkering <code>[:]</code> is niet leeg in semantische zin: zij betekent dat de zang op de do-context eindigt en is equivalent aan <code>[-:]</code> c.q. <code>[~:]</code>. Een markering <code>[//:]</code> betekent dat de zang twee ladderstappen boven de do-context eindigt. Een implementatie mag een aanwezige eindmarkering controleren tegen de berekende eindtoon van het zangstuk.</p>
+<h3 id="513-tekstmarkeringen-buiten-scopes">5.13 Tekstmarkeringen buiten scopes<a class="headerlink" href="#513-tekstmarkeringen-buiten-scopes" title="Permanent link">&para;</a></h3>
+<p>Bepaalde tekstfragmenten buiten scopes kunnen door implementaties semantisch worden geïnterpreteerd.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Tekst</th>
+<th>Betekenis</th>
+<th>MusicXML</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><code>*</code></td>
+<td>rustpunt of ademhaling</td>
+<td>ademteken</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>/</code></td>
+<td>frasescheiding of maatstreep</td>
+<td>maatstreep</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>//</code></td>
+<td>sterke frasescheiding</td>
+<td>dubbele maatstreep</td>
+</tr>
+</tbody>
+</table>
+<p>Deze markeringen maken geen deel uit van de kernsyntax van VSA-scopes,
+maar mogen door renderers of weergavecomponenten en exporteurs semantisch worden verwerkt.</p>
+<hr />
+
+
+
+
+
+
+
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Laatst geüpdatet">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="8 juli 2026 08:56:10 UTC">8 juli 2026</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
+
+
+
+
+
+                
+  
+  
+  
+  
+  
+  <p class="page-git-date">Bijgewerkt: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="8 juli 2026 08:56:10 UTC">8 juli 2026</span></p>
+  
+
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Terug naar boven
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://github.com/orthodox-groningen/VSA-tooling" target="_blank" rel="noopener" title="VSA-tooling op GitHub" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="https://orthodox-groningen.github.io/bron/" target="_blank" rel="noopener" title="bron — documentatie" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M384 512H96c-53 0-96-43-96-96V96C0 43 43 0 96 0h304c26.5 0 48 21.5 48 48v288c0 20.9-13.4 38.7-32 45.3V448c17.7 0 32 14.3 32 32s-14.3 32-32 32zM96 384c-17.7 0-32 14.3-32 32s14.3 32 32 32h256v-64zm32-232c0 13.3 10.7 24 24 24h176c13.3 0 24-10.7 24-24s-10.7-24-24-24H152c-13.3 0-24 10.7-24 24m24 72c-13.3 0-24 10.7-24 24s10.7 24 24 24h176c13.3 0 24-10.7 24-24s-10.7-24-24-24z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="https://orthodox-groningen.github.io/VSA-demo/" target="_blank" rel="noopener" title="VSA-demo (presentatiesite)" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M351.9 280H161c2.9 64.5 17.2 123.9 37.5 167.4 11.4 24.5 23.7 41.8 35.1 52.4 11.2 10.5 18.9 12.2 22.9 12.2s11.7-1.7 22.9-12.2c11.4-10.6 23.7-28 35.1-52.4 20.3-43.5 34.6-102.9 37.5-167.4zm-191-48h190.9c-2.8-64.5-17.1-123.9-37.4-167.4-11.4-24.4-23.7-41.8-35.1-52.4C268.1 1.7 260.4 0 256.4 0s-11.7 1.7-22.9 12.2c-11.4 10.6-23.7 28-35.1 52.4-20.3 43.5-34.6 102.9-37.5 167.4m-48 0c3.5-85.6 25.6-165.1 57.9-217.3C78.7 47.3 10.9 131.2 1.5 232zM1.5 280c9.4 100.8 77.2 184.7 169.3 217.3-32.3-52.2-54.4-131.7-57.9-217.3zm398.4 0c-3.5 85.6-25.6 165.1-57.9 217.3 92.1-32.7 159.9-116.5 169.3-217.3zm111.4-48C501.9 131.2 434.1 47.3 342 14.7c32.3 52.2 54.4 131.7 57.9 217.3z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.top", "navigation.instant", "navigation.tracking", "navigation.sections", "navigation.expand", "search.suggest", "search.highlight", "content.action.edit"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Gekopieerd naar klembord", "clipboard.copy": "Kopi\u00ebren naar klembord", "search.result.more.one": "1 extra overeenkomst op deze pagina", "search.result.more.other": "# extra overeenkomsten op deze pagina", "search.result.none": "Geen overeenkomende documenten", "search.result.one": "1 overeenkomende document", "search.result.other": "# overeenkomende documenten", "search.result.placeholder": "Typ om te beginnen met zoeken", "search.result.term.missing": "Ontbreekt", "select.version": "Selecteer versie"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>

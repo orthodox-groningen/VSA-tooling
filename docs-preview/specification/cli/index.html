@@ -1,0 +1,3055 @@
+
+<!doctype html>
+<html lang="nl" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Documentatie van de VSA-toolchain (parser, validatie, SVG/MusicXML, hergebruik)">
+      
+      
+      
+        <link rel="canonical" href="https://orthodox-groningen.github.io/VSA-tooling/docs-preview/specification/cli/">
+      
+      
+        <link rel="prev" href="../rendering/">
+      
+      
+        <link rel="next" href="../conformance/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>CLI-contract - VSA-tooling — documentatie</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#cli-contract" class="md-skip">
+          Ga naar inhoud
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+        <aside class="md-banner">
+          <div class="md-banner__inner md-grid md-typeset">
+            
+            
+  
+  <strong>Preview</strong>
+   — branch <code>focus-on-tooling</code>
+  , gebouwd 2026-08-01 20:35 UTC.
+  <a href="https://orthodox-groningen.github.io/VSA-tooling/docs/">Live documentatie (main)</a>.
+  
+
+          </div>
+          
+        </aside>
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="VSA-tooling — documentatie" class="md-header__button md-logo" aria-label="VSA-tooling — documentatie" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            VSA-tooling — documentatie
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              CLI-contract
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Zoeken" placeholder="Zoeken" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Zoeken">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Leegmaken" aria-label="Leegmaken" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Zoeken initialiseren
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/orthodox-groningen/VSA-tooling" title="Ga naar repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    orthodox-groningen/VSA-tooling
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../getting-started/" class="md-tabs__link">
+          
+  
+  
+  Starten
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../guides/" class="md-tabs__link">
+          
+  
+  
+  Handleidingen
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../" class="md-tabs__link">
+          
+  
+  
+  Specificatie
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../reference/" class="md-tabs__link">
+          
+  
+  
+  Referentie
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../guides/reuse-vsa-tooling/" class="md-tabs__link">
+          
+  
+  
+  Integratie
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../plans/" class="md-tabs__link">
+          
+  
+  
+  Plannen
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigatie" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="VSA-tooling — documentatie" class="md-nav__button md-logo" aria-label="VSA-tooling — documentatie" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    VSA-tooling — documentatie
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/orthodox-groningen/VSA-tooling" title="Ga naar repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    orthodox-groningen/VSA-tooling
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Starten
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Starten
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting started
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/quick-start/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quick start
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Handleidingen
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Handleidingen
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Guides
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/user-guide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    VSA Tool gebruikershandleiding
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/cli-taken/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CLI-taken
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/validation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Validatie
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/musicxml/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MusicXML
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/musicxml-export/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MusicXML exporteren
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/rendering-fonts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Rendering-fonts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/parochie-lokaal-vsa/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Parochie-lokaal — VSA-tooling
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/testing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Testvoorbeelden en regressietests
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/testing-and-regression/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Testvoorbeelden en regressietests voor VSA Tooling
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/liturgikon-notatie/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Liturgikon-notatie
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_12" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_12" id="__nav_3_12_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hugo (demo)
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_12_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_12">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Hugo (demo)
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/hugo-workflow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hugo-workflow
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/hugo-site-structure/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hugo demo-site structuur
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/hugo-navigation-placeholders/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hugo navigatie-placeholders
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/tev2-hugo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TEv2 in de Hugo-demo
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Specificatie
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Specificatie
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Specificatie
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overzicht
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../syntax/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Syntax
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../semantics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Semantiek
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../validation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Validatie
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../directives/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Directives en document-samenstelling
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../rendering/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Rendering en export
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CLI-contract
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../conformance/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Conformance
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../error-handling/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Error Handling
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../examples/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Voorbeelden en niet-normatieve toelichting
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../versioning/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Versioning
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../traceability/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Traceerbaarheid
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../open-points/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Open specificatiepunten
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Referentie
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Referentie
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Referentie
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/cli/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CLI-referentie
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/grammar/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Grammatica-referentie
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/tokens/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tokenreferentie
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/metadata/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Metadatareferentie
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/config/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Configuratiereferentie
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/diagnostics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Diagnostics-referentie
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/outputs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Outputreferentie
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/include-vsa/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    @include-vsa referentie
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/traceability/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Traceerbaarheid
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Integratie
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Integratie
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/reuse-vsa-tooling/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    VSA-tooling gebruiken vanuit andere repositories
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Plannen
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Plannen
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../plans/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Plans
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../plans/uitkleden-vsa-tooling/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Plan: VSA-tooling uitkleden tot tooling + docs-site
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../plans/uitgaveprofielen/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Plan: Samenstelling, uitgaveprofielen en export-includes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../plans/gebruikseisen-dragers/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Gebruikseisen dragers (papier / tablet / telefoon)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../plans/vsa-polyphony-proposal/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Voorstel voor toekomstige meerstemmige uitbreiding van VSA
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Inhoudsopgave">
+  
+  
+  
+    
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+  
+                  
+
+
+  
+    <a href="https://github.com/orthodox-groningen/VSA-tooling/edit/main/docs/specification/cli.md" title="Wijzig deze pagina" class="md-content__button md-icon" rel="edit">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="cli-contract">CLI-contract<a class="headerlink" href="#cli-contract" title="Permanent link">&para;</a></h1>
+<p>Dit document beschrijft het functionele contract van de VSA-CLI.</p>
+<p>De taakgerichte uitleg hoort in <code>docs/guides/</code>; dit document legt vast welke commando's, exitcodes en hoofdgedragingen onderdeel zijn van de toolinginterface.</p>
+<h1 id="vsa-cli-referentie">VSA CLI referentie<a class="headerlink" href="#vsa-cli-referentie" title="Permanent link">&para;</a></h1>
+<p>Deze referentie beschrijft elk commando afzonderlijk.</p>
+<p>Gebruik de gebruikershandleiding (<code>docs/guides/user-guide.md</code>) voor taakgerichte uitleg.</p>
+<h2 id="algemene-uitgangspunten">Algemene uitgangspunten<a class="headerlink" href="#algemene-uitgangspunten" title="Permanent link">&para;</a></h2>
+<p>De voorbeelden gaan uit van:</p>
+<div class="highlight"><pre><span></span><code>cd /d C:\Git\orthodox-groningen\VSA-tooling
+</code></pre></div>
+<p>Paden zijn relatief aan die map, tenzij je absolute paden gebruikt.</p>
+<h2 id="exitcodes">Exitcodes<a class="headerlink" href="#exitcodes" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Exitcode</th>
+<th>Betekenis</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>0</code></td>
+<td>commando succesvol</td>
+</tr>
+<tr>
+<td><code>1</code></td>
+<td>fout gevonden of commando mislukt</td>
+</tr>
+</tbody>
+</table>
+<p>In CMD kun je de exitcode direct na een commando bekijken met:</p>
+<div class="highlight"><pre><span></span><code>echo %ERRORLEVEL%
+</code></pre></div>
+<h2 id="vsa-version"><code>vsa --version</code><a class="headerlink" href="#vsa-version" title="Permanent link">&para;</a></h2>
+<h3 id="doel">Doel<a class="headerlink" href="#doel" title="Permanent link">&para;</a></h3>
+<p>Toon de geïnstalleerde versie van de tool.</p>
+<h3 id="gebruik">Gebruik<a class="headerlink" href="#gebruik" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>vsa --version
+</code></pre></div>
+<h3 id="output">Output<a class="headerlink" href="#output" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>vsa 0.1.0
+</code></pre></div>
+<h3 id="fouten">Fouten<a class="headerlink" href="#fouten" title="Permanent link">&para;</a></h3>
+<p>Als <code>vsa</code> niet gevonden wordt:</p>
+<div class="highlight"><pre><span></span><code>&#39;vsa&#39; is not recognized...
+</code></pre></div>
+<p>Dan is de tool niet geïnstalleerd in de actieve Python-omgeving.</p>
+<p>Oplossing:</p>
+<div class="highlight"><pre><span></span><code>scripts\bootstrap.cmd
+</code></pre></div>
+<h2 id="vsa-validate-bestand-of-map"><code>vsa validate &lt;bestand-of-map&gt;</code><a class="headerlink" href="#vsa-validate-bestand-of-map" title="Permanent link">&para;</a></h2>
+<h3 id="doel_1">Doel<a class="headerlink" href="#doel_1" title="Permanent link">&para;</a></h3>
+<p>Controleer of VSA-invoer bruikbaar is voor verdere verwerking.</p>
+<h3 id="gebruik_1">Gebruik<a class="headerlink" href="#gebruik_1" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>vsa validate &lt;bestand-of-map&gt;
+</code></pre></div>
+<h3 id="inputvarianten">Inputvarianten<a class="headerlink" href="#inputvarianten" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Input</th>
+<th>Voorbeeld</th>
+<th>Gedrag</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>.vsa</code> bestand</td>
+<td><code>examples\minimal\050_svg_demo.vsa</code></td>
+<td>controleert één VSA-bestand</td>
+</tr>
+<tr>
+<td><code>.md</code> bestand</td>
+<td><code>pagina.md</code></td>
+<td>controleert VSA-blokken in Markdown</td>
+</tr>
+<tr>
+<td>map</td>
+<td><code>examples\hugo-demo\content-source</code></td>
+<td>zoekt recursief naar <code>.vsa</code>, <code>.md</code>, <code>.markdown</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="wat-wordt-gecontroleerd">Wat wordt gecontroleerd?<a class="headerlink" href="#wat-wordt-gecontroleerd" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Fase</th>
+<th>Controle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>syntaxscan</td>
+<td>accolades, lege scopes, whitespace in scopes, pitch-markers</td>
+</tr>
+<tr>
+<td>parser</td>
+<td>of de VSA naar interne structuur kan worden omgezet</td>
+</tr>
+<tr>
+<td>semantiek</td>
+<td>of modifier-aantallen logisch bij elkaar passen</td>
+</tr>
+</tbody>
+</table>
+<h3 id="succesoutput">Succesoutput<a class="headerlink" href="#succesoutput" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>OK
+</code></pre></div>
+<h3 id="foutoutput">Foutoutput<a class="headerlink" href="#foutoutput" title="Permanent link">&para;</a></h3>
+<p>Vorm:</p>
+<div class="highlight"><pre><span></span><code>bron:regel:kolom: FOUTCODE: uitleg
+</code></pre></div>
+<p>Voorbeeld:</p>
+<div class="highlight"><pre><span></span><code>examples\demo.md:blok-1:1:1: VSA-SYNTAX-EMPTY-SCOPE: Scope zonder zangelement.
+</code></pre></div>
+<h3 id="veelvoorkomende-foutcodes">Veelvoorkomende foutcodes<a class="headerlink" href="#veelvoorkomende-foutcodes" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Foutcode</th>
+<th>Betekenis</th>
+<th>Wat doen?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>VSA-SYNTAX-EMPTY-SCOPE</code></td>
+<td><code>{}</code> gevonden</td>
+<td>zet tekst of zangelement in de scope</td>
+</tr>
+<tr>
+<td><code>VSA-SYNTAX-UNCLOSED-SCOPE</code></td>
+<td><code>{tekst</code> zonder <code>}</code></td>
+<td>sluit de scope af</td>
+</tr>
+<tr>
+<td><code>VSA-SYNTAX-UNEXPECTED-CLOSE-BRACE</code></td>
+<td>losse <code>}</code></td>
+<td>verwijder of herstel de scope</td>
+</tr>
+<tr>
+<td><code>VSA-SYNTAX-WHITESPACE-IN-SCOPE</code></td>
+<td>spatie binnen <code>{...}</code></td>
+<td>splits tekst buiten de scope of gebruik correcte notatie</td>
+</tr>
+<tr>
+<td><code>VSA-SYNTAX-UNCLOSED-PITCH-MARKER</code></td>
+<td><code>[</code> zonder <code>]</code></td>
+<td>sluit pitch-marker af</td>
+</tr>
+<tr>
+<td><code>VSA-SYNTAX-PITCH-MARKER-MISSING-COLON</code></td>
+<td>pitch-marker zonder <code>:</code></td>
+<td>gebruik bijvoorbeeld <code>[:]</code></td>
+</tr>
+<tr>
+<td><code>VSA-SEMANTIC-MODIFIER-COUNT-MISMATCH</code></td>
+<td>aantallen hoogte/lengteposities passen niet</td>
+<td>controleer samengestelde modifiers</td>
+</tr>
+</tbody>
+</table>
+<h3 id="wat-doe-je-bij-fouten">Wat doe je bij fouten?<a class="headerlink" href="#wat-doe-je-bij-fouten" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Open het genoemde bestand.</li>
+<li>Zoek het genoemde VSA-blok.</li>
+<li>Corrigeer de genoemde fout.</li>
+<li>Draai hetzelfde commando opnieuw.</li>
+<li>Herhaal tot <code>OK</code>.</li>
+</ol>
+<h2 id="vsa-parse-bestandvsa-ast"><code>vsa parse &lt;bestand.vsa&gt; --ast</code><a class="headerlink" href="#vsa-parse-bestandvsa-ast" title="Permanent link">&para;</a></h2>
+<h3 id="doel_2">Doel<a class="headerlink" href="#doel_2" title="Permanent link">&para;</a></h3>
+<p>Debuggen hoe de parser een VSA-bestand intern ziet.</p>
+<h3 id="gebruik_2">Gebruik<a class="headerlink" href="#gebruik_2" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>vsa parse &lt;bestand.vsa&gt; --ast
+</code></pre></div>
+<h3 id="parameters">Parameters<a class="headerlink" href="#parameters" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Verplicht</th>
+<th>Betekenis</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>&lt;bestand.vsa&gt;</code></td>
+<td>ja</td>
+<td>VSA-bestand</td>
+</tr>
+<tr>
+<td><code>--ast</code></td>
+<td>nee</td>
+<td>toon de interne structuur als JSON</td>
+</tr>
+</tbody>
+</table>
+<h3 id="output-met-ast">Output met <code>--ast</code><a class="headerlink" href="#output-met-ast" title="Permanent link">&para;</a></h3>
+<p>JSON met nodes.</p>
+<p>Voorbeeldvorm:</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Document&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;nodes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ScopeNode&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;height_modifier&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;/&quot;</span><span class="p">],</span>
+<span class="w">      </span><span class="nt">&quot;text&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Hei&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;length_modifier&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;_&quot;</span><span class="p">]</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="output-zonder-ast">Output zonder <code>--ast</code><a class="headerlink" href="#output-zonder-ast" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>OK
+</code></pre></div>
+<p>als het bestand gelezen kan worden.</p>
+<h3 id="wanneer-gebruiken">Wanneer gebruiken?<a class="headerlink" href="#wanneer-gebruiken" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Gebruik</th>
+<th>Ja/nee</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>gewone eindcontrole</td>
+<td>nee, gebruik <code>validate</code></td>
+</tr>
+<tr>
+<td>parserdebugging</td>
+<td>ja</td>
+</tr>
+<tr>
+<td>regressietest maken</td>
+<td>ja</td>
+</tr>
+<tr>
+<td>controleren of tekst als <code>TextNode</code> wordt gezien</td>
+<td>ja</td>
+</tr>
+</tbody>
+</table>
+<h2 id="vsa-blocks-bestandmd-json"><code>vsa blocks &lt;bestand.md&gt; [--json]</code><a class="headerlink" href="#vsa-blocks-bestandmd-json" title="Permanent link">&para;</a></h2>
+<h3 id="doel_3">Doel<a class="headerlink" href="#doel_3" title="Permanent link">&para;</a></h3>
+<p>VSA-blokken in een Markdownbestand vinden.</p>
+<h3 id="gebruik_3">Gebruik<a class="headerlink" href="#gebruik_3" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>vsa blocks &lt;bestand.md&gt;
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>vsa blocks &lt;bestand.md&gt; --json
+</code></pre></div>
+<h3 id="parameters_1">Parameters<a class="headerlink" href="#parameters_1" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Verplicht</th>
+<th>Betekenis</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>&lt;bestand.md&gt;</code></td>
+<td>ja</td>
+<td>Markdownbestand</td>
+</tr>
+<tr>
+<td><code>--json</code></td>
+<td>nee</td>
+<td>toon uitgebreide machineleesbare output</td>
+</tr>
+</tbody>
+</table>
+<h3 id="output-zonder-json">Output zonder <code>--json</code><a class="headerlink" href="#output-zonder-json" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>1 VSA-blok(ken) gevonden
+</code></pre></div>
+<h3 id="output-met-json">Output met <code>--json</code><a class="headerlink" href="#output-met-json" title="Permanent link">&para;</a></h3>
+<p>Per blok:</p>
+<table>
+<thead>
+<tr>
+<th>Veld</th>
+<th>Betekenis</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>start_line</code></td>
+<td>beginregel in Markdownbestand</td>
+</tr>
+<tr>
+<td><code>end_line</code></td>
+<td>eindregel in Markdownbestand</td>
+</tr>
+<tr>
+<td><code>metadata</code></td>
+<td>blokinstellingen</td>
+</tr>
+<tr>
+<td><code>body</code></td>
+<td>VSA-inhoud</td>
+</tr>
+<tr>
+<td><code>ast</code></td>
+<td>interne parserstructuur</td>
+</tr>
+</tbody>
+</table>
+<h3 id="wanneer-gebruiken_1">Wanneer gebruiken?<a class="headerlink" href="#wanneer-gebruiken_1" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Situatie</th>
+<th>Gebruik</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>controleren of blokken herkend worden</td>
+<td>zonder <code>--json</code></td>
+</tr>
+<tr>
+<td>metadata/body/AST bekijken</td>
+<td>met <code>--json</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="vsa-svg-inputvsa-outputsvg"><code>vsa svg &lt;input.vsa&gt; &lt;output.svg&gt;</code><a class="headerlink" href="#vsa-svg-inputvsa-outputsvg" title="Permanent link">&para;</a></h2>
+<h3 id="doel_4">Doel<a class="headerlink" href="#doel_4" title="Permanent link">&para;</a></h3>
+<p>Maak een SVG-afbeelding van één VSA-bestand.</p>
+<h3 id="gebruik_4">Gebruik<a class="headerlink" href="#gebruik_4" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>vsa svg &lt;input.vsa&gt; &lt;output.svg&gt;
+</code></pre></div>
+<h3 id="parameters_2">Parameters<a class="headerlink" href="#parameters_2" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Verplicht</th>
+<th>Betekenis</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>&lt;input.vsa&gt;</code></td>
+<td>ja</td>
+<td>VSA-bronbestand</td>
+</tr>
+<tr>
+<td><code>&lt;output.svg&gt;</code></td>
+<td>ja</td>
+<td>doelbestand voor SVG</td>
+</tr>
+</tbody>
+</table>
+<h3 id="opties">Opties<a class="headerlink" href="#opties" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Optie</th>
+<th>Default</th>
+<th>Betekenis</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>--max-line-width &lt;getal&gt;</code></td>
+<td><code>vsa.toml</code> of <code>800</code></td>
+<td>maximale regelbreedte</td>
+</tr>
+</tbody>
+</table>
+<h3 id="output_1">Output<a class="headerlink" href="#output_1" title="Permanent link">&para;</a></h3>
+<p>Een bestand:</p>
+<div class="highlight"><pre><span></span><code>output.svg
+</code></pre></div>
+<h3 id="let-op">Let op<a class="headerlink" href="#let-op" title="Permanent link">&para;</a></h3>
+<p>Dit commando verwerkt geen Markdownblokken.</p>
+<p>Voor Markdown gebruik je:</p>
+<div class="highlight"><pre><span></span><code>vsa process
+</code></pre></div>
+<p>of:</p>
+<div class="highlight"><pre><span></span><code>vsa build-markdown
+</code></pre></div>
+<h2 id="vsa-process-bestand-of-map-output-dir"><code>vsa process &lt;bestand-of-map&gt; &lt;output-dir&gt;</code><a class="headerlink" href="#vsa-process-bestand-of-map-output-dir" title="Permanent link">&para;</a></h2>
+<h3 id="doel_5">Doel<a class="headerlink" href="#doel_5" title="Permanent link">&para;</a></h3>
+<p>SVG-bestanden genereren uit VSA-blokken in Markdown.</p>
+<h3 id="gebruik_5">Gebruik<a class="headerlink" href="#gebruik_5" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>vsa process &lt;bestand-of-map&gt; &lt;output-dir&gt;
+</code></pre></div>
+<h3 id="inputvarianten_1">Inputvarianten<a class="headerlink" href="#inputvarianten_1" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Input</th>
+<th>Gedrag</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>één Markdownbestand</td>
+<td>verwerkt alle VSA-blokken in dat bestand</td>
+</tr>
+<tr>
+<td>map</td>
+<td>zoekt recursief naar Markdownbestanden</td>
+</tr>
+</tbody>
+</table>
+<h3 id="parameters_3">Parameters<a class="headerlink" href="#parameters_3" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Verplicht</th>
+<th>Betekenis</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>&lt;bestand-of-map&gt;</code></td>
+<td>ja</td>
+<td>invoer</td>
+</tr>
+<tr>
+<td><code>&lt;output-dir&gt;</code></td>
+<td>ja</td>
+<td>map voor gegenereerde SVG's</td>
+</tr>
+</tbody>
+</table>
+<h3 id="opties_1">Opties<a class="headerlink" href="#opties_1" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Optie</th>
+<th>Default</th>
+<th>Betekenis</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>--no-validate</code></td>
+<td>niet actief</td>
+<td>validatie overslaan</td>
+</tr>
+<tr>
+<td><code>--max-line-width &lt;getal&gt;</code></td>
+<td><code>vsa.toml</code> of <code>800</code></td>
+<td>SVG-regelbreedte</td>
+</tr>
+</tbody>
+</table>
+<h3 id="output_2">Output<a class="headerlink" href="#output_2" title="Permanent link">&para;</a></h3>
+<p>Alleen SVG-bestanden.</p>
+<p>Geen Markdown wordt herschreven.</p>
+<h3 id="wanneer-gebruiken_2">Wanneer gebruiken?<a class="headerlink" href="#wanneer-gebruiken_2" title="Permanent link">&para;</a></h3>
+<p>Gebruik dit als je:</p>
+<ul>
+<li>alleen SVG's wilt;</li>
+<li>wilt controleren hoe SVG-bestanden eruitzien;</li>
+<li>nog geen Hugo-Markdown wilt genereren.</li>
+</ul>
+<h2 id="vsa-build-markdown-input-dir-output-dir-assets-dir"><code>vsa build-markdown &lt;input-dir&gt; &lt;output-dir&gt; &lt;assets-dir&gt;</code><a class="headerlink" href="#vsa-build-markdown-input-dir-output-dir-assets-dir" title="Permanent link">&para;</a></h2>
+<h3 id="doel_6">Doel<a class="headerlink" href="#doel_6" title="Permanent link">&para;</a></h3>
+<p>Maak Hugo-geschikte Markdown en SVG-bestanden.</p>
+<h3 id="gebruik_6">Gebruik<a class="headerlink" href="#gebruik_6" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>vsa build-markdown &lt;input-dir&gt; &lt;output-dir&gt; &lt;assets-dir&gt;
+</code></pre></div>
+<h3 id="parameters_4">Parameters<a class="headerlink" href="#parameters_4" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Verplicht</th>
+<th>Betekenis</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>&lt;input-dir&gt;</code></td>
+<td>ja</td>
+<td>bronmap met handmatig geschreven Markdown</td>
+</tr>
+<tr>
+<td><code>&lt;output-dir&gt;</code></td>
+<td>ja</td>
+<td>doelmap voor gegenereerde Markdown</td>
+</tr>
+<tr>
+<td><code>&lt;assets-dir&gt;</code></td>
+<td>ja</td>
+<td>doelmap voor gegenereerde SVG-bestanden</td>
+</tr>
+</tbody>
+</table>
+<h3 id="output_3">Output<a class="headerlink" href="#output_3" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Output</th>
+<th>Voorbeeld</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Markdown</td>
+<td><code>generated\content\zondag\toon-1.md</code></td>
+</tr>
+<tr>
+<td>SVG</td>
+<td><code>generated\static\vsa\zondag-toon-1-block-1.svg</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="wat-wordt-vervangen">Wat wordt vervangen?<a class="headerlink" href="#wat-wordt-vervangen" title="Permanent link">&para;</a></h3>
+<p>In bron-Markdown:</p>
+<div class="highlight"><pre><span></span><code>::: vsa-notatie
+{tekst}
+:::
+</code></pre></div>
+<p>wordt in output-Markdown:</p>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">img</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;vsa-notation&quot;</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;/vsa/demo-block-1.svg&quot;</span> <span class="na">alt</span><span class="o">=</span><span class="s">&quot;VSA notatie&quot;</span><span class="p">&gt;</span>
+</code></pre></div>
+<p>of:</p>
+<div class="highlight"><pre><span></span><code>{{&lt; vsa src=&quot;/vsa/demo-block-1.svg&quot; &gt;}}
+</code></pre></div>
+<h3 id="opties_2">Opties<a class="headerlink" href="#opties_2" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Optie</th>
+<th>Default</th>
+<th>Betekenis</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>--assets-url-prefix &lt;prefix&gt;</code></td>
+<td><code>vsa.toml</code> of <code>/vsa</code></td>
+<td>URL-prefix in Markdown</td>
+</tr>
+<tr>
+<td><code>--max-line-width &lt;getal&gt;</code></td>
+<td><code>vsa.toml</code> of <code>800</code></td>
+<td>SVG-regelbreedte</td>
+</tr>
+<tr>
+<td><code>--output-mode img</code></td>
+<td><code>vsa.toml</code> of <code>img</code></td>
+<td>gebruik <code>&lt;img&gt;</code></td>
+</tr>
+<tr>
+<td><code>--output-mode shortcode</code></td>
+<td><code>vsa.toml</code> of <code>img</code></td>
+<td>gebruik Hugo shortcode</td>
+</tr>
+</tbody>
+</table>
+<h3 id="padvoorbeelden">Padvoorbeelden<a class="headerlink" href="#padvoorbeelden" title="Permanent link">&para;</a></h3>
+<p>Commando:</p>
+<div class="highlight"><pre><span></span><code>vsa build-markdown examples\hugo-demo\content-source generated\content generated\static\vsa
+</code></pre></div>
+<p>Betekenis:</p>
+<table>
+<thead>
+<tr>
+<th>Deel</th>
+<th>Pad</th>
+<th>Betekenis</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>input</td>
+<td><code>examples\hugo-demo\content-source</code></td>
+<td>bron</td>
+</tr>
+<tr>
+<td>output</td>
+<td><code>generated\content</code></td>
+<td>nieuwe Markdown</td>
+</tr>
+<tr>
+<td>assets</td>
+<td><code>generated\static\vsa</code></td>
+<td>SVG-bestanden</td>
+</tr>
+</tbody>
+</table>
+<h3 id="wat-doe-je-bij-problemen">Wat doe je bij problemen?<a class="headerlink" href="#wat-doe-je-bij-problemen" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Probleem</th>
+<th>Controle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>build stopt met fout</td>
+<td>draai <code>vsa validate &lt;input-dir&gt;</code></td>
+</tr>
+<tr>
+<td>afbeelding niet zichtbaar</td>
+<td>controleer <code>assets-url-prefix</code></td>
+</tr>
+<tr>
+<td>shortcode zichtbaar als tekst</td>
+<td>controleer Hugo shortcode-bestand</td>
+</tr>
+<tr>
+<td>oude output blijft zichtbaar</td>
+<td>verwijder <code>generated</code> en bouw opnieuw</td>
+</tr>
+</tbody>
+</table>
+<h2 id="vsatoml"><code>vsa.toml</code><a class="headerlink" href="#vsatoml" title="Permanent link">&para;</a></h2>
+<h3 id="doel_7">Doel<a class="headerlink" href="#doel_7" title="Permanent link">&para;</a></h3>
+<p>Projectdefaults vastleggen.</p>
+<h3 id="voorbeeld">Voorbeeld<a class="headerlink" href="#voorbeeld" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="k">[rendering]</span>
+<span class="n">max-line-width</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">800</span>
+
+<span class="k">[hugo]</span>
+<span class="n">assets-url-prefix</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;/vsa&quot;</span>
+<span class="n">output-mode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;img&quot;</span>
+
+<span class="c1"># Alternatief:</span>
+<span class="c1"># output-mode = &quot;shortcode&quot;</span>
+</code></pre></div>
+<h3 id="defaults">Defaults<a class="headerlink" href="#defaults" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Instelling</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>max-line-width</code></td>
+<td><code>800</code></td>
+</tr>
+<tr>
+<td><code>assets-url-prefix</code></td>
+<td><code>/vsa</code></td>
+</tr>
+<tr>
+<td><code>output-mode</code></td>
+<td><code>img</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="voorrang">Voorrang<a class="headerlink" href="#voorrang" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>CLI-optie
+  ↓
+vsa.toml
+  ↓
+default
+</code></pre></div>
+<h2 id="scripts">Scripts<a class="headerlink" href="#scripts" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Script</th>
+<th>Wat doet het?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>scripts\bootstrap.cmd</code></td>
+<td>installeert lokale omgeving</td>
+</tr>
+<tr>
+<td><code>scripts\test.cmd</code></td>
+<td>draait tests</td>
+</tr>
+<tr>
+<td><code>scripts\ci.cmd</code></td>
+<td>draait lokale CI</td>
+</tr>
+<tr>
+<td><code>scripts\build-preview.cmd</code></td>
+<td>bouwt preview</td>
+</tr>
+<tr>
+<td><code>scripts\build-production.cmd</code></td>
+<td>bouwt productie-kandidaat</td>
+</tr>
+<tr>
+<td><code>scripts\build-artifacts.cmd</code></td>
+<td>maakt lokale artifacts</td>
+</tr>
+<tr>
+<td><code>scripts\serve-hugo.cmd</code></td>
+<td>start Hugo-server</td>
+</tr>
+</tbody>
+</table>
+<h2 id="diagnosevolgorde">Diagnosevolgorde<a class="headerlink" href="#diagnosevolgorde" title="Permanent link">&para;</a></h2>
+<p>Bij problemen:</p>
+<div class="highlight"><pre><span></span><code>vsa validate &lt;input&gt;
+</code></pre></div>
+<p>Daarna:</p>
+<div class="highlight"><pre><span></span><code>scripts\test.cmd
+</code></pre></div>
+<p>Daarna eventueel:</p>
+<div class="highlight"><pre><span></span><code>vsa blocks &lt;bestand.md&gt; --json
+</code></pre></div>
+<p>En als rendering vreemd is:</p>
+<div class="highlight"><pre><span></span><code>vsa svg &lt;bestand.vsa&gt; output.svg
+start output.svg
+</code></pre></div>
+
+
+
+
+
+
+
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Laatst geüpdatet">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="1 augustus 2026 07:04:26 UTC">1 augustus 2026</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
+
+
+
+
+
+                
+  
+  
+  
+  
+  
+  <p class="page-git-date">Bijgewerkt: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="1 augustus 2026 07:04:26 UTC">1 augustus 2026</span></p>
+  
+
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Terug naar boven
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://github.com/orthodox-groningen/VSA-tooling" target="_blank" rel="noopener" title="VSA-tooling op GitHub" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="https://orthodox-groningen.github.io/bron/" target="_blank" rel="noopener" title="bron — documentatie" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M384 512H96c-53 0-96-43-96-96V96C0 43 43 0 96 0h304c26.5 0 48 21.5 48 48v288c0 20.9-13.4 38.7-32 45.3V448c17.7 0 32 14.3 32 32s-14.3 32-32 32zM96 384c-17.7 0-32 14.3-32 32s14.3 32 32 32h256v-64zm32-232c0 13.3 10.7 24 24 24h176c13.3 0 24-10.7 24-24s-10.7-24-24-24H152c-13.3 0-24 10.7-24 24m24 72c-13.3 0-24 10.7-24 24s10.7 24 24 24h176c13.3 0 24-10.7 24-24s-10.7-24-24-24z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="https://orthodox-groningen.github.io/VSA-demo/" target="_blank" rel="noopener" title="VSA-demo (presentatiesite)" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M351.9 280H161c2.9 64.5 17.2 123.9 37.5 167.4 11.4 24.5 23.7 41.8 35.1 52.4 11.2 10.5 18.9 12.2 22.9 12.2s11.7-1.7 22.9-12.2c11.4-10.6 23.7-28 35.1-52.4 20.3-43.5 34.6-102.9 37.5-167.4zm-191-48h190.9c-2.8-64.5-17.1-123.9-37.4-167.4-11.4-24.4-23.7-41.8-35.1-52.4C268.1 1.7 260.4 0 256.4 0s-11.7 1.7-22.9 12.2c-11.4 10.6-23.7 28-35.1 52.4-20.3 43.5-34.6 102.9-37.5 167.4m-48 0c3.5-85.6 25.6-165.1 57.9-217.3C78.7 47.3 10.9 131.2 1.5 232zM1.5 280c9.4 100.8 77.2 184.7 169.3 217.3-32.3-52.2-54.4-131.7-57.9-217.3zm398.4 0c-3.5 85.6-25.6 165.1-57.9 217.3 92.1-32.7 159.9-116.5 169.3-217.3zm111.4-48C501.9 131.2 434.1 47.3 342 14.7c32.3 52.2 54.4 131.7 57.9 217.3z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.top", "navigation.instant", "navigation.tracking", "navigation.sections", "navigation.expand", "search.suggest", "search.highlight", "content.action.edit"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Gekopieerd naar klembord", "clipboard.copy": "Kopi\u00ebren naar klembord", "search.result.more.one": "1 extra overeenkomst op deze pagina", "search.result.more.other": "# extra overeenkomsten op deze pagina", "search.result.none": "Geen overeenkomende documenten", "search.result.one": "1 overeenkomende document", "search.result.other": "# overeenkomende documenten", "search.result.placeholder": "Typ om te beginnen met zoeken", "search.result.term.missing": "Ontbreekt", "select.version": "Selecteer versie"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>

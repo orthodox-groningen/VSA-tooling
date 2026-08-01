@@ -1,0 +1,4343 @@
+
+<!doctype html>
+<html lang="nl" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Documentatie van de VSA-toolchain (parser, validatie, SVG/MusicXML, hergebruik)">
+      
+      
+      
+        <link rel="canonical" href="https://orthodox-groningen.github.io/VSA-tooling/docs-preview/plans/uitgaveprofielen/">
+      
+      
+        <link rel="prev" href="../uitkleden-vsa-tooling/">
+      
+      
+        <link rel="next" href="../gebruikseisen-dragers/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Plan: Samenstelling, uitgaveprofielen en export-includes - VSA-tooling — documentatie</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#plan-samenstelling-uitgaveprofielen-en-export-includes" class="md-skip">
+          Ga naar inhoud
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+        <aside class="md-banner">
+          <div class="md-banner__inner md-grid md-typeset">
+            
+            
+  
+  <strong>Preview</strong>
+   — branch <code>focus-on-tooling</code>
+  , gebouwd 2026-08-01 20:35 UTC.
+  <a href="https://orthodox-groningen.github.io/VSA-tooling/docs/">Live documentatie (main)</a>.
+  
+
+          </div>
+          
+        </aside>
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="VSA-tooling — documentatie" class="md-header__button md-logo" aria-label="VSA-tooling — documentatie" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            VSA-tooling — documentatie
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Plan: Samenstelling, uitgaveprofielen en export-includes
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Zoeken" placeholder="Zoeken" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Zoeken">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Leegmaken" aria-label="Leegmaken" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Zoeken initialiseren
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/orthodox-groningen/VSA-tooling" title="Ga naar repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    orthodox-groningen/VSA-tooling
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../getting-started/" class="md-tabs__link">
+          
+  
+  
+  Starten
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../guides/" class="md-tabs__link">
+          
+  
+  
+  Handleidingen
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../specification/" class="md-tabs__link">
+          
+  
+  
+  Specificatie
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../reference/" class="md-tabs__link">
+          
+  
+  
+  Referentie
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../guides/reuse-vsa-tooling/" class="md-tabs__link">
+          
+  
+  
+  Integratie
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../" class="md-tabs__link">
+          
+  
+  
+  Plannen
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigatie" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="VSA-tooling — documentatie" class="md-nav__button md-logo" aria-label="VSA-tooling — documentatie" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    VSA-tooling — documentatie
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/orthodox-groningen/VSA-tooling" title="Ga naar repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    orthodox-groningen/VSA-tooling
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Starten
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Starten
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting started
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/quick-start/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quick start
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Handleidingen
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Handleidingen
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Guides
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/user-guide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    VSA Tool gebruikershandleiding
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/cli-taken/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CLI-taken
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/validation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Validatie
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/musicxml/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MusicXML
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/musicxml-export/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MusicXML exporteren
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/rendering-fonts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Rendering-fonts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/parochie-lokaal-vsa/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Parochie-lokaal — VSA-tooling
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/testing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Testvoorbeelden en regressietests
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/testing-and-regression/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Testvoorbeelden en regressietests voor VSA Tooling
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/liturgikon-notatie/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Liturgikon-notatie
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_12" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_12" id="__nav_3_12_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hugo (demo)
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_12_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_12">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Hugo (demo)
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/hugo-workflow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hugo-workflow
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/hugo-site-structure/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hugo demo-site structuur
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/hugo-navigation-placeholders/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hugo navigatie-placeholders
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/tev2-hugo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TEv2 in de Hugo-demo
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Specificatie
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Specificatie
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../specification/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Specificatie
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../specification/overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overzicht
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../specification/syntax/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Syntax
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../specification/semantics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Semantiek
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../specification/validation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Validatie
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../specification/directives/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Directives en document-samenstelling
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../specification/rendering/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Rendering en export
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../specification/cli/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CLI-contract
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../specification/conformance/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Conformance
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../specification/error-handling/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Error Handling
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../specification/examples/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Voorbeelden en niet-normatieve toelichting
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../specification/versioning/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Versioning
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../specification/traceability/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Traceerbaarheid
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../specification/open-points/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Open specificatiepunten
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Referentie
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Referentie
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Referentie
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/cli/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CLI-referentie
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/grammar/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Grammatica-referentie
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/tokens/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tokenreferentie
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/metadata/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Metadatareferentie
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/config/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Configuratiereferentie
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/diagnostics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Diagnostics-referentie
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/outputs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Outputreferentie
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/include-vsa/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    @include-vsa referentie
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/traceability/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Traceerbaarheid
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Integratie
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Integratie
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/reuse-vsa-tooling/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    VSA-tooling gebruiken vanuit andere repositories
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Plannen
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Plannen
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Plans
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../uitkleden-vsa-tooling/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Plan: VSA-tooling uitkleden tot tooling + docs-site
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Plan: Samenstelling, uitgaveprofielen en export-includes
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Plan: Samenstelling, uitgaveprofielen en export-includes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Inhoudsopgave">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Inhoudsopgave
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#review-van-het-voorgestelde-plan" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Review van het voorgestelde plan
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bron-specs-kern-en-lacunes-tov-vsa-tooling" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bron-specs: kern en lacunes t.o.v. VSA-tooling
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Bron-specs: kern en lacunes t.o.v. VSA-tooling">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#wat-bron-specs-definieert" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Wat bron-specs definieert
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lacunes-gap-analyse" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lacunes (gap-analyse)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#terminologie-voorstel" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Terminologie-voorstel
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Terminologie-voorstel">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#kernbegrippen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Kernbegrippen
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#conversie-vs-export-twee-lagen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Conversie vs. export — twee lagen
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#uitgaveprofielen-v1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Uitgaveprofielen (v1)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#huidige-pipeline-vs-doelmodel" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Huidige pipeline vs. doelmodel
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#repository-structuur-bron" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Repository-structuur bron
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Repository-structuur bron">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#twee-werelden-in-een-repo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Twee werelden in één repo
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#docs-gepubliceerde-documentatie" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        docs/ — gepubliceerde documentatie
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#zangstukken-brondocumenten-en-metadata" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        zangstukken/ — brondocumenten en metadata
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#afgeleide-documenten-plek-buiten-git" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Afgeleide documenten — plek buiten git
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#overige-top-level" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Overige top-level
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#relatie-documentatie-inhoud" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Relatie documentatie ↔ inhoud
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#kern-document-in-bron-repository" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Kern-document in bron-repository
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Kern-document in bron-repository">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#waarom-in-bron" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Waarom in bron
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#relatie-met-bestaandeplannen-docs-in-bron" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Relatie met bestaande/plannen docs in bron
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#voorgestelde-inhoud-drie-delen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Voorgestelde inhoud (drie delen)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Voorgestelde inhoud (drie delen)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#deel-1-brondocumenten-en-zangstukyaml" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Deel 1 — Brondocumenten en zangstuk.yaml
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deel-2-conversiemechanismen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Deel 2 — Conversiemechanismen
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deel-3-exportmechanismen-contracten" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Deel 3 — Exportmechanismen (contracten)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#verdeling-bron-vsa-tooling" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Verdeling bron ↔ VSA-tooling
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#prioriteit-tov-vsa-tooling-increment-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Prioriteit t.o.v. VSA-tooling increment 1
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#architectuurdoc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Architectuurdoc
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Architectuurdoc">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#nieuwe-secties-eerste-deliverable-spec-deel" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Nieuwe secties (eerste deliverable — spec-deel)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nesting-besluit-voor-v1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Nesting: besluit voor v1
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eerste-deliverable-concreet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Eerste deliverable (concreet)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Eerste deliverable (concreet)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#spoor-a-documentatiestructuur-kern-spec-bron-prioriteit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Spoor A — Documentatiestructuur + kern-spec bron (prioriteit)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#spoor-b-vsa-tooling-increment-ongewijzigd-na-spoor-a" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Spoor B — VSA-tooling increment (ongewijzigd, na spoor A)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1-spec-sectie-100-regels" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Spec-sectie (~100 regels)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-minimale-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Minimale code
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-demo-pagina" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Demo-pagina
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#wat-bewust-buiten-increment-1-blijft" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Wat bewust buiten increment 1 blijft
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#architectuur-overzicht-doelbeeld" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Architectuur-overzicht (doelbeeld)
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../gebruikseisen-dragers/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Gebruikseisen dragers (papier / tablet / telefoon)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../vsa-polyphony-proposal/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Voorstel voor toekomstige meerstemmige uitbreiding van VSA
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Inhoudsopgave">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Inhoudsopgave
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#review-van-het-voorgestelde-plan" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Review van het voorgestelde plan
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bron-specs-kern-en-lacunes-tov-vsa-tooling" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bron-specs: kern en lacunes t.o.v. VSA-tooling
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Bron-specs: kern en lacunes t.o.v. VSA-tooling">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#wat-bron-specs-definieert" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Wat bron-specs definieert
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lacunes-gap-analyse" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lacunes (gap-analyse)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#terminologie-voorstel" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Terminologie-voorstel
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Terminologie-voorstel">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#kernbegrippen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Kernbegrippen
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#conversie-vs-export-twee-lagen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Conversie vs. export — twee lagen
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#uitgaveprofielen-v1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Uitgaveprofielen (v1)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#huidige-pipeline-vs-doelmodel" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Huidige pipeline vs. doelmodel
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#repository-structuur-bron" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Repository-structuur bron
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Repository-structuur bron">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#twee-werelden-in-een-repo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Twee werelden in één repo
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#docs-gepubliceerde-documentatie" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        docs/ — gepubliceerde documentatie
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#zangstukken-brondocumenten-en-metadata" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        zangstukken/ — brondocumenten en metadata
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#afgeleide-documenten-plek-buiten-git" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Afgeleide documenten — plek buiten git
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#overige-top-level" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Overige top-level
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#relatie-documentatie-inhoud" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Relatie documentatie ↔ inhoud
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#kern-document-in-bron-repository" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Kern-document in bron-repository
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Kern-document in bron-repository">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#waarom-in-bron" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Waarom in bron
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#relatie-met-bestaandeplannen-docs-in-bron" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Relatie met bestaande/plannen docs in bron
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#voorgestelde-inhoud-drie-delen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Voorgestelde inhoud (drie delen)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Voorgestelde inhoud (drie delen)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#deel-1-brondocumenten-en-zangstukyaml" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Deel 1 — Brondocumenten en zangstuk.yaml
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deel-2-conversiemechanismen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Deel 2 — Conversiemechanismen
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deel-3-exportmechanismen-contracten" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Deel 3 — Exportmechanismen (contracten)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#verdeling-bron-vsa-tooling" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Verdeling bron ↔ VSA-tooling
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#prioriteit-tov-vsa-tooling-increment-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Prioriteit t.o.v. VSA-tooling increment 1
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#architectuurdoc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Architectuurdoc
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Architectuurdoc">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#nieuwe-secties-eerste-deliverable-spec-deel" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Nieuwe secties (eerste deliverable — spec-deel)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nesting-besluit-voor-v1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Nesting: besluit voor v1
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eerste-deliverable-concreet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Eerste deliverable (concreet)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Eerste deliverable (concreet)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#spoor-a-documentatiestructuur-kern-spec-bron-prioriteit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Spoor A — Documentatiestructuur + kern-spec bron (prioriteit)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#spoor-b-vsa-tooling-increment-ongewijzigd-na-spoor-a" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Spoor B — VSA-tooling increment (ongewijzigd, na spoor A)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1-spec-sectie-100-regels" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Spec-sectie (~100 regels)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-minimale-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Minimale code
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-demo-pagina" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Demo-pagina
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#wat-bewust-buiten-increment-1-blijft" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Wat bewust buiten increment 1 blijft
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#architectuur-overzicht-doelbeeld" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Architectuur-overzicht (doelbeeld)
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+  
+                  
+
+
+  
+    <a href="https://github.com/orthodox-groningen/VSA-tooling/edit/main/docs/plans/uitgaveprofielen.md" title="Wijzig deze pagina" class="md-content__button md-icon" rel="edit">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="plan-samenstelling-uitgaveprofielen-en-export-includes">Plan: Samenstelling, uitgaveprofielen en export-includes<a class="headerlink" href="#plan-samenstelling-uitgaveprofielen-en-export-includes" title="Permanent link">&para;</a></h1>
+<p>Status: <strong>Spoor B geïmplementeerd</strong> (juni 2026): <code>:::include svg|coria|mxl</code> + demo-pagina; expliciete conversiestap in CI nog open.</p>
+<p>Normatieve contracten:
+<a href="https://orthodox-groningen.github.io/bron/reference/exportcontracten/">bron — exportcontracten</a>,
+<a href="https://orthodox-groningen.github.io/bron/reference/conversiemechanismen/">conversiemechanismen</a>,
+<a href="https://orthodox-groningen.github.io/bron/plans/ci-architectuur/">CI-architectuur</a>.</p>
+<p>Gebruikseisen per drager (papier/tablet/telefoon):
+<a href="../gebruikseisen-dragers/">gebruikseisen-dragers.md</a>.</p>
+<p>Eerste increment: spec-sectie over concepten (conversie vs. export) +
+<code>:::include svg|coria|mxl</code> als <strong>exporttype</strong> in de samenstelling + één demo-pagina
+in hugo-demo.</p>
+<hr />
+<h2 id="review-van-het-voorgestelde-plan">Review van het voorgestelde plan<a class="headerlink" href="#review-van-het-voorgestelde-plan" title="Permanent link">&para;</a></h2>
+<p>Het plan is coherent en in de juiste volgorde: eerst terminologie en architectuur vastleggen, dan een klein code-increment dat de bestaande pipeline uitbreidt zonder nesting of bron-repo-integratie te forceren. Dat past bij de huidige stand:</p>
+<ul>
+<li><a href="spec-vsa-document-samenstellen.md">spec-vsa-document-samenstellen.md</a> beschrijft al <strong>één HTML-pipeline</strong> met print-CSS (uitgaveprofiel Afdruk ≈ Online + <code>@media print</code>).</li>
+<li><a href="../src/vsa/content_assets.py">../src/vsa/content_assets.py</a> resolveert export-URL's naar afgeleide (<code>coria</code>, <code>mxl</code>); <code>:::coria</code> werkt via <a href="../src/vsa/markdown_coria.py">../src/vsa/markdown_coria.py</a>.</li>
+<li><a href="todo.md">todo.md</a> §2.2 (gegeneraliseerde include met exporttypes) en §2.3 (nesting) zijn de logische vervolgstappen onder deze paraplu.</li>
+<li>Bron-specs (zip) beschrijven <strong>zangstukken + composities</strong>; VSA-tooling beschrijft <strong>Markdown-samenstelling + build</strong>. Die lagen zijn complementair, nog niet verbonden.</li>
+</ul>
+<p><strong>Housekeeping (gevraagd):</strong> markeer <a href="todo.md">todo.md</a> §1.3 als <code>Afgerond</code> — halftoon-prefixen zijn geïmplementeerd en getest (<a href="../tests/test_halftoon_prefix.py">../tests/test_halftoon_prefix.py</a>, validatie in <a href="../src/vsa/validation_runner.py">../src/vsa/validation_runner.py</a>).</p>
+<hr />
+<h2 id="bron-specs-kern-en-lacunes-tov-vsa-tooling">Bron-specs: kern en lacunes t.o.v. VSA-tooling<a class="headerlink" href="#bron-specs-kern-en-lacunes-tov-vsa-tooling" title="Permanent link">&para;</a></h2>
+<p>Geanalyseerd: <code>samenvatting-project.md</code> en <code>bron-repo-specificatie.md</code> uit <code>bron-specs.zip</code>.</p>
+<h3 id="wat-bron-specs-definieert">Wat bron-specs definieert<a class="headerlink" href="#wat-bron-specs-definieert" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Concept</th>
+<th>Definitie in bron-spec</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Zangstuk</strong></td>
+<td>Eenheid met <code>zangstuk.yaml</code> + <code>sources/</code> onder <code>zangstukken/&lt;id&gt;/</code></td>
+</tr>
+<tr>
+<td><strong>Bron</strong></td>
+<td>Bestand zonder geautomatiseerd generatiepad (VSA, scan, MusicXML)</td>
+</tr>
+<tr>
+<td><strong>Afgeleid</strong></td>
+<td>SVG/MXL uit VSA — <strong>niet</strong> in git, build-time genereren</td>
+</tr>
+<tr>
+<td><strong>Compositie</strong></td>
+<td>YAML-lijst zangstukken in volgorde (§7, nog open)</td>
+</tr>
+<tr>
+<td><strong>Source-variant</strong></td>
+<td>Entry in <code>sources:</code> met <code>file:</code> / <code>access:</code> / <code>status:</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="lacunes-gap-analyse">Lacunes (gap-analyse)<a class="headerlink" href="#lacunes-gap-analyse" title="Permanent link">&para;</a></h3>
+<pre class="mermaid"><code>flowchart LR
+  subgraph bronSpec [Bron-specs]
+    ZY[zangstuk.yaml]
+    Comp[composities/]
+    Index[publieke index JSON]
+    Access[access-filter bij build]
+  end
+
+  subgraph vsaTool [VSA-tooling vandaag]
+    CS[content-source/*.md]
+    Inc[:::include / :::coria]
+    Build[build-markdown]
+    Hugo[Hugo site]
+  end
+
+  ZY -.-&gt;|niet gelezen| Build
+  Comp -.-&gt;|niet aanwezig| CS
+  Index -.-&gt;|niet aanwezig| Hugo
+  Access -.-&gt;|niet aanwezig| Build
+  Build --&gt;|SVG wel| Hugo
+  Build -.-&gt;|MXL niet gekopieerd| Hugo</code></pre>
+<table>
+<thead>
+<tr>
+<th>Bron-spec verwachting</th>
+<th>VSA-tooling status</th>
+<th>Gap / actie</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Per-zangstuk map + <code>zangstuk.yaml</code></td>
+<td>Demo: platte map <code>praktijk/zondagen/</code> met losse <code>.vsa</code></td>
+<td><strong>Conventie-documentatie</strong>; geen code in increment 1</td>
+</tr>
+<tr>
+<td>Afgeleide SVG niet in git</td>
+<td>SVG gegenereerd bij <code>build-markdown</code></td>
+<td><strong>Aligned</strong></td>
+</tr>
+<tr>
+<td>Afgeleide MXL niet in git</td>
+<td>URL berekend in <code>resolve_asset</code>, maar <strong>niet</strong> gekopieerd/gegenereerd bij build</td>
+<td>Later: MXL-build-stap of CI-koppeling</td>
+</tr>
+<tr>
+<td><code>.coria.html</code> sibling</td>
+<td>Ondersteund + gekopieerd naar <code>static/coria/</code></td>
+<td><strong>Aligned</strong>; niet genoemd in bron-spec — toevoegen in architectuurdoc</td>
+</tr>
+<tr>
+<td>Compositie-laag (YAML)</td>
+<td>Geen equivalent; samenstelling = handmatige <code>.md</code></td>
+<td><strong>Terminologisch onderscheid</strong> (zie hieronder)</td>
+</tr>
+<tr>
+<td>Publieke index + copyright-filter</td>
+<td>Niet aanwezig</td>
+<td>Later (§8 bron-spec)</td>
+</tr>
+<tr>
+<td>VSA-frontmatter vs <code>zangstuk.yaml</code></td>
+<td>Frontmatter geparset voor alt/scale; geen cross-validatie</td>
+<td>Later validatiestap</td>
+</tr>
+<tr>
+<td>Cross-zangstuk scan-referenties</td>
+<td><code>:::include</code> relatief pad werkt</td>
+<td><strong>Aligned</strong> op pad-niveau; geen <code>zangstuk-id</code>-resolver</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Conclusie:</strong> het eerste increment hoeft geen bron-repo-parser te bouwen. Wel: terminologie en pad-conventies vastleggen zodat latere integratie (compositie → markdown, <code>zangstuk-id</code>-includes) voorbereid is.</p>
+<hr />
+<h2 id="terminologie-voorstel">Terminologie-voorstel<a class="headerlink" href="#terminologie-voorstel" title="Permanent link">&para;</a></h2>
+<p>Vervang werknaam “samengestelde uitgaven” door <strong>samenstelling</strong> (het auteursartefact) en <strong>uitgave</strong> (het resultaat voor lezers).</p>
+<h3 id="kernbegrippen">Kernbegrippen<a class="headerlink" href="#kernbegrippen" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Term</th>
+<th>Definitie</th>
+<th>Voorbeeld</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Bron</strong></td>
+<td>Authoritative bestand zonder geautomatiseerd generatiepad in de repo</td>
+<td><code>sources/vsa/groningen.vsa</code>, scan-PDF</td>
+</tr>
+<tr>
+<td><strong>Afgeleide</strong></td>
+<td>Bestand dat door een <strong>conversiemechanisme</strong> uit een bron is voortgekomen; niet in git (bron-spec §3.1.1)</td>
+<td><code>melodie.svg</code>, <code>melodie.mxl</code> na build</td>
+</tr>
+<tr>
+<td><strong>Conversiemechanisme</strong></td>
+<td>Gedefinieerde tool met vaste input(s) en output(s); geautomatiseerd in build-workflows</td>
+<td><code>vsa svg</code>, <code>vsa musicxml</code>; later evt. pdf→vsa</td>
+</tr>
+<tr>
+<td><strong>Exportmechanisme</strong></td>
+<td>Manier waarop bron + afgeleide in een <strong>samenstelling</strong> worden ontsloten voor een lezer (embedden, link, download)</td>
+<td>SVG in HTML, Coria-link, MXL-download</td>
+</tr>
+<tr>
+<td><strong>Exporttype</strong></td>
+<td>Naam van een exportmechanisme in authoring-syntax (<code>:::include &lt;type&gt; …</code>)</td>
+<td><code>svg</code>, <code>coria</code>, <code>mxl</code></td>
+</tr>
+<tr>
+<td><strong>Zangstuk</strong></td>
+<td>Canonieke eenheid in bron-repo (<code>zangstuk.yaml</code> + sources)</td>
+<td><code>troparion-zondag-toon-1</code></td>
+</tr>
+<tr>
+<td><strong>Samenstelling</strong></td>
+<td>Markdown-document (eventueel met includes) dat bronfragmenten ordent voor een doel</td>
+<td><code>zondag-toon-3.md</code>, koormap-pagina</td>
+</tr>
+<tr>
+<td><strong>Compositie</strong></td>
+<td><em>Alleen bron-repo-term</em>: YAML-lijst zangstuk-referenties in volgorde — <strong>niet</strong> hetzelfde als samenstelling</td>
+<td><code>composities/antifonen-weekdagen.yaml</code> (toekomst)</td>
+</tr>
+<tr>
+<td><strong>Uitgaveprofiel</strong></td>
+<td>Doelgroep/medium waarvoor de uiteindelijke uitgave bedoeld is</td>
+<td>Afdruk, Online, Bewerking</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>Niet meer gebruiken:</strong> “kanaal” als synoniem voor export of conversie. Een
+<em>kanaal</em> suggereert één stap bron→representatie; het model heeft <strong>twee lagen</strong>:
+conversie (tooling) en export (samenstelling).</p>
+</blockquote>
+<h3 id="conversie-vs-export-twee-lagen">Conversie vs. export — twee lagen<a class="headerlink" href="#conversie-vs-export-twee-lagen" title="Permanent link">&para;</a></h3>
+<pre class="mermaid"><code>flowchart TB
+  subgraph bron [Bronnen in repo]
+    VSA[".vsa"]
+    Scan[".pdf / .png scan"]
+    MxlBron[".musicxml als bron"]
+  end
+
+  subgraph conversie [Conversiemechanismen build]
+    VsaSvg["vsa svg"]
+    VsaMxl["vsa musicxml"]
+    FutureConv["toekomst: scan naar vsa"]
+  end
+
+  subgraph afgeleide [Afgeleide build-artefacten]
+    SVG[".svg"]
+    MXL[".mxl"]
+    CoriaHtml[".coria.html sibling"]
+  end
+
+  subgraph export [Exportmechanismen in samenstelling]
+    EmbSvg["embed svg"]
+    CoriaLink["coria link"]
+    MxlDl["mxl download"]
+  end
+
+  subgraph uitgave [Uitgaveprofielen]
+    Print["Afdruk"]
+    Online["Online"]
+    Edit["Bewerking"]
+  end
+
+  VSA --&gt; VsaSvg --&gt; SVG
+  VSA --&gt; VsaMxl --&gt; MXL
+  Scan -.-&gt; FutureConv -.-&gt; VSA
+  SVG --&gt; EmbSvg
+  MXL --&gt; CoriaLink
+  MXL --&gt; MxlDl
+  CoriaHtml --&gt; CoriaLink
+  EmbSvg --&gt; Print
+  EmbSvg --&gt; Online
+  CoriaLink --&gt; Online
+  MxlDl --&gt; Edit</code></pre>
+<p><strong>Conversiemechanismen</strong> (vandaag):</p>
+<table>
+<thead>
+<tr>
+<th>Tool</th>
+<th>Input</th>
+<th>Output</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>vsa svg</code></td>
+<td><code>.vsa</code></td>
+<td><code>.svg</code></td>
+<td>Geïmplementeerd</td>
+</tr>
+<tr>
+<td><code>vsa musicxml</code></td>
+<td><code>.vsa</code></td>
+<td><code>.mxl</code> / <code>.musicxml</code></td>
+<td>Geïmplementeerd</td>
+</tr>
+<tr>
+<td><em>(toekomst)</em></td>
+<td><code>.pdf</code>, <code>.png</code></td>
+<td><code>.vsa</code></td>
+<td>Nog niet; handmatig of semi-automatisch</td>
+</tr>
+</tbody>
+</table>
+<p>Geautomatiseerde conversies hebben <strong>strak gedefinieerde I/O</strong> (zoals de CLI-commando's
+nu al doen). Build-workflows roepen ze aan en vullen de <strong>afgeleide verzameling</strong> —
+complementair aan bron-spec §8 (“afgeleide bestanden genereren”).</p>
+<p><strong>Exportmechanismen</strong> nemen bron <strong>en</strong> afgeleide als input:</p>
+<table>
+<thead>
+<tr>
+<th>Exporttype</th>
+<th>Bronverwijzing in markdown</th>
+<th>Gebruikt afgeleide</th>
+<th>Uitgaveprofiel</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>svg</code></td>
+<td><code>:::include svg "melodie.vsa"</code></td>
+<td><code>.svg</code> (via conversie)</td>
+<td>Afdruk, Online</td>
+</tr>
+<tr>
+<td><code>coria</code></td>
+<td><code>:::include coria "melodie.vsa"</code></td>
+<td><code>.coria.html</code> sibling of <code>.mxl</code></td>
+<td>Online</td>
+</tr>
+<tr>
+<td><code>mxl</code></td>
+<td><code>:::include mxl "melodie.vsa"</code></td>
+<td><code>.mxl</code> (via conversie)</td>
+<td>Bewerking, Online (download)</td>
+</tr>
+</tbody>
+</table>
+<p>De authoring-syntax verwijst meestal naar een <strong>bronpad</strong> (<code>.vsa</code>); de build resolveert
+welke afgeleide nodig is en of conversie on-demand of vooraf moet zijn uitgevoerd.</p>
+<h3 id="uitgaveprofielen-v1">Uitgaveprofielen (v1)<a class="headerlink" href="#uitgaveprofielen-v1" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Profiel</th>
+<th>Doel</th>
+<th>Conversie nodig</th>
+<th>Export / layout in samenstelling</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Afdruk / download</strong></td>
+<td>Koormap, liturgisch boekje</td>
+<td><code>vsa svg</code></td>
+<td>embed svg, <code>keep-together</code>, <code>pagebreak</code>, <code>@media print</code></td>
+</tr>
+<tr>
+<td><strong>Online</strong></td>
+<td>Responsive website + oefenen</td>
+<td><code>vsa svg</code>, evt. <code>vsa musicxml</code></td>
+<td>embed svg, <code>web-only</code>, Coria-export (<code>coria</code>)</td>
+</tr>
+<tr>
+<td><strong>Bewerking</strong></td>
+<td>Verder uitwerken in MuseScore</td>
+<td><code>vsa musicxml</code></td>
+<td>mxl-download export</td>
+</tr>
+</tbody>
+</table>
+<p>Profielen zijn <strong>niet</strong> aparte pipelines: één HTML-samenstelling; uitgaveprofiel bepaalt
+welke exportmechanismen en layout-directives actief zijn.</p>
+<h3 id="huidige-pipeline-vs-doelmodel">Huidige pipeline vs. doelmodel<a class="headerlink" href="#huidige-pipeline-vs-doelmodel" title="Permanent link">&para;</a></h3>
+<p>Vandaag vermengt <code>build-markdown</code> conversie en export deels:</p>
+<table>
+<thead>
+<tr>
+<th>Stap</th>
+<th>Wat er gebeurt</th>
+<th>Laag</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>:::include melodie.vsa</code></td>
+<td>Wrapt als <code>::: vsa-notatie</code>; SVG pas in <code>_rewrite_markdown_file</code></td>
+<td>conversie + export door elkaar</td>
+</tr>
+<tr>
+<td><code>_rewrite_markdown_file</code></td>
+<td>Roept SVGRenderer aan per VSA-blok</td>
+<td>conversie (<code>vsa svg</code>-equivalent)</td>
+</tr>
+<tr>
+<td><code>resolve_coria_directives</code></td>
+<td>Berekent URL naar <code>.mxl</code> / <code>.coria.html</code></td>
+<td>export (afgeleide wordt niet altijd gebouwd)</td>
+</tr>
+<tr>
+<td><code>_copy_coria_html_assets</code></td>
+<td>Kopieert handmatige <code>.coria.html</code> siblings</td>
+<td>export</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Doel (middellange termijn):</strong> expliciete conversiestap in build (alle benodigde
+afgeleide genereren/kopiëren), gevolgd door samenstelling die alleen exportmechanismen
+toepast. Increment 1 documenteert dit onderscheid; code mag transitional blijven.</p>
+<hr />
+<h2 id="repository-structuur-bron">Repository-structuur <code>bron</code><a class="headerlink" href="#repository-structuur-bron" title="Permanent link">&para;</a></h2>
+<p><strong>Besluit:</strong> documentatie (specs, manuals, reference, plannen) wordt via <strong>GitHub Pages</strong>
+(<code>orthodox-groningen.github.io/bron</code>) ontsloten. <strong>Inhoud</strong> (brondocumenten, metadata,
+composities) staat los van die site — wordt niet als webpagina’s gepubliceerd, wel via
+build/indexen geconsumeerd.</p>
+<h3 id="twee-werelden-in-een-repo">Twee werelden in één repo<a class="headerlink" href="#twee-werelden-in-een-repo" title="Permanent link">&para;</a></h3>
+<pre class="mermaid"><code>flowchart TB
+  subgraph published [docs/ — GitHub Pages]
+    Index[index.md]
+    Specs[specs/]
+    Manuals[manuals/]
+    Ref[reference/]
+    Plans[plans/]
+  end
+
+  subgraph content [inhoud — niet Pages]
+    Zang[zangstukken/]
+    Comp[composities/]
+  end
+
+  subgraph build [build — niet in git]
+    Derived[derived/ of CI-artefacten]
+    IndexJson[publieke index JSON toekomst]
+  end
+
+  Zang --&gt; Derived
+  Derived --&gt; IndexJson
+  Specs -.-&gt;|beschrijft contract| Derived
+  content -.-&gt;|los van| published</code></pre>
+<table>
+<thead>
+<tr>
+<th>Wereld</th>
+<th>Pad</th>
+<th>In git</th>
+<th>GitHub Pages</th>
+<th>Doel</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Documentatie</strong></td>
+<td><code>docs/</code></td>
+<td>ja</td>
+<td><strong>ja</strong> — site-root</td>
+<td>Specs, manuals, reference, plannen</td>
+</tr>
+<tr>
+<td><strong>Brondocumenten + metadata</strong></td>
+<td><code>zangstukken/</code></td>
+<td>ja</td>
+<td>nee</td>
+<td>Single source of truth voor inhoud</td>
+</tr>
+<tr>
+<td><strong>Composities</strong></td>
+<td><code>composities/</code></td>
+<td>ja</td>
+<td>nee</td>
+<td>Volgorde/referenties (toekomst)</td>
+</tr>
+<tr>
+<td><strong>Afgeleide</strong></td>
+<td><code>derived/</code> of CI-only</td>
+<td><strong>nee</strong> (<code>.gitignore</code>)</td>
+<td>nee</td>
+<td>SVG, MXL, … na conversie</td>
+</tr>
+<tr>
+<td><strong>Repo-root README</strong></td>
+<td><code>README.md</code></td>
+<td>ja</td>
+<td>nee (GitHub repo-landing)</td>
+<td>Korte intro + links naar Pages</td>
+</tr>
+</tbody>
+</table>
+<h3 id="docs-gepubliceerde-documentatie"><code>docs/</code> — gepubliceerde documentatie<a class="headerlink" href="#docs-gepubliceerde-documentatie" title="Permanent link">&para;</a></h3>
+<p>Voorgestelde indeling; <strong>plannen apart</strong> van specs/manuals, <strong>wel</strong> op dezelfde site:</p>
+<div class="highlight"><pre><span></span><code>docs/
+  index.md                      # startpagina site (niet verwarren met README.md)
+  specs/                        # normatief: hoe het systeem werkt
+    inhoudslevenscyclus.md      # kern: bron → conversie → exportcontract
+    zangstuk-formaat.md         # schema zangstuk.yaml
+    repo-structuur.md           # mapstructuur, naamgeving (was bron-repo-specificatie)
+  manuals/                      # proceduraal: hoe doe je X
+    zangstuk-toevoegen.md
+    bronvariant-toevoegen.md
+    copyright-access.md
+  reference/                    # lookup: velden, conversiekaarten, exportcontracten
+    conversiemechanismen.md     # detailkaarten (kan ook onderdeel specs zijn)
+    exportcontracten.md
+    brontypes-validatie.md
+  plans/                        # ontwikkelplannen — gepubliceerd maar niet normatief
+    README.md                   # “dit zijn werkplannen, specs/manuals zijn leidend”
+    samenvatting-project.md     # verplaatsen uit docs/ root
+    …
+</code></pre></div>
+<p><strong>Navigatie / site-generator — afweging:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Optie</th>
+<th>Geschikt voor</th>
+<th>Voordelen</th>
+<th>Nadelen</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>GitHub Pages, <code>/docs</code> zonder generator</strong></td>
+<td>Snel live, 2–5 pagina’s</td>
+<td>Geen build, geen dependencies</td>
+<td>Geen sidebar/zoekfunctie; navigatie handmatig; Jekyll-gedrag soms verrassend</td>
+</tr>
+<tr>
+<td><strong>MkDocs (+ Material)</strong></td>
+<td><strong>Documentatiesites</strong> (specs, manuals, reference)</td>
+<td>Nav, zoeken, duidelijke <code>mkdocs.yml</code>-structuur specs/manuals/plans; Markdown-first</td>
+<td>Extra build-stap (GitHub Action → Pages); Python-tooling</td>
+</tr>
+<tr>
+<td><strong>Hugo</strong></td>
+<td><strong>Parochie-sites</strong>, samenstellingen, rijke HTML</td>
+<td>Al in gebruik (VSA-tooling demo); flexibel</td>
+<td>Zwaarder voor puur reference-docs; verwarrend als bron-repo ook “site” lijkt</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Aanbeveling voor <code>bron</code>:</strong> <strong>MkDocs Material</strong> als doel; <strong>optionele fase 0</strong> met kale <code>/docs</code> + <code>index.md</code> alleen als je vóór MkDocs-setup al iets online wilt.</p>
+<p><strong>Hugo</strong> blijft voor <strong>parochie-presentatie</strong> (Hemelum, Groningen) die <em>consumeren</em> uit <code>bron</code> — niet voor de bron-repo-documentatie zelf.</p>
+<p>MkDocs <code>nav:</code> sluit direct aan op gewenste structuur:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">nav</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Home</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">index.md</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Specificaties</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Inhoudslevenscyclus</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">specs/inhoudslevenscyclus.md</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Zangstuk-formaat</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">specs/zangstuk-formaat.md</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Handleidingen</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">manuals/</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Referentie</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">reference/</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Plannen</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">plans/</span>
+</code></pre></div>
+<p><strong>URL-conventie:</strong> <code>https://orthodox-groningen.github.io/bron/specs/inhoudslevenscyclus/</code> (MkDocs) of <code>.html</code> (Jekyll/Pages default)</p>
+<h3 id="zangstukken-brondocumenten-en-metadata"><code>zangstukken/</code> — brondocumenten en metadata<a class="headerlink" href="#zangstukken-brondocumenten-en-metadata" title="Permanent link">&para;</a></h3>
+<p>Ongewijzigd principe uit bron-spec; <strong>buiten</strong> <code>docs/</code>:</p>
+<div class="highlight"><pre><span></span><code>zangstukken/
+  &lt;zangstuk-id&gt;/
+    zangstuk.yaml                 # metadata — handmatig + gevalideerd
+    sources/
+      vsa/&lt;bron-id&gt;.vsa
+      scan/&lt;bestand&gt;.pdf
+      musicxml/&lt;bron-id&gt;.musicxml   # alleen als zelfstandige bron
+</code></pre></div>
+<ul>
+<li>Scans (PDF) zijn <strong>brondocumenten</strong> en blijven in git onder <code>sources/scan/</code> (<code>.gitignore</code>
+  heeft al uitzondering <code>!sources/scan/**/*.pdf</code> — pad controleren bij eerste echte zangstuk:
+  waarschijnlijk <code>!zangstukken/**/sources/scan/**/*.pdf</code>).</li>
+<li><code>.coria.html</code> siblings: nog te beslissen — handmatige afgeleide/hulpbron naast VSA in
+  parochie-build; in bron-repo alleen als expliciet gedocumenteerd (nu: vooral VSA-tooling-demo).</li>
+</ul>
+<h3 id="afgeleide-documenten-plek-buiten-git">Afgeleide documenten — plek buiten git<a class="headerlink" href="#afgeleide-documenten-plek-buiten-git" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Locatie</th>
+<th>Wanneer</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>derived/</code> lokaal</td>
+<td>ontwikkelaar draait <code>vsa svg</code> / <code>vsa musicxml</code> (staat in <code>.gitignore</code>)</td>
+</tr>
+<tr>
+<td>CI-artefacten</td>
+<td>pipeline na merge; gepubliceerd naar Pages/static <strong>buiten</strong> bron-repo of via aparte deploy</td>
+</tr>
+<tr>
+<td>Parochie <code>static/</code></td>
+<td>parochie-build haalt bron op, converteert, publiceert afgeleide op eigen site</td>
+</tr>
+</tbody>
+</table>
+<p>Afgeleide horen <strong>niet</strong> in <code>docs/</code> (documentatie) en <strong>niet</strong> in git. De <strong>beschrijving</strong>
+van afgeleide staat wél in <code>docs/specs/</code> en <code>docs/reference/</code>.</p>
+<h3 id="overige-top-level">Overige top-level<a class="headerlink" href="#overige-top-level" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Pad</th>
+<th>Functie</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>composities/</code></td>
+<td>YAML-lijsten zangstuk-referenties (inhoud, geen docs)</td>
+</tr>
+<tr>
+<td><code>LICENSE-CONTENT</code>, <code>LICENSE-CODE</code></td>
+<td>licenties</td>
+</tr>
+<tr>
+<td><code>.github/workflows/</code></td>
+<td>validatie zangstukken; optioneel Pages-build</td>
+</tr>
+</tbody>
+</table>
+<h3 id="relatie-documentatie-inhoud">Relatie documentatie ↔ inhoud<a class="headerlink" href="#relatie-documentatie-inhoud" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong><code>docs/specs/inhoudslevenscyclus.md</code></strong> beschrijft de keten (deel 1–3 hieronder).</li>
+<li><strong><code>docs/manuals/</code></strong> beschrijft workflows voor beheerders.</li>
+<li><strong><code>docs/reference/</code></strong> bevat lookup-tabellen (conversie I/O, export-eisen).</li>
+<li><strong><code>docs/plans/</code></strong> bevat werkplannen; status “niet normatief” expliciet op index.</li>
+<li><strong><code>zangstukken/</code></strong> is wat de specs <em>over</em> gaan — geen duplicatie van metadata in docs.</li>
+</ul>
+<p>VSA-tooling docs (<code>spec-vsa-document-samenstellen.md</code>, CLI-reference) linken <strong>naar</strong>
+<code>bron</code> Pages voor contracten; implementatiedetail blijft in VSA-tooling.</p>
+<hr />
+<h2 id="kern-document-in-bron-repository">Kern-document in <code>bron</code>-repository<a class="headerlink" href="#kern-document-in-bron-repository" title="Permanent link">&para;</a></h2>
+<p><strong>Besluit:</strong> ja — kern-inhoud hoort in <strong><code>docs/specs/inhoudslevenscyclus.md</code></strong>, niet in VSA-tooling.</p>
+<h3 id="waarom-in-bron">Waarom in <code>bron</code><a class="headerlink" href="#waarom-in-bron" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Vraag</th>
+<th>Antwoord</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Wie beheert brondocumenten en <code>zangstuk.yaml</code>?</td>
+<td>Beheerder van <code>bron</code></td>
+</tr>
+<tr>
+<td>Waar liggen bronbestanden fysiek?</td>
+<td><code>zangstukken/&lt;id&gt;/sources/…</code></td>
+</tr>
+<tr>
+<td>Welke afgeleide ontstaan uit welke bron?</td>
+<td>Contract tussen bron en build — bron-repo is single source of truth voor <em>wat</em> er is</td>
+</tr>
+<tr>
+<td>Wie moet exporttypes kunnen definiëren?</td>
+<td>Beheerder die bron + afgeleide kent</td>
+</tr>
+</tbody>
+</table>
+<p>VSA-tooling documenteert <strong>hoe</strong> conversie-tools en samenstelling-export werken (CLI, directives, code).
+De bron-repo documenteert <strong>wat</strong> er in de keten zit en <strong>welke eisen</strong> elke stap stelt.</p>
+<h3 id="relatie-met-bestaandeplannen-docs-in-bron">Relatie met bestaande/plannen docs in <code>bron</code><a class="headerlink" href="#relatie-met-bestaandeplannen-docs-in-bron" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Document</th>
+<th>Pad (nieuw)</th>
+<th>Scope</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://github.com/orthodox-groningen/bron/blob/main/README.md">README.md</a></td>
+<td>repo-root</td>
+<td>Korte intro; link naar GitHub Pages</td>
+<td>Aanwezig</td>
+</tr>
+<tr>
+<td><strong><code>docs/specs/inhoudslevenscyclus.md</code></strong></td>
+<td>specs</td>
+<td>Bron → conversie → exportcontract</td>
+<td><strong>Nieuw — kern</strong></td>
+</tr>
+<tr>
+<td><code>docs/specs/zangstuk-formaat.md</code></td>
+<td>specs</td>
+<td>Schema <code>zangstuk.yaml</code></td>
+<td>Gepland</td>
+</tr>
+<tr>
+<td><code>docs/specs/repo-structuur.md</code></td>
+<td>specs</td>
+<td>Mapstructuur, naamgeving</td>
+<td>Uit bron-spec zip</td>
+</tr>
+<tr>
+<td><code>docs/plans/samenvatting-project.md</code></td>
+<td>plans</td>
+<td>Projectoverzicht / werkplannen</td>
+<td>Verplaatsen</td>
+</tr>
+<tr>
+<td><code>docs/manuals/*</code></td>
+<td>manuals</td>
+<td>Workflows §9 operationeel</td>
+<td>Nieuw</td>
+</tr>
+<tr>
+<td><code>docs/reference/exportcontracten.md</code></td>
+<td>reference</td>
+<td>Export-eisen voor beheerders</td>
+<td>Nieuw (detail van specs)</td>
+</tr>
+</tbody>
+</table>
+<p>Aanbeveling: <strong><code>inhoudslevenscyclus.md</code></strong> is het overzicht; detail schema in <code>zangstuk-formaat.md</code>;
+workflows in <code>manuals/</code>; conversie-/exportkaarten in <code>reference/</code>.</p>
+<h3 id="voorgestelde-inhoud-drie-delen">Voorgestelde inhoud (drie delen)<a class="headerlink" href="#voorgestelde-inhoud-drie-delen" title="Permanent link">&para;</a></h3>
+<h4 id="deel-1-brondocumenten-en-zangstukyaml">Deel 1 — Brondocumenten en <code>zangstuk.yaml</code><a class="headerlink" href="#deel-1-brondocumenten-en-zangstukyaml" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Plaatsing:</strong> <code>zangstukken/&lt;zangstuk-id&gt;/</code> met <code>zangstuk.yaml</code> + <code>sources/{vsa,scan,musicxml}/</code></li>
+<li><strong>Brontypes en submappen:</strong> per type waar het bestand hoort; cross-references naar gedeelde scans (§4 bron-spec)</li>
+<li><strong>Validatie brondocumenten</strong> (per type, zover automatiseerbaar):</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Brontype</th>
+<th>Minimale check</th>
+<th>Tool / moment</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>.vsa</code></td>
+<td>Parse + semantische validatie</td>
+<td><code>vsa validate</code> (CI/pre-commit)</td>
+</tr>
+<tr>
+<td><code>.pdf</code></td>
+<td>Leesbaar PDF (magic bytes, pagina's &gt; 0)</td>
+<td>script/CI; handmatig visueel</td>
+</tr>
+<tr>
+<td><code>.png</code>/<code>.jpg</code></td>
+<td>Geldig raster</td>
+<td>script/CI</td>
+</tr>
+<tr>
+<td><code>.musicxml</code>/<code>.mxl</code> als bron</td>
+<td>XML well-formed</td>
+<td>toekomst</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong><code>zangstuk.yaml</code> tot stand komen:</strong></li>
+<li><strong>Handmatig:</strong> beheerder schrijft/wijzigt YAML bij workflow 9.1–9.5 (bron-spec)</li>
+<li><strong>Geautomatiseerd (toekomst):</strong> geen volledige generatie; wel validatie, lint, cross-check frontmatter ↔ yaml</li>
+<li><strong>Validatie en compleetheid metadata:</strong></li>
+<li>Verplichte velden (<code>id</code>, <code>title</code>, <code>sources</code> met exact één status per entry)</li>
+<li><code>file:</code>-pad bestaat; <code>based_on</code> verwijst naar bestaande source-id</li>
+<li>Liturgische velden aanwezig waar van toepassing (checklist per <code>occasion_type</code>)</li>
+<li>Copyright: <code>access:</code> zonder bestand; <code>copyrighted</code> zonder <code>file:</code></li>
+<li><strong>Workflow invoeren/updaten</strong> (stap-voor-stap, met beslisboom splitsen vs. cross-ref)</li>
+</ul>
+<h4 id="deel-2-conversiemechanismen">Deel 2 — Conversiemechanismen<a class="headerlink" href="#deel-2-conversiemechanismen" title="Permanent link">&para;</a></h4>
+<p>Per geregistreerde conversie een vaste <strong>kaart</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>Veld</th>
+<th>Voorbeeld <code>vsa svg</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Naam / CLI</td>
+<td><code>vsa svg</code></td>
+</tr>
+<tr>
+<td>Input</td>
+<td><code>.vsa</code> (geldig volgens validate)</td>
+</tr>
+<tr>
+<td>Output</td>
+<td><code>.svg</code> (niet in git)</td>
+</tr>
+<tr>
+<td>Output-locatie</td>
+<td>build-artefactenmap / static (parochie-build of CI)</td>
+</tr>
+<tr>
+<td>Output-kenmerken</td>
+<td>vector, schaalbaar, bevat glyphs + omringende tekst; geen audio; geschikt voor print embed</td>
+</tr>
+<tr>
+<td>Trigger</td>
+<td>na merge bron; bij <code>build-markdown</code> / CI</td>
+</tr>
+<tr>
+<td>Afhankelijk van metadata</td>
+<td>optioneel frontmatter <code>scale</code>, rendering-config</td>
+</tr>
+</tbody>
+</table>
+<p>Zelfde structuur voor <code>vsa musicxml</code> → <code>.mxl</code>, en placeholders voor toekomstige conversies.
+Output-kenmerken zijn <strong>bewust uitgebreid</strong> — beheerders hebben ze nodig om exporttypes te kunnen kiezen.</p>
+<h4 id="deel-3-exportmechanismen-contracten">Deel 3 — Exportmechanismen (contracten)<a class="headerlink" href="#deel-3-exportmechanismen-contracten" title="Permanent link">&para;</a></h4>
+<p>Per exportmechanisme: <strong>welke afgeleide</strong>, <strong>kenmerken</strong>, <strong>geschiktheid</strong>, <strong>vereiste inputs</strong>.</p>
+<table>
+<thead>
+<tr>
+<th>Exporttype</th>
+<th>Benodigde input(s)</th>
+<th>Eisen aan input</th>
+<th>Output naar gebruiker</th>
+<th>Geschikt voor</th>
+<th>Niet geschikt voor</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>embed <code>svg</code></td>
+<td>afgeleide <code>.svg</code></td>
+<td>gegenereerd, alt-tekst beschikbaar</td>
+<td><code>&lt;img&gt;</code> / shortcode in HTML</td>
+<td>Afdruk, Online</td>
+<td>Bewerking in MuseScore</td>
+</tr>
+<tr>
+<td><code>coria</code></td>
+<td><code>.coria.html</code> sibling <strong>of</strong> <code>.mxl</code></td>
+<td>HTML: partij gekozen; MXL: Coria-compatibel</td>
+<td>link / embedded player</td>
+<td>Online oefenen</td>
+<td>Afdruk</td>
+</tr>
+<tr>
+<td><code>mxl</code> download</td>
+<td>afgeleide <code>.mxl</code></td>
+<td>MusicXML playback-profiel minimaal</td>
+<td>download-URL</td>
+<td>Bewerking</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<p>Syntax van export in samenstelling (<code>:::include svg|coria|mxl</code>) blijft in
+<a href="spec-vsa-document-samenstellen.md">VSA-tooling spec</a>; <strong>dit document</strong> definieert het contract
+waar exporttypes op moeten aansluiten.</p>
+<h3 id="verdeling-bron-vsa-tooling">Verdeling bron ↔ VSA-tooling<a class="headerlink" href="#verdeling-bron-vsa-tooling" title="Permanent link">&para;</a></h3>
+<pre class="mermaid"><code>flowchart LR
+  subgraph bronRepo [bron repo docs via Pages]
+    ILC[specs/inhoudslevenscyclus.md]
+    ZF[specs/zangstuk-formaat.md]
+    Plans[plans/]
+  end
+
+  subgraph vsaTool [VSA-tooling docs]
+    Spec[spec-vsa-document-samenstellen.md]
+    CLI[cli-reference.md]
+    Plan[plan-samenstelling-uitgaveprofielen.md]
+  end
+
+  ILC --&gt;|schema detail| ZF
+  ILC --&gt;|exportcontracten| Spec
+  CLI --&gt;|conversie CLI detail| ILC
+  Plan --&gt;|implementatie afstemmen| ILC</code></pre>
+<h3 id="prioriteit-tov-vsa-tooling-increment-1">Prioriteit t.o.v. VSA-tooling increment 1<a class="headerlink" href="#prioriteit-tov-vsa-tooling-increment-1" title="Permanent link">&para;</a></h3>
+<p><strong>Aanbevolen volgorde:</strong></p>
+<ol>
+<li><strong><code>bron</code>:</strong> docs-structuur + <code>docs/specs/inhoudslevenscyclus.md</code> (eerste versie)</li>
+<li><strong><code>bron</code>:</strong> <code>docs/specs/zangstuk-formaat.md</code> (schema, kan parallel)</li>
+<li><strong>VSA-tooling:</strong> spec-sectie + exporttypes in code (sluit aan op contracten uit stap 1)</li>
+</ol>
+<p>Zonder stap 1 riskeren exporttypes in code te worden gedefinieerd zonder gedeeld contract voor beheerders.</p>
+<hr />
+<h2 id="architectuurdoc">Architectuurdoc<a class="headerlink" href="#architectuurdoc" title="Permanent link">&para;</a></h2>
+<p><strong>Aanpak:</strong> uitbreiden van <a href="spec-vsa-document-samenstellen.md">spec-vsa-document-samenstellen.md</a> (niet hernoemen in increment 1 — titel kan later naar <em>VSA Samenstelling en Uitgave</em> als de scope breder wordt).</p>
+<h3 id="nieuwe-secties-eerste-deliverable-spec-deel">Nieuwe secties (eerste deliverable — spec-deel)<a class="headerlink" href="#nieuwe-secties-eerste-deliverable-spec-deel" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>Concepten en terminologie</strong> — bron / afgeleide / conversiemechanisme / exportmechanisme / exporttype</li>
+<li><strong>Uitgaveprofielen</strong> — drie profielen, mapping naar conversie + export + layout-directives</li>
+<li><strong>Exportmechanismen</strong> — syntax <code>:::include &lt;exporttype&gt; "bron.vsa" …:::</code>, sibling-conventie (<code>.coria.html</code> naast <code>.vsa</code>)</li>
+<li><strong>Conversiemechanismen</strong> — verwijzing naar <code>vsa svg</code>, <code>vsa musicxml</code>; afgeleide niet in git</li>
+<li><strong>Relatie bron-repo</strong> — mapping:</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>Bron-repo</th>
+<th>Samenstelling (VSA-tooling)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>zangstukken/&lt;id&gt;/sources/vsa/*.vsa</code></td>
+<td>bron; conversie via <code>vsa svg</code> / <code>vsa musicxml</code>; export via <code>:::include svg\|coria\|mxl</code></td>
+</tr>
+<tr>
+<td><code>zangstuk.yaml</code> metadata</td>
+<td>Frontmatter / pagina-titel (handmatig tot resolver bestaat)</td>
+</tr>
+<tr>
+<td><code>composities/*.yaml</code></td>
+<td>Toekomst: generator naar <code>.md</code> of include-index</td>
+</tr>
+</tbody>
+</table>
+<ol>
+<li><strong>Nesting-regels en authoring-conventies</strong> — besluit hieronder</li>
+</ol>
+<h3 id="nesting-besluit-voor-v1">Nesting: besluit voor v1<a class="headerlink" href="#nesting-besluit-voor-v1" title="Permanent link">&para;</a></h3>
+<p><strong>Aanbevolen besluit (increment 1):</strong></p>
+<table>
+<thead>
+<tr>
+<th>Regel</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Blok-directives (<code>web-only</code>, <code>print-only</code>, <code>keep-together</code>) <strong>niet nesten</strong></td>
+<td>Behouden — implementatie in <a href="../src/vsa/markdown_directives.py">../src/vsa/markdown_directives.py</a> blijft</td>
+</tr>
+<tr>
+<td>Regel-directives (<code>:::include</code>, <code>:::coria</code>) <strong>binnen</strong> <code>keep-together</code></td>
+<td>Toegestaan — verwerkt in eerdere passes vóór <code>process_directives</code></td>
+</tr>
+<tr>
+<td>Authoring-conventie voor titels/navigatie</td>
+<td><code>web-only</code> als <strong>sibling vóór</strong> <code>keep-together</code> (zoals <a href="../examples/hugo-demo/content-source/praktijk/zondagen/zondag-toon-3.md">../examples/hugo-demo/content-source/praktijk/zondagen/zondag-toon-3.md</a>)</td>
+</tr>
+<tr>
+<td>Coria-link alleen online, notatie samen printen</td>
+<td>Coria-regels binnen <code>keep-together</code>; print verbergt <code>.coria-play</code> via CSS (bestaand patroon)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Fase 2 (§2.3 todo):</strong> nesting <code>web-only</code> ⊂ <code>keep-together</code> alleen als sibling-conventie onwerkbaar blijkt — vereist wijziging state machine, niet nodig voor eerste demo.</p>
+<hr />
+<h2 id="eerste-deliverable-concreet">Eerste deliverable (concreet)<a class="headerlink" href="#eerste-deliverable-concreet" title="Permanent link">&para;</a></h2>
+<p>Twee sporen; <strong>spoor A (bron) eerst</strong> voor overzicht:</p>
+<h3 id="spoor-a-documentatiestructuur-kern-spec-bron-prioriteit">Spoor A — Documentatiestructuur + kern-spec <code>bron</code> (prioriteit)<a class="headerlink" href="#spoor-a-documentatiestructuur-kern-spec-bron-prioriteit" title="Permanent link">&para;</a></h3>
+<p><strong>Repo:</strong> <code>C:\git\orthodox-groningen\bron</code></p>
+<ol>
+<li><strong>Mapstructuur</strong> <code>docs/{specs,manuals,reference,plans}/</code> + <code>docs/index.md</code></li>
+<li><strong><code>docs/specs/inhoudslevenscyclus.md</code></strong> (eerste versie, drie delen)</li>
+<li><strong><code>docs/plans/</code></strong> — <code>samenvatting-project.md</code> verplaatsen; <code>plans/README.md</code> met disclaimer</li>
+<li><strong>README.md</strong> — link naar GitHub Pages i.p.v. alleen platte docs-links</li>
+<li><strong>GitHub Pages</strong> — MkDocs Material + GitHub Action (of korte fase 0: kale <code>/docs</code>)</li>
+<li>Optioneel: <code>docs/specs/zangstuk-formaat.md</code> (minimaal schema)</li>
+</ol>
+<p><strong>Nog niet in spoor A:</strong> <code>zangstukken/</code> vullen (inhoud volgt op documentatie).</p>
+<h3 id="spoor-b-vsa-tooling-increment-ongewijzigd-na-spoor-a">Spoor B — VSA-tooling increment (ongewijzigd, na spoor A)<a class="headerlink" href="#spoor-b-vsa-tooling-increment-ongewijzigd-na-spoor-a" title="Permanent link">&para;</a></h3>
+<p>Drie onderdelen in één PR-achtige eenheid:</p>
+<h3 id="1-spec-sectie-100-regels">1. Spec-sectie (~100 regels)<a class="headerlink" href="#1-spec-sectie-100-regels" title="Permanent link">&para;</a></h3>
+<p>Toevoegen aan <a href="spec-vsa-document-samenstellen.md">spec-vsa-document-samenstellen.md</a>:</p>
+<ul>
+<li>Concepten (conversie vs. export), profielen, exporttypes, bron-repo-mapping, nesting-besluit</li>
+<li>Bijwerken §3 Transclusion: exporttype-syntax naast extensie-syntax</li>
+<li><a href="todo.md">todo.md</a>: §1.3 → <code>Afgerond</code>; §2.2 → gedeeltelijk (exporttypes <code>svg</code>/<code>coria</code>/<code>mxl</code>; expliciete conversiestap in build nog open)</li>
+</ul>
+<h3 id="2-minimale-code">2. Minimale code<a class="headerlink" href="#2-minimale-code" title="Permanent link">&para;</a></h3>
+<p><strong>Bestand:</strong> <a href="../src/vsa/markdown_include.py">../src/vsa/markdown_include.py</a></p>
+<p>Uitbreiden regex en dispatch — <strong>exportlaag</strong>, geen conversie:</p>
+<div class="highlight"><pre><span></span><code>:::include svg &quot;melodie.vsa&quot; alt=&quot;…&quot; scale=&quot;85%&quot;:::
+:::include coria &quot;melodie.vsa&quot; label=&quot;Oefenen in Coria&quot; mode=&quot;auto&quot;:::
+:::include mxl &quot;melodie.vsa&quot; label=&quot;Download MusicXML&quot;:::
+</code></pre></div>
+<p>Gedrag:</p>
+<table>
+<thead>
+<tr>
+<th>Exporttype</th>
+<th>Bronverwijzing</th>
+<th>Export (output in samenstelling)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><em>(geen)</em> + <code>.vsa</code></td>
+<td>bestaand</td>
+<td>Wrapt als <code>::: vsa-notatie</code> → SVG via bestaande conversie in <code>_rewrite_markdown_file</code> (transitional)</td>
+</tr>
+<tr>
+<td><code>svg</code> + <code>.vsa</code></td>
+<td>expliciet</td>
+<td>Zelfde als <code>.vsa</code>-include; naam maakt exporttype expliciet voor auteurs</td>
+</tr>
+<tr>
+<td><code>coria</code> + <code>.vsa</code></td>
+<td>expliciet</td>
+<td>Hugo <code>coria-html</code> / <code>coria</code> shortcode; resolveert naar afgeleide URL via <a href="../src/vsa/content_assets.py">content_assets.py</a></td>
+</tr>
+<tr>
+<td><code>mxl</code> + <code>.vsa</code></td>
+<td>expliciet</td>
+<td>Download-link naar afgeleide <code>.mxl</code> (conversie via <code>vsa musicxml</code> moet in build/CI draaien)</td>
+</tr>
+<tr>
+<td><em>(geen)</em> + <code>.md</code>/<code>.svg</code>/raster</td>
+<td>bestaand</td>
+<td>Ongewijzigd</td>
+</tr>
+</tbody>
+</table>
+<p>Implementatiedetails:</p>
+<ul>
+<li><code>content_root</code> verplicht wanneer exporttype <code>coria</code>/<code>mxl</code></li>
+<li><a href="../src/vsa/content_assets.py">content_assets.py</a> blijft <strong>export-resolver</strong> (URL naar afgeleide), geen conversie-engine</li>
+<li><code>:::coria</code> blijft alias voor <code>:::include coria</code></li>
+<li>Backward compatible: <code>:::include melodie.vsa</code> zonder exporttype blijft geldig</li>
+<li><strong>Niet in increment 1:</strong> aparte build-stap die alle afgeleide vooraf genereert (wel documenteren als doel)</li>
+</ul>
+<p><strong>Tests:</strong> <a href="../tests/test_markdown_include.py">../tests/test_markdown_include.py</a> — minimaal:</p>
+<ul>
+<li><code>include svg</code> ≡ <code>include melodie.vsa</code></li>
+<li><code>include coria</code> met <code>.coria.html</code> sibling → <code>coria-html</code> shortcode</li>
+<li><code>include coria</code> zonder sibling → <code>coria</code> shortcode (MXL URL)</li>
+<li><code>include mxl</code> → download-URL</li>
+<li>onbekend exporttype → <code>IncludeError</code></li>
+<li>exporttype + <code>.md</code> → fout (exporttypes <code>svg</code>/<code>coria</code>/<code>mxl</code> alleen voor <code>.vsa</code>-bronverwijzing)</li>
+</ul>
+<h3 id="3-demo-pagina">3. Demo-pagina<a class="headerlink" href="#3-demo-pagina" title="Permanent link">&para;</a></h3>
+<p>Nieuw bestand: <a href="../examples/hugo-demo/content-source/praktijk/zondagen/export-demo.md">../examples/hugo-demo/content-source/praktijk/zondagen/export-demo.md</a></p>
+<p>Demonstratie van exporttypes (niet conversie) op bestaande toon-3-assets:</p>
+<div class="highlight"><pre><span></span><code>---
+<span class="gu">title: &quot;Demo: exporttypes&quot;</span>
+<span class="gu">---</span>
+
+:::web-only:::
+<span class="gh"># Exporttypes (svg · coria · mxl)</span>
+
+Demonstratie van exportmechanismen op één <span class="sb">`.vsa`</span>-bron.
+Conversie (<span class="sb">`vsa svg`</span>, <span class="sb">`vsa musicxml`</span>) gebeurt in de build; deze pagina toont export.
+:::end-web-only:::
+
+:::keep-together scale=&quot;100%&quot;:::
+<span class="gu">## SVG (afdruk + online)</span>
+
+:::include svg &quot;tropaar-zondag-toon-3.vsa&quot; alt=&quot;Tropaar toon 3&quot; scale=&quot;85%&quot;:::
+
+<span class="gu">## Coria (online oefenen)</span>
+
+:::include coria &quot;tropaar-zondag-toon-3.vsa&quot; label=&quot;Oefenen in Coria&quot;:::
+
+<span class="gu">## MXL (bewerking)</span>
+
+:::include mxl &quot;tropaar-zondag-toon-3.vsa&quot; label=&quot;Download MusicXML&quot;:::
+:::end-keep-together:::
+</code></pre></div>
+<p>Optioneel: link vanuit <a href="../examples/hugo-demo/content-source/praktijk/zondagen/">../examples/hugo-demo/content-source/praktijk/zondagen/</a> overzichtspagina.</p>
+<hr />
+<h2 id="wat-bewust-buiten-increment-1-blijft">Wat bewust buiten increment 1 blijft<a class="headerlink" href="#wat-bewust-buiten-increment-1-blijft" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Geneste blok-directives (§2.3) — alleen gedocumenteerd, niet geïmplementeerd</li>
+<li>Expliciete <strong>conversiestap</strong> in build (alle <code>.svg</code>/<code>.mxl</code> vooraf genereren i.p.v. inline in <code>_rewrite_markdown_file</code>)</li>
+<li>Bron-repo <code>zangstuk.yaml</code>-resolver / compositie-generator</li>
+<li>Registratie van conversiemechanismen als configureerbaar build-contract (input/output-schema per tool)</li>
+<li>MXL kopiëren naar static bij build (MXL-link kan 404 geven tot CI <code>vsa musicxml</code> draait — vermelden in demo)</li>
+<li>Hernoemen spec-bestand, publieke JSON-index, copyright-filter</li>
+<li><code>&lt;details&gt;</code>/tabs voor online-profiel</li>
+<li>Toekomstige conversies (pdf/png → vsa)</li>
+</ul>
+<hr />
+<h2 id="architectuur-overzicht-doelbeeld">Architectuur-overzicht (doelbeeld)<a class="headerlink" href="#architectuur-overzicht-doelbeeld" title="Permanent link">&para;</a></h2>
+<pre class="mermaid"><code>flowchart TB
+  subgraph bron [Bronnen]
+    VSAfile[".vsa"]
+    ScanFile["scan pdf png"]
+    CoriaSrc[".coria.html handmatig"]
+  end
+
+  subgraph conversie [Conversiemechanismen]
+    VsaSvg["vsa svg"]
+    VsaMxl["vsa musicxml"]
+  end
+
+  subgraph afgeleide [Afgeleide]
+    SVGout[".svg"]
+    MXLout[".mxl"]
+  end
+
+  subgraph sam [Samenstelling]
+    PageMD["page.md"]
+    ExportInc[":::include exporttype"]
+    LayoutDir["keep-together / web-only"]
+  end
+
+  subgraph export [Exportmechanismen]
+    EmbSvg["embed svg"]
+    CoriaExp["coria link"]
+    MxlExp["mxl download"]
+  end
+
+  subgraph profiel [Uitgaveprofielen]
+    Print["Afdruk"]
+    Online["Online"]
+    Edit["Bewerking"]
+  end
+
+  VSAfile --&gt; VsaSvg --&gt; SVGout
+  VSAfile --&gt; VsaMxl --&gt; MXLout
+  ScanFile -.-&gt;|toekomst| VSAfile
+  PageMD --&gt; ExportInc
+  SVGout --&gt; EmbSvg
+  MXLout --&gt; CoriaExp
+  MXLout --&gt; MxlExp
+  CoriaSrc --&gt; CoriaExp
+  ExportInc --&gt; EmbSvg
+  ExportInc --&gt; CoriaExp
+  ExportInc --&gt; MxlExp
+  LayoutDir --&gt; Print
+  EmbSvg --&gt; Print
+  EmbSvg --&gt; Online
+  CoriaExp --&gt; Online
+  MxlExp --&gt; Edit</code></pre>
+
+
+
+
+
+
+
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Laatst geüpdatet">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="1 augustus 2026 07:50:48 UTC">1 augustus 2026</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
+
+
+
+
+
+                
+  
+  
+  
+  
+  
+  <p class="page-git-date">Bijgewerkt: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="1 augustus 2026 07:50:48 UTC">1 augustus 2026</span></p>
+  
+
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Terug naar boven
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://github.com/orthodox-groningen/VSA-tooling" target="_blank" rel="noopener" title="VSA-tooling op GitHub" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="https://orthodox-groningen.github.io/bron/" target="_blank" rel="noopener" title="bron — documentatie" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M384 512H96c-53 0-96-43-96-96V96C0 43 43 0 96 0h304c26.5 0 48 21.5 48 48v288c0 20.9-13.4 38.7-32 45.3V448c17.7 0 32 14.3 32 32s-14.3 32-32 32zM96 384c-17.7 0-32 14.3-32 32s14.3 32 32 32h256v-64zm32-232c0 13.3 10.7 24 24 24h176c13.3 0 24-10.7 24-24s-10.7-24-24-24H152c-13.3 0-24 10.7-24 24m24 72c-13.3 0-24 10.7-24 24s10.7 24 24 24h176c13.3 0 24-10.7 24-24s-10.7-24-24-24z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="https://orthodox-groningen.github.io/VSA-demo/" target="_blank" rel="noopener" title="VSA-demo (presentatiesite)" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M351.9 280H161c2.9 64.5 17.2 123.9 37.5 167.4 11.4 24.5 23.7 41.8 35.1 52.4 11.2 10.5 18.9 12.2 22.9 12.2s11.7-1.7 22.9-12.2c11.4-10.6 23.7-28 35.1-52.4 20.3-43.5 34.6-102.9 37.5-167.4zm-191-48h190.9c-2.8-64.5-17.1-123.9-37.4-167.4-11.4-24.4-23.7-41.8-35.1-52.4C268.1 1.7 260.4 0 256.4 0s-11.7 1.7-22.9 12.2c-11.4 10.6-23.7 28-35.1 52.4-20.3 43.5-34.6 102.9-37.5 167.4m-48 0c3.5-85.6 25.6-165.1 57.9-217.3C78.7 47.3 10.9 131.2 1.5 232zM1.5 280c9.4 100.8 77.2 184.7 169.3 217.3-32.3-52.2-54.4-131.7-57.9-217.3zm398.4 0c-3.5 85.6-25.6 165.1-57.9 217.3 92.1-32.7 159.9-116.5 169.3-217.3zm111.4-48C501.9 131.2 434.1 47.3 342 14.7c32.3 52.2 54.4 131.7 57.9 217.3z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.top", "navigation.instant", "navigation.tracking", "navigation.sections", "navigation.expand", "search.suggest", "search.highlight", "content.action.edit"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Gekopieerd naar klembord", "clipboard.copy": "Kopi\u00ebren naar klembord", "search.result.more.one": "1 extra overeenkomst op deze pagina", "search.result.more.other": "# extra overeenkomsten op deze pagina", "search.result.none": "Geen overeenkomende documenten", "search.result.one": "1 overeenkomende document", "search.result.other": "# overeenkomende documenten", "search.result.placeholder": "Typ om te beginnen met zoeken", "search.result.term.missing": "Ontbreekt", "select.version": "Selecteer versie"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>

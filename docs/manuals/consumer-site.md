@@ -45,5 +45,5 @@ Documentatie en scripts: [VSA-demo README](https://github.com/orthodox-groningen
   [hugo-navigation-placeholders.md](../guides/hugo-navigation-placeholders.md)
   (toolgedrag; presentatievoorbeeld = VSA-demo)
 
-Oudere pagina’s over de voormalige `examples/hugo-demo/` in deze repo wijzen nu
+Oudere pagina’s over de voormalige presentatie-demo in deze repo wijzen nu
 hierheen of naar VSA-demo.

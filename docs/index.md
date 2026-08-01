@@ -26,6 +26,11 @@ Org-terminologie en zangstuk-formaat staan in
 [bron — specificaties](https://orthodox-groningen.github.io/bron/specs/); hier
 alleen toolgedrag en hoe je de CLI gebruikt.
 
+> **URL-cutover:** tot fase 4 stonden docs onder `/docs/` en `/docs-preview/`.
+> Die paden zijn vervangen door `/` (`main`) en `/preview/` (andere branches).
+> De oude Hugo-demosite op deze Pages-root is vervangen door deze documentatie;
+> presentatie: [VSA-demo](https://orthodox-groningen.github.io/VSA-demo/).
+
 ## Lokaal bekijken
 
 ```cmd

@@ -4,15 +4,19 @@
 
 Terminologie: [bron/docs/specs/terminologie.md](https://github.com/orthodox-groningen/bron/blob/main/docs/specs/terminologie.md).
 
-Dit document beschrijft alleen wat **specifiek voor VSA-tooling en de Hugo-demo** geldt.
+Dit document beschrijft alleen wat **specifiek voor VSA-tooling** geldt (CLI,
+includes, catalogus). Voor een browsable Hugo-voorbeeld: [VSA-demo](https://github.com/orthodox-groningen/VSA-demo).
 
 ---
 
-## Demo-voorbeeld
+## Fixture-voorbeeld (CI)
 
 ```text
-examples/hugo-demo/content-source/lokaal/antifoon-1-weekdagen/
+examples/consumer-minimal/content-source/
 ```
+
+Parochie-lokaal zangstukken in een consumer-site: zie VSA-demo en
+[bron — parochie-lokaal](https://github.com/orthodox-groningen/bron/blob/main/docs/manuals/parochie-lokaal-zangstukken.md).
 
 ---
 
@@ -114,8 +118,8 @@ tussenstap vóór `vsa validate` / `vsa build-markdown` op sjablonen en sessies
 
 ```cmd
 cd /d C:\Git\orthodox-groningen\VSA-tooling
-vsa resolve-catalogus examples\hugo-demo\content-source\samenstellingen\geboorte-moeder-gods-2026.md ^
-  --content-root examples\hugo-demo\content-source ^
+vsa resolve-catalogus pad\naar\samenstelling.md ^
+  --content-root pad\naar\content-source ^
   --bron-root ..\bron
 ```
 
@@ -188,16 +192,19 @@ Inline (kort fragment):
 | `build-markdown` | Includes op pad / catalogus-pad — **geen** open `zoek=` |
 | Hugo | Ongewijzigd; **`samenstellingen/`** en **`sjablonen/`** worden overgeslagen |
 
-Lokaal bouwen (pagina's buiten `samenstellingen/` / `sjablonen/`):
+Lokaal controleren (tooling):
 
 ```cmd
 cd /d C:\Git\orthodox-groningen\VSA-tooling
-scripts\build-hugo.cmd
-scripts\serve-hugo.cmd
+vsa validate examples\consumer-minimal\content-source
+scripts\docs-serve.cmd
 ```
+
+Hugo-voorbeeldconsumer: [VSA-demo](https://github.com/orthodox-groningen/VSA-demo).
 
 ---
 
-## Hugo-demo structuur
+## Consumer-site structuur
 
-Zie [hugo-site-structure.md](hugo-site-structure.md) voor `lokaal/` naast `praktijk/` en `voorbeelden/`.
+Zie [consumer-site.md](../manuals/consumer-site.md) en
+[hugo-site-structure.md](hugo-site-structure.md) (doorverwijzing naar VSA-demo).

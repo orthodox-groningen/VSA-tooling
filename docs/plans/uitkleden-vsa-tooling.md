@@ -1,22 +1,22 @@
 # Plan: VSA-tooling uitkleden tot tooling + docs-site
 
-**Status:** in uitvoering  
+**Status:** fase 1–4 gedaan; fase 5 (TEv2) open  
 **Branch:** `focus-on-tooling` (epic-branch; fasen als opeenvolgende commits/PR’s op deze lijn)  
 **Opruimen:** dit bestand verwijderen uit `docs/plans/` wanneer alle fasen klaar zijn
 (en de plannen-index bijwerken).
 
 ## Besluiten (vastgelegd)
 
-| Onderwerp               | Keuze                                                                                         |
-| ----------------------- | --------------------------------------------------------------------------------------------- |
-| Docs-productie (fase 1) | `gh-pages:/docs/` → https://orthodox-groningen.github.io/VSA-tooling/docs/                    |
-| Docs-preview (fase 1)   | `gh-pages:/docs-preview/` → https://orthodox-groningen.github.io/VSA-tooling/docs-preview/    |
-| Branch                  | Doorwerken op `focus-on-tooling` (past bij de epic; geen parallelle docs-branch vanaf `main`) |
-| TEv2 / glossary-CI      | Niet in fase 1; wel gepland als **fase 5**                                                    |
-| Presentatiesite         | Blijft [VSA-demo](https://github.com/orthodox-groningen/VSA-demo)                             |
+| Onderwerp                | Keuze                                                                                         |
+| ------------------------ | --------------------------------------------------------------------------------------------- |
+| Docs (fase 1, tijdelijk) | `/docs/` + `/docs-preview/` naast Hugo                                                        |
+| Docs (vanaf fase 4)      | `/` (`main`) + `/preview/` (andere branches), zoals `bron`                                    |
+| Branch                   | Doorwerken op `focus-on-tooling` (past bij de epic; geen parallelle docs-branch vanaf `main`) |
+| TEv2 / glossary-CI       | Niet in fase 1; wel gepland als **fase 5**                                                    |
+| Presentatiesite          | [VSA-demo](https://github.com/orthodox-groningen/VSA-demo)                                    |
 
-Na fase 4 (Pages-cutover): MkDocs op site-root `/` en preview `/preview/` (Hugo-demo weg;
-zelfde patroon als `bron`).
+Na fase 4 (Pages-cutover, **gedaan**): MkDocs op site-root `/` en preview `/preview/`
+(zelfde patroon als `bron`). Presentatie: [VSA-demo](https://github.com/orthodox-groningen/VSA-demo).
 
 ## Uitgangspunt
 
@@ -166,22 +166,21 @@ CI-smoke. Hugo-Pages-workflows en `examples/hugo-demo/` blijven tot fase 4.
 
 ---
 
-## Fase 4 — hugo-demo verwijderen + Pages-cutover
+## Fase 4 — presentatie-demo verwijderen + Pages-cutover — **gedaan**
 
 Doel: repo zonder presentatiesite; Pages = alleen MkDocs.
 
-1. Verwijder `examples/hugo-demo/` en Hugo-only scripts.
-2. Verwijder Hugo-workflows (`pages-demo`, Hugo-`pages-preview`); **docs-pages** wordt
-   main → `/`, andere branches → `/preview/` (zoals bron). Maps `/docs/` en `/docs-preview/`
-   opruimen of redirect-notitie op docs-home.
-3. README: links naar docs-Pages + VSA-demo als voorbeeldconsumer.
-4. **bron** (kleine follow-up):
-   - Social/demo-URL → VSA-demo Pages
-   - Inbound links bij path-moves (`guides/` → `manuals/`)
-   - Eventueel zin in documentatie-eigendom: VSA-tooling Pages = tool-docs
-5. Bevestig educatieve voorbeelden zitten in MkDocs (fase 2).
+1. Verwijderd: voormalige Hugo-demo onder `examples/` en Hugo-only scripts/workflows.
+2. **docs-pages**: `main` → `/`, andere branches → `/preview/` (zoals bron).
+   Eerste `main`-deploy gebruikt `keep_files: false` om oude Hugo-restanten op
+   `gh-pages` te wissen; preview-deploys houden `keep_files: true`.
+3. README/AGENTS: docs-Pages + VSA-demo als voorbeeldconsumer.
+4. **bron**: social/demo-URL → VSA-demo Pages; term-pagina’s bijgewerkt.
+5. Educatieve voorbeelden zitten in MkDocs (fase 2).
 
-**Succes:** Geen `examples/hugo-demo`; repo-grep `hugo-demo` = 0.
+**Succes:** geen presentatie-demo in deze repo; actieve paden (buiten
+`docs/history/`) wijzen naar `consumer-minimal` of VSA-demo; Pages-cutover live
+na merge naar `main`.
 
 ---
 

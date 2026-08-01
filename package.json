@@ -1,15 +1,9 @@
 {
-  "name": "vsa-tooling-demo",
+  "name": "vsa-tooling",
   "private": true,
   "scripts": {
-    "tev2:hugo": "scripts\\tev2-hugo.cmd",
     "tev2:docs": "scripts\\tev2-docs.cmd",
-    "tev2:docs:prepare": "scripts\\prepare-docs-glossary.cmd",
-    "tev2:mrgt": "mrgt -c examples\\hugo-demo\\tev2-config.yaml",
-    "tev2:hrgt": "hrgt -c examples\\hugo-demo\\tev2-config.yaml",
-    "tev2:trrt": "trrt -c examples\\hugo-demo\\tev2-config.yaml",
-    "vsa-build": "scripts\\build-hugo.cmd",
-    "vsa-serve": "scripts\\serve-hugo.cmd"
+    "tev2:docs:prepare": "scripts\\prepare-docs-glossary.cmd"
   },
   "devDependencies": {
     "@tno-terminology-design/hrgt": "1.2.0",

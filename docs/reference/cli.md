@@ -55,7 +55,7 @@ vsa validate <bestand-of-map>
 | -------------- | ----------------------------------- | ------------------------------------------- |
 | `.vsa` bestand | `examples\minimal\050_svg_demo.vsa` | Controleert één VSA-bestand                 |
 | `.md` bestand  | `pagina.md`                         | Controleert VSA-blokken in Markdown         |
-| Map            | `examples\hugo-demo\content-source` | Zoekt recursief naar `.vsa`, `.md`, `.markdown` |
+| Map            | `examples\consumer-minimal\content-source` | Zoekt recursief naar `.vsa`, `.md`, `.markdown` |
 
 Succesoutput:
 
@@ -145,10 +145,8 @@ vsa build-markdown <input-dir> <output-dir> <assets-dir>
 | `scripts\bootstrap.cmd`        | Installeert lokale omgeving           |
 | `scripts\test.cmd`             | Draait tests                          |
 | `scripts\ci.cmd`               | Draait lokale CI                      |
-| `scripts\build-preview.cmd`    | Bouwt preview                         |
-| `scripts\build-production.cmd` | Bouwt productiekandidaat              |
-| `scripts\build-artifacts.cmd`  | Maakt lokale artifacts                |
-| `scripts\serve-hugo.cmd`       | Start Hugo-server                     |
+| `scripts\ci.cmd`               | Lokale CI (pytest + consumer-minimal) |
+| `scripts\docs-serve.cmd`       | MkDocs docs lokaal serveren           |
 
 ## Diagnosevolgorde
 

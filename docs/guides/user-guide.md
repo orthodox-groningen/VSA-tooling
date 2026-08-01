@@ -47,7 +47,8 @@ Gebruik deze keuzetabel.
 | Hugo-content maken uit bron-Markdown | `vsa build-markdown` |
 | debuggen hoe de parser de tekst begrijpt | `vsa parse --ast` |
 | de hele toolketen lokaal controleren | `scripts\ci.cmd` |
-| een lokale Hugo-preview starten | `scripts\serve-hugo.cmd` |
+| docs lokaal bekijken | `scripts\docs-serve.cmd` |
+| Hugo-preview (voorbeeldconsumer) | [VSA-demo](https://github.com/orthodox-groningen/VSA-demo) |
 
 ## 3. Vanuit welke map werk je?
 
@@ -60,13 +61,13 @@ cd /d C:\Git\orthodox-groningen\VSA-tooling
 Als je daar staat, is dit pad:
 
 ```text
-examples\hugo-demo\content-source
+examples\consumer-minimal\content-source
 ```
 
 eigenlijk:
 
 ```text
-C:\Git\orthodox-groningen\VSA-tooling\examples\hugo-demo\content-source
+C:\Git\orthodox-groningen\VSA-tooling\examples\consumer-minimal\content-source
 ```
 
 ## 4. Basisinstallatie
@@ -110,7 +111,7 @@ vsa validate examples\minimal\050_svg_demo.vsa
 ```
 
 ```cmd
-vsa validate examples\hugo-demo\content-source
+vsa validate examples\consumer-minimal\content-source
 ```
 
 ### Wat wordt gecontroleerd?
@@ -439,7 +440,7 @@ Het maakt:
 Voorbeeld:
 
 ```cmd
-vsa build-markdown examples\hugo-demo\content-source generated\content generated\static\vsa
+vsa build-markdown examples\consumer-minimal\content-source generated\content generated\static\vsa
 ```
 
 ### Parameters
@@ -457,13 +458,13 @@ Dit is waar jij schrijft.
 Voorbeeld:
 
 ```text
-examples\hugo-demo\content-source
+examples\consumer-minimal\content-source
 ```
 
 Daarin staat bijvoorbeeld:
 
 ```text
-zondag\toon-1.md
+smoke.md
 ```
 
 ### Wat is `<output-dir>`?
@@ -480,10 +481,10 @@ De mapstructuur blijft behouden:
 
 ```text
 input:
-examples\hugo-demo\content-source\zondag\toon-1.md
+examples\consumer-minimal\content-source\smoke.md
 
 output:
-generated\content\zondag\toon-1.md
+generated\content\smoke.md
 ```
 
 ### Wat is `<assets-dir>`?
@@ -637,9 +638,7 @@ dan wint `400`.
 | `scripts\bootstrap.cmd` | lokale omgeving klaarmaken |
 | `scripts\test.cmd` | tests draaien |
 | `scripts\ci.cmd` | volledige lokale CI |
-| `scripts\build-preview.cmd` | preview-site bouwen |
-| `scripts\build-production.cmd` | productie-kandidaat bouwen |
-| `scripts\serve-hugo.cmd` | lokale Hugo-server starten |
+| `scripts\docs-serve.cmd` | MkDocs docs lokaal serveren |
 
 ## 13. Aanbevolen werkwijze
 

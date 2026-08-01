@@ -137,11 +137,11 @@ Productie-deploy (root van `gh-pages`, preview-map behouden):
 
 ## Referentie-implementaties
 
-| Repo | Wat je ziet |
-| ---- | ----------- |
-| [VSA-demo](https://github.com/orthodox-groningen/VSA-demo) | Volledige Hugo-consumer + Pages |
-| Deze repo `pages-preview.yml` / `pages-demo.yml` | Hugo-demo (wordt in uitkleed-fase 4 verwijderd) |
-| [bron docs-pages](https://github.com/orthodox-groningen/bron) | MkDocs + dezelfde deploy-reusable |
+| Repo                                                                         | Wat je ziet                       |
+| ---------------------------------------------------------------------------- | --------------------------------- |
+| [VSA-demo](https://github.com/orthodox-groningen/VSA-demo)                   | Volledige Hugo-consumer + Pages   |
+| Deze repo `docs-pages.yml`                                                   | MkDocs tool-docs op Pages         |
+| [bron docs-pages](https://github.com/orthodox-groningen/bron)                | MkDocs + dezelfde deploy-reusable |
 
 ## Org-grenzen (D1)
 

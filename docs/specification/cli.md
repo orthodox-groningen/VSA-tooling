@@ -85,7 +85,7 @@ vsa validate <bestand-of-map>
 | -------------- | ----------------------------------- | ----------------------------------------------- |
 | `.vsa` bestand | `examples\minimal\050_svg_demo.vsa` | controleert één VSA-bestand                     |
 | `.md` bestand  | `pagina.md`                         | controleert VSA-blokken in Markdown             |
-| map            | `examples\hugo-demo\content-source` | zoekt recursief naar `.vsa`, `.md`, `.markdown` |
+| map            | `examples\consumer-minimal\content-source` | zoekt recursief naar `.vsa`, `.md`, `.markdown` |
 
 ### Wat wordt gecontroleerd?
 
@@ -398,14 +398,14 @@ of:
 Commando:
 
 ```cmd
-vsa build-markdown examples\hugo-demo\content-source generated\content generated\static\vsa
+vsa build-markdown examples\consumer-minimal\content-source generated\content generated\static\vsa
 ```
 
 Betekenis:
 
 | Deel   | Pad                                 | Betekenis       |
 | ------ | ----------------------------------- | --------------- |
-| input  | `examples\hugo-demo\content-source` | bron            |
+| input  | `examples\consumer-minimal\content-source` | bron            |
 | output | `generated\content`                 | nieuwe Markdown |
 | assets | `generated\static\vsa`              | SVG-bestanden   |
 
@@ -463,10 +463,7 @@ default
 | `scripts\bootstrap.cmd`        | installeert lokale omgeving |
 | `scripts\test.cmd`             | draait tests                |
 | `scripts\ci.cmd`               | draait lokale CI            |
-| `scripts\build-preview.cmd`    | bouwt preview               |
-| `scripts\build-production.cmd` | bouwt productie-kandidaat   |
-| `scripts\build-artifacts.cmd`  | maakt lokale artifacts      |
-| `scripts\serve-hugo.cmd`       | start Hugo-server           |
+| `scripts\docs-serve.cmd`       | MkDocs docs lokaal serveren |
 
 ## Diagnosevolgorde
 

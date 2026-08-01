@@ -1,6 +1,6 @@
 site_name: VSA-tooling — documentatie
 site_description: Documentatie van de VSA-toolchain (parser, validatie, SVG/MusicXML, hergebruik)
-site_url: https://orthodox-groningen.github.io/VSA-tooling/docs/
+site_url: https://orthodox-groningen.github.io/VSA-tooling/
 repo_url: https://github.com/orthodox-groningen/VSA-tooling
 repo_name: orthodox-groningen/VSA-tooling
 edit_uri: edit/main/docs/

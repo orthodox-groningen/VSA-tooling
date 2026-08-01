@@ -11,7 +11,7 @@ vsa validate examples\minimal\050_svg_demo.vsa
 ## Map valideren
 
 ```cmd
-vsa validate examples\hugo-demo\content-source
+vsa validate examples\consumer-minimal\content-source
 ```
 
 ## Wat wordt gecontroleerd?

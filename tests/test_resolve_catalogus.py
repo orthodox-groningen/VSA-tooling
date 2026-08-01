@@ -1,4 +1,4 @@
-"""Tests voor vsa resolve-catalogus (zonder hugo-demo-paden)."""
+"""Tests voor vsa resolve-catalogus."""
 
 from __future__ import annotations
 

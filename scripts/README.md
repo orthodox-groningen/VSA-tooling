@@ -14,14 +14,11 @@ CI gebruikt `examples\consumer-minimal\content-source`. Generated navigatie alle
 | `docs-serve.cmd`                         | MkDocs docs-site lokaal serveren (`requirements-docs.txt`)        |
 | `test.cmd`                               | alle tests uitvoeren                                              |
 | `test-verbose.cmd`                       | tests uitvoeren met extra uitvoer                                 |
+| `ci.cmd`                                 | lokale CI: pytest + consumer-minimal validate/build-markdown      |
 | `clean.cmd`                              | tijdelijke build- en testbestanden verwijderen                    |
-| `build-hugo.cmd`                         | Hugo-demo schoon bouwen                                           |
-| `serve-hugo.cmd`                         | lokale Hugo-preview starten                                       |
-| `build-preview.cmd`                      | preview-output bouwen                                             |
-| `build-production.cmd`                   | productie-kandidaat bouwen                                        |
-| `check-hugo-links-and-assets.py`         | gegenereerde Hugo-output op dode links/assets controleren         |
 | `debug-font-metrics.py`                  | fontmetrics inspecteren                                           |
 | `assert-real-font-metrics.py`            | build laten falen als Pillow/DejaVu real metrics niet actief zijn |
+| `check-publication-output.py`            | publicatie-output controleren (Pages deploy)                      |
 | `update-nav-placeholders.py`             | gegenereerde navigatie bijwerken in generated content             |
 | `update-spacing-diagnostics-metadata.py` | spacingdiagnostiek bijwerken in generated content                 |
 

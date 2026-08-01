@@ -1,4 +1,4 @@
 # Consumer-minimal
 
-Minimale content voor CI-smoke (`vsa validate` + `vsa build-markdown`) zonder
-Hugo-demosite. Zie [uitkleden fase 3](../../docs/plans/uitkleden-vsa-tooling.md).
+Minimale content voor CI-smoke (`vsa validate` + `vsa build-markdown`).
+Zie [uitkleden-plan](../../docs/plans/uitkleden-vsa-tooling.md).

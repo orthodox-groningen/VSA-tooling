@@ -58,25 +58,25 @@ def test_publication_check_script_rejects_missing_project_prefix(tmp_path: Path)
     assert "mist URL-prefix" in result.stdout
 
 
-def test_preview_workflow_uses_project_preview_url_and_publication_check():
-    workflow = Path(".github/workflows/pages-preview.yml").read_text(encoding="utf-8")
+def test_docs_pages_preview_uses_project_preview_url_and_publication_check():
+    workflow = Path(".github/workflows/docs-pages.yml").read_text(encoding="utf-8")
     reusable = Path(".github/workflows/pages-deploy-reusable.yml").read_text(
         encoding="utf-8"
     )
 
     assert "https://orthodox-groningen.github.io/VSA-tooling/preview/" in workflow
-    assert "url_prefix: /VSA-tooling/preview/" in workflow
+    assert "url_prefix=/VSA-tooling/preview/" in workflow
     assert "check-publication-output.py" in reusable
 
 
-def test_production_workflow_uses_project_url_and_publication_check():
-    workflow = Path(".github/workflows/pages-demo.yml").read_text(encoding="utf-8")
+def test_docs_pages_production_uses_project_url_and_publication_check():
+    workflow = Path(".github/workflows/docs-pages.yml").read_text(encoding="utf-8")
     reusable = Path(".github/workflows/pages-deploy-reusable.yml").read_text(
         encoding="utf-8"
     )
 
     assert "https://orthodox-groningen.github.io/VSA-tooling/" in workflow
-    assert "url_prefix: /VSA-tooling/" in workflow
+    assert "url_prefix=/VSA-tooling/" in workflow
     assert "check-publication-output.py" in reusable
 
 

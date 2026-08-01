@@ -1,35 +1,35 @@
 # VSA-tooling
 
-VSA-tooling is de gereedschapskist voor het schrijven, controleren, renderen en publiceren van VSA-notatie.
+VSA-tooling is de gereedschapskist voor het schrijven, controleren, renderen en
+publiceren van VSA-notatie.
 
-De repository bevat een Python CLI (`vsa`) en een Hugo-demo/publicatieketen. Samen maken die het mogelijk om VSA-bronmateriaal te gebruiken in Markdown, SVG-notatiebeelden te genereren, MusicXML/MXL te exporteren, zangdocumenten samen te stellen en praktijkmateriaal te publiceren.
+De repository bevat de Python CLI (`vsa`) en documentatie (MkDocs Material).
+Een voorbeeld-Hugo-consumer staat in
+[VSA-demo](https://github.com/orthodox-groningen/VSA-demo).
 
 ## Waarvoor is deze repo?
-
-De repo ondersteunt drie samenhangende workflows.
 
 | Workflow                   | Doel                                                                                                                        |
 | -------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
 | VSA-notatie                | VSA-bronnen valideren, parsen en renderen naar SVG of MusicXML/MXL.                                                         |
-| Markdown en Hugo           | Markdown met `::: vsa-notatie`, `:::include`, `:::coria` en print/web-directives omzetten naar publiceerbare Hugo-content.  |
+| Markdown-build             | Markdown met `::: vsa-notatie`, `:::include`, `:::coria` en print/web-directives omzetten naar publiceerbare content.       |
 | Parochie- en bronmateriaal | Lokale en bron-zangstukken via logische verwijzingen opnemen in samenstellingen, inclusief catalogus-resolutie met `zoek=`. |
-
-De tool is dus niet alleen een renderer. Het project groeit naar een authoring- en publicatieketen voor kerkzangmateriaal: van bronbestand naar controleerbare notatie, oefenmateriaal, website en printbare output.
 
 ## Huidige status
 
-De kern is werkend en behoorlijk gedekt door regressietests. De belangrijkste functies zijn aanwezig:
+De kern is werkend en behoorlijk gedekt door regressietests. De belangrijkste
+functies zijn aanwezig:
 
 - VSA valideren: `vsa validate`
 - VSA naar SVG renderen: `vsa svg`
 - VSA naar MusicXML/MXL exporteren: `vsa musicxml`
 - VSA-blokken in Markdown inspecteren: `vsa blocks`
 - Markdown verwerken naar SVG-assets: `vsa process`
-- Hugo-content bouwen: `vsa build-markdown`
+- Markdown bouwen: `vsa build-markdown`
 - Catalogusverwijzingen oplossen: `vsa resolve-catalogus`
-- Hugo-demo lokaal bouwen en serveren met scripts in `scripts/`
 
-De projectrichting en actuele open punten staan in [docs/status-en-roadmap.md](docs/status-en-roadmap.md).
+De projectrichting en actuele open punten staan in
+[docs/status-en-roadmap.md](docs/status-en-roadmap.md).
 
 ## Snel starten
 
@@ -52,33 +52,40 @@ Maak een SVG:
 vsa svg examples\minimal\050_svg_demo.vsa output.svg
 ```
 
-Bouw de Hugo-demo:
+Docs lokaal:
 
 ```cmd
-scripts\build-hugo.cmd
+scripts\docs-serve.cmd
+```
+
+Voorbeeldconsumer (aparte repo):
+
+```cmd
+cd /d C:\Git\orthodox-groningen\VSA-demo
+scripts\bootstrap.cmd
 scripts\serve-hugo.cmd
 ```
 
 ## Belangrijke mappen
 
-| Pad                    | Inhoud                                                                               |
-| ---------------------- | ------------------------------------------------------------------------------------ |
-| `src/vsa/`             | Python package met parser, validators, renderers, markdownverwerking en CLI.         |
-| `tests/`               | Unit- en regressietests voor parser, validatie, rendering, Hugo en workflows.        |
-| `examples/minimal/`    | Kleine VSA-voorbeelden voor testen en uitleg.                                        |
-| `examples/regression/` | Vastgelegde input/output-cases voor regressies.                                      |
-| `examples/hugo-demo/`  | Demo-site, praktijkmateriaal, lokale zangstukken, layouts en publicatieconfiguratie. |
-| `docs/`                | Gebruikersdocs, specs, architectuurstappen en roadmap.                               |
-| `scripts/`             | Windows-scripts voor bootstrap, tests, build, preview, productie en Hugo-server.     |
+| Pad                          | Inhoud                                                                       |
+| ---------------------------- | ---------------------------------------------------------------------------- |
+| `src/vsa/`                   | Python package met parser, validators, renderers, markdownverwerking en CLI. |
+| `tests/`                     | Unit- en regressietests voor parser, validatie, rendering en workflows.      |
+| `examples/minimal/`          | Kleine VSA-voorbeelden voor testen en uitleg.                                |
+| `examples/regression/`       | Vastgelegde input/output-cases voor regressies.                              |
+| `examples/consumer-minimal/` | Minimale Markdown/VSA-fixture voor CI-smoke.                                 |
+| `docs/`                      | Gebruikersdocs, specs, plannen (MkDocs-bron).                                |
+| `scripts/`                   | Windows-scripts voor bootstrap, tests, CI en docs-serve.                     |
 
 ## Documentatie
 
 Gepubliceerde docs (MkDocs Material):
 
-| Omgeving                  | URL                                                            |
-| ------------------------- | -------------------------------------------------------------- |
-| Productie (`main`)        | https://orthodox-groningen.github.io/VSA-tooling/docs/         |
-| Preview (andere branches) | https://orthodox-groningen.github.io/VSA-tooling/docs-preview/ |
+| Omgeving                  | URL                                                       |
+| ------------------------- | --------------------------------------------------------- |
+| Productie (`main`)        | https://orthodox-groningen.github.io/VSA-tooling/         |
+| Preview (andere branches) | https://orthodox-groningen.github.io/VSA-tooling/preview/ |
 
 Lokaal:
 

@@ -12,7 +12,7 @@ Gebruikseisen per drager (papier/tablet/telefoon):
 
 Eerste increment: spec-sectie over concepten (conversie vs. export) +
 `:::include svg|coria|mxl` als **exporttype** in de samenstelling + één demo-pagina
-in hugo-demo.
+in VSA-demo.
 
 ---
 
@@ -500,7 +500,7 @@ Zonder stap 1 riskeren exporttypes in code te worden gedefinieerd zonder gedeeld
 | --------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Blok-directives (`web-only`, `print-only`, `keep-together`) **niet nesten** | Behouden — implementatie in [../src/vsa/markdown_directives.py](../src/vsa/markdown_directives.py) blijft                                                                                                  |
 | Regel-directives (`:::include`, `:::coria`) **binnen** `keep-together`      | Toegestaan — verwerkt in eerdere passes vóór `process_directives`                                                                                                                                          |
-| Authoring-conventie voor titels/navigatie                                   | `web-only` als **sibling vóór** `keep-together` (zoals [../examples/hugo-demo/content-source/praktijk/zondagen/zondag-toon-3.md](../examples/hugo-demo/content-source/praktijk/zondagen/zondag-toon-3.md)) |
+| Authoring-conventie voor titels/navigatie                                   | `web-only` als **sibling vóór** `keep-together` (voorbeeld in [VSA-demo](https://github.com/orthodox-groningen/VSA-demo)) |
 | Coria-link alleen online, notatie samen printen                             | Coria-regels binnen `keep-together`; print verbergt `.coria-play` via CSS (bestaand patroon)                                                                                                               |
 
 **Fase 2 (§2.3 todo):** nesting `web-only` ⊂ `keep-together` alleen als sibling-conventie onwerkbaar blijkt — vereist wijziging state machine, niet nodig voor eerste demo.
@@ -577,7 +577,7 @@ Implementatiedetails:
 
 ### 3. Demo-pagina
 
-Nieuw bestand: [../examples/hugo-demo/content-source/praktijk/zondagen/export-demo.md](../examples/hugo-demo/content-source/praktijk/zondagen/export-demo.md)
+Nieuw bestand: export-demo in de consumer-site (zie [VSA-demo](https://github.com/orthodox-groningen/VSA-demo)).
 
 Demonstratie van exporttypes (niet conversie) op bestaande toon-3-assets:
 
@@ -608,7 +608,7 @@ Conversie (`vsa svg`, `vsa musicxml`) gebeurt in de build; deze pagina toont exp
 :::end-keep-together:::
 ```
 
-Optioneel: link vanuit [../examples/hugo-demo/content-source/praktijk/zondagen/](../examples/hugo-demo/content-source/praktijk/zondagen/) overzichtspagina.
+Optioneel: link vanuit het praktijk-overzicht in de consumer-site ([VSA-demo](https://github.com/orthodox-groningen/VSA-demo)).
 
 ---
 

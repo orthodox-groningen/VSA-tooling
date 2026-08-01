@@ -4,13 +4,12 @@ De CI-architectuur is gericht op vroeg falen, herhaalbaarheid en één duidelijk
 
 ## Lagen
 
-| Laag                | Workflows                                              | Doel                                                         |
-| ------------------- | ------------------------------------------------------ | ------------------------------------------------------------ |
-| Tests / validatie   | `vsa-ci.yml`, `site-build.yml`                         | Regressie, bron-sync, validate en Hugo-build zonder deploy   |
-| Preview deploy      | `pages-preview.yml`                                    | Preview naar `gh-pages:/preview/` (elke push, alle branches) |
-| Productie deploy    | `pages-demo.yml`                                       | Gecontroleerde productie naar `gh-pages:/`                   |
-| Release (handmatig) | `release-artifacts.yml`                                | Package- en demo-artifacts bij release                       |
-| Org-herbruikbaar    | `pages-deploy-reusable.yml`, `vsa-render-reusable.yml` | Deploy/render voor andere repo's                             |
+| Laag                | Workflows                                              | Doel                                                       |
+| ------------------- | ------------------------------------------------------ | ---------------------------------------------------------- |
+| Tests / validatie   | `vsa-ci.yml`, `docs-build.yml`                         | Pytest, consumer-minimal, MkDocs `--strict` zonder deploy  |
+| Docs deploy         | `docs-pages.yml`                                       | MkDocs → `gh-pages:/` (`main`) of `/preview/`              |
+| Release (handmatig) | `release-artifacts.yml`                                | Package- en smoke-artifacts bij release                    |
+| Org-herbruikbaar    | `pages-deploy-reusable.yml`, `vsa-render-reusable.yml` | Deploy/render voor andere repo's                           |
 
 ## Pages-beleid
 
@@ -28,12 +27,6 @@ Niet combineren met een tweede Pages-mechanisme via `actions/deploy-pages`, omda
 
 | Regel                         | Effect                                         |
 | ----------------------------- | ---------------------------------------------- |
-| Fail-fast vóór deploy         | Fouten worden gevonden voordat Pages wijzigt.  |
-| Eén publicatiemechanisme      | Minder race conditions en minder dubbele runs. |
-| Concurrency op Pages          | Deploys breken elkaar niet af.                 |
-| Lokaal pad gelijk aan CI      | Lokale diagnose sluit aan op GitHub Actions.   |
-| Reusable workflows            | Andere repos kunnen hetzelfde pad volgen.      |
-
-Zie ook [CI-betrouwbaarheid](../../docs/architecture/ci-reliability.md) voor Pages-troubleshooting en verwijderde dubbele workflows.
-
-**Workflow-keuze:** [.github/workflows/README.md](../../.github/workflows/README.md).
+| Fail-fast in CI               | Geen deploy bij rode tests of validate         |
+| Herbruikbare deploy-workflow  | Één publicatiepad voor org-repo's              |
+| Publication check             | Dode links/assets vóór push naar `gh-pages`    |

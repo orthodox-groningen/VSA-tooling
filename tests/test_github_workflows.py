@@ -6,8 +6,6 @@ WORKFLOW_FILES = (
     "vsa-ci.yml",
     "docs-build.yml",
     "docs-pages.yml",
-    "pages-preview.yml",
-    "pages-demo.yml",
     "release-artifacts.yml",
     "pages-deploy-reusable.yml",
     "vsa-render-reusable.yml",
@@ -46,6 +44,8 @@ def test_removed_duplicate_workflows_are_gone():
         ".github/workflows/build-artifacts.yml",
         ".github/workflows/hugo-demo.yml",
         ".github/workflows/site-build.yml",
+        ".github/workflows/pages-preview.yml",
+        ".github/workflows/pages-demo.yml",
     )
 
     for path in removed:
@@ -64,3 +64,15 @@ def test_vsa_ci_uses_consumer_minimal():
     text = Path("scripts/ci.cmd").read_text(encoding="utf-8")
     assert "consumer-minimal" in text
     assert "hugo-demo" not in text
+
+
+def test_docs_pages_cutover_targets():
+    text = Path(".github/workflows/docs-pages.yml").read_text(encoding="utf-8")
+
+    assert "destination_dir=preview" in text
+    assert 'destination_dir="' in text or "destination_dir=" in text
+    assert "https://orthodox-groningen.github.io/VSA-tooling/" in text
+    assert "https://orthodox-groningen.github.io/VSA-tooling/preview/" in text
+    assert "docs-preview" not in text
+    assert 'destination_dir=docs"' not in text
+    assert "destination_dir=docs," not in text

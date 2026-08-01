@@ -14,7 +14,8 @@ VSA-tooling is de **Python-toolchain** voor Vereenvoudigde Slavische Accentnotat
 
 - parser en semantische validator;
 - CLI (`vsa`): validate, parse, blocks, build-markdown, svg, musicxml, …;
-- Hugo-demo (`examples/hugo-demo/`) als integratie- en documentatievoorbeeld;
+- MkDocs-documentatie op GitHub Pages; presentatievoorbeeld in
+  [VSA-demo](https://github.com/orthodox-groningen/VSA-demo);
 - regressietests en GitHub Actions CI (inclusief herbruikbare render-workflow).
 
 **Normatieve org-specs staan in `bron`** — link ernaar, dupliceer niet. Tool-specifieke
@@ -85,8 +86,8 @@ Define verifiable success criteria (tests, validate, build) and loop until they 
 | Python   | ≥ 3.12                                                                            |
 | venv     | `.venv` (via bootstrap)                                                           |
 | Tests    | pytest                                                                            |
-| Hugo     | 0.147.9 (CI; lokaal voor demo-build)                                              |
-| bron     | checkout onder `vendor/bron` of sibling `../bron` (CI/sync; **catalogus**-pakket) |
+| Docs     | MkDocs Material (`requirements-docs.txt`)                                         |
+| bron     | checkout onder `vendor/bron` of sibling `../bron` (CI; **catalogus**-pakket)      |
 
 ```cmd
 cd /d C:\Git\orthodox-groningen\VSA-tooling
@@ -131,18 +132,17 @@ vsa validate examples\consumer-minimal\content-source
 vsa build-markdown examples\consumer-minimal\content-source generated\ci\content generated\ci\static\vsa
 ```
 
-### Hugo-demo
+### Voorbeeldconsumer (VSA-demo)
 
-Tijdelijk nog in `examples/hugo-demo/` (tot uitkleed-fase 4). Presentatiemodel:
-[VSA-demo](https://github.com/orthodox-groningen/VSA-demo).
+Presentatiesite: [VSA-demo](https://github.com/orthodox-groningen/VSA-demo).
 
 ```cmd
-cd /d C:\Git\orthodox-groningen\VSA-tooling
-scripts\build-hugo.cmd
+cd /d C:\Git\orthodox-groningen\VSA-demo
+scripts\bootstrap.cmd
 scripts\serve-hugo.cmd
 ```
 
-Opruimen: `scripts\clean.cmd`. Overzicht scripts: `scripts/README.md`.
+Opruimen in deze repo: `scripts\clean.cmd`. Overzicht scripts: `scripts/README.md`.
 
 ### Documentatiesite (MkDocs)
 
@@ -152,38 +152,39 @@ scripts\docs-serve.cmd
 ```
 
 Of: `python -m pip install -r requirements-docs.txt` daarna `python -m mkdocs serve`.
-CI/deploy: `.github/workflows/docs-pages.yml` → `gh-pages:/docs/` (`main`) of `/docs-preview/`.
+CI/deploy: `.github/workflows/docs-pages.yml` → `gh-pages:/` (`main`) of `/preview/`.
 
 ---
 
 ## Architectuur
 
 ```
-src/vsa/              # parser, validator, renderers, CLI
-tests/                # pytest
-examples/minimal|regression|edge-cases|hugo-demo/
-docs/specification/   # Normatieve VSA-specificatie
-docs/guides/          # Taakgerichte handleidingen
-docs/plans/           # Plannen en toekomstvoorstellen
-docs/history/         # Ontwerpgeschiedenis
-generated/            # build-output — niet handmatig redigeren
-vendor/bron/          # bron-checkout (CI)
+src/vsa/                       # parser, validator, renderers, CLI
+tests/                         # pytest
+examples/minimal|regression|edge-cases|consumer-minimal/
+docs/specification/            # Normatieve VSA-specificatie
+docs/guides/                   # Taakgerichte handleidingen
+docs/manuals/                  # MkDocs-handleidingen
+docs/plans/                    # Plannen en toekomstvoorstellen
+docs/history/                  # Ontwerpgeschiedenis (niet op Pages)
+generated/                     # build-output — niet handmatig redigeren
+vendor/bron/                   # bron-checkout (CI)
 ```
 
-Specificatie: `docs/specification/`. Hugo-demo structuur: `docs/guides/hugo-site-structure.md`.
+Specificatie: `docs/specification/`. Consumer-integratie: `docs/manuals/consumer-site.md`.
 Hergebruik: `docs/guides/reuse-vsa-tooling.md`.
 
 ### Belangrijke grenzen
 
-- Scripts mogen **`examples\hugo-demo\content-source` niet redactioneel herschrijven**.
+- Scripts mogen redactionele `content-source` niet herschrijven.
 - Wijzig normatieve terminologie via PR op **bron**, niet in stubs hier.
-- Afgeleide output hoort in `generated/` of `static/vsa`, niet in `bron`.
+- Afgeleide output hoort in `generated/` of consumer-`static/vsa`, niet in `bron`.
 
 ---
 
 ## Git commits
 
-[Conventional Commits](https://www.conventionalcommits.org/). Typische scopes: `vsa`, `parser`, `svg`, `hugo`, `ci`, `docs`.
+[Conventional Commits](https://www.conventionalcommits.org/). Typische scopes: `vsa`, `parser`, `svg`, `ci`, `docs`.
 
 ```
 feat(vsa): voeg MusicXML-export voor compound-melisma toe
@@ -205,7 +206,7 @@ gh pr create --title "feat(vsa): korte beschrijving" --body "## Summary
 - …
 
 ## Test plan
-- [ ] vsa validate examples\hugo-demo\content-source
+- [ ] vsa validate examples\consumer-minimal\content-source
 - [ ] scripts\test.cmd
 "
 ```
@@ -216,16 +217,14 @@ gh pr create --title "feat(vsa): korte beschrijving" --body "## Summary
 
 Overzicht **wanneer welke workflow** draait: [.github/workflows/README.md](.github/workflows/README.md).
 
-| Workflow                    | Doel                                                                   |
-| --------------------------- | ---------------------------------------------------------------------- |
-| `vsa-ci.yml`                | Windows: `scripts\ci.cmd` (pytest, consumer-minimal)                   |
-| `docs-build.yml`            | Linux: `mkdocs build --strict`                                         |
-| `pages-preview.yml`         | Hugo GitHub Pages preview (elke push; tot fase 4)                      |
-| `docs-pages.yml`            | MkDocs docs → `/docs/` of `/docs-preview/` (elke push)                 |
-| `pages-demo.yml`            | Hugo demo-site productie (handmatig; tot fase 4)                       |
-| `release-artifacts.yml`     | Release-package + consumer-minimal artifact (handmatig)                |
-| `pages-deploy-reusable.yml` | Herbruikbare Pages-deploy voor org-repo's                              |
-| `vsa-render-reusable.yml`   | Herbruikbaar VSA-renderen voor andere org-repo's                       |
+| Workflow                    | Doel                                                      |
+| --------------------------- | --------------------------------------------------------- |
+| `vsa-ci.yml`                | Windows: `scripts\ci.cmd` (pytest, consumer-minimal)      |
+| `docs-build.yml`            | Linux: `mkdocs build --strict`                            |
+| `docs-pages.yml`            | MkDocs docs → `/` of `/preview/` (elke push)              |
+| `release-artifacts.yml`     | Release-package + consumer-minimal artifact (handmatig)   |
+| `pages-deploy-reusable.yml` | Herbruikbare Pages-deploy voor org-repo's                 |
+| `vsa-render-reusable.yml`   | Herbruikbaar VSA-renderen voor andere org-repo's          |
 
 CI checkt `bron` uit naar `vendor/bron` (`ref: main`).
 

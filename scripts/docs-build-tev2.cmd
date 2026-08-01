@@ -94,6 +94,12 @@ if errorlevel 1 (
   exit /b 1
 )
 
+python ..\..\scripts\mkdocs-glossary-index.py terminologie
+if errorlevel 1 (
+  popd
+  exit /b 1
+)
+
 echo [5/6] trrt + TermRef check
 call "%TRRT%" -f -c tev2-config.yaml
 if errorlevel 1 (

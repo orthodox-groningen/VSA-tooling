@@ -21,7 +21,22 @@ def test_prepare_and_docs_build_tev2_scripts_exist():
     assert Path("scripts/prepare-tev2-docs.py").exists()
     assert Path("scripts/docs-build-tev2.cmd").exists()
     assert Path("scripts/sort-glossary-table.py").exists()
+    assert Path("scripts/mkdocs-glossary-index.py").exists()
     assert Path("scripts/check-tev2-termrefs.py").exists()
+
+
+def test_mkdocs_nav_uses_terminologie_index_not_underscore_index():
+    """MkDocs treats _index.md as a page slug, not a directory index."""
+    text = Path("mkdocs.yml").read_text(encoding="utf-8")
+    assert "Terminologie: terminologie/index.md" in text
+    assert "terminologie/_index.md" not in text
+    for workflow in (
+        Path(".github/workflows/docs-pages.yml"),
+        Path(".github/workflows/docs-build.yml"),
+        Path("scripts/docs-build-tev2.cmd"),
+    ):
+        body = workflow.read_text(encoding="utf-8")
+        assert "mkdocs-glossary-index.py" in body
 
 
 def test_saf_keeps_bron_scope_without_merging_into_local_mrg():

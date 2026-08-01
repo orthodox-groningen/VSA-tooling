@@ -94,7 +94,7 @@ In deze uitgave is alleen de melodie aangegeven, in een vereenvoudigd neumenschr
 
 Deze kan het best duidelijk gemaakt worden aan de hand van enkele voorbeelden.
 
-![Drie voorbeelden van de notatie](liturgikon-voorbeelden.jpg)
+![Drie voorbeelden van de notatie](../guides/assets/liturgikon-voorbeelden.jpg)
 
 De tekens bóven de tekst geven een verandering van toonhoogte aan. 
 Het aantal boven elkaar geplaatste stijgende of dalende strepen betekent een 

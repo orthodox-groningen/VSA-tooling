@@ -45,8 +45,6 @@ Handmatige workflows (`pages-demo`, `release-artifacts`) start je zelf in GitHub
 | Lokaal     | `scripts\docs-serve.cmd`                                               |
 
 Geen TEv2/glossary-pipeline (gepland in [uitkleden fase 5](../../docs/plans/uitkleden-vsa-tooling.md)).
-Tijdelijk `skip_publication_check: true` — de Hugo-publicatiecheck faalt op bestaande
-kapotte docs-links; opnieuw aanzetten na fase-2 linkopschoning.
 
 ---
 

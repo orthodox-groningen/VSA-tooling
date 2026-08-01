@@ -1,21 +1,17 @@
 # Referentie
 
-Deze map bevat compacte referentiedocumentatie voor implementatie, controle en gebruik van de VSA-tooling.
+Compacte naslag. Normatief: `../specification/`.
 
-| Document                    | Inhoud                                      |
-| --------------------------- | ------------------------------------------- |
-| [`cli.md`](cli.md)          | CLI-commando's, opties en scripts           |
-| [`grammar.md`](grammar.md)  | EBNF-fragmenten en syntactische bouwstenen  |
-| [`tokens.md`](tokens.md)    | Hoogte-markeringen, control tokens en scope |
-| [`metadata.md`](metadata.md)| Blokmetadata en `.vsa`-frontmatter          |
-| [`config.md`](config.md)    | `vsa.toml`, defaults en severity-overrides  |
-| [`diagnostics.md`](diagnostics.md) | Foutcodes, severity en exitcodes     |
-| [`outputs.md`](outputs.md)  | SVG, Markdown, JSON, AST en MusicXML        |
-| [`include-vsa.md`](include-vsa.md) | `@include-vsa` referentie           |
-| [`traceability.md`](traceability.md) | Brondocumenten voor deze referentie |
-
-## Status
-
-Deze referentie is geconsolideerd uit de bestaande documentatie in `docs/`.
-
-De normatieve betekenis hoort primair in `docs/specification/`; deze map is bedoeld als snelle lookup.
+| Document                                    | Inhoud                                      |
+| ------------------------------------------- | ------------------------------------------- |
+| [Voorbeelden](voorbeelden/index.md)         | Leesbare correcte/incorrecte inputs         |
+| [Fixtures-catalogus](fixtures-catalogus.md) | Paden naar `examples/` + verwachte uitkomst |
+| [`cli.md`](cli.md)                          | CLI-commando's, opties en scripts           |
+| [`grammar.md`](grammar.md)                  | EBNF-fragmenten                             |
+| [`tokens.md`](tokens.md)                    | Hoogte-markeringen, control tokens, scope   |
+| [`metadata.md`](metadata.md)                | Blokmetadata en `.vsa`-frontmatter          |
+| [`config.md`](config.md)                    | `vsa.toml`, defaults, severity              |
+| [`diagnostics.md`](diagnostics.md)          | Foutcodes, severity, exitcodes              |
+| [`outputs.md`](outputs.md)                  | SVG, Markdown, JSON, AST, MusicXML          |
+| [`include-vsa.md`](include-vsa.md)          | `@include-vsa`                              |
+| [`traceability.md`](traceability.md)        | Herkomst van deze referentie                |

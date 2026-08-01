@@ -16,15 +16,24 @@ exclude_docs: |
   /saf.yaml
   /tev2-config.yaml
   /to-do-van-mij.md
+  plans/uitgaveprofielen.md
 
 not_in_nav: |
   guides/assets/**
+  guides/README.md
+  guides/musicxml.md
+  guides/testing.md
+  guides/quick-start.md
+  guides/hugo-workflow.md
+  guides/hugo-site-structure.md
+  guides/tev2-hugo.md
+  plans/onderzoeks-prompt.md
 
 validation:
   nav:
     omitted_files: info
   links:
-    not_found: info
+    not_found: warn
     unrecognized_links: info
     anchors: info
 
@@ -66,24 +75,18 @@ nav:
   - Home: index.md
   - Starten:
     - getting-started/README.md
-    - guides/quick-start.md
   - Handleidingen:
-    - guides/README.md
+    - manuals/index.md
+    - manuals/consumer-site.md
     - guides/user-guide.md
     - guides/cli-taken.md
     - guides/validation.md
-    - guides/musicxml.md
     - guides/musicxml-export.md
     - guides/rendering-fonts.md
     - guides/parochie-lokaal-vsa.md
-    - guides/testing.md
     - guides/testing-and-regression.md
     - guides/liturgikon-notatie.md
-    - Hugo (demo):
-      - guides/hugo-workflow.md
-      - guides/hugo-site-structure.md
-      - guides/hugo-navigation-placeholders.md
-      - guides/tev2-hugo.md
+    - guides/hugo-navigation-placeholders.md
   - Specificatie:
     - specification/README.md
     - specification/overview.md
@@ -101,6 +104,11 @@ nav:
     - specification/open-points.md
   - Referentie:
     - reference/README.md
+    - reference/voorbeelden/index.md
+    - reference/voorbeelden/basis.md
+    - reference/voorbeelden/multiline.md
+    - reference/voorbeelden/fouten.md
+    - reference/fixtures-catalogus.md
     - reference/cli.md
     - reference/grammar.md
     - reference/tokens.md
@@ -115,7 +123,6 @@ nav:
   - Plannen:
     - plans/README.md
     - plans/uitkleden-vsa-tooling.md
-    - plans/uitgaveprofielen.md
     - plans/gebruikseisen-dragers.md
     - plans/vsa-polyphony-proposal.md
 

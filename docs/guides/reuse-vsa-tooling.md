@@ -1,14 +1,19 @@
 # VSA-tooling gebruiken vanuit andere repositories
 
-## Direct met `pip`
+Deze pagina is de **integratiehandleiding**: hoe je `vsa-tool` in een andere repo
+installeert en in CI gebruikt. Volledig werkend voorbeeld:
+[VSA-demo](https://github.com/orthodox-groningen/VSA-demo).
 
-In een andere repository kan de tool rechtstreeks vanaf GitHub worden geïnstalleerd:
+## Direct met `pip`
 
 ```cmd
 python -m pip install "vsa-tool[rendering] @ git+https://github.com/orthodox-groningen/VSA-tooling.git@main"
 ```
 
-Daarna is het commando beschikbaar:
+Voor productie bij voorkeur een **tag** i.p.v. `@main`, bijvoorbeeld `@v0.1.0`
+(wanneer die bestaat).
+
+Daarna:
 
 ```cmd
 vsa --version
@@ -16,15 +21,30 @@ vsa validate content
 vsa svg input.vsa output.svg
 ```
 
-Voor Markdown + SVG-generatie:
+Markdown + SVG:
 
 ```cmd
 vsa build-markdown content generated\content generated\static\vsa --assets-url-prefix /vsa
 ```
 
-## In GitHub Actions
+Extra `[rendering]` is nodig voor SVG (Pillow + fonts in het package/repo).
 
-Een andere repository kan de herbruikbare workflow aanroepen:
+## Minimale consumer-layout
+
+```text
+mijn-repo/
+  content/                 # of content-source/
+    voorbeeld.md           # Markdown met ::: vsa-notatie
+  generated/               # build-output (niet committen)
+  .github/workflows/
+    render.yml             # zie hieronder
+```
+
+Geen Hugo verplicht: alleen `validate` / `svg` / `musicxml` volstaat voor
+batchconversie. Hugo (of MkDocs) komt pas bij een publicatiesite — zie
+[Consumer-site](../manuals/consumer-site.md).
+
+## In GitHub Actions (render)
 
 ```yaml
 name: Render VSA
@@ -44,16 +64,16 @@ jobs:
       output_mode: img
 ```
 
-De workflow valideert de VSA-bronnen en uploadt de gegenereerde Markdown/SVG als artifact.
+De workflow valideert en uploadt gegenereerde Markdown/SVG als artifact.
 
 ## GitHub Pages deploy
 
-Na een lokale site-build (Hugo, MkDocs, …) upload je het artifact en roep je de
-herbruikbare deploy-workflow aan. Die draait `check-publication-output.py` (tenzij
+Na een site-build upload je het artifact en roep je de herbruikbare
+deploy-workflow aan. Die draait `check-publication-output.py` (tenzij
 overgeslagen) en pusht via `peaceiris/actions-gh-pages@v3` naar `gh-pages`.
 
-**Repo-instelling:** Settings → Pages → Deploy from a branch → `gh-pages` → `/` (niet
-"GitHub Actions").
+**Repo-instelling:** Settings → Pages → Deploy from a branch → `gh-pages` → `/`
+(niet “GitHub Actions”).
 
 ```yaml
 name: Deploy site
@@ -115,12 +135,15 @@ Productie-deploy (root van `gh-pages`, preview-map behouden):
       contents: write
 ```
 
-Referentie-implementatie in deze repo: `pages-preview.yml` en `pages-demo.yml`.
+## Referentie-implementaties
 
-## Aanbevolen vervolg
+| Repo | Wat je ziet |
+| ---- | ----------- |
+| [VSA-demo](https://github.com/orthodox-groningen/VSA-demo) | Volledige Hugo-consumer + Pages |
+| Deze repo `pages-preview.yml` / `pages-demo.yml` | Hugo-demo (wordt in uitkleed-fase 4 verwijderd) |
+| [bron docs-pages](https://github.com/orthodox-groningen/bron) | MkDocs + dezelfde deploy-reusable |
 
-Voor productiegebruik is een getagde versie beter dan `@main`, bijvoorbeeld:
+## Org-grenzen (D1)
 
-```text
-@v0.1.0
-```
+Installeer de tool hier; **dupliceer geen** org-specs. Terminologie en
+zangstuk-formaat: [bron — specs](https://orthodox-groningen.github.io/bron/specs/).

@@ -10,7 +10,7 @@
 (`.vsa`, scan, …). Dit is een eisendocument, geen ontwerp: kolom `status` =
 `vastgesteld` / `open` / `bewust uitgesteld`.
 
-**Gerelateerd:** [uitgaveprofielen.md](uitgaveprofielen.md) (samenstelling/export),
+**Gerelateerd:** [uitgaveprofielen.md](https://github.com/orthodox-groningen/VSA-tooling/blob/focus-on-tooling/docs/plans/uitgaveprofielen.md) (samenstelling/export),
 [rendering.md](../specification/rendering.md).
 
 Elke eis krijgt drie kolommen:

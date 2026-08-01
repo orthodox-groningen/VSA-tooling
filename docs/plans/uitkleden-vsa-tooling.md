@@ -46,8 +46,8 @@ flowchart LR
 
 ## Doelstructuur docs (MkDocs, spiegel `bron`)
 
-Spiegel `bron/mkdocs.yml` + `requirements-docs.txt` + deploy via
-[`.github/workflows/pages-deploy-reusable.yml`](../../.github/workflows/pages-deploy-reusable.yml)
+Spiegel
+[pages-deploy-reusable.yml](https://github.com/orthodox-groningen/VSA-tooling/blob/main/.github/workflows/pages-deploy-reusable.yml)
 (zoals `bron`/`docs-pages.yml`). **Zonder** TEv2-pipeline tot fase 5: plain
 `mkdocs build --strict`.
 
@@ -84,7 +84,9 @@ Spiegel `bron/mkdocs.yml` + `requirements-docs.txt` + deploy via
 | Herbruikbare workflows `vsa-render-reusable`, `pages-deploy-reusable` | `pages-demo.yml`, Hugo-pad in `pages-preview.yml` / `site-build.yml`                                                                                |
 | Nieuw: `examples/consumer-minimal/` (1–2 md + `.vsa`) voor CI smoke   | Praktijk-/liturgie-content (al in VSA-demo)                                                                                                         |
 
-**Repo-root detectie:** [`scripts/repo_root.py`](../../scripts/repo_root.py) markeert nu op
+**Repo-root detectie:**
+[`scripts/repo_root.py`](https://github.com/orthodox-groningen/VSA-tooling/blob/main/scripts/repo_root.py)
+markeert nu op
 `examples/hugo-demo` — wijzigen naar `pyproject.toml` + `src/vsa` (hard blocker voor delete).
 
 **Package:** `vsa-tool` heeft geen runtime-afhankelijkheid van hugo-demo.
@@ -124,8 +126,7 @@ Geen TEv2.
    --strict` blijft aan.
 
 **Succes:** https://orthodox-groningen.github.io/VSA-tooling/docs/ bouwt op push;
-pytest ongewijzigd groen. Deploy gebruikt tijdelijk `skip_publication_check`
-(kapotte repo-links in HTML laten de Hugo-publicatiecheck falen; herstellen in fase 2).
+pytest ongewijzigd groen.
 
 ---
 
@@ -140,8 +141,10 @@ Doel: één leespad; unieke educatieve content uit hugo-demo `voorbeelden/` land
    `edge-cases/` (docs citeren fixture-paden).
 4. Integratie-sectie uitbreiden op [`reuse-vsa-tooling.md`](../guides/reuse-vsa-tooling.md).
 5. Cross-links naar bron; stubs houden D2 aan.
+6. Kapotte repo-links opgelost / `uitgaveprofielen.md` uit de site-build; publicatiecheck weer aan.
 
-**Succes:** Nav zelfstandig leesbaar zonder hugo-demo; geen org-specs gedupliceerd.
+**Succes:** Nav zelfstandig leesbaar zonder hugo-demo; geen org-specs gedupliceerd;
+`mkdocs build --strict` + publicatiecheck groen.
 
 ---
 

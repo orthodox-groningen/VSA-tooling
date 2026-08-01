@@ -485,7 +485,7 @@ Open ontwerpbesluiten (voor implementatie):
 
 Dit document beschrijft de SVG-rendering van VSA-notatie.
 
-De [VSA-taalspecificatie](./vsa-spec-v1.md) definieert:
+De VSA-taalspecificatie (deze map) definieert:
 
 * syntax;
 * semantiek;
@@ -1240,8 +1240,8 @@ Het glyphmodel definieert niet:
 
 Zie:
 
-* [VSA-taalspecificatie](vsa-spec-v1.md)
-* [VSA SVG Rendering Specification](vsa-svg-rendering-spec.md)
+* [Specificatie — index](README.md)
+* Historische brondocumenten (alleen in git-history / `docs/history/`)
 
 ---
 

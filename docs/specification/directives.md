@@ -171,7 +171,7 @@ Zie [catalogus-zoek-api — twee contextlagen](https://github.com/orthodox-groni
 
 | Onderdeel                                                                | Status              |
 | ------------------------------------------------------------------------ | ------------------- |
-| `expand_include_vsa` in [`include_vsa.py`](../../src/vsa/include_vsa.py) | **Geïmplementeerd** |
+| `expand_include_vsa` in [`include_vsa.py`](https://github.com/orthodox-groningen/VSA-tooling/blob/main/src/vsa/include_vsa.py) | **Geïmplementeerd** |
 | `@include-vsa id=` / `lokaal=`                                           | **Geïmplementeerd** |
 | `@include-vsa zoek=`                                                     | **Geïmplementeerd** |
 | Integratie validate / svg / musicxml / build-markdown                    | **Geïmplementeerd** |
@@ -261,7 +261,7 @@ een logische referentie via **catalogus** (fase 3):
 **Fase 4 — catalogus-zoek:** `zoek="…"` in sjablonen/sessies; **`vsa resolve-catalogus`**
 vervangt vóór build door `bron:…` / `lokaal:…`. Open `zoek=` in build → **fout**.
 Zie [catalogus-samenstelling-zangstuk](https://orthodox-groningen.github.io/bron/specs/catalogus-samenstelling-zangstuk/)
-en [parochie-lokaal-vsa.md](parochie-lokaal-vsa.md).
+en [parochie-lokaal-vsa.md](../guides/parochie-lokaal-vsa.md).
 
 Segmenten mogen aliassen zijn (`Hemelum` → `hemelum`). Zie
 [catalogus-cli](https://orthodox-groningen.github.io/bron/reference/catalogus-cli/).

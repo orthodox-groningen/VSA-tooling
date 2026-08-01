@@ -8,9 +8,9 @@ MusicXML-export, Markdown-build en hergebruik in andere repositories.
 | Sectie            | Inhoud                                                                      |
 | ----------------- | --------------------------------------------------------------------------- |
 | **Starten**       | Eerste stappen met de CLI                                                   |
-| **Handleidingen** | Taakgerichte uitleg (valideren, renderen, MusicXML, hergebruik)             |
+| **Handleidingen** | Taakgerichte uitleg — begin bij [Handleidingen](manuals/index.md)           |
 | **Specificatie**  | Normatieve VSA-taal- en toolcontracts                                       |
-| **Referentie**    | Naslag: CLI, grammar, diagnostics, outputs                                  |
+| **Referentie**    | Naslag + [voorbeelden](reference/voorbeelden/index.md) en fixtures          |
 | **Integratie**    | `vsa-tool` importeren in andere repo's en CI                                |
 | **Plannen**       | Ontwikkelplannen — *niet normatief*                                         |
 

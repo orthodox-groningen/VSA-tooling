@@ -65,7 +65,7 @@
          <lastmod>2026-08-01</lastmod>
     </url>
     <url>
-         <loc>https://orthodox-groningen.github.io/VSA-tooling/preview/guides/tev2-hugo/</loc>
+         <loc>https://orthodox-groningen.github.io/VSA-tooling/preview/guides/tev2-docs/</loc>
          <lastmod>2026-08-01</lastmod>
     </url>
     <url>
@@ -98,10 +98,6 @@
     </url>
     <url>
          <loc>https://orthodox-groningen.github.io/VSA-tooling/preview/plans/onderzoeks-troparen-en-kondaken/</loc>
-         <lastmod>2026-08-01</lastmod>
-    </url>
-    <url>
-         <loc>https://orthodox-groningen.github.io/VSA-tooling/preview/plans/uitkleden-vsa-tooling/</loc>
          <lastmod>2026-08-01</lastmod>
     </url>
     <url>
@@ -222,6 +218,106 @@
     </url>
     <url>
          <loc>https://orthodox-groningen.github.io/VSA-tooling/preview/specification/versioning/</loc>
+         <lastmod>2026-08-01</lastmod>
+    </url>
+    <url>
+         <loc>https://orthodox-groningen.github.io/VSA-tooling/preview/terminologie/_index/</loc>
+         <lastmod>2026-08-01</lastmod>
+    </url>
+    <url>
+         <loc>https://orthodox-groningen.github.io/VSA-tooling/preview/terminologie/ast/</loc>
+         <lastmod>2026-08-01</lastmod>
+    </url>
+    <url>
+         <loc>https://orthodox-groningen.github.io/VSA-tooling/preview/terminologie/bracket-directive/</loc>
+         <lastmod>2026-08-01</lastmod>
+    </url>
+    <url>
+         <loc>https://orthodox-groningen.github.io/VSA-tooling/preview/terminologie/control-token/</loc>
+         <lastmod>2026-08-01</lastmod>
+    </url>
+    <url>
+         <loc>https://orthodox-groningen.github.io/VSA-tooling/preview/terminologie/diagnostic/</loc>
+         <lastmod>2026-08-01</lastmod>
+    </url>
+    <url>
+         <loc>https://orthodox-groningen.github.io/VSA-tooling/preview/terminologie/enkelvoudige-hoogte-modifier/</loc>
+         <lastmod>2026-08-01</lastmod>
+    </url>
+    <url>
+         <loc>https://orthodox-groningen.github.io/VSA-tooling/preview/terminologie/enkelvoudige-lengte-modifier/</loc>
+         <lastmod>2026-08-01</lastmod>
+    </url>
+    <url>
+         <loc>https://orthodox-groningen.github.io/VSA-tooling/preview/terminologie/hoogte-modifier/</loc>
+         <lastmod>2026-08-01</lastmod>
+    </url>
+    <url>
+         <loc>https://orthodox-groningen.github.io/VSA-tooling/preview/terminologie/hugo-output/</loc>
+         <lastmod>2026-08-01</lastmod>
+    </url>
+    <url>
+         <loc>https://orthodox-groningen.github.io/VSA-tooling/preview/terminologie/include-vsa/</loc>
+         <lastmod>2026-08-01</lastmod>
+    </url>
+    <url>
+         <loc>https://orthodox-groningen.github.io/VSA-tooling/preview/terminologie/lengte-modifier/</loc>
+         <lastmod>2026-08-01</lastmod>
+    </url>
+    <url>
+         <loc>https://orthodox-groningen.github.io/VSA-tooling/preview/terminologie/metadata/</loc>
+         <lastmod>2026-08-01</lastmod>
+    </url>
+    <url>
+         <loc>https://orthodox-groningen.github.io/VSA-tooling/preview/terminologie/modifier/</loc>
+         <lastmod>2026-08-01</lastmod>
+    </url>
+    <url>
+         <loc>https://orthodox-groningen.github.io/VSA-tooling/preview/terminologie/parser/</loc>
+         <lastmod>2026-08-01</lastmod>
+    </url>
+    <url>
+         <loc>https://orthodox-groningen.github.io/VSA-tooling/preview/terminologie/pitch-marker/</loc>
+         <lastmod>2026-08-01</lastmod>
+    </url>
+    <url>
+         <loc>https://orthodox-groningen.github.io/VSA-tooling/preview/terminologie/publicatie/</loc>
+         <lastmod>2026-08-01</lastmod>
+    </url>
+    <url>
+         <loc>https://orthodox-groningen.github.io/VSA-tooling/preview/terminologie/renderer/</loc>
+         <lastmod>2026-08-01</lastmod>
+    </url>
+    <url>
+         <loc>https://orthodox-groningen.github.io/VSA-tooling/preview/terminologie/samengestelde-hoogte-modifier/</loc>
+         <lastmod>2026-08-01</lastmod>
+    </url>
+    <url>
+         <loc>https://orthodox-groningen.github.io/VSA-tooling/preview/terminologie/samengestelde-lengte-modifier/</loc>
+         <lastmod>2026-08-01</lastmod>
+    </url>
+    <url>
+         <loc>https://orthodox-groningen.github.io/VSA-tooling/preview/terminologie/severity/</loc>
+         <lastmod>2026-08-01</lastmod>
+    </url>
+    <url>
+         <loc>https://orthodox-groningen.github.io/VSA-tooling/preview/terminologie/validator/</loc>
+         <lastmod>2026-08-01</lastmod>
+    </url>
+    <url>
+         <loc>https://orthodox-groningen.github.io/VSA-tooling/preview/terminologie/vsa-scope/</loc>
+         <lastmod>2026-08-01</lastmod>
+    </url>
+    <url>
+         <loc>https://orthodox-groningen.github.io/VSA-tooling/preview/terminologie/vsa-toml/</loc>
+         <lastmod>2026-08-01</lastmod>
+    </url>
+    <url>
+         <loc>https://orthodox-groningen.github.io/VSA-tooling/preview/terminologie/vsa/</loc>
+         <lastmod>2026-08-01</lastmod>
+    </url>
+    <url>
+         <loc>https://orthodox-groningen.github.io/VSA-tooling/preview/terminologie/zangstuk/</loc>
          <lastmod>2026-08-01</lastmod>
     </url>
 </urlset>

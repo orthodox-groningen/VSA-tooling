@@ -1,0 +1,138 @@
+site_name: VSA-tooling — documentatie
+site_description: Documentatie van de VSA-toolchain (parser, validatie, SVG/MusicXML, hergebruik)
+site_url: https://orthodox-groningen.github.io/VSA-tooling/docs/
+repo_url: https://github.com/orthodox-groningen/VSA-tooling
+repo_name: orthodox-groningen/VSA-tooling
+edit_uri: edit/main/docs/
+
+exclude_docs: |
+  overrides/**
+  history/**
+  architecture/**
+  mrgs/**
+  terminologie/**
+  /README.md
+  /status-en-roadmap.md
+  /saf.yaml
+  /tev2-config.yaml
+  /to-do-van-mij.md
+
+not_in_nav: |
+  guides/assets/**
+
+validation:
+  nav:
+    omitted_files: info
+  links:
+    not_found: info
+    unrecognized_links: info
+    anchors: info
+
+theme:
+  name: material
+  language: nl
+  custom_dir: docs/overrides
+  features:
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.top
+    - navigation.instant
+    - navigation.tracking
+    - navigation.sections
+    - navigation.expand
+    - search.suggest
+    - search.highlight
+    - content.action.edit
+
+plugins:
+  - search
+  - git-revision-date-localized:
+      type: date
+      locale: nl
+      fallback_to_build_date: true
+
+markdown_extensions:
+  - admonition
+  - tables
+  - toc:
+      permalink: true
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+
+nav:
+  - Home: index.md
+  - Starten:
+    - getting-started/README.md
+    - guides/quick-start.md
+  - Handleidingen:
+    - guides/README.md
+    - guides/user-guide.md
+    - guides/cli-taken.md
+    - guides/validation.md
+    - guides/musicxml.md
+    - guides/musicxml-export.md
+    - guides/rendering-fonts.md
+    - guides/parochie-lokaal-vsa.md
+    - guides/testing.md
+    - guides/testing-and-regression.md
+    - guides/liturgikon-notatie.md
+    - Hugo (demo):
+      - guides/hugo-workflow.md
+      - guides/hugo-site-structure.md
+      - guides/hugo-navigation-placeholders.md
+      - guides/tev2-hugo.md
+  - Specificatie:
+    - specification/README.md
+    - specification/overview.md
+    - specification/syntax.md
+    - specification/semantics.md
+    - specification/validation.md
+    - specification/directives.md
+    - specification/rendering.md
+    - specification/cli.md
+    - specification/conformance.md
+    - specification/error-handling.md
+    - specification/examples.md
+    - specification/versioning.md
+    - specification/traceability.md
+    - specification/open-points.md
+  - Referentie:
+    - reference/README.md
+    - reference/cli.md
+    - reference/grammar.md
+    - reference/tokens.md
+    - reference/metadata.md
+    - reference/config.md
+    - reference/diagnostics.md
+    - reference/outputs.md
+    - reference/include-vsa.md
+    - reference/traceability.md
+  - Integratie:
+    - guides/reuse-vsa-tooling.md
+  - Plannen:
+    - plans/README.md
+    - plans/uitkleden-vsa-tooling.md
+    - plans/uitgaveprofielen.md
+    - plans/gebruikseisen-dragers.md
+    - plans/vsa-polyphony-proposal.md
+
+extra_css:
+  - stylesheets/extra.css
+
+extra:
+  preview: false
+  build_time: ""
+  branch: ""
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/orthodox-groningen/VSA-tooling
+      name: VSA-tooling op GitHub
+    - icon: fontawesome/solid/book
+      link: https://orthodox-groningen.github.io/bron/
+      name: bron — documentatie
+    - icon: fontawesome/solid/globe
+      link: https://orthodox-groningen.github.io/VSA-demo/
+      name: VSA-demo (presentatiesite)

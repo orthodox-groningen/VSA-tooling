@@ -118,7 +118,10 @@ Geen TEv2.
    - andere branches → `destination_dir=docs-preview`, `site_url=…/VSA-tooling/docs-preview/`
    - deploy via `pages-deploy-reusable` met `keep_files` zodat Hugo-root en `/preview/` blijven
 4. Lokaal: kort in README/AGENTS: `pip install -r requirements-docs.txt` + `mkdocs serve`.
-5. Nav dekt bestaande mappen; verbergt `history/`, `architecture/`, `mrgs/`.
+5. Nav dekt bestaande mappen; verbergt `history/`, `architecture/`, `mrgs/`,
+   `terminologie/`. Kapotte repo-relatieve links in bestaande docs worden in fase 1
+   als `validation.links.not_found: info` behandeld (fase 2 ruimt op); `mkdocs build
+   --strict` blijft aan.
 
 **Succes:** https://orthodox-groningen.github.io/VSA-tooling/docs/ bouwt op push;
 pytest ongewijzigd groen.

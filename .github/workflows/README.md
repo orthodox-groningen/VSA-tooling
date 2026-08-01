@@ -10,27 +10,43 @@ Normatieve CI-architectuur: [docs/architecture/ci-reliability.md](../../docs/arc
 | ----------------------------------------- | --------------------------- | ---------------------------------- |
 | Controleren of code groen is (Windows)    | `vsa-ci.yml`                | Automatisch bij push/PR            |
 | Controleren of de Hugo-site bouwt (Linux) | `site-build.yml`            | Automatisch bij push/PR            |
-| Live preview van mijn branch bekijken     | `pages-preview.yml`         | Automatisch bij elke push          |
-| Productie-site publiceren                 | `pages-demo.yml`            | Actions → handmatig Run workflow   |
+| Live preview van de Hugo-demo             | `pages-preview.yml`         | Automatisch bij elke push          |
+| Documentatiesite (MkDocs) publiceren      | `docs-pages.yml`            | Automatisch bij elke push          |
+| Productie Hugo-demo publiceren            | `pages-demo.yml`            | Actions → handmatig Run workflow   |
 | Release-wheel/sdist + demo-artifact maken | `release-artifacts.yml`     | Actions → handmatig + versienummer |
 | Pages deploy vanuit een andere org-repo   | `pages-deploy-reusable.yml` | Alleen via `workflow_call`         |
 | VSA renderen vanuit een andere org-repo   | `vsa-render-reusable.yml`   | Alleen via `workflow_call`         |
 
 ## Wat draait automatisch bij een push?
 
-Op **elke push** (alle branches) starten typisch drie workflows parallel:
+Op **elke push** (alle branches) starten typisch vier workflows parallel:
 
 1. **vsa-ci.yml** — Windows-tooling (`scripts\ci.cmd`)
 2. **site-build.yml** — Linux Hugo-build (preview-config; op `main` productie-instellingen)
-3. **pages-preview.yml** — bouwt en publiceert naar [preview-URL](https://orthodox-groningen.github.io/VSA-tooling/preview/)
+3. **pages-preview.yml** — Hugo-preview → [preview-URL](https://orthodox-groningen.github.io/VSA-tooling/preview/)
+4. **docs-pages.yml** — MkDocs → [docs](https://orthodox-groningen.github.io/VSA-tooling/docs/) (`main`) of [docs-preview](https://orthodox-groningen.github.io/VSA-tooling/docs-preview/)
 
-De preview-URL toont altijd de **laatst gepushte** commit (welke branch dan ook). Zo kun je per branch controleren of die deployable is.
+De Hugo-preview-URL toont altijd de **laatst gepushte** commit (welke branch dan ook). Docs-preview idem onder `/docs-preview/`.
 
 Handmatige workflows (`pages-demo`, `release-artifacts`) start je zelf in GitHub onder **Actions**.
 
 ---
 
 ## Workflows in detail
+
+### `docs-pages.yml` — Deploy documentation (MkDocs)
+
+| Veld       | Waarde                                                                 |
+| ---------- | ---------------------------------------------------------------------- |
+| Trigger    | `push` (alle branches)                                                 |
+| Runner     | `ubuntu-latest`                                                        |
+| Doel       | `mkdocs build --strict` → Pages onder `/docs/` of `/docs-preview/`     |
+| Publiceert | Ja (`pages-deploy-reusable`, `keep_files: true` naast Hugo-root)       |
+| Lokaal     | `scripts\docs-serve.cmd`                                               |
+
+Geen TEv2/glossary-pipeline (gepland in [uitkleden fase 5](../../docs/plans/uitkleden-vsa-tooling.md)).
+
+---
 
 ### `vsa-ci.yml` — VSA CI
 
@@ -112,11 +128,11 @@ Voor een release-tag of distributie buiten GitHub Pages.
 
 ### `pages-deploy-reusable.yml` — Reusable GitHub Pages deploy
 
-| Veld          | Waarde                                                               |
-| ------------- | -------------------------------------------------------------------- |
-| Trigger       | `workflow_call` (niet handmatig)                                     |
-| Doel          | Artifact downloaden, publicatiecheck, peaceiris-push naar `gh-pages` |
-| Gebruikt door | `pages-preview.yml`, `pages-demo.yml`, `bron` (`docs-pages.yml`)     |
+| Veld          | Waarde                                                                             |
+| ------------- | ---------------------------------------------------------------------------------- |
+| Trigger       | `workflow_call` (niet handmatig)                                                   |
+| Doel          | Artifact downloaden, publicatiecheck, peaceiris-push naar `gh-pages`               |
+| Gebruikt door | `pages-preview.yml`, `pages-demo.yml`, `docs-pages.yml`, `bron` (`docs-pages.yml`) |
 
 Niet zelf starten. Andere repo's kunnen deze workflow aanroepen; zie [reuse-vsa-tooling.md](../../docs/guides/reuse-vsa-tooling.md).
 
@@ -142,10 +158,11 @@ Installeert `vsa-tool[rendering]` vanaf deze repo. Zie [reuse-vsa-tooling.md](..
 push / pull_request
 ├── vsa-ci.yml          → pytest + validate (Windows)
 ├── site-build.yml      → Hugo-build + artifacts (Linux)
-└── pages-preview.yml   → preview deploy → gh-pages:/preview/
+├── pages-preview.yml   → Hugo preview → gh-pages:/preview/
+└── docs-pages.yml      → MkDocs → gh-pages:/docs/ of /docs-preview/
 
 handmatig
-├── pages-demo.yml      → productie deploy → gh-pages:/
+├── pages-demo.yml      → Hugo productie → gh-pages:/
 └── release-artifacts.yml → wheel/sdist + demo-artifacts
 
 workflow_call (andere repo's)

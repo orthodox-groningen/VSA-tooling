@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block announce %}
+  {% if config.extra.preview %}
+  <strong>Preview</strong>
+  {% if config.extra.branch %} — branch <code>{{ config.extra.branch }}</code>{% endif %}
+  {% if config.extra.build_time %}, gebouwd {{ config.extra.build_time }}{% endif %}.
+  <a href="https://orthodox-groningen.github.io/VSA-tooling/docs/">Live documentatie (main)</a>.
+  {% endif %}
+{% endblock %}
+
+{% block content %}
+  {{ super() }}
+  {# Homepagina: generatietijd — zelfde plek als bron (onder de content). CI/docs-serve zetten extra.build_time. #}
+  {% if page.is_homepage and config.extra.build_time %}
+  <p class="build-time-stamp">Gegenereerd: {{ config.extra.build_time }}</p>
+  {% endif %}
+  {# Per pagina: laatste commit. Plugin zet git_revision_date_localized; optioneel frontmatter git_date. #}
+  {% set page_git = page.meta.git_date or page.meta.git_revision_date_localized %}
+  {% if page_git %}
+  <p class="page-git-date">Bijgewerkt: {{ page_git }}</p>
+  {% endif %}
+{% endblock %}

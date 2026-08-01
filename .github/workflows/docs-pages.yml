@@ -1,0 +1,105 @@
+name: Deploy documentation
+
+# MkDocs Material → gh-pages:/docs/ (main) of /docs-preview/ (andere branches).
+# Hugo-demo blijft op / en /preview/ tot fase 4 van uitkleden-vsa-tooling.
+# Geen TEv2 in deze workflow (fase 5).
+
+on:
+  push:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    name: Build MkDocs site
+    runs-on: ubuntu-latest
+
+    outputs:
+      destination_dir: ${{ steps.target.outputs.destination_dir }}
+      url_prefix: ${{ steps.target.outputs.url_prefix }}
+      pages_url: ${{ steps.target.outputs.pages_url }}
+      label: ${{ steps.target.outputs.label }}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set build timestamp
+        id: ts
+        run: echo "build_time=$(date -u +'%Y-%m-%d %H:%M UTC')" >> "$GITHUB_OUTPUT"
+
+      - name: Determine deploy target
+        id: target
+        shell: bash
+        run: |
+          branch="${GITHUB_REF#refs/heads/}"
+          echo "branch=$branch" >> "$GITHUB_OUTPUT"
+          if [[ "${GITHUB_REF}" == "refs/heads/main" ]]; then
+            echo "site_url=https://orthodox-groningen.github.io/VSA-tooling/docs/" >> "$GITHUB_OUTPUT"
+            echo "destination_dir=docs" >> "$GITHUB_OUTPUT"
+            echo "url_prefix=/VSA-tooling/docs/" >> "$GITHUB_OUTPUT"
+            echo "pages_url=https://orthodox-groningen.github.io/VSA-tooling/docs/" >> "$GITHUB_OUTPUT"
+            echo "preview=false" >> "$GITHUB_OUTPUT"
+            echo "label=production" >> "$GITHUB_OUTPUT"
+          else
+            echo "site_url=https://orthodox-groningen.github.io/VSA-tooling/docs-preview/" >> "$GITHUB_OUTPUT"
+            echo "destination_dir=docs-preview" >> "$GITHUB_OUTPUT"
+            echo "url_prefix=/VSA-tooling/docs-preview/" >> "$GITHUB_OUTPUT"
+            echo "pages_url=https://orthodox-groningen.github.io/VSA-tooling/docs-preview/" >> "$GITHUB_OUTPUT"
+            echo "preview=true" >> "$GITHUB_OUTPUT"
+            echo "label=preview" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Show deploy target
+        run: |
+          echo "Target: ${{ steps.target.outputs.label }}"
+          echo "site_url: ${{ steps.target.outputs.site_url }}"
+          echo "destination_dir: ${{ steps.target.outputs.destination_dir }}"
+          echo "url_prefix: ${{ steps.target.outputs.url_prefix }}"
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install documentation dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -r requirements-docs.txt
+
+      - name: Configure MkDocs site URL
+        run: |
+          python scripts/set-mkdocs-site-url.py \
+            "${{ steps.target.outputs.site_url }}" \
+            "${{ steps.target.outputs.preview }}" \
+            "${{ steps.ts.outputs.build_time }}" \
+            "${{ steps.target.outputs.branch }}"
+
+      - name: Build MkDocs site
+        env:
+          NO_MKDOCS_2_WARNING: "1"
+        run: python -m mkdocs build --strict --site-dir site
+
+      - name: Upload documentation site
+        uses: actions/upload-artifact@v4
+        with:
+          name: pages-docs-site
+          path: site
+          if-no-files-found: error
+
+  deploy:
+    name: Deploy to GitHub Pages
+    needs: build
+    uses: ./.github/workflows/pages-deploy-reusable.yml
+    with:
+      artifact_name: pages-docs-site
+      publish_dir: site
+      destination_dir: ${{ needs.build.outputs.destination_dir }}
+      url_prefix: ${{ needs.build.outputs.url_prefix }}
+      pages_url: ${{ needs.build.outputs.pages_url }}
+      keep_files: true
+    permissions:
+      contents: write

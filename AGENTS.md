@@ -141,6 +141,16 @@ scripts\serve-hugo.cmd
 
 Opruimen: `scripts\clean.cmd`. Overzicht scripts: `scripts/README.md`.
 
+### Documentatiesite (MkDocs)
+
+```cmd
+cd /d C:\Git\orthodox-groningen\VSA-tooling
+scripts\docs-serve.cmd
+```
+
+Of: `python -m pip install -r requirements-docs.txt` daarna `python -m mkdocs serve`.
+CI/deploy: `.github/workflows/docs-pages.yml` → `gh-pages:/docs/` (`main`) of `/docs-preview/`.
+
 ---
 
 ## Architectuur
@@ -203,15 +213,16 @@ gh pr create --title "feat(vsa): korte beschrijving" --body "## Summary
 
 Overzicht **wanneer welke workflow** draait: [.github/workflows/README.md](.github/workflows/README.md).
 
-| Workflow                    | Doel                                                |
-| --------------------------- | --------------------------------------------------- |
-| `vsa-ci.yml`                | Windows: `scripts\ci.cmd` (pytest, validate, build) |
-| `site-build.yml`            | Linux: pytest, sync bron, validate, Hugo-build      |
-| `pages-preview.yml`         | GitHub Pages preview (elke push, alle branches)     |
-| `pages-demo.yml`            | Demo-site publicatie (handmatig)                    |
-| `release-artifacts.yml`     | Release-package + demo-artifact (handmatig)         |
-| `pages-deploy-reusable.yml` | Herbruikbare Pages-deploy voor org-repo's           |
-| `vsa-render-reusable.yml`   | Herbruikbaar VSA-renderen voor andere org-repo's    |
+| Workflow                    | Doel                                                                   |
+| --------------------------- | ---------------------------------------------------------------------- |
+| `vsa-ci.yml`                | Windows: `scripts\ci.cmd` (pytest, validate, build)                    |
+| `site-build.yml`            | Linux: pytest, sync bron, validate, Hugo-build                         |
+| `pages-preview.yml`         | Hugo GitHub Pages preview (elke push)                                  |
+| `docs-pages.yml`            | MkDocs docs → `/docs/` of `/docs-preview/` (elke push)                 |
+| `pages-demo.yml`            | Hugo demo-site productie (handmatig)                                   |
+| `release-artifacts.yml`     | Release-package + demo-artifact (handmatig)                            |
+| `pages-deploy-reusable.yml` | Herbruikbare Pages-deploy voor org-repo's                              |
+| `vsa-render-reusable.yml`   | Herbruikbaar VSA-renderen voor andere org-repo's                       |
 
 CI checkt `bron` uit naar `vendor/bron` (`ref: main`).
 

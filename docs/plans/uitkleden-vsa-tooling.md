@@ -124,7 +124,8 @@ Geen TEv2.
    --strict` blijft aan.
 
 **Succes:** https://orthodox-groningen.github.io/VSA-tooling/docs/ bouwt op push;
-pytest ongewijzigd groen.
+pytest ongewijzigd groen. Deploy gebruikt tijdelijk `skip_publication_check`
+(kapotte repo-links in HTML laten de Hugo-publicatiecheck falen; herstellen in fase 2).
 
 ---
 

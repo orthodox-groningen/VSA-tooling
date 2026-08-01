@@ -18,4 +18,4 @@ In Markdown (zelfde map als het `.vsa`-bestand):
 :::coria "tropaar-zondag-toon-3.vsa" label="Oefenen in Coria":::
 ```
 
-Zie [docs/user/musicxml-export.md](../../../../docs/user/musicxml-export.md).
+Zie [docs/guides/musicxml-export.md](../../../../docs/guides/musicxml-export.md).

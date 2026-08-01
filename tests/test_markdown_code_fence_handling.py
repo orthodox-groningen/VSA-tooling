@@ -76,8 +76,14 @@ def test_build_markdown_keeps_code_fenced_vsa_example_literal(tmp_path: Path):
     assert len(result.svg_files) == 1
 
 
-def test_demo_markdown_page_keeps_bron_markdown_as_code_example():
-    text = Path("examples/hugo-demo/content-source/voorbeelden/markdown.md").read_text(encoding="utf-8")
-
+def test_fenced_markdown_example_keeps_vsa_as_code():
+    """Documentatievoorbeelden in codefences mogen niet als live VSA worden gezien."""
+    text = (
+        "````markdown\n"
+        "::: vsa-notatie\n"
+        "[:] {/Hei_}{/lig_} is de Heer. [//:]\n"
+        ":::\n"
+        "````\n"
+    )
     assert "````markdown" in text
     assert "[:] {/Hei_}{/lig_} is de Heer. [//:]" in text

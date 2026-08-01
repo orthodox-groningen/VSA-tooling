@@ -4,7 +4,8 @@ from pathlib import Path
 WORKFLOW_DIR = Path(".github/workflows")
 WORKFLOW_FILES = (
     "vsa-ci.yml",
-    "site-build.yml",
+    "docs-build.yml",
+    "docs-pages.yml",
     "pages-preview.yml",
     "pages-demo.yml",
     "release-artifacts.yml",
@@ -32,8 +33,9 @@ def test_vsa_ci_workflow_exists():
     assert Path(".github/workflows/vsa-ci.yml").exists()
 
 
-def test_site_build_workflow_exists():
-    assert Path(".github/workflows/site-build.yml").exists()
+def test_docs_build_workflow_exists():
+    assert Path(".github/workflows/docs-build.yml").exists()
+    assert not Path(".github/workflows/site-build.yml").exists()
 
 
 def test_removed_duplicate_workflows_are_gone():
@@ -43,14 +45,22 @@ def test_removed_duplicate_workflows_are_gone():
         ".github/workflows/python-tests.yml",
         ".github/workflows/build-artifacts.yml",
         ".github/workflows/hugo-demo.yml",
+        ".github/workflows/site-build.yml",
     )
 
     for path in removed:
         assert not Path(path).exists(), path
 
 
-def test_site_build_runs_on_push_and_pull_request():
-    text = Path(".github/workflows/site-build.yml").read_text(encoding="utf-8")
+def test_docs_build_runs_on_push_and_pull_request():
+    text = Path(".github/workflows/docs-build.yml").read_text(encoding="utf-8")
 
     assert "push:" in text
     assert "pull_request:" in text
+    assert "mkdocs build" in text
+
+
+def test_vsa_ci_uses_consumer_minimal():
+    text = Path("scripts/ci.cmd").read_text(encoding="utf-8")
+    assert "consumer-minimal" in text
+    assert "hugo-demo" not in text

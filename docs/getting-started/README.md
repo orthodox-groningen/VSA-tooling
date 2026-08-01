@@ -46,4 +46,6 @@ vsa svg examples\minimal\050_svg_demo.vsa generated\vsa\050_svg_demo.svg
 | Tool in een andere repo       | [Integratie](../guides/reuse-vsa-tooling.md)                                                              |
 | Presentatiesite (Hugo)        | [Consumer-site](../manuals/consumer-site.md) / [VSA-demo](https://github.com/orthodox-groningen/VSA-demo) |
 
+Volledige CI-smoke: `scripts\ci.cmd`
+
 Documentatiesite lokaal: `scripts\docs-serve.cmd`.

@@ -8,38 +8,31 @@ import pytest
 
 from vsa.include_vsa import (
     IncludeVsaError,
-    expand_include_vsa,
     prepare_vsa_body,
 )
 from vsa.validation_runner import validate_file
 
-HUGO_CONTENT = Path("examples/hugo-demo/content-source")
-HEMELUM_VSA = (
-    HUGO_CONTENT
-    / "lokaal/antifoon-1-weekdagen/liturgikon-weekdagen/hemelum/repr/hemelum.vsa"
-)
+HEMELUM_VSA = "[:] {/Hei_}{/lig_} Door de Moeder Gods. [:]\n"
+VARIANT_YAML = """\
+zangstuk-id: antifoon-1-weekdagen
+variant-id: liturgikon-weekdagen
+title: "1e antifoon weekdagen"
+"""
+
+UV_YAML = """\
+uitvoeringsvorm-id: hemelum
+representaties:
+  - representatie-id: hemelum
+    file: repr/hemelum.vsa
+"""
 
 
 def _write_lokaal_tree(root: Path) -> None:
     base = root / "lokaal/antifoon-1-weekdagen/liturgikon-weekdagen"
     (base / "hemelum/repr").mkdir(parents=True)
-    (base / "variant.yaml").write_text(
-        (HUGO_CONTENT / "lokaal/antifoon-1-weekdagen/liturgikon-weekdagen/variant.yaml").read_text(
-            encoding="utf-8"
-        ),
-        encoding="utf-8",
-    )
-    (base / "hemelum/uitvoeringsvorm.yaml").write_text(
-        (
-            HUGO_CONTENT
-            / "lokaal/antifoon-1-weekdagen/liturgikon-weekdagen/hemelum/uitvoeringsvorm.yaml"
-        ).read_text(encoding="utf-8"),
-        encoding="utf-8",
-    )
-    (base / "hemelum/repr/hemelum.vsa").write_text(
-        HEMELUM_VSA.read_text(encoding="utf-8"),
-        encoding="utf-8",
-    )
+    (base / "variant.yaml").write_text(VARIANT_YAML, encoding="utf-8")
+    (base / "hemelum/uitvoeringsvorm.yaml").write_text(UV_YAML, encoding="utf-8")
+    (base / "hemelum/repr/hemelum.vsa").write_text(HEMELUM_VSA, encoding="utf-8")
 
 
 TROPARION_BODY = "[:] refrein melodie [:]\n"
@@ -60,8 +53,7 @@ def test_expand_lokaal_partial_line(tmp_path: Path) -> None:
 
     assert "@include-vsa" not in expanded
     assert expanded.startswith("refrein:")
-    assert "Door de" in expanded or "{/Hei_}" in expanded
-    assert "{/Hei_}" in expanded or "Door de" in expanded
+    assert "{/Hei_}" in expanded
     assert warnings == []
     assert "refrein: refrein:" not in expanded
 
@@ -79,7 +71,7 @@ def test_expand_id_parameter(tmp_path: Path) -> None:
     expanded, _ = prepare_vsa_body(host.read_text(encoding="utf-8"), host)
 
     assert "@include-vsa" not in expanded
-    assert "Door de" in expanded or "{/Hei_}" in expanded
+    assert "{/Hei_}" in expanded
 
 
 def test_expand_trims_included_body_blank_lines(tmp_path: Path) -> None:

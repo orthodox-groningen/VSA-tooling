@@ -2,8 +2,9 @@
 
 Deze map bevat de actieve scripts voor lokaal ontwikkelen en CI.
 
-Belangrijk: scripts mogen `examples\hugo-demo\content-source` niet redactioneel herschrijven.
-Generated navigatie en spacing-metadata worden alleen bijgewerkt in `generated\...\content`.
+Belangrijk: scripts mogen redactionele `content-source` niet herschrijven.
+CI gebruikt `examples\consumer-minimal\content-source`. Generated navigatie alleen in
+`generated\...\content`.
 
 ## Actieve scripts
 

@@ -40,24 +40,6 @@ def test_coria_play_url_encodes_score_url():
     ]
 
 
-def test_coria_shortcode_builds_play_from_url_link():
-    text = Path("examples/hugo-demo/layouts/shortcodes/coria.html").read_text(
-        encoding="utf-8"
-    )
-    assert "coria.nl/play_from_url" in text
-    assert "urlquery" in text
-    assert 'rel="noopener noreferrer"' in text
-
-
-def test_coria_html_shortcode_links_to_hosted_html():
-    text = Path("examples/hugo-demo/layouts/shortcodes/coria-html.html").read_text(
-        encoding="utf-8"
-    )
-    assert "relURL" in text
-    assert "coria.nl/play_from_url" not in text
-    assert 'rel="noopener noreferrer"' in text
-
-
 def test_coria_html_example_exists_for_tropaar_toon_3():
     path = bron_coria_html_path()
     if path is None:

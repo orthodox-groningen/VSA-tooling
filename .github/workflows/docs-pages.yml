@@ -1,8 +1,8 @@
-name: Deploy documentation
-
-# MkDocs Material → gh-pages:/docs/ (main) of /docs-preview/ (andere branches).
+# Deploy documentation — MkDocs Material → gh-pages:/docs/ (main) of /docs-preview/.
 # Hugo-demo blijft op / en /preview/ tot fase 4 van uitkleden-vsa-tooling.
 # Geen TEv2 in deze workflow (fase 5).
+
+name: Deploy documentation
 
 on:
   push:

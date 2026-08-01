@@ -119,19 +119,22 @@ cd /d C:\Git\orthodox-groningen\VSA-tooling
 scripts\ci.cmd
 ```
 
-Stappen: pytest → sync zondag-bronbestanden → `vsa validate examples\hugo-demo\content-source`
-→ `vsa build-markdown` naar `generated\ci\`.
+Stappen: pytest → `vsa validate` + `build-markdown` op
+`examples\consumer-minimal\content-source` → output in `generated\ci\`.
 
 ### VSA CLI (typisch)
 
 ```cmd
 cd /d C:\Git\orthodox-groningen\VSA-tooling
 call .venv\Scripts\activate
-vsa validate examples\hugo-demo\content-source
-vsa build-markdown examples\hugo-demo\content-source generated\hugo\content examples\hugo-demo\static\vsa
+vsa validate examples\consumer-minimal\content-source
+vsa build-markdown examples\consumer-minimal\content-source generated\ci\content generated\ci\static\vsa
 ```
 
 ### Hugo-demo
+
+Tijdelijk nog in `examples/hugo-demo/` (tot uitkleed-fase 4). Presentatiemodel:
+[VSA-demo](https://github.com/orthodox-groningen/VSA-demo).
 
 ```cmd
 cd /d C:\Git\orthodox-groningen\VSA-tooling
@@ -215,12 +218,12 @@ Overzicht **wanneer welke workflow** draait: [.github/workflows/README.md](.gith
 
 | Workflow                    | Doel                                                                   |
 | --------------------------- | ---------------------------------------------------------------------- |
-| `vsa-ci.yml`                | Windows: `scripts\ci.cmd` (pytest, validate, build)                    |
-| `site-build.yml`            | Linux: pytest, sync bron, validate, Hugo-build                         |
-| `pages-preview.yml`         | Hugo GitHub Pages preview (elke push)                                  |
+| `vsa-ci.yml`                | Windows: `scripts\ci.cmd` (pytest, consumer-minimal)                   |
+| `docs-build.yml`            | Linux: `mkdocs build --strict`                                         |
+| `pages-preview.yml`         | Hugo GitHub Pages preview (elke push; tot fase 4)                      |
 | `docs-pages.yml`            | MkDocs docs → `/docs/` of `/docs-preview/` (elke push)                 |
-| `pages-demo.yml`            | Hugo demo-site productie (handmatig)                                   |
-| `release-artifacts.yml`     | Release-package + demo-artifact (handmatig)                            |
+| `pages-demo.yml`            | Hugo demo-site productie (handmatig; tot fase 4)                       |
+| `release-artifacts.yml`     | Release-package + consumer-minimal artifact (handmatig)                |
 | `pages-deploy-reusable.yml` | Herbruikbare Pages-deploy voor org-repo's                              |
 | `vsa-render-reusable.yml`   | Herbruikbaar VSA-renderen voor andere org-repo's                       |
 

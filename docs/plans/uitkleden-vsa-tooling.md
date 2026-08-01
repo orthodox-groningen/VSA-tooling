@@ -160,8 +160,9 @@ Doel: CI groen zonder volle demosite.
 4. `repo_root.py` + scripts met hugo-demo als root-marker.
 5. AGENTS.md / workflows-README: rol VSA-tooling vs VSA-demo.
 
-**Succes:** CI zonder hugo-demo-content; grep `hugo-demo` in `tests/` en CI-scripts = 0
-(map mag nog bestaan tot fase 4).
+**Succes:** CI zonder hugo-demo-content in `tests/` en in `ci.cmd` /
+`vsa-ci` / `docs-build` / `release-artifacts`; `examples/consumer-minimal` is de
+CI-smoke. Hugo-Pages-workflows en `examples/hugo-demo/` blijven tot fase 4.
 
 ---
 

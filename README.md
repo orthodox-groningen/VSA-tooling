@@ -75,28 +75,16 @@ scripts\serve-hugo.cmd
 
 | Document | Gebruik |
 | --- | --- |
-| [docs/user-guide.md](docs/user-guide.md) | Taakgerichte uitleg voor gebruikers van de tool. |
-| [docs/cli-reference.md](docs/cli-reference.md) | Referentie van de `vsa` CLI-commando's. |
-| [docs/status-en-roadmap.md](docs/status-en-roadmap.md) | Actuele projectstatus, beperkingen en nuttige volgende stappen. |
-| [docs/spec-vsa-document-samenstellen.md](docs/spec-vsa-document-samenstellen.md) | Specificatie voor document-samenstelling met Markdown-directives. |
-| [docs/parochie-lokaal-vsa.md](docs/parochie-lokaal-vsa.md) | VSA-specifieke uitleg voor parochie-lokaal materiaal en catalogus-includes. |
-| [docs/spec/](docs/spec/) | VSA-specificaties voor syntax, rendering, comments en glyph-model. |
-| [docs/architecture/](docs/architecture/) | Historische ontwerp- en implementatiestappen. |
+| [docs/guides/user-guide.md](docs/guides/user-guide.md) | Taakgerichte uitleg voor gebruikers van de tool. |
+| [docs/reference/cli.md](docs/reference/cli.md) / [docs/specification/cli.md](docs/specification/cli.md) | CLI-naslag en CLI-contract. |
+| [docs/guides/reuse-vsa-tooling.md](docs/guides/reuse-vsa-tooling.md) | Extern hergebruik van `vsa-tool` en workflows. |
+| [docs/guides/parochie-lokaal-vsa.md](docs/guides/parochie-lokaal-vsa.md) | Parochie-lokaal materiaal en catalogus-includes. |
+| [docs/status-en-roadmap.md](docs/status-en-roadmap.md) | Projectstatus en roadmap. |
+| [docs/specification/](docs/specification/) | Normatieve VSA-specificatie. |
+| [docs/plans/](docs/plans/) | Plannen en toekomstvoorstellen. |
+| [docs/history/](docs/history/) | Ontwerpgeschiedenis. |
 
-## CLI-overzicht
-
-```text
-vsa validate <bestand-of-map>
-vsa parse <bestand.vsa> --ast
-vsa blocks <bestand.md> --json
-vsa svg <input.vsa> <output.svg>
-vsa musicxml <input> <output>
-vsa process <bestand-of-map> <output-dir>
-vsa build-markdown <input-dir> <output-dir> <assets-dir>
-vsa resolve-catalogus <bestand.md> --content-root <map> --bron-root <map>
-```
-
-Zie [docs/cli-reference.md](docs/cli-reference.md) voor details.
+Zie [docs/reference/cli.md](docs/reference/cli.md) voor CLI-details.
 
 ## Ontwikkelen
 

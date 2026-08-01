@@ -36,7 +36,7 @@ text where conventional (``mel-`` + ``se``).
 Export profiles
 ---------------
 Two profiles are available via ``musicxml-profile`` metadata (default:
-``playback``).  See spec §8.2.11 and ``docs/user/musicxml-export.md``.
+``playback``).  See spec §8.2.11 and ``docs/guides/musicxml-export.md``.
 
 Control-token mapping (configurable)
 -------------------------------------

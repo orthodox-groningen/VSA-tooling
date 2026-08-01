@@ -18,7 +18,7 @@ VSA-tooling is de **Python-toolchain** voor Vereenvoudigde Slavische Accentnotat
 - regressietests en GitHub Actions CI (inclusief herbruikbare render-workflow).
 
 **Normatieve org-specs staan in `bron`** — link ernaar, dupliceer niet. Tool-specifieke
-documentatie hoort in `docs/spec/` en `docs/architecture/`.
+documentatie hoort in `docs/specification/`, `docs/guides/` en `docs/plans/`.
 
 ---
 
@@ -149,13 +149,16 @@ Opruimen: `scripts\clean.cmd`. Overzicht scripts: `scripts/README.md`.
 src/vsa/              # parser, validator, renderers, CLI
 tests/                # pytest
 examples/minimal|regression|edge-cases|hugo-demo/
-docs/spec/            # VSA-syntax (canoniek in deze repo)
-docs/architecture/    # ontwerpbeslissingen
+docs/specification/   # Normatieve VSA-specificatie
+docs/guides/          # Taakgerichte handleidingen
+docs/plans/           # Plannen en toekomstvoorstellen
+docs/history/         # Ontwerpgeschiedenis
 generated/            # build-output — niet handmatig redigeren
 vendor/bron/          # bron-checkout (CI)
 ```
 
-Specificatie: `docs/spec/vsa-spec-v1.md`. Hugo-demo structuur: `docs/hugo-site-structure.md`.
+Specificatie: `docs/specification/`. Hugo-demo structuur: `docs/guides/hugo-site-structure.md`.
+Hergebruik: `docs/guides/reuse-vsa-tooling.md`.
 
 ### Belangrijke grenzen
 
@@ -232,4 +235,4 @@ Na bulk-tabellen: `python scripts/align_markdown_tables.py <pad>`.
 python -m pip install "vsa-tool[rendering] @ git+https://github.com/orthodox-groningen/VSA-tooling.git@main"
 ```
 
-Zie `docs/reuse-vsa-tooling.md`.
+Zie `docs/guides/reuse-vsa-tooling.md`.

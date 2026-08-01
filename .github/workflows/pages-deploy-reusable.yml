@@ -1,7 +1,7 @@
 # Reusable Pages deploy — alleen via workflow_call (niet handmatig starten).
 # Doel: publicatiecheck + peaceiris-push naar gh-pages. Gebruikt door pages-preview,
 # pages-demo en bron (docs-pages.yml). Pages-instelling: branch gh-pages, /.
-# Zie .github/workflows/README.md en docs/reuse-vsa-tooling.md
+# Zie .github/workflows/README.md en docs/guides/reuse-vsa-tooling.md
 
 name: Reusable GitHub Pages deploy
 

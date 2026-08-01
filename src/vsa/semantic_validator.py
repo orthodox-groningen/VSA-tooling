@@ -8,7 +8,7 @@ from .height_markers import (
     _marker_for_pitch,
 )
 
-DOC_BASE = "docs/user-guide-config-severity.md"
+DOC_BASE = "docs/guides/validation.md"
 
 
 @dataclass

@@ -63,6 +63,6 @@ scripts\serve-hugo.cmd
 
 Gebaseerd op:
 
-- `docs/hugo-site-structure.md`
-- `docs/hugo-navigation-placeholders.md`
-- `docs/user-guide.md`
+- [hugo-site-structure.md](hugo-site-structure.md)
+- [hugo-navigation-placeholders.md](hugo-navigation-placeholders.md)
+- [user-guide.md](user-guide.md)

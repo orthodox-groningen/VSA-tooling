@@ -54,5 +54,5 @@ scripts\ci.cmd
 
 Gebaseerd op:
 
-- `docs/user-guide.md`
-- `docs/cli-reference.md`
+- `docs/guides/user-guide.md`
+- `docs/reference/cli.md`

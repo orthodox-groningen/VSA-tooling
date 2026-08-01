@@ -118,7 +118,7 @@ Voor een release-tag of distributie buiten GitHub Pages.
 | Doel          | Artifact downloaden, publicatiecheck, peaceiris-push naar `gh-pages` |
 | Gebruikt door | `pages-preview.yml`, `pages-demo.yml`, `bron` (`docs-pages.yml`)     |
 
-Niet zelf starten. Andere repo's kunnen deze workflow aanroepen; zie [reuse-vsa-tooling.md](../../docs/reuse-vsa-tooling.md).
+Niet zelf starten. Andere repo's kunnen deze workflow aanroepen; zie [reuse-vsa-tooling.md](../../docs/guides/reuse-vsa-tooling.md).
 
 **Pages-instelling per repo:** Deploy from a branch → `gh-pages` → `/` (niet “GitHub Actions”).
 
@@ -132,7 +132,7 @@ Niet zelf starten. Andere repo's kunnen deze workflow aanroepen; zie [reuse-vsa-
 | Doel          | `vsa validate` + `vsa build-markdown` + SVG; upload artifact `vsa-generated` |
 | Gebruikt door | Toekomstige parochie-/koor-repo's in CI                                      |
 
-Installeert `vsa-tool[rendering]` vanaf deze repo. Zie [reuse-vsa-tooling.md](../../docs/reuse-vsa-tooling.md).
+Installeert `vsa-tool[rendering]` vanaf deze repo. Zie [reuse-vsa-tooling.md](../../docs/guides/reuse-vsa-tooling.md).
 
 ---
 

@@ -46,6 +46,6 @@ vsa musicxml mijn-lied.vsa mijn-lied.mxl
 
 Gebaseerd op:
 
-- `docs/user-guide.md`
-- `docs/cli-reference.md`
-- `docs/user/musicxml-export.md`
+- `docs/guides/user-guide.md`
+- `docs/reference/cli.md`
+- `docs/guides/musicxml-export.md`

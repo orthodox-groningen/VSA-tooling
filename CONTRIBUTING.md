@@ -202,7 +202,7 @@ AI-assistenten zijn welkom als hulpmiddel.
 De uitgebreide instructies voor AI-revisies zijn vastgelegd in:
 
 ```
-docs/AI-REVIEW-PROMPT.md
+docs/history/process/AI-REVIEW-PROMPT.md
 ```
 
 Wanneer dit document en de AI-reviewprompt strijdig lijken:

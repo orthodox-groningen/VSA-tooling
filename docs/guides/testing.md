@@ -48,4 +48,4 @@ Als de specificatie wijzigt, moeten verwachte testuitkomsten bewust worden aange
 
 Gebaseerd op:
 
-- `docs/testing/testvoorbeelden-en-regressietests.md`
+- `docs/guides/testing-and-regression.md`

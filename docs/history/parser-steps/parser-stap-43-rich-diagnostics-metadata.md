@@ -24,7 +24,7 @@ Dit bereidt voor op:
 code      = VSA-SEMANTIC-EMPTY-FINAL-PITCH-MARKER
 category  = semantic
 hint_nl   = Vervang de afsluitende [:] door [\\:]
-doc_url   = docs/user-guide-config-severity.md
+doc_url   = docs/guides/validation.md
 ```
 
 ## Compatibiliteit

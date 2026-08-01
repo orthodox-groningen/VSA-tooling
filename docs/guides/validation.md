@@ -73,6 +73,6 @@ Syntaxfouten blijven altijd hard.
 
 Gebaseerd op:
 
-- `docs/user-guide.md`
-- `docs/user-guide-config-severity.md`
-- `docs/cli-reference.md`
+- `docs/guides/user-guide.md`
+- `docs/guides/validation.md`
+- `docs/reference/cli.md`

@@ -30,4 +30,4 @@ Warnings worden verzameld maar laten validatie slagen.
 
 ## Documentatie
 
-De volledige `docs/user-guide.md` is hersteld en uitgebreid met een sectie over warnings/errors.
+De volledige `docs/guides/user-guide.md` is hersteld en uitgebreid met een sectie over warnings/errors.

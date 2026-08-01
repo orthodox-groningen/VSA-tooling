@@ -8,7 +8,7 @@ De taakgerichte uitleg hoort in `docs/guides/`; dit document legt vast welke com
 
 Deze referentie beschrijft elk commando afzonderlijk.
 
-Gebruik de gebruikershandleiding (`docs/user-guide.md`) voor taakgerichte uitleg.
+Gebruik de gebruikershandleiding (`docs/guides/user-guide.md`) voor taakgerichte uitleg.
 
 ## Algemene uitgangspunten
 

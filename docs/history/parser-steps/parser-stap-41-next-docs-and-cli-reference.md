@@ -1,6 +1,6 @@
 # Volgende stap na stap 41
 
-Werk `docs/user-guide.md` en `docs/cli-reference.md` bij.
+Werk `docs/guides/user-guide.md` en `docs/cli-reference.md` bij.
 
 Daar moet expliciet in komen:
 

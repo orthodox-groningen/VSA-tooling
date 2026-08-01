@@ -21,7 +21,7 @@ De build vult alleen het bijbehorende gegenereerde blok onder die marker.
 Gebruikersdocumentatie staat in:
 
 ```text
-docs/hugo-navigation-placeholders.md
+docs/guides/hugo-navigation-placeholders.md
 ```
 
 ## Scripts

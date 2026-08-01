@@ -87,4 +87,4 @@ Als `{stem}.coria.html` naast de `.vsa` staat, wordt daarnaar gelinkt. Anders wo
 
 Gebaseerd op:
 
-- `docs/user/musicxml-export.md`
+- `docs/guides/musicxml-export.md`

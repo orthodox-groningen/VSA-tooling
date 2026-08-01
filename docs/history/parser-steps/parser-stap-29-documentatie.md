@@ -3,7 +3,7 @@
 Deze stap voegt praktische documentatie toe:
 
 ```text
-docs/user-guide.md
+docs/guides/user-guide.md
 docs/cli-reference.md
 ```
 

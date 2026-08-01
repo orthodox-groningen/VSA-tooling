@@ -93,6 +93,9 @@ Doel: het specificeren van de soorten van gebruik die we willen ondersteunen, en
 - welke bestandsformaten of presentaties (web, papier, ...) daarvoor ondersteund gaan worden
 - hoe deze moeten worden samengesteld, en welke directives of andere syntax daarbij nodig is.
 
+Uitgangspunt voor dragers: [gebruikseisen-dragers.md](plans/gebruikseisen-dragers.md);
+implementatie-/exportplan: [uitgaveprofielen.md](plans/uitgaveprofielen.md).
+
 Ook is een onderdeel om bestaande directives te reviewen om vast te stellen of ze behouden, gewijzigd of verwijderd moeten worden.
 
 Waarom: deze keuze bepaalt hoe auteurs echte liturgische documenten schrijven.
@@ -101,7 +104,7 @@ Resultaat:
 
 - Een korte exportspecificatie: gebruiksdoelen, exporttypes en beoogde outputvormen.
 - Een besluit over de rol van bestaande directives (`web-only`, `print-only`, `keep-together`, `include`, `coria`).
-- Update van `docs/spec-vsa-document-samenstellen.md`.
+- Update van `docs/specification/directives.md` (en gerelateerde guides).
 - Pas daarna tests en eventuele implementatie-aanpassingen.
 
 ### Stap 2: parochie-workflow glad maken

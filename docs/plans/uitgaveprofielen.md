@@ -7,6 +7,9 @@ Normatieve contracten:
 [conversiemechanismen](https://orthodox-groningen.github.io/bron/reference/conversiemechanismen/),
 [CI-architectuur](https://orthodox-groningen.github.io/bron/plans/ci-architectuur/).
 
+Gebruikseisen per drager (papier/tablet/telefoon):
+[gebruikseisen-dragers.md](gebruikseisen-dragers.md).
+
 Eerste increment: spec-sectie over concepten (conversie vs. export) +
 `:::include svg|coria|mxl` als **exporttype** in de samenstelling + één demo-pagina
 in hugo-demo.

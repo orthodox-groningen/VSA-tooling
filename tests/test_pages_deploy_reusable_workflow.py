@@ -76,9 +76,12 @@ def test_docs_pages_main_deploys_root_preview_subdir():
     assert "destination_dir=preview" in text
 
 
-def test_docs_pages_keep_files_false_during_hugo_cutover():
-    """Tijdelijk false op main én preview om Hugo-restanten te wissen."""
+def test_docs_pages_keep_files_bron_style_after_cutover():
+    """main behoudt preview (true); preview vervangt schoon (false)."""
     text = DOCS_PAGES.read_text(encoding="utf-8")
 
-    assert text.count('echo "keep_files=false"') >= 2
-    assert 'echo "keep_files=true"' not in text
+    assert 'echo "keep_files=true"' in text
+    assert 'echo "keep_files=false"' in text
+    # Eén true (main) en één false (preview).
+    assert text.count('echo "keep_files=true"') == 1
+    assert text.count('echo "keep_files=false"') == 1

@@ -35,9 +35,9 @@ Handmatig: `release-artifacts`.
 | Publiceert | Ja (`pages-deploy-reusable`; MRG auto-commit op `docs/mrgs/`)                         |
 | Lokaal     | `scripts\docs-build-tev2.cmd`                                                         |
 
-Cutover: `keep_files=false` wist Hugo-restanten op `/` en `/preview/`. Bron gebruikt
-default `keep_files=true`; na geslaagde productiedeploy main weer zo zetten zodat
-`/preview/` bij main-pushes blijft bestaan.
+Cutover afgerond: `keep_files=true` op main (behoudt `/preview/`, zoals bron).
+Preview gebruikt `keep_files=false` zodat branch-builds de preview-map schoon
+vervangen.
 
 ### `vsa-ci.yml` — VSA CI
 

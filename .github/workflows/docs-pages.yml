@@ -2,9 +2,8 @@
 # main → site-root / ; andere branches → /preview/ (zelfde patroon als bron).
 # TEv2 glossary-pipeline vóór mkdocs (spiegel bron). Presentatiesite: VSA-demo.
 #
-# keep_files=false (tijdelijk, Hugo-cutover): wist oude Hugo-bestanden op / en
-# /preview/. Na geslaagde main-MkDocs-deploy: main → keep_files weglaten/true
-# (bron-stijl, behoudt /preview/); preview mag false blijven of true.
+# keep_files: main=true (bron-stijl, behoudt /preview/); preview=false zodat
+# branch-builds /preview/ volledig vervangen zonder weesbestanden.
 
 name: Deploy documentation
 
@@ -49,8 +48,8 @@ jobs:
             echo "pages_url=https://orthodox-groningen.github.io/VSA-tooling/" >> "$GITHUB_OUTPUT"
             echo "preview=false" >> "$GITHUB_OUTPUT"
             echo "label=production" >> "$GITHUB_OUTPUT"
-            # false: wis Hugo op gh-pages-root (na cutover → true/weglaten zoals bron).
-            echo "keep_files=false" >> "$GITHUB_OUTPUT"
+            # true: behoud /preview/ bij production-deploys (zoals bron).
+            echo "keep_files=true" >> "$GITHUB_OUTPUT"
           else
             echo "site_url=https://orthodox-groningen.github.io/VSA-tooling/preview/" >> "$GITHUB_OUTPUT"
             echo "destination_dir=preview" >> "$GITHUB_OUTPUT"
@@ -58,7 +57,7 @@ jobs:
             echo "pages_url=https://orthodox-groningen.github.io/VSA-tooling/preview/" >> "$GITHUB_OUTPUT"
             echo "preview=true" >> "$GITHUB_OUTPUT"
             echo "label=preview" >> "$GITHUB_OUTPUT"
-            # false: vervang /preview/ volledig (geen Hugo-weesbestanden).
+            # false: vervang /preview/ volledig (geen weesbestanden van eerdere builds).
             echo "keep_files=false" >> "$GITHUB_OUTPUT"
           fi
 

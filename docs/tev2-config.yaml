@@ -1,30 +1,31 @@
-# TEv2 tools configuration for the VSA documentation scope.
+# TEv2 tools configuration for the VSA-tooling documentation scope.
+# Tools draaien vanuit generated/docs (zie scripts/prepare-tev2-docs.py).
 
-scopedir: vsa-tooling
-onNotExist: throw
+scopedir: .
+onNotExist: warn
 output: .
 
 mrgt:
   vsntag: vsa-tooling
 
 hrgt:
-  scopedir: vsa-tooling
+  scopedir: .
   output: .
   interpreter: default
-  converter[1]: "| [{{#if glossaryTerm}}{{noRefs glossaryTerm}}{{else}}{{capFirst term}}{{/if}}](terms/{{term}}.md) | {{#if glossaryText}}{{noRefs glossaryText}}{{else}}Geen `glossaryText` opgegeven voor deze term.{{/if}}{{#if glossaryNotes}}<br>{{#each glossaryNotes}}{{#if this.heading}}{{#if @first}}**Opmerkingen:**<br>{{else}}<br>{{/if}}- **{{this.heading}}**:{{#each this.items}}<br>&nbsp;&nbsp;- {{this}}{{/each}}{{else}}{{#if @first}}{{#if @last}}**Opmerking**: {{this}}{{else}}**Opmerkingen:**<br>- {{this}}{{/if}}{{else}}<br>- {{this}}{{/if}}{{/if}}{{/each}}{{/if}} |"
+  converter[1]: "| [{{#if glossaryTerm}}{{noRefs glossaryTerm}}{{else}}{{capFirst term}}{{/if}}]({{term}}.md) | {{#if glossaryText}}{{noRefs glossaryText}}{{else}}Geen `glossaryText` opgegeven voor deze term.{{/if}}{{#if glossaryNotes}}<br>{{#each glossaryNotes}}{{#if this.heading}}{{#if @first}}**Opmerkingen:**<br>{{else}}<br>{{/if}}- **{{this.heading}}**:{{#each this.items}}<br>&nbsp;&nbsp;- {{this}}{{/each}}{{else}}{{#if @first}}{{#if @last}}**Opmerking**: {{this}}{{else}}**Opmerkingen:**<br>- {{this}}{{/if}}{{else}}<br>- {{this}}{{/if}}{{/if}}{{/each}}{{/if}} |"
   converter[2]: "{{#if glossaryAbbr}}| [{{glossaryAbbr}}]({{term}}.md) | Afkorting van [{{#if glossaryTerm}}{{noRefs glossaryTerm}}{{else}}{{capFirst term}}{{/if}}]({{term}}.md). |\n{{else}}{{log level='silent'}}{{/if}}"
   converter[3]: "{{#if glossaryAlias}}| [{{glossaryAlias}}]({{term}}.md) | Alias voor [{{#if glossaryTerm}}{{noRefs glossaryTerm}}{{else}}{{capFirst term}}{{/if}}]({{term}}.md). |\n{{else}}{{log level='silent'}}{{/if}}"
   sorter: "{{noRefs glossaryTerm}}"
   force: true
   input:
-    - "docs/terminologie/**/*.md"
+    - "terminologie/**/*.md"
 
 trrt:
-  scopedir: vsa-tooling
+  scopedir: .
   output: .
   interpreter: default
   converter: html-hovertext-link
   converter[error]: "{{ref.showtext}}{{log 'TRRT error converter:' err.dir '/' err.file '@' err.line ':' err.pos '[' ref.showtext ']' level='warn'}}"
   force: true
   input:
-    - "docs/**/*.md"
+    - "**/*.md"

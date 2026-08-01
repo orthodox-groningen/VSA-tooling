@@ -149,11 +149,11 @@ Opruimen in deze repo: `scripts\clean.cmd`. Overzicht scripts: `scripts/README.m
 
 ```cmd
 cd /d C:\Git\orthodox-groningen\VSA-tooling
-scripts\docs-serve.cmd
+scripts\docs-build-tev2.cmd
 ```
 
-Of: `python -m pip install -r requirements-docs.txt` daarna `python -m mkdocs serve`.
-CI/deploy: `.github/workflows/docs-pages.yml` → `gh-pages:/` (`main`) of `/preview/`.
+Of zonder TEv2 (alleen serve): `scripts\docs-serve.cmd`.
+CI/deploy: `.github/workflows/docs-pages.yml` → TEv2 + `gh-pages:/` (`main`) of `/preview/`.
 
 ---
 

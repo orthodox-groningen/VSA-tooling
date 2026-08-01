@@ -24,5 +24,6 @@ Taakgerichte documentatie voor werken met de VSA-tool. Normatieve regels staan i
 | [Testen en regressie](../guides/testing-and-regression.md) | Fixture-mappen en pytest              |
 | [Liturgikon-notatie](../guides/liturgikon-notatie.md)      | Historische neumenschrift-uitleg      |
 | [Consumer-site (Hugo)](consumer-site.md)                   | Presentatiesite bouwen met `vsa-tool` |
+| [TEv2 in tool-docs](../guides/tev2-docs.md)                | Glossary-pipeline en TermRefs         |
 
 Organisatie-specs (terminologie, zangstuk-formaat): [bron — documentatie](https://orthodox-groningen.github.io/bron/).

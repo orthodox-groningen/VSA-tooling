@@ -5,7 +5,7 @@ scope:
   glossarydir: mrgs
   defaultvsn: vsa-tooling
   defaulttype: concept
-  website: https://orthodox-groningen.github.io/VSA-tooling/
+  website: https://orthodox-groningen.github.io/VSA-tooling
   navpath: /terminologie
   navid: slug
   license: ../LICENSE
@@ -23,6 +23,6 @@ versions:
     altvsntags:
       - latest
     termselection:
-      # - "*@bron"
+      - "*@bron"
       - "*"
       - "-excludeFromMRG[yes]"

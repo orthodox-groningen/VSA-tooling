@@ -16,8 +16,8 @@ Overzicht van alle workflows in deze map: **wanneer** ze draaien, **waarvoor** j
 ## Wat draait automatisch bij een push?
 
 1. **vsa-ci.yml** — Windows: checkout `bron` → bootstrap → pytest + consumer-minimal
-2. **docs-build.yml** — Linux: `mkdocs build --strict`
-3. **docs-pages.yml** — MkDocs → `/` (`main`) of `/preview/` (andere branches)
+2. **docs-build.yml** — Linux: TEv2 + `mkdocs --strict`
+3. **docs-pages.yml** — TEv2 + MkDocs → `/` (`main`) of `/preview/` (andere branches)
 
 Handmatig: `release-artifacts`.
 
@@ -27,13 +27,13 @@ Handmatig: `release-artifacts`.
 
 ### `docs-pages.yml` — Deploy documentation (MkDocs)
 
-| Veld       | Waarde                                                                              |
-| ---------- | ----------------------------------------------------------------------------------- |
-| Trigger    | `push` (alle branches)                                                              |
-| Runner     | `ubuntu-latest`                                                                     |
-| Doel       | `mkdocs build --strict` → Pages `/` (`main`) of `/preview/`                         |
-| Publiceert | Ja (`pages-deploy-reusable`; `keep_files: false` op main, `true` op preview)        |
-| Lokaal     | `scripts\docs-serve.cmd`                                                            |
+| Veld       | Waarde                                                                                |
+| ---------- | ------------------------------------------------------------------------------------- |
+| Trigger    | `push` (alle branches)                                                                |
+| Runner     | `ubuntu-latest`                                                                       |
+| Doel       | TEv2 (mrg-import/mrgt/hrgt/trrt) + `mkdocs build --strict` → Pages `/` of `/preview/` |
+| Publiceert | Ja (`pages-deploy-reusable`; MRG auto-commit op `docs/mrgs/`)                         |
+| Lokaal     | `scripts\docs-build-tev2.cmd`                                                         |
 
 ### `vsa-ci.yml` — VSA CI
 
@@ -47,13 +47,13 @@ Handmatig: `release-artifacts`.
 
 ### `docs-build.yml` — Docs build (MkDocs smoke)
 
-| Veld       | Waarde                                |
-| ---------- | ------------------------------------- |
-| Trigger    | `push`, `pull_request`                |
-| Runner     | `ubuntu-latest`                       |
-| Doel       | `mkdocs build --strict` (geen deploy) |
-| Publiceert | Nee                                   |
-| Lokaal     | `scripts\docs-serve.cmd`              |
+| Veld       | Waarde                                       |
+| ---------- | -------------------------------------------- |
+| Trigger    | `push`, `pull_request`                       |
+| Runner     | `ubuntu-latest`                              |
+| Doel       | TEv2 + `mkdocs build --strict` (geen deploy) |
+| Publiceert | Nee                                          |
+| Lokaal     | `scripts\docs-build-tev2.cmd`                |
 
 ### `release-artifacts.yml`
 
@@ -70,8 +70,8 @@ Ongewijzigd herbruikbaar voor org-repo's. Zie [reuse-vsa-tooling.md](../../docs/
 ```text
 push / pull_request
 ├── vsa-ci.yml          → pytest + consumer-minimal (Windows)
-├── docs-build.yml      → mkdocs --strict (Linux)
-└── docs-pages.yml      → MkDocs → gh-pages:/ of /preview/
+├── docs-build.yml      → TEv2 + mkdocs --strict (Linux)
+└── docs-pages.yml      → TEv2 + MkDocs → gh-pages:/ of /preview/
 
 handmatig
 └── release-artifacts.yml → wheel/sdist + consumer-minimal artifact

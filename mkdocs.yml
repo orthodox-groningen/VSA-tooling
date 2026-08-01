@@ -10,7 +10,6 @@ exclude_docs: |
   history/**
   architecture/**
   mrgs/**
-  terminologie/**
   /README.md
   /status-en-roadmap.md
   /saf.yaml
@@ -26,8 +25,9 @@ not_in_nav: |
   guides/quick-start.md
   guides/hugo-workflow.md
   guides/hugo-site-structure.md
-  guides/tev2-hugo.md
+  guides/tev2-docs.md
   plans/onderzoeks-prompt.md
+  terminologie/**
 
 validation:
   nav:
@@ -120,9 +120,10 @@ nav:
     - reference/traceability.md
   - Integratie:
     - guides/reuse-vsa-tooling.md
+    - guides/tev2-docs.md
+  - Terminologie: terminologie/_index.md
   - Plannen:
     - plans/README.md
-    - plans/uitkleden-vsa-tooling.md
     - plans/gebruikseisen-dragers.md
     - plans/vsa-polyphony-proposal.md
 

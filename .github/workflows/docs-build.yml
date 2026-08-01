@@ -1,5 +1,5 @@
-# Docs build — MkDocs smoke bij push/PR (geen Hugo, geen Pages-deploy).
-# Deploy van docs: docs-pages.yml. Lokaal: scripts\docs-serve.cmd
+# Docs build — TEv2 + MkDocs smoke bij push/PR (geen Pages-deploy).
+# Deploy van docs: docs-pages.yml. Lokaal: scripts\docs-build-tev2.cmd
 
 name: Docs build
 
@@ -9,7 +9,7 @@ on:
 
 jobs:
   docs-build:
-    name: MkDocs build --strict
+    name: TEv2 + MkDocs --strict
     runs-on: ubuntu-latest
 
     steps:
@@ -23,12 +23,40 @@ jobs:
         with:
           python-version: "3.12"
 
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
       - name: Install documentation dependencies
         run: |
           python -m pip install --upgrade pip
           python -m pip install -r requirements-docs.txt
 
+      - name: Install terminology tools
+        run: npm install -g @tno-terminology-design/trrt @tno-terminology-design/hrgt @tno-terminology-design/mrgt @tno-terminology-design/mrg-import
+
+      - name: Prepare terminologie index template
+        shell: bash
+        run: |
+          cp docs/terminologie/_index.template docs/terminologie/_index.md
+
+      - name: Prepare TEv2 docs staging tree
+        run: python scripts/prepare-tev2-docs.py
+
+      - name: Run terminology tools
+        run: |
+          cd generated/docs
+          mrg-import -c tev2-config.yaml
+          mrgt       -c tev2-config.yaml
+          hrgt -f    -c tev2-config.yaml
+          python ../../scripts/sort-glossary-table.py terminologie/_index.md
+          trrt -f    -c tev2-config.yaml
+
+      - name: Verify TermRefs resolved
+        run: python scripts/check-tev2-termrefs.py generated/docs
+
       - name: Build MkDocs site
         env:
           NO_MKDOCS_2_WARNING: "1"
-        run: python -m mkdocs build --strict --site-dir site
+        run: python -m mkdocs build --strict -f generated/mkdocs.yml --site-dir ../site

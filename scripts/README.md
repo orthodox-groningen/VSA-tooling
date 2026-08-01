@@ -12,6 +12,8 @@ CI gebruikt `examples\consumer-minimal\content-source`. Generated navigatie alle
 | ---------------------------------------- | ----------------------------------------------------------------- |
 | `bootstrap.cmd`                          | virtuele omgeving maken en dependencies installeren               |
 | `docs-serve.cmd`                         | MkDocs docs-site lokaal serveren (`requirements-docs.txt`)        |
+| `docs-build-tev2.cmd`                    | TEv2-pipeline + `mkdocs build --strict`                           |
+| `prepare-tev2-docs.py`                   | Staging-tree `generated/docs` voor TEv2                           |
 | `test.cmd`                               | alle tests uitvoeren                                              |
 | `test-verbose.cmd`                       | tests uitvoeren met extra uitvoer                                 |
 | `ci.cmd`                                 | lokale CI: pytest + consumer-minimal validate/build-markdown      |

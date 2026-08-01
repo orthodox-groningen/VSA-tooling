@@ -3,9 +3,9 @@ terminology:
   scopedir: "https://github.com/orthodox-groningen/VSA-tooling/tree/main/docs"
   curatedir: "terminologie"
   glossarydir: "mrgs"
-  defaultvsn: "docs"
+  defaultvsn: "vsa-tooling"
   defaulttype: "concept"
-  website: "https://orthodox-groningen.github.io/VSA-tooling/"
+  website: "https://orthodox-groningen.github.io/VSA-tooling"
   navpath: "/terminologie"
   navid: "slug"
   license: "../LICENSE"
@@ -13,12 +13,13 @@ terminology:
     trrt:
       converters:
         html-hovertext-link: "<a href=\"{{localize entry.navurl}}{{#if ref.trait}}#{{ref.trait}}{{/if}}\" title=\"{{#if entry.hoverText}}{{entry.hoverText}}{{else}}{{#if entry.glossaryTerm}}{{entry.glossaryTerm}}{{else}}{{capFirst entry.term}}{{/if}}: {{noRefs entry.glossaryText type=\"markdown\"}}{{/if}}\">{{ref.showtext}}</a>"
-  vsntag: "docs"
+  vsntag: "vsa-tooling"
   altvsntags:
     - "latest"
 scopes: []
 entries:
-  - slug: "ast"
+  - git_date: 2026-07-08T00:00:00.000Z
+    slug: "ast"
     term: "ast"
     termType: "concept"
     glossaryTerm: "Abstract Syntax Tree"
@@ -38,8 +39,9 @@ entries:
     headingids:
       - "ast"
     termid: "concept:ast"
-    vsntag: "docs"
-  - slug: "bracket-directive"
+    vsntag: "vsa-tooling"
+  - git_date: 2026-07-08T00:00:00.000Z
+    slug: "bracket-directive"
     term: "bracket-directive"
     termType: "concept"
     glossaryTerm: "Bracket-directive"
@@ -56,8 +58,9 @@ entries:
     headingids:
       - "bracket-directive"
     termid: "concept:bracket-directive"
-    vsntag: "docs"
-  - slug: "control-token"
+    vsntag: "vsa-tooling"
+  - git_date: 2026-07-08T00:00:00.000Z
+    slug: "control-token"
     term: "control-token"
     termType: "concept"
     isa: "bracket-directive"
@@ -72,8 +75,9 @@ entries:
     headingids:
       - "control-token"
     termid: "concept:control-token"
-    vsntag: "docs"
-  - slug: "diagnostic"
+    vsntag: "vsa-tooling"
+  - git_date: 2026-07-08T00:00:00.000Z
+    slug: "diagnostic"
     term: "diagnostic"
     termType: "concept"
     glossaryTerm: "Diagnostic"
@@ -90,8 +94,9 @@ entries:
     headingids:
       - "diagnostic"
     termid: "concept:diagnostic"
-    vsntag: "docs"
-  - slug: "enkelvoudige-hoogte-modifier"
+    vsntag: "vsa-tooling"
+  - git_date: 2026-07-08T00:00:00.000Z
+    slug: "enkelvoudige-hoogte-modifier"
     term: "enkelvoudige-hoogte-modifier"
     termType: "concept"
     isa: "hoogte-modifier"
@@ -109,8 +114,9 @@ entries:
     headingids:
       - "enkelvoudige-hoogte-modifier"
     termid: "concept:enkelvoudige-hoogte-modifier"
-    vsntag: "docs"
-  - slug: "enkelvoudige-lengte-modifier"
+    vsntag: "vsa-tooling"
+  - git_date: 2026-07-08T00:00:00.000Z
+    slug: "enkelvoudige-lengte-modifier"
     term: "enkelvoudige-lengte-modifier"
     termType: "concept"
     isa: "lengte-modifier"
@@ -128,8 +134,9 @@ entries:
     headingids:
       - "enkelvoudige-lengte-modifier"
     termid: "concept:enkelvoudige-lengte-modifier"
-    vsntag: "docs"
-  - slug: "hoogte-modifier"
+    vsntag: "vsa-tooling"
+  - git_date: 2026-07-08T00:00:00.000Z
+    slug: "hoogte-modifier"
     term: "hoogte-modifier"
     termType: "concept"
     isa: "modifier"
@@ -147,8 +154,9 @@ entries:
     headingids:
       - "hoogte-modifier"
     termid: "concept:hoogte-modifier"
-    vsntag: "docs"
-  - slug: "hugo-output"
+    vsntag: "vsa-tooling"
+  - git_date: 2026-07-08T00:00:00.000Z
+    slug: "hugo-output"
     term: "hugo-output"
     termType: "concept"
     glossaryTerm: "Hugo-output"
@@ -165,8 +173,9 @@ entries:
     headingids:
       - "hugo-output"
     termid: "concept:hugo-output"
-    vsntag: "docs"
-  - slug: "include-vsa"
+    vsntag: "vsa-tooling"
+  - git_date: 2026-07-08T00:00:00.000Z
+    slug: "include-vsa"
     term: "include-vsa"
     termType: "concept"
     glossaryTerm: "@include-vsa"
@@ -183,8 +192,9 @@ entries:
     headingids:
       - "@include-vsa"
     termid: "concept:include-vsa"
-    vsntag: "docs"
-  - slug: "lengte-modifier"
+    vsntag: "vsa-tooling"
+  - git_date: 2026-07-08T00:00:00.000Z
+    slug: "lengte-modifier"
     term: "lengte-modifier"
     termType: "concept"
     isa: "modifier"
@@ -202,8 +212,9 @@ entries:
     headingids:
       - "lengte-modifier"
     termid: "concept:lengte-modifier"
-    vsntag: "docs"
-  - slug: "metadata"
+    vsntag: "vsa-tooling"
+  - git_date: 2026-07-08T00:00:00.000Z
+    slug: "metadata"
     term: "metadata"
     termType: "concept"
     glossaryTerm: "Metadata"
@@ -217,8 +228,9 @@ entries:
     headingids:
       - "metadata"
     termid: "concept:metadata"
-    vsntag: "docs"
-  - slug: "modifier"
+    vsntag: "vsa-tooling"
+  - git_date: 2026-07-08T00:00:00.000Z
+    slug: "modifier"
     term: "modifier"
     termType: "concept"
     glossaryTerm: "Modifier"
@@ -232,8 +244,9 @@ entries:
     headingids:
       - "modifier"
     termid: "concept:modifier"
-    vsntag: "docs"
-  - slug: "parser"
+    vsntag: "vsa-tooling"
+  - git_date: 2026-07-08T00:00:00.000Z
+    slug: "parser"
     term: "parser"
     termType: "concept"
     glossaryTerm: "Parser"
@@ -247,8 +260,9 @@ entries:
     headingids:
       - "parser"
     termid: "concept:parser"
-    vsntag: "docs"
-  - slug: "pitch-marker"
+    vsntag: "vsa-tooling"
+  - git_date: 2026-07-08T00:00:00.000Z
+    slug: "pitch-marker"
     term: "pitch-marker"
     termType: "concept"
     glossaryTerm: "Pitch-marker"
@@ -269,8 +283,9 @@ entries:
     headingids:
       - "pitch-marker"
     termid: "concept:pitch-marker"
-    vsntag: "docs"
-  - slug: "publicatie"
+    vsntag: "vsa-tooling"
+  - git_date: 2026-07-08T00:00:00.000Z
+    slug: "publicatie"
     term: "publicatie"
     termType: "concept"
     glossaryTerm: "Publicatie"
@@ -284,8 +299,9 @@ entries:
     headingids:
       - "publicatie"
     termid: "concept:publicatie"
-    vsntag: "docs"
-  - slug: "renderer"
+    vsntag: "vsa-tooling"
+  - git_date: 2026-07-08T00:00:00.000Z
+    slug: "renderer"
     term: "renderer"
     termType: "concept"
     glossaryTerm: "Renderer"
@@ -299,8 +315,9 @@ entries:
     headingids:
       - "renderer"
     termid: "concept:renderer"
-    vsntag: "docs"
-  - slug: "samengestelde-hoogte-modifier"
+    vsntag: "vsa-tooling"
+  - git_date: 2026-07-08T00:00:00.000Z
+    slug: "samengestelde-hoogte-modifier"
     term: "samengestelde-hoogte-modifier"
     termType: "concept"
     isa: "hoogte-modifier"
@@ -315,8 +332,9 @@ entries:
     headingids:
       - "samengestelde-hoogte-modifier"
     termid: "concept:samengestelde-hoogte-modifier"
-    vsntag: "docs"
-  - slug: "samengestelde-lengte-modifier"
+    vsntag: "vsa-tooling"
+  - git_date: 2026-07-08T00:00:00.000Z
+    slug: "samengestelde-lengte-modifier"
     term: "samengestelde-lengte-modifier"
     termType: "concept"
     isa: "lengte-modifier"
@@ -331,8 +349,9 @@ entries:
     headingids:
       - "samengestelde-lengte-modifier"
     termid: "concept:samengestelde-lengte-modifier"
-    vsntag: "docs"
-  - slug: "severity"
+    vsntag: "vsa-tooling"
+  - git_date: 2026-07-08T00:00:00.000Z
+    slug: "severity"
     term: "severity"
     termType: "concept"
     glossaryTerm: "Severity"
@@ -349,8 +368,9 @@ entries:
     headingids:
       - "severity"
     termid: "concept:severity"
-    vsntag: "docs"
-  - slug: "validator"
+    vsntag: "vsa-tooling"
+  - git_date: 2026-07-08T00:00:00.000Z
+    slug: "validator"
     term: "validator"
     termType: "concept"
     glossaryTerm: "Validator"
@@ -364,8 +384,9 @@ entries:
     headingids:
       - "validator"
     termid: "concept:validator"
-    vsntag: "docs"
-  - slug: "vsa"
+    vsntag: "vsa-tooling"
+  - git_date: 2026-07-08T00:00:00.000Z
+    slug: "vsa"
     term: "vsa"
     termType: "concept"
     glossaryTerm: "Vereenvoudigde Slavische Accentnotatie"
@@ -385,8 +406,9 @@ entries:
     headingids:
       - "vsa"
     termid: "concept:vsa"
-    vsntag: "docs"
-  - slug: "vsa-scope"
+    vsntag: "vsa-tooling"
+  - git_date: 2026-07-08T00:00:00.000Z
+    slug: "vsa-scope"
     term: "vsa-scope"
     termType: "concept"
     glossaryTerm: "VSA-scope"
@@ -403,8 +425,9 @@ entries:
     headingids:
       - "vsa-scope"
     termid: "concept:vsa-scope"
-    vsntag: "docs"
-  - slug: "vsa-toml"
+    vsntag: "vsa-tooling"
+  - git_date: 2026-07-08T00:00:00.000Z
+    slug: "vsa-toml"
     term: "vsa-toml"
     termType: "concept"
     glossaryTerm: "vsa.toml"
@@ -421,8 +444,9 @@ entries:
     headingids:
       - "vsa.toml"
     termid: "concept:vsa-toml"
-    vsntag: "docs"
-  - slug: "zangstuk"
+    vsntag: "vsa-tooling"
+  - git_date: 2026-07-08T00:00:00.000Z
+    slug: "zangstuk"
     term: "zangstuk"
     termType: "concept"
     glossaryTerm: "Zangstuk"
@@ -436,4 +460,4 @@ entries:
     headingids:
       - "zangstuk"
     termid: "concept:zangstuk"
-    vsntag: "docs"
+    vsntag: "vsa-tooling"

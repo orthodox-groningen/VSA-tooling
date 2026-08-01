@@ -1,6 +1,6 @@
 # VSA CI — Windows-validatie bij elke push/PR.
 # Doel: scripts\ci.cmd (pytest, validate + build-markdown op examples/consumer-minimal).
-# Geen Hugo-site, geen Pages, geen bron-sync. Lokaal: scripts\ci.cmd
+# catalogus komt uit orthodox-groningen/bron (niet de PyPI-naamgenoot). Lokaal: scripts\ci.cmd
 
 name: VSA CI
 
@@ -16,6 +16,13 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+
+      - name: Checkout bron repository
+        uses: actions/checkout@v4
+        with:
+          repository: orthodox-groningen/bron
+          path: vendor/bron
+          ref: main
 
       - name: Setup Python
         uses: actions/setup-python@v5

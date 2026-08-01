@@ -94,7 +94,8 @@ cd /d C:\Git\orthodox-groningen\VSA-tooling
 scripts\bootstrap.cmd
 ```
 
-`bootstrap.cmd` installeert **catalogus** uit `vendor\bron` of `..\bron` vóór `vsa-tool`.
+`bootstrap.cmd` installeert **catalogus** uit `vendor\bron` of `..\bron` vóór `vsa-tool`
+(verplicht — PyPI heeft een andere package met dezelfde naam).
 
 **Rendering (SVG):** `pip install -r requirements-rendering.txt` (Pillow, DejaVu in `assets/fonts/`).
 

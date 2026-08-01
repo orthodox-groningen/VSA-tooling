@@ -66,6 +66,13 @@ def test_vsa_ci_uses_consumer_minimal():
     assert "hugo-demo" not in text
 
 
+def test_vsa_ci_checks_out_bron_for_catalogus():
+    text = Path(".github/workflows/vsa-ci.yml").read_text(encoding="utf-8")
+    assert "repository: orthodox-groningen/bron" in text
+    assert "path: vendor/bron" in text
+    assert "scripts\\ci.cmd" in text
+
+
 def test_docs_pages_cutover_targets():
     text = Path(".github/workflows/docs-pages.yml").read_text(encoding="utf-8")
 

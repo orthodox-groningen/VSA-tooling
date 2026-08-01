@@ -1,20 +1,20 @@
 # Verouderde eenmalige scripts
 
-Deze scripts waren eenmalige migratie-/patchscripts en mogen geen broncontent meer wijzigen.
+Deze scripts waren eenmalige migratie-/patchscripts en mogen geen broncontent meer
+wijzigen. Ze zijn uit `scripts/` verwijderd (fase-4-opruiming).
 
-## No-op gemaakt
+Om ze opnieuw te wissen als ze ergens terugkomen:
 
-- `apply-step68-todo-and-navigation.py`
-- `revert-step68-navigation.py`
-- `apply-step71-hugo-index-navigation.py`
-- `apply-step75-navigation-praktijk-moved.py`
-- `migrate-index-navigation-placeholders.py`
-- `stabilize-hugo-navigation.py`
-- `update-index-navigation-blocks.py`
-- `hide-legacy-hugo-routes.py`
-- `repair-vsa-image-refs.py`
-- `fix-praktijk-navigation.cmd`
+```cmd
+scripts\remove-obsolete-scripts.cmd
+```
 
-## Verouderd
+## Verwijderd (historisch)
 
-- `retry.cmd` — gebruik `scripts\test.cmd`.
+- `apply-step51-force.py` … `apply-step86-*.py` (eenmalige stap-patches)
+- `apply-step68-todo-and-navigation.py` / `revert-step68-navigation.py`
+- `stabilize-hugo-navigation.py`, `hide-legacy-hugo-routes.py`, …
+- `fix-praktijk-navigation.cmd`, `debug-praktijk-navigation.cmd`
+- `retry.cmd` — gebruik `scripts\test.cmd`
+
+Geschiedenis: zie `docs/history/parser-steps/`.

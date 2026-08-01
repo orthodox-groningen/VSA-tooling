@@ -15,7 +15,7 @@ Overzicht van alle workflows in deze map: **wanneer** ze draaien, **waarvoor** j
 
 ## Wat draait automatisch bij een push?
 
-1. **vsa-ci.yml** — Windows: pytest + validate/build-markdown op `examples/consumer-minimal`
+1. **vsa-ci.yml** — Windows: checkout `bron` → bootstrap → pytest + consumer-minimal
 2. **docs-build.yml** — Linux: `mkdocs build --strict`
 3. **docs-pages.yml** — MkDocs → `/` (`main`) of `/preview/` (andere branches)
 
@@ -41,9 +41,9 @@ Handmatig: `release-artifacts`.
 | ---------- | ------------------------------------------------------------------- |
 | Trigger    | `push`, `pull_request`                                              |
 | Runner     | `windows-latest`                                                    |
-| Doel       | `scripts\ci.cmd`: pytest + consumer-minimal validate/build-markdown |
+| Doel       | Checkout `bron` + `scripts\ci.cmd` (pytest, consumer-minimal)       |
 | Publiceert | Nee                                                                 |
-| Lokaal     | `scripts\ci.cmd`                                                    |
+| Lokaal     | `scripts\ci.cmd` (vereist sibling `..\bron` of `vendor\bron`)       |
 
 ### `docs-build.yml` — Docs build (MkDocs smoke)
 

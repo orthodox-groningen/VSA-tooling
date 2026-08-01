@@ -8,6 +8,8 @@ version = "0.1.0"
 requires-python = ">=3.12"
 dependencies = [
     "PyYAML>=6.0",
+    # Let op: PyPI heeft een ánder package "catalogus" (Breezy).
+    # Installeer altijd eerst orthodox-groningen/bron (scripts/bootstrap.cmd).
     "catalogus>=0.1.0",
 ]
 

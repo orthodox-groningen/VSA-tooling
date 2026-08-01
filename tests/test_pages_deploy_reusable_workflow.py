@@ -74,3 +74,11 @@ def test_docs_pages_main_deploys_root_preview_subdir():
     assert 'url_prefix=/VSA-tooling/"' in text or "url_prefix=/VSA-tooling/" in text
     assert "url_prefix=/VSA-tooling/preview/" in text
     assert "destination_dir=preview" in text
+
+
+def test_docs_pages_keep_files_false_during_hugo_cutover():
+    """Tijdelijk false op main én preview om Hugo-restanten te wissen."""
+    text = DOCS_PAGES.read_text(encoding="utf-8")
+
+    assert text.count('echo "keep_files=false"') >= 2
+    assert 'echo "keep_files=true"' not in text

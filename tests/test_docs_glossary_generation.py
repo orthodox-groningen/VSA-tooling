@@ -24,7 +24,8 @@ def test_prepare_and_docs_build_tev2_scripts_exist():
     assert Path("scripts/check-tev2-termrefs.py").exists()
 
 
-def test_saf_imports_bron_scope():
+def test_saf_keeps_bron_scope_without_merging_into_local_mrg():
     text = Path("docs/saf.yaml").read_text(encoding="utf-8")
-    assert '"*@bron"' in text or "*@bron" in text
     assert "scopetag: bron" in text
+    # *@bron in termselection mengt org-termen in de lokale glossary → dode .md-links.
+    assert "*@bron" not in text

@@ -23,6 +23,7 @@ versions:
     altvsntags:
       - latest
     termselection:
-      - "*@bron"
+      # Alleen lokale tool-termen in de vsa-tooling-MRG/glossary-tabel.
+      # Org-termen blijven in scope "bron" (mrg-import) voor TermRefs zoals [zangstuk](@bron).
       - "*"
       - "-excludeFromMRG[yes]"

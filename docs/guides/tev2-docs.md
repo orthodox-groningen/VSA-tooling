@@ -40,7 +40,8 @@ vóór `mkdocs build --strict`. Pages committeert gegenereerde
 
 Voor tool-termen: `[VSA](@)` of een form phrase die in `docs/terminologie/` staat.
 Voor org-termen: bij voorkeur `[zangstuk](@bron)` (of form phrase uit bron) —
-niet opnieuw definiëren in deze repo.
+niet opnieuw definiëren in deze repo. Org-termen staan **niet** in de lokale
+glossary-tabel (alleen tool-termen); de bron-MRG wordt geïmporteerd voor TermRef-resolutie.
 
 ## Hugo / presentatie
 

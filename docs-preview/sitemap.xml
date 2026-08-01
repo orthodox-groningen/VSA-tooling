@@ -77,6 +77,14 @@
          <lastmod>2026-08-01</lastmod>
     </url>
     <url>
+         <loc>https://orthodox-groningen.github.io/VSA-tooling/docs-preview/manuals/</loc>
+         <lastmod>2026-08-01</lastmod>
+    </url>
+    <url>
+         <loc>https://orthodox-groningen.github.io/VSA-tooling/docs-preview/manuals/consumer-site/</loc>
+         <lastmod>2026-08-01</lastmod>
+    </url>
+    <url>
          <loc>https://orthodox-groningen.github.io/VSA-tooling/docs-preview/plans/</loc>
          <lastmod>2026-08-01</lastmod>
     </url>
@@ -86,10 +94,6 @@
     </url>
     <url>
          <loc>https://orthodox-groningen.github.io/VSA-tooling/docs-preview/plans/onderzoeks-prompt/</loc>
-         <lastmod>2026-08-01</lastmod>
-    </url>
-    <url>
-         <loc>https://orthodox-groningen.github.io/VSA-tooling/docs-preview/plans/uitgaveprofielen/</loc>
          <lastmod>2026-08-01</lastmod>
     </url>
     <url>
@@ -117,6 +121,10 @@
          <lastmod>2026-08-01</lastmod>
     </url>
     <url>
+         <loc>https://orthodox-groningen.github.io/VSA-tooling/docs-preview/reference/fixtures-catalogus/</loc>
+         <lastmod>2026-08-01</lastmod>
+    </url>
+    <url>
          <loc>https://orthodox-groningen.github.io/VSA-tooling/docs-preview/reference/grammar/</loc>
          <lastmod>2026-08-01</lastmod>
     </url>
@@ -138,6 +146,22 @@
     </url>
     <url>
          <loc>https://orthodox-groningen.github.io/VSA-tooling/docs-preview/reference/traceability/</loc>
+         <lastmod>2026-08-01</lastmod>
+    </url>
+    <url>
+         <loc>https://orthodox-groningen.github.io/VSA-tooling/docs-preview/reference/voorbeelden/</loc>
+         <lastmod>2026-08-01</lastmod>
+    </url>
+    <url>
+         <loc>https://orthodox-groningen.github.io/VSA-tooling/docs-preview/reference/voorbeelden/basis/</loc>
+         <lastmod>2026-08-01</lastmod>
+    </url>
+    <url>
+         <loc>https://orthodox-groningen.github.io/VSA-tooling/docs-preview/reference/voorbeelden/fouten/</loc>
+         <lastmod>2026-08-01</lastmod>
+    </url>
+    <url>
+         <loc>https://orthodox-groningen.github.io/VSA-tooling/docs-preview/reference/voorbeelden/multiline/</loc>
          <lastmod>2026-08-01</lastmod>
     </url>
     <url>

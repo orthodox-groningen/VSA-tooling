@@ -57,6 +57,10 @@
          <lastmod>2026-08-02</lastmod>
     </url>
     <url>
+         <loc>https://orthodox-groningen.github.io/VSA-tooling/preview/guides/svg-export/</loc>
+         <lastmod>2026-08-02</lastmod>
+    </url>
+    <url>
          <loc>https://orthodox-groningen.github.io/VSA-tooling/preview/guides/testing-and-regression/</loc>
          <lastmod>2026-08-02</lastmod>
     </url>
@@ -146,6 +150,42 @@
     </url>
     <url>
          <loc>https://orthodox-groningen.github.io/VSA-tooling/preview/reference/traceability/</loc>
+         <lastmod>2026-08-02</lastmod>
+    </url>
+    <url>
+         <loc>https://orthodox-groningen.github.io/VSA-tooling/preview/reference/cli/</loc>
+         <lastmod>2026-08-02</lastmod>
+    </url>
+    <url>
+         <loc>https://orthodox-groningen.github.io/VSA-tooling/preview/reference/cli/blocks/</loc>
+         <lastmod>2026-08-02</lastmod>
+    </url>
+    <url>
+         <loc>https://orthodox-groningen.github.io/VSA-tooling/preview/reference/cli/build-markdown/</loc>
+         <lastmod>2026-08-02</lastmod>
+    </url>
+    <url>
+         <loc>https://orthodox-groningen.github.io/VSA-tooling/preview/reference/cli/musicxml/</loc>
+         <lastmod>2026-08-02</lastmod>
+    </url>
+    <url>
+         <loc>https://orthodox-groningen.github.io/VSA-tooling/preview/reference/cli/parse/</loc>
+         <lastmod>2026-08-02</lastmod>
+    </url>
+    <url>
+         <loc>https://orthodox-groningen.github.io/VSA-tooling/preview/reference/cli/process/</loc>
+         <lastmod>2026-08-02</lastmod>
+    </url>
+    <url>
+         <loc>https://orthodox-groningen.github.io/VSA-tooling/preview/reference/cli/resolve-catalogus/</loc>
+         <lastmod>2026-08-02</lastmod>
+    </url>
+    <url>
+         <loc>https://orthodox-groningen.github.io/VSA-tooling/preview/reference/cli/svg/</loc>
+         <lastmod>2026-08-02</lastmod>
+    </url>
+    <url>
+         <loc>https://orthodox-groningen.github.io/VSA-tooling/preview/reference/cli/validate/</loc>
          <lastmod>2026-08-02</lastmod>
     </url>
     <url>

@@ -1,5 +1,16 @@
 # Gevonden troparen en kondaken
 
+## (Einde van) Tropaar Toon 1
+
+::: vsa-notatie
+[/:] {e_}{/re_} {\\zij} Uw verrijze{/nis}, {/o} {/Chris_}{tus_},
+{\e}re {\zij} {/Uw} {/Ko_}ning{schap_}
+{\e}re zij {\Uw} {/voor}{/zie_}nig{heid_}
+{\Gij} enig Mens{\lie_}ven{\de_} [:]
+:::
+
+---
+
 <!-- Bron: feesteigen\06-jun\06-25-geboorte-johannes-de-voorloper.md | type: chapter -->
 
 ## Tropaar t. 4

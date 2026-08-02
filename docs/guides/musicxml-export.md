@@ -4,6 +4,10 @@ Met `vsa musicxml` zet je VSA om naar **`.mxl`** (gecomprimeerd MusicXML, standa
 of naar platte **`.musicxml`**. Open het in MuseScore of speel af op
 [Coria](https://coria.nl).
 
+Deze pagina is de workflow-uitleg (profielen, Coria, mappen, opties). Voor de
+volledige CLI-syntax, alle argumenten en foutgevallen: zie de man-pagina
+[`vsa musicxml`](../reference/cli/musicxml.md).
+
 ## Snel starten
 
 ```cmd

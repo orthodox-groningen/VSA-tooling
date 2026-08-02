@@ -27,6 +27,7 @@ not_in_nav: |
   guides/hugo-site-structure.md
   guides/tev2-docs.md
   plans/onderzoeks-prompt.md
+  reference/cli.md
   terminologie/**
 
 validation:
@@ -82,6 +83,7 @@ nav:
     - guides/user-guide.md
     - guides/cli-taken.md
     - guides/validation.md
+    - guides/svg-export.md
     - guides/musicxml-export.md
     - guides/rendering-fonts.md
     - guides/parochie-lokaal-vsa.md
@@ -110,7 +112,16 @@ nav:
     - reference/voorbeelden/multiline.md
     - reference/voorbeelden/fouten.md
     - reference/fixtures-catalogus.md
-    - reference/cli.md
+    - CLI:
+      - reference/cli/index.md
+      - reference/cli/validate.md
+      - reference/cli/parse.md
+      - reference/cli/blocks.md
+      - reference/cli/svg.md
+      - reference/cli/process.md
+      - reference/cli/build-markdown.md
+      - reference/cli/resolve-catalogus.md
+      - reference/cli/musicxml.md
     - reference/grammar.md
     - reference/tokens.md
     - reference/metadata.md

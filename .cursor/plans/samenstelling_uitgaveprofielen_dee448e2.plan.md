@@ -1,6 +1,6 @@
 ---
 name: Samenstelling uitgaveprofielen
-overview: "Review van bron-specs t.o.v. VSA-tooling, terminologie-voorstel, en een eerste increment: spec-sectie over concepten/kanalen + `:::include svg|coria|mxl` als kanaal-alias op bestaande resolver + één demo-pagina in hugo-demo."
+overview: "Review van bron-specs t.o.v. VSA-tooling, terminologie-voorstel, en een eerste increment: spec-sectie over concepten/kanalen + `:::include svg|coria|mxl` als kanaal-alias op bestaande resolver + één demo-pagina in VSA-demo."
 todos:
   - id: todo-1-3-done
     content: Markeer docs/todo.md §1.3 (halftoon-prefixen) als Afgerond
@@ -12,7 +12,7 @@ todos:
     content: Implementeer :::include svg|coria|mxl in markdown_include.py met tests; hergebruik resolve_asset voor coria/mxl
     status: pending
   - id: demo-pagina
-    content: Maak examples/hugo-demo/content-source/praktijk/zondagen/kanalen-demo.md met alle drie kanalen op tropaar-zondag-toon-3
+    content: Maak content-source/praktijk/zondagen/kanalen-demo.md in VSA-demo met alle drie kanalen op tropaar-zondag-toon-3
     status: pending
   - id: todo-2-2-partial
     content: "Werk docs/todo.md §2.2 bij: kanaal-alias geïmplementeerd; bron-repo default sibling-conventie nog open"

@@ -39,7 +39,18 @@ def read(path: Path) -> str:
     return path.read_text(encoding="utf-8").replace("\r\n", "\n")
 
 
+def _read_cli_reference_bundle() -> str:
+    parts = [read(REFERENCE / "cli.md")]
+    cli_dir = REFERENCE / "cli"
+    if cli_dir.is_dir():
+        for path in sorted(cli_dir.glob("*.md")):
+            parts.append(read(path))
+    return "\n".join(parts)
+
+
 def read_doc(name: str) -> str:
+    if name == "cli_reference":
+        return _read_cli_reference_bundle()
     return read(doc(name))
 
 

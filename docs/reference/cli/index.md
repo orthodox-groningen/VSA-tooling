@@ -83,6 +83,12 @@ voor het volledige overzicht.
 | `scripts\ci.cmd`          | Draait de volledige lokale CI (pytest + consumer-minimal). |
 | `scripts\docs-serve.cmd`  | Serveert deze MkDocs-documentatie lokaal.                  |
 
+## Diagnosevolgorde
+
+Bij problemen: eerst `vsa validate`, daarna `scripts\test.cmd`, eventueel
+`vsa blocks … --json`. Volledige uitleg:
+[specification/cli.md](../../specification/cli.md#diagnosevolgorde).
+
 ## Verwante documentatie
 
 - Taakgerichte uitleg per doel: [CLI-taken](../../guides/cli-taken.md)

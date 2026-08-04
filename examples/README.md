@@ -1,0 +1,16 @@
+# VSA-tooling — examples
+
+Fixtures voor tests, regressie en CI-smoke. Geen volledige Hugo-site — die staat in
+[VSA-demo](https://github.com/orthodox-groningen/VSA-demo).
+
+| Map | Doel |
+| --- | ---- |
+| `minimal/` | Kleine geldige VSA- en Markdown-voorbeelden |
+| `regression/` | Golden files (AST, SVG, MusicXML, validatie) |
+| `edge-cases/` | Randgevallen en foutscenario's |
+| `expected-fail/` | Invoer die bewust moet falen bij validate |
+| `consumer-minimal/` | CI-smoke: `vsa validate` + `vsa build-markdown` |
+| `site-demo/` | Kleine Markdown-fixtures (geen Hugo-build) |
+| `site-demo-invalid/` | Ongeldige site-fixtures voor tests |
+
+Volledige presentatiesite: [VSA-demo](https://github.com/orthodox-groningen/VSA-demo).

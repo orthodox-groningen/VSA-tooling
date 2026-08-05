@@ -1,4 +1,4 @@
-# Overzicht
+# Doel en scope
 
 VSA (Vereenvoudigde Slavische Accentnotatie) is een tekstgebaseerde domeinspecifieke taal (Domain-Specific Language, DSL) voor het beschrijven van Slavische accentnotatie. De taal definieert een eenduidige, machineleesbare en menselijk leesbare notatie waarmee zangstukken kunnen worden vastgelegd, gevalideerd en gerenderd. De specificatie beschrijft uitsluitend de taal en haar semantiek.
 

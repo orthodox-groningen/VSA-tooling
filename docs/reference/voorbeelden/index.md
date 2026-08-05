@@ -1,4 +1,4 @@
-# Voorbeelden
+# Overzicht
 
 Korte, leesbare voorbeelden van VSA-invoer en wat de tool ermee doet. Geen
 Hugo-shortcodes: kopieer de CLI-commando’s lokaal.

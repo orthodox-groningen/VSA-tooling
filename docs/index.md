@@ -5,30 +5,34 @@ MusicXML-export, Markdown-build en hergebruik in andere repositories.
 
 ## Wat vind je hier
 
-| Sectie            | Inhoud                                                                      |
-| ----------------- | --------------------------------------------------------------------------- |
-| **Starten**       | Eerste stappen met de CLI                                                   |
-| **Handleidingen** | Taakgerichte uitleg — begin bij [Handleidingen](manuals/index.md)           |
-| **Specificatie**  | Normatieve VSA-taal- en toolcontracts                                       |
-| **Referentie**    | Naslag + [voorbeelden](reference/voorbeelden/index.md) en fixtures          |
-| **Integratie**    | `vsa-tool` importeren in andere repo's en CI                                |
-| **Plannen**       | Ontwikkelplannen — *niet normatief*                                         |
+| Sectie                                              | Wat je er vindt                                                                                         |
+| --------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
+| [Starten](getting-started/README.md)                | Eerste stappen: omgeving, `vsa --version`, valideren en een SVG maken.                                  |
+| [Handleidingen](manuals/index.md)                   | Taakgerichte uitleg (CLI-taken, validatie, export, consumer-site).                                      |
+| [Specificaties](specification/README.md)            | Normatieve VSA-taal- en toolcontracts.                                                                  |
+| [Referentie](reference/README.md)                   | Naslag: voorbeelden, CLI man-pagina’s, tokens, diagnostics en outputs.                                  |
+| [Integratie](integratie/index.md)                   | `vsa-tool` importeren in andere repo’s en CI; TEv2 in tool-docs.                                        |
+| [Terminologie](terminologie/index.md)               | Tool-lokale begrippen; org-brede glossary staat in bron.                                                |
+| [Plannen](plans/README.md)                          | Ontwikkelplannen. Die zijn niet normatief; bij twijfel gelden specificatie en handleidingen.            |
+
+## Waar hoort wat?
+
+| Vraag                                                      | Ga naar                                                                                      |
+| ---------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
+| Org-specs, zangstuk-formaat, glossary                      | [bron — documentatie](https://orthodox-groningen.github.io/bron/)                            |
+| Hoe gebruik ik de VSA-CLI of bouw ik een consumer-site?    | [Handleidingen](manuals/index.md) of [Starten](getting-started/README.md)                    |
+| Wat moet de taal/tool formeel doen?                        | [Specificaties](specification/README.md)                                                     |
 
 ## Wat is dit *niet*
 
 | Repo / site                                                | Rol                                                                |
 | ---------------------------------------------------------- | ------------------------------------------------------------------ |
-| [bron](https://github.com/orthodox-groningen/bron)         | Org-specs en zangstukken (single source of truth)                  |
-| [VSA-demo](https://github.com/orthodox-groningen/VSA-demo) | Hugo-presentatiesite / voorbeeldconsumer                           |
+| [bron](https://orthodox-groningen.github.io/bron/)         | Org-specs en zangstukken (single source of truth)                  |
+| [VSA-demo](https://orthodox-groningen.github.io/VSA-demo/) | Hugo-presentatiesite / voorbeeldconsumer                           |
 | **Deze site**                                              | Documentatie van de **tool**, geen liturgische browsable catalogus |
 
-Org-terminologie en zangstuk-formaat staan in
-[bron — specificaties](https://orthodox-groningen.github.io/bron/specs/); hier
-alleen toolgedrag en hoe je de CLI gebruikt.
-
 > **URL-cutover:** docs staan op `/` (`main`) en `/preview/` (andere branches).
-> Oude paden `/docs/` en `/docs-preview/` zijn vervangen. Presentatie:
-> [VSA-demo](https://orthodox-groningen.github.io/VSA-demo/).
+> Oude paden `/docs/` en `/docs-preview/` zijn vervangen.
 
 ## Lokaal bekijken
 
@@ -37,8 +41,6 @@ cd /d C:\Git\orthodox-groningen\VSA-tooling
 python -m pip install -r requirements-docs.txt
 scripts\docs-serve.cmd
 ```
-
-Of: `python -m mkdocs serve` na installatie van de docs-dependencies.
 
 ## Snel naar de tool
 

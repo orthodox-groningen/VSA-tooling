@@ -1,4 +1,4 @@
-# Terminologie (VSA-tooling)
+# Overzicht
 
 Tool-lokale termen voor parser, renderer en publicatie. De org-brede glossary
 staat in
@@ -6,6 +6,6 @@ staat in
 
 Een volledig gegenereerde glossary-pagina verschijnt na de TEv2-docs-build
 (`scripts\docs-build-tev2.cmd`). Curated termpagina’s staan in deze map
-(bijv. `parser`, `renderer`, `hugo-output`).
+(bijvoorbeeld `parser`, `renderer`, `hugo-output`).
 
-Zie ook: [TEv2 in docs](../guides/tev2-docs.md).
+Zie ook: [TEv2 in tool-docs](../guides/tev2-docs.md).

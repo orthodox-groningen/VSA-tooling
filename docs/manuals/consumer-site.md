@@ -40,7 +40,7 @@ Documentatie en scripts: [VSA-demo README](https://github.com/orthodox-groningen
 ## Tooling-kant
 
 - Installatie en CI: [Integratie — reuse](../guides/reuse-vsa-tooling.md)
-- CLI: [CLI-taken](../guides/cli-taken.md), [CLI-referentie](../reference/cli.md)
+- CLI: [CLI-taken](../guides/cli-taken.md), [CLI-referentie](../reference/cli/index.md)
 - Navigatie-placeholders (`<!-- VSA-NAV:… -->`): nog beschreven in
   [hugo-navigation-placeholders.md](../guides/hugo-navigation-placeholders.md)
   (toolgedrag; presentatievoorbeeld = VSA-demo)

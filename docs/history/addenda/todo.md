@@ -130,7 +130,7 @@ Geneste directives zijn niet toegestaan: ':::web-only:::' binnen open ':::keep-t
 
 Implementatie: `src/vsa/markdown_directives.py` verbiedt nesting expliciet.
 In de praktijk komt dit voor wanneer `:::web-only:::` (bijv. Coria-link) binnen
-`:::keep-together:::` staat — zie `examples/hugo-demo/content-source/praktijk/zondagen/zondag-toon-1.md`.
+`:::keep-together:::` staat — zie [VSA-demo](https://github.com/orthodox-groningen/VSA-demo/blob/main/content-source/praktijk/zondagen/zondag-toon-1.md).
 
 Te onderzoeken bij herziening van [spec-vsa-document-samenstellen.md](spec-vsa-document-samenstellen.md):
 
@@ -153,7 +153,7 @@ Status: **Afgerond** (werkversie)
 Status: **Geïmplementeerd** (demo + docs); term **manifest** normatief in bron §16
 
 - [parochie-lokaal-zangstukken.md](parochie-lokaal-zangstukken.md)
-- Demo: `examples/hugo-demo/content-source/lokaal/` + include in `antifonen-hemelum.md`
+- Demo: [VSA-demo](https://github.com/orthodox-groningen/VSA-demo) `content-source/lokaal/` + include in `antifonen-hemelum.md`
 - Tests: [test_hugo_lokaal_zangstukken.py](../tests/test_hugo_lokaal_zangstukken.py)
 
 ### 3.3 Hugo rootSections (github.io-links)

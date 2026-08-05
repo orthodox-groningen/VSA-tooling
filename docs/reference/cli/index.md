@@ -1,0 +1,104 @@
+# CLI-referentie — overzicht
+
+`vsa` is de commandoregel-tool van VSA-tooling. Ermee valideer je VSA-notatie,
+bekijk je de interne parserstructuur, en genereer je SVG, Hugo-Markdown en
+MusicXML uit `.vsa`- en Markdown-bronbestanden.
+
+Deze pagina geeft het overzicht. Elk subcommando heeft een eigen man-pagina
+met de volledige argumentenlijst, voorbeelden en foutgevallen.
+
+## Werkmap-conventie
+
+Alle voorbeelden in deze referentie gaan uit van Windows `cmd.exe` en de
+repository-root als werkmap:
+
+```cmd
+cd /d C:\Git\orthodox-groningen\VSA-tooling
+```
+
+Paden in commando's zijn relatief aan die map, tenzij je een absoluut pad
+opgeeft.
+
+## Algemene syntax
+
+```text
+vsa [--config CONFIG] [--version] <subcommando> …
+```
+
+`vsa` zonder subcommando en zonder `--version` toont een foutmelding
+(`Geen commando opgegeven.`) en stopt met exitcode `1`.
+
+## Globale opties
+
+| Optie             | Verplicht | Betekenis                                                                                                                         |
+| ----------------- | --------- | --------------------------------------------------------------------------------------------------------------------------------- |
+| `--config CONFIG` | Nee       | Pad naar een alternatief `vsa.toml`. Zonder deze optie zoekt elk commando zelf naar `vsa.toml` (zie [`config.md`](../config.md)). |
+| `--version`       | Nee       | Toon de geïnstalleerde versie en stop direct (subcommando wordt genegeerd).                                                       |
+| `-h`, `--help`    | Nee       | Toon hulp. Werkt zowel op `vsa --help` als op `vsa <subcommando> --help`.                                                         |
+
+Sommige subcommando's (`svg`, `process`, `build-markdown`, `musicxml`)
+accepteren `--config` ook als **subcommando-optie**. Die overschrijft dan de
+globale `--config`.
+
+## Exitcodes
+
+| Exitcode | Betekenis                           |
+| -------- | ----------------------------------- |
+| `0`      | Commando succesvol                  |
+| `1`      | Fout gevonden of commando mislukt   |
+
+Controleer in `cmd.exe` de laatste exitcode direct na een commando:
+
+```cmd
+echo %ERRORLEVEL%
+```
+
+## Subcommando's
+
+| Subcommando                                      | Doel                                                                                  |
+| ------------------------------------------------ | ------------------------------------------------------------------------------------- |
+| [`validate`](validate.md)                        | Controleer of VSA-invoer (`.vsa`, `.md`, of een map) geldig is.                       |
+| [`parse`](parse.md)                              | Toon parseroutput of de interne AST van één VSA-bestand.                              |
+| [`blocks`](blocks.md)                            | Vind en inspecteer VSA-blokken in een Markdownbestand.                                |
+| [`svg`](svg.md)                                  | Render één VSA-bestand naar één SVG-bestand.                                          |
+| [`process`](process.md)                          | Genereer SVG-bestanden uit VSA-blokken in Markdown (zonder Markdown te herschrijven). |
+| [`build-markdown`](build-markdown.md)            | Genereer Hugo-geschikte Markdown én SVG-assets uit content-source.                    |
+| [`resolve-catalogus`](resolve-catalogus.md)      | Los `:::include … zoek="…"` op naar catalogus-paden (`bron:…` / `lokaal:…`).          |
+| [`musicxml`](musicxml.md)                        | Exporteer VSA naar MusicXML (`.mxl` of `.musicxml`).                                  |
+
+Elke pagina hierboven beschrijft de volledige syntax, alle argumenten en
+opties (inclusief defaults), voorbeeldoutput, en typische foutgevallen. Deze
+overzichtspagina herhaalt die details niet.
+
+## Scripts
+
+De onderstaande scripts gebruik je rond `vsa` zelf (installatie, testen,
+docs). Zie [`scripts/README.md`](https://github.com/orthodox-groningen/VSA-tooling/blob/main/scripts/README.md)
+voor het volledige overzicht.
+
+| Script                    | Doel                                                       |
+| ------------------------- | ---------------------------------------------------------- |
+| `scripts\bootstrap.cmd`   | Installeert de lokale omgeving (`.venv`, `vsa`, pytest).   |
+| `scripts\test.cmd`        | Draait de pytest-suite.                                    |
+| `scripts\ci.cmd`          | Draait de volledige lokale CI (pytest + consumer-minimal). |
+| `scripts\docs-serve.cmd`  | Serveert deze MkDocs-documentatie lokaal.                  |
+
+## Diagnosevolgorde
+
+Bij problemen: eerst `vsa validate`, daarna `scripts\test.cmd`, eventueel
+`vsa blocks … --json`. Volledige uitleg:
+[specification/cli.md](../../specification/cli.md#diagnosevolgorde).
+
+## Verwante documentatie
+
+- Taakgerichte uitleg per doel: [CLI-taken](../../guides/cli-taken.md)
+- Gebruikershandleiding (uitgebreider, met uitleg): [gebruikershandleiding](../../guides/user-guide.md)
+- Functioneel contract (normatief, alle commando's): [specification/cli.md](../../specification/cli.md)
+- `vsa.toml`-instellingen en voorrangsregels: [config.md](../config.md)
+- Foutcodes en severity: [diagnostics.md](../diagnostics.md)
+- SVG-workflow: [svg-export.md](../../guides/svg-export.md)
+- MusicXML-workflow: [musicxml-export.md](../../guides/musicxml-export.md)
+- Parochie-lokale VSA (catalogus, includes): [parochie-lokaal-vsa.md](../../guides/parochie-lokaal-vsa.md)
+- Bron-contracten (org-breed, normatief): [conversie-vsa-svg](https://orthodox-groningen.github.io/bron/reference/conversie-vsa-svg/),
+  [exporttype-svg](https://orthodox-groningen.github.io/bron/reference/exporttype-svg/),
+  [catalogus-cli](https://github.com/orthodox-groningen/bron/blob/main/docs/reference/catalogus-cli.md)

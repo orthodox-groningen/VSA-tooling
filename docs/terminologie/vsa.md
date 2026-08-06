@@ -4,17 +4,20 @@ term: vsa
 termType: concept
 glossaryTerm: "Vereenvoudigde Slavische Accentnotatie"
 glossaryAbbr: VSA
-glossaryText: "een notatie- of toolingketen die VSA-brontekst met scopes, modifiers en bracket-directives gebruikt om liturgische zangteksten te valideren, renderen of publiceren."
-glossaryNotes:
-  - "Binnen deze repository verwijst VSA naar de eigen notatie- en publicatieketen."
+glossaryText: "wordt gebruikt om te verwijzen naar een formele notatie voor het vastleggen van [zangstukken](@) en ook naar de toolset waarmee zulke vastleggingen kunnen worden gevalideerd en naar publiceerbare vormen worden omgezet."
 formPhrases:
   - vsa
   - vsa's
-  - vsa-tooling
-  - vsa-notatie
-  - vsa-notaties
 ---
 
 # VSA
 
-VSA is de notatie- en toolset waarmee zangstukken in deze repository worden vastgelegd, gevalideerd en naar publiceerbare vormen worden omgezet. Algemeen liturgisch tekstbeheer zonder VSA-syntax valt hier niet onder.
+VSA, de Vereenvoudigde Slavische Accentnotatie, is:
+- een [formele notatie](vsa-notatie@) waarmee [zangstukken](@) kunnen worden vastgelegd;
+- de toolset, waarmee [zangstukken](@) in [vsa-notatie](@) kunnen worden gevalideerd en naar publiceerbare vormen worden omgezet. 
+
+## Gebruik van deze en vergelijkbare termen in de 'bron' repo.
+
+VSA heeft in verschillende contexten andere betekenissen: 
+- in de 'bron' repo wordt [VSA](@bron) (en gerelateerd [vsa-notatie](@bron) gebruikt.
+

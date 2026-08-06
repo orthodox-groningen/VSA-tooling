@@ -53,26 +53,21 @@ echo [2/6] Prepare TEv2 docs staging tree
 python scripts\prepare-tev2-docs.py
 if errorlevel 1 exit /b 1
 
-if "%TEV2_RUN_IMPORT%"=="1" (
-  if not exist "%MRG_IMPORT%" where mrg-import >nul 2>nul
-  if errorlevel 1 if not exist "%MRG_IMPORT%" (
-    echo ERROR: mrg-import was not found on PATH.
-    echo Install the TEv2 tools with:
-    echo npm install -g @tno-terminology-design/trrt @tno-terminology-design/hrgt @tno-terminology-design/mrgt @tno-terminology-design/mrg-import
-    exit /b 1
-  )
-
-  echo [3/6] mrg-import
-  pushd generated\docs
-  call "%MRG_IMPORT%" -c tev2-config.yaml
-  if errorlevel 1 (
-    popd
-    exit /b 1
-  )
-  popd
-) else (
-  echo [3/6] Skipping mrg-import locally. Set TEV2_RUN_IMPORT=1 to enable it.
+echo [3/6] mrg-import
+if not exist "%MRG_IMPORT%" where mrg-import >nul 2>nul
+if errorlevel 1 if not exist "%MRG_IMPORT%" (
+  echo ERROR: mrg-import was not found on PATH.
+  echo Install the TEv2 tools with:
+  echo npm install -g @tno-terminology-design/trrt @tno-terminology-design/hrgt @tno-terminology-design/mrgt @tno-terminology-design/mrg-import
+  exit /b 1
 )
+pushd generated\docs
+call "%MRG_IMPORT%" -c tev2-config.yaml
+if errorlevel 1 (
+  popd
+  exit /b 1
+)
+popd
 
 echo [4/6] mrgt + hrgt
 pushd generated\docs
@@ -113,6 +108,8 @@ if errorlevel 1 exit /b 1
 
 if not exist docs\mrgs mkdir docs\mrgs
 copy /Y generated\docs\mrgs\mrg.vsa-tooling*.yaml docs\mrgs\ >nul
+python scripts\prepare-tev2-docs.py --normalize-mrg-scopes
+if errorlevel 1 exit /b 1
 
 echo [6/6] mkdocs build --strict
 python -m pip install -q -r requirements-docs.txt

@@ -114,8 +114,79 @@ def _patch_saf_website(generated_docs: Path, mkdocs_path: Path) -> None:
     print(f"Patched saf.yaml website: {website}")
 
 
+def _patch_bron_scopedir_for_local(generated_docs: Path, root: Path) -> None:
+    """Point scopes.bron.scopedir at a sibling bron checkout when present.
+
+    On Windows, mrg-import uses path.join on remote scopedirs, which turns
+    ``https://github.com/...`` into an invalid local path.  CI (Linux) can
+    fetch the GitHub URL; locally we prefer ``../bron/docs`` so *@bron works
+    without that bug.  Only the staging saf.yaml is patched.
+    """
+    sibling = (root.parent / "bron" / "docs").resolve()
+    if not (sibling / "saf.yaml").is_file():
+        return
+
+    saf_path = generated_docs / "saf.yaml"
+    if not saf_path.exists():
+        return
+
+    # Use forward slashes so YAML/tools stay portable across shells.
+    local_scopedir = sibling.as_posix()
+    saf_text = saf_path.read_text(encoding="utf-8")
+    # Replace only the bron scope's scopedir (first scopes entry with scopetag bron).
+    saf_patched, n = re.subn(
+        r"(- scopetag: bron\s*\n\s+scopedir:\s*)\S+",
+        lambda hit: hit.group(1) + local_scopedir,
+        saf_text,
+        count=1,
+    )
+    if n != 1:
+        print(
+            "WARNING: could not patch scopes.bron.scopedir for local sibling",
+            file=sys.stderr,
+        )
+        return
+
+    saf_path.write_text(saf_patched, encoding="utf-8")
+    print(f"Patched scopes.bron.scopedir for local sibling: {local_scopedir}")
+
+
+def _normalize_committed_mrg_bron_scopedir(root: Path) -> None:
+    """Rewrite local sibling bron scopedir in committed MRGs to the GitHub URL.
+
+    Local Windows builds patch scopes.bron to ``../bron/docs`` for mrg-import;
+    that absolute path must not land in ``docs/mrgs/mrg.vsa-tooling*.yaml``.
+    """
+    saf_text = (root / "docs" / "saf.yaml").read_text(encoding="utf-8")
+    m = re.search(
+        r"- scopetag: bron\s*\n\s+scopedir:\s*(\S+)",
+        saf_text,
+    )
+    if not m:
+        return
+    canonical = m.group(1).strip().strip("\"'")
+    mrgs_dir = root / "docs" / "mrgs"
+    if not mrgs_dir.is_dir():
+        return
+    for path in sorted(mrgs_dir.glob("mrg.vsa-tooling*.yaml")):
+        text = path.read_text(encoding="utf-8")
+        patched, n = re.subn(
+            r'(- scopetag: ["\']?bron["\']?\s*\n\s+scopedir:\s*)["\']?[^"\'\n]+["\']?',
+            lambda hit, c=canonical: f'{hit.group(1)}"{c}"',
+            text,
+            count=1,
+        )
+        if n:
+            path.write_text(patched, encoding="utf-8")
+            print(f"Normalized scopes.bron.scopedir in {path.relative_to(root)}")
+
+
 def main() -> int:
     root = Path(__file__).resolve().parent.parent
+    if len(sys.argv) > 1 and sys.argv[1] == "--normalize-mrg-scopes":
+        _normalize_committed_mrg_bron_scopedir(root)
+        return 0
+
     source_docs = root / "docs"
     generated = root / "generated"
     generated_docs = generated / "docs"
@@ -130,6 +201,7 @@ def main() -> int:
     shutil.copy2(root / "mkdocs.yml", mkdocs_dest)
 
     _patch_saf_website(generated_docs, mkdocs_dest)
+    _patch_bron_scopedir_for_local(generated_docs, root)
     _disable_git_plugin(mkdocs_dest)
     _inject_git_dates(generated_docs, source_docs)
 

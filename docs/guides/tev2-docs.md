@@ -1,10 +1,10 @@
 # TEv2 in tool-docs
 
 VSA-tooling gebruikt TEv2 voor **tool-termen** (parser, renderer, includes, …) in
-`docs/terminologie/`. Org-termen (zangstuk, variant, uitvoeringsvorm, …) blijven
-canoniek in [bron — terminologie](https://orthodox-groningen.github.io/bron/specs/terminologie/)
-(D1). Deze repo importeert de bron-MRG zodat TermRefs naar org-termen kunnen
-resolven zonder een tweede normatieve glossary.
+`docs/terminologie/`. Org-termen uit [bron](https://orthodox-groningen.github.io/bron/specs/terminologie/)
+worden via `termselection: "*@bron"` in de lokale MRG/HRG opgenomen (D1: bron blijft
+canoniek). Lokale curated texts kunnen een term herdefiniëren; dan wint die voor
+`[term](@)`, terwijl `[term](@bron)` de org-definitie blijft.
 
 ## Lokaal
 
@@ -14,19 +14,17 @@ Installeer de TEv2-tools (eenmalig):
 npm install -g @tno-terminology-design/trrt @tno-terminology-design/hrgt @tno-terminology-design/mrgt @tno-terminology-design/mrg-import
 ```
 
-Volledige pipeline (staging → mrgt/hrgt/trrt → MkDocs):
+Volledige pipeline (staging → mrg-import → mrgt/hrgt/trrt → MkDocs):
 
 ```cmd
 cd /d C:\Git\orthodox-groningen\VSA-tooling
 scripts\docs-build-tev2.cmd
 ```
 
-`mrg-import` (bron-MRG) is lokaal standaard uit. Zet aan met:
-
-```cmd
-set TEV2_RUN_IMPORT=1
-scripts\docs-build-tev2.cmd
-```
+`mrg-import` haalt de bron-MRG op (nodig voor `*@bron` in `docs/saf.yaml`).
+Lokaal gebruikt `prepare-tev2-docs.py` indien aanwezig de sibling-checkout
+`..\bron\docs` (werkt om een Windows-bug in mrg-import met GitHub-URLs heen);
+CI blijft de GitHub-`scopedir` gebruiken.
 
 Alleen glossary-stappen zonder MkDocs: `npm run tev2:docs` (roept dezelfde build aan).
 
@@ -38,10 +36,20 @@ vóór `mkdocs build --strict`. Pages committeert gegenereerde
 
 ## TermRefs schrijven
 
-Voor tool-termen: `[VSA](@)` of een form phrase die in `docs/terminologie/` staat.
-Voor org-termen: bij voorkeur `[zangstuk](@bron)` (of form phrase uit bron) —
-niet opnieuw definiëren in deze repo. Org-termen staan **niet** in de lokale
-glossary-tabel (alleen tool-termen); de bron-MRG wordt geïmporteerd voor TermRef-resolutie.
+- Tool-termen: `[parser](@)`, `[validator](@)`, …
+- Geïmporteerde org-termen zonder lokale herdefinitie: `[exporttype](@)` (of
+  `[exporttype](@bron)` — zelfde entry via bron-scope).
+- Termen die **lokaal hergedefinieerd** zijn (`zangstuk`, `vsa`, …):
+  - `[zangstuk](@)` → definitie in deze repo
+  - `[zangstuk](@bron)` → definitie in scope `bron`
+
+Beide vormen blijven bruikbaar. In lokale curated texts voor gedeelde termen
+verwijzen we naar `@bron` met een TermRef, zonder de bron-definitie te kopiëren.
+Lokale `vsa.md` houdt alleen form phrases `vsa` / `vsa's`, zodat
+`[vsa-notatie](@)` en `[vsa-tooling](@)` uniek naar de bron-entries resolven.
+
+Voorbeeld: [exporttype](@) is een geïmporteerde org-term; [zangstuk](@) is de
+lokale herdefinitie, terwijl [zangstuk](@bron) naar scope `bron` wijst.
 
 ## Hugo / presentatie
 

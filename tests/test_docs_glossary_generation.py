@@ -39,8 +39,35 @@ def test_mkdocs_nav_uses_terminologie_index_not_underscore_index():
         assert "mkdocs-glossary-index.py" in body
 
 
-def test_saf_keeps_bron_scope_without_merging_into_local_mrg():
+def test_tev2_config_uses_localize_navurl_in_hrgt_converters():
+    text = Path("docs/tev2-config.yaml").read_text(encoding="utf-8")
+    assert "{{localize navurl}}" in text
+    assert "({{term}}.md)" not in text
+
+
+def test_saf_imports_bron_terms_before_local_with_exclude():
     text = Path("docs/saf.yaml").read_text(encoding="utf-8")
     assert "scopetag: bron" in text
-    # *@bron in termselection mengt org-termen in de lokale glossary → dode .md-links.
-    assert "*@bron" not in text
+    termselection = []
+    in_termselection = False
+    for ln in text.splitlines():
+        if ln.strip() == "termselection:":
+            in_termselection = True
+            continue
+        if not in_termselection:
+            continue
+        stripped = ln.strip()
+        if stripped.startswith("- "):
+            termselection.append(stripped[2:].strip().strip('"'))
+        elif stripped.startswith("#") or not stripped:
+            continue
+        else:
+            break
+    assert termselection == ["*@bron", "*", "-excludeFromMRG[yes]"]
+
+
+def test_docs_build_tev2_always_runs_mrg_import():
+    text = Path("scripts/docs-build-tev2.cmd").read_text(encoding="utf-8")
+    assert "mrg-import" in text
+    assert "Skipping mrg-import locally" not in text
+    assert 'TEV2_RUN_IMPORT"=="1"' not in text

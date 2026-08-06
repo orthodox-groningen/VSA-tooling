@@ -120,6 +120,7 @@ jobs:
         run: |
           mkdir -p docs/mrgs
           cp generated/docs/mrgs/mrg.vsa-tooling*.yaml docs/mrgs/
+          python scripts/prepare-tev2-docs.py --normalize-mrg-scopes
 
       - name: Commit generated machine-readable glossaries
         uses: stefanzweifel/git-auto-commit-action@v5

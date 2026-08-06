@@ -19,5 +19,5 @@ VSA, de Vereenvoudigde Slavische Accentnotatie, is:
 ## Gebruik van deze en vergelijkbare termen in de 'bron' repo.
 
 VSA heeft in verschillende contexten andere betekenissen: 
-- in de 'bron' repo wordt [VSA](@bron) (en gerelateerd [vsa-notatie](@bron) gebruikt.
+- in de 'bron' repo wordt [VSA](@bron) (en gerelateerd [vsa-notatie](@bron)) gebruikt.
 

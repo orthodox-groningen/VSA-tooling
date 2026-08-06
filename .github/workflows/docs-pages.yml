@@ -9,6 +9,7 @@ name: Deploy documentation
 
 on:
   push:
+  workflow_dispatch:
 
 permissions:
   contents: write

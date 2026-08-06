@@ -5,7 +5,7 @@ termType: concept
 isa: hoogte-modifier
 glossaryTerm: Enkelvoudige hoogte-modifier
 glossaryAbbr: EHM
-glossaryText: "een hoogte-modifier die uit precies een geldige EHM bestaat: een basis-hoogtebeweging, eventueel voorafgegaan door een halftoon-prefix."
+glossaryText: "een hoogte-modifier die uit precies één geldige EHM bestaat: een basis-hoogtebeweging, eventueel voorafgegaan door een halftoon-prefix."
 formPhrases:
   - enkelvoudige hoogte-modifier
   - enkelvoudige hoogte-modifiers

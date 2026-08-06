@@ -1,7 +1,7 @@
 # Overzicht
 
-Doel: snel controleren of de VSA-tool lokaal werkt. Uitgebreidere uitleg:
-[Gebruikershandleiding](../guides/user-guide.md).
+Doel: snel controleren of de [VSA-tooling](@bron) lokaal werkt. Uitgebreidere
+uitleg: [Gebruikershandleiding](../guides/user-guide.md).
 
 ## 1. Repo-root
 
@@ -24,6 +24,8 @@ vsa --version
 Verwachte vorm: `vsa 0.1.0` (of hoger).
 
 ## 4. Valideren
+
+De [validator](@) controleert of [VSA-notatie](@bron) bruikbaar is:
 
 ```cmd
 vsa validate examples\minimal\050_svg_demo.vsa

@@ -6,21 +6,21 @@ De voorbeelden zijn geschreven voor Windows 11 en CMD.exe.
 
 ## 1. Wat doet de VSA-tool?
 
-De VSA-tool helpt bij het werken met VSA-notatie.
+De VSA-tool helpt bij het werken met [VSA-notatie](@bron).
 - Onder een VSA-tekst verstaan we een tekst waarin naast gewone tekst ook (geldige) VSA-syntax constructies zitten; een VSA-tekst kan worden omgezet (gerenderd) naar plaatjes (SVG) en later ook andere dingen.
-- Onder een VSA-bestand verstaan we een bestand waarin uitsluitend VSA-tekst zit.
+- Onder een [vsa-bestand](@bron) verstaan we een bestand waarin uitsluitend VSA-tekst zit.
 - Onder een VSA-blok verstaan we een tekst die begint met `::: vsa-notatie` en eindigt met `:::` (beiden aan het begin van een regel), en waartussen zich vsa-tekst bevindt. VSA-blokken zitten typisch in markdown bestanden
 
 De tool kan:
 
-| Taak | Commando |
-|------|----------|
-| Controleren of VSA klopt | `vsa validate` |
-| Een VSA-bestand omzetten naar SVG | `vsa svg` |
-| VSA-blokken in Markdown vinden | `vsa blocks` |
-| Markdownbestanden verwerken naar SVG-bestanden | `vsa process` |
-| Markdown voor Hugo genereren | `vsa build-markdown` |
-| De interne structuur bekijken | `vsa parse --ast` |
+| Taak                                           | Commando             |
+| ---------------------------------------------- | -------------------- |
+| Controleren of VSA klopt                       | `vsa validate`       |
+| Een [vsa-bestand](@bron) omzetten naar SVG     | `vsa svg`            |
+| VSA-blokken in Markdown vinden                 | `vsa blocks`         |
+| Markdownbestanden verwerken naar SVG-bestanden | `vsa process`        |
+| Markdown voor Hugo genereren                   | `vsa build-markdown` |
+| De interne structuur bekijken ([ast](@))       | `vsa parse --ast`    |
 
 Globaal:
 
@@ -38,17 +38,17 @@ Markdown/Hugo-site
 
 Gebruik deze keuzetabel.
 
-| Ik wil... | Gebruik |
-|-----------|---------|
-| weten of mijn VSA-notatie geldig is | `vsa validate` |
-| één VSA-bestand bekijken als afbeelding | `vsa svg` |
-| zien welke VSA-blokken in een Markdownbestand staan | `vsa blocks` |
-| alleen SVG's genereren uit Markdownbestanden | `vsa process` |
-| Hugo-content maken uit bron-Markdown | `vsa build-markdown` |
-| debuggen hoe de parser de tekst begrijpt | `vsa parse --ast` |
-| de hele toolketen lokaal controleren | `scripts\ci.cmd` |
-| docs lokaal bekijken | `scripts\docs-serve.cmd` |
-| Hugo-preview (voorbeeldconsumer) | [VSA-demo](https://github.com/orthodox-groningen/VSA-demo) |
+| Ik wil...                                           | Gebruik                                                    |
+| --------------------------------------------------- | ---------------------------------------------------------- |
+| weten of mijn [VSA-notatie](@bron) geldig is        | `vsa validate`                                             |
+| één [vsa-bestand](@bron) bekijken als afbeelding    | `vsa svg`                                                  |
+| zien welke VSA-blokken in een Markdownbestand staan | `vsa blocks`                                               |
+| alleen SVG's genereren uit Markdownbestanden        | `vsa process`                                              |
+| Hugo-content maken uit bron-Markdown                | `vsa build-markdown`                                       |
+| debuggen hoe de [parser](@) de tekst begrijpt       | `vsa parse --ast`                                          |
+| de hele toolketen lokaal controleren                | `scripts\ci.cmd`                                           |
+| docs lokaal bekijken                                | `scripts\docs-serve.cmd`                                   |
+| Hugo-preview (voorbeeldconsumer)                    | [VSA-demo](https://github.com/orthodox-groningen/VSA-demo) |
 
 ## 3. Vanuit welke map werk je?
 
@@ -80,11 +80,11 @@ scripts\bootstrap.cmd
 
 Dit doet:
 
-| Stap | Wat gebeurt er? |
-|------|-----------------|
-| `.venv` maken | Python krijgt een lokale projectomgeving |
-| VSA-tool installeren | Het commando `vsa` wordt beschikbaar |
-| pytest installeren | Tests kunnen worden gedraaid |
+| Stap                 | Wat gebeurt er?                          |
+| -------------------- | ---------------------------------------- |
+| `.venv` maken        | Python krijgt een lokale projectomgeving |
+| VSA-tool installeren | Het commando `vsa` wordt beschikbaar     |
+| pytest installeren   | Tests kunnen worden gedraaid             |
 
 Controle:
 
@@ -118,16 +118,16 @@ vsa validate examples\consumer-minimal\content-source
 
 De tool controleert op dit moment onder andere:
 
-| Controle | Voorbeeld van fout |
-|----------|--------------------|
-| scope is goed afgesloten | `{tekst` |
-| scope is niet leeg | `{}` |
-| geen whitespace binnen scope | `{te kst}` |
-| geen losse sluitaccolade | `tekst}` |
-| pitch-marker is goed afgesloten | `[//:` |
-| pitch-marker heeft dubbele punt | `[//]` |
-| parser kan de VSA lezen | ongeldige modifierstructuur |
-| hoogte- en lengte-modifiers passen semantisch bij elkaar | `{/&\tekst_}` |
+| Controle                                                 | Voorbeeld van fout          |
+| -------------------------------------------------------- | --------------------------- |
+| scope is goed afgesloten                                 | `{tekst`                    |
+| scope is niet leeg                                       | `{}`                        |
+| geen whitespace binnen scope                             | `{te kst}`                  |
+| geen losse sluitaccolade                                 | `tekst}`                    |
+| pitch-marker is goed afgesloten                          | `[//:`                      |
+| pitch-marker heeft dubbele punt                          | `[//]`                      |
+| parser kan de VSA lezen                                  | ongeldige modifierstructuur |
+| hoogte- en lengte-modifiers passen semantisch bij elkaar | `{/&\tekst_}`               |
 
 Voorbeeld van een semantische fout:
 
@@ -177,13 +177,13 @@ examples\site-demo-invalid\invalid-1.md:blok-1:1:1: VSA-SEMANTIC-MODIFIER-COUNT-
 
 Uitleg:
 
-| Deel | Betekenis |
-|------|-----------|
-| `examples\site-demo-invalid\invalid-1.md` | bestand waarin de fout zit |
-| `blok-1` | eerste VSA-blok in dat Markdownbestand |
-| `1:1` | regel en kolom binnen dat VSA-blok |
-| `VSA-...` | foutcode |
-| tekst erna | Nederlandse uitleg |
+| Deel                                      | Betekenis                              |
+| ----------------------------------------- | -------------------------------------- |
+| `examples\site-demo-invalid\invalid-1.md` | bestand waarin de fout zit             |
+| `blok-1`                                  | eerste VSA-blok in dat Markdownbestand |
+| `1:1`                                     | regel en kolom binnen dat VSA-blok     |
+| `VSA-...`                                 | foutcode                               |
+| tekst erna                                | Nederlandse uitleg                     |
 
 Exitcode:
 
@@ -197,14 +197,14 @@ Dit betekent: er zijn fouten gevonden.
 
 Gebruik deze aanpak:
 
-| Stap | Actie |
-|------|-------|
-| 1 | Kijk naar het bestand vóór de eerste dubbele punt |
-| 2 | Kijk welk `blok-N` genoemd wordt |
-| 3 | Zoek dat VSA-blok in het Markdownbestand |
-| 4 | Kijk naar de foutcode |
-| 5 | Corrigeer de VSA-notatie |
-| 6 | Draai `vsa validate` opnieuw |
+| Stap   | Actie                                             |
+| ------ | ------------------------------------------------- |
+| 1      | Kijk naar het bestand vóór de eerste dubbele punt |
+| 2      | Kijk welk `blok-N` genoemd wordt                  |
+| 3      | Zoek dat VSA-blok in het Markdownbestand          |
+| 4      | Kijk naar de foutcode                             |
+| 5      | Corrigeer de VSA-notatie                          |
+| 6      | Draai `vsa validate` opnieuw                      |
 
 Voorbeeld:
 
@@ -231,17 +231,17 @@ start output.svg
 
 ### Parameters
 
-| Parameter | Verplicht | Betekenis |
-|-----------|-----------|-----------|
-| `svg` | ja | Subcommando: maak SVG |
-| `<input.vsa>` | ja | VSA-bestand dat gelezen wordt |
-| `<output.svg>` | ja | SVG-bestand dat wordt aangemaakt of overschreven |
+| Parameter      | Verplicht   | Betekenis                                        |
+| -------------- | ----------- | ------------------------------------------------ |
+| `svg`          | ja          | Subcommando: maak SVG                            |
+| `<input.vsa>`  | ja          | VSA-bestand dat gelezen wordt                    |
+| `<output.svg>` | ja          | SVG-bestand dat wordt aangemaakt of overschreven |
 
 ### Opties
 
-| Optie | Default | Betekenis |
-|-------|---------|-----------|
-| `--max-line-width <getal>` | `800` | maximale breedte van een regel voordat wordt afgebroken |
+| Optie                      | Default   | Betekenis                                               |
+| -------------------------- | --------- | ------------------------------------------------------- |
+| `--max-line-width <getal>` | `800`     | maximale breedte van een regel voordat wordt afgebroken |
 
 Voorbeeld:
 
@@ -261,11 +261,11 @@ Als dat bestand al bestaat, wordt het overschreven.
 
 ### Wat kan er fout gaan?
 
-| Fout | Mogelijke oorzaak | Wat doen? |
-|------|-------------------|-----------|
-| bestand niet gevonden | pad klopt niet | controleer met `dir` |
-| parsefout | VSA-notatie klopt niet | draai eerst `vsa validate` |
-| SVG ziet er raar uit | renderer is nog in ontwikkeling | bewaar voorbeeld als regressiecase |
+| Fout                  | Mogelijke oorzaak               | Wat doen?                          |
+| --------------------- | ------------------------------- | ---------------------------------- |
+| bestand niet gevonden | pad klopt niet                  | controleer met `dir`               |
+| parsefout             | VSA-notatie klopt niet          | draai eerst `vsa validate`         |
+| SVG ziet er raar uit  | renderer is nog in ontwikkeling | bewaar voorbeeld als regressiecase |
 
 Aanbevolen:
 
@@ -300,13 +300,13 @@ vsa blocks examples\minimal\031_markdown_block_metadata.md --json
 
 Dan krijg je onder andere:
 
-| Veld | Betekenis |
-|------|-----------|
-| `start_line` | regel waar het blok begint |
-| `end_line` | regel waar het blok eindigt |
-| `metadata` | instellingen zoals `do`, `mode`, `tempo` |
-| `body` | de VSA-inhoud |
-| `ast` | interne parserstructuur |
+| Veld         | Betekenis                                |
+| ------------ | ---------------------------------------- |
+| `start_line` | regel waar het blok begint               |
+| `end_line`   | regel waar het blok eindigt              |
+| `metadata`   | instellingen zoals `do`, `mode`, `tempo` |
+| `body`       | de VSA-inhoud                            |
+| `ast`        | interne parserstructuur                  |
 
 ### Wanneer gebruik je `--json`?
 
@@ -344,13 +344,13 @@ Voorbeeld:
 
 kan intern bestaan uit:
 
-| Node | Betekenis |
-|------|-----------|
-| `PitchMarkerNode` | `[:]` |
-| `ScopeNode` | `{/Hei_}` |
-| `ScopeNode` | `{/lig_}` |
-| `TextNode` | ` is de Heer. ` |
-| `PitchMarkerNode` | `[:]` |
+| Node              | Betekenis       |
+| ----------------- | --------------- |
+| `PitchMarkerNode` | `[:]`           |
+| `ScopeNode`       | `{/Hei_}`       |
+| `ScopeNode`       | `{/lig_}`       |
+| `TextNode`        | ` is de Heer. ` |
+| `PitchMarkerNode` | `[:]`           |
 
 ### Output
 
@@ -366,12 +366,12 @@ als de parser het bestand kan lezen.
 
 ### Wanneer heb je dit nodig?
 
-| Situatie | Nodig? |
-|----------|--------|
-| gewone gebruiker | meestal nee |
-| fout zoeken in parser | ja |
-| regressietests maken | ja |
-| controleren of tekst verdwijnt | ja |
+| Situatie                       | Nodig?      |
+| ------------------------------ | ----------- |
+| gewone gebruiker               | meestal nee |
+| fout zoeken in parser          | ja          |
+| regressietests maken           | ja          |
+| controleren of tekst verdwijnt | ja          |
 
 ## 9. SVG's genereren uit Markdown: `vsa process`
 
@@ -387,17 +387,17 @@ vsa process examples\site-demo generated\vsa
 
 ### Parameters
 
-| Parameter | Verplicht | Betekenis |
-|-----------|-----------|-----------|
-| `<bestand-of-map>` | ja | Markdownbestand of map met Markdownbestanden |
-| `<output-dir>` | ja | Map waarin SVG-bestanden worden geschreven |
+| Parameter          | Verplicht   | Betekenis                                    |
+| ------------------ | ----------- | -------------------------------------------- |
+| `<bestand-of-map>` | ja          | Markdownbestand of map met Markdownbestanden |
+| `<output-dir>`     | ja          | Map waarin SVG-bestanden worden geschreven   |
 
 ### Wat moet aanwezig zijn?
 
-| Item | Moet bestaan? | Uitleg |
-|------|---------------|--------|
-| invoerbestand of invoermap | ja | Hier staan Markdownbestanden |
-| uitvoermap | nee | Wordt automatisch aangemaakt |
+| Item                       | Moet bestaan?   | Uitleg                       |
+| -------------------------- | --------------- | ---------------------------- |
+| invoerbestand of invoermap | ja              | Hier staan Markdownbestanden |
+| uitvoermap                 | nee             | Wordt automatisch aangemaakt |
 
 ### Wat wordt gegenereerd?
 
@@ -409,17 +409,17 @@ generated\vsa\zondag-toon-1-block-1.svg
 
 Naamopbouw:
 
-| Deel | Betekenis |
-|------|-----------|
+| Deel            | Betekenis                         |
+| --------------- | --------------------------------- |
 | `zondag-toon-1` | afgeleid van bronpad/bestandsnaam |
-| `block-1` | eerste VSA-blok in dat bestand |
-| `.svg` | gegenereerde SVG |
+| `block-1`       | eerste VSA-blok in dat bestand    |
+| `.svg`          | gegenereerde SVG                  |
 
 ### Opties
 
-| Optie | Default | Betekenis |
-|-------|---------|-----------|
-| `--no-validate` | uit | sla validatie over |
+| Optie                      | Default             | Betekenis            |
+| -------------------------- | ------------------- | -------------------- |
+| `--no-validate`            | uit                 | sla validatie over   |
 | `--max-line-width <getal>` | `vsa.toml` of `800` | regelbreedte van SVG |
 
 Gebruik `--no-validate` alleen tijdelijk bij debuggen.
@@ -445,11 +445,11 @@ vsa build-markdown examples\consumer-minimal\content-source generated\content ge
 
 ### Parameters
 
-| Parameter | Verplicht | Betekenis |
-|-----------|-----------|-----------|
-| `<input-dir>` | ja | map met handmatig geschreven Markdown |
-| `<output-dir>` | ja | map waar gegenereerde Markdown komt |
-| `<assets-dir>` | ja | map waar gegenereerde SVG's komen |
+| Parameter      | Verplicht   | Betekenis                             |
+| -------------- | ----------- | ------------------------------------- |
+| `<input-dir>`  | ja          | map met handmatig geschreven Markdown |
+| `<output-dir>` | ja          | map waar gegenereerde Markdown komt   |
+| `<assets-dir>` | ja          | map waar gegenereerde SVG's komen     |
 
 ### Wat is `<input-dir>`?
 
@@ -535,12 +535,12 @@ Gegenereerde Markdown met `shortcode`:
 
 ### Opties
 
-| Optie | Default | Betekenis |
-|-------|---------|-----------|
+| Optie                          | Default                  | Betekenis                    |
+| ------------------------------ | ------------------------ | ---------------------------- |
 | `--assets-url-prefix <prefix>` | uit `vsa.toml` of `/vsa` | URL-pad dat in Markdown komt |
-| `--max-line-width <getal>` | uit `vsa.toml` of `800` | SVG-regelbreedte |
-| `--output-mode img` | uit `vsa.toml` of `img` | gewone `<img>` tags |
-| `--output-mode shortcode` | uit `vsa.toml` of `img` | Hugo-shortcodes |
+| `--max-line-width <getal>`     | uit `vsa.toml` of `800`  | SVG-regelbreedte             |
+| `--output-mode img`            | uit `vsa.toml` of `img`  | gewone `<img>` tags          |
+| `--output-mode shortcode`      | uit `vsa.toml` of `img`  | Hugo-shortcodes              |
 
 ### Bestandspad versus URL-pad
 
@@ -560,10 +560,10 @@ generated\static\vsa
 
 Voorbeeld:
 
-| Soort | Waarde | Betekenis |
-|-------|--------|-----------|
+| Soort       | Waarde                 | Betekenis                              |
+| ----------- | ---------------------- | -------------------------------------- |
 | bestandspad | `generated\static\vsa` | waar SVG's op schijf worden opgeslagen |
-| URL-pad | `/vsa` | wat in HTML/Markdown wordt gezet |
+| URL-pad     | `/vsa`                 | wat in HTML/Markdown wordt gezet       |
 
 Als Hugo later `static\vsa` publiceert, wordt dat op de site bereikbaar als:
 
@@ -573,13 +573,13 @@ Als Hugo later `static\vsa` publiceert, wordt dat op de site bereikbaar als:
 
 ### Wat kan er fout gaan?
 
-| Fout | Mogelijke oorzaak | Oplossing |
-|------|-------------------|-----------|
-| validatiefout | VSA-blok bevat fout | draai `vsa validate <input-dir>` |
-| geen SVG's | geen VSA-blokken gevonden | controleer `::: vsa-notatie` |
-| afbeelding niet zichtbaar in Hugo | `assets-url-prefix` past niet bij Hugo static-map | controleer outputpad en URL |
-| shortcode zichtbaar als tekst | shortcode layout ontbreekt | voeg `layouts\shortcodes\vsa.html` toe |
-| output overschreven | doelmap was al gebruikt | gebruik aparte `generated\...` map |
+| Fout                              | Mogelijke oorzaak                                 | Oplossing                              |
+| --------------------------------- | ------------------------------------------------- | -------------------------------------- |
+| validatiefout                     | VSA-blok bevat fout                               | draai `vsa validate <input-dir>`       |
+| geen SVG's                        | geen VSA-blokken gevonden                         | controleer `::: vsa-notatie`           |
+| afbeelding niet zichtbaar in Hugo | `assets-url-prefix` past niet bij Hugo static-map | controleer outputpad en URL            |
+| shortcode zichtbaar als tekst     | shortcode layout ontbreekt                        | voeg `layouts\shortcodes\vsa.html` toe |
+| output overschreven               | doelmap was al gebruikt                           | gebruik aparte `generated\...` map     |
 
 ## 11. `vsa.toml`
 
@@ -599,11 +599,11 @@ output-mode = "img"
 
 ### Betekenis
 
-| Instelling | Default | Betekenis |
-|------------|---------|-----------|
-| `max-line-width` | `800` | maximale SVG-regelbreedte |
-| `assets-url-prefix` | `/vsa` | URL-prefix in gegenereerde Markdown |
-| `output-mode` | `img` | `img` of `shortcode` |
+| Instelling          | Default   | Betekenis                           |
+| ------------------- | --------- | ----------------------------------- |
+| `max-line-width`    | `800`     | maximale SVG-regelbreedte           |
+| `assets-url-prefix` | `/vsa`    | URL-prefix in gegenereerde Markdown |
+| `output-mode`       | `img`     | `img` of `shortcode`                |
 
 ### Wat heeft voorrang?
 
@@ -633,11 +633,11 @@ dan wint `400`.
 
 ## 12. Lokale scripts
 
-| Script | Doel |
-|--------|------|
-| `scripts\bootstrap.cmd` | lokale omgeving klaarmaken |
-| `scripts\test.cmd` | tests draaien |
-| `scripts\ci.cmd` | volledige lokale CI |
+| Script                   | Doel                        |
+| ------------------------ | --------------------------- |
+| `scripts\bootstrap.cmd`  | lokale omgeving klaarmaken  |
+| `scripts\test.cmd`       | tests draaien               |
+| `scripts\ci.cmd`         | volledige lokale CI         |
 | `scripts\docs-serve.cmd` | MkDocs docs lokaal serveren |
 
 ## 13. Aanbevolen werkwijze
@@ -703,24 +703,24 @@ scripts\test.cmd
 
 ## 15. Wanneer gebruik je welk commando?
 
-| Situatie | Commando |
-|----------|----------|
-| ik schrijf VSA en wil controleren | `vsa validate` |
-| ik wil één afbeelding bekijken | `vsa svg` |
-| ik wil Markdownblokken inspecteren | `vsa blocks --json` |
-| ik wil SVG's uit Markdown halen | `vsa process` |
-| ik wil Hugo-content maken | `vsa build-markdown` |
-| ik wil parserproblemen debuggen | `vsa parse --ast` |
-| ik wil alles lokaal controleren | `scripts\ci.cmd` |
+| Situatie                           | Commando             |
+| ---------------------------------- | -------------------- |
+| ik schrijf VSA en wil controleren  | `vsa validate`       |
+| ik wil één afbeelding bekijken     | `vsa svg`            |
+| ik wil Markdownblokken inspecteren | `vsa blocks --json`  |
+| ik wil SVG's uit Markdown halen    | `vsa process`        |
+| ik wil Hugo-content maken          | `vsa build-markdown` |
+| ik wil parserproblemen debuggen    | `vsa parse --ast`    |
+| ik wil alles lokaal controleren    | `scripts\ci.cmd`     |
 
 ## Warnings en errors
 
 Vanaf stap 37 kent de validator twee niveaus.
 
-| Severity | Betekenis |
-|----------|-----------|
-| `error` | validatie faalt; exitcode wordt fout |
-| `warning` | aandachtspunt; validatie mag doorgaan |
+| Severity   | Betekenis                             |
+| ---------- | ------------------------------------- |
+| `error`    | validatie faalt; exitcode wordt fout  |
+| `warning`  | aandachtspunt; validatie mag doorgaan |
 
 Syntaxproblemen blijven `error`.
 

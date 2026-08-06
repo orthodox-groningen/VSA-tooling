@@ -41,6 +41,15 @@ theme:
   name: material
   language: nl
   custom_dir: docs/overrides
+  favicon: images/favicon.ico
+  logo: images/favicon-32x32.png
+  font:
+    text: Source Sans 3
+    code: Source Code Pro
+  palette:
+    - scheme: default
+      primary: custom
+      accent: custom
   features:
     - navigation.tabs
     - navigation.tabs.sticky
@@ -145,16 +154,17 @@ extra_css:
   - stylesheets/extra.css
 
 extra:
+  generator: false
   preview: false
   build_time: ""
   branch: ""
   social:
-    - icon: fontawesome/brands/github
-      link: https://github.com/orthodox-groningen/VSA-tooling
-      name: VSA-tooling op GitHub
-    - icon: fontawesome/solid/book
+    - icon: fontawesome/solid/book-bible
       link: https://orthodox-groningen.github.io/bron/
       name: bron — documentatie
+    - icon: fontawesome/solid/code
+      link: https://orthodox-groningen.github.io/VSA-tooling/
+      name: VSA-tooling — documentatie
     - icon: fontawesome/solid/globe
       link: https://orthodox-groningen.github.io/VSA-demo/
-      name: VSA-demo (presentatiesite)
+      name: VSA-demo

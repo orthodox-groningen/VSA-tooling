@@ -30,9 +30,11 @@ Alleen glossary-stappen zonder MkDocs: `npm run tev2:docs` (roept dezelfde build
 
 ## CI
 
-`docs-build.yml` en `docs-pages.yml` draaien de volle keten inclusief `mrg-import`
-vóór `mkdocs build --strict`. Pages committeert gegenereerde
-`docs/mrgs/mrg.vsa-tooling*.yaml`.
+`docs-pages.yml` (elke push) en `docs-build.yml` (PR / handmatig) draaien de volle
+keten inclusief `mrg-import` vóór `mkdocs build --strict` (CI checkt `bron` uit of
+gebruikt sibling/`vendor`). Op push alleen `docs-pages.yml`, zodat TEv2+MkDocs niet
+dubbel draait. Pages committeert gegenereerde `docs/mrgs/mrg.vsa-tooling*.yaml`
+met `[skip ci]` (geen CI-cascade).
 
 ## TermRefs schrijven
 

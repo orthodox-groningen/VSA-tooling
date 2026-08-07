@@ -55,9 +55,12 @@ on:
 permissions:
   contents: write
 
+# Eén groep per caller-repo: serialiseert peaceiris-writes naar gh-pages.
+# cancel-in-progress: true — nieuwere deploys annuleren vastgelopen/queued runs
+# (anders stapelen jobs tot 15–30 min “waiting for a runner”).
 concurrency:
-  group: pages-${{ inputs.concurrency_group }}
-  cancel-in-progress: false
+  group: pages-${{ github.repository }}-${{ inputs.concurrency_group }}
+  cancel-in-progress: true
 
 jobs:
   deploy:

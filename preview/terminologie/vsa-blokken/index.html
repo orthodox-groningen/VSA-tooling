@@ -10,7 +10,7 @@
       
       
       
-        <link rel="canonical" href="https://orthodox-groningen.github.io/VSA-tooling/preview/terminologie/validator/">
+        <link rel="canonical" href="https://orthodox-groningen.github.io/VSA-tooling/preview/terminologie/vsa-blokken/">
       
       
       
@@ -23,7 +23,7 @@
     
     
       
-        <title>Validator - VSA-tooling — documentatie</title>
+        <title>VSA-blok - VSA-tooling — documentatie</title>
       
     
     
@@ -80,7 +80,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#validator" class="md-skip">
+        <a href="#vsa-blok" class="md-skip">
           Ga naar inhoud
         </a>
       
@@ -130,7 +130,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Validator
+              VSA-blok
             
           </span>
         </div>
@@ -2654,7 +2654,7 @@
 
 
   
-    <a href="https://github.com/orthodox-groningen/VSA-tooling/edit/main/docs/terminologie/validator.md" title="Wijzig deze pagina" class="md-content__button md-icon" rel="edit">
+    <a href="https://github.com/orthodox-groningen/VSA-tooling/edit/main/docs/terminologie/vsa-blokken.md" title="Wijzig deze pagina" class="md-content__button md-icon" rel="edit">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
     </a>
@@ -2662,8 +2662,13 @@
   
 
 
-<h1 id="validator">Validator<a class="headerlink" href="#validator" title="Permanent link">&para;</a></h1>
-<p>De validator controleert of VSA-invoer inhoudelijk voldoet aan de regels die na parsing gelden. Waar mogelijk verzamelt de validator meerdere onafhankelijke diagnostics in een run.</p>
+<h1 id="vsa-blok">VSA-blok<a class="headerlink" href="#vsa-blok" title="Permanent link">&para;</a></h1>
+<p>Een VSA-blok is het Markdown-omhulsel waarin <a href="/bron/terms/vsa-notatie" title="VSA-notatie: Het tekstgebaseerde notatieformaat waarmee liturgische zangteksten worden vastgelegd: een formeel gespecificeerde taal met scopes, modifiers en bracket-directives, parseeerbaar en valideerbaar door Vsa-tooling.">VSA-notatie</a> in documentatie of content-source staat:</p>
+<div class="highlight"><pre><span></span><code>::: vsa-notatie
+{tekst_}
+:::
+</code></pre></div>
+<p>De openings- en sluitingsregels staan aan het begin van de regel. De inhoud ertussen is de VSA-tekst die de <a href="/VSA-tooling/preview/terminologie/parser" title="Parser: een component die VSA-brontekst of tokens volgens de grammatica omzet naar expliciete AST-nodes, bronlocaties behoudt en geen semantische reparaties of renderlogica uitvoert.">parser</a> en <a href="/VSA-tooling/preview/terminologie/validator" title="Validator: een component die een geparseerde AST of VSA-invoer toetst aan semantische en normatieve regels en overtredingen als diagnostics rapporteert zonder ze stilzwijgend te repareren.">validator</a> verwerken. Commando’s zoals <code>vsa blocks</code>, <code>vsa validate</code> en <code>vsa process</code> werken op zulke blokken in <code>.md</code>-bestanden (naast losse <code>.vsa</code>-bestanden).</p>
 
 
 
@@ -2700,7 +2705,7 @@
       
       
       <p class="og-footer-stamps">
-        Bijgewerkt: 2026-07-08
+        Bijgewerkt: 2026-08-07
         
       </p>
       

@@ -52,12 +52,14 @@ def test_removed_duplicate_workflows_are_gone():
         assert not Path(path).exists(), path
 
 
-def test_docs_build_runs_on_push_and_pull_request():
+def test_docs_build_runs_on_pull_request_not_push():
     text = Path(".github/workflows/docs-build.yml").read_text(encoding="utf-8")
 
-    assert "push:" in text
     assert "pull_request:" in text
+    assert "workflow_dispatch:" in text
     assert "mkdocs build" in text
+    on_block = text.split("jobs:", 1)[0]
+    assert "push:" not in on_block
 
 
 def test_vsa_ci_uses_consumer_minimal():

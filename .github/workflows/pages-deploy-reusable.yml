@@ -27,9 +27,11 @@ on:
         required: true
         type: string
       keep_files:
-        description: "peaceiris keep_files — true when preview and production share gh-pages"
+        description: >-
+          peaceiris keep_files for subdirectory deploys (e.g. /preview/).
+          Root deploys always wipe gh-pages and re-attach existing preview/ first.
         required: false
-        default: true
+        default: false
         type: boolean
       skip_publication_check:
         description: "Skip scripts/check-publication-output.py (only if caller already checked)"
@@ -91,6 +93,33 @@ jobs:
             --site-dir "${{ inputs.publish_dir }}" \
             --url-prefix "${{ inputs.url_prefix }}"
 
+      # Productie (root) en preview delen gh-pages. peaceiris heeft geen
+      # "wis alles behalve X"; daarom: bestaande preview/ meenemen in publish_dir
+      # en daarna keep_files=false (schone root, geen wezen zoals oude indexen).
+      - name: Carry forward preview/ from current gh-pages
+        if: inputs.destination_dir == ''
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          dest="${{ inputs.publish_dir }}/preview"
+          tmp=_gh_pages_snap
+          rm -rf "$tmp"
+          if git clone --depth 1 --branch gh-pages \
+              "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" \
+              "$tmp"; then
+            if [ -d "$tmp/preview" ]; then
+              rm -rf "$dest"
+              cp -a "$tmp/preview" "$dest"
+              echo "Carried forward preview/ from current gh-pages"
+            else
+              echo "No preview/ on gh-pages yet"
+            fi
+            rm -rf "$tmp"
+          else
+            echo "No gh-pages branch yet (or clone failed); skipping preview carry-forward"
+          fi
+
       - name: Deploy to GitHub Pages (subdirectory)
         if: inputs.destination_dir != ''
         uses: peaceiris/actions-gh-pages@v3
@@ -108,7 +137,7 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_branch: gh-pages
           publish_dir: ${{ inputs.publish_dir }}
-          keep_files: ${{ inputs.keep_files }}
+          keep_files: false
 
       - name: Show site URL
         if: inputs.pages_url != ''

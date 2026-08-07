@@ -2,8 +2,8 @@
 # main → site-root / ; andere branches → /preview/ (zelfde patroon als bron).
 # TEv2 glossary-pipeline vóór mkdocs (spiegel bron). Presentatiesite: VSA-demo.
 #
-# keep_files: main=true (bron-stijl, behoudt /preview/); preview=false zodat
-# branch-builds /preview/ volledig vervangen zonder weesbestanden.
+# Root (main): reusable workflow wist gh-pages en zet bestaande /preview/
+# terug. Preview-deploys: keep_files=false (map /preview/ volledig vervangen).
 
 name: Deploy documentation
 
@@ -53,8 +53,8 @@ jobs:
             echo "pages_url=https://orthodox-groningen.github.io/VSA-tooling/" >> "$GITHUB_OUTPUT"
             echo "preview=false" >> "$GITHUB_OUTPUT"
             echo "label=production" >> "$GITHUB_OUTPUT"
-            # true: behoud /preview/ bij production-deploys (zoals bron).
-            echo "keep_files=true" >> "$GITHUB_OUTPUT"
+            # Ongebruikt voor root: deploy wist alles en zet /preview/ terug.
+            echo "keep_files=false" >> "$GITHUB_OUTPUT"
           else
             echo "site_url=https://orthodox-groningen.github.io/VSA-tooling/preview/" >> "$GITHUB_OUTPUT"
             echo "destination_dir=preview" >> "$GITHUB_OUTPUT"

@@ -43,9 +43,10 @@ Handmatig: `release-artifacts`, `docs-build` (`workflow_dispatch`).
 | Publiceert | Ja (`pages-deploy-reusable`; MRG auto-commit + `[skip ci]`)                           |
 | Lokaal     | `scripts\docs-build-tev2.cmd`                                                         |
 
-Cutover afgerond: `keep_files=true` op main (behoudt `/preview/`, zoals bron).
-Preview gebruikt `keep_files=false` zodat branch-builds de preview-map schoon
-vervangen.
+Productie (main → root): de reusable workflow kopieert eerst bestaande
+`/preview/` in de nieuwe site-build en deployt daarna met `keep_files=false`
+(schone root, geen wezen zoals oude `terminologie/index.html`). Preview-deploys
+vervangen alleen `/preview/` (`keep_files=false` + `destination_dir`).
 
 ### `vsa-ci.yml` — VSA CI
 

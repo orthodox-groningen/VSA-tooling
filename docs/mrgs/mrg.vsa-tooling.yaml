@@ -786,7 +786,7 @@ entries:
       - "vsa-blok"
     scopetag: "vsa-tooling"
     locator: "vsa-blokken.md"
-    navurl: "https://orthodox-groningen.github.io/VSA-tooling/preview/terminologie/vsa-blokken"
+    navurl: "https://orthodox-groningen.github.io/VSA-tooling/terminologie/vsa-blokken"
     headingids:
       - "vsa-blok"
     termid: "concept:vsa-blokken"

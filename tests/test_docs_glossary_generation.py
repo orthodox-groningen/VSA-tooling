@@ -46,6 +46,18 @@ def test_tev2_config_uses_localize_navurl_in_hrgt_converters():
     assert "({{term}}.md)" not in text
 
 
+def test_hrgt_converters_emit_abbr_and_alias_on_own_table_rows():
+    """converter[1] must end with \\n so abbr/alias rows are not glued into one MD row."""
+    text = Path("docs/tev2-config.yaml").read_text(encoding="utf-8")
+    # YAML stores the trailing newline as the two chars \n inside the quoted string.
+    assert 'converter[1]:' in text
+    assert ' |\\n"' in text or " |\\n'" in text or '|\\n"' in text
+    assert "glossaryAbbr" in text
+    assert "glossaryAlias" in text
+    assert "Afkorting van" in text
+    assert "Alias voor" in text
+
+
 def test_saf_imports_bron_terms_before_local_with_exclude():
     text = Path("docs/saf.yaml").read_text(encoding="utf-8")
     assert "scopetag: bron" in text

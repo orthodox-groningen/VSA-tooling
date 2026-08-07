@@ -775,6 +775,22 @@ entries:
       - "zie-ook:"
     termid: "concept:vsa-bestand"
     vsntag: "bron"
+  - git_date: 2026-08-07T00:00:00.000Z
+    slug: "vsa-blokken"
+    term: "vsa-blokken"
+    termType: "concept"
+    glossaryTerm: "VSA-blok"
+    glossaryText: "een tekstfragment in een Markdownbestand dat begint met `::: vsa-notatie` en eindigt met `:::`, beide aan het begin van een regel, met daartussen [VSA-notatie](@bron); typisch ontdekt en verwerkt door de [vsa-toolset](@) (o.a. `vsa blocks`, `vsa validate`, `vsa process`)."
+    formPhrases:
+      - "vsa-blokken"
+      - "vsa-blok"
+    scopetag: "vsa-tooling"
+    locator: "vsa-blokken.md"
+    navurl: "https://orthodox-groningen.github.io/VSA-tooling/preview/terminologie/vsa-blokken"
+    headingids:
+      - "vsa-blok"
+    termid: "concept:vsa-blokken"
+    vsntag: "vsa-tooling"
   - git_date: 2026-08-01T00:00:00.000Z
     term: "vsa-notatie"
     termType: "concept"
@@ -859,13 +875,12 @@ entries:
       - "zie-ook"
     termid: "concept:vsa-tooling"
     vsntag: "bron"
-  - git_date: 2026-08-06T00:00:00.000Z
+  - git_date: 2026-08-07T00:00:00.000Z
     slug: "vsa-toolset"
     term: "vsa-toolset"
     termType: "concept"
     glossaryTerm: "vsa.toolset"
-    glossaryText: "de verzameling van [vsa](@)-gerelateerde tools waarmee [vsa-blokken](@) kunnen worden opgezocht, gevalideerd gerendered, enz."
-    glossaryAlias: null
+    glossaryText: "de verzameling van [vsa](@)-gerelateerde tools waarmee [vsa-blokken](@) kunnen worden opgezocht, gevalideerd, gerenderd, enz."
     formPhrases:
       - "vsa-toolset"
     scopetag: "vsa-tooling"

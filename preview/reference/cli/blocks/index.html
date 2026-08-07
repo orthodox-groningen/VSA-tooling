@@ -27,7 +27,7 @@
     
     
       
-        <title>vsa blocks — VSA-blokken in Markdown vinden - VSA-tooling — documentatie</title>
+        <title>vsa blocks — ::: vsa-notatie en eindigt met :::, beide aan het begin van een regel, met daartussen VSA-notatie; typisch ontdekt en verwerkt door de Vsa-toolset (o.a. vsa blocks, vsa validate, vsa process).">VSA-blokken in Markdown vinden - VSA-tooling — documentatie</title>
       
     
     
@@ -84,7 +84,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#vsa-blocks-vsa-blokken-in-markdown-vinden" class="md-skip">
+        <a href="#vsa-blocks-vsa-notatie-en-eindigt-met-beide-aan-het-begin-van-een-regel-met-daartussen-vsa-notatie-typisch-ontdekt-en-verwerkt-door-de-vsa-toolset-oa-vsa-blocks-vsa-validate-vsa-processvsa-blokken-in-markdown-vinden" class="md-skip">
           Ga naar inhoud
         </a>
       
@@ -97,8 +97,8 @@
             
   
   <strong>Preview</strong>
-   — branch <code>fix/hrg-abbr-alias-rows</code>
-  , gebouwd 2026-08-07 21:40 CEST.
+   — branch <code>docs/professionalisering-vervolg</code>
+  , gebouwd 2026-08-07 22:47 CEST.
   <a href="https://orthodox-groningen.github.io/VSA-tooling/">Live documentatie (main)</a>.
   
 
@@ -134,7 +134,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              vsa blocks — VSA-blokken in Markdown vinden
+              vsa blocks — ::: vsa-notatie en eindigt met :::, beide aan het begin van een regel, met daartussen VSA-notatie; typisch ontdekt en verwerkt door de Vsa-toolset (o.a. vsa blocks, vsa validate, vsa process).">VSA-blokken in Markdown vinden
             
           </span>
         </div>
@@ -1871,7 +1871,7 @@
   <span class="md-ellipsis">
     
   
-    vsa blocks — VSA-blokken in Markdown vinden
+    vsa blocks — ::: vsa-notatie en eindigt met :::, beide aan het begin van een regel, met daartussen VSA-notatie; typisch ontdekt en verwerkt door de Vsa-toolset (o.a. vsa blocks, vsa validate, vsa process).">VSA-blokken in Markdown vinden
   
 
     
@@ -1889,7 +1889,7 @@
   <span class="md-ellipsis">
     
   
-    vsa blocks — VSA-blokken in Markdown vinden
+    vsa blocks — ::: vsa-notatie en eindigt met :::, beide aan het begin van een regel, met daartussen VSA-notatie; typisch ontdekt en verwerkt door de Vsa-toolset (o.a. vsa blocks, vsa validate, vsa process).">VSA-blokken in Markdown vinden
   
 
     
@@ -2930,17 +2930,16 @@
   
 
 
-<h1 id="vsa-blocks-vsa-blokken-in-markdown-vinden"><code>vsa blocks</code> — VSA-blokken in Markdown vinden<a class="headerlink" href="#vsa-blocks-vsa-blokken-in-markdown-vinden" title="Permanent link">&para;</a></h1>
-<p>Vind VSA-blokken (<code>::: vsa-notatie … :::</code>) in een Markdownbestand en toon
-optioneel hun metadata, body en AST.</p>
+<h1 id="vsa-blocks-vsa-notatie-en-eindigt-met-beide-aan-het-begin-van-een-regel-met-daartussen-vsa-notatie-typisch-ontdekt-en-verwerkt-door-de-vsa-toolset-oa-vsa-blocks-vsa-validate-vsa-processvsa-blokken-in-markdown-vinden"><code>vsa blocks</code> — <a href="/VSA-tooling/preview/terminologie/vsa-blokken" title="VSA-blok: een tekstfragment in een Markdownbestand dat begint met <code>::: vsa-notatie</code> en eindigt met <code>:::</code>, beide aan het begin van een regel, met daartussen VSA-notatie; typisch ontdekt en verwerkt door de Vsa-toolset (o.a. <code>vsa blocks</code>, <code>vsa validate</code>, <code>vsa process</code>).">VSA-blokken</a> in Markdown vinden<a class="headerlink" href="#vsa-blocks-vsa-notatie-en-eindigt-met-beide-aan-het-begin-van-een-regel-met-daartussen-vsa-notatie-typisch-ontdekt-en-verwerkt-door-de-vsa-toolset-oa-vsa-blocks-vsa-validate-vsa-processvsa-blokken-in-markdown-vinden" title="Permanent link">&para;</a></h1>
+<p>Vind <a href="/VSA-tooling/preview/terminologie/vsa-blokken" title="VSA-blok: een tekstfragment in een Markdownbestand dat begint met <code>::: vsa-notatie</code> en eindigt met <code>:::</code>, beide aan het begin van een regel, met daartussen VSA-notatie; typisch ontdekt en verwerkt door de Vsa-toolset (o.a. <code>vsa blocks</code>, <code>vsa validate</code>, <code>vsa process</code>).">VSA-blokken</a> in een Markdownbestand en toon optioneel hun metadata,
+body en AST.</p>
 <h2 id="synopsis">Synopsis<a class="headerlink" href="#synopsis" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code>vsa blocks [-h] [--json] path
 </code></pre></div>
 <h2 id="beschrijving">Beschrijving<a class="headerlink" href="#beschrijving" title="Permanent link">&para;</a></h2>
-<p><code>vsa blocks</code> leest één Markdownbestand en zoekt naar VSA-blokken: tekst die
-begint met <code>::: vsa-notatie</code> en eindigt met <code>:::</code> (beide aan het begin van
-een regel). Dit commando parset de gevonden blokken niet semantisch — het
-telt en (met <code>--json</code>) inspecteert ze.</p>
+<p><code>vsa blocks</code> leest één Markdownbestand en zoekt naar <a href="/VSA-tooling/preview/terminologie/vsa-blokken" title="VSA-blok: een tekstfragment in een Markdownbestand dat begint met <code>::: vsa-notatie</code> en eindigt met <code>:::</code>, beide aan het begin van een regel, met daartussen VSA-notatie; typisch ontdekt en verwerkt door de Vsa-toolset (o.a. <code>vsa blocks</code>, <code>vsa validate</code>, <code>vsa process</code>).">VSA-blokken</a>. Dit
+commando parset de gevonden blokken niet semantisch — het telt en (met <code>--json</code>)
+inspecteert ze.</p>
 <p>Gebruik dit om te controleren of blokken herkend worden, of om metadata/body/AST
 te bekijken tijdens het debuggen. Voor normaal dagelijks gebruik heb je
 <code>--json</code> meestal niet nodig.</p>
@@ -3136,7 +3135,7 @@ te bekijken tijdens het debuggen. Voor normaal dagelijks gebruik heb je
       
       
       <p class="og-footer-stamps">
-        Bijgewerkt: 2026-08-02
+        Bijgewerkt: 2026-08-07
         
       </p>
       

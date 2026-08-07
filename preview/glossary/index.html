@@ -97,8 +97,8 @@
             
   
   <strong>Preview</strong>
-   — branch <code>fix/hrg-abbr-alias-rows</code>
-  , gebouwd 2026-08-07 21:40 CEST.
+   — branch <code>docs/professionalisering-vervolg</code>
+  , gebouwd 2026-08-07 22:47 CEST.
   <a href="https://orthodox-groningen.github.io/VSA-tooling/">Live documentatie (main)</a>.
   
 
@@ -1853,7 +1853,7 @@
   <span class="md-ellipsis">
     
   
-    vsa blocks — VSA-blokken in Markdown vinden
+    vsa blocks — ::: vsa-notatie en eindigt met :::, beide aan het begin van een regel, met daartussen VSA-notatie; typisch ontdekt en verwerkt door de Vsa-toolset (o.a. vsa blocks, vsa validate, vsa process).">VSA-blokken in Markdown vinden
   
 
     
@@ -2783,6 +2783,10 @@ Zie ook <a href="../guides/tev2-docs/">TEv2 in tool-docs</a>.</p>
 <td>De naam die in een <code>:::include &lt;exporttype&gt;</code>-directive aangeeft welk <a href="/bron/terms/exportmechanisme" title="Exportmechanisme: De manier waarop een Samenstelling een Bronbestand of Afgeleide ontsluit voor een lezersdoel, via een <code>:::include</code>-directive met een Exporttype.">exportmechanisme</a> wordt gebruikt, zoals <code>svg</code>, <code>coria</code> of <code>mxl</code>.<br><strong>Opmerking</strong>: Huidige exporttypen: <code>svg</code>, <code>coria</code>, <code>mxl</code>.</td>
 </tr>
 <tr>
+<td><a href="/VSA-tooling/preview/terminologie/geldige-vsa-notatie">geldige VSA-notatie</a></td>
+<td><a href="/bron/terms/vsa-notatie" title="VSA-notatie: Het tekstgebaseerde notatieformaat waarmee liturgische zangteksten worden vastgelegd: een formeel gespecificeerde taal met scopes, modifiers en bracket-directives, parseeerbaar en valideerbaar door Vsa-tooling.">VSA-notatie</a> die de <a href="/VSA-tooling/preview/terminologie/validator" title="Validator: een component die een geparseerde AST of VSA-invoer toetst aan semantische en normatieve regels en overtredingen als diagnostics rapporteert zonder ze stilzwijgend te repareren.">validator</a> (<code>vsa validate</code>) accepteert: syntactisch en semantisch in orde volgens de actieve <a href="/VSA-tooling/preview/terminologie/severity" title="Severity: een waarde die aan een diagnostic is gekoppeld en aangeeft of de vastgestelde afwijking als blokkerende fout of als waarschuwing moet worden behandeld.">severity</a>-regels (syntaxfouten zijn altijd hard).</td>
+</tr>
+<tr>
 <td><a href="/bron/terms/geregistreerde-representatie">Geregistreerde representatie</a></td>
 <td>Een <a href="/bron/terms/representatie" title="Representatie: Een bestand waarin een uitvoeringsvorm concreet is vastgelegd.">representatie</a> waarvoor een <a href="/bron/terms/source-entry" title="Source-entry: Een element in de <code>sources:</code>-lijst van <code>zangstuk.yaml</code> in de Bron-repository, met een uniek <code>id</code> binnen dat Zangstuk; registreert een Representatie of placeholder op het huidige platte model.">source-entry</a> bestaat in de <a href="/bron/terms/bron-repository" title="Bron-repository: De git-repository <code>orthodox-groningen/bron</code> (of een expliciet aangewezen opvolger); de centrale opslagplaats voor Representaties van Uitvoeringsvormen (van Varianten) van Zangstukken, alsmede voor de specificaties van de opslag, en van manieren om daarin te zoeken.">bron-repository</a> die haar koppelt via <code>file:</code>, <code>access:</code> of <code>status:</code>.<br><strong>Opmerkingen:</strong><br>- Het tegenovergestelde van een <a href="/bron/terms/parochie-lokale-representatie" title="Parochie-lokale representatie: Een Bronbestand of inline-notatie in een parochie-repo die nog niet Geregistreerd is in de Bron-repository.">parochie-lokale representatie</a>.<br>- Registratie vindt plaats via <a href="/bron/terms/promotie" title="Promotie (registratie): De overgang van een Parochie-lokale Representatie naar een Geregistreerde Representatie, door het toevoegen van een Source-entry en bijbehorend Bronbestand in de Bron-repository via een PR.">promotie</a>: een PR naar de <a href="/bron/terms/bron-repository" title="Bron-repository: De git-repository <code>orthodox-groningen/bron</code> (of een expliciet aangewezen opvolger); de centrale opslagplaats voor Representaties van Uitvoeringsvormen (van Varianten) van Zangstukken, alsmede voor de specificaties van de opslag, en van manieren om daarin te zoeken.">bron-repository</a> met <a href="/bron/terms/source-entry" title="Source-entry: Een element in de <code>sources:</code>-lijst van <code>zangstuk.yaml</code> in de Bron-repository, met een uniek <code>id</code> binnen dat Zangstuk; registreert een Representatie of placeholder op het huidige platte model.">source-entry</a> en <a href="/bron/terms/bronbestand" title="Bronbestand: Een bestand waarvoor geen geautomatiseerd, herhaalbaar Conversiemechanisme bestaat dat het volledig uit een ander getrackt bestand in dezelfde repository genereert.">bronbestand</a>.</td>
 </tr>
@@ -2929,6 +2933,10 @@ Zie ook <a href="../guides/tev2-docs/">TEv2 in tool-docs</a>.</p>
 <tr>
 <td><a href="/VSA-tooling/preview/terminologie/vsa-scope">VSA-scope</a></td>
 <td>een tekstfragment dat met <code>{</code> begint, met <code>}</code> eindigt, geen whitespace binnen de accolades bevat en door de parser kan worden opgesplitst in optionele hoogte-modifier, verplicht zangelement en optionele lengte-modifier.</td>
+</tr>
+<tr>
+<td><a href="/VSA-tooling/preview/terminologie/vsa-tekst">VSA-tekst</a></td>
+<td>tekst waarin naast gewone tekst ook constructies in <a href="/bron/terms/vsa-notatie" title="VSA-notatie: Het tekstgebaseerde notatieformaat waarmee liturgische zangteksten worden vastgelegd: een formeel gespecificeerde taal met scopes, modifiers en bracket-directives, parseeerbaar en valideerbaar door Vsa-tooling.">VSA-notatie</a> voorkomen; een VSA-tekst kan door de <a href="/VSA-tooling/preview/terminologie/vsa-toolset" title="vsa.toolset: de verzameling van Vsa-gerelateerde tools waarmee Vsa-blokken kunnen worden opgezocht, gevalideerd, gerenderd, enz.">vsa-toolset</a> worden geparsed, gevalideerd en omgezet (bijvoorbeeld naar SVG).</td>
 </tr>
 <tr>
 <td><a href="/bron/terms/vsa-tooling">VSA-tooling</a></td>

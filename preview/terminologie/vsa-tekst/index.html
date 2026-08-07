@@ -10,7 +10,7 @@
       
       
       
-        <link rel="canonical" href="https://orthodox-groningen.github.io/VSA-tooling/preview/terminologie/zangstuk/">
+        <link rel="canonical" href="https://orthodox-groningen.github.io/VSA-tooling/preview/terminologie/vsa-tekst/">
       
       
       
@@ -23,7 +23,7 @@
     
     
       
-        <title>Zangstuk - VSA-tooling — documentatie</title>
+        <title>VSA-tekst - VSA-tooling — documentatie</title>
       
     
     
@@ -80,7 +80,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#zangstuk" class="md-skip">
+        <a href="#vsa-tekst" class="md-skip">
           Ga naar inhoud
         </a>
       
@@ -130,7 +130,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Zangstuk
+              VSA-tekst
             
           </span>
         </div>
@@ -2654,7 +2654,7 @@
 
 
   
-    <a href="https://github.com/orthodox-groningen/VSA-tooling/edit/main/docs/terminologie/zangstuk.md" title="Wijzig deze pagina" class="md-content__button md-icon" rel="edit">
+    <a href="https://github.com/orthodox-groningen/VSA-tooling/edit/main/docs/terminologie/vsa-tekst.md" title="Wijzig deze pagina" class="md-content__button md-icon" rel="edit">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
     </a>
@@ -2662,11 +2662,12 @@
   
 
 
-<h1 id="zangstuk">Zangstuk<a class="headerlink" href="#zangstuk" title="Permanent link">&para;</a></h1>
-<p>In org-brede documentatie heeft <a href="/bron/terms/zangstuk" title="Zangstuk: Een liturgisch-muzikaal geheel met een stabiele <code>zangstuk-id</code>, waaronder nul of meer varianten bestaan.">zangstuk</a> de betekenis uit scope <code>bron</code>.
-In deze repo betekent <a href="/VSA-tooling/preview/terminologie/zangstuk" title="Zangstuk: een inhoudelijke eenheid die een afgebakend gezang of muzikale tekst vormt en zelfstandig kan worden geidentificeerd, vastgelegd, verwerkt of gepubliceerd.">zangstuk</a> het onderstaande, tenzij expliciet <code>@bron</code>
-wordt gebruikt.</p>
-<p>Een zangstuk is een inhoudelijk afgebakend gezang of muzikale tekst. In VSA kan een zangstuk bronmateriaal, notatie en gegenereerde uitvoer bevatten.</p>
+<h1 id="vsa-tekst">VSA-tekst<a class="headerlink" href="#vsa-tekst" title="Permanent link">&para;</a></h1>
+<p><strong>VSA-tekst</strong> is lopende tekst waarin naast gewone woorden ook constructies in
+<a href="/bron/terms/vsa-notatie" title="VSA-notatie: Het tekstgebaseerde notatieformaat waarmee liturgische zangteksten worden vastgelegd: een formeel gespecificeerde taal met scopes, modifiers en bracket-directives, parseeerbaar en valideerbaar door Vsa-tooling.">VSA-notatie</a> voorkomen. De <a href="/VSA-tooling/preview/terminologie/parser" title="Parser: een component die VSA-brontekst of tokens volgens de grammatica omzet naar expliciete AST-nodes, bronlocaties behoudt en geen semantische reparaties of renderlogica uitvoert.">parser</a> en <a href="/VSA-tooling/preview/terminologie/validator" title="Validator: een component die een geparseerde AST of VSA-invoer toetst aan semantische en normatieve regels en overtredingen als diagnostics rapporteert zonder ze stilzwijgend te repareren.">validator</a> lezen die
+constructies; de <a href="/VSA-tooling/preview/terminologie/renderer" title="Renderer: een component die een gevalideerde AST of daarvan afgeleid layoutmodel omzet naar concrete uitvoer, zoals SVG, JSON, Markdown, Hugo-output of MusicXML, zonder de AST semantisch te wijzigen.">renderer</a> kan er een afbeelding (SVG) van maken.</p>
+<p>Een <a href="/bron/terms/vsa-bestand" title="vsa-bestand: Een bestand met de extensie <code>.vsa</code> waarvan de inhoud uitsluitend syntactisch geldige Vsa-notatie bevat — d.w.z. door de Vsa-tooling foutloos wordt geparseerd en gevalideerd.">vsa-bestand</a> bevat uitsluitend VSA-tekst. In Markdown staat VSA-tekst
+typisch in een <a href="/VSA-tooling/preview/terminologie/vsa-blokken" title="VSA-blok: een tekstfragment in een Markdownbestand dat begint met <code>::: vsa-notatie</code> en eindigt met <code>:::</code>, beide aan het begin van een regel, met daartussen VSA-notatie; typisch ontdekt en verwerkt door de Vsa-toolset (o.a. <code>vsa blocks</code>, <code>vsa validate</code>, <code>vsa process</code>).">VSA-blok</a>.</p>
 
 
 
@@ -2703,7 +2704,7 @@ wordt gebruikt.</p>
       
       
       <p class="og-footer-stamps">
-        Bijgewerkt: 2026-08-06
+        Bijgewerkt: 2026-08-07
         
       </p>
       

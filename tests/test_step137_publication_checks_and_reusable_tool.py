@@ -96,6 +96,9 @@ def test_docs_pages_preview_uses_project_preview_url_and_publication_check():
     assert "https://orthodox-groningen.github.io/VSA-tooling/preview/" in workflow
     assert "url_prefix=/VSA-tooling/preview/" in workflow
     assert "check-publication-output.py" in reusable
+    # Feature-branch builds moeten hun eigen check-script gebruiken (niet @main).
+    assert "github.sha" in reusable
+    assert "vsa_tooling_ref: ${{ github.sha }}" in workflow
 
 
 def test_docs_pages_production_uses_project_url_and_publication_check():

@@ -74,13 +74,15 @@ jobs:
           name: ${{ inputs.artifact_name }}
           path: ${{ inputs.publish_dir }}
 
+      # Bij call vanuit VSA-tooling: zelfde SHA als de build (niet @main), anders
+      # faalt de check op feature branches met nieuwere check-publication-output.py.
       - name: Checkout VSA-tooling (publication check)
         if: ${{ !inputs.skip_publication_check }}
         uses: actions/checkout@v4
         with:
           repository: orthodox-groningen/VSA-tooling
           path: vendor/vsa-tooling
-          ref: ${{ inputs.vsa_tooling_ref }}
+          ref: ${{ github.repository == 'orthodox-groningen/VSA-tooling' && github.sha || inputs.vsa_tooling_ref }}
 
       - name: Check publication output
         if: ${{ !inputs.skip_publication_check }}

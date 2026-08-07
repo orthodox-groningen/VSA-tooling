@@ -161,5 +161,7 @@ jobs:
       url_prefix: ${{ needs.build.outputs.url_prefix }}
       pages_url: ${{ needs.build.outputs.pages_url }}
       keep_files: ${{ needs.build.outputs.keep_files == 'true' }}
+      # Zelfde commit als de docs-build (bron-sibling allowlist e.d.).
+      vsa_tooling_ref: ${{ github.sha }}
     permissions:
       contents: write

@@ -4,7 +4,7 @@ term: vsa
 termType: concept
 glossaryTerm: "Vereenvoudigde Slavische Accentnotatie"
 glossaryAbbr: VSA
-glossaryText: "wordt gebruikt om te verwijzen naar een formele notatie voor het vastleggen van [zangstukken](@) en ook naar de toolset waarmee zulke vastleggingen kunnen worden gevalideerd en naar publiceerbare vormen worden omgezet."
+glossaryText: "wordt gebruikt om te verwijzen naar een [formele notatie](vsa-notatie@) voor het vastleggen van [zangstukken](@) en ook naar de [toolset](vsa-toolset@) waarmee zulke vastleggingen kunnen worden gevalideerd en naar publiceerbare vormen worden omgezet."
 formPhrases:
   - vsa
   - vsa's
@@ -14,7 +14,7 @@ formPhrases:
 
 VSA, de Vereenvoudigde Slavische Accentnotatie, is:
 - een [formele notatie](vsa-notatie@) waarmee [zangstukken](@) kunnen worden vastgelegd;
-- de toolset, waarmee [zangstukken](@) in [vsa-notatie](@) kunnen worden gevalideerd en naar publiceerbare vormen worden omgezet. 
+- de [toolset](vsa-toolset@), waarmee [zangstukken](@) in [vsa-notatie](@) kunnen worden gevalideerd en naar publiceerbare vormen worden omgezet. 
 
 ## Gebruik van deze en vergelijkbare termen in de 'bron' repo.
 

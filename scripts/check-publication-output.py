@@ -5,6 +5,12 @@ from html.parser import HTMLParser
 from pathlib import Path
 from urllib.parse import urldefrag, urlparse
 
+# Absolute paden naar andere org-Pages op hetzelfde github.io-host
+# (TEv2 localize maakt https://…/bron/terms/… → /bron/terms/…).
+_EXTERNAL_SITE_PREFIXES = (
+    "/bron/",
+)
+
 
 class RefCollector(HTMLParser):
     def __init__(self) -> None:
@@ -76,6 +82,11 @@ def _normalize_prefix(prefix: str) -> str:
     return prefix
 
 
+def _is_external_site_path(path_ref: str) -> bool:
+    """True for root-relative links to another org Pages site (e.g. /bron/…)."""
+    return any(path_ref == p.rstrip("/") or path_ref.startswith(p) for p in _EXTERNAL_SITE_PREFIXES)
+
+
 def _check_ref(
     errors: list[str],
     site_dir: Path,
@@ -96,6 +107,8 @@ def _check_ref(
         return
 
     if path_ref.startswith("/"):
+        if _is_external_site_path(path_ref):
+            return
         if not path_ref.startswith(url_prefix):
             errors.append(
                 f"{html_file}: {attr}='{ref}' mist URL-prefix {url_prefix}"

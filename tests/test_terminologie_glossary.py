@@ -72,7 +72,8 @@ def test_vsa_terminologie_is_local_tev2_glossary_not_bron_copy():
     text = read(VSA_TERMINOLOGY_INDEX) + read(VSA_TERM)
     assert "TEv2-documentatiescope" in text
     assert "Vereenvoudigde Slavische Accentnotatie" in text
-    assert "bracket-directive" in text
+    assert "[VSA](@bron)" in text or "[vsa](@bron)" in text.lower()
+    assert (ROOT / "docs" / "terminologie" / "bracket-directive.md").is_file()
     assert "## 0. Gebruiksregels" not in text
     assert "**Status:** normatief" not in text
 

@@ -55,9 +55,12 @@ on:
 permissions:
   contents: write
 
+# Eén groep per caller-repo: serialiseert peaceiris-writes naar gh-pages.
+# cancel-in-progress: true — nieuwere deploys annuleren vastgelopen/queued runs
+# (anders stapelen jobs tot 15–30 min “waiting for a runner”).
 concurrency:
-  group: pages-${{ inputs.concurrency_group }}
-  cancel-in-progress: false
+  group: pages-${{ github.repository }}-${{ inputs.concurrency_group }}
+  cancel-in-progress: true
 
 jobs:
   deploy:
@@ -71,13 +74,15 @@ jobs:
           name: ${{ inputs.artifact_name }}
           path: ${{ inputs.publish_dir }}
 
+      # Bij call vanuit VSA-tooling: zelfde SHA als de build (niet @main), anders
+      # faalt de check op feature branches met nieuwere check-publication-output.py.
       - name: Checkout VSA-tooling (publication check)
         if: ${{ !inputs.skip_publication_check }}
         uses: actions/checkout@v4
         with:
           repository: orthodox-groningen/VSA-tooling
           path: vendor/vsa-tooling
-          ref: ${{ inputs.vsa_tooling_ref }}
+          ref: ${{ github.repository == 'orthodox-groningen/VSA-tooling' && github.sha || inputs.vsa_tooling_ref }}
 
       - name: Check publication output
         if: ${{ !inputs.skip_publication_check }}

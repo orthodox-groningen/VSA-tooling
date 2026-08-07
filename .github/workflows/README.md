@@ -16,10 +16,18 @@ Overzicht van alle workflows in deze map: **wanneer** ze draaien, **waarvoor** j
 ## Wat draait automatisch bij een push?
 
 1. **vsa-ci.yml** — Windows: checkout `bron` → bootstrap → pytest + consumer-minimal
-2. **docs-build.yml** — Linux: TEv2 + `mkdocs --strict`
-3. **docs-pages.yml** — TEv2 + MkDocs → `/` (`main`) of `/preview/` (andere branches)
+2. **docs-pages.yml** — TEv2 + MkDocs → `/` (`main`) of `/preview/` (andere branches)
 
-Handmatig: `release-artifacts`.
+**docs-build.yml** draait bij **pull_request** (en handmatig), niet bij push — voorkomt
+dubbele TEv2/MkDocs-runs naast docs-pages.
+
+MRG auto-commits gebruiken `[skip ci]` zodat die push geen nieuwe CI-cascade start.
+
+Concurrency: `cancel-in-progress: true` op docs-workflows en op
+`pages-deploy-reusable` (gh-pages-writes), zodat verouderde/queued deploys niet
+15–30 min blijven hangen.
+
+Handmatig: `release-artifacts`, `docs-build` (`workflow_dispatch`).
 
 ---
 
@@ -32,7 +40,7 @@ Handmatig: `release-artifacts`.
 | Trigger    | `push` (alle branches)                                                                |
 | Runner     | `ubuntu-latest`                                                                       |
 | Doel       | TEv2 (mrg-import/mrgt/hrgt/trrt) + `mkdocs build --strict` → Pages `/` of `/preview/` |
-| Publiceert | Ja (`pages-deploy-reusable`; MRG auto-commit op `docs/mrgs/`)                         |
+| Publiceert | Ja (`pages-deploy-reusable`; MRG auto-commit + `[skip ci]`)                           |
 | Lokaal     | `scripts\docs-build-tev2.cmd`                                                         |
 
 Cutover afgerond: `keep_files=true` op main (behoudt `/preview/`, zoals bron).
@@ -53,7 +61,7 @@ vervangen.
 
 | Veld       | Waarde                                       |
 | ---------- | -------------------------------------------- |
-| Trigger    | `push`, `pull_request`                       |
+| Trigger    | `pull_request`, `workflow_dispatch`          |
 | Runner     | `ubuntu-latest`                              |
 | Doel       | TEv2 + `mkdocs build --strict` (geen deploy) |
 | Publiceert | Nee                                          |
@@ -72,11 +80,15 @@ Ongewijzigd herbruikbaar voor org-repo's. Zie [reuse-vsa-tooling.md](../../docs/
 ## Diagram
 
 ```text
-push / pull_request
+push
 ├── vsa-ci.yml          → pytest + consumer-minimal (Windows)
-├── docs-build.yml      → TEv2 + mkdocs --strict (Linux)
 └── docs-pages.yml      → TEv2 + MkDocs → gh-pages:/ of /preview/
 
+pull_request
+├── vsa-ci.yml          → pytest + consumer-minimal (Windows)
+└── docs-build.yml      → TEv2 + mkdocs --strict (Linux, geen deploy)
+
 handmatig
+├── docs-build.yml
 └── release-artifacts.yml → wheel/sdist + consumer-minimal artifact
 ```

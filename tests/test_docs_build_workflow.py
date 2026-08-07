@@ -11,11 +11,15 @@ def test_docs_build_workflow_exists():
     assert DOCS_BUILD.exists()
 
 
-def test_docs_build_runs_on_push_and_pr():
+def test_docs_build_runs_on_pr_not_push():
+    """Op push dekt docs-pages.yml dezelfde build; docs-build alleen PR/handmatig."""
     text = DOCS_BUILD.read_text(encoding="utf-8")
-    assert "push:" in text
     assert "pull_request:" in text
+    assert "workflow_dispatch:" in text
     assert "mkdocs build --strict" in text
+    # Geen push-trigger (voorkomt dubbele TEv2/MkDocs-runs naast docs-pages).
+    on_block = text.split("jobs:", 1)[0]
+    assert "push:" not in on_block
 
 
 def test_docs_build_runs_tev2_before_mkdocs():

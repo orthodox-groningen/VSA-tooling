@@ -58,6 +58,35 @@ def test_publication_check_script_rejects_missing_project_prefix(tmp_path: Path)
     assert "mist URL-prefix" in result.stdout
 
 
+def test_publication_check_script_allows_bron_sibling_site_links(tmp_path: Path):
+    """TEv2 localize maakt bron-navurls tot /bron/terms/… op hetzelfde github.io-host."""
+    site = tmp_path / "site"
+    site.mkdir()
+    (site / "index.html").write_text(
+        '<a href="/bron/terms/exporttype">exporttype</a>'
+        '<a href="/VSA-tooling/preview/terminologie/">lokaal</a>',
+        encoding="utf-8",
+    )
+    (site / "terminologie").mkdir()
+    (site / "terminologie" / "index.html").write_text("<html></html>", encoding="utf-8")
+
+    result = subprocess.run(
+        [
+            sys.executable,
+            "scripts/check-publication-output.py",
+            "--site-dir",
+            str(site),
+            "--url-prefix",
+            "/VSA-tooling/preview/",
+        ],
+        capture_output=True,
+        text=True,
+    )
+
+    assert result.returncode == 0, result.stdout
+    assert "OK" in result.stdout
+
+
 def test_docs_pages_preview_uses_project_preview_url_and_publication_check():
     workflow = Path(".github/workflows/docs-pages.yml").read_text(encoding="utf-8")
     reusable = Path(".github/workflows/pages-deploy-reusable.yml").read_text(
@@ -67,6 +96,9 @@ def test_docs_pages_preview_uses_project_preview_url_and_publication_check():
     assert "https://orthodox-groningen.github.io/VSA-tooling/preview/" in workflow
     assert "url_prefix=/VSA-tooling/preview/" in workflow
     assert "check-publication-output.py" in reusable
+    # Feature-branch builds moeten hun eigen check-script gebruiken (niet @main).
+    assert "github.sha" in reusable
+    assert "vsa_tooling_ref: ${{ github.sha }}" in workflow
 
 
 def test_docs_pages_production_uses_project_url_and_publication_check():

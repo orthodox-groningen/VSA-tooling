@@ -35,11 +35,13 @@ def test_pages_deploy_reusable_documents_pages_source_notice():
     assert "Deploy from a branch" in text
 
 
-def test_pages_deploy_reusable_has_concurrency_without_cancel():
+def test_pages_deploy_reusable_has_concurrency_with_cancel():
+    """Verouderde gh-pages-deploys annuleren i.p.v. 15–30 min in de wachtrij."""
     text = REUSABLE.read_text(encoding="utf-8")
 
-    assert "cancel-in-progress: false" in text
     assert "concurrency:" in text
+    assert "cancel-in-progress: true" in text
+    assert "cancel-in-progress: false" not in text
 
 
 def test_pages_deploy_reusable_runs_publication_check():
@@ -66,6 +68,7 @@ def test_docs_pages_uses_pages_deploy_reusable():
     assert "build:" in text
     assert "deploy:" in text
     assert "needs: build" in text
+    assert "vsa_tooling_ref: ${{ github.sha }}" in text
 
 
 def test_docs_pages_main_deploys_root_preview_subdir():

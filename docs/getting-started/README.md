@@ -1,7 +1,7 @@
-# Starten met VSA-tooling
+# Overzicht
 
-Doel: snel controleren of de VSA-tool lokaal werkt. Uitgebreidere uitleg:
-[Gebruikershandleiding](../guides/user-guide.md).
+Doel: snel controleren of de [VSA-tooling](@bron) lokaal werkt. Uitgebreidere
+uitleg: [Gebruikershandleiding](../guides/user-guide.md).
 
 ## 1. Repo-root
 
@@ -25,6 +25,8 @@ Verwachte vorm: `vsa 0.1.0` (of hoger).
 
 ## 4. Valideren
 
+De [validator](@) controleert of [VSA-notatie](@bron) bruikbaar is:
+
 ```cmd
 vsa validate examples\minimal\050_svg_demo.vsa
 ```
@@ -39,13 +41,9 @@ vsa svg examples\minimal\050_svg_demo.vsa generated\vsa\050_svg_demo.svg
 
 ## Volgende stappen
 
-| Wil je…                       | Ga naar                                                                                                   |
-| ----------------------------- | --------------------------------------------------------------------------------------------------------- |
-| Commando per taak             | [CLI-taken](../guides/cli-taken.md)                                                                       |
-| Voorbeelden correct/incorrect | [Voorbeelden](../reference/voorbeelden/index.md)                                                          |
-| Tool in een andere repo       | [Integratie](../guides/reuse-vsa-tooling.md)                                                              |
-| Presentatiesite (Hugo)        | [Consumer-site](../manuals/consumer-site.md) / [VSA-demo](https://github.com/orthodox-groningen/VSA-demo) |
-
-Volledige CI-smoke: `scripts\ci.cmd`
-
-Documentatiesite lokaal: `scripts\docs-serve.cmd`.
+| Doel                                      | Pagina                                              |
+| ----------------------------------------- | --------------------------------------------------- |
+| Brede uitleg van de CLI                   | [Gebruikershandleiding](../guides/user-guide.md)    |
+| Het juiste commando per taak              | [CLI-taken](../guides/cli-taken.md)                 |
+| Foutmeldingen begrijpen                   | [Validatie](../guides/validation.md)                |
+| Tool hergebruiken in een andere repo      | [Integratie](../guides/reuse-vsa-tooling.md)        |

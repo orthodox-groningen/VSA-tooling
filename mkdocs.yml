@@ -25,7 +25,6 @@ not_in_nav: |
   guides/quick-start.md
   guides/hugo-workflow.md
   guides/hugo-site-structure.md
-  guides/tev2-docs.md
   plans/onderzoeks-prompt.md
   reference/cli.md
   terminologie/**
@@ -42,6 +41,15 @@ theme:
   name: material
   language: nl
   custom_dir: docs/overrides
+  favicon: images/favicon.ico
+  logo: images/favicon-32x32.png
+  font:
+    text: Source Sans 3
+    code: Source Code Pro
+  palette:
+    - scheme: default
+      primary: custom
+      accent: custom
   features:
     - navigation.tabs
     - navigation.tabs.sticky
@@ -76,9 +84,9 @@ markdown_extensions:
 nav:
   - Home: index.md
   - Starten:
-    - getting-started/README.md
+    - Overzicht: getting-started/README.md
   - Handleidingen:
-    - manuals/index.md
+    - Overzicht: manuals/index.md
     - manuals/consumer-site.md
     - guides/user-guide.md
     - guides/cli-taken.md
@@ -90,8 +98,8 @@ nav:
     - guides/testing-and-regression.md
     - guides/liturgikon-notatie.md
     - guides/hugo-navigation-placeholders.md
-  - Specificatie:
-    - specification/README.md
+  - Specificaties:
+    - Overzicht: specification/README.md
     - specification/overview.md
     - specification/syntax.md
     - specification/semantics.md
@@ -106,14 +114,15 @@ nav:
     - specification/traceability.md
     - specification/open-points.md
   - Referentie:
-    - reference/README.md
-    - reference/voorbeelden/index.md
-    - reference/voorbeelden/basis.md
-    - reference/voorbeelden/multiline.md
-    - reference/voorbeelden/fouten.md
+    - Overzicht: reference/README.md
+    - Voorbeelden:
+      - Overzicht: reference/voorbeelden/index.md
+      - reference/voorbeelden/basis.md
+      - reference/voorbeelden/multiline.md
+      - reference/voorbeelden/fouten.md
     - reference/fixtures-catalogus.md
     - CLI:
-      - reference/cli/index.md
+      - Overzicht: reference/cli/index.md
       - reference/cli/validate.md
       - reference/cli/parse.md
       - reference/cli/blocks.md
@@ -131,11 +140,13 @@ nav:
     - reference/include-vsa.md
     - reference/traceability.md
   - Integratie:
+    - Overzicht: integratie/index.md
     - guides/reuse-vsa-tooling.md
     - guides/tev2-docs.md
-  - Terminologie: terminologie/index.md
+  - Terminologie:
+    - Overzicht: terminologie/index.md
   - Plannen:
-    - plans/README.md
+    - Overzicht: plans/README.md
     - plans/gebruikseisen-dragers.md
     - plans/vsa-polyphony-proposal.md
 
@@ -143,16 +154,17 @@ extra_css:
   - stylesheets/extra.css
 
 extra:
+  generator: false
   preview: false
   build_time: ""
   branch: ""
   social:
-    - icon: fontawesome/brands/github
-      link: https://github.com/orthodox-groningen/VSA-tooling
-      name: VSA-tooling op GitHub
-    - icon: fontawesome/solid/book
+    - icon: fontawesome/solid/book-bible
       link: https://orthodox-groningen.github.io/bron/
       name: bron — documentatie
+    - icon: fontawesome/solid/code
+      link: https://orthodox-groningen.github.io/VSA-tooling/
+      name: VSA-tooling — documentatie
     - icon: fontawesome/solid/globe
       link: https://orthodox-groningen.github.io/VSA-demo/
-      name: VSA-demo (presentatiesite)
+      name: VSA-demo

@@ -144,7 +144,7 @@ nav:
     - guides/reuse-vsa-tooling.md
     - guides/tev2-docs.md
   - Terminologie:
-    - Overzicht: terminologie/index.md
+    - Overzicht: glossary.md
   - Plannen:
     - Overzicht: plans/README.md
     - plans/gebruikseisen-dragers.md

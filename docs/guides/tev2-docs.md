@@ -1,8 +1,11 @@
 # TEv2 in tool-docs
 
 VSA-tooling gebruikt TEv2 voor **tool-termen** (parser, renderer, includes, …) in
-`docs/terminologie/`. Org-termen uit [bron](https://orthodox-groningen.github.io/bron/specs/terminologie/)
-worden via `termselection: "*@bron"` in de lokale MRG/HRG opgenomen (D1: bron blijft
+`docs/terminologie/`. De mensleesbare glossary staat in `docs/glossary.md` (zelfde
+patroon als bron: één bronbestand met `{% hrg="vsa-tooling" %}`, geen
+`_index.template`/rename). Org-termen uit
+[bron](https://orthodox-groningen.github.io/bron/specs/terminologie/) worden via
+`termselection: "*@bron"` in de lokale MRG/HRG opgenomen (D1: bron blijft
 canoniek). Lokale curated texts kunnen een term herdefiniëren; dan wint die voor
 `[term](@)`, terwijl `[term](@bron)` de org-definitie blijft.
 

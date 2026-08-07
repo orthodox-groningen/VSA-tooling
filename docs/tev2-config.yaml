@@ -13,13 +13,15 @@ hrgt:
   output: .
   interpreter: default
   # Links via {{localize navurl}} (scope-agnostisch; zie TEv2 markdown-table-row).
-  converter[1]: "| [{{#if glossaryTerm}}{{noRefs glossaryTerm}}{{else}}{{capFirst term}}{{/if}}]({{localize navurl}}) | {{#if glossaryText}}{{noRefs glossaryText}}{{else}}Geen `glossaryText` opgegeven voor deze term.{{/if}}{{#if glossaryNotes}}<br>{{#each glossaryNotes}}{{#if this.heading}}{{#if @first}}**Opmerkingen:**<br>{{else}}<br>{{/if}}- **{{this.heading}}**:{{#each this.items}}<br>&nbsp;&nbsp;- {{this}}{{/each}}{{else}}{{#if @first}}{{#if @last}}**Opmerking**: {{this}}{{else}}**Opmerkingen:**<br>- {{this}}{{/if}}{{else}}<br>- {{this}}{{/if}}{{/if}}{{/each}}{{/if}} |"
+  # Trailing \n op converter[1] is verplicht: anders plakken abbr/alias-rijen aan
+  # dezelfde markdown-tabelregel en verdwijnen ze in de weergave (MkDocs toont 2 cellen).
+  converter[1]: "| [{{#if glossaryTerm}}{{noRefs glossaryTerm}}{{else}}{{capFirst term}}{{/if}}]({{localize navurl}}) | {{#if glossaryText}}{{noRefs glossaryText}}{{else}}Geen `glossaryText` opgegeven voor deze term.{{/if}}{{#if glossaryNotes}}<br>{{#each glossaryNotes}}{{#if this.heading}}{{#if @first}}**Opmerkingen:**<br>{{else}}<br>{{/if}}- **{{this.heading}}**:{{#each this.items}}<br>&nbsp;&nbsp;- {{this}}{{/each}}{{else}}{{#if @first}}{{#if @last}}**Opmerking**: {{this}}{{else}}**Opmerkingen:**<br>- {{this}}{{/if}}{{else}}<br>- {{this}}{{/if}}{{/if}}{{/each}}{{/if}} |\n"
   converter[2]: "{{#if glossaryAbbr}}| [{{glossaryAbbr}}]({{localize navurl}}) | Afkorting van [{{#if glossaryTerm}}{{noRefs glossaryTerm}}{{else}}{{capFirst term}}{{/if}}]({{localize navurl}}). |\n{{else}}{{log level='silent'}}{{/if}}"
   converter[3]: "{{#if glossaryAlias}}| [{{glossaryAlias}}]({{localize navurl}}) | Alias voor [{{#if glossaryTerm}}{{noRefs glossaryTerm}}{{else}}{{capFirst term}}{{/if}}]({{localize navurl}}). |\n{{else}}{{log level='silent'}}{{/if}}"
   sorter: "{{noRefs glossaryTerm}}"
   force: true
   input:
-    - "terminologie/**/*.md"
+    - "glossary.md"
 
 trrt:
   scopedir: .

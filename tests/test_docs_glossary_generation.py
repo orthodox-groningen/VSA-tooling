@@ -1,19 +1,20 @@
-"""TEv2 docs glossary alignment."""
+"""TEv2 docs glossary alignment (bron-style glossary.md)."""
 
 from pathlib import Path
 
 
-def test_terminologie_hrg_matches_saf_scopetag():
-    template = Path("docs/terminologie/_index.template").read_text(encoding="utf-8")
+def test_glossary_hrg_matches_saf_scopetag():
+    glossary = Path("docs/glossary.md").read_text(encoding="utf-8")
     saf = Path("docs/saf.yaml").read_text(encoding="utf-8")
-    assert '{% hrg="vsa-tooling" %}' in template
+    assert '{% hrg="vsa-tooling" %}' in glossary
     assert "scopetag: vsa-tooling" in saf
 
 
-def test_tev2_config_runs_from_generated_docs_root():
+def test_tev2_config_hrgt_targets_glossary_md():
     text = Path("docs/tev2-config.yaml").read_text(encoding="utf-8")
     assert "scopedir: ." in text
-    assert "terminologie/**/*.md" in text
+    assert '"glossary.md"' in text
+    assert "terminologie/**/*.md" not in text
     assert "docs/terminologie" not in text
 
 
@@ -21,15 +22,19 @@ def test_prepare_and_docs_build_tev2_scripts_exist():
     assert Path("scripts/prepare-tev2-docs.py").exists()
     assert Path("scripts/docs-build-tev2.cmd").exists()
     assert Path("scripts/sort-glossary-table.py").exists()
-    assert Path("scripts/mkdocs-glossary-index.py").exists()
     assert Path("scripts/check-tev2-termrefs.py").exists()
+    assert not Path("scripts/mkdocs-glossary-index.py").exists()
+    assert not Path("scripts/prepare-docs-glossary.cmd").exists()
+    assert not Path("docs/terminologie/_index.template").exists()
+    assert not Path("docs/terminologie/_index.md").exists()
+    assert not Path("docs/terminologie/index.md").exists()
 
 
-def test_mkdocs_nav_uses_terminologie_index_not_underscore_index():
-    """MkDocs treats _index.md as a page slug, not a directory index."""
+def test_mkdocs_nav_uses_glossary_md():
     text = Path("mkdocs.yml").read_text(encoding="utf-8")
     assert "Terminologie:" in text
-    assert "terminologie/index.md" in text
+    assert "glossary.md" in text
+    assert "terminologie/index.md" not in text
     assert "terminologie/_index.md" not in text
     for workflow in (
         Path(".github/workflows/docs-pages.yml"),
@@ -37,13 +42,27 @@ def test_mkdocs_nav_uses_terminologie_index_not_underscore_index():
         Path("scripts/docs-build-tev2.cmd"),
     ):
         body = workflow.read_text(encoding="utf-8")
-        assert "mkdocs-glossary-index.py" in body
+        assert "sort-glossary-table.py glossary.md" in body
+        assert "mkdocs-glossary-index.py" not in body
+        assert "_index.template" not in body
 
 
 def test_tev2_config_uses_localize_navurl_in_hrgt_converters():
     text = Path("docs/tev2-config.yaml").read_text(encoding="utf-8")
     assert "{{localize navurl}}" in text
     assert "({{term}}.md)" not in text
+
+
+def test_hrgt_converters_emit_abbr_and_alias_on_own_table_rows():
+    """converter[1] must end with \\n so abbr/alias rows are not glued into one MD row."""
+    text = Path("docs/tev2-config.yaml").read_text(encoding="utf-8")
+    # YAML stores the trailing newline as the two chars \n inside the quoted string.
+    assert "converter[1]:" in text
+    assert ' |\\n"' in text or " |\\n'" in text or '|\\n"' in text
+    assert "glossaryAbbr" in text
+    assert "glossaryAlias" in text
+    assert "Afkorting van" in text
+    assert "Alias voor" in text
 
 
 def test_saf_imports_bron_terms_before_local_with_exclude():

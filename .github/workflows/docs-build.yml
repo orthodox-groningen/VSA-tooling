@@ -42,11 +42,6 @@ jobs:
       - name: Install terminology tools
         run: npm ci
 
-      - name: Prepare terminologie index template
-        shell: bash
-        run: |
-          cp docs/terminologie/_index.template docs/terminologie/_index.md
-
       - name: Prepare TEv2 docs staging tree
         run: python scripts/prepare-tev2-docs.py
 
@@ -57,8 +52,7 @@ jobs:
           mrg-import -c tev2-config.yaml
           mrgt       -c tev2-config.yaml
           hrgt -f    -c tev2-config.yaml
-          python ../../scripts/sort-glossary-table.py terminologie/_index.md
-          python ../../scripts/mkdocs-glossary-index.py terminologie
+          python ../../scripts/sort-glossary-table.py glossary.md
           trrt -f    -c tev2-config.yaml
 
       - name: Verify TermRefs resolved

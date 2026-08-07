@@ -2,8 +2,7 @@
   "name": "vsa-tooling",
   "private": true,
   "scripts": {
-    "tev2:docs": "scripts\\docs-build-tev2.cmd",
-    "tev2:docs:prepare": "scripts\\prepare-docs-glossary.cmd"
+    "tev2:docs": "scripts\\docs-build-tev2.cmd"
   },
   "devDependencies": {
     "@tno-terminology-design/hrgt": "1.2.0",

@@ -5,6 +5,10 @@
          <lastmod>2026-08-07</lastmod>
     </url>
     <url>
+         <loc>https://orthodox-groningen.github.io/VSA-tooling/glossary/</loc>
+         <lastmod>2026-08-07</lastmod>
+    </url>
+    <url>
          <loc>https://orthodox-groningen.github.io/VSA-tooling/getting-started/</loc>
          <lastmod>2026-08-07</lastmod>
     </url>
@@ -265,10 +269,6 @@
          <lastmod>2026-08-07</lastmod>
     </url>
     <url>
-         <loc>https://orthodox-groningen.github.io/VSA-tooling/terminologie/</loc>
-         <lastmod>2026-08-07</lastmod>
-    </url>
-    <url>
          <loc>https://orthodox-groningen.github.io/VSA-tooling/terminologie/ast/</loc>
          <lastmod>2026-08-07</lastmod>
     </url>
@@ -346,6 +346,10 @@
     </url>
     <url>
          <loc>https://orthodox-groningen.github.io/VSA-tooling/terminologie/validator/</loc>
+         <lastmod>2026-08-07</lastmod>
+    </url>
+    <url>
+         <loc>https://orthodox-groningen.github.io/VSA-tooling/terminologie/vsa-blokken/</loc>
          <lastmod>2026-08-07</lastmod>
     </url>
     <url>

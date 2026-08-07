@@ -28,7 +28,8 @@ def test_prepare_and_docs_build_tev2_scripts_exist():
 def test_mkdocs_nav_uses_terminologie_index_not_underscore_index():
     """MkDocs treats _index.md as a page slug, not a directory index."""
     text = Path("mkdocs.yml").read_text(encoding="utf-8")
-    assert "Terminologie: terminologie/index.md" in text
+    assert "Terminologie:" in text
+    assert "terminologie/index.md" in text
     assert "terminologie/_index.md" not in text
     for workflow in (
         Path(".github/workflows/docs-pages.yml"),

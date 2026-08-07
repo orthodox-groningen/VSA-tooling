@@ -61,7 +61,7 @@ def test_user_guide_explains_validate_purpose_and_checks():
             "scope is goed afgesloten",
             "scope is niet leeg",
             "geen whitespace binnen scope",
-            "hoogte- en lengteposities",
+            "posities passen bij elkaar",
         ),
     )
 

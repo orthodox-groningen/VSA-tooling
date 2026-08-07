@@ -1,17 +1,19 @@
-# Referentie
+# Overzicht
 
-Compacte naslag. Normatief: `../specification/`.
+Compacte naslag bij de VSA-tool. Normatieve regels staan in
+[Specificaties](../specification/README.md); stap-voor-stap uitleg in
+[Handleidingen](../manuals/index.md).
 
-| Document                                    | Inhoud                                      |
-| ------------------------------------------- | ------------------------------------------- |
-| [Voorbeelden](voorbeelden/index.md)         | Leesbare correcte/incorrecte inputs         |
-| [Fixtures-catalogus](fixtures-catalogus.md) | Paden naar `examples/` + verwachte uitkomst |
-| [`cli/index.md`](cli/index.md)              | CLI-overzicht; man-pagina's per subcommando |
-| [`grammar.md`](grammar.md)                  | EBNF-fragmenten                             |
-| [`tokens.md`](tokens.md)                    | Hoogte-markeringen, control tokens, scope   |
-| [`metadata.md`](metadata.md)                | Blokmetadata en `.vsa`-frontmatter          |
-| [`config.md`](config.md)                    | `vsa.toml`, defaults, severity              |
-| [`diagnostics.md`](diagnostics.md)          | Foutcodes, severity, exitcodes              |
-| [`outputs.md`](outputs.md)                  | SVG, Markdown, JSON, AST, MusicXML          |
-| [`include-vsa.md`](include-vsa.md)          | `@include-vsa`                              |
-| [`traceability.md`](traceability.md)        | Herkomst van deze referentie                |
+| Document                                         | Wat je er vindt                                      |
+| ------------------------------------------------ | ---------------------------------------------------- |
+| [Voorbeelden](voorbeelden/index.md)              | Leesbare correcte en incorrecte invoer.              |
+| [Fixtures-catalogus](fixtures-catalogus.md)      | Paden naar `examples/` en verwachte uitkomst.        |
+| [CLI-overzicht](cli/index.md)                    | CLI-overzicht; man-pagina’s per subcommando.         |
+| [Grammar](grammar.md)                            | EBNF-fragmenten.                                     |
+| [Tokens](tokens.md)                              | Hoogte-markeringen, control tokens, scope.           |
+| [Metadata](metadata.md)                          | Blokmetadata en `.vsa`-frontmatter.                  |
+| [Config](config.md)                              | `vsa.toml`, defaults, severity.                      |
+| [Diagnostics](diagnostics.md)                    | Foutcodes, severity, exitcodes.                      |
+| [Outputs](outputs.md)                            | SVG, Markdown, JSON, AST, MusicXML.                  |
+| [include-vsa](include-vsa.md)                    | `@include-vsa`.                                      |
+| [Traceability](traceability.md)                  | Herkomst van deze referentie.                        |

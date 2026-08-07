@@ -1,4 +1,4 @@
-# CLI-referentie — overzicht
+# Overzicht
 
 `vsa` is de commandoregel-tool van VSA-tooling. Ermee valideer je VSA-notatie,
 bekijk je de interne parserstructuur, en genereer je SVG, Hugo-Markdown en

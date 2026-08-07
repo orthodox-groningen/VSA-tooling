@@ -5,7 +5,7 @@ import pytest
 
 
 ROOT = Path(__file__).resolve().parents[1]
-VSA_TERMINOLOGY_INDEX = ROOT / "docs" / "terminologie" / "_index.md"
+VSA_GLOSSARY = ROOT / "docs" / "glossary.md"
 VSA_TERM = ROOT / "docs" / "terminologie" / "vsa.md"
 ZANGSTUK_TERM = ROOT / "docs" / "terminologie" / "zangstuk.md"
 CURSOR_RULE = ROOT / ".cursor" / "rules" / "orthodox-groningen-terminologie.mdc"
@@ -69,8 +69,8 @@ def test_bron_has_normative_glossary_with_usage_rules():
 
 
 def test_vsa_terminologie_is_local_tev2_glossary_not_bron_copy():
-    text = read(VSA_TERMINOLOGY_INDEX) + read(VSA_TERM)
-    assert "TEv2-documentatiescope" in text
+    text = read(VSA_GLOSSARY) + read(VSA_TERM)
+    assert '{% hrg="vsa-tooling" %}' in text
     assert "Vereenvoudigde Slavische Accentnotatie" in text
     assert "[VSA](@bron)" in text or "[vsa](@bron)" in text.lower()
     assert (ROOT / "docs" / "terminologie" / "bracket-directive.md").is_file()

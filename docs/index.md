@@ -12,7 +12,7 @@ SVG- en MusicXML-export, Markdown-build en hergebruik in andere repositories.
 | [Specificaties](specification/README.md)            | Normatieve VSA-taal- en toolcontracts.                                                                  |
 | [Referentie](reference/README.md)                   | Naslag: voorbeelden, CLI man-pagina’s, tokens, [diagnostics](@) en outputs.                             |
 | [Integratie](integratie/index.md)                   | `vsa-tool` importeren in andere repo’s en CI; TEv2 in tool-docs.                                        |
-| [Terminologie](terminologie/index.md)               | Tool-lokale begrippen; org-brede glossary staat in bron.                                                |
+| [Terminologie](glossary.md)                         | Gegenereerde glossary van tool-termen (+ geselecteerde bron-termen).                                    |
 | [Plannen](plans/README.md)                          | Ontwikkelplannen. Die zijn niet normatief; bij twijfel gelden specificatie en handleidingen.            |
 
 ## Waar hoort wat?

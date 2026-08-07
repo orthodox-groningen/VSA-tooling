@@ -21,7 +21,7 @@ hrgt:
   sorter: "{{noRefs glossaryTerm}}"
   force: true
   input:
-    - "terminologie/**/*.md"
+    - "glossary.md"
 
 trrt:
   scopedir: .

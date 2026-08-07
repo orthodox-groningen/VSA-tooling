@@ -45,15 +45,11 @@ if errorlevel 1 if not exist "%TRRT%" (
   exit /b 1
 )
 
-echo [1/6] Prepare terminologie index template
-call scripts\prepare-docs-glossary.cmd
-if errorlevel 1 exit /b 1
-
-echo [2/6] Prepare TEv2 docs staging tree
+echo [1/5] Prepare TEv2 docs staging tree
 python scripts\prepare-tev2-docs.py
 if errorlevel 1 exit /b 1
 
-echo [3/6] mrg-import
+echo [2/5] mrg-import
 if not exist "%MRG_IMPORT%" where mrg-import >nul 2>nul
 if errorlevel 1 if not exist "%MRG_IMPORT%" (
   echo ERROR: mrg-import was not found on PATH.
@@ -69,7 +65,7 @@ if errorlevel 1 (
 )
 popd
 
-echo [4/6] mrgt + hrgt
+echo [3/5] mrgt + hrgt
 pushd generated\docs
 call "%MRGT%" -c tev2-config.yaml
 if errorlevel 1 (
@@ -83,19 +79,13 @@ if errorlevel 1 (
   exit /b 1
 )
 
-python ..\..\scripts\sort-glossary-table.py terminologie\_index.md
+python ..\..\scripts\sort-glossary-table.py glossary.md
 if errorlevel 1 (
   popd
   exit /b 1
 )
 
-python ..\..\scripts\mkdocs-glossary-index.py terminologie
-if errorlevel 1 (
-  popd
-  exit /b 1
-)
-
-echo [5/6] trrt + TermRef check
+echo [4/5] trrt + TermRef check
 call "%TRRT%" -f -c tev2-config.yaml
 if errorlevel 1 (
   popd
@@ -111,7 +101,7 @@ copy /Y generated\docs\mrgs\mrg.vsa-tooling*.yaml docs\mrgs\ >nul
 python scripts\prepare-tev2-docs.py --normalize-mrg-scopes
 if errorlevel 1 exit /b 1
 
-echo [6/6] mkdocs build --strict
+echo [5/5] mkdocs build --strict
 python -m pip install -q -r requirements-docs.txt
 if errorlevel 1 exit /b 1
 

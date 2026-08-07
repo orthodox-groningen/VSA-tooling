@@ -79,12 +79,19 @@ def test_docs_pages_main_deploys_root_preview_subdir():
     assert "destination_dir=preview" in text
 
 
-def test_docs_pages_keep_files_bron_style_after_cutover():
-    """main behoudt preview (true); preview vervangt schoon (false)."""
+def test_pages_deploy_reusable_carries_forward_preview_on_root():
+    """Root-deploy wist gh-pages schoon en zet bestaande /preview/ terug."""
+    text = REUSABLE.read_text(encoding="utf-8")
+
+    assert "Carry forward preview/ from current gh-pages" in text
+    assert "Carried forward preview/" in text
+    # Root peaceiris: altijd keep_files false (na carry-forward).
+    assert "keep_files: false" in text
+
+
+def test_docs_pages_keep_files_false_with_preview_carry_forward():
+    """main en preview zetten keep_files=false; preview blijft via reusable carry-forward."""
     text = DOCS_PAGES.read_text(encoding="utf-8")
 
-    assert 'echo "keep_files=true"' in text
-    assert 'echo "keep_files=false"' in text
-    # Eén true (main) en één false (preview).
-    assert text.count('echo "keep_files=true"') == 1
-    assert text.count('echo "keep_files=false"') == 1
+    assert 'echo "keep_files=true"' not in text
+    assert text.count('echo "keep_files=false"') == 2

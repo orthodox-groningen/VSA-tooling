@@ -85,5 +85,6 @@ def test_docs_pages_cutover_targets():
     assert "docs-preview" not in text
     assert 'destination_dir=docs"' not in text
     assert "destination_dir=docs," not in text
-    assert 'echo "keep_files=true"' in text
-    assert 'echo "keep_files=false"' in text
+    # Root en preview: beide false; root behoudt /preview/ via carry-forward in reusable.
+    assert 'echo "keep_files=true"' not in text
+    assert text.count('echo "keep_files=false"') == 2

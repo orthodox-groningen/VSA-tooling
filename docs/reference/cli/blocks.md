@@ -1,7 +1,7 @@
-# `vsa blocks` — VSA-blokken in Markdown vinden
+# `vsa blocks` — [VSA-blokken](@) in Markdown vinden
 
-Vind VSA-blokken (`::: vsa-notatie … :::`) in een Markdownbestand en toon
-optioneel hun metadata, body en AST.
+Vind [VSA-blokken](@) in een Markdownbestand en toon optioneel hun metadata,
+body en AST.
 
 ## Synopsis
 
@@ -11,10 +11,9 @@ vsa blocks [-h] [--json] path
 
 ## Beschrijving
 
-`vsa blocks` leest één Markdownbestand en zoekt naar VSA-blokken: tekst die
-begint met `::: vsa-notatie` en eindigt met `:::` (beide aan het begin van
-een regel). Dit commando parset de gevonden blokken niet semantisch — het
-telt en (met `--json`) inspecteert ze.
+`vsa blocks` leest één Markdownbestand en zoekt naar [VSA-blokken](@). Dit
+commando parset de gevonden blokken niet semantisch — het telt en (met `--json`)
+inspecteert ze.
 
 Gebruik dit om te controleren of blokken herkend worden, of om metadata/body/AST
 te bekijken tijdens het debuggen. Voor normaal dagelijks gebruik heb je

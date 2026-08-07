@@ -282,6 +282,21 @@ entries:
     termType: "concept"
     termid: "concept:exporttype"
     vsntag: "bron"
+  - slug: "geldige-vsa-notatie"
+    term: "geldige-vsa-notatie"
+    termType: "concept"
+    glossaryTerm: "geldige VSA-notatie"
+    glossaryText: "[VSA-notatie](@bron) die de [validator](@) (`vsa validate`) accepteert: syntactisch en semantisch in orde volgens de actieve [severity](@)-regels (syntaxfouten zijn altijd hard)."
+    formPhrases:
+      - "geldige-vsa-notatie"
+      - "geldige-vsa"
+    scopetag: "vsa-tooling"
+    locator: "geldige-vsa-notatie.md"
+    navurl: "https://orthodox-groningen.github.io/VSA-tooling/terminologie/geldige-vsa-notatie"
+    headingids:
+      - "geldige-vsa-notatie"
+    termid: "concept:geldige-vsa-notatie"
+    vsntag: "vsa-tooling"
   - git_date: 2026-07-11T00:00:00.000Z
     term: "geregistreerde-representatie"
     formPhrases:
@@ -831,6 +846,21 @@ entries:
     headingids:
       - "vsa-scope"
     termid: "concept:vsa-scope"
+    vsntag: "vsa-tooling"
+  - slug: "vsa-tekst"
+    term: "vsa-tekst"
+    termType: "concept"
+    glossaryTerm: "VSA-tekst"
+    glossaryText: "tekst waarin naast gewone tekst ook constructies in [VSA-notatie](@bron) voorkomen; een VSA-tekst kan door de [vsa-toolset](@) worden geparsed, gevalideerd en omgezet (bijvoorbeeld naar SVG)."
+    formPhrases:
+      - "vsa-tekst"
+      - "vsa-teksten"
+    scopetag: "vsa-tooling"
+    locator: "vsa-tekst.md"
+    navurl: "https://orthodox-groningen.github.io/VSA-tooling/terminologie/vsa-tekst"
+    headingids:
+      - "vsa-tekst"
+    termid: "concept:vsa-tekst"
     vsntag: "vsa-tooling"
   - git_date: 2026-07-08T00:00:00.000Z
     slug: "vsa-toml"

@@ -21,4 +21,7 @@ Een VSA-blok is het Markdown-omhulsel waarin [VSA-notatie](@bron) in documentati
 :::
 ```
 
-De openings- en sluitingsregels staan aan het begin van de regel. De inhoud ertussen is de VSA-tekst die de [parser](@) en [validator](@) verwerken. Commando’s zoals `vsa blocks`, `vsa validate` en `vsa process` werken op zulke blokken in `.md`-bestanden (naast losse `.vsa`-bestanden).
+De openings- en sluitingsregels staan aan het begin van de regel. De inhoud
+ertussen is [VSA-tekst](@) die de [parser](@) en [validator](@) verwerken.
+Commando’s zoals `vsa blocks`, `vsa validate` en `vsa process` werken op zulke
+blokken in `.md`-bestanden (naast losse `.vsa`-bestanden).

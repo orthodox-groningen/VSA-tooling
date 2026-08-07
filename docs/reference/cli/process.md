@@ -1,6 +1,6 @@
 # `vsa process` — SVG's genereren uit Markdown
 
-Genereer SVG-bestanden uit VSA-blokken in één of meer Markdownbestanden,
+Genereer SVG-bestanden uit [VSA-blokken](@) in één of meer Markdownbestanden,
 zonder de Markdown zelf te herschrijven.
 
 ## Synopsis
@@ -11,17 +11,16 @@ vsa process [-h] [--config CONFIG] [--no-validate] [--max-line-width MAX_LINE_WI
 
 ## Beschrijving
 
-`vsa process` zoekt VSA-blokken (`::: vsa-notatie … :::`) in `input` — één
-Markdownbestand of, recursief, een map met Markdownbestanden — en rendert
-elk blok naar een los SVG-bestand in `output_dir`. Er wordt **geen**
-Markdown gegenereerd of aangepast; gebruik daarvoor
-[`vsa build-markdown`](build-markdown.md).
+`vsa process` zoekt [VSA-blokken](@) in `input` — één Markdownbestand of,
+recursief, een map met Markdownbestanden — en rendert elk blok naar een los
+SVG-bestand in `output_dir`. Er wordt **geen** Markdown gegenereerd of
+aangepast; gebruik daarvoor [`vsa build-markdown`](build-markdown.md).
 
-Standaard valideert `vsa process` eerst alle gevonden VSA-blokken (dezelfde
-controles als [`vsa validate`](validate.md)) voordat het rendert. Bij een
-validatiefout stopt het commando en worden er geen SVG's geschreven. Gebruik
-`--no-validate` om die stap tijdelijk over te slaan tijdens debuggen — voor
-normaal gebruik laat je validatie aan staan.
+Standaard controleert `vsa process` eerst op [geldige VSA-notatie](@) in alle
+gevonden blokken (dezelfde controles als [`vsa validate`](validate.md)) voordat
+het rendert. Bij een validatiefout stopt het commando en worden er geen SVG's
+geschreven. Gebruik `--no-validate` om die stap tijdelijk over te slaan tijdens
+debuggen — voor normaal gebruik laat je validatie aan staan.
 
 ## Argumenten en opties
 

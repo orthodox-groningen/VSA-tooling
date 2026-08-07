@@ -1,7 +1,7 @@
 # `vsa validate` — VSA-invoer controleren
 
-Controleer of `.vsa`- of Markdown-invoer geldig is voor verdere verwerking
-(SVG, Hugo-Markdown, MusicXML).
+Controleer of `.vsa`- of Markdown-invoer [geldige VSA-notatie](@) bevat voor
+verdere verwerking (SVG, Hugo-Markdown, MusicXML).
 
 ## Synopsis
 
@@ -12,7 +12,7 @@ vsa validate [-h] [--config CONFIG] [--summary] path
 ## Beschrijving
 
 `vsa validate` voert drie controlefasen achtereenvolgens uit op elk gevonden
-VSA-blok of VSA-bestand:
+[VSA-blok](@) of [vsa-bestand](@bron):
 
 | Fase       | Controle                                                             |
 | ---------- | -------------------------------------------------------------------- |
@@ -25,7 +25,7 @@ VSA-blok of VSA-bestand:
 | Input          | Voorbeeld                                     | Gedrag                                             |
 | -------------- | --------------------------------------------- | -------------------------------------------------- |
 | `.vsa`-bestand | `examples\minimal\001_plain_text.vsa`         | Controleert één VSA-bestand.                       |
-| `.md`-bestand  | `pagina.md`                                   | Controleert alle VSA-blokken in dat bestand.       |
+| `.md`-bestand  | `pagina.md`                                   | Controleert alle [VSA-blokken](@) in dat bestand.  |
 | Map            | `examples\consumer-minimal\content-source`    | Zoekt recursief naar `.vsa`, `.md` en `.markdown`. |
 
 Als er meerdere fouten zijn, toont de tool ze zoveel mogelijk allemaal in één

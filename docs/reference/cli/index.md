@@ -1,8 +1,8 @@
 # Overzicht
 
-`vsa` is de commandoregel-tool van VSA-tooling. Ermee valideer je VSA-notatie,
-bekijk je de interne parserstructuur, en genereer je SVG, Hugo-Markdown en
-MusicXML uit `.vsa`- en Markdown-bronbestanden.
+`vsa` is de commandoregel-tool van de [vsa-toolset](@). Ermee controleer je
+[geldige VSA-notatie](@), bekijk je de interne [parser](@)-structuur, en
+genereer je SVG, Hugo-Markdown en MusicXML uit `.vsa`- en Markdown-bronbestanden.
 
 Deze pagina geeft het overzicht. Elk subcommando heeft een eigen man-pagina
 met de volledige argumentenlijst, voorbeelden en foutgevallen.
@@ -55,16 +55,16 @@ echo %ERRORLEVEL%
 
 ## Subcommando's
 
-| Subcommando                                      | Doel                                                                                  |
-| ------------------------------------------------ | ------------------------------------------------------------------------------------- |
-| [`validate`](validate.md)                        | Controleer of VSA-invoer (`.vsa`, `.md`, of een map) geldig is.                       |
-| [`parse`](parse.md)                              | Toon parseroutput of de interne AST van één VSA-bestand.                              |
-| [`blocks`](blocks.md)                            | Vind en inspecteer VSA-blokken in een Markdownbestand.                                |
-| [`svg`](svg.md)                                  | Render één VSA-bestand naar één SVG-bestand.                                          |
-| [`process`](process.md)                          | Genereer SVG-bestanden uit VSA-blokken in Markdown (zonder Markdown te herschrijven). |
-| [`build-markdown`](build-markdown.md)            | Genereer Hugo-geschikte Markdown én SVG-assets uit content-source.                    |
-| [`resolve-catalogus`](resolve-catalogus.md)      | Los `:::include … zoek="…"` op naar catalogus-paden (`bron:…` / `lokaal:…`).          |
-| [`musicxml`](musicxml.md)                        | Exporteer VSA naar MusicXML (`.mxl` of `.musicxml`).                                  |
+| Subcommando                                      | Doel                                                                                       |
+| ------------------------------------------------ | ------------------------------------------------------------------------------------------ |
+| [`validate`](validate.md)                        | Controleer op [geldige VSA-notatie](@) (`.vsa`, `.md`, of een map).                        |
+| [`parse`](parse.md)                              | Toon parseroutput of de interne [ast](@) van één [vsa-bestand](@bron).                     |
+| [`blocks`](blocks.md)                            | Vind en inspecteer [VSA-blokken](@) in een Markdownbestand.                                |
+| [`svg`](svg.md)                                  | Render één [vsa-bestand](@bron) naar één SVG-bestand.                                      |
+| [`process`](process.md)                          | Genereer SVG-bestanden uit [VSA-blokken](@) in Markdown (zonder Markdown te herschrijven). |
+| [`build-markdown`](build-markdown.md)            | Genereer Hugo-geschikte Markdown én SVG-assets uit content-source.                         |
+| [`resolve-catalogus`](resolve-catalogus.md)      | Los `:::include … zoek="…"` op naar catalogus-paden (`bron:…` / `lokaal:…`).               |
+| [`musicxml`](musicxml.md)                        | Exporteer VSA naar MusicXML (`.mxl` of `.musicxml`).                                       |
 
 Elke pagina hierboven beschrijft de volledige syntax, alle argumenten en
 opties (inclusief defaults), voorbeeldoutput, en typische foutgevallen. Deze

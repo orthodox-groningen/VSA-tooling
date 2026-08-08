@@ -75,7 +75,7 @@ SVG geschreven naar: tmp\demo-smal.svg
     `examples\minimal\050_svg_demo.vsa` faalt op `vsa validate` (semantische
     hoogte-mismatch), maar rendert wel gewoon met `vsa svg` — dit commando
     voert geen semantische controle uit. Draai `vsa validate` eerst als je
-    zeker wilt zijn dat de notatie ook inhoudelijk klopt.
+    zeker wilt zijn van [geldige VSA-notatie](@).
 
 ## Voorbeelden — falen
 

@@ -142,15 +142,15 @@ Alleen de substring `@include-vsa …` wordt vervangen; `refrein: ` blijft staan
 
 Expand: lees doel-`.vsa`, strip frontmatter, splice body **in-memory** (brondocument ongewijzigd).
 
-| Uitkomst catalogus                 | `@include-vsa` / `vsa validate`       |
-| ---------------------------------- | ------------------------------------- |
-| Geen match                         | **Fout**                              |
-| Meerdere matches                   | **Fout** (`AmbiguousError`)           |
-| Eén match + `ook_gevonden_in_bron` | **Waarschuwing** (build mag doorgaan) |
+| Uitkomst catalogus                 | `@include-vsa` / [`vsa validate`](../reference/cli/validate.md) |
+| ---------------------------------- | --------------------------------------------------------------- |
+| Geen match                         | **Fout**                                                        |
+| Meerdere matches                   | **Fout** (`AmbiguousError`)                                     |
+| Eén match + `ook_gevonden_in_bron` | **Waarschuwing** (build mag doorgaan)                           |
 
 Bij ambiguïteit:
 
-1. `catalogus zoek --lijst` met dezelfde context.
+1. [`catalogus zoek --lijst`](https://orthodox-groningen.github.io/bron/reference/catalogus-cli/#catalogus-zoek) met dezelfde context.
 2. Verfijn `zoek=` of `default.*` in ouder-`.vsa`.
 3. Of schakel over naar **`@include-vsa lokaal=…`** / **`id=…`** na review.
 
@@ -169,12 +169,12 @@ Zie [catalogus-zoek-api — twee contextlagen](https://github.com/orthodox-groni
 
 ## Implementatiestatus
 
-| Onderdeel                                                                | Status              |
-| ------------------------------------------------------------------------ | ------------------- |
+| Onderdeel                                                                                                                      | Status              |
+| ------------------------------------------------------------------------------------------------------------------------------ | ------------------- |
 | `expand_include_vsa` in [`include_vsa.py`](https://github.com/orthodox-groningen/VSA-tooling/blob/main/src/vsa/include_vsa.py) | **Geïmplementeerd** |
-| `@include-vsa id=` / `lokaal=`                                           | **Geïmplementeerd** |
-| `@include-vsa zoek=`                                                     | **Geïmplementeerd** |
-| Integratie validate / svg / musicxml / build-markdown                    | **Geïmplementeerd** |
+| `@include-vsa id=` / `lokaal=`                                                                                                 | **Geïmplementeerd** |
+| `@include-vsa zoek=`                                                                                                           | **Geïmplementeerd** |
+| Integratie validate / svg / musicxml / build-markdown                                                                          | **Geïmplementeerd** |
 
 ---
 
@@ -231,7 +231,7 @@ Basis: Markdown met GFM-extensies (tabellen, doorhalen), en uitgebreid met de vo
     [VSA-inhoud]
     :::
 
-Wordt door `vsa build-markdown` omgezet naar SVG en ingevoegd als shortcode of `<img>`.
+Wordt door [`vsa build-markdown`](../reference/cli/build-markdown.md) omgezet naar SVG en ingevoegd als shortcode of `<img>`.
 
 ### 2. Paginabreuk
 
@@ -258,7 +258,7 @@ een logische referentie via **catalogus** (fase 3):
     :::include svg bron:zangstuk-id/source-id:::
     :::include svg zoek="Troparion" [parameters]:::
 
-**Fase 4 — catalogus-zoek:** `zoek="…"` in sjablonen/sessies; **`vsa resolve-catalogus`**
+**Fase 4 — catalogus-zoek:** `zoek="…"` in sjablonen/sessies; [`vsa resolve-catalogus`](../reference/cli/resolve-catalogus.md)
 vervangt vóór build door `bron:…` / `lokaal:…`. Open `zoek=` in build → **fout**.
 Zie [catalogus-samenstelling-zangstuk](https://orthodox-groningen.github.io/bron/specs/catalogus-samenstelling-zangstuk/)
 en [parochie-lokaal-vsa.md](../guides/parochie-lokaal-vsa.md).
@@ -380,7 +380,7 @@ Verwerking: `boek.md` → `hoofdstuk-1.md` → `melodie.vsa` + `noot.md`
 
 ## Uitvoer
 
-De verwerking loopt via de bestaande `vsa build-markdown`-stap, uitgebreid met:
+De verwerking loopt via de bestaande [`vsa build-markdown`](../reference/cli/build-markdown.md)-stap, uitgebreid met:
 
 1. **Include-resolutie** — recursief, vóór alle andere verwerking
 2. **Paginabreuk-omzetting** — `:::pagebreak:::` → HTML-markering
@@ -449,19 +449,19 @@ Authoring-syntax voor **export** (niet conversie) is contractueel vastgelegd in 
   [coria](https://orthodox-groningen.github.io/bron/reference/exporttype-coria/),
   [mxl](https://orthodox-groningen.github.io/bron/reference/exporttype-mxl/)
 
-Conversie (`vsa svg`, `vsa musicxml`):
+Conversie ([`vsa svg`](../reference/cli/svg.md), [`vsa musicxml`](../reference/cli/musicxml.md)):
 [Conversiemechanismen](https://orthodox-groningen.github.io/bron/reference/conversiemechanismen/).
 
 ### Implementatiestatus (VSA-tooling)
 
-| Syntax                                        | Status                                                        |
-| --------------------------------------------- | ------------------------------------------------------------- |
-| `:::include "melodie.vsa"`                    | Geïmplementeerd (SVG via VSA-blok)                            |
-| `:::coria "melodie.vsa"`                      | Geïmplementeerd                                               |
-| `:::include svg\|coria\|mxl "…"`              | Geïmplementeerd; zie demo `export-demo.md`                    |
-| `:::include svg id:…` / `lokaal:…` / `bron:…` | Geïmplementeerd (fase 3); zie demo `antifonen-hemelum.md`     |
-| `:::include <type> zoek="…"`                  | Geïmplementeerd (fase 4); resolve via `vsa resolve-catalogus` |
-| `coria` / `mxl` op `bron:` catalogus-pad      | Beperkt — `.vsa` buiten content-root                          |
+| Syntax                                        | Status                                                                                                 |
+| --------------------------------------------- | ------------------------------------------------------------------------------------------------------ |
+| `:::include "melodie.vsa"`                    | Geïmplementeerd (SVG via VSA-blok)                                                                     |
+| `:::coria "melodie.vsa"`                      | Geïmplementeerd                                                                                        |
+| `:::include svg\|coria\|mxl "…"`              | Geïmplementeerd; zie demo `export-demo.md`                                                             |
+| `:::include svg id:…` / `lokaal:…` / `bron:…` | Geïmplementeerd (fase 3); zie demo `antifonen-hemelum.md`                                              |
+| `:::include <type> zoek="…"`                  | Geïmplementeerd (fase 4); resolve via [`vsa resolve-catalogus`](../reference/cli/resolve-catalogus.md) |
+| `coria` / `mxl` op `bron:` catalogus-pad      | Beperkt — `.vsa` buiten content-root                                                                   |
 
 Parameters (`alt`, `scale`, `label`, `mode`) — volledige beschrijving per exporttype
 in bron-docs; korte samenvatting blijft in sectie 3 en 3b hierboven.

@@ -1,7 +1,8 @@
 # Validatie
 
-Gebruik de [validator](@) om te controleren of [VSA-notatie](@bron)-invoer
-bruikbaar is voor verdere verwerking.
+Gebruik de [validator](@)
+([`vsa validate`](../reference/cli/validate.md)) om te controleren of
+[VSA-notatie](@bron)-invoer bruikbaar is voor verdere verwerking.
 
 ## Bestand valideren
 
@@ -35,13 +36,13 @@ Voorbeeld:
 examples\demo.md:blok-1:1:1: VSA-SYNTAX-EMPTY-SCOPE: Scope zonder zangelement.
 ```
 
-| Deel                     | Betekenis                         |
-| ------------------------ | --------------------------------- |
-| `examples\demo.md`       | bestand waarin de fout zit        |
-| `blok-1`                 | eerste VSA-blok in dat bestand    |
-| `1:1`                    | regel en kolom binnen dat blok    |
-| `VSA-SYNTAX-EMPTY-SCOPE` | foutcode ([diagnostic](@))        |
-| tekst erna               | uitleg                            |
+| Deel                     | Betekenis                           |
+| ------------------------ | ----------------------------------- |
+| `examples\demo.md`       | bestand waarin de fout zit          |
+| `blok-1`                 | eerste [VSA-blok](@) in dat bestand |
+| `1:1`                    | regel en kolom binnen dat blok      |
+| `VSA-SYNTAX-EMPTY-SCOPE` | foutcode ([diagnostic](@))          |
+| tekst erna               | uitleg                              |
 
 ## Severity-overrides
 

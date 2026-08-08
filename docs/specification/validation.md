@@ -96,14 +96,14 @@ VSA-SEMANTIC-MODIFIER-COUNT-MISMATCH = "warning"
 
 ## Welke commando's gebruiken dit?
 
-| Commando             | Werkt met severity-config?        |
-| -------------------- | --------------------------------- |
-| `vsa validate`       | ja                                |
-| `vsa process`        | ja                                |
-| `vsa build-markdown` | ja                                |
-| `vsa svg`            | nee, parseert/render rechtstreeks |
-| `vsa blocks`         | nee, inspecteert blokken          |
-| `vsa parse`          | nee, toont parseroutput           |
+| Commando                                                       | Werkt met severity-config?        |
+| -------------------------------------------------------------- | --------------------------------- |
+| [`vsa validate`](../reference/cli/validate.md)                 | ja                                |
+| [`vsa process`](../reference/cli/process.md)                   | ja                                |
+| [`vsa build-markdown`](../reference/cli/build-markdown.md)     | ja                                |
+| [`vsa svg`](../reference/cli/svg.md)                           | nee, parseert/render rechtstreeks |
+| [`vsa blocks`](../reference/cli/blocks.md)                     | nee, inspecteert blokken          |
+| [`vsa parse`](../reference/cli/parse.md)                       | nee, toont parseroutput           |
 
 ## Validate
 

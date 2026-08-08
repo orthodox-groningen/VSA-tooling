@@ -53,10 +53,10 @@ Handleiding Rene: [sjabloon schrijven](https://github.com/orthodox-groningen/bro
    nog **geen** pad.
 2. Frontmatter **`default.*`** levert context (`gelegenheid` in de **sessie**,
    `gelegenheidstype` in het sjabloon).
-3. **`vsa resolve-catalogus`** roept **`catalogus zoek`** aan per unieke
+3. [`vsa resolve-catalogus`](../reference/cli/resolve-catalogus.md) roept [`catalogus zoek`](https://orthodox-groningen.github.io/bron/reference/catalogus-cli/#catalogus-zoek) aan per unieke
    `zoek=`-waarde (+ exporttypes blijven aparte regels).
 4. Uitvoer: dezelfde regels met **`bron:…`** / **`lokaal:…`** i.p.v. `zoek=`.
-5. Pas daarna **`vsa build-markdown`** / Hugo.
+5. Pas daarna [`vsa build-markdown`](../reference/cli/build-markdown.md) / Hugo.
 
 **Harde regel:** open `zoek=` in een bestand dat door build-markdown gaat → **fout**.
 
@@ -89,29 +89,30 @@ Geen `default.uitvoeringsvorm` — feest-stukken uit bron (`liturgikon`); lokaal
 
 #### Exporttypes
 
-| Exporttype | Status | Opmerking |
-| ---------- | ------ | --------- |
-| `svg` | **Geïmplementeerd** | Notatie inline |
-| `coria` | **Geïmplementeerd** | Oefenlink |
-| `mxl` | **Geïmplementeerd** | Download MusicXML (vanuit VSA-pad) |
-| `mp3-player` | **Gepland** | Audio-inline — contract nog in bron |
+| Exporttype   | Status              | Opmerking                           |
+| ------------ | ------------------- | ----------------------------------- |
+| `svg`        | **Geïmplementeerd** | Notatie inline                      |
+| `coria`      | **Geïmplementeerd** | Oefenlink                           |
+| `mxl`        | **Geïmplementeerd** | Download MusicXML (vanuit VSA-pad)  |
+| `mp3-player` | **Gepland**         | Audio-inline — contract nog in bron |
 
 Meerdere regels met **dezelfde** `zoek=` → één catalogus-zoekactie, meerdere includes.
 
 #### Implementatie
 
 - Parser: `markdown_include.py` — weigert open `zoek=` in build.
-- Resolve: **`vsa resolve-catalogus`** (CLI).
-- Afhankelijkheid: **`catalogus`** uit bron-repo (`catalogus zoek`).
+- Resolve: [`vsa resolve-catalogus`](../reference/cli/resolve-catalogus.md) (CLI).
+- Afhankelijkheid: **`catalogus`** uit bron-repo ([`catalogus zoek`](https://orthodox-groningen.github.io/bron/reference/catalogus-cli/#catalogus-zoek)).
 
 ---
 
-## `vsa resolve-catalogus`
+## [`vsa resolve-catalogus`](../reference/cli/resolve-catalogus.md)
 
 Status: **geïmplementeerd**.
 
 Doel: markdown met **`zoek=`** omzetten naar markdown met **catalogus-pad** —
-tussenstap vóór `vsa validate` / `vsa build-markdown` op sjablonen en sessies
+tussenstap vóór [`vsa validate`](../reference/cli/validate.md) /
+[`vsa build-markdown`](../reference/cli/build-markdown.md) op sjablonen en sessies
 (tenzij `build-markdown` auto-resolve voor publishbare bestanden).
 
 ### Syntax
@@ -123,33 +124,33 @@ vsa resolve-catalogus pad\naar\samenstelling.md ^
   --bron-root ..\bron
 ```
 
-| Flag | Betekenis |
-| ---- | --------- |
-| `<pad.md>` | Invoer (sessie of sjabloon met `zoek=`) |
-| `--content-root` | Parochie content-source (met `lokaal/`) |
-| `--bron-root` | Bron-repository (`zangstukken/`) |
-| `--output` | Optioneel ander uitvoerbestand; default: overschrijven invoer of `.resolved.md` |
-| `--dry-run` | Alleen rapport, geen schrijven |
-| `--interactive` | Review bij ambiguïteit (**gepland**; nu: `AmbiguousError` + `catalogus zoek --lijst`) |
+| Flag             | Betekenis                                                                                                                                                                  |
+| ---------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `<pad.md>`       | Invoer (sessie of sjabloon met `zoek=`)                                                                                                                                    |
+| `--content-root` | Parochie content-source (met `lokaal/`)                                                                                                                                    |
+| `--bron-root`    | Bron-repository (`zangstukken/`)                                                                                                                                           |
+| `--output`       | Optioneel ander uitvoerbestand; default: overschrijven invoer of `.resolved.md`                                                                                            |
+| `--dry-run`      | Alleen rapport, geen schrijven                                                                                                                                             |
+| `--interactive`  | Review bij ambiguïteit (**gepland**; nu: `AmbiguousError` + [`catalogus zoek --lijst`](https://orthodox-groningen.github.io/bron/reference/catalogus-cli/#catalogus-zoek)) |
 
 ### Wat het commando doet
 
 1. Yaml-frontmatter parsen → **`default.*`**.
 2. Alle `:::include … zoek="…"` regels vinden (niet in code fences).
-3. Per `zoek=` + context: **`catalogus zoek`** (bron-package).
+3. Per `zoek=` + context: [`catalogus zoek`](https://orthodox-groningen.github.io/bron/reference/catalogus-cli/#catalogus-zoek) (bron-package).
 4. Bij unieke match: vervang `zoek="…"` door `bron:…` / `lokaal:…`.
-5. Bij ambiguïteit: **`AmbiguousError`** (strict); review via `catalogus zoek --lijst`.
+5. Bij ambiguïteit: **`AmbiguousError`** (strict); review via [`catalogus zoek --lijst`](https://orthodox-groningen.github.io/bron/reference/catalogus-cli/#catalogus-zoek).
 6. Schrijf opgelost bestand.
 
 ### Relatie tot `catalogus` CLI
 
-| Tool | Rol |
-| ---- | --- |
-| `catalogus zoek "Kondakion" --default-gelegenheid …` | Lage API — één zoekactie |
-| `catalogus index validate` | Index controleren vóór bulk-resolve |
-| **`vsa resolve-catalogus`** | Markdown-processor voor Rene — roept `catalogus zoek` aan |
+| Tool                                                                                                                                        | Rol                                                                                                                                            |
+| ------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
+| [`catalogus zoek`](https://orthodox-groningen.github.io/bron/reference/catalogus-cli/#catalogus-zoek) `"Kondakion" --default-gelegenheid …` | Lage API — één zoekactie                                                                                                                       |
+| [`catalogus index validate`](https://orthodox-groningen.github.io/bron/reference/catalogus-cli/#catalogus-index-validate)                   | Index controleren vóór bulk-resolve                                                                                                            |
+| [`vsa resolve-catalogus`](../reference/cli/resolve-catalogus.md)                                                                            | Markdown-processor voor Rene — roept [`catalogus zoek`](https://orthodox-groningen.github.io/bron/reference/catalogus-cli/#catalogus-zoek) aan |
 
-Zie [bron — catalogus CLI](https://github.com/orthodox-groningen/bron/blob/main/docs/reference/catalogus-cli.md).
+Zie [bron — catalogus CLI](https://orthodox-groningen.github.io/bron/reference/catalogus-cli/).
 
 ### Pipeline
 
@@ -184,13 +185,14 @@ Inline (kort fragment):
 
 ## Build-pipeline (VSA-tooling)
 
-| Stap | Parochie-lokaal |
-| ---- | ---------------- |
-| Sync bron | Niet nodig — bestanden in git |
-| **`vsa resolve-catalogus`** | **Geïmplementeerd** — verplicht als `zoek=` aanwezig (of auto in build) |
-| `vsa validate` | Deelt `content-source` recursief |
-| `build-markdown` | Includes op pad / catalogus-pad — **geen** open `zoek=` |
-| Hugo | Ongewijzigd; **`samenstellingen/`** en **`sjablonen/`** worden overgeslagen |
+| Stap                                                             | Parochie-lokaal                                                                         |
+| ---------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
+| Sync bron                                                        | Niet nodig — bestanden in git                                                           |
+| [`vsa resolve-catalogus`](../reference/cli/resolve-catalogus.md) | **Geïmplementeerd** — verplicht als `zoek=` aanwezig (of auto in build)                 |
+| [`vsa validate`](../reference/cli/validate.md)                   | Deelt `content-source` recursief                                                        |
+| [`vsa build-markdown`](../reference/cli/build-markdown.md)       | Includes op pad / catalogus-pad — **geen** open `zoek=`                                 |
+| Hugo                                                             | Ongewijzigd; **`samenstellingen/`** en **`sjablonen/`** worden overgeslagen             |
+
 
 Lokaal controleren (tooling):
 

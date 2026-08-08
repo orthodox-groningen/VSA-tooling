@@ -115,5 +115,5 @@ Fix: controleer het pad achter `@include-vsa` en of het doelbestand bestaat.
 
 - [`vsa validate`](validate.md) — volledige controle inclusief semantiek.
 - [`vsa blocks`](blocks.md) — AST per VSA-blok in een Markdownbestand (`--json`).
-- Handleiding: [gebruikershandleiding §8](../../guides/user-guide.md)
+- Handleiding: [Gebruikershandleiding](../../guides/user-guide.md) (tour), [CLI-taken](../../guides/cli-taken.md)
 - Outputreferentie (AST-vorm): [outputs.md](../outputs.md)

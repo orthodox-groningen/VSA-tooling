@@ -84,35 +84,35 @@ markdown_extensions:
 nav:
   - Home: index.md
   - Starten:
-    - Overzicht: getting-started/README.md
+    - Lokaal ontwikkelen: getting-started/README.md
   - Handleidingen:
     - Overzicht: manuals/index.md
-    - manuals/consumer-site.md
-    - guides/user-guide.md
-    - guides/cli-taken.md
-    - guides/validation.md
-    - guides/svg-export.md
-    - guides/musicxml-export.md
-    - guides/rendering-fonts.md
-    - guides/parochie-lokaal-vsa.md
-    - guides/testing-and-regression.md
-    - guides/liturgikon-notatie.md
-    - guides/hugo-navigation-placeholders.md
+    - Consumer-site — waar hoort wat: manuals/consumer-site.md
+    - Gebruikershandleiding: guides/user-guide.md
+    - CLI-taken: guides/cli-taken.md
+    - Validatie: guides/validation.md
+    - SVG exporteren: guides/svg-export.md
+    - MusicXML-export: guides/musicxml-export.md
+    - Rendering en fonts: guides/rendering-fonts.md
+    - Parochie-lokaal VSA: guides/parochie-lokaal-vsa.md
+    - Testen en regressie: guides/testing-and-regression.md
+    - Liturgikon-notatie: guides/liturgikon-notatie.md
+    - Navigatie-placeholders: guides/hugo-navigation-placeholders.md
   - Specificaties:
     - Overzicht: specification/README.md
-    - specification/overview.md
-    - specification/syntax.md
-    - specification/semantics.md
-    - specification/validation.md
-    - specification/directives.md
-    - specification/rendering.md
-    - specification/cli.md
-    - specification/conformance.md
-    - specification/error-handling.md
-    - specification/examples.md
-    - specification/versioning.md
-    - specification/traceability.md
-    - specification/open-points.md
+    - Doel en scope: specification/overview.md
+    - Syntax: specification/syntax.md
+    - Semantiek: specification/semantics.md
+    - Validatie: specification/validation.md
+    - Directieven: specification/directives.md
+    - Rendering: specification/rendering.md
+    - CLI-contract: specification/cli.md
+    - Conformiteit: specification/conformance.md
+    - Foutafhandeling: specification/error-handling.md
+    - Voorbeelden: specification/examples.md
+    - Versionering: specification/versioning.md
+    - Traceerbaarheid: specification/traceability.md
+    - Open punten: specification/open-points.md
   - Referentie:
     - Overzicht: reference/README.md
     - Voorbeelden:
@@ -120,7 +120,7 @@ nav:
       - reference/voorbeelden/basis.md
       - reference/voorbeelden/multiline.md
       - reference/voorbeelden/fouten.md
-    - reference/fixtures-catalogus.md
+    - Fixtures-catalogus: reference/fixtures-catalogus.md
     - CLI:
       - Overzicht: reference/cli/index.md
       - reference/cli/validate.md
@@ -131,23 +131,24 @@ nav:
       - reference/cli/build-markdown.md
       - reference/cli/resolve-catalogus.md
       - reference/cli/musicxml.md
-    - reference/grammar.md
-    - reference/tokens.md
-    - reference/metadata.md
-    - reference/config.md
-    - reference/diagnostics.md
-    - reference/outputs.md
-    - reference/include-vsa.md
-    - reference/traceability.md
+    - Grammatica: reference/grammar.md
+    - Tokens: reference/tokens.md
+    - Metadata: reference/metadata.md
+    - Config: reference/config.md
+    - Diagnostiek: reference/diagnostics.md
+    - Outputs: reference/outputs.md
+    - Include-vsa: reference/include-vsa.md
+    - Traceerbaarheid: reference/traceability.md
   - Integratie:
     - Overzicht: integratie/index.md
-    - guides/reuse-vsa-tooling.md
-    - guides/tev2-docs.md
+    - Hergebruik vsa-tool: guides/reuse-vsa-tooling.md
+    - TEv2 in tool-docs: guides/tev2-docs.md
   - Terminologie:
     - Overzicht: glossary.md
   - Plannen:
     - Overzicht: plans/README.md
     - plans/gebruikseisen-dragers.md
+    - plans/docs-content-publiek-en-paginatypen.md
     - plans/vsa-polyphony-proposal.md
 
 extra_css:

@@ -1,19 +1,23 @@
-# Consumer-site (Hugo)
+# Consumer-site — waar hoort wat
 
-Een **consumer-site** is een Hugo-site die `vsa-tool` gebruikt om Markdown met
-VSA-blokken te valideren en naar SVG/MusicXML te renderen. Dat is de rol van
-[VSA-demo](https://github.com/orthodox-groningen/VSA-demo), niet van deze
-tooling-repo.
+!!! note "Voor wie / wanneer"
+    **Voor:** consumer-site builder die wil weten wat in welke repo hoort.
+    **Wanneer:** je hangt Hugo + `vsa-tool` aan elkaar.
+    **Niet:** een volledige Hugo-cursus — die hoort bij
+    [VSA-demo](https://github.com/orthodox-groningen/VSA-demo).
+
+**Antwoord in het kort:** tooling = package/CLI; presentatievoorbeeld =
+VSA-demo; [zangstukken](@bron)/org-specs = [bron-repository](@bron).
 
 ## Waar hoort wat
 
-| Repo                                                           | Rol                           |
-| -------------------------------------------------------------- | ----------------------------- |
-| **VSA-tooling** (deze docs)                                    | Package, CLI, specs, fixtures |
-| **[VSA-demo](https://github.com/orthodox-groningen/VSA-demo)** | Voorbeeld-Hugo-site + Pages   |
-| **[bron](https://github.com/orthodox-groningen/bron)**         | Zangstukken en org-specs      |
+| Repo                                                           | Rol                                          |
+| -------------------------------------------------------------- | -------------------------------------------- |
+| **[VSA-tooling](@bron)** (deze docs)                           | Package, CLI, specs, fixtures                |
+| **[VSA-demo](https://github.com/orthodox-groningen/VSA-demo)** | Voorbeeld-Hugo-site + Pages                  |
+| **[bron](https://github.com/orthodox-groningen/bron)**         | [Zangstukken](@bron) en org-specs            |
 
-## Typische keten
+## Minimale keten (tooling)
 
 ```text
 content-source/*.md  (+ .vsa)
@@ -22,12 +26,16 @@ content-source/*.md  (+ .vsa)
         ↓
   vsa build-markdown  →  content/ + static/vsa/
         ↓
-  hugo
-        ↓
-  public/  (GitHub Pages)
+  hugo  →  public/
 ```
 
-## Lokaal (VSA-demo)
+```cmd
+cd /d C:\Git\orthodox-groningen\VSA-tooling
+vsa validate examples\consumer-minimal\content-source
+vsa build-markdown examples\consumer-minimal\content-source generated\ci\content generated\ci\static\vsa
+```
+
+## Lokaal (voorbeeldconsumer)
 
 ```cmd
 cd /d C:\Git\orthodox-groningen\VSA-demo
@@ -35,15 +43,10 @@ scripts\bootstrap.cmd
 scripts\serve-hugo.cmd
 ```
 
-Documentatie en scripts: [VSA-demo README](https://github.com/orthodox-groningen/VSA-demo/blob/main/README.md).
+Documentatie: [VSA-demo README](https://github.com/orthodox-groningen/VSA-demo/blob/main/README.md).
 
-## Tooling-kant
+## Zie ook
 
 - Installatie en CI: [Integratie — reuse](../guides/reuse-vsa-tooling.md)
 - CLI: [CLI-taken](../guides/cli-taken.md), [CLI-referentie](../reference/cli/index.md)
-- Navigatie-placeholders (`<!-- VSA-NAV:… -->`): nog beschreven in
-  [hugo-navigation-placeholders.md](../guides/hugo-navigation-placeholders.md)
-  (toolgedrag; presentatievoorbeeld = VSA-demo)
-
-Oudere pagina’s over de voormalige presentatie-demo in deze repo wijzen nu
-hierheen of naar VSA-demo.
+- Navigatie-placeholders: [hugo-navigation-placeholders](../guides/hugo-navigation-placeholders.md)

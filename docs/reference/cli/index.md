@@ -2,7 +2,7 @@
 
 `vsa` is de commandoregel-tool van de [vsa-toolset](@). Ermee controleer je
 [geldige VSA-notatie](@), bekijk je de interne [parser](@)-structuur, en
-genereer je SVG, Hugo-Markdown en MusicXML uit `.vsa`- en Markdown-bronbestanden.
+genereer je SVG, Hugo-Markdown en MusicXML uit [vsa-bestanden](@bron) en Markdown.
 
 Deze pagina geeft het overzicht. Elk subcommando heeft een eigen man-pagina
 met de volledige argumentenlijst, voorbeelden en foutgevallen.
@@ -92,7 +92,7 @@ Bij problemen: eerst [`vsa validate`](validate.md), daarna `scripts\test.cmd`, e
 ## Verwante documentatie
 
 - Taakgerichte uitleg per doel: [CLI-taken](../../guides/cli-taken.md)
-- Gebruikershandleiding (uitgebreider, met uitleg): [gebruikershandleiding](../../guides/user-guide.md)
+- Gebruikershandleiding (tour + links): [gebruikershandleiding](../../guides/user-guide.md)
 - Functioneel contract (normatief, alle commando's): [specification/cli.md](../../specification/cli.md)
 - `vsa.toml`-instellingen en voorrangsregels: [config.md](../config.md)
 - Foutcodes en severity: [diagnostics.md](../diagnostics.md)

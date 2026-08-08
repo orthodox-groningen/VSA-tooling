@@ -3,11 +3,28 @@
 Welkom bij de documentatie van de **VSA-toolchain**: [parser](@), validatie,
 SVG- en MusicXML-export, Markdown-build en hergebruik in andere repositories.
 
+Deze site is voor **wie de tool gebruikt of documenteert** — niet voor het koor
+dat een dienst oefent. Daarvoor: de parochie-site
+([VSA-demo](https://github.com/orthodox-groningen/VSA-demo) als voorbeeld).
+
+## Wie ben je? (kies je route)
+
+| Ik wil …                                              | Voor wie                    | Start hier                                                                                 |
+| ----------------------------------------------------- | --------------------------- | ------------------------------------------------------------------------------------------ |
+| VSA schrijven / valideren / SVG maken                 | Notatie-auteur              | [Starten](getting-started/README.md) · [Validatie](guides/validation.md)                   |
+| Hugo/CI aan `vsa-tool` hangen                         | Consumer-site builder       | [Consumer-site](manuals/consumer-site.md) · [Integratie](integratie/index.md)              |
+| Docs of TEv2 bijdragen                                | Docs-/tool-contributor      | [TEv2 in tool-docs](guides/tev2-docs.md)                                                   |
+| Formele taal-/toolregels                              | Spec-/PR-reviewer           | [Specificaties](specification/README.md) · [Terminologie](glossary.md)                     |
+| Zangstuk / `access:` in de bron-repo                  | Bron-contentbeheerder       | [bron — handleidingen](https://orthodox-groningen.github.io/bron/manuals/)                 |
+| Partituur oefenen / liturgie volgen                   | Koor / liturgie             | **Niet hier** — parochie-site / [VSA-demo](https://github.com/orthodox-groningen/VSA-demo) |
+
+Rollen en toon: [bron — schrijfconventies](https://orthodox-groningen.github.io/bron/specs/schrijfconventies/).
+
 ## Wat vind je hier
 
 | Sectie                                              | Wat je er vindt                                                                                         |
 | --------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
-| [Starten](getting-started/README.md)                | Eerste stappen: omgeving, `vsa --version`, valideren en een SVG maken.                                  |
+| [Starten](getting-started/README.md)                | Lokaal ontwikkelen: omgeving, `vsa --version`, valideren en een SVG maken.                              |
 | [Handleidingen](manuals/index.md)                   | Taakgerichte uitleg (CLI-taken, validatie, export, consumer-site).                                      |
 | [Specificaties](specification/README.md)            | Normatieve VSA-taal- en toolcontracts.                                                                  |
 | [Referentie](reference/README.md)                   | Naslag: voorbeelden, CLI man-pagina’s, tokens, [diagnostics](@) en outputs.                             |
@@ -51,5 +68,5 @@ Met TermRefs (na `npm install`): `scripts\docs-serve-tev2.cmd` — zie
 cd /d C:\Git\orthodox-groningen\VSA-tooling
 scripts\bootstrap.cmd
 vsa --version
-vsa validate examples\minimal\050_svg_demo.vsa
+vsa validate examples\minimal\001_plain_text.vsa
 ```

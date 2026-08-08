@@ -45,6 +45,7 @@ def test_mkdocs_nav_uses_glossary_md():
     ):
         body = workflow.read_text(encoding="utf-8")
         assert "sort-glossary-table.py glossary.md" in body
+        assert "inject-glossary-termrefs.py glossary.md" in body
         assert "mkdocs-glossary-index.py" not in body
         assert "_index.template" not in body
     build = Path("scripts/docs-build-tev2.cmd").read_text(encoding="utf-8")
@@ -67,6 +68,12 @@ def test_hrgt_converters_emit_abbr_and_alias_on_own_table_rows():
     assert "glossaryAlias" in text
     assert "Afkorting van" in text
     assert "Alias voor" in text
+    assert "]({{term}}@)." in text
+    assert "{{noRefs glossaryText}}" not in text
+    for line in text.splitlines():
+        if "Afkorting van" in line or "Alias voor" in line:
+            assert "]({{term}}@)." in line
+            assert "localize navurl}})." not in line
 
 
 def test_saf_imports_bron_terms_before_local_with_exclude():

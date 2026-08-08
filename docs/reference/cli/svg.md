@@ -1,6 +1,11 @@
-# `vsa svg` — één VSA-bestand naar SVG renderen
+# `vsa svg` — één [vsa-bestand](@bron) naar SVG renderen
 
-Render één VSA-bronbestand naar één SVG-afbeelding.
+!!! note "Waartoe"
+    Eén `.vsa`-bestand snel als SVG-afbeelding bekijken (scherm of afdruk).
+    Geen Markdown-pipeline — daarvoor [`vsa process`](process.md) of
+    [`vsa build-markdown`](build-markdown.md).
+
+Render één [vsa-bestand](@bron) naar één SVG-afbeelding.
 
 ## Synopsis
 
@@ -11,7 +16,7 @@ vsa svg [-h] [--config CONFIG] [--max-line-width MAX_LINE_WIDTH] input output
 ## Beschrijving
 
 `vsa svg` leest één `.vsa`-bestand, lost `@include-vsa` op indien aanwezig,
-parset de VSA-notatie en rendert het resultaat naar een SVG-bestand. Dit
+parset de [VSA-notatie](@bron) en rendert het resultaat naar een SVG-bestand. Dit
 commando verwerkt **geen** Markdownblokken — voor Markdown met VSA-blokken
 gebruik je [`vsa process`](process.md) of [`vsa build-markdown`](build-markdown.md).
 
@@ -93,9 +98,16 @@ Exitcode: `1`.
 
 Fix: controleer het invoerpad, bijvoorbeeld met `dir`.
 
-Bij een kapotte VSA-syntax (bijv. een onafgesloten scope) geeft `vsa svg`
-een parsefout op stderr. Fix: draai eerst `vsa validate <input>` om de exacte
-foutlocatie en foutcode te zien.
+Parsefout (onafgesloten scope) — voorbeeldinvoer met `{tekst` zonder `}`:
+
+```cmd
+vsa svg kapot.vsa tmp\out.svg
+```
+
+Verwachte richting: foutmelding op stderr, exitcode `1`.
+
+Fix: draai eerst `vsa validate kapot.vsa` voor exacte foutcode en
+regel/kolom; herstel de [VSA-notatie](@bron); daarna opnieuw `vsa svg`.
 
 ## Zie ook
 

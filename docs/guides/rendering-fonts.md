@@ -1,4 +1,4 @@
-# Rendering-fonts
+# Rendering en fonts
 
 Deze pagina beschrijft de gebruikerskant van fonts bij SVG-rendering.
 

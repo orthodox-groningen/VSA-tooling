@@ -81,10 +81,10 @@ vsa validate <bestand-of-map>
 
 ### Inputvarianten
 
-| Input          | Voorbeeld                           | Gedrag                                          |
-| -------------- | ----------------------------------- | ----------------------------------------------- |
-| `.vsa` bestand | `examples\minimal\050_svg_demo.vsa` | controleert één VSA-bestand                     |
-| `.md` bestand  | `pagina.md`                         | controleert VSA-blokken in Markdown             |
+| Input          | Voorbeeld                                  | Gedrag                                          |
+| -------------- | ------------------------------------------ | ----------------------------------------------- |
+| `.vsa` bestand | `examples\minimal\001_plain_text.vsa`      | controleert één VSA-bestand                     |
+| `.md` bestand  | `pagina.md`                                | controleert VSA-blokken in Markdown             |
 | map            | `examples\consumer-minimal\content-source` | zoekt recursief naar `.vsa`, `.md`, `.markdown` |
 
 ### Wat wordt gecontroleerd?
@@ -139,7 +139,8 @@ examples\demo.md:blok-1:1:1: VSA-SYNTAX-EMPTY-SCOPE: Scope zonder zangelement.
 
 ### Doel
 
-Debuggen hoe de parser een VSA-bestand intern ziet.
+Debuggen hoe de parser een VSA-bestand intern ziet: de Abstract Syntax Tree
+(AST) als JSON.
 
 ### Gebruik
 
@@ -156,7 +157,7 @@ vsa parse <bestand.vsa> --ast
 
 ### Output met `--ast`
 
-JSON met nodes.
+JSON met nodes (`ScopeNode`, `TextNode`, `PitchMarkerNode`, …).
 
 Voorbeeldvorm:
 
@@ -164,6 +165,10 @@ Voorbeeldvorm:
 {
   "type": "Document",
   "nodes": [
+    {
+      "type": "PitchMarkerNode",
+      "height_modifier": ["/"]
+    },
     {
       "type": "ScopeNode",
       "height_modifier": ["/"],
@@ -403,11 +408,11 @@ vsa build-markdown examples\consumer-minimal\content-source generated\content ge
 
 Betekenis:
 
-| Deel   | Pad                                 | Betekenis       |
-| ------ | ----------------------------------- | --------------- |
+| Deel   | Pad                                        | Betekenis       |
+| ------ | ------------------------------------------ | --------------- |
 | input  | `examples\consumer-minimal\content-source` | bron            |
-| output | `generated\content`                 | nieuwe Markdown |
-| assets | `generated\static\vsa`              | SVG-bestanden   |
+| output | `generated\content`                        | nieuwe Markdown |
+| assets | `generated\static\vsa`                     | SVG-bestanden   |
 
 ### Wat doe je bij problemen?
 

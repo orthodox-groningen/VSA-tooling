@@ -69,7 +69,10 @@ def test_user_guide_explains_validate_purpose_and_checks():
 def test_user_guide_explains_validate_success_and_failure():
     text = read_docs("validation_guide", "validation_spec", "cli_spec")
 
-    assert_terms(text, ("Succesoutput", "Foutoutput", "OK", "Exitcode", "Aanpak bij fouten"))
+    assert_terms(
+        text,
+        ("Succesoutput", "Foutoutput", "OK", "Exitcode", "Diagnose bij problemen"),
+    )
 
 
 def test_user_guide_explains_parse_ast_output():
@@ -133,7 +136,7 @@ def test_docs_explain_troubleshooting_or_diagnosis():
     user_text = read_docs("quick_start_guide", "validation_guide")
     cli_text = read_doc("cli_reference")
 
-    assert "Aanpak bij fouten" in user_text
+    assert "Diagnose bij problemen" in user_text
     assert "Diagnosevolgorde" in cli_text
     assert "scripts\\ci.cmd" in user_text
     assert "vsa validate" in cli_text

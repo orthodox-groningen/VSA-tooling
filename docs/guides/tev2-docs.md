@@ -9,6 +9,12 @@ patroon als bron: één bronbestand met `{% hrg="vsa-tooling" %}`, geen
 canoniek). Lokale curated texts kunnen een term herdefiniëren; dan wint die voor
 `[term](@)`, terwijl `[term](@bron)` de org-definitie blijft.
 
+**Contributor-note (term bodies):** volg het org
+[term-entry-sjabloon](https://github.com/orthodox-groningen/bron/blob/main/docs/specs/term-entry-sjabloon.md)
+waar zinvol (voorbeeld, waartoe, verder lezen). Voor org-begrippen in
+eindgebruikersprose: voorkeur `[term](@bron)` tenzij je bewust de lokale
+herdefinitie bedoelt.
+
 Org-brede contributor-checklist (scripts, pins, tabellen):
 [Documentatie bijdragen](https://orthodox-groningen.github.io/bron/manuals/docs-bijdragen/)
 (bron).

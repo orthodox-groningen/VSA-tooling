@@ -118,7 +118,7 @@ Normatief zoek-contract (bron): [catalogus-zoek-api.md](https://github.com/ortho
 
 ## Syntax
 
-In VSA-notatie (één regel):
+In [VSA-notatie](@bron) (één regel):
 
 ```vsa
 refrein: @include-vsa zoek="Troparion"
@@ -196,12 +196,12 @@ Binnen een `::: vsa-notatie` blok mag HTML-commentaar voorkomen:
 - Commentaar heeft geen invloed op parsing.
 - Commentaar heeft geen invloed op validatie.
 - Commentaar heeft geen invloed op rendering.
-- Commentaar heeft geen invloed op afgeleide artefacten.
+- Commentaar heeft geen invloed op [afgeleide](@bron) artefacten.
 - Commentaar mag niet als tekstnode worden behandeld.
 - Commentaar mag niet als whitespace worden behandeld.
 - Commentaar mag niet als newline worden behandeld.
 - Commentaar mag geen invloed hebben op positionering, spacing of layout.
-- Commentaar mag niet in SVG, HTML, JSON, MusicXML of andere afgeleide artefacten terechtkomen.
+- Commentaar mag niet in SVG, HTML, JSON, MusicXML of andere [afgeleide](@bron) artefacten terechtkomen.
 
 ---
 
@@ -248,7 +248,8 @@ Wordt door [`vsa build-markdown`](../reference/cli/build-markdown.md) omgezet na
     :::include <exporttype> "pad/naar/melodie.vsa" [parameters]:::
 
 Exporttypes: `svg`, `coria`, `mxl` — alleen voor `.vsa`-bronverwijzingen.
-`:::coria` blijft een alias voor `:::include coria`. Zie [exportcontracten](https://orthodox-groningen.github.io/bron/reference/exportcontracten/).
+`:::coria` blijft een synoniem voor `:::include coria`. Zie [exportcontracten](https://orthodox-groningen.github.io/bron/reference/exportcontracten/)
+([exporttypen](@bron)).
 
 Het pad is **relatief aan het includerende bestand** (niet aan de projectroot), **of**
 een logische referentie via **catalogus** (fase 3):
@@ -263,7 +264,7 @@ vervangt vóór build door `bron:…` / `lokaal:…`. Open `zoek=` in build → 
 Zie [catalogus-samenstelling-zangstuk](https://orthodox-groningen.github.io/bron/specs/catalogus-samenstelling-zangstuk/)
 en [parochie-lokaal-vsa.md](../guides/parochie-lokaal-vsa.md).
 
-Segmenten mogen aliassen zijn (`Hemelum` → `hemelum`). Zie
+Segmenten mogen [aliassen](@bron) zijn (`Hemelum` → `hemelum`). Zie
 [catalogus-cli](https://orthodox-groningen.github.io/bron/reference/catalogus-cli/).
 
 Ondersteunde bestandstypen:
@@ -316,7 +317,7 @@ Wordt bij `build-markdown` omgezet naar Hugo-shortcode `coria-html` of `coria`.
 - Als de inhoud groter is dan één pagina, verplaatst de browser het hele blok
   naar de volgende pagina; past het dan nog steeds niet, dan wordt de
   `avoid`-instructie genegeerd
-- De optionele parameter `scale="<waarde>"` schaalt alle VSA-notaties binnen
+- De optionele parameter `scale="<waarde>"` schaalt alle [VSA-notaties](@bron) binnen
   het blok naar de opgegeven breedte (bijv. `"70%"`); de hoogte schaalt
   proportioneel mee omdat de SVGs een `viewBox` hebben. Gebruik dit wanneer
   twee of meer SVGs samen op één pagina moeten passen.
@@ -439,10 +440,10 @@ Hugo verwerkt daarna het gegenereerde Markdown-bestand tot HTML.
 
 ---
 
-## Exporttypes (normatief contract)
+## [Exporttypen](@bron) (normatief contract)
 
 Authoring-syntax voor **export** (niet conversie) is contractueel vastgelegd in de
-**bron**-repository:
+**[bron-repository](@bron)**:
 
 - [Exportcontracten](https://orthodox-groningen.github.io/bron/reference/exportcontracten/)
 - Per type: [svg](https://orthodox-groningen.github.io/bron/reference/exporttype-svg/),
@@ -450,9 +451,10 @@ Authoring-syntax voor **export** (niet conversie) is contractueel vastgelegd in 
   [mxl](https://orthodox-groningen.github.io/bron/reference/exporttype-mxl/)
 
 Conversie ([`vsa svg`](../reference/cli/svg.md), [`vsa musicxml`](../reference/cli/musicxml.md)):
-[Conversiemechanismen](https://orthodox-groningen.github.io/bron/reference/conversiemechanismen/).
+[Conversiemechanismen](https://orthodox-groningen.github.io/bron/reference/conversiemechanismen/)
+([conversiemechanisme](@bron)).
 
-### Implementatiestatus (VSA-tooling)
+### Implementatiestatus ([VSA-tooling](@bron))
 
 | Syntax                                        | Status                                                                                                 |
 | --------------------------------------------- | ------------------------------------------------------------------------------------------------------ |
@@ -463,5 +465,5 @@ Conversie ([`vsa svg`](../reference/cli/svg.md), [`vsa musicxml`](../reference/c
 | `:::include <type> zoek="…"`                  | Geïmplementeerd (fase 4); resolve via [`vsa resolve-catalogus`](../reference/cli/resolve-catalogus.md) |
 | `coria` / `mxl` op `bron:` catalogus-pad      | Beperkt — `.vsa` buiten content-root                                                                   |
 
-Parameters (`alt`, `scale`, `label`, `mode`) — volledige beschrijving per exporttype
+Parameters (`alt`, `scale`, `label`, `mode`) — volledige beschrijving per [exporttype](@bron)
 in bron-docs; korte samenvatting blijft in sectie 3 en 3b hierboven.

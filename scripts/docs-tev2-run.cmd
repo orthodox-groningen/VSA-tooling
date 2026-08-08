@@ -80,6 +80,12 @@ if errorlevel 1 (
   exit /b 1
 )
 
+python ..\..\scripts\inject-glossary-termrefs.py glossary.md
+if errorlevel 1 (
+  popd
+  exit /b 1
+)
+
 echo [4/5] trrt + TermRef check
 call "%TRRT%" -f -c tev2-config.yaml
 if errorlevel 1 (

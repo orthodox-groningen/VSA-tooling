@@ -43,10 +43,11 @@ vsa --version
 Controleer een voorbeeldbestand:
 
 ```cmd
-vsa validate examples\minimal\050_svg_demo.vsa
+vsa validate examples\minimal\001_plain_text.vsa
 ```
 
-Maak een SVG:
+Maak een SVG (renderdemo; `050_svg_demo.vsa` is OK voor `svg` maar faalt op
+`validate` — zie docs):
 
 ```cmd
 vsa svg examples\minimal\050_svg_demo.vsa output.svg

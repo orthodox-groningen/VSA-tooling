@@ -1,16 +1,42 @@
 # Validatie
 
-Gebruik de [validator](@)
-([`vsa validate`](../reference/cli/validate.md)) om te controleren of
-[VSA-notatie](@bron)-invoer bruikbaar is voor verdere verwerking.
+!!! note "Voor wie / wanneer"
+    **Voor:** notatie-auteur die foutmeldingen wil begrijpen en oplossen.
+    **Wanneer:** tijdens schrijven, vóór export, of in CI.
+    **Niet:** SVG maken — dat is [SVG exporteren](svg-export.md) /
+    [`vsa svg`](../reference/cli/svg.md).
 
-## Bestand valideren
+**Antwoord in het kort:** `vsa validate` controleert of [VSA-notatie](@bron)
+bruikbaar is. Lees de foutregel (bestand → blok → regel → code), herstel, opnieuw.
+
+## Wanneer valideren?
+
+| Situatie                         | Valideren?                               |
+| -------------------------------- | ---------------------------------------- |
+| Tijdens het schrijven van `.vsa` | Ja                                       |
+| Vóór SVG / MusicXML / Hugo-build | Ja                                       |
+| In CI op content-source          | Ja                                       |
+| Alleen snel een plaatje bekijken | Optioneel — zie validate ≠ svg hieronder |
+
+## Validate ≠ svg
+
+| Commando                                       | Controleert semantiek? | Schrijft SVG? |
+| ---------------------------------------------- | ---------------------- | ------------- |
+| [`vsa validate`](../reference/cli/validate.md) | Ja                     | Nee           |
+| [`vsa svg`](../reference/cli/svg.md)           | Nee (alleen parse)     | Ja            |
+
+Voorbeeld: `examples\minimal\050_svg_demo.vsa` kan op `validate` falen
+(semantische mismatch) en toch met `vsa svg` renderen. Wil je
+[geldige VSA-notatie](@), draai eerst `validate`.
+
+## Snel starten
 
 ```cmd
-vsa validate examples\minimal\050_svg_demo.vsa
+cd /d C:\Git\orthodox-groningen\VSA-tooling
+vsa validate examples\minimal\001_plain_text.vsa
 ```
 
-## Map valideren
+Bij succes: `OK`. Map valideren:
 
 ```cmd
 vsa validate examples\consumer-minimal\content-source
@@ -28,6 +54,16 @@ vsa validate examples\consumer-minimal\content-source
 | pitch-marker heeft dubbele punt                                          | `[//]`             |
 | [hoogte-modifier](@)- en [lengte-modifier](@)-posities passen bij elkaar | `{/&\tekst_}`      |
 
+## Succesoutput
+
+Bij geldige notatie schrijft `vsa validate` alleen:
+
+```text
+OK
+```
+
+Exitcode: `0`. Details: [`vsa validate`](../reference/cli/validate.md).
+
 ## Foutoutput lezen
 
 Voorbeeld:
@@ -44,38 +80,35 @@ examples\demo.md:blok-1:1:1: VSA-SYNTAX-EMPTY-SCOPE: Scope zonder zangelement.
 | `VSA-SYNTAX-EMPTY-SCOPE` | foutcode ([diagnostic](@))          |
 | tekst erna               | uitleg                              |
 
+## Diagnose bij problemen
+
+| Symptoom / melding                             | Oorzaak                              | Fix                                                                  |
+| ---------------------------------------------- | ------------------------------------ | -------------------------------------------------------------------- |
+| `VSA-SYNTAX-EMPTY-SCOPE`                       | `{}` of lege scope                   | Zangelement tussen `{` en `}` zetten                                 |
+| `VSA-SYNTAX-UNCLOSED-SCOPE` (of vergelijkbaar) | Ontbrekende `}`                      | Scope afsluiten; regel/kolom in de melding volgen                    |
+| Semantische modifier-mismatch                  | Aantal hoogte- ≠ lengte-posities     | Modifiers tellen; zie [semantics](../specification/semantics.md)     |
+| `OK` lokaal, CI faalt                          | Andere map / andere `vsa.toml`       | Zelfde pad als CI; severity-overrides controleren                    |
+| SVG werkt, validate faalt                      | `svg` doet geen volle semantiek      | Verwacht gedrag — zie hierboven; herstel of accepteer bewust         |
+
+Concrete fail + Fix: man-page [`vsa validate`](../reference/cli/validate.md).
+
 ## Severity-overrides
 
-Gebruik [vsa.toml](@) om specifieke semantische meldingen tijdelijk als
-[severity](@) `warning` te behandelen.
+In [vsa.toml](@) kun je sommige **semantische** meldingen tijdelijk als
+[severity](@) `warning` zetten. Syntaxfouten blijven altijd hard.
 
 ```toml
 [validation.severity]
 VSA-SEMANTIC-MODIFIER-COUNT-MISMATCH = "warning"
 ```
 
-Gebruik:
-
 ```cmd
 vsa validate bestand.vsa --config vsa.toml
 ```
 
-Syntaxfouten blijven altijd hard.
+## Zie ook
 
-## Aanpak bij fouten
-
-| Stap | Actie                                  |
-| ---- | -------------------------------------- |
-| 1    | Open het genoemde bestand              |
-| 2    | Zoek het genoemde `blok-N`             |
-| 3    | Kijk naar regel en kolom               |
-| 4    | Corrigeer de [VSA-notatie](@bron)      |
-| 5    | Draai hetzelfde commando opnieuw       |
-
-## Bronnen
-
-Gebaseerd op:
-
-- `docs/guides/user-guide.md`
-- `docs/guides/validation.md`
-- `docs/reference/cli.md`
+- [`vsa validate`](../reference/cli/validate.md) — synopsis, flags, fail-voorbeelden
+- [Diagnostics-referentie](../reference/diagnostics.md)
+- [Specificatie — validatie](../specification/validation.md)
+- [Voorbeelden — fouten](../reference/voorbeelden/fouten.md)

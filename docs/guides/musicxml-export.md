@@ -1,6 +1,6 @@
 # MusicXML exporteren
 
-Met [`vsa musicxml`](../reference/cli/musicxml.md) zet je VSA om naar **`.mxl`** (gecomprimeerd MusicXML, standaard)
+Met [`vsa musicxml`](../reference/cli/musicxml.md) zet je [VSA-notatie](@bron) om naar **`.mxl`** (gecomprimeerd MusicXML, standaard)
 of naar platte **`.musicxml`**. Open het in MuseScore of speel af op
 [Coria](https://coria.nl).
 
@@ -74,7 +74,8 @@ Parameters:
 | `mode="auto"`    | HTML indien aanwezig, anders MXL (default)            |
 
 Volledige parameterdocumentatie:
-[exporttype coria](https://orthodox-groningen.github.io/bron/reference/exporttype-coria/).
+[exporttype coria](https://orthodox-groningen.github.io/bron/reference/exporttype-coria/)
+([exporttype](@bron) `coria`).
 
 ### Hugo-shortcodes (edge cases)
 

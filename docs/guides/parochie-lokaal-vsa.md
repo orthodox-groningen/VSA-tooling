@@ -1,10 +1,10 @@
-# Parochie-lokaal — VSA-tooling
+# Parochie-lokaal — [VSA-tooling](@bron)
 
 **Algemene handleiding (canoniek):** [bron/docs/manuals/parochie-lokaal-zangstukken.md](https://github.com/orthodox-groningen/bron/blob/main/docs/manuals/parochie-lokaal-zangstukken.md)
 
 Terminologie: [bron/docs/specs/terminologie.md](https://github.com/orthodox-groningen/bron/blob/main/docs/specs/terminologie.md).
 
-Dit document beschrijft alleen wat **specifiek voor VSA-tooling** geldt (CLI,
+Dit document beschrijft alleen wat **specifiek voor [VSA-tooling](@bron)** geldt (CLI,
 includes, catalogus). Voor een browsable Hugo-voorbeeld: [VSA-demo](https://github.com/orthodox-groningen/VSA-demo).
 
 ---
@@ -15,16 +15,17 @@ includes, catalogus). Voor een browsable Hugo-voorbeeld: [VSA-demo](https://gith
 examples/consumer-minimal/content-source/
 ```
 
-Parochie-lokaal zangstukken in een consumer-site: zie VSA-demo en
+[Parochie-lokale representaties](@bron) / [zangstukken](@bron) in een consumer-site:
+zie VSA-demo en
 [bron — parochie-lokaal](https://github.com/orthodox-groningen/bron/blob/main/docs/manuals/parochie-lokaal-zangstukken.md).
 
 ---
 
-## VSA-includes in samenstellingen
+## VSA-includes in [samenstellingen](@bron)
 
 ### Opgelost catalogus-pad (fase 3)
 
-**Logische id** — aliassen per segment toegestaan:
+**Logische id** — [aliassen](@bron) per segment toegestaan:
 
 ```markdown
 :::include svg id:antifoon-1-weekdagen/liturgikon-weekdagen/Hemelum alt="1e antifoon (Hemelum)":::
@@ -54,7 +55,7 @@ Handleiding Rene: [sjabloon schrijven](https://github.com/orthodox-groningen/bro
 2. Frontmatter **`default.*`** levert context (`gelegenheid` in de **sessie**,
    `gelegenheidstype` in het sjabloon).
 3. [`vsa resolve-catalogus`](../reference/cli/resolve-catalogus.md) roept [`catalogus zoek`](https://orthodox-groningen.github.io/bron/reference/catalogus-cli/#catalogus-zoek) aan per unieke
-   `zoek=`-waarde (+ exporttypes blijven aparte regels).
+   `zoek=`-waarde (+ [exporttypen](@bron) blijven aparte regels).
 4. Uitvoer: dezelfde regels met **`bron:…`** / **`lokaal:…`** i.p.v. `zoek=`.
 5. Pas daarna [`vsa build-markdown`](../reference/cli/build-markdown.md) / Hugo.
 
@@ -128,7 +129,7 @@ vsa resolve-catalogus pad\naar\samenstelling.md ^
 | ---------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `<pad.md>`       | Invoer (sessie of sjabloon met `zoek=`)                                                                                                                                    |
 | `--content-root` | Parochie content-source (met `lokaal/`)                                                                                                                                    |
-| `--bron-root`    | Bron-repository (`zangstukken/`)                                                                                                                                           |
+| `--bron-root`    | [Bron-repository](@bron) (`zangstukken/`)                                                                                                                                  |
 | `--output`       | Optioneel ander uitvoerbestand; default: overschrijven invoer of `.resolved.md`                                                                                            |
 | `--dry-run`      | Alleen rapport, geen schrijven                                                                                                                                             |
 | `--interactive`  | Review bij ambiguïteit (**gepland**; nu: `AmbiguousError` + [`catalogus zoek --lijst`](https://orthodox-groningen.github.io/bron/reference/catalogus-cli/#catalogus-zoek)) |
@@ -183,9 +184,9 @@ Inline (kort fragment):
 
 ---
 
-## Build-pipeline (VSA-tooling)
+## Build-pipeline ([VSA-tooling](@bron))
 
-| Stap                                                             | Parochie-lokaal                                                                         |
+| Stap                                                             | [Parochie-lokaal](@bron)                                                                |
 | ---------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
 | Sync bron                                                        | Niet nodig — bestanden in git                                                           |
 | [`vsa resolve-catalogus`](../reference/cli/resolve-catalogus.md) | **Geïmplementeerd** — verplicht als `zoek=` aanwezig (of auto in build)                 |

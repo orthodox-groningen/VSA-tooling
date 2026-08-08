@@ -6,8 +6,8 @@ Taakgerichte documentatie voor werken met de [VSA-tooling](@bron). Dit is het
 [Referentie](../reference/README.md).
 
 !!! note "Voor wie"
-    Vooral notatie-auteurs (P3) en consumer builders (P4). Koor/liturgie (P7):
-    niet hier — zie [Home](../index.md).
+    Vooral notatie-auteurs en consumer-site builders. Koor / liturgie: niet
+    hier — zie [Home](../index.md).
 
 ## Leespad
 

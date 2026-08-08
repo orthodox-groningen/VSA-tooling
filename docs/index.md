@@ -9,16 +9,16 @@ dat een dienst oefent. Daarvoor: de parochie-site
 
 ## Wie ben je? (kies je route)
 
-| Ik wil …                                              | Persona | Start hier                                                                                 |
-| ----------------------------------------------------- | ------- | ------------------------------------------------------------------------------------------ |
-| VSA schrijven / valideren / SVG maken                 | P3      | [Starten](getting-started/README.md) · [Validatie](guides/validation.md)                   |
-| Hugo/CI aan `vsa-tool` hangen                         | P4      | [Consumer-site](manuals/consumer-site.md) · [Integratie](integratie/index.md)              |
-| Docs of TEv2 bijdragen                                | P5      | [TEv2 in tool-docs](guides/tev2-docs.md)                                                   |
-| Formele taal-/toolregels                              | P6      | [Specificaties](specification/README.md) · [Terminologie](glossary.md)                     |
-| Zangstuk / `access:` in de bron-repo                  | P2      | [bron — handleidingen](https://orthodox-groningen.github.io/bron/manuals/)                 |
-| Partituur oefenen / liturgie volgen                   | P7      | **Niet hier** — parochie-site / [VSA-demo](https://github.com/orthodox-groningen/VSA-demo) |
+| Ik wil …                                              | Voor wie                    | Start hier                                                                                 |
+| ----------------------------------------------------- | --------------------------- | ------------------------------------------------------------------------------------------ |
+| VSA schrijven / valideren / SVG maken                 | Notatie-auteur              | [Starten](getting-started/README.md) · [Validatie](guides/validation.md)                   |
+| Hugo/CI aan `vsa-tool` hangen                         | Consumer-site builder       | [Consumer-site](manuals/consumer-site.md) · [Integratie](integratie/index.md)              |
+| Docs of TEv2 bijdragen                                | Docs-/tool-contributor      | [TEv2 in tool-docs](guides/tev2-docs.md)                                                   |
+| Formele taal-/toolregels                              | Spec-/PR-reviewer           | [Specificaties](specification/README.md) · [Terminologie](glossary.md)                     |
+| Zangstuk / `access:` in de bron-repo                  | Bron-contentbeheerder       | [bron — handleidingen](https://orthodox-groningen.github.io/bron/manuals/)                 |
+| Partituur oefenen / liturgie volgen                   | Koor / liturgie             | **Niet hier** — parochie-site / [VSA-demo](https://github.com/orthodox-groningen/VSA-demo) |
 
-Persona’s: [bron — schrijfconventies](https://orthodox-groningen.github.io/bron/specs/schrijfconventies/).
+Rollen en toon: [bron — schrijfconventies](https://orthodox-groningen.github.io/bron/specs/schrijfconventies/).
 
 ## Wat vind je hier
 

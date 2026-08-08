@@ -1,7 +1,7 @@
 # Gebruikershandleiding — tour
 
 !!! note "Voor wie / wanneer"
-    **Voor:** notatie-auteur (P3) of wie de CLI nog niet kent.
+    **Voor:** notatie-auteur of wie de CLI nog niet kent.
     **Wanneer:** je wilt weten *welke pagina* bij jouw taak hoort.
     **Niet:** volledige flags of foutcodes — die staan in de
     [CLI-referentie](../reference/cli/index.md).

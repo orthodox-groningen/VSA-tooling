@@ -5,7 +5,7 @@ Deze pagina helpt je om de [VSA-tooling](@bron) **lokaal** te laten werken
 [Handleidingen](../manuals/index.md).
 
 !!! note "Voor wie"
-    Voor notatie-auteurs (P3) en wie de CLI lokaal wil draaien — niet voor
+    Voor notatie-auteurs en wie de CLI lokaal wil draaien — niet voor
     koorzangers die een dienst oefenen (parochie-site; zie [Home](../index.md)).
 
 ## Wie ben je? (kort)

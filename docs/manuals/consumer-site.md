@@ -1,7 +1,7 @@
 # Consumer-site — waar hoort wat
 
 !!! note "Voor wie / wanneer"
-    **Voor:** consumer-site builder (P4) die wil weten wat in welke repo hoort.
+    **Voor:** consumer-site builder die wil weten wat in welke repo hoort.
     **Wanneer:** je hangt Hugo + `vsa-tool` aan elkaar.
     **Niet:** een volledige Hugo-cursus — die hoort bij
     [VSA-demo](https://github.com/orthodox-groningen/VSA-demo).

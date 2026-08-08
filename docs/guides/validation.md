@@ -1,7 +1,7 @@
 # Validatie
 
 !!! note "Voor wie / wanneer"
-    **Voor:** notatie-auteur (P3) die foutmeldingen wil begrijpen en oplossen.
+    **Voor:** notatie-auteur die foutmeldingen wil begrijpen en oplossen.
     **Wanneer:** tijdens schrijven, vóór export, of in CI.
     **Niet:** SVG maken — dat is [SVG exporteren](svg-export.md) /
     [`vsa svg`](../reference/cli/svg.md).

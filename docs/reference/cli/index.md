@@ -2,7 +2,7 @@
 
 `vsa` is de commandoregel-tool van de [vsa-toolset](@). Ermee controleer je
 [geldige VSA-notatie](@), bekijk je de interne [parser](@)-structuur, en
-genereer je SVG, Hugo-Markdown en MusicXML uit `.vsa`- en Markdown-bronbestanden.
+genereer je SVG, Hugo-Markdown en MusicXML uit [vsa-bestanden](@bron) en Markdown.
 
 Deze pagina geeft het overzicht. Elk subcommando heeft een eigen man-pagina
 met de volledige argumentenlijst, voorbeelden en foutgevallen.

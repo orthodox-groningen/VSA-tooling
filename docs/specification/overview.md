@@ -3,9 +3,9 @@
 VSA (Vereenvoudigde Slavische Accentnotatie) is een tekstgebaseerde
 domeinspecifieke taal (DSL) voor Slavische accentnotatie. De taal definieert
 een eenduidige, machineleesbare en menselijk leesbare notatie waarmee
-zangstukken kunnen worden vastgelegd, gevalideerd en verder verwerkt
-([conversie](https://orthodox-groningen.github.io/bron/specs/terminologie/)
-naar o.a. SVG/MusicXML; [export](https://orthodox-groningen.github.io/bron/specs/terminologie/)
+[zangstukken](@bron) kunnen worden vastgelegd, gevalideerd en verder verwerkt
+([conversiemechanisme](@bron)
+naar o.a. SVG/MusicXML; [exportmechanisme](@bron)
 in een [samenstelling](@bron) via `:::include`).
 
 Deze specificatie beschrijft de **taal en haar semantiek** (plus toolcontracts

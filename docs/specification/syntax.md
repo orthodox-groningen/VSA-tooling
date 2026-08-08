@@ -8,7 +8,7 @@ Bronbasis: `docs/spec/vsa-spec-v1.0.1.md`, aangevuld met latere documenten over 
 
 ### 4.1 Hugo Markdown bloksyntax
 
-VSA-zangstukken worden beschreven in een zo genaamd `Hugo Markdown blok` (zie hoofdstuk 4.1.1. voor de formele syntax, en hoofdstuk 5 voor de semantiek). We geven hier alvast een voorbeeld:
+VSA-[zangstukken](@bron) worden beschreven in een zo genaamd `Hugo Markdown blok` (zie hoofdstuk 4.1.1. voor de formele syntax, en hoofdstuk 5 voor de semantiek). We geven hier alvast een voorbeeld:
 
 ```markdown
 ::: vsa-notatie
@@ -22,7 +22,7 @@ duration-model="default"
 :::
 ```
 
-De blokparameters behoren niet tot de zichtbare VSA-notatie, maar leveren context voor validatie, rendering en export. Absolute toonhoogten, modi, tempi e.d. worden als parameters gespecificeerd, en niet in het zangstuk (in het voorbeeld: `[:] {/Hei_}{/lig_} is de Heer. [//:]`). Dit sluit aan bij de praktijk waarin alleen zangstukken op papier staan, en de eigenlijke toon waarop gezongen wordt, de modi en tempi worden aangegeven door de koorleider.
+De blokparameters behoren niet tot de zichtbare [VSA-notatie](@bron), maar leveren context voor validatie, rendering en export. Absolute toonhoogten, modi, tempi e.d. worden als parameters gespecificeerd, en niet in het [zangstuk](@bron) (in het voorbeeld: `[:] {/Hei_}{/lig_} is de Heer. [//:]`). Dit sluit aan bij de praktijk waarin alleen [zangstukken](@bron) op papier staan, en de eigenlijke toon waarop gezongen wordt, de modi en tempi worden aangegeven door de koorleider.
 
 Een aantal parameters van de bloksyntax hebben normatieve defaultwaarde, wat het mogelijk maakt om blokken waarin deze parameters niet zijn gespecificeerd, toch speelbaar te maken. Het gaat om de volgende parameters:
 

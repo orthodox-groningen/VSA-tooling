@@ -7,15 +7,15 @@
     [VSA-demo](https://github.com/orthodox-groningen/VSA-demo).
 
 **Antwoord in het kort:** tooling = package/CLI; presentatievoorbeeld =
-VSA-demo; zangstukken/org-specs = bron.
+VSA-demo; [zangstukken](@bron)/org-specs = [bron-repository](@bron).
 
 ## Waar hoort wat
 
-| Repo                                                           | Rol                           |
-| -------------------------------------------------------------- | ----------------------------- |
-| **VSA-tooling** (deze docs)                                    | Package, CLI, specs, fixtures |
-| **[VSA-demo](https://github.com/orthodox-groningen/VSA-demo)** | Voorbeeld-Hugo-site + Pages   |
-| **[bron](https://github.com/orthodox-groningen/bron)**         | Zangstukken en org-specs      |
+| Repo                                                           | Rol                                          |
+| -------------------------------------------------------------- | -------------------------------------------- |
+| **[VSA-tooling](@bron)** (deze docs)                           | Package, CLI, specs, fixtures                |
+| **[VSA-demo](https://github.com/orthodox-groningen/VSA-demo)** | Voorbeeld-Hugo-site + Pages                  |
+| **[bron](https://github.com/orthodox-groningen/bron)**         | [Zangstukken](@bron) en org-specs            |
 
 ## Minimale keten (tooling)
 

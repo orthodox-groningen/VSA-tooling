@@ -1,7 +1,7 @@
 # SVG exporteren
 
 [`vsa svg`](../reference/cli/svg.md), [`vsa process`](../reference/cli/process.md)
-en [`vsa build-markdown`](../reference/cli/build-markdown.md) renderen VSA-notatie naar
+en [`vsa build-markdown`](../reference/cli/build-markdown.md) renderen [VSA-notatie](@bron) naar
 **SVG** — een schaalbare vectorafbeelding die je inline toont naast gewone
 tekst, op scherm of afdruk. Dit is de meest gebruikte workflow: geen
 externe player nodig, werkt zonder JavaScript, en schaalt scherp op elk
@@ -126,7 +126,7 @@ Default-waarden staan (net als `max-line-width` en `output-mode`) in
 SVG's die je met [`vsa svg`](../reference/cli/svg.md),
 [`vsa process`](../reference/cli/process.md) of
 [`vsa build-markdown`](../reference/cli/build-markdown.md) genereert,
-zijn **afgeleide** bestanden: ze worden opnieuw gegenereerd uit de
+zijn **[afgeleide](@bron)** bestanden: ze worden opnieuw gegenereerd uit de
 `.vsa`-bron en horen niet gecommit te worden naast de bron. Gebruik
 lokaal een map als `generated\` (of `tmp\`) die in `.gitignore` staat:
 
@@ -142,7 +142,7 @@ mijn-repo/
 In een Hugo-consumer-site komt de `assets_dir` overeen met de `static\vsa`-map
 van die site (zie [consumer-site.md](../manuals/consumer-site.md) en
 [reuse-vsa-tooling.md](reuse-vsa-tooling.md) voor het volledige
-build-in-CI-voorbeeld). In de `bron`-repository zelf worden geen afgeleide
+build-in-CI-voorbeeld). In de [bron-repository](@bron) zelf worden geen [afgeleide](@bron)
 SVG's opgeslagen — daar staat alleen de `.vsa`-bron (zie
 [repo-structuur](https://github.com/orthodox-groningen/bron/blob/main/docs/specs/repo-structuur.md)
 en het `derived/`-concept daar voor build-output dat nooit in git komt).
@@ -165,4 +165,4 @@ en het `derived/`-concept daar voor build-output dat nooit in git komt).
 - `vsa.toml`-defaults en voorrang: [config.md](../reference/config.md)
 - Consumer-site-structuur: [consumer-site.md](../manuals/consumer-site.md)
 - Integratie in andere repo's/CI: [reuse-vsa-tooling.md](reuse-vsa-tooling.md)
-- Bron-contracten (normatief): [conversie-vsa-svg](https://orthodox-groningen.github.io/bron/reference/conversie-vsa-svg/), [exporttype-svg](https://orthodox-groningen.github.io/bron/reference/exporttype-svg/)
+- Bron-contracten (normatief): [conversie-vsa-svg](https://orthodox-groningen.github.io/bron/reference/conversie-vsa-svg/), [exporttype-svg](https://orthodox-groningen.github.io/bron/reference/exporttype-svg/) ([exporttype](@bron) `svg`)

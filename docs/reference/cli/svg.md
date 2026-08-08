@@ -1,11 +1,11 @@
-# `vsa svg` — één VSA-bestand naar SVG renderen
+# `vsa svg` — één [vsa-bestand](@bron) naar SVG renderen
 
 !!! note "Waartoe"
     Eén `.vsa`-bestand snel als SVG-afbeelding bekijken (scherm of afdruk).
     Geen Markdown-pipeline — daarvoor [`vsa process`](process.md) of
     [`vsa build-markdown`](build-markdown.md).
 
-Render één VSA-bronbestand naar één SVG-afbeelding.
+Render één [vsa-bestand](@bron) naar één SVG-afbeelding.
 
 ## Synopsis
 
@@ -16,7 +16,7 @@ vsa svg [-h] [--config CONFIG] [--max-line-width MAX_LINE_WIDTH] input output
 ## Beschrijving
 
 `vsa svg` leest één `.vsa`-bestand, lost `@include-vsa` op indien aanwezig,
-parset de VSA-notatie en rendert het resultaat naar een SVG-bestand. Dit
+parset de [VSA-notatie](@bron) en rendert het resultaat naar een SVG-bestand. Dit
 commando verwerkt **geen** Markdownblokken — voor Markdown met VSA-blokken
 gebruik je [`vsa process`](process.md) of [`vsa build-markdown`](build-markdown.md).
 

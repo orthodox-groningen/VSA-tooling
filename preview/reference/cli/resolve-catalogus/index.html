@@ -98,7 +98,7 @@
   
   <strong>Preview</strong>
    — branch <code>docs/professionalisering-vervolg</code>
-  , gebouwd 2026-08-07 22:47 CEST.
+  , gebouwd 2026-08-08 08:06 CEST.
   <a href="https://orthodox-groningen.github.io/VSA-tooling/">Live documentatie (main)</a>.
   
 
@@ -2974,7 +2974,7 @@ concreet catalogus-pad (<code>bron:…</code> of <code>lokaal:…</code>).</p>
 <h2 id="beschrijving">Beschrijving<a class="headerlink" href="#beschrijving" title="Permanent link">&para;</a></h2>
 <p>Sjablonen en sessie-Markdown mogen <code>:::include &lt;exporttype&gt; zoek="…"</code> bevatten
 zonder al een concreet pad — bijvoorbeeld <code>:::include svg zoek="Kondakion" alt="Kondakion":::</code>.
-<code>vsa resolve-catalogus</code> lost deze op naar een catalogus-pad door <code>catalogus zoek</code>
+<code>vsa resolve-catalogus</code> lost deze op naar een catalogus-pad door <a href="https://orthodox-groningen.github.io/bron/reference/catalogus-cli/#catalogus-zoek"><code>catalogus zoek</code></a>
 (uit de <code>catalogus</code>-package van de <code>bron</code>-repo) aan te roepen, en schrijft
 een nieuwe versie van het bestand waarin <code>zoek="…"</code> is vervangen door
 <code>bron:…</code> of <code>lokaal:…</code>.</p>
@@ -2990,10 +2990,10 @@ opgelost.</p>
    <code>default.gelegenheidstype</code>) levert zoekcontext.</li>
 <li>Alle <code>:::include &lt;svg|coria|mxl&gt; zoek="…"</code>-regels vinden (niet binnen
    code fences).</li>
-<li>Per unieke <code>zoek=</code>-waarde + context: één aanroep van <code>catalogus zoek</code>.</li>
+<li>Per unieke <code>zoek=</code>-waarde + context: één aanroep van <a href="https://orthodox-groningen.github.io/bron/reference/catalogus-cli/#catalogus-zoek"><code>catalogus zoek</code></a>.</li>
 <li>Bij een unieke match: vervang <code>zoek="…"</code> door <code>bron:…</code> of <code>lokaal:…</code>.</li>
 <li>Bij ambiguïteit: fout (<code>AmbiguousError</code>) — review handmatig via
-   <code>catalogus zoek --lijst</code> (interactieve review is gepland, nog niet
+   <a href="https://orthodox-groningen.github.io/bron/reference/catalogus-cli/#catalogus-zoek"><code>catalogus zoek --lijst</code></a> (interactieve review is gepland, nog niet
    geïmplementeerd).</li>
 <li>Schrijf het opgeloste bestand.</li>
 </ol>
@@ -3129,8 +3129,8 @@ bovenliggende map en geen <code>vendor/bron</code>/<code>../bron</code>):</p>
 </code></pre></div>
 <p>Exitcode: <code>1</code>. Fix: geef <code>--content-root</code> en/of <code>--bron-root</code> expliciet op.</p>
 <p>Bij ambiguïteit (meerdere zangstukken matchen dezelfde zoekterm + context)
-stopt het commando met een foutmelding van <code>catalogus zoek</code>. Fix: gebruik
-<code>catalogus zoek --lijst</code> (in de <code>bron</code>-repo) om de kandidaten te bekijken en
+stopt het commando met een foutmelding van <a href="https://orthodox-groningen.github.io/bron/reference/catalogus-cli/#catalogus-zoek"><code>catalogus zoek</code></a>. Fix: gebruik
+<a href="https://orthodox-groningen.github.io/bron/reference/catalogus-cli/#catalogus-zoek"><code>catalogus zoek --lijst</code></a> (in de <code>bron</code>-repo) om de kandidaten te bekijken en
 verfijn de zoekterm of <code>default.*</code>-context.</p>
 <h2 id="relatie-tot-catalogus-cli">Relatie tot <code>catalogus</code> CLI<a class="headerlink" href="#relatie-tot-catalogus-cli" title="Permanent link">&para;</a></h2>
 <table>
@@ -3142,16 +3142,16 @@ verfijn de zoekterm of <code>default.*</code>-context.</p>
 </thead>
 <tbody>
 <tr>
-<td><code>catalogus zoek "Kondakion" --default-gelegenheid …</code></td>
+<td><a href="https://orthodox-groningen.github.io/bron/reference/catalogus-cli/#catalogus-zoek"><code>catalogus zoek</code></a> <code>"Kondakion" --default-gelegenheid …</code></td>
 <td>Lage-niveau API — één zoekactie.</td>
 </tr>
 <tr>
-<td><code>catalogus index validate</code></td>
+<td><a href="https://orthodox-groningen.github.io/bron/reference/catalogus-cli/#catalogus-index-validate"><code>catalogus index validate</code></a></td>
 <td>Index controleren vóór bulk-resolve.</td>
 </tr>
 <tr>
-<td><code>vsa resolve-catalogus</code></td>
-<td>Markdown-processor die <code>catalogus zoek</code> per <code>zoek=</code>-regel aanroept.</td>
+<td><a href="./"><code>vsa resolve-catalogus</code></a></td>
+<td>Markdown-processor die <a href="https://orthodox-groningen.github.io/bron/reference/catalogus-cli/#catalogus-zoek"><code>catalogus zoek</code></a> per <code>zoek=</code>-regel aanroept.</td>
 </tr>
 </tbody>
 </table>
@@ -3160,7 +3160,7 @@ verfijn de zoekterm of <code>default.*</code>-context.</p>
 <li><a href="../build-markdown/"><code>vsa build-markdown</code></a> — volgende stap in de pipeline; weigert open <code>zoek=</code>.</li>
 <li><a href="../validate/"><code>vsa validate</code></a> — draai na resolve om het opgeloste bestand te controleren.</li>
 <li>Handleiding: <a href="../../../guides/parochie-lokaal-vsa/">parochie-lokaal-vsa.md</a></li>
-<li>Bron-contract (normatief): <a href="https://github.com/orthodox-groningen/bron/blob/main/docs/specs/catalogus-samenstelling-zangstuk.md">catalogus-samenstelling-zangstuk.md</a>, <a href="https://github.com/orthodox-groningen/bron/blob/main/docs/reference/catalogus-cli.md">catalogus-cli</a></li>
+<li>Bron-contract (normatief): <a href="https://orthodox-groningen.github.io/bron/specs/catalogus-samenstelling-zangstuk/">catalogus-samenstelling-zangstuk.md</a>, <a href="https://orthodox-groningen.github.io/bron/reference/catalogus-cli/">catalogus-cli</a></li>
 </ul>
 
 
@@ -3198,7 +3198,7 @@ verfijn de zoekterm of <code>default.*</code>-context.</p>
       
       
       <p class="og-footer-stamps">
-        Bijgewerkt: 2026-08-02
+        Bijgewerkt: 2026-08-08
         
       </p>
       

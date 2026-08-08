@@ -98,7 +98,7 @@
   
   <strong>Preview</strong>
    — branch <code>docs/professionalisering-vervolg</code>
-  , gebouwd 2026-08-07 22:47 CEST.
+  , gebouwd 2026-08-08 08:06 CEST.
   <a href="https://orthodox-groningen.github.io/VSA-tooling/">Live documentatie (main)</a>.
   
 
@@ -3569,7 +3569,7 @@
 <p>Meerdere punten worden verticaal gestapeld.</p>
 <h3 id="82-musicxml-export">8.2 MusicXML-export<a class="headerlink" href="#82-musicxml-export" title="Permanent link">&para;</a></h3>
 <blockquote>
-<p><strong>Implementatiestatus:</strong> geïmplementeerd in <code>vsa-tool</code> als <code>vsa musicxml</code>.
+<p><strong>Implementatiestatus:</strong> geïmplementeerd in <code>vsa-tool</code> als <a href="../../reference/cli/musicxml/"><code>vsa musicxml</code></a>.
 Zie <code>src/vsa/musicxml_renderer.py</code>, <code>src/vsa/pitch_resolver.py</code> en
 <code>src/vsa/duration_model.py</code>.</p>
 </blockquote>
@@ -4051,7 +4051,7 @@ compatibiliteit van het <strong><code>playback</code>-profiel</strong> wordt str
 voice/stem, beaming, melisma-encoding) maar vereist handmatige verificatie in
 Coria of MuseScore voor volledige garantie.</p>
 <h5 id="82115-uitvoerformaat-mxl-default-en-musicxml">8.2.11.5 Uitvoerformaat: <code>.mxl</code> (default) en <code>.musicxml</code><a class="headerlink" href="#82115-uitvoerformaat-mxl-default-en-musicxml" title="Permanent link">&para;</a></h5>
-<p><code>vsa musicxml</code> schrijft standaard <strong>Compressed MusicXML</strong> (<code>.mxl</code>). Met
+<p><a href="../../reference/cli/musicxml/"><code>vsa musicxml</code></a> schrijft standaard <strong>Compressed MusicXML</strong> (<code>.mxl</code>). Met
 <code>--format musicxml</code> of een uitvoerpad dat op <code>.musicxml</code> eindigt, wordt
 ongekomprimeerde MusicXML geschreven.</p>
 <table>
@@ -4088,7 +4088,7 @@ naar <code>static/coria/…/{stem}.html</code>. Directive emitteert <code>{{&lt;
 <p>Fallback wanneer geen <code>.coria.html</code> aanwezig is. MXL onder <code>static/vsa/mxl/…</code>
 (wordt apart gegenereerd). Directive emitteert <code>{{&lt; coria &gt;}}</code>.</p>
 <p>Site-build: <code>build-markdown</code> (directive + <code>.coria.html</code>-kopie) vóór
-<code>vsa musicxml</code> (MXL-generatie). Lokaal (<code>baseURL /</code>) werkt <code>play_from_url</code>
+<a href="../../reference/cli/musicxml/"><code>vsa musicxml</code></a> (MXL-generatie). Lokaal (<code>baseURL /</code>) werkt <code>play_from_url</code>
 niet: Coria haalt het bestand server-side op.</p>
 <h3 id="83-geintegreerde-partituur-export-htmlpdf-voorziene-uitbreiding">8.3 Geïntegreerde partituur-export (HTML/PDF) — voorziene uitbreiding<a class="headerlink" href="#83-geintegreerde-partituur-export-htmlpdf-voorziene-uitbreiding" title="Permanent link">&para;</a></h3>
 <blockquote>
@@ -6660,7 +6660,7 @@ local_heights = height_markers[1:]
       
       
       <p class="og-footer-stamps">
-        Bijgewerkt: 2026-08-01
+        Bijgewerkt: 2026-08-08
         
       </p>
       

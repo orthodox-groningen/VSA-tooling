@@ -81,10 +81,10 @@ vsa validate <bestand-of-map>
 
 ### Inputvarianten
 
-| Input          | Voorbeeld                           | Gedrag                                          |
-| -------------- | ----------------------------------- | ----------------------------------------------- |
-| `.vsa` bestand | `examples\minimal\050_svg_demo.vsa` | controleert één VSA-bestand                     |
-| `.md` bestand  | `pagina.md`                         | controleert VSA-blokken in Markdown             |
+| Input          | Voorbeeld                                  | Gedrag                                          |
+| -------------- | ------------------------------------------ | ----------------------------------------------- |
+| `.vsa` bestand | `examples\minimal\001_plain_text.vsa`      | controleert één VSA-bestand                     |
+| `.md` bestand  | `pagina.md`                                | controleert VSA-blokken in Markdown             |
 | map            | `examples\consumer-minimal\content-source` | zoekt recursief naar `.vsa`, `.md`, `.markdown` |
 
 ### Wat wordt gecontroleerd?
@@ -403,11 +403,11 @@ vsa build-markdown examples\consumer-minimal\content-source generated\content ge
 
 Betekenis:
 
-| Deel   | Pad                                 | Betekenis       |
-| ------ | ----------------------------------- | --------------- |
+| Deel   | Pad                                        | Betekenis       |
+| ------ | ------------------------------------------ | --------------- |
 | input  | `examples\consumer-minimal\content-source` | bron            |
-| output | `generated\content`                 | nieuwe Markdown |
-| assets | `generated\static\vsa`              | SVG-bestanden   |
+| output | `generated\content`                        | nieuwe Markdown |
+| assets | `generated\static\vsa`                     | SVG-bestanden   |
 
 ### Wat doe je bij problemen?
 

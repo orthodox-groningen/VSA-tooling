@@ -51,5 +51,5 @@ Met TermRefs (na `npm install`): `scripts\docs-serve-tev2.cmd` — zie
 cd /d C:\Git\orthodox-groningen\VSA-tooling
 scripts\bootstrap.cmd
 vsa --version
-vsa validate examples\minimal\050_svg_demo.vsa
+vsa validate examples\minimal\001_plain_text.vsa
 ```

@@ -29,17 +29,19 @@ De [validator](@) controleert of [VSA-notatie](@bron) bruikbaar is
 ([`vsa validate`](../reference/cli/validate.md)):
 
 ```cmd
-vsa validate examples\minimal\050_svg_demo.vsa
+vsa validate examples\minimal\001_plain_text.vsa
 ```
 
 Bij succes: `OK`.
 
 ## 5. SVG genereren
 
-Met [`vsa svg`](../reference/cli/svg.md):
+Met [`vsa svg`](../reference/cli/svg.md) (zelfde schone demo; rijkere
+SVG-voorbeelden zoals `050_svg_demo.vsa` mogen op `validate` falen — zie
+[`vsa svg`](../reference/cli/svg.md)):
 
 ```cmd
-vsa svg examples\minimal\050_svg_demo.vsa generated\vsa\050_svg_demo.svg
+vsa svg examples\minimal\001_plain_text.vsa generated\vsa\001_plain_text.svg
 ```
 
 ## Volgende stappen

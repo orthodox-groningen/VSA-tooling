@@ -7,7 +7,7 @@ Gebruik de [validator](@)
 ## Bestand valideren
 
 ```cmd
-vsa validate examples\minimal\050_svg_demo.vsa
+vsa validate examples\minimal\001_plain_text.vsa
 ```
 
 ## Map valideren

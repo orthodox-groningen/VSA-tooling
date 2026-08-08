@@ -98,7 +98,7 @@
   
   <strong>Preview</strong>
    — branch <code>docs/hrg-termrefs-en-contentplan</code>
-  , gebouwd 2026-08-08 14:48 CEST.
+  , gebouwd 2026-08-08 15:24 CEST.
   <a href="https://orthodox-groningen.github.io/VSA-tooling/">Live documentatie (main)</a>.
   
 
@@ -546,7 +546,7 @@
   <span class="md-ellipsis">
     
   
-    Overzicht
+    Lokaal ontwikkelen
   
 
     
@@ -663,7 +663,7 @@
   <span class="md-ellipsis">
     
   
-    Consumer-site (Hugo)
+    Consumer-site — waar hoort wat
   
 
     
@@ -691,7 +691,7 @@
   <span class="md-ellipsis">
     
   
-    VSA Tool gebruikershandleiding
+    Gebruikershandleiding
   
 
     
@@ -803,7 +803,7 @@
   <span class="md-ellipsis">
     
   
-    MusicXML exporteren
+    MusicXML-export
   
 
     
@@ -831,7 +831,7 @@
   <span class="md-ellipsis">
     
   
-    Rendering-fonts
+    Rendering en fonts
   
 
     
@@ -859,7 +859,7 @@
   <span class="md-ellipsis">
     
   
-    Parochie-lokaal — VSA-tooling
+    Parochie-lokaal VSA
   
 
     
@@ -887,7 +887,7 @@
   <span class="md-ellipsis">
     
   
-    Testvoorbeelden en regressietests voor VSA Tooling
+    Testen en regressie
   
 
     
@@ -943,7 +943,7 @@
   <span class="md-ellipsis">
     
   
-    Hugo navigatie-placeholders
+    Navigatie-placeholders
   
 
     
@@ -1138,10 +1138,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#3-terminologie" class="md-nav__link">
+  <a href="#2-terminologie" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3. Terminologie
+        2. Terminologie
       
     </span>
   </a>
@@ -1255,7 +1255,7 @@
   <span class="md-ellipsis">
     
   
-    Directives en document-samenstelling
+    Directieven
   
 
     
@@ -1283,7 +1283,7 @@
   <span class="md-ellipsis">
     
   
-    Rendering en export
+    Rendering
   
 
     
@@ -1339,7 +1339,7 @@
   <span class="md-ellipsis">
     
   
-    Conformance
+    Conformiteit
   
 
     
@@ -1367,7 +1367,7 @@
   <span class="md-ellipsis">
     
   
-    Error Handling
+    Foutafhandeling
   
 
     
@@ -1395,7 +1395,7 @@
   <span class="md-ellipsis">
     
   
-    Voorbeelden en niet-normatieve toelichting
+    Voorbeelden
   
 
     
@@ -1423,7 +1423,7 @@
   <span class="md-ellipsis">
     
   
-    Versioning
+    Versionering
   
 
     
@@ -1479,7 +1479,7 @@
   <span class="md-ellipsis">
     
   
-    Open specificatiepunten
+    Open punten
   
 
     
@@ -1770,7 +1770,7 @@
   <span class="md-ellipsis">
     
   
-    Fixtures-catalogus (correct / incorrect)
+    Fixtures-catalogus
   
 
     
@@ -2112,7 +2112,7 @@
   <span class="md-ellipsis">
     
   
-    Grammatica-referentie
+    Grammatica
   
 
     
@@ -2140,7 +2140,7 @@
   <span class="md-ellipsis">
     
   
-    Tokenreferentie
+    Tokens
   
 
     
@@ -2168,7 +2168,7 @@
   <span class="md-ellipsis">
     
   
-    Metadatareferentie
+    Metadata
   
 
     
@@ -2196,7 +2196,7 @@
   <span class="md-ellipsis">
     
   
-    Configuratiereferentie
+    Config
   
 
     
@@ -2224,7 +2224,7 @@
   <span class="md-ellipsis">
     
   
-    Diagnostics-referentie
+    Diagnostiek
   
 
     
@@ -2252,7 +2252,7 @@
   <span class="md-ellipsis">
     
   
-    Outputreferentie
+    Outputs
   
 
     
@@ -2280,7 +2280,7 @@
   <span class="md-ellipsis">
     
   
-    @include-vsa referentie
+    Include-vsa
   
 
     
@@ -2425,7 +2425,7 @@
   <span class="md-ellipsis">
     
   
-    VSA-tooling gebruiken vanuit andere repositories
+    Hergebruik vsa-tool
   
 
     
@@ -2785,10 +2785,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#3-terminologie" class="md-nav__link">
+  <a href="#2-terminologie" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3. Terminologie
+        2. Terminologie
       
     </span>
   </a>
@@ -2821,207 +2821,85 @@
 
 
 <h1 id="doel-en-scope">Doel en scope<a class="headerlink" href="#doel-en-scope" title="Permanent link">&para;</a></h1>
-<p>VSA (Vereenvoudigde Slavische Accentnotatie) is een tekstgebaseerde domeinspecifieke taal (Domain-Specific Language, DSL) voor het beschrijven van Slavische accentnotatie. De taal definieert een eenduidige, machineleesbare en menselijk leesbare notatie waarmee zangstukken kunnen worden vastgelegd, gevalideerd en gerenderd. De specificatie beschrijft uitsluitend de taal en haar semantiek.</p>
+<p>VSA (Vereenvoudigde Slavische Accentnotatie) is een tekstgebaseerde
+domeinspecifieke taal (DSL) voor Slavische accentnotatie. De taal definieert
+een eenduidige, machineleesbare en menselijk leesbare notatie waarmee
+zangstukken kunnen worden vastgelegd, gevalideerd en verder verwerkt
+(<a href="https://orthodox-groningen.github.io/bron/specs/terminologie/">conversie</a>
+naar o.a. SVG/MusicXML; <a href="https://orthodox-groningen.github.io/bron/specs/terminologie/">export</a>
+in een <a href="/bron/terms/samenstelling" title="Samenstelling: Een markdown-document (met VSA-directives) dat Representaties ordent voor een lezersdoel, zonder zelf Representatie te zijn.">samenstelling</a> via <code>:::include</code>).</p>
+<p>Deze specificatie beschrijft de <strong>taal en haar semantiek</strong> (plus toolcontracts
+in de overige specificatiepagina’s). Org-brede begrippen zoals
+<a href="/bron/terms/zangstuk" title="Zangstuk: Een liturgisch-muzikaal geheel met een stabiele <code>zangstuk-id</code>, waaronder nul of meer varianten bestaan.">zangstuk</a> en <a href="/bron/terms/afgeleide" title="Afgeleide: Een bestand dat volledig en herhaalbaar door een Conversiemechanisme uit een Bronbestand wordt gegenereerd, en dat (dus) niet als Bronbestand in de Bron-repository staat.">afgeleide</a> staan in de
+<a href="https://orthodox-groningen.github.io/bron/specs/terminologie/">bron-terminologie</a>;
+tool-termen in de <a href="../../glossary/">glossary</a>.</p>
 <h2 id="status">Status<a class="headerlink" href="#status" title="Permanent link">&para;</a></h2>
-<p>Dit document consolideert de algemene specificatie-informatie uit de bestaande VSA-documentatie.</p>
-<p>De tekst hieronder is overgenomen en samengebracht uit de bestaande specificatie, met behoud van betekenis.</p>
+<p>Dit document consolideert algemene specificatie-informatie uit de bestaande
+VSA-documentatie (betekenis behouden, structuur opgeschoond).</p>
 <h2 id="1-inleiding">1. Inleiding<a class="headerlink" href="#1-inleiding" title="Permanent link">&para;</a></h2>
 <!-- ter herinnering: http://www.ivanmoody.co.uk/orthodoxliturgylinks.htm bevat allerlei links over orthodoxe liturgie -->
 
-<p>De Slavisch‑orthodoxe zangtraditie kent een lange geschiedenis van <strong>staffloze neumen­notatie</strong>, waarvan de bekendste vorm de klassieke <strong>Znamenny‑notatie</strong> is. Deze notatie gebruikt ideografische tekens (<em>kriuki</em> of <em>znamëna</em>) om melodische beweging, formules en expressie vast te leggen zonder exacte toonhoogtes. Een toegankelijke introductie is te vinden op <a href="https://en.wikipedia.org/wiki/Znamenny_chant">Znamenny chant</a>, en een overzicht van historische notatievormen op <a href="https://en.wikipedia.org/wiki/Znamenny_notation">Znamenny musical notation</a>.</p>
-<p>Hoewel deze officiële systemen rijk en complex zijn, ontstonden er in parochies ook <strong>vereenvoudigde, mondeling overgeleverde markeersystemen</strong>. Deze systemen — vaak bestaande uit gestapelde streepjes boven de tekst en horizontale lijnen onder syllaben — dienden als praktische hulpmiddelen om <strong>richting</strong>, <strong>accent</strong> en <strong>duur</strong> van de zang aan te geven. Ze zijn echter <strong>niet gestandaardiseerd</strong>, <strong>niet officieel gedocumenteerd</strong>, en verschillen per regio, koorleider of lokale traditie. <a href="#appendix-1">Appendix 1</a> bevat de uitleg zoals die werd gegeven in het Nederlandse Liturgikon. </p>
-<p>Dit document introduceert een formele codificatie van deze praktijkgerichte notatie: de <strong>Vereenvoudigde Slavische Accentnotatie (VSA‑notatie)</strong>. VSA is geen vervanging van historische kriuki- of znamenny-notatie, maar een lichte, consistente en reproduceerbare manier om Slavisch‑orthodoxe congregatiezang digitaal te noteren.</p>
+<p>De Slavisch‑orthodoxe zangtraditie kent een lange geschiedenis van
+<strong>staffloze neumen­notatie</strong>, waarvan de bekendste vorm de klassieke
+<strong>Znamenny‑notatie</strong> is. Deze notatie gebruikt ideografische tekens
+(<em>kriuki</em> of <em>znamëna</em>) om melodische beweging, formules en expressie vast te
+leggen zonder exacte toonhoogtes. Een toegankelijke introductie is te vinden
+op <a href="https://en.wikipedia.org/wiki/Znamenny_chant">Znamenny chant</a>, en een
+overzicht van historische notatievormen op
+<a href="https://en.wikipedia.org/wiki/Znamenny_notation">Znamenny musical notation</a>.</p>
+<p>Hoewel deze officiële systemen rijk en complex zijn, ontstonden er in
+parochies ook <strong>vereenvoudigde, mondeling overgeleverde markeersystemen</strong>.
+Deze systemen — vaak bestaande uit gestapelde streepjes boven de tekst en
+horizontale lijnen onder syllaben — dienden als praktische hulpmiddelen om
+<strong>richting</strong>, <strong>accent</strong> en <strong>duur</strong> van de zang aan te geven. Ze zijn echter
+<strong>niet gestandaardiseerd</strong>, <strong>niet officieel gedocumenteerd</strong>, en verschillen
+per regio, koorleider of lokale traditie. Historische uitleg uit het
+Nederlandse Liturgikon: <a href="../../guides/liturgikon-notatie/">Liturgikon-notatie</a>.</p>
+<p>Dit document introduceert een formele codificatie van deze praktijkgerichte
+notatie: de <strong>Vereenvoudigde Slavische Accentnotatie (VSA‑notatie)</strong>. VSA is
+geen vervanging van historische kriuki- of znamenny-notatie, maar een lichte,
+consistente en reproduceerbare manier om Slavisch‑orthodoxe congregatiezang
+digitaal te noteren.</p>
 <p>Het doel is een notatie die:</p>
 <ul>
 <li>eenvoudig te leren is voor zangers zonder gespecialiseerde opleiding;</li>
 <li>aansluit bij bestaande parochiële praktijk;</li>
 <li>formeel definieerbaar is in een grammatica;</li>
 <li>betrouwbaar te parseren, valideren en renderen is;</li>
-<li>bruikbaar is in tekstgebaseerde workflows, statische websites en automatische renderers of weergavecomponenten;</li>
-<li>voldoende semantische informatie bevat voor conversie naar symbolische muziekformaten zoals MusicXML.</li>
+<li>bruikbaar is in tekstgebaseerde workflows, statische websites en
+  automatische renderers of weergavecomponenten;</li>
+<li>voldoende semantische informatie bevat voor conversie naar symbolische
+  muziekformaten zoals MusicXML.</li>
 </ul>
-<p>VSA beschrijft melodische beweging binnen een modaal toonstelsel waarin stapgrootten niet uniform zijn en afhankelijk zijn van de gekozen grondtoon: de <code>do</code> van de toonladder.</p>
-<hr />
-<h2 id="3-terminologie">3. Terminologie<a class="headerlink" href="#3-terminologie" title="Permanent link">&para;</a></h2>
+<p>VSA beschrijft melodische beweging binnen een modaal toonstelsel waarin
+stapgrootten niet uniform zijn en afhankelijk zijn van de gekozen grondtoon:
+de <code>do</code> van de toonladder.</p>
+<h2 id="2-terminologie">2. Terminologie<a class="headerlink" href="#2-terminologie" title="Permanent link">&para;</a></h2>
+<p><strong>Geen parallelle glossary hier.</strong> Definities:</p>
 <table>
 <thead>
 <tr>
-<th>Term</th>
-<th>Betekenis</th>
+<th>Bron</th>
+<th>Inhoud</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>AST</td>
-<td>Abstract Syntax Tree. Een interne boom- of objectstructuur die het resultaat is van parsing.</td>
+<td><a href="../../glossary/">Glossary (deze site)</a></td>
+<td>Tool-termen + geselecteerde bron-termen (na TEv2)</td>
 </tr>
 <tr>
-<td>Absolute toonhoogte</td>
-<td>Een expliciete toonhoogteaanduiding voor interpretatie of export, bijvoorbeeld <code>C4</code> of <code>F#3</code>; dit hoort in blokmetadata, niet in een toonhoogte-markering.</td>
+<td><a href="https://orthodox-groningen.github.io/bron/specs/terminologie/">bron — terminologie</a></td>
+<td>Org-brede canonieke begrippen</td>
 </tr>
 <tr>
-<td>Blok</td>
-<td>zie: Hugo Markdown blok</td>
-</tr>
-<tr>
-<td>Do-context</td>
-<td>De grondtooncontext waarbinnen relatieve toonhoogtebewegingen worden geïnterpreteerd. De do-context bestaat uit de grondtoon (<code>do</code>) en de modus</td>
-</tr>
-<tr>
-<td>Duur</td>
-<td>Interne representatie van de duur van een muzikale positie.</td>
-</tr>
-<tr>
-<td>EHM</td>
-<td>Enkelvoudige Hoogte-Modifier. Een elementaire hoogte-instructie, bestaande uit een optionele halftoon-prefix (<code>#</code>, <code>b</code> of alias) gevolgd door een basisbeweging zoals <code>/</code>, <code>\\</code>, <code>-</code> of <code>~</code>.</td>
-</tr>
-<tr>
-<td>ELM</td>
-<td>Enkelvoudige Lengte-Modifier. Een elementaire duurinstructie zoals <code>_</code>, <code>__</code>, <code>.</code>, <code>..</code>, <code>-</code> of <code>~</code>.</td>
-</tr>
-<tr>
-<td>Export</td>
-<td>Het omzetten van gevalideerde VSA-notatie naar een extern formaat zoals MusicXML.</td>
-</tr>
-<tr>
-<td>Glyph</td>
-<td>De grafische representatie van een EHM of ELM.</td>
-</tr>
-<tr>
-<td>Grid</td>
-<td>Het renderobject voor één zangelement-scope. Het bestaat uit een bovenrij, tekstlaag en onderrij.</td>
-</tr>
-<tr>
-<td>Hoogte-modifier</td>
-<td>Een rij EHMs die melodische beweging specificeert.</td>
-</tr>
-<tr>
-<td>Hugo Markdown blok</td>
-<td>De tekst <code>::: vsa-notatie</code>, gevolgd door een lijst van parameters, een zangstuk, en <code>:::</code></td>
-</tr>
-<tr>
-<td>Kolom</td>
-<td>De grafische representatie van één muzikale positie binnen een grid.</td>
-</tr>
-<tr>
-<td>Ladderstap</td>
-<td>Een overgang van één toonladdergraad naar de volgende of vorige graad.</td>
-</tr>
-<tr>
-<td>Lengte-modifier</td>
-<td>Een rij ELMs die de duur van muzikale posities specificeert.</td>
-</tr>
-<tr>
-<td>Mappingstrategie</td>
-<td>De implementatiekeuze waarmee relatieve toonladderbewegingen worden omgezet naar concrete toonhoogten.</td>
-</tr>
-<tr>
-<td>Melisma</td>
-<td>Het zingen van één zangelement over meerdere opeenvolgende muzikale posities.</td>
-</tr>
-<tr>
-<td>Modus</td>
-<td>De intervalstructuur van een toonladder. De modus bepaalt welke overgangen grote of kleine stappen zijn. Voorbeelden zijn 'majeur' en 'mineur'.</td>
-</tr>
-<tr>
-<td>Modifier</td>
-<td>Verzamelnaam voor een hoogte-modifier of lengte-modifier.</td>
-</tr>
-<tr>
-<td>Muzikale positie</td>
-<td>De kleinste muzikale eenheid binnen een zangstuk. Een muzikale positie representeert precies één gezongen toon met een relatieve toonhoogte en een duur.</td>
-</tr>
-<tr>
-<td>Muzikale tijdlijn</td>
-<td>De geordende reeks muzikale posities van een zangstuk.</td>
-</tr>
-<tr>
-<td>Node</td>
-<td>Een element binnen een AST-structuur.</td>
-</tr>
-<tr>
-<td>Parser</td>
-<td>Een component die VSA-tekst omzet naar een AST of andere interne representatie.</td>
-</tr>
-<tr>
-<td>Toonhoogte</td>
-<td>Interne representatie van een concrete toonhoogte.</td>
-</tr>
-<tr>
-<td>PitchMarkerNode</td>
-<td>AST-node die een toonhoogte-markering representeert; deze bevat geen absolute toonhoogte.</td>
-</tr>
-<tr>
-<td>Positie</td>
-<td>Verkorte schrijfwijze voor muzikale positie.</td>
-</tr>
-<tr>
-<td>Renderen</td>
-<td>Het omzetten van gevalideerde VSA-notatie naar een visuele of symbolische representatie zoals SVG, HTML, PDF of MusicXML.</td>
-</tr>
-<tr>
-<td>Renderlaag</td>
-<td>Eén van de drie visuele lagen van een rendering: bovenlaag, tekstlaag of onderlaag.</td>
-</tr>
-<tr>
-<td>Samengestelde modifier</td>
-<td>Een modifier die uit meerdere EHMs of ELMs bestaat, gescheiden door <code>&amp;</code>.</td>
-</tr>
-<tr>
-<td>Scope</td>
-<td>Verkorte schrijfwijze voor zangelement-scope.</td>
-</tr>
-<tr>
-<td>ScopeNode</td>
-<td>AST-node die een zangelement-scope representeert.</td>
-</tr>
-<tr>
-<td>Semantische validatie</td>
-<td>Controle of syntactisch geldige VSA-notatie ook voldoet aan de betekenisregels van VSA.</td>
-</tr>
-<tr>
-<td>Standaardduur</td>
-<td>De basisduur van een muzikale positie waarvan alle ELM-duurwaarden worden afgeleid.</td>
-</tr>
-<tr>
-<td>Syntax-validatie</td>
-<td>Controle of invoer voldoet aan de grammaticale regels van VSA.</td>
-</tr>
-<tr>
-<td>Toonhoogte-markering</td>
-<td>Een speciale constructie aan het begin of einde van een zangstuk waarmee een een relatieve hoogte-modifier worden vastgelegd.</td>
-</tr>
-<tr>
-<td>Toonhoogtebeweging</td>
-<td>Een relatieve verandering van toonhoogte zoals beschreven door een EHM.</td>
-</tr>
-<tr>
-<td>Toonladdergraad</td>
-<td>Een positie binnen de toonladder, bijvoorbeeld <code>do</code>, <code>re</code>, <code>mi</code>, <code>fa</code>, <code>sol</code>, <code>la</code>, <code>ti</code>.</td>
-</tr>
-<tr>
-<td>VSA-markering</td>
-<td>Iedere syntactische constructie waarmee muzikale informatie aan tekst wordt gekoppeld, zoals scopes, modifiers en toonhoogte-markeringen.</td>
-</tr>
-<tr>
-<td>VSA-zangstuk</td>
-<td>Een tekst die gezongen kan worden, zoals een tropaar of kondak, en in VSA is opgeschreven.</td>
-</tr>
-<tr>
-<td>Zangelement</td>
-<td>De tekst waaraan muzikale informatie wordt gekoppeld. Dit is vaak een lettergreep, maar kan ook een kleiner of groter tekstfragment zijn.</td>
-</tr>
-<tr>
-<td>Zangelement-scope</td>
-<td>Een gemarkeerd tekstdeel tussen <code>{</code> en <code>}</code>. Een scope bevat achtereenvolgens een optionele hoogte-modifier, exact één zangelement en een optionele lengte-modifier.</td>
-</tr>
-<tr>
-<td>Zangstuk</td>
-<td>Zie: VSA-zangstuk</td>
+<td>Curated texts</td>
+<td><code>docs/terminologie/</code> (lokaal) en bron <code>docs/terms/</code></td>
 </tr>
 </tbody>
 </table>
-<hr />
+<p>Gebruik TermRefs in specificatietekst (<code>[parser](@)</code>, <code>[zangstuk](@bron)</code>, …)
+in plaats van een tweede termtabel bij te houden.</p>
 
 
 
@@ -3058,7 +2936,7 @@
       
       
       <p class="og-footer-stamps">
-        Bijgewerkt: 2026-08-05
+        Bijgewerkt: 2026-08-08
         
       </p>
       

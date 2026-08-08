@@ -1,4 +1,4 @@
-# Conformance
+# Conformiteit
 
 ## Doel
 

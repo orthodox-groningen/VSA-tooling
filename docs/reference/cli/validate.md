@@ -1,5 +1,10 @@
 # `vsa validate` — VSA-invoer controleren
 
+!!! note "Waartoe"
+    Controleren of `.vsa`- of Markdown-invoer [geldige VSA-notatie](@) bevat
+    vóór verdere verwerking (SVG, Hugo-Markdown, MusicXML). Dit schrijft
+    **geen** SVG — zie [`vsa svg`](svg.md).
+
 Controleer of `.vsa`- of Markdown-invoer [geldige VSA-notatie](@) bevat voor
 verdere verwerking (SVG, Hugo-Markdown, MusicXML).
 
@@ -153,5 +158,5 @@ Zie [diagnostics.md](../diagnostics.md) voor de volledige lijst en severity-inst
 
 - [`vsa parse`](parse.md) — parserdebugging op één bestand.
 - [`vsa svg`](svg.md), [`vsa process`](process.md), [`vsa build-markdown`](build-markdown.md) — draaien impliciet validatie (behalve met `--no-validate`).
-- Handleiding: [gebruikershandleiding §5](../../guides/user-guide.md), [CLI-taken](../../guides/cli-taken.md)
+- Handleiding: [Validatie](../../guides/validation.md), [CLI-taken](../../guides/cli-taken.md)
 - Foutcodes en severity: [config.md](../config.md), [diagnostics.md](../diagnostics.md)

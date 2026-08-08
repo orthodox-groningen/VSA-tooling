@@ -1,4 +1,4 @@
-# Diagnostics-referentie
+# Diagnostiek-referentie
 
 ## Foutoutput
 

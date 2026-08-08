@@ -1986,7 +1986,7 @@
   <span class="md-ellipsis">
     
   
-    vsa blocks — VSA-blokken in Markdown vinden
+    vsa blocks — ::: vsa-notatie en eindigt met :::, beide aan het begin van een regel, met daartussen VSA-notatie; typisch ontdekt en verwerkt door de Vsa-toolset (o.a. vsa blocks, vsa validate, vsa process).">VSA-blokken in Markdown vinden
   
 
     
@@ -2898,7 +2898,8 @@
 
 
 <h1 id="svg-exporteren">SVG exporteren<a class="headerlink" href="#svg-exporteren" title="Permanent link">&para;</a></h1>
-<p><code>vsa svg</code>, <code>vsa process</code> en <code>vsa build-markdown</code> renderen VSA-notatie naar
+<p><a href="../../reference/cli/svg/"><code>vsa svg</code></a>, <a href="../../reference/cli/process/"><code>vsa process</code></a>
+en <a href="../../reference/cli/build-markdown/"><code>vsa build-markdown</code></a> renderen VSA-notatie naar
 <strong>SVG</strong> — een schaalbare vectorafbeelding die je inline toont naast gewone
 tekst, op scherm of afdruk. Dit is de meest gebruikte workflow: geen
 externe player nodig, werkt zonder JavaScript, en schaalt scherp op elk
@@ -2928,11 +2929,11 @@ scherm.</p>
 </tr>
 <tr>
 <td>Audio afspelen of oefenen</td>
-<td>Nee — gebruik <a href="../musicxml-export/"><code>vsa musicxml</code></a></td>
+<td>Nee — gebruik <a href="../../reference/cli/musicxml/"><code>vsa musicxml</code></a></td>
 </tr>
 <tr>
 <td>Bewerken in MuseScore</td>
-<td>Nee — gebruik <a href="../musicxml-export/"><code>vsa musicxml</code></a> met profiel <code>engraving</code></td>
+<td>Nee — gebruik <a href="../../reference/cli/musicxml/"><code>vsa musicxml</code></a> met profiel <code>engraving</code></td>
 </tr>
 </tbody>
 </table>
@@ -2959,9 +2960,10 @@ scherm.</p>
 </tr>
 </tbody>
 </table>
-<p>Voor een losse controle tijdens het schrijven is <code>vsa svg</code> het snelst. Voor
-een echte publicatie (Hugo-site) gebruik je <code>vsa build-markdown</code>, dat de
-<code>::: vsa-notatie … :::</code>-blokken in je Markdown automatisch vervangt door een
+<p>Voor een losse controle tijdens het schrijven is
+<a href="../../reference/cli/svg/"><code>vsa svg</code></a> het snelst. Voor een echte publicatie
+(Hugo-site) gebruik je <a href="../../reference/cli/build-markdown/"><code>vsa build-markdown</code></a>,
+dat de <code>::: vsa-notatie … :::</code>-blokken in je Markdown automatisch vervangt door een
 verwijzing naar de gegenereerde SVG (zie
 <a href="#inline-rendering-via-build-markdown">"Inline rendering via <code>build-markdown</code>"</a>
 hieronder).</p>
@@ -2981,7 +2983,7 @@ foutgevallen: <a href="../../reference/cli/svg/"><code>cli/svg.md</code></a>,
 <a href="../../reference/cli/process/"><code>cli/process.md</code></a>,
 <a href="../../reference/cli/build-markdown/"><code>cli/build-markdown.md</code></a>.</p>
 <h2 id="inline-rendering-via-build-markdown">Inline rendering via <code>build-markdown</code><a class="headerlink" href="#inline-rendering-via-build-markdown" title="Permanent link">&para;</a></h2>
-<p><code>vsa build-markdown</code> vervangt in de gegenereerde Markdown elk VSA-blok door
+<p><a href="../../reference/cli/build-markdown/"><code>vsa build-markdown</code></a> vervangt in de gegenereerde Markdown elk VSA-blok door
 een verwijzing naar de gegenereerde SVG. Bron-Markdown:</p>
 <div class="highlight"><pre><span></span><code>::: vsa-notatie
 [:] {/Hei_}{/lig_} is de Heer. [:]
@@ -3041,7 +3043,9 @@ wijst naar de verkeerde plek.</p>
 <code>vsa.toml</code>; zie <a href="../../reference/config/">config.md</a> voor de voorrangsregel
 (CLI-optie → <code>vsa.toml</code> → interne default).</p>
 <h2 id="waar-komen-de-gegenereerde-bestanden-terecht">Waar komen de gegenereerde bestanden terecht?<a class="headerlink" href="#waar-komen-de-gegenereerde-bestanden-terecht" title="Permanent link">&para;</a></h2>
-<p>SVG's die je met <code>vsa svg</code>, <code>vsa process</code> of <code>vsa build-markdown</code> genereert,
+<p>SVG's die je met <a href="../../reference/cli/svg/"><code>vsa svg</code></a>,
+<a href="../../reference/cli/process/"><code>vsa process</code></a> of
+<a href="../../reference/cli/build-markdown/"><code>vsa build-markdown</code></a> genereert,
 zijn <strong>afgeleide</strong> bestanden: ze worden opnieuw gegenereerd uit de
 <code>.vsa</code>-bron en horen niet gecommit te worden naast de bron. Gebruik
 lokaal een map als <code>generated\</code> (of <code>tmp\</code>) die in <code>.gitignore</code> staat:</p>
@@ -3136,7 +3140,7 @@ en het <code>derived/</code>-concept daar voor build-output dat nooit in git kom
       
       
       <p class="og-footer-stamps">
-        Bijgewerkt: 2026-08-02
+        Bijgewerkt: 2026-08-08
         
       </p>
       

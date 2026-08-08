@@ -10,7 +10,7 @@
       
       
       
-        <link rel="canonical" href="https://orthodox-groningen.github.io/VSA-tooling/terminologie/validator/">
+        <link rel="canonical" href="https://orthodox-groningen.github.io/VSA-tooling/terminologie/geldige-vsa-notatie/">
       
       
       
@@ -23,7 +23,7 @@
     
     
       
-        <title>Validator - VSA-tooling — documentatie</title>
+        <title>Geldige VSA-notatie - VSA-tooling — documentatie</title>
       
     
     
@@ -80,7 +80,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#validator" class="md-skip">
+        <a href="#geldige-vsa-notatie" class="md-skip">
           Ga naar inhoud
         </a>
       
@@ -125,7 +125,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Validator
+              Geldige VSA-notatie
             
           </span>
         </div>
@@ -2649,7 +2649,7 @@
 
 
   
-    <a href="https://github.com/orthodox-groningen/VSA-tooling/edit/main/docs/terminologie/validator.md" title="Wijzig deze pagina" class="md-content__button md-icon" rel="edit">
+    <a href="https://github.com/orthodox-groningen/VSA-tooling/edit/main/docs/terminologie/geldige-vsa-notatie.md" title="Wijzig deze pagina" class="md-content__button md-icon" rel="edit">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
     </a>
@@ -2657,8 +2657,16 @@
   
 
 
-<h1 id="validator">Validator<a class="headerlink" href="#validator" title="Permanent link">&para;</a></h1>
-<p>De validator controleert of VSA-invoer inhoudelijk voldoet aan de regels die na parsing gelden. Waar mogelijk verzamelt de validator meerdere onafhankelijke diagnostics in een run.</p>
+<h1 id="geldige-vsa-notatie">Geldige VSA-notatie<a class="headerlink" href="#geldige-vsa-notatie" title="Permanent link">&para;</a></h1>
+<p><strong>Geldige VSA-notatie</strong> is <a href="/bron/terms/vsa-notatie" title="VSA-notatie: Het tekstgebaseerde notatieformaat waarmee liturgische zangteksten worden vastgelegd: een formeel gespecificeerde taal met scopes, modifiers en bracket-directives, parseeerbaar en valideerbaar door Vsa-tooling.">VSA-notatie</a> die
+<a href="../../reference/cli/validate/"><code>vsa validate</code></a> accepteert.
+De <a href="/VSA-tooling/terminologie/validator" title="Validator: een component die een geparseerde AST of VSA-invoer toetst aan semantische en normatieve regels en overtredingen als diagnostics rapporteert zonder ze stilzwijgend te repareren.">validator</a> controleert syntax en semantiek; syntaxfouten blijven altijd
+fouten, semantische meldingen kunnen via <a href="/VSA-tooling/terminologie/vsa-toml" title="vsa.toml: een projectconfiguratiebestand met de naam <code>vsa.toml</code> dat herkende VSA-toolinginstellingen bevat voor rendering, output of validatie.">vsa.toml</a> als <a href="/VSA-tooling/terminologie/severity" title="Severity: een waarde die aan een diagnostic is gekoppeld en aangeeft of de vastgestelde afwijking als blokkerende fout of als waarschuwing moet worden behandeld.">severity</a>
+<code>warning</code> worden behandeld.</p>
+<p>Gebruik deze term in plaats van spreektaal zoals “VSA klopt”. Een
+<a href="/bron/terms/vsa-bestand" title="vsa-bestand: Een bestand met de extensie <code>.vsa</code> waarvan de inhoud uitsluitend syntactisch geldige Vsa-notatie bevat — d.w.z. door de Vsa-tooling foutloos wordt geparseerd en gevalideerd.">vsa-bestand</a> bevat per definitie geldige VSA-notatie; in een
+<a href="/VSA-tooling/terminologie/vsa-blokken" title="VSA-blok: een tekstfragment in een Markdownbestand dat begint met <code>::: vsa-notatie</code> en eindigt met <code>:::</code>, beide aan het begin van een regel, met daartussen VSA-notatie; typisch ontdekt en verwerkt door de Vsa-toolset (o.a. <code>vsa blocks</code>, <code>vsa validate</code>, <code>vsa process</code>).">VSA-blok</a> of losse <a href="/VSA-tooling/terminologie/vsa-tekst" title="VSA-tekst: tekst waarin naast gewone tekst ook constructies in VSA-notatie voorkomen; een VSA-tekst kan door de Vsa-toolset worden geparsed, gevalideerd en omgezet (bijvoorbeeld naar SVG).">VSA-tekst</a> kan de notatie nog ongeldig zijn totdat
+validatie slaagt.</p>
 
 
 
@@ -2695,7 +2703,7 @@
       
       
       <p class="og-footer-stamps">
-        Bijgewerkt: 2026-07-08
+        Bijgewerkt: 2026-08-08
         
       </p>
       

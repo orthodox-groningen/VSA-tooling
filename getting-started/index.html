@@ -1964,7 +1964,7 @@
   <span class="md-ellipsis">
     
   
-    vsa blocks — VSA-blokken in Markdown vinden
+    vsa blocks — ::: vsa-notatie en eindigt met :::, beide aan het begin van een regel, met daartussen VSA-notatie; typisch ontdekt en verwerkt door de Vsa-toolset (o.a. vsa blocks, vsa validate, vsa process).">VSA-blokken in Markdown vinden
   
 
     
@@ -2867,11 +2867,13 @@ uitleg: <a href="../guides/user-guide/">Gebruikershandleiding</a>.</p>
 </code></pre></div>
 <p>Verwachte vorm: <code>vsa 0.1.0</code> (of hoger).</p>
 <h2 id="4-valideren">4. Valideren<a class="headerlink" href="#4-valideren" title="Permanent link">&para;</a></h2>
-<p>De <a href="/VSA-tooling/terminologie/validator" title="Validator: een component die een geparseerde AST of VSA-invoer toetst aan semantische en normatieve regels en overtredingen als diagnostics rapporteert zonder ze stilzwijgend te repareren.">validator</a> controleert of <a href="/bron/terms/vsa-notatie" title="VSA-notatie: Het tekstgebaseerde notatieformaat waarmee liturgische zangteksten worden vastgelegd: een formeel gespecificeerde taal met scopes, modifiers en bracket-directives, parseeerbaar en valideerbaar door Vsa-tooling.">VSA-notatie</a> bruikbaar is:</p>
+<p>De <a href="/VSA-tooling/terminologie/validator" title="Validator: een component die een geparseerde AST of VSA-invoer toetst aan semantische en normatieve regels en overtredingen als diagnostics rapporteert zonder ze stilzwijgend te repareren.">validator</a> controleert of <a href="/bron/terms/vsa-notatie" title="VSA-notatie: Het tekstgebaseerde notatieformaat waarmee liturgische zangteksten worden vastgelegd: een formeel gespecificeerde taal met scopes, modifiers en bracket-directives, parseeerbaar en valideerbaar door Vsa-tooling.">VSA-notatie</a> bruikbaar is
+(<a href="../reference/cli/validate/"><code>vsa validate</code></a>):</p>
 <div class="highlight"><pre><span></span><code>vsa validate examples\minimal\050_svg_demo.vsa
 </code></pre></div>
 <p>Bij succes: <code>OK</code>.</p>
 <h2 id="5-svg-genereren">5. SVG genereren<a class="headerlink" href="#5-svg-genereren" title="Permanent link">&para;</a></h2>
+<p>Met <a href="../reference/cli/svg/"><code>vsa svg</code></a>:</p>
 <div class="highlight"><pre><span></span><code>vsa svg examples\minimal\050_svg_demo.vsa generated\vsa\050_svg_demo.svg
 </code></pre></div>
 <h2 id="volgende-stappen">Volgende stappen<a class="headerlink" href="#volgende-stappen" title="Permanent link">&para;</a></h2>
@@ -2937,7 +2939,7 @@ uitleg: <a href="../guides/user-guide/">Gebruikershandleiding</a>.</p>
       
       
       <p class="og-footer-stamps">
-        Bijgewerkt: 2026-08-06
+        Bijgewerkt: 2026-08-08
         
       </p>
       

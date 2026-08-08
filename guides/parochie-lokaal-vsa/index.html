@@ -2103,7 +2103,7 @@
   <span class="md-ellipsis">
     
   
-    vsa blocks — VSA-blokken in Markdown vinden
+    vsa blocks — ::: vsa-notatie en eindigt met :::, beide aan het begin van een regel, met daartussen VSA-notatie; typisch ontdekt en verwerkt door de Vsa-toolset (o.a. vsa blocks, vsa validate, vsa process).">VSA-blokken in Markdown vinden
   
 
     
@@ -3163,10 +3163,10 @@ voor publishbare paden).</p>
    nog <strong>geen</strong> pad.</li>
 <li>Frontmatter <strong><code>default.*</code></strong> levert context (<code>gelegenheid</code> in de <strong>sessie</strong>,
    <code>gelegenheidstype</code> in het sjabloon).</li>
-<li><strong><code>vsa resolve-catalogus</code></strong> roept <strong><code>catalogus zoek</code></strong> aan per unieke
+<li><a href="../../reference/cli/resolve-catalogus/"><code>vsa resolve-catalogus</code></a> roept <a href="https://orthodox-groningen.github.io/bron/reference/catalogus-cli/#catalogus-zoek"><code>catalogus zoek</code></a> aan per unieke
    <code>zoek=</code>-waarde (+ exporttypes blijven aparte regels).</li>
 <li>Uitvoer: dezelfde regels met <strong><code>bron:…</code></strong> / <strong><code>lokaal:…</code></strong> i.p.v. <code>zoek=</code>.</li>
-<li>Pas daarna <strong><code>vsa build-markdown</code></strong> / Hugo.</li>
+<li>Pas daarna <a href="../../reference/cli/build-markdown/"><code>vsa build-markdown</code></a> / Hugo.</li>
 </ol>
 <p><strong>Harde regel:</strong> open <code>zoek=</code> in een bestand dat door build-markdown gaat → <strong>fout</strong>.</p>
 <h4 id="voorbeeld-invoer-sessie-mixed-session">Voorbeeld (invoer — sessie, mixed session)<a class="headerlink" href="#voorbeeld-invoer-sessie-mixed-session" title="Permanent link">&para;</a></h4>
@@ -3224,14 +3224,15 @@ default:
 <h4 id="implementatie">Implementatie<a class="headerlink" href="#implementatie" title="Permanent link">&para;</a></h4>
 <ul>
 <li>Parser: <code>markdown_include.py</code> — weigert open <code>zoek=</code> in build.</li>
-<li>Resolve: <strong><code>vsa resolve-catalogus</code></strong> (CLI).</li>
-<li>Afhankelijkheid: <strong><code>catalogus</code></strong> uit bron-repo (<code>catalogus zoek</code>).</li>
+<li>Resolve: <a href="../../reference/cli/resolve-catalogus/"><code>vsa resolve-catalogus</code></a> (CLI).</li>
+<li>Afhankelijkheid: <strong><code>catalogus</code></strong> uit bron-repo (<a href="https://orthodox-groningen.github.io/bron/reference/catalogus-cli/#catalogus-zoek"><code>catalogus zoek</code></a>).</li>
 </ul>
 <hr />
-<h2 id="vsa-resolve-catalogus"><code>vsa resolve-catalogus</code><a class="headerlink" href="#vsa-resolve-catalogus" title="Permanent link">&para;</a></h2>
+<h2 id="vsa-resolve-catalogus"><a href="../../reference/cli/resolve-catalogus/"><code>vsa resolve-catalogus</code></a><a class="headerlink" href="#vsa-resolve-catalogus" title="Permanent link">&para;</a></h2>
 <p>Status: <strong>geïmplementeerd</strong>.</p>
 <p>Doel: markdown met <strong><code>zoek=</code></strong> omzetten naar markdown met <strong>catalogus-pad</strong> —
-tussenstap vóór <code>vsa validate</code> / <code>vsa build-markdown</code> op sjablonen en sessies
+tussenstap vóór <a href="../../reference/cli/validate/"><code>vsa validate</code></a> /
+<a href="../../reference/cli/build-markdown/"><code>vsa build-markdown</code></a> op sjablonen en sessies
 (tenzij <code>build-markdown</code> auto-resolve voor publishbare bestanden).</p>
 <h3 id="syntax">Syntax<a class="headerlink" href="#syntax" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code>cd /d C:\Git\orthodox-groningen\VSA-tooling
@@ -3269,7 +3270,7 @@ vsa resolve-catalogus pad\naar\samenstelling.md ^
 </tr>
 <tr>
 <td><code>--interactive</code></td>
-<td>Review bij ambiguïteit (<strong>gepland</strong>; nu: <code>AmbiguousError</code> + <code>catalogus zoek --lijst</code>)</td>
+<td>Review bij ambiguïteit (<strong>gepland</strong>; nu: <code>AmbiguousError</code> + <a href="https://orthodox-groningen.github.io/bron/reference/catalogus-cli/#catalogus-zoek"><code>catalogus zoek --lijst</code></a>)</td>
 </tr>
 </tbody>
 </table>
@@ -3277,9 +3278,9 @@ vsa resolve-catalogus pad\naar\samenstelling.md ^
 <ol>
 <li>Yaml-frontmatter parsen → <strong><code>default.*</code></strong>.</li>
 <li>Alle <code>:::include … zoek="…"</code> regels vinden (niet in code fences).</li>
-<li>Per <code>zoek=</code> + context: <strong><code>catalogus zoek</code></strong> (bron-package).</li>
+<li>Per <code>zoek=</code> + context: <a href="https://orthodox-groningen.github.io/bron/reference/catalogus-cli/#catalogus-zoek"><code>catalogus zoek</code></a> (bron-package).</li>
 <li>Bij unieke match: vervang <code>zoek="…"</code> door <code>bron:…</code> / <code>lokaal:…</code>.</li>
-<li>Bij ambiguïteit: <strong><code>AmbiguousError</code></strong> (strict); review via <code>catalogus zoek --lijst</code>.</li>
+<li>Bij ambiguïteit: <strong><code>AmbiguousError</code></strong> (strict); review via <a href="https://orthodox-groningen.github.io/bron/reference/catalogus-cli/#catalogus-zoek"><code>catalogus zoek --lijst</code></a>.</li>
 <li>Schrijf opgelost bestand.</li>
 </ol>
 <h3 id="relatie-tot-catalogus-cli">Relatie tot <code>catalogus</code> CLI<a class="headerlink" href="#relatie-tot-catalogus-cli" title="Permanent link">&para;</a></h3>
@@ -3292,20 +3293,20 @@ vsa resolve-catalogus pad\naar\samenstelling.md ^
 </thead>
 <tbody>
 <tr>
-<td><code>catalogus zoek "Kondakion" --default-gelegenheid …</code></td>
+<td><a href="https://orthodox-groningen.github.io/bron/reference/catalogus-cli/#catalogus-zoek"><code>catalogus zoek</code></a> <code>"Kondakion" --default-gelegenheid …</code></td>
 <td>Lage API — één zoekactie</td>
 </tr>
 <tr>
-<td><code>catalogus index validate</code></td>
+<td><a href="https://orthodox-groningen.github.io/bron/reference/catalogus-cli/#catalogus-index-validate"><code>catalogus index validate</code></a></td>
 <td>Index controleren vóór bulk-resolve</td>
 </tr>
 <tr>
-<td><strong><code>vsa resolve-catalogus</code></strong></td>
-<td>Markdown-processor voor Rene — roept <code>catalogus zoek</code> aan</td>
+<td><a href="../../reference/cli/resolve-catalogus/"><code>vsa resolve-catalogus</code></a></td>
+<td>Markdown-processor voor Rene — roept <a href="https://orthodox-groningen.github.io/bron/reference/catalogus-cli/#catalogus-zoek"><code>catalogus zoek</code></a> aan</td>
 </tr>
 </tbody>
 </table>
-<p>Zie <a href="https://github.com/orthodox-groningen/bron/blob/main/docs/reference/catalogus-cli.md">bron — catalogus CLI</a>.</p>
+<p>Zie <a href="https://orthodox-groningen.github.io/bron/reference/catalogus-cli/">bron — catalogus CLI</a>.</p>
 <h3 id="pipeline">Pipeline<a class="headerlink" href="#pipeline" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code>sjabloon.md (zoek=, geen gelegenheid)
     → sessie.md (+ default.gelegenheid)
@@ -3340,15 +3341,15 @@ vsa resolve-catalogus pad\naar\samenstelling.md ^
 <td>Niet nodig — bestanden in git</td>
 </tr>
 <tr>
-<td><strong><code>vsa resolve-catalogus</code></strong></td>
+<td><a href="../../reference/cli/resolve-catalogus/"><code>vsa resolve-catalogus</code></a></td>
 <td><strong>Geïmplementeerd</strong> — verplicht als <code>zoek=</code> aanwezig (of auto in build)</td>
 </tr>
 <tr>
-<td><code>vsa validate</code></td>
+<td><a href="../../reference/cli/validate/"><code>vsa validate</code></a></td>
 <td>Deelt <code>content-source</code> recursief</td>
 </tr>
 <tr>
-<td><code>build-markdown</code></td>
+<td><a href="../../reference/cli/build-markdown/"><code>vsa build-markdown</code></a></td>
 <td>Includes op pad / catalogus-pad — <strong>geen</strong> open <code>zoek=</code></td>
 </tr>
 <tr>
@@ -3403,7 +3404,7 @@ scripts\docs-serve.cmd
       
       
       <p class="og-footer-stamps">
-        Bijgewerkt: 2026-08-01
+        Bijgewerkt: 2026-08-08
         
       </p>
       

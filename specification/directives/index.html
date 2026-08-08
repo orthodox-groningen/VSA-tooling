@@ -1909,7 +1909,7 @@
   <span class="md-ellipsis">
     
   
-    vsa blocks — VSA-blokken in Markdown vinden
+    vsa blocks — ::: vsa-notatie en eindigt met :::, beide aan het begin van een regel, met daartussen VSA-notatie; typisch ontdekt en verwerkt door de Vsa-toolset (o.a. vsa blocks, vsa validate, vsa process).">VSA-blokken in Markdown vinden
   
 
     
@@ -2879,7 +2879,7 @@ refrein: @include-vsa lokaal=cherubijnenhymne/kastorski/groningen/groningen-vsa
 <thead>
 <tr>
 <th>Uitkomst catalogus</th>
-<th><code>@include-vsa</code> / <code>vsa validate</code></th>
+<th><code>@include-vsa</code> / <a href="../../reference/cli/validate/"><code>vsa validate</code></a></th>
 </tr>
 </thead>
 <tbody>
@@ -2899,7 +2899,7 @@ refrein: @include-vsa lokaal=cherubijnenhymne/kastorski/groningen/groningen-vsa
 </table>
 <p>Bij ambiguïteit:</p>
 <ol>
-<li><code>catalogus zoek --lijst</code> met dezelfde context.</li>
+<li><a href="https://orthodox-groningen.github.io/bron/reference/catalogus-cli/#catalogus-zoek"><code>catalogus zoek --lijst</code></a> met dezelfde context.</li>
 <li>Verfijn <code>zoek=</code> of <code>default.*</code> in ouder-<code>.vsa</code>.</li>
 <li>Of schakel over naar <strong><code>@include-vsa lokaal=…</code></strong> / <strong><code>id=…</code></strong> na review.</li>
 </ol>
@@ -2979,7 +2979,7 @@ Uit die bronbestanden wordt gegenereerd:</p>
 [VSA-inhoud]
 :::
 </code></pre>
-<p>Wordt door <code>vsa build-markdown</code> omgezet naar SVG en ingevoegd als shortcode of <code>&lt;img&gt;</code>.</p>
+<p>Wordt door <a href="../../reference/cli/build-markdown/"><code>vsa build-markdown</code></a> omgezet naar SVG en ingevoegd als shortcode of <code>&lt;img&gt;</code>.</p>
 <h3 id="2-paginabreuk">2. Paginabreuk<a class="headerlink" href="#2-paginabreuk" title="Permanent link">&para;</a></h3>
 <pre><code>:::pagebreak:::
 </code></pre>
@@ -3002,7 +3002,7 @@ een logische referentie via <strong>catalogus</strong> (fase 3):</p>
 :::include svg bron:zangstuk-id/source-id:::
 :::include svg zoek="Troparion" [parameters]:::
 </code></pre>
-<p><strong>Fase 4 — catalogus-zoek:</strong> <code>zoek="…"</code> in sjablonen/sessies; <strong><code>vsa resolve-catalogus</code></strong>
+<p><strong>Fase 4 — catalogus-zoek:</strong> <code>zoek="…"</code> in sjablonen/sessies; <a href="../../reference/cli/resolve-catalogus/"><code>vsa resolve-catalogus</code></a>
 vervangt vóór build door <code>bron:…</code> / <code>lokaal:…</code>. Open <code>zoek=</code> in build → <strong>fout</strong>.
 Zie <a href="https://orthodox-groningen.github.io/bron/specs/catalogus-samenstelling-zangstuk/">catalogus-samenstelling-zangstuk</a>
 en <a href="../../guides/parochie-lokaal-vsa/">parochie-lokaal-vsa.md</a>.</p>
@@ -3139,7 +3139,7 @@ hoofdstuk-1.md (in submap hoofdstuk-1/) :::pagebreak::: :::include &quot;melodie
                         → <code>hoofdstuk-2.md</code></p>
 <hr />
 <h2 id="uitvoer">Uitvoer<a class="headerlink" href="#uitvoer" title="Permanent link">&para;</a></h2>
-<p>De verwerking loopt via de bestaande <code>vsa build-markdown</code>-stap, uitgebreid met:</p>
+<p>De verwerking loopt via de bestaande <a href="../../reference/cli/build-markdown/"><code>vsa build-markdown</code></a>-stap, uitgebreid met:</p>
 <ol>
 <li><strong>Include-resolutie</strong> — recursief, vóór alle andere verwerking</li>
 <li><strong>Paginabreuk-omzetting</strong> — <code>:::pagebreak:::</code> → HTML-markering</li>
@@ -3201,7 +3201,7 @@ hoofdstuk-1.md (in submap hoofdstuk-1/) :::pagebreak::: :::include &quot;melodie
   <a href="https://orthodox-groningen.github.io/bron/reference/exporttype-coria/">coria</a>,
   <a href="https://orthodox-groningen.github.io/bron/reference/exporttype-mxl/">mxl</a></li>
 </ul>
-<p>Conversie (<code>vsa svg</code>, <code>vsa musicxml</code>):
+<p>Conversie (<a href="../../reference/cli/svg/"><code>vsa svg</code></a>, <a href="../../reference/cli/musicxml/"><code>vsa musicxml</code></a>):
 <a href="https://orthodox-groningen.github.io/bron/reference/conversiemechanismen/">Conversiemechanismen</a>.</p>
 <h3 id="implementatiestatus-vsa-tooling">Implementatiestatus (VSA-tooling)<a class="headerlink" href="#implementatiestatus-vsa-tooling" title="Permanent link">&para;</a></h3>
 <table>
@@ -3230,7 +3230,7 @@ hoofdstuk-1.md (in submap hoofdstuk-1/) :::pagebreak::: :::include &quot;melodie
 </tr>
 <tr>
 <td><code>:::include &lt;type&gt; zoek="…"</code></td>
-<td>Geïmplementeerd (fase 4); resolve via <code>vsa resolve-catalogus</code></td>
+<td>Geïmplementeerd (fase 4); resolve via <a href="../../reference/cli/resolve-catalogus/"><code>vsa resolve-catalogus</code></a></td>
 </tr>
 <tr>
 <td><code>coria</code> / <code>mxl</code> op <code>bron:</code> catalogus-pad</td>
@@ -3276,7 +3276,7 @@ in bron-docs; korte samenvatting blijft in sectie 3 en 3b hierboven.</p>
       
       
       <p class="og-footer-stamps">
-        Bijgewerkt: 2026-08-01
+        Bijgewerkt: 2026-08-08
         
       </p>
       

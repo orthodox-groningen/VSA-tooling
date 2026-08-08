@@ -282,7 +282,7 @@ entries:
     termType: "concept"
     termid: "concept:exporttype"
     vsntag: "bron"
-  - git_date: 2026-08-07T00:00:00.000Z
+  - git_date: 2026-08-08T00:00:00.000Z
     slug: "geldige-vsa-notatie"
     term: "geldige-vsa-notatie"
     termType: "concept"
@@ -791,7 +791,7 @@ entries:
       - "zie-ook:"
     termid: "concept:vsa-bestand"
     vsntag: "bron"
-  - git_date: 2026-08-07T00:00:00.000Z
+  - git_date: 2026-08-08T00:00:00.000Z
     slug: "vsa-blokken"
     term: "vsa-blokken"
     termType: "concept"

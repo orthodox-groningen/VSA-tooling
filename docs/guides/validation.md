@@ -54,6 +54,16 @@ vsa validate examples\consumer-minimal\content-source
 | pitch-marker heeft dubbele punt                                          | `[//]`             |
 | [hoogte-modifier](@)- en [lengte-modifier](@)-posities passen bij elkaar | `{/&\tekst_}`      |
 
+## Succesoutput
+
+Bij geldige notatie schrijft `vsa validate` alleen:
+
+```text
+OK
+```
+
+Exitcode: `0`. Details: [`vsa validate`](../reference/cli/validate.md).
+
 ## Foutoutput lezen
 
 Voorbeeld:

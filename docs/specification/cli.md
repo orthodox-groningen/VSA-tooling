@@ -139,7 +139,8 @@ examples\demo.md:blok-1:1:1: VSA-SYNTAX-EMPTY-SCOPE: Scope zonder zangelement.
 
 ### Doel
 
-Debuggen hoe de parser een VSA-bestand intern ziet.
+Debuggen hoe de parser een VSA-bestand intern ziet: de Abstract Syntax Tree
+(AST) als JSON.
 
 ### Gebruik
 
@@ -156,7 +157,7 @@ vsa parse <bestand.vsa> --ast
 
 ### Output met `--ast`
 
-JSON met nodes.
+JSON met nodes (`ScopeNode`, `TextNode`, `PitchMarkerNode`, …).
 
 Voorbeeldvorm:
 
@@ -164,6 +165,10 @@ Voorbeeldvorm:
 {
   "type": "Document",
   "nodes": [
+    {
+      "type": "PitchMarkerNode",
+      "height_modifier": ["/"]
+    },
     {
       "type": "ScopeNode",
       "height_modifier": ["/"],

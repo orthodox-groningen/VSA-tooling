@@ -1,6 +1,7 @@
 # SVG exporteren
 
-`vsa svg`, `vsa process` en `vsa build-markdown` renderen VSA-notatie naar
+[`vsa svg`](../reference/cli/svg.md), [`vsa process`](../reference/cli/process.md)
+en [`vsa build-markdown`](../reference/cli/build-markdown.md) renderen VSA-notatie naar
 **SVG** — een schaalbare vectorafbeelding die je inline toont naast gewone
 tekst, op scherm of afdruk. Dit is de meest gebruikte workflow: geen
 externe player nodig, werkt zonder JavaScript, en schaalt scherp op elk
@@ -11,13 +12,13 @@ Voor afspelen/oefenen gebruik je in plaats daarvan
 
 ## Wanneer gebruik je SVG?
 
-| Situatie                                             | Gebruik SVG?                                                               |
-| ---------------------------------------------------- | -------------------------------------------------------------------------- |
-| Notatie tonen naast liturgische tekst (web of print) | Ja                                                                         |
-| Consistente weergave op elk apparaat                 | Ja                                                                         |
-| Afdrukbaar boek/deel (A4, `@media print`)            | Ja                                                                         |
-| Audio afspelen of oefenen                            | Nee — gebruik [`vsa musicxml`](musicxml-export.md)                         |
-| Bewerken in MuseScore                                | Nee — gebruik [`vsa musicxml`](musicxml-export.md) met profiel `engraving` |
+| Situatie                                             | Gebruik SVG?                                                                         |
+| ---------------------------------------------------- | ------------------------------------------------------------------------------------ |
+| Notatie tonen naast liturgische tekst (web of print) | Ja                                                                                   |
+| Consistente weergave op elk apparaat                 | Ja                                                                                   |
+| Afdrukbaar boek/deel (A4, `@media print`)            | Ja                                                                                   |
+| Audio afspelen of oefenen                            | Nee — gebruik [`vsa musicxml`](../reference/cli/musicxml.md)                         |
+| Bewerken in MuseScore                                | Nee — gebruik [`vsa musicxml`](../reference/cli/musicxml.md) met profiel `engraving` |
 
 ## Drie manieren om SVG te genereren
 
@@ -27,9 +28,10 @@ Voor afspelen/oefenen gebruik je in plaats daarvan
 | [`vsa process`](../reference/cli/process.md)               | SVG's uit VSA-blokken in Markdown, zonder de Markdown te herschrijven.      |
 | [`vsa build-markdown`](../reference/cli/build-markdown.md) | Hugo-publicatie: Markdown **en** SVG-assets in één stap (inline rendering). |
 
-Voor een losse controle tijdens het schrijven is `vsa svg` het snelst. Voor
-een echte publicatie (Hugo-site) gebruik je `vsa build-markdown`, dat de
-`::: vsa-notatie … :::`-blokken in je Markdown automatisch vervangt door een
+Voor een losse controle tijdens het schrijven is
+[`vsa svg`](../reference/cli/svg.md) het snelst. Voor een echte publicatie
+(Hugo-site) gebruik je [`vsa build-markdown`](../reference/cli/build-markdown.md),
+dat de `::: vsa-notatie … :::`-blokken in je Markdown automatisch vervangt door een
 verwijzing naar de gegenereerde SVG (zie
 ["Inline rendering via `build-markdown`"](#inline-rendering-via-build-markdown)
 hieronder).
@@ -62,7 +64,7 @@ foutgevallen: [`cli/svg.md`](../reference/cli/svg.md),
 
 ## Inline rendering via `build-markdown`
 
-`vsa build-markdown` vervangt in de gegenereerde Markdown elk VSA-blok door
+[`vsa build-markdown`](../reference/cli/build-markdown.md) vervangt in de gegenereerde Markdown elk VSA-blok door
 een verwijzing naar de gegenereerde SVG. Bron-Markdown:
 
 ```markdown
@@ -121,7 +123,9 @@ Default-waarden staan (net als `max-line-width` en `output-mode`) in
 
 ## Waar komen de gegenereerde bestanden terecht?
 
-SVG's die je met `vsa svg`, `vsa process` of `vsa build-markdown` genereert,
+SVG's die je met [`vsa svg`](../reference/cli/svg.md),
+[`vsa process`](../reference/cli/process.md) of
+[`vsa build-markdown`](../reference/cli/build-markdown.md) genereert,
 zijn **afgeleide** bestanden: ze worden opnieuw gegenereerd uit de
 `.vsa`-bron en horen niet gecommit te worden naast de bron. Gebruik
 lokaal een map als `generated\` (of `tmp\`) die in `.gitignore` staat:

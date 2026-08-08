@@ -127,7 +127,7 @@ Meerdere punten worden verticaal gestapeld.
 
 ### 8.2 MusicXML-export
 
-> **Implementatiestatus:** geïmplementeerd in `vsa-tool` als `vsa musicxml`.
+> **Implementatiestatus:** geïmplementeerd in `vsa-tool` als [`vsa musicxml`](../reference/cli/musicxml.md).
 > Zie `src/vsa/musicxml_renderer.py`, `src/vsa/pitch_resolver.py` en
 > `src/vsa/duration_model.py`.
 
@@ -398,7 +398,7 @@ Coria of MuseScore voor volledige garantie.
 
 ##### 8.2.11.5 Uitvoerformaat: `.mxl` (default) en `.musicxml`
 
-`vsa musicxml` schrijft standaard **Compressed MusicXML** (`.mxl`). Met
+[`vsa musicxml`](../reference/cli/musicxml.md) schrijft standaard **Compressed MusicXML** (`.mxl`). Met
 `--format musicxml` of een uitvoerpad dat op `.musicxml` eindigt, wordt
 ongekomprimeerde MusicXML geschreven.
 
@@ -434,7 +434,7 @@ Fallback wanneer geen `.coria.html` aanwezig is. MXL onder `static/vsa/mxl/…`
 (wordt apart gegenereerd). Directive emitteert `{{< coria >}}`.
 
 Site-build: `build-markdown` (directive + `.coria.html`-kopie) vóór
-`vsa musicxml` (MXL-generatie). Lokaal (`baseURL /`) werkt `play_from_url`
+[`vsa musicxml`](../reference/cli/musicxml.md) (MXL-generatie). Lokaal (`baseURL /`) werkt `play_from_url`
 niet: Coria haalt het bestand server-side op.
 
 ### 8.3 Geïntegreerde partituur-export (HTML/PDF) — voorziene uitbreiding
@@ -2597,13 +2597,13 @@ Modifiers worden vertaald naar abstracte glyphgroepen.
 
 Voorbeelden:
 
-| VSA | Renderbetekenis |
-|---|---|
-| `/` | bovenglyph voor stijgende beweging |
-| `\` | bovenglyph voor dalende beweging |
-| `///` | één samengestelde EHM-glyph |
-| `_` | onderglyph / lengte-indicatie |
-| `&` | alignmentrelatie binnen glyphgroep |
+| VSA   | Renderbetekenis                    |
+| ----- | ---------------------------------- |
+| `/`   | bovenglyph voor stijgende beweging |
+| `\`   | bovenglyph voor dalende beweging   |
+| `///` | één samengestelde EHM-glyph        |
+| `_`   | onderglyph / lengte-indicatie      |
+| `&`   | alignmentrelatie binnen glyphgroep |
 
 Alignment-markers creëren standaard geen zware verbindingslijn.
 
@@ -2649,14 +2649,14 @@ Glyphs worden geplaatst ten opzichte van anchors.
 
 Minimale anchors:
 
-| Anchor | Betekenis |
-|---|---|
-| baseline | lijn waarop tekst rust |
-| text-top | bovenkant tekst-box |
-| text-bottom | onderkant tekst-box |
+| Anchor          | Betekenis                               |
+| --------------- | --------------------------------------- |
+| baseline        | lijn waarop tekst rust                  |
+| text-top        | bovenkant tekst-box                     |
+| text-bottom     | onderkant tekst-box                     |
 | position-center | horizontaal midden van muzikale positie |
-| unit-left | linkerrand render-unit |
-| unit-right | rechterrand render-unit |
+| unit-left       | linkerrand render-unit                  |
+| unit-right      | rechterrand render-unit                 |
 
 ---
 
@@ -2760,12 +2760,12 @@ De renderer mag diagnostics produceren.
 
 Voorbeelden:
 
-| Code | Betekenis |
-|---|---|
-| `VSA-RENDER-OVERFLOW` | render-unit past niet binnen max-line-width |
-| `VSA-RENDER-COLLISION` | collision kon niet automatisch opgelost worden |
-| `VSA-RENDER-UNSUPPORTED-GLYPH` | glyphvorm bestaat niet in theme |
-| `VSA-RENDER-CONFIG-ERROR` | ongeldige renderingconfiguratie |
+| Code                           | Betekenis                                      |
+| ------------------------------ | ---------------------------------------------- |
+| `VSA-RENDER-OVERFLOW`          | render-unit past niet binnen max-line-width    |
+| `VSA-RENDER-COLLISION`         | collision kon niet automatisch opgelost worden |
+| `VSA-RENDER-UNSUPPORTED-GLYPH` | glyphvorm bestaat niet in theme                |
+| `VSA-RENDER-CONFIG-ERROR`      | ongeldige renderingconfiguratie                |
 
 Default:
 - overflow is warning;
@@ -2905,13 +2905,13 @@ data-vsa-source-end="..."
 
 Mogelijke unittypes:
 
-| Type | Betekenis |
-|---|---|
-| `text` | vrije tekst |
-| `scope` | zangelement |
-| `pitch-marker` | pitchmarker |
-| `wrap-token` | niet-zichtbare wrapinstructie |
-| `nonbreaking-group` | non-breaking group |
+| Type                | Betekenis                     |
+| ------------------- | ----------------------------- |
+| `text`              | vrije tekst                   |
+| `scope`             | zangelement                   |
+| `pitch-marker`      | pitchmarker                   |
+| `wrap-token`        | niet-zichtbare wrapinstructie |
+| `nonbreaking-group` | non-breaking group            |
 
 ---
 
@@ -3354,11 +3354,11 @@ Configvalidatie produceert diagnostics.
 
 Voorbeelden:
 
-| Code | Betekenis |
-|---|---|
-| `VSA-RENDER-CONFIG-ERROR` | ongeldige config |
-| `VSA-RENDER-UNKNOWN-THEME` | theme bestaat niet |
-| `VSA-RENDER-INVALID-TOKEN` | token breekt syntax |
+| Code                       | Betekenis            |
+| -------------------------- | -------------------- |
+| `VSA-RENDER-CONFIG-ERROR`  | ongeldige config     |
+| `VSA-RENDER-UNKNOWN-THEME` | theme bestaat niet   |
+| `VSA-RENDER-INVALID-TOKEN` | token breekt syntax  |
 | `VSA-RENDER-INVALID-COLOR` | kleurwaarde ongeldig |
 
 ---

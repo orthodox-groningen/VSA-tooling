@@ -13,7 +13,8 @@ formPhrases:
 
 # Geldige VSA-notatie
 
-**Geldige VSA-notatie** is [VSA-notatie](@bron) die `vsa validate` accepteert.
+**Geldige VSA-notatie** is [VSA-notatie](@bron) die
+[`vsa validate`](../reference/cli/validate.md) accepteert.
 De [validator](@) controleert syntax en semantiek; syntaxfouten blijven altijd
 fouten, semantische meldingen kunnen via [vsa.toml](@) als [severity](@)
 `warning` worden behandeld.

@@ -1,7 +1,8 @@
 # Validatie
 
-Gebruik de [validator](@) om te controleren of [VSA-notatie](@bron)-invoer
-bruikbaar is voor verdere verwerking.
+Gebruik de [validator](@)
+([`vsa validate`](../reference/cli/validate.md)) om te controleren of
+[VSA-notatie](@bron)-invoer bruikbaar is voor verdere verwerking.
 
 ## Bestand valideren
 

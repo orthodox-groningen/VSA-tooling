@@ -24,17 +24,17 @@ SVG wordt gebruikt voor visuele rendering van één VSA-bestand.
 vsa build-markdown <input-dir> <output-dir> <assets-dir>
 ```
 
-| Output     | Voorbeeld                                      |
-| ---------- | ---------------------------------------------- |
-| Markdown   | `generated\content\zondag\toon-1.md`        |
+| Output     | Voorbeeld                                        |
+| ---------- | ------------------------------------------------ |
+| Markdown   | `generated\content\zondag\toon-1.md`             |
 | SVG        | `generated\static\vsa\zondag-toon-1-block-1.svg` |
 
 ## Markdown-output modes
 
 | Mode        | Outputvorm                                      |
 | ----------- | ----------------------------------------------- |
-| `img`       | `<img class="vsa-notation" src="...">`       |
-| `shortcode` | `{{< vsa src="..." >}}`                       |
+| `img`       | `<img class="vsa-notation" src="...">`          |
+| `shortcode` | `{{< vsa src="..." >}}`                         |
 
 ## JSON bij `vsa blocks --json`
 
@@ -66,10 +66,10 @@ vsa build-markdown <input-dir> <output-dir> <assets-dir>
 
 MusicXML-export gebruikt metadata uit `.vsa`-frontmatter en renderer-/exportconfiguratie.
 
-| Metadata              | Gebruik in MusicXML                         |
-| --------------------- | ------------------------------------------- |
-| `identificatie.title` | Titel / werknaam                            |
-| `identificatie.composer` | Componist of bron                        |
-| `muziek.tempo`        | Tempo-informatie                            |
-| `muziek.part-name`    | Partijnaam                                  |
-| `muziek.midi-*`       | Playbackinstellingen                        |
+| Metadata                 | Gebruik in MusicXML                         |
+| ------------------------ | ------------------------------------------- |
+| `identificatie.title`    | Titel / werknaam                            |
+| `identificatie.composer` | Componist of bron                           |
+| `muziek.tempo`           | Tempo-informatie                            |
+| `muziek.part-name`       | Partijnaam                                  |
+| `muziek.midi-*`          | Playbackinstellingen                        |

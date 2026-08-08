@@ -111,17 +111,17 @@ De VSA-notatie is sterk geïnspireerd door de vereenvoudigde neumennotatie zoals
 
 De belangrijkste verschillen zijn:
 
-| Onderwerp | Liturgikon-notatie | VSA |
-|-----------|-------------------|-----|
-| Doel      | Praktische zanghulp voor menselijke zangers | Formele, machine-verwerkbare notatie |
-| Syntax    | Geen formele grammatica | Volledig formele syntax (EBNF) |
-| Structuur | Markeringen direct boven/onder tekst | Gestructureerde scopes `{...}` |
-| Toonhoogte | Relatieve intervalnotatie | Relatieve toonladder-notatie binnen een do-context |
-| `+/` en `-\` | Extra halve toon bovenop een bestaande beweging | Zelfstandige halve ladderstap |
-| Lege posities | Impliciet | Expliciet via `~` |
-| Melisma   | Impliciet / ad hoc | Formeel model via samengestelde modifiers |
-| Validatie | Alleen muzikaal gehoor | Syntactische en semantische validatie |
-| Export    | Niet voorzien | SVG en MusicXML |
+| Onderwerp     | Liturgikon-notatie                              | VSA                                                |
+| ------------- | ----------------------------------------------- | -------------------------------------------------- |
+| Doel          | Praktische zanghulp voor menselijke zangers     | Formele, machine-verwerkbare notatie               |
+| Syntax        | Geen formele grammatica                         | Volledig formele syntax (EBNF)                     |
+| Structuur     | Markeringen direct boven/onder tekst            | Gestructureerde scopes `{...}`                     |
+| Toonhoogte    | Relatieve intervalnotatie                       | Relatieve toonladder-notatie binnen een do-context |
+| `+/` en `-\`  | Extra halve toon bovenop een bestaande beweging | Zelfstandige halve ladderstap                      |
+| Lege posities | Impliciet                                       | Expliciet via `~`                                  |
+| Melisma       | Impliciet / ad hoc                              | Formeel model via samengestelde modifiers          |
+| Validatie     | Alleen muzikaal gehoor                          | Syntactische en semantische validatie              |
+| Export        | Niet voorzien                                   | SVG en MusicXML                                    |
 
 Het grootste inhoudelijke verschil betreft de interpretatie van `+/` en `-\`.
 In het Liturgikon staat dat een kruis (+) een *extra* stijging van een halve toon betekent

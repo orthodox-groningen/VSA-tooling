@@ -85,8 +85,8 @@ voor het volledige overzicht.
 
 ## Diagnosevolgorde
 
-Bij problemen: eerst `vsa validate`, daarna `scripts\test.cmd`, eventueel
-`vsa blocks … --json`. Volledige uitleg:
+Bij problemen: eerst [`vsa validate`](validate.md), daarna `scripts\test.cmd`, eventueel
+[`vsa blocks`](blocks.md) `… --json`. Volledige uitleg:
 [specification/cli.md](../../specification/cli.md#diagnosevolgorde).
 
 ## Verwante documentatie
@@ -101,4 +101,4 @@ Bij problemen: eerst `vsa validate`, daarna `scripts\test.cmd`, eventueel
 - Parochie-lokale VSA (catalogus, includes): [parochie-lokaal-vsa.md](../../guides/parochie-lokaal-vsa.md)
 - Bron-contracten (org-breed, normatief): [conversie-vsa-svg](https://orthodox-groningen.github.io/bron/reference/conversie-vsa-svg/),
   [exporttype-svg](https://orthodox-groningen.github.io/bron/reference/exporttype-svg/),
-  [catalogus-cli](https://github.com/orthodox-groningen/bron/blob/main/docs/reference/catalogus-cli.md)
+  [catalogus-cli](https://orthodox-groningen.github.io/bron/reference/catalogus-cli/)

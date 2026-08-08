@@ -6,17 +6,17 @@ man-pagina's onder [CLI-referentie](../reference/cli/index.md).
 
 ## Commando kiezen
 
-| Taak                                      | Commando                                                           | Man-pagina                                                     |
-| ----------------------------------------- | ------------------------------------------------------------------ | -------------------------------------------------------------- |
-| Versie tonen                              | `vsa --version`                                                    | [overzicht](../reference/cli/index.md)                         |
-| VSA controleren                           | `vsa validate <bestand-of-map>`                                    | [validate](../reference/cli/validate.md)                       |
-| AST bekijken                              | `vsa parse <bestand.vsa> --ast`                                    | [parse](../reference/cli/parse.md)                             |
-| VSA-blokken in Markdown vinden            | `vsa blocks <bestand.md>`                                          | [blocks](../reference/cli/blocks.md)                           |
-| Eén SVG maken                             | `vsa svg <input.vsa> <output.svg>`                                 | [svg](../reference/cli/svg.md)                                 |
-| Markdownbestanden verwerken naar SVG      | `vsa process <input> <output>`                                     | [process](../reference/cli/process.md)                         |
-| Hugo-content genereren                    | `vsa build-markdown <content-source> <content-output> <static>`    | [build-markdown](../reference/cli/build-markdown.md)           |
-| `zoek=`-includes oplossen naar catalogus  | `vsa resolve-catalogus <bestand.md>`                               | [resolve-catalogus](../reference/cli/resolve-catalogus.md)     |
-| MusicXML exporteren                       | `vsa musicxml <input.vsa> <output.mxl>`                            | [musicxml](../reference/cli/musicxml.md)                       |
+| Taak                                      | Commando                                                                                         |
+| ----------------------------------------- | ------------------------------------------------------------------------------------------------ |
+| Versie tonen                              | [`vsa --version`](../reference/cli/index.md)                                                     |
+| VSA controleren                           | [`vsa validate <bestand-of-map>`](../reference/cli/validate.md)                                  |
+| AST bekijken                              | [`vsa parse <bestand.vsa> --ast`](../reference/cli/parse.md)                                     |
+| VSA-blokken in Markdown vinden            | [`vsa blocks <bestand.md>`](../reference/cli/blocks.md)                                          |
+| Eén SVG maken                             | [`vsa svg <input.vsa> <output.svg>`](../reference/cli/svg.md)                                    |
+| Markdownbestanden verwerken naar SVG      | [`vsa process <input> <output>`](../reference/cli/process.md)                                    |
+| Hugo-content genereren                    | [`vsa build-markdown …`](../reference/cli/build-markdown.md)                                     |
+| `zoek=`-includes oplossen naar catalogus  | [`vsa resolve-catalogus <bestand.md>`](../reference/cli/resolve-catalogus.md)                    |
+| MusicXML exporteren                       | [`vsa musicxml <input.vsa> <output.mxl>`](../reference/cli/musicxml.md)                          |
 
 ## Exitcodes
 

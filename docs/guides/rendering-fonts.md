@@ -44,11 +44,11 @@ real metrics : True
 ## Reproduceerbaarheid
 
 | Stap | Actie                                      |
-| ---: | ------------------------------------------ |
-|    1 | commit `assets/fonts/DejaVuSans.ttf`       |
-|    2 | commit de DejaVu-licentie in `licenses/`   |
-|    3 | gebruik lokaal en in CI hetzelfde font     |
-|    4 | controleer met `debug-font-metrics.py`     |
+| ---- | ------------------------------------------ |
+| 1    | commit `assets/fonts/DejaVuSans.ttf`       |
+| 2    | commit de DejaVu-licentie in `licenses/`   |
+| 3    | gebruik lokaal en in CI hetzelfde font     |
+| 4    | controleer met `debug-font-metrics.py`     |
 
 ## Fallback
 

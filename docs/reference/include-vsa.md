@@ -38,16 +38,16 @@ Het brondocument wordt niet gewijzigd.
 
 ## Ambiguïteit oplossen
 
-1. Draai `catalogus zoek --lijst` met dezelfde context.
+1. Draai [`catalogus zoek --lijst`](https://orthodox-groningen.github.io/bron/reference/catalogus-cli/#catalogus-zoek) met dezelfde context.
 2. Verfijn `zoek=` of `default.*` in de ouder-`.vsa`.
 3. Schakel na review over naar `@include-vsa lokaal=...` of `id=...`.
 
 ## Implementatiestatus
 
-| Onderdeel                                           | Status             |
-| --------------------------------------------------- | ------------------ |
-| `expand_include_vsa`                                | Geïmplementeerd    |
-| `@include-vsa id=`                                  | Geïmplementeerd    |
-| `@include-vsa lokaal=`                              | Geïmplementeerd    |
-| `@include-vsa zoek=`                                | Geïmplementeerd    |
-| Integratie validate / svg / musicxml / build-markdown | Geïmplementeerd |
+| Onderdeel                                             | Status             |
+| ----------------------------------------------------- | ------------------ |
+| `expand_include_vsa`                                  | Geïmplementeerd    |
+| `@include-vsa id=`                                    | Geïmplementeerd    |
+| `@include-vsa lokaal=`                                | Geïmplementeerd    |
+| `@include-vsa zoek=`                                  | Geïmplementeerd    |
+| Integratie validate / svg / musicxml / build-markdown | Geïmplementeerd    |

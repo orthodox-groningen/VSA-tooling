@@ -1,6 +1,6 @@
 # MusicXML exporteren
 
-Met `vsa musicxml` zet je VSA om naar **`.mxl`** (gecomprimeerd MusicXML, standaard)
+Met [`vsa musicxml`](../reference/cli/musicxml.md) zet je VSA om naar **`.mxl`** (gecomprimeerd MusicXML, standaard)
 of naar platte **`.musicxml`**. Open het in MuseScore of speel af op
 [Coria](https://coria.nl).
 
@@ -49,7 +49,7 @@ Zelfde padregels als `:::include` — alleen de `.vsa`-naam naast je `.md`:
 :::coria "tropaar-zondag-toon-3.vsa" label="Oefenen in Coria":::
 ```
 
-Bij `vsa build-markdown`:
+Bij [`vsa build-markdown`](../reference/cli/build-markdown.md):
 
 1. Pad oplossen t.o.v. het `.md`-bestand.
 2. Als `{stem}.coria.html` naast de `.vsa` staat → link naar Coria-HTML (partij al gekozen).
@@ -157,7 +157,7 @@ identificatie:
 
 ## Twee exportprofielen
 
-Standaard gebruikt `vsa musicxml` het **`playback`**-profiel. Dat is bedoeld
+Standaard gebruikt [`vsa musicxml`](../reference/cli/musicxml.md) het **`playback`**-profiel. Dat is bedoeld
 voor afspelen en import zonder handmatige opschoning — onder andere Coria en
 MuseScore na roundtrip.
 

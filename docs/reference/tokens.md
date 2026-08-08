@@ -13,7 +13,7 @@ Een hoogte-markering heeft de vorm:
 | `[:]`   | Hoogte-markering  | Neutraal                          |
 | `[/:]`  | Hoogte-markering  | Enkelvoudige hoogtebeweging       |
 | `[//:]` | Hoogte-markering  | Samengestelde hoogtebeweging      |
-| `[\:]` | Hoogte-markering  | Dalende hoogtebeweging            |
+| `[\:]`  | Hoogte-markering  | Dalende hoogtebeweging            |
 
 ## Control tokens
 
@@ -28,10 +28,10 @@ Control tokens zijn geen hoogte-markeringen.
 
 ## Renderer-afhankelijk gedrag
 
-| Renderer  | Mogelijke interpretatie                         |
-| --------- | ----------------------------------------------- |
+| Renderer  | Mogelijke interpretatie                                  |
+| --------- | -------------------------------------------------------- |
 | SVG       | Zichtbaar teken, regelafbreking, zachte breuk of negeren |
-| MusicXML  | Breath mark, barline, system break of negeren   |
+| MusicXML  | Breath mark, barline, system break of negeren            |
 
 ## Ontwerpregel
 

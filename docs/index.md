@@ -19,9 +19,9 @@ SVG- en MusicXML-export, Markdown-build en hergebruik in andere repositories.
 
 | Vraag                                                      | Ga naar                                                                                      |
 | ---------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
-| Org-specs, [zangstuk](@bron)-formaat, glossary             | [bron — documentatie](https://orthodox-groningen.github.io/bron/)                            |
-| Hoe gebruik ik de VSA-CLI of bouw ik een consumer-site?    | [Handleidingen](manuals/index.md) of [Starten](getting-started/README.md)                    |
+| Hoe gebruik ik de VSA-CLI of bouw ik een consumer-site?    | [Starten](getting-started/README.md) of [Handleidingen](manuals/index.md)                    |
 | Wat moet de taal/tool formeel doen?                        | [Specificaties](specification/README.md)                                                     |
+| Org-specs, [zangstuk](@bron)-formaat, glossary             | [bron — documentatie](https://orthodox-groningen.github.io/bron/)                            |
 
 ## Wat is dit *niet*
 

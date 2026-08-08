@@ -57,6 +57,8 @@ def test_bron_has_normative_glossary_with_usage_rules():
     bron = bron_root_or_skip()
     glossary = bron / "docs" / "specs" / "terminologie.md"
     text = read(glossary)
+    # TermRefs mogen om termen staan; controleer de keten in platte tekst.
+    plain = re.sub(r"\[([^\]]+)\]\(@[^)]*\)", r"\1", text)
     for needle in (
         "**Status:** normatief",
         "## 0. Gebruiksregels",
@@ -65,7 +67,8 @@ def test_bron_has_normative_glossary_with_usage_rules():
         "`uitvoeringsvorm-id`",
         "Niet dupliceren",
     ):
-        assert needle in text, f"missing in bron glossary: {needle!r}"
+        haystack = plain if "→" in needle else text
+        assert needle in haystack, f"missing in bron glossary: {needle!r}"
 
 
 def test_vsa_terminologie_is_local_tev2_glossary_not_bron_copy():

@@ -42,6 +42,9 @@ python -m pip install -r requirements-docs.txt
 scripts\docs-serve.cmd
 ```
 
+Met TermRefs (na `npm install`): `scripts\docs-serve-tev2.cmd` — zie
+[TEv2 in tool-docs](guides/tev2-docs.md).
+
 ## Snel naar de tool
 
 ```cmd

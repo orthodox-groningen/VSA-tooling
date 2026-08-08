@@ -11,9 +11,13 @@ CI gebruikt `examples\consumer-minimal\content-source`. Generated navigatie alle
 | Script                                   | Doel                                                              |
 | ---------------------------------------- | ----------------------------------------------------------------- |
 | `bootstrap.cmd`                          | virtuele omgeving maken en dependencies installeren               |
-| `docs-serve.cmd`                         | MkDocs docs-site lokaal serveren (`requirements-docs.txt`)        |
-| `docs-build-tev2.cmd`                    | TEv2-pipeline + `mkdocs build --strict`                           |
+| `docs-serve.cmd`                         | MkDocs docs-site lokaal serveren (zonder TEv2)                    |
+| `docs-serve-tev2.cmd`                    | TEv2-preprocess + MkDocs serve op `generated/`                    |
+| `docs-build.cmd`                         | `mkdocs build --strict` zonder TEv2                               |
+| `docs-build-tev2.cmd`                    | TEv2-pipeline + TermRef-check + `mkdocs build --strict`           |
+| `docs-tev2-run.cmd`                      | Alleen TEv2-preprocess (aanroep door build/serve-tev2)            |
 | `prepare-tev2-docs.py`                   | Staging-tree `generated/docs` voor TEv2                           |
+| `check-tev2-termrefs.py`                 | Faalt bij onopgeloste TermRefs in generated Markdown              |
 | `test.cmd`                               | alle tests uitvoeren                                              |
 | `test-verbose.cmd`                       | tests uitvoeren met extra uitvoer                                 |
 | `ci.cmd`                                 | lokale CI: pytest + consumer-minimal validate/build-markdown      |

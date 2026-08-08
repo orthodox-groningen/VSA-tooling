@@ -147,12 +147,21 @@ Opruimen in deze repo: `scripts\clean.cmd`. Overzicht scripts: `scripts/README.m
 
 ### Documentatiesite (MkDocs)
 
+| Script                        | Doel                                   |
+| ----------------------------- | -------------------------------------- |
+| `scripts\docs-serve.cmd`      | Snelle preview zonder TEv2             |
+| `scripts\docs-serve-tev2.cmd` | Preview met TermRefs (CI-parity)       |
+| `scripts\docs-build.cmd`      | `mkdocs build --strict` zonder TEv2    |
+| `scripts\docs-build-tev2.cmd` | TEv2 + TermRef-check + MkDocs (CI)     |
+
 ```cmd
 cd /d C:\Git\orthodox-groningen\VSA-tooling
+npm install
 scripts\docs-build-tev2.cmd
 ```
 
-Of zonder TEv2 (alleen serve): `scripts\docs-serve.cmd`.
+Of snelle serve zonder TEv2: `scripts\docs-serve.cmd`.
+Handleiding: [docs/guides/tev2-docs.md](docs/guides/tev2-docs.md).
 CI/deploy: `.github/workflows/docs-pages.yml` → TEv2 + `gh-pages:/` (`main`) of `/preview/`.
 
 ---

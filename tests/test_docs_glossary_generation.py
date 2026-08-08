@@ -20,7 +20,9 @@ def test_tev2_config_hrgt_targets_glossary_md():
 
 def test_prepare_and_docs_build_tev2_scripts_exist():
     assert Path("scripts/prepare-tev2-docs.py").exists()
+    assert Path("scripts/docs-tev2-run.cmd").exists()
     assert Path("scripts/docs-build-tev2.cmd").exists()
+    assert Path("scripts/docs-serve-tev2.cmd").exists()
     assert Path("scripts/sort-glossary-table.py").exists()
     assert Path("scripts/check-tev2-termrefs.py").exists()
     assert not Path("scripts/mkdocs-glossary-index.py").exists()
@@ -39,12 +41,14 @@ def test_mkdocs_nav_uses_glossary_md():
     for workflow in (
         Path(".github/workflows/docs-pages.yml"),
         Path(".github/workflows/docs-build.yml"),
-        Path("scripts/docs-build-tev2.cmd"),
+        Path("scripts/docs-tev2-run.cmd"),
     ):
         body = workflow.read_text(encoding="utf-8")
         assert "sort-glossary-table.py glossary.md" in body
         assert "mkdocs-glossary-index.py" not in body
         assert "_index.template" not in body
+    build = Path("scripts/docs-build-tev2.cmd").read_text(encoding="utf-8")
+    assert "docs-tev2-run.cmd" in build
 
 
 def test_tev2_config_uses_localize_navurl_in_hrgt_converters():
@@ -86,8 +90,10 @@ def test_saf_imports_bron_terms_before_local_with_exclude():
     assert termselection == ["*@bron", "*", "-excludeFromMRG[yes]"]
 
 
-def test_docs_build_tev2_always_runs_mrg_import():
-    text = Path("scripts/docs-build-tev2.cmd").read_text(encoding="utf-8")
+def test_docs_tev2_run_always_runs_mrg_import():
+    text = Path("scripts/docs-tev2-run.cmd").read_text(encoding="utf-8")
     assert "mrg-import" in text
     assert "Skipping mrg-import locally" not in text
     assert 'TEV2_RUN_IMPORT"=="1"' not in text
+    build = Path("scripts/docs-build-tev2.cmd").read_text(encoding="utf-8")
+    assert "docs-tev2-run.cmd" in build

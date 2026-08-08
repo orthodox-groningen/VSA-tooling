@@ -18,6 +18,9 @@ _SHORT_MESSAGES_NL: dict[str, str] = {
     "VSA-SYNTAX-INVALID-SCOPE": "Zangelement heeft geen herkenbare opbouw.",
     "VSA-SYNTAX-EMPTY-SUNG-TEXT": "Zangelement zonder gezongen tekst.",
     "VSA-SYNTAX-MODIFIER-IN-SUNG-TEXT": "Modifierteken in gezongen tekst.",
+    "VSA-SYNTAX-HALFTOON-PREFIX-AFTER-BASE": (
+        "Halftoon-prefix moet vóór de basisbeweging staan."
+    ),
     "VSA-SYNTAX-INVALID-ALIGNMENT-MARKER": "Ongeldige '&'-markering.",
     "VSA-PARSE-ERROR": "VSA-syntaxfout.",
     "VSA-BLOCK-PARSE-ERROR": "Markdown VSA-blokfout.",

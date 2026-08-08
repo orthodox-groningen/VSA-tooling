@@ -21,6 +21,11 @@ _BASE_MODIFIER_CHARS: frozenset[str] = frozenset("/\\-~")
 # followed by a _BASE_MODIFIER_CHARS character.
 _HALFTOON_PREFIX_CHARS: frozenset[str] = frozenset(HALFTOON_CANONICAL)
 
+# Halftoon glyphs that are never valid as sung text. If they appear after a
+# base-EHM run, the author almost certainly put the prefix on the wrong side.
+# Plain ASCII ``b`` is excluded: it is a valid zangelement character.
+_HALFTOON_POSTFIX_ERROR_CHARS: frozenset[str] = frozenset("#♯+♭")
+
 
 @dataclass
 class ValidationMessage:
@@ -372,6 +377,29 @@ def _first_scope_issue(text: str):
                 "VSA-SYNTAX-EMPTY-SUNG-TEXT",
                 "Zangelement bevat wel modifiers maar geen tekst.",
                 "Voeg tekst toe na de modifiers, of verwijder het zangelement.",
+            )
+
+        if (
+            prefix
+            and any(ch in _BASE_MODIFIER_CHARS for ch in prefix)
+            and sung_text
+            and sung_text[0] in _HALFTOON_POSTFIX_ERROR_CHARS
+        ):
+            bad_char = sung_text[0]
+            strip_offset = content.find(stripped)
+            if strip_offset < 0:
+                strip_offset = 0
+            absolute = start + 1 + strip_offset + len(prefix)
+            line, column = _line_column_from_position(text, absolute)
+            return (
+                line, column,
+                "VSA-SYNTAX-HALFTOON-PREFIX-AFTER-BASE",
+                (
+                    f"`{bad_char}` moet vóór het rijtje `/`, `\\`, `-` of `~` "
+                    "komen te staan."
+                ),
+                "Schrijf de halftoon-prefix direct vóór de basisbeweging, "
+                r"bijvoorbeeld `{+\tekst}` in plaats van `{\+tekst}`.",
             )
 
         invalid_position = _modifier_inside_sung_text_position(sung_text)

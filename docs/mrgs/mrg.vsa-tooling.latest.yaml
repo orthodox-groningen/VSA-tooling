@@ -81,7 +81,7 @@ entries:
       - "bracket-directive"
     termid: "concept:bracket-directive"
     vsntag: "vsa-tooling"
-  - git_date: 2026-07-11T00:00:00.000Z
+  - git_date: 2026-08-08T00:00:00.000Z
     term: "bron-repository"
     formPhrases:
       - "bron-repository"
@@ -263,7 +263,7 @@ entries:
     termType: "concept"
     termid: "concept:exportmechanisme"
     vsntag: "bron"
-  - git_date: 2026-07-11T00:00:00.000Z
+  - git_date: 2026-08-08T00:00:00.000Z
     term: "exporttype"
     formPhrases:
       - "exporttype"
@@ -414,7 +414,7 @@ entries:
       - "lengte-modifier"
     termid: "concept:lengte-modifier"
     vsntag: "vsa-tooling"
-  - git_date: 2026-07-11T00:00:00.000Z
+  - git_date: 2026-08-08T00:00:00.000Z
     term: "manifest"
     formPhrases:
       - "manifest"
@@ -525,7 +525,7 @@ entries:
       - "pitch-marker"
     termid: "concept:pitch-marker"
     vsntag: "vsa-tooling"
-  - git_date: 2026-07-11T00:00:00.000Z
+  - git_date: 2026-08-08T00:00:00.000Z
     term: "promotie"
     formPhrases:
       - "promotie"
@@ -630,7 +630,7 @@ entries:
       - "samengestelde-lengte-modifier"
     termid: "concept:samengestelde-lengte-modifier"
     vsntag: "vsa-tooling"
-  - git_date: 2026-07-11T00:00:00.000Z
+  - git_date: 2026-08-08T00:00:00.000Z
     term: "samenstelling"
     formPhrases:
       - "samenstelling"
@@ -768,7 +768,7 @@ entries:
       - "gebruik-van-deze-en-vergelijkbare-termen-in-de-'bron'-repo."
     termid: "concept:vsa"
     vsntag: "vsa-tooling"
-  - git_date: 2026-08-01T00:00:00.000Z
+  - git_date: 2026-08-08T00:00:00.000Z
     term: "vsa-bestand"
     termType: "concept"
     glossaryTerm: "vsa-bestand"
@@ -883,13 +883,13 @@ entries:
       - "vsa.toml"
     termid: "concept:vsa-toml"
     vsntag: "vsa-tooling"
-  - git_date: 2026-08-02T00:00:00.000Z
+  - git_date: 2026-08-08T00:00:00.000Z
     term: "vsa-tooling"
     termType: "concept"
     glossaryTerm: "VSA-tooling"
     glossaryText: "De Python-toolchain (`vsa` CLI) waarmee [vsa-notatie](@)-bestanden worden geparseerd, gevalideerd en omgezet naar [afgeleiden](@) zoals SVG en MusicXML."
     glossaryNotes:
-      - "De `vsa`-CLI biedt subcommando's voor validatie, rendering en export; zie de [CLI-referentie](https://github.com/orthodox-groningen/VSA-tooling/blob/main/docs/reference/cli/index.md)."
+      - "De `vsa`-CLI biedt subcommando's voor validatie, rendering en export; zie de [CLI-referentie](https://orthodox-groningen.github.io/VSA-tooling/reference/cli/)."
       - "VSA-tooling genereert [afgeleiden](@) uit [bronbestanden](@); de [afgeleiden](@) zelf worden niet in de [bron-repository](@) opgeslagen."
       - "De tooling bevindt zich in de repo [orthodox-groningen/VSA-tooling](https://github.com/orthodox-groningen/VSA-tooling)."
     formPhrases:

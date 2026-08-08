@@ -49,4 +49,5 @@ vsa svg examples\minimal\050_svg_demo.vsa generated\vsa\050_svg_demo.svg
 | Brede uitleg van de CLI                   | [Gebruikershandleiding](../guides/user-guide.md)    |
 | Het juiste commando per taak              | [CLI-taken](../guides/cli-taken.md)                 |
 | Foutmeldingen begrijpen                   | [Validatie](../guides/validation.md)                |
-| Tool hergebruiken in een andere repo      | [Integratie](../guides/reuse-vsa-tooling.md)        |
+| Tool hergebruiken in een andere repo      | [Integratie](../integratie/index.md)                |
+| Docs lokaal met TermRefs                  | [TEv2 in tool-docs](../guides/tev2-docs.md)         |

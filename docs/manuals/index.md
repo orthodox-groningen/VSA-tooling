@@ -12,7 +12,7 @@ regels staan in [Specificaties](../specification/README.md); snelle naslag in
 | 2    | [CLI-taken](../guides/cli-taken.md)              | Het juiste commando per taak                  |
 | 3    | [Validatie](../guides/validation.md)             | Foutmeldingen en [severity](@)                |
 | 4    | [Voorbeelden](../reference/voorbeelden/index.md) | Correcte en incorrecte invoer                 |
-| 5    | [Integratie](../guides/reuse-vsa-tooling.md)     | Gebruik in andere repo’s / CI                 |
+| 5    | [Integratie](../integratie/index.md)             | Gebruik in andere repo’s / CI                 |
 
 ## Overige handleidingen
 

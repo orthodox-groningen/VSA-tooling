@@ -9,19 +9,35 @@ patroon als bron: één bronbestand met `{% hrg="vsa-tooling" %}`, geen
 canoniek). Lokale curated texts kunnen een term herdefiniëren; dan wint die voor
 `[term](@)`, terwijl `[term](@bron)` de org-definitie blijft.
 
+Org-brede contributor-checklist (scripts, pins, tabellen):
+[Documentatie bijdragen](https://orthodox-groningen.github.io/bron/manuals/docs-bijdragen/)
+(bron).
+
 ## Lokaal
 
-Installeer de TEv2-tools (eenmalig):
+Installeer TEv2-tools via de repo-pins (voorkeur):
+
+```cmd
+cd /d C:\Git\orthodox-groningen\VSA-tooling
+npm install
+```
+
+Of globaal (zelfde versies als in `package.json`, nu **1.2.0**):
 
 ```cmd
 npm install -g @tno-terminology-design/trrt @tno-terminology-design/hrgt @tno-terminology-design/mrgt @tno-terminology-design/mrg-import
 ```
 
-Volledige pipeline (staging → mrg-import → mrgt/hrgt/trrt → MkDocs):
+| Script                        | Doel                                                                 |
+| ----------------------------- | -------------------------------------------------------------------- |
+| `scripts\docs-serve.cmd`      | Snelle preview **zonder** TermRef-hover                              |
+| `scripts\docs-serve-tev2.cmd` | Preview **met** TEv2 (staging `generated/`, zoals CI)                |
+| `scripts\docs-build.cmd`      | Alleen `mkdocs build --strict`                                       |
+| `scripts\docs-build-tev2.cmd` | Volledige keten + TermRef-check + MkDocs (= CI-parity)               |
 
 ```cmd
 cd /d C:\Git\orthodox-groningen\VSA-tooling
-scripts\docs-build-tev2.cmd
+scripts\docs-serve-tev2.cmd
 ```
 
 `mrg-import` haalt de bron-MRG op (nodig voor `*@bron` in `docs/saf.yaml`).
@@ -29,15 +45,27 @@ Lokaal gebruikt `prepare-tev2-docs.py` indien aanwezig de sibling-checkout
 `..\bron\docs` (werkt om een Windows-bug in mrg-import met GitHub-URLs heen);
 CI blijft de GitHub-`scopedir` gebruiken.
 
-Alleen glossary-stappen zonder MkDocs: `npm run tev2:docs` (roept dezelfde build aan).
+Alleen TEv2+MkDocs zonder serve: `npm run tev2:docs` (= `docs-build-tev2.cmd`).
+
+Na TermRef- of glossary-wijzigingen: **opnieuw** `docs-serve-tev2` / `docs-build-tev2`
+(live reload op `docs/` zonder preprocess toont geen hover).
 
 ## CI
 
 `docs-pages.yml` (elke push) en `docs-build.yml` (PR / handmatig) draaien de volle
-keten inclusief `mrg-import` vóór `mkdocs build --strict` (CI checkt `bron` uit of
-gebruikt sibling/`vendor`). Op push alleen `docs-pages.yml`, zodat TEv2+MkDocs niet
+keten inclusief `mrg-import` en `python scripts/check-tev2-termrefs.py generated/docs`
+vóór `mkdocs build --strict`. Op push alleen `docs-pages.yml`, zodat TEv2+MkDocs niet
 dubbel draait. Pages committeert gegenereerde `docs/mrgs/mrg.vsa-tooling*.yaml`
 met `[skip ci]` (geen CI-cascade).
+
+## Versie-pins
+
+| Onderdeel        | Pin / range     | Bestand                 |
+| ---------------- | --------------- | ----------------------- |
+| MkDocs Material  | `>=9.5,<10`     | `requirements-docs.txt` |
+| TEv2 npm-tools   | `1.2.0`         | `package.json`          |
+
+Afstemmen met bron tenzij een bewuste drift-PR.
 
 ## TermRefs schrijven
 
@@ -55,6 +83,14 @@ Lokale `vsa.md` houdt alleen form phrases `vsa` / `vsa's`, zodat
 
 Voorbeeld: [exporttype](@) is een geïmporteerde org-term; [zangstuk](@) is de
 lokale herdefinitie, terwijl [zangstuk](@bron) naar scope `bron` wijst.
+
+## Markdown-tabellen
+
+Na bulk-wijzigingen:
+
+```cmd
+python scripts\align_markdown_tables.py docs/
+```
 
 ## Hugo / presentatie
 

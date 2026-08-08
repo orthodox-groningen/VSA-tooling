@@ -98,7 +98,7 @@
   
   <strong>Preview</strong>
    — branch <code>docs/hrg-termrefs-en-contentplan</code>
-  , gebouwd 2026-08-08 19:57 CEST.
+  , gebouwd 2026-08-08 21:34 CEST.
   <a href="https://orthodox-groningen.github.io/VSA-tooling/">Live documentatie (main)</a>.
   
 
@@ -2092,7 +2092,7 @@
   <span class="md-ellipsis">
     
   
-    vsa svg — één VSA-bestand naar SVG renderen
+    vsa svg — één .vsa waarvan de inhoud uitsluitend syntactisch geldige Vsa-notatie bevat — d.w.z. door de Vsa-tooling foutloos wordt geparseerd en gevalideerd.">vsa-bestand naar SVG renderen
   
 
     
@@ -3081,7 +3081,7 @@
 <p>Bronbasis: <code>docs/spec/vsa-spec-v1.0.1.md</code>, aangevuld met latere documenten over control tokens, comments en includes waar die syntax uitbreiden.</p>
 <h2 id="4-syntax">4. Syntax<a class="headerlink" href="#4-syntax" title="Permanent link">&para;</a></h2>
 <h3 id="41-hugo-markdown-bloksyntax">4.1 Hugo Markdown bloksyntax<a class="headerlink" href="#41-hugo-markdown-bloksyntax" title="Permanent link">&para;</a></h3>
-<p>VSA-zangstukken worden beschreven in een zo genaamd <code>Hugo Markdown blok</code> (zie hoofdstuk 4.1.1. voor de formele syntax, en hoofdstuk 5 voor de semantiek). We geven hier alvast een voorbeeld:</p>
+<p>VSA-<a href="/bron/terms/zangstuk" title="Zangstuk: Een liturgisch-muzikaal geheel met een stabiele <code>zangstuk-id</code>, waaronder nul of meer varianten bestaan.">zangstukken</a> worden beschreven in een zo genaamd <code>Hugo Markdown blok</code> (zie hoofdstuk 4.1.1. voor de formele syntax, en hoofdstuk 5 voor de semantiek). We geven hier alvast een voorbeeld:</p>
 <div class="highlight"><pre><span></span><code>::: vsa-notatie
 do=&quot;F4&quot;
 mode=&quot;major&quot;
@@ -3092,7 +3092,7 @@ duration-model=&quot;default&quot;
 [:] {/Hei_}{/lig_} is de Heer. [//:]
 :::
 </code></pre></div>
-<p>De blokparameters behoren niet tot de zichtbare VSA-notatie, maar leveren context voor validatie, rendering en export. Absolute toonhoogten, modi, tempi e.d. worden als parameters gespecificeerd, en niet in het zangstuk (in het voorbeeld: <code>[:] {/Hei_}{/lig_} is de Heer. [//:]</code>). Dit sluit aan bij de praktijk waarin alleen zangstukken op papier staan, en de eigenlijke toon waarop gezongen wordt, de modi en tempi worden aangegeven door de koorleider.</p>
+<p>De blokparameters behoren niet tot de zichtbare <a href="/bron/terms/vsa-notatie" title="VSA-notatie: Het tekstgebaseerde notatieformaat waarmee liturgische zangteksten worden vastgelegd: een formeel gespecificeerde taal met scopes, modifiers en bracket-directives, parseeerbaar en valideerbaar door Vsa-tooling.">VSA-notatie</a>, maar leveren context voor validatie, rendering en export. Absolute toonhoogten, modi, tempi e.d. worden als parameters gespecificeerd, en niet in het <a href="/bron/terms/zangstuk" title="Zangstuk: Een liturgisch-muzikaal geheel met een stabiele <code>zangstuk-id</code>, waaronder nul of meer varianten bestaan.">zangstuk</a> (in het voorbeeld: <code>[:] {/Hei_}{/lig_} is de Heer. [//:]</code>). Dit sluit aan bij de praktijk waarin alleen <a href="/bron/terms/zangstuk" title="Zangstuk: Een liturgisch-muzikaal geheel met een stabiele <code>zangstuk-id</code>, waaronder nul of meer varianten bestaan.">zangstukken</a> op papier staan, en de eigenlijke toon waarop gezongen wordt, de modi en tempi worden aangegeven door de koorleider.</p>
 <p>Een aantal parameters van de bloksyntax hebben normatieve defaultwaarde, wat het mogelijk maakt om blokken waarin deze parameters niet zijn gespecificeerd, toch speelbaar te maken. Het gaat om de volgende parameters:</p>
 <table>
 <thead>
@@ -3775,7 +3775,7 @@ Bb2
       
       
       <p class="og-footer-stamps">
-        Bijgewerkt: 2026-07-08
+        Bijgewerkt: 2026-08-08
         
       </p>
       

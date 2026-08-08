@@ -97,8 +97,8 @@
             
   
   <strong>Preview</strong>
-   — branch <code>docs/hrg-termrefs-en-contentplan</code>
-  , gebouwd 2026-08-08 15:24 CEST.
+   — branch <code>fix/halftoon-postfix-diagnostic</code>
+  , gebouwd 2026-08-08 16:42 CEST.
   <a href="https://orthodox-groningen.github.io/VSA-tooling/">Live documentatie (main)</a>.
   
 
@@ -546,7 +546,7 @@
   <span class="md-ellipsis">
     
   
-    Lokaal ontwikkelen
+    Overzicht
   
 
     
@@ -663,7 +663,7 @@
   <span class="md-ellipsis">
     
   
-    Consumer-site — waar hoort wat
+    Consumer-site (Hugo)
   
 
     
@@ -691,7 +691,7 @@
   <span class="md-ellipsis">
     
   
-    Gebruikershandleiding
+    VSA Tool gebruikershandleiding
   
 
     
@@ -803,7 +803,7 @@
   <span class="md-ellipsis">
     
   
-    MusicXML-export
+    MusicXML exporteren
   
 
     
@@ -831,7 +831,7 @@
   <span class="md-ellipsis">
     
   
-    Rendering en fonts
+    Rendering-fonts
   
 
     
@@ -859,7 +859,7 @@
   <span class="md-ellipsis">
     
   
-    Parochie-lokaal VSA
+    Parochie-lokaal — VSA-tooling
   
 
     
@@ -887,7 +887,7 @@
   <span class="md-ellipsis">
     
   
-    Testen en regressie
+    Testvoorbeelden en regressietests voor VSA Tooling
   
 
     
@@ -943,7 +943,7 @@
   <span class="md-ellipsis">
     
   
-    Navigatie-placeholders
+    Hugo navigatie-placeholders
   
 
     
@@ -1172,7 +1172,7 @@
   <span class="md-ellipsis">
     
   
-    Directieven
+    Directives en document-samenstelling
   
 
     
@@ -1200,7 +1200,7 @@
   <span class="md-ellipsis">
     
   
-    Rendering
+    Rendering en export
   
 
     
@@ -1256,7 +1256,7 @@
   <span class="md-ellipsis">
     
   
-    Conformiteit
+    Conformance
   
 
     
@@ -1284,7 +1284,7 @@
   <span class="md-ellipsis">
     
   
-    Foutafhandeling
+    Error Handling
   
 
     
@@ -1312,7 +1312,7 @@
   <span class="md-ellipsis">
     
   
-    Voorbeelden
+    Voorbeelden en niet-normatieve toelichting
   
 
     
@@ -1340,7 +1340,7 @@
   <span class="md-ellipsis">
     
   
-    Versionering
+    Versioning
   
 
     
@@ -1396,7 +1396,7 @@
   <span class="md-ellipsis">
     
   
-    Open punten
+    Open specificatiepunten
   
 
     
@@ -1687,7 +1687,7 @@
   <span class="md-ellipsis">
     
   
-    Fixtures-catalogus
+    Fixtures-catalogus (correct / incorrect)
   
 
     
@@ -2029,7 +2029,7 @@
   <span class="md-ellipsis">
     
   
-    Grammatica
+    Grammatica-referentie
   
 
     
@@ -2057,7 +2057,7 @@
   <span class="md-ellipsis">
     
   
-    Tokens
+    Tokenreferentie
   
 
     
@@ -2085,7 +2085,7 @@
   <span class="md-ellipsis">
     
   
-    Metadata
+    Metadatareferentie
   
 
     
@@ -2113,7 +2113,7 @@
   <span class="md-ellipsis">
     
   
-    Config
+    Configuratiereferentie
   
 
     
@@ -2141,7 +2141,7 @@
   <span class="md-ellipsis">
     
   
-    Diagnostiek
+    Diagnostics-referentie
   
 
     
@@ -2169,7 +2169,7 @@
   <span class="md-ellipsis">
     
   
-    Outputs
+    Outputreferentie
   
 
     
@@ -2197,7 +2197,7 @@
   <span class="md-ellipsis">
     
   
-    Include-vsa
+    @include-vsa referentie
   
 
     
@@ -2342,7 +2342,7 @@
   <span class="md-ellipsis">
     
   
-    Hergebruik vsa-tool
+    VSA-tooling gebruiken vanuit andere repositories
   
 
     
@@ -2610,34 +2610,6 @@
   
   
     <li class="md-nav__item">
-      <a href="../plans/docs-content-publiek-en-paginatypen/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Docs-content: publiek en paginatypen (pointer)
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../plans/vsa-polyphony-proposal/" class="md-nav__link">
         
   
@@ -2728,11 +2700,11 @@ Zie ook <a href="../guides/tev2-docs/">TEv2 in tool-docs</a>.</p>
 <tbody>
 <tr>
 <td><a href="/VSA-tooling/preview/terminologie/include-vsa">@include-vsa</a></td>
-<td>een string die met <code>@include-vsa</code> begint, precies één ondersteunde resolverparameter bevat (<code>zoek=</code>, <code>id=</code> of <code>lokaal=</code>) en tijdens verwerking door de body van het doelbestand wordt vervangen.<br><strong>Opmerking</strong>: Voorbeeld: <code>refrein: @include-vsa zoek="Troparion"</code> — alleen de <code>@include-vsa …</code>-substring wordt vervangen.</td>
+<td>een string die met <code>@include-vsa</code> begint, precies één ondersteunde resolverparameter bevat (<code>zoek=</code>, <code>id=</code> of <code>lokaal=</code>) en tijdens verwerking door de body van het doelbestand wordt vervangen.</td>
 </tr>
 <tr>
 <td><a href="/VSA-tooling/preview/terminologie/ast">Abstract Syntax Tree</a></td>
-<td>een expliciete nodeboom die door de <a href="/VSA-tooling/preview/terminologie/parser" title="Parser: een component die VSA-brontekst of tokens volgens de grammatica omzet naar expliciete AST-nodes, bronlocaties behoudt en geen semantische reparaties of renderlogica uitvoert.">parser</a> uit VSA-invoer wordt geproduceerd en die <a href="/VSA-tooling/preview/terminologie/validator" title="Validator: een component die een geparseerde AST of VSA-invoer toetst aan semantische en normatieve regels en overtredingen als diagnostics rapporteert zonder ze stilzwijgend te repareren.">validator</a> en <a href="/VSA-tooling/preview/terminologie/renderer" title="Renderer: een component die een gevalideerde AST of daarvan afgeleid layoutmodel omzet naar concrete uitvoer, zoals SVG, JSON, Markdown, Hugo-output of MusicXML, zonder de AST semantisch te wijzigen.">renderer</a> zonder semantische herinterpretatie kunnen lezen.</td>
+<td>een expliciete nodeboom die door de parser uit VSA-invoer wordt geproduceerd en die validator en renderer zonder semantische herinterpretatie kunnen lezen.</td>
 </tr>
 <tr>
 <td><a href="/bron/terms/afgeleide">Afgeleide</a></td>
@@ -2740,7 +2712,7 @@ Zie ook <a href="../guides/tev2-docs/">TEv2 in tool-docs</a>.</p>
 </tr>
 <tr>
 <td><a href="/VSA-tooling/preview/terminologie/ast">AST</a></td>
-<td>Afkorting van <a href="/VSA-tooling/preview/terminologie/ast" title="Abstract Syntax Tree: een expliciete nodeboom die door de parser uit VSA-invoer wordt geproduceerd en die validator en renderer zonder semantische herinterpretatie kunnen lezen.">Abstract Syntax Tree</a>.</td>
+<td>Afkorting van <a href="/VSA-tooling/preview/terminologie/ast">Abstract Syntax Tree</a>.</td>
 </tr>
 <tr>
 <td><a href="/VSA-tooling/preview/terminologie/bracket-directive">Bracket-directive</a></td>
@@ -2748,15 +2720,15 @@ Zie ook <a href="../guides/tev2-docs/">TEv2 in tool-docs</a>.</p>
 </tr>
 <tr>
 <td><a href="/VSA-tooling/preview/terminologie/bracket-directive">Bracket-token</a></td>
-<td>Alias voor <a href="/VSA-tooling/preview/terminologie/bracket-directive" title="Bracket-directive: een tekstfragment dat als afzonderlijk VSA-token tussen <code>[</code> en <code>]</code> voorkomt en door bracket-dispatch wordt geclassificeerd voordat de inhoudelijke parsing verdergaat.">Bracket-directive</a>.</td>
+<td>Alias voor <a href="/VSA-tooling/preview/terminologie/bracket-directive">Bracket-directive</a>.</td>
 </tr>
 <tr>
 <td><a href="/bron/terms/bron-repository">Bron-repo</a></td>
-<td>Alias voor <a href="/bron/terms/bron-repository" title="Bron-repository: De git-repository <code>orthodox-groningen/bron</code> (of een expliciet aangewezen opvolger); de centrale opslagplaats voor Representaties van Uitvoeringsvormen (van Varianten) van Zangstukken, alsmede voor de specificaties van de opslag, en van manieren om daarin te zoeken.">Bron-repository</a>.</td>
+<td>Alias voor <a href="/bron/terms/bron-repository">Bron-repository</a>.</td>
 </tr>
 <tr>
 <td><a href="/bron/terms/bron-repository">Bron-repository</a></td>
-<td>De git-repository <code>orthodox-groningen/bron</code> (of een expliciet aangewezen opvolger); de centrale opslagplaats voor <a href="/bron/terms/representatie" title="Representatie: Een bestand waarin een uitvoeringsvorm concreet is vastgelegd.">representaties</a> van <a href="/bron/terms/uitvoeringsvorm" title="Uitvoeringsvorm: Een concrete realisatie van een bepaalde Variant van een Zangstuk, waarbij de muzikale identiteit van die variant behouden blijft.">uitvoeringsvormen</a> (van <a href="/bron/terms/variant" title="Variant (van een Zangstuk): Een zekere zelfstandige muzikale realisatie van het Zangstuk, dat zich van andere varianten van datzelfde Zangstuk onderscheidt door geheel eigen en wezenlijk andere muzikale kenmerken.">varianten</a>) van <a href="/VSA-tooling/preview/terminologie/zangstuk" title="Zangstuk: een inhoudelijke eenheid die een afgebakend gezang of muzikale tekst vormt en zelfstandig kan worden geidentificeerd, vastgelegd, verwerkt of gepubliceerd.">zangstukken</a>, alsmede voor de specificaties van de opslag, en van manieren om daarin te zoeken.<br><strong>Opmerkingen:</strong><br>- Niet verwarren met <a href="/bron/terms/bronbestand" title="Bronbestand: Een bestand waarvoor geen geautomatiseerd, herhaalbaar Conversiemechanisme bestaat dat het volledig uit een ander getrackt bestand in dezelfde repository genereert.">bronbestand</a> (een bestand) of <a href="/bron/terms/herkomst" title="Herkomst: Metadata die beschrijft *waar* een Zangstuk, Variant, Uitvoeringsvorm of Representatie vandaan komt — mens, traditie, publicatie of parochie — maar niet zijnde een Bronbestand of de Bron-repository zelf.">herkomst</a> (<a href="/VSA-tooling/preview/terminologie/metadata" title="Metadata: gegevens die als gestructureerde blokparameters of YAML-frontmatter bij VSA-bronmateriaal staan, verwerking of identificatie sturen en zelf niet tot de zichtbare VSA-notatie behoren.">metadata</a> over oorsprong).<br>- Repositories voor de <a href="https://github.com/orthodox-groningen/VSA-tooling/">VSA-tooling</a>, of parochie-specifieke zaken en vendor-checkouts zijn geen bron-repository.</td>
+<td>De git-repository <code>orthodox-groningen/bron</code> (of een expliciet aangewezen opvolger); de centrale opslagplaats voor <a href="/bron/terms/representatie" title="Representatie: Een bestand waarin een uitvoeringsvorm concreet is vastgelegd.">representaties</a> van <a href="/bron/terms/uitvoeringsvorm" title="Uitvoeringsvorm: Een concrete realisatie van een bepaalde Variant van een Zangstuk, waarbij de muzikale identiteit van die variant behouden blijft.">uitvoeringsvormen</a> (van <a href="/bron/terms/variant" title="Variant (van een Zangstuk): Een zekere zelfstandige muzikale realisatie van het Zangstuk, dat zich van andere varianten van datzelfde Zangstuk onderscheidt door geheel eigen en wezenlijk andere muzikale kenmerken.">varianten</a>) van <a href="/VSA-tooling/preview/terminologie/zangstuk" title="Zangstuk: een inhoudelijke eenheid die een afgebakend gezang of muzikale tekst vormt en zelfstandig kan worden geidentificeerd, vastgelegd, verwerkt of gepubliceerd.">zangstukken</a>, alsmede voor de specificaties van de opslag, en van manieren om daarin te zoeken.<br><strong>Opmerkingen:</strong><br>- Niet verwarren met <a href="/bron/terms/bronbestand" title="Bronbestand: Een bestand waarvoor geen geautomatiseerd, herhaalbaar Conversiemechanisme bestaat dat het volledig uit een ander getrackt bestand in dezelfde repository genereert.">bronbestand</a> (een bestand) of <a href="/bron/terms/herkomst" title="Herkomst: Metadata die beschrijft *waar* een Zangstuk, Variant, Uitvoeringsvorm of Representatie vandaan komt — mens, traditie, publicatie of parochie — maar niet zijnde een Bronbestand of de Bron-repository zelf.">herkomst</a> (metadata over oorsprong).<br>- Repositories voor de <a href="https://github.com/orthodox-groningen/VSA-tooling/">VSA-tooling</a>, of parochie-specifieke zaken en vendor-checkouts zijn geen bron-repository.</td>
 </tr>
 <tr>
 <td><a href="/bron/terms/bronbestand">Bronbestand</a></td>
@@ -2768,39 +2740,39 @@ Zie ook <a href="../guides/tev2-docs/">TEv2 in tool-docs</a>.</p>
 </tr>
 <tr>
 <td><a href="/VSA-tooling/preview/terminologie/control-token">Control-token</a></td>
-<td>een <a href="/VSA-tooling/preview/terminologie/bracket-directive" title="Bracket-directive: een tekstfragment dat als afzonderlijk VSA-token tussen <code>[</code> en <code>]</code> voorkomt en door bracket-dispatch wordt geclassificeerd voordat de inhoudelijke parsing verdergaat.">bracket-directive</a> waarvan de tokenwaarde een ondersteunde control-tokenvorm is, zoals <code>[*]</code>, <code>[/]</code>, <code>[*?]</code> of <code>[/?]</code>, en die niet als <a href="/VSA-tooling/preview/terminologie/pitch-marker" title="Pitch-marker: een bracket-directive met de vorm <code>[&lt;EHM&gt;:]</code>, waarbij <code>&lt;EHM&gt;</code> leeg is of een geldige enkelvoudige hoogte-modifier bevat.">pitch-marker</a> wordt geparseerd.</td>
+<td>een bracket-directive waarvan de tokenwaarde een ondersteunde control-tokenvorm is, zoals <code>[*]</code>, <code>[/]</code>, <code>[*?]</code> of <code>[/?]</code>, en die niet als pitch-marker wordt geparseerd.</td>
 </tr>
 <tr>
 <td><a href="/bron/terms/conversiemechanisme">Conversiemechanisme</a></td>
-<td>Een gedefinieerde, geautomatiseerde en herhaalbare tool CM die een <a href="/bron/terms/bronbestand" title="Bronbestand: Een bestand waarvoor geen geautomatiseerd, herhaalbaar Conversiemechanisme bestaat dat het volledig uit een ander getrackt bestand in dezelfde repository genereert.">bronbestand</a> B omzet naar een <a href="/bron/terms/afgeleide" title="Afgeleide: Een bestand dat volledig en herhaalbaar door een Conversiemechanisme uit een Bronbestand wordt gegenereerd, en dat (dus) niet als Bronbestand in de Bron-repository staat.">afgeleide</a> AB = CM(B).<br><strong>Opmerkingen:</strong><br>- Voorbeelden: <code>vsa svg</code> (<a href="/VSA-tooling/preview/terminologie/vsa" title="Vereenvoudigde Slavische Accentnotatie: wordt gebruikt om te verwijzen naar een Formele Notatie voor het vastleggen van Zangstukken en ook naar de Toolset waarmee zulke vastleggingen kunnen worden gevalideerd en naar publiceerbare vormen worden omgezet.">VSA</a> → SVG), <code>vsa musicxml</code> (<a href="/VSA-tooling/preview/terminologie/vsa" title="Vereenvoudigde Slavische Accentnotatie: wordt gebruikt om te verwijzen naar een Formele Notatie voor het vastleggen van Zangstukken en ook naar de Toolset waarmee zulke vastleggingen kunnen worden gevalideerd en naar publiceerbare vormen worden omgezet.">VSA</a> → MXL).<br>- Het bestaan van een conversiemechanisme is het criterium waarmee onderscheid wordt gemaakt tussen <a href="/bron/terms/bronbestand" title="Bronbestand: Een bestand waarvoor geen geautomatiseerd, herhaalbaar Conversiemechanisme bestaat dat het volledig uit een ander getrackt bestand in dezelfde repository genereert.">bronbestand</a> en <a href="/bron/terms/afgeleide" title="Afgeleide: Een bestand dat volledig en herhaalbaar door een Conversiemechanisme uit een Bronbestand wordt gegenereerd, en dat (dus) niet als Bronbestand in de Bron-repository staat.">afgeleide</a>.</td>
+<td>Een gedefinieerde, geautomatiseerde en herhaalbare tool CM die een <a href="/bron/terms/bronbestand" title="Bronbestand: Een bestand waarvoor geen geautomatiseerd, herhaalbaar Conversiemechanisme bestaat dat het volledig uit een ander getrackt bestand in dezelfde repository genereert.">bronbestand</a> B omzet naar een <a href="/bron/terms/afgeleide" title="Afgeleide: Een bestand dat volledig en herhaalbaar door een Conversiemechanisme uit een Bronbestand wordt gegenereerd, en dat (dus) niet als Bronbestand in de Bron-repository staat.">afgeleide</a> AB = CM(B).<br><strong>Opmerkingen:</strong><br>- Voorbeelden: <code>vsa svg</code> (VSA → SVG), <code>vsa musicxml</code> (VSA → MXL).<br>- Het bestaan van een conversiemechanisme is het criterium waarmee onderscheid wordt gemaakt tussen <a href="/bron/terms/bronbestand" title="Bronbestand: Een bestand waarvoor geen geautomatiseerd, herhaalbaar Conversiemechanisme bestaat dat het volledig uit een ander getrackt bestand in dezelfde repository genereert.">bronbestand</a> en <a href="/bron/terms/afgeleide" title="Afgeleide: Een bestand dat volledig en herhaalbaar door een Conversiemechanisme uit een Bronbestand wordt gegenereerd, en dat (dus) niet als Bronbestand in de Bron-repository staat.">afgeleide</a>.</td>
 </tr>
 <tr>
 <td><a href="/VSA-tooling/preview/terminologie/diagnostic">Diagnostic</a></td>
-<td>een melding die door <a href="/VSA-tooling/preview/terminologie/parser" title="Parser: een component die VSA-brontekst of tokens volgens de grammatica omzet naar expliciete AST-nodes, bronlocaties behoudt en geen semantische reparaties of renderlogica uitvoert.">parser</a> of <a href="/VSA-tooling/preview/terminologie/validator" title="Validator: een component die een geparseerde AST of VSA-invoer toetst aan semantische en normatieve regels en overtredingen als diagnostics rapporteert zonder ze stilzwijgend te repareren.">validator</a> wordt geproduceerd en ten minste een foutcode, <a href="/VSA-tooling/preview/terminologie/severity" title="Severity: een waarde die aan een diagnostic is gekoppeld en aangeeft of de vastgestelde afwijking als blokkerende fout of als waarschuwing moet worden behandeld.">severity</a>, bronlocatie en uitleg of context bij een vastgestelde afwijking bevat.</td>
+<td>een melding die door parser of validator wordt geproduceerd en ten minste een foutcode, severity, bronlocatie en uitleg of context bij een vastgestelde afwijking bevat.</td>
 </tr>
 <tr>
 <td><a href="/VSA-tooling/preview/terminologie/diagnostic">Diagnostische melding</a></td>
-<td>Alias voor <a href="/VSA-tooling/preview/terminologie/diagnostic" title="Diagnostic: een melding die door parser of validator wordt geproduceerd en ten minste een foutcode, severity, bronlocatie en uitleg of context bij een vastgestelde afwijking bevat.">Diagnostic</a>.</td>
+<td>Alias voor <a href="/VSA-tooling/preview/terminologie/diagnostic">Diagnostic</a>.</td>
 </tr>
 <tr>
 <td><a href="/VSA-tooling/preview/terminologie/enkelvoudige-hoogte-modifier">EHM</a></td>
-<td>Afkorting van <a href="/VSA-tooling/preview/terminologie/enkelvoudige-hoogte-modifier" title="Enkelvoudige hoogte-modifier: een hoogte-modifier die uit precies één geldige EHM bestaat: een basis-hoogtebeweging, eventueel voorafgegaan door een halftoon-prefix.">Enkelvoudige hoogte-modifier</a>.</td>
+<td>Afkorting van <a href="/VSA-tooling/preview/terminologie/enkelvoudige-hoogte-modifier">Enkelvoudige hoogte-modifier</a>.</td>
 </tr>
 <tr>
 <td><a href="/VSA-tooling/preview/terminologie/enkelvoudige-lengte-modifier">ELM</a></td>
-<td>Afkorting van <a href="/VSA-tooling/preview/terminologie/enkelvoudige-lengte-modifier" title="Enkelvoudige lengte-modifier: een lengte-modifier die uit precies één geldige ELM bestaat en daarmee precies een duurpositie representeert.">Enkelvoudige lengte-modifier</a>.</td>
+<td>Afkorting van <a href="/VSA-tooling/preview/terminologie/enkelvoudige-lengte-modifier">Enkelvoudige lengte-modifier</a>.</td>
 </tr>
 <tr>
 <td><a href="/VSA-tooling/preview/terminologie/enkelvoudige-hoogte-modifier">Enkelvoudige hoogte-modifier</a></td>
-<td>een <a href="/VSA-tooling/preview/terminologie/hoogte-modifier" title="Hoogte-modifier: een modifier die voor het zangelement in een VSA-scope staat en bestaat uit een geldige EHM of uit meerdere geldige EHM's gescheiden door <code>&amp;</code>.">hoogte-modifier</a> die uit precies één geldige <a href="/VSA-tooling/preview/terminologie/enkelvoudige-hoogte-modifier" title="Enkelvoudige hoogte-modifier: een hoogte-modifier die uit precies één geldige EHM bestaat: een basis-hoogtebeweging, eventueel voorafgegaan door een halftoon-prefix.">EHM</a> bestaat: een basis-hoogtebeweging, eventueel voorafgegaan door een halftoon-prefix.</td>
+<td>een hoogte-modifier die uit precies één geldige EHM bestaat: een basis-hoogtebeweging, eventueel voorafgegaan door een halftoon-prefix.</td>
 </tr>
 <tr>
 <td><a href="/VSA-tooling/preview/terminologie/enkelvoudige-lengte-modifier">Enkelvoudige lengte-modifier</a></td>
-<td>een <a href="/VSA-tooling/preview/terminologie/lengte-modifier" title="Lengte-modifier: een modifier die na het zangelement in een VSA-scope staat en bestaat uit een geldige ELM of uit meerdere geldige ELM's gescheiden door <code>&amp;</code>.">lengte-modifier</a> die uit precies één geldige <a href="/VSA-tooling/preview/terminologie/enkelvoudige-lengte-modifier" title="Enkelvoudige lengte-modifier: een lengte-modifier die uit precies één geldige ELM bestaat en daarmee precies een duurpositie representeert.">ELM</a> bestaat en daarmee precies een duurpositie representeert.</td>
+<td>een lengte-modifier die uit precies één geldige ELM bestaat en daarmee precies een duurpositie representeert.</td>
 </tr>
 <tr>
 <td><a href="/VSA-tooling/preview/terminologie/severity">Ernstniveau</a></td>
-<td>Alias voor <a href="/VSA-tooling/preview/terminologie/severity" title="Severity: een waarde die aan een diagnostic is gekoppeld en aangeeft of de vastgestelde afwijking als blokkerende fout of als waarschuwing moet worden behandeld.">Severity</a>.</td>
+<td>Alias voor <a href="/VSA-tooling/preview/terminologie/severity">Severity</a>.</td>
 </tr>
 <tr>
 <td><a href="/bron/terms/exportmechanisme">Exportmechanisme</a></td>
@@ -2820,23 +2792,23 @@ Zie ook <a href="../guides/tev2-docs/">TEv2 in tool-docs</a>.</p>
 </tr>
 <tr>
 <td><a href="/VSA-tooling/preview/terminologie/hoogte-modifier">Height modifier</a></td>
-<td>Alias voor <a href="/VSA-tooling/preview/terminologie/hoogte-modifier" title="Hoogte-modifier: een modifier die voor het zangelement in een VSA-scope staat en bestaat uit een geldige EHM of uit meerdere geldige EHM's gescheiden door <code>&amp;</code>.">Hoogte-modifier</a>.</td>
+<td>Alias voor <a href="/VSA-tooling/preview/terminologie/hoogte-modifier">Hoogte-modifier</a>.</td>
 </tr>
 <tr>
 <td><a href="/bron/terms/herkomst">Herkomst</a></td>
-<td><a href="/VSA-tooling/preview/terminologie/metadata" title="Metadata: gegevens die als gestructureerde blokparameters of YAML-frontmatter bij VSA-bronmateriaal staan, verwerking of identificatie sturen en zelf niet tot de zichtbare VSA-notatie behoren.">Metadata</a> die beschrijft <em>waar</em> een <a href="/VSA-tooling/preview/terminologie/zangstuk" title="Zangstuk: een inhoudelijke eenheid die een afgebakend gezang of muzikale tekst vormt en zelfstandig kan worden geidentificeerd, vastgelegd, verwerkt of gepubliceerd.">zangstuk</a>, <a href="/bron/terms/variant" title="Variant (van een Zangstuk): Een zekere zelfstandige muzikale realisatie van het Zangstuk, dat zich van andere varianten van datzelfde Zangstuk onderscheidt door geheel eigen en wezenlijk andere muzikale kenmerken.">variant</a>, <a href="/bron/terms/uitvoeringsvorm" title="Uitvoeringsvorm: Een concrete realisatie van een bepaalde Variant van een Zangstuk, waarbij de muzikale identiteit van die variant behouden blijft.">uitvoeringsvorm</a> of <a href="/bron/terms/representatie" title="Representatie: Een bestand waarin een uitvoeringsvorm concreet is vastgelegd.">representatie</a> vandaan komt — mens, traditie, <a href="/VSA-tooling/preview/terminologie/publicatie" title="Publicatie: een proces dat gegenereerde demo-, preview- of productie-output bouwt, controleert en beschikbaar maakt voor GitHub Pages of hergebruik.">publicatie</a> of parochie — maar niet zijnde een <a href="/bron/terms/bronbestand" title="Bronbestand: Een bestand waarvoor geen geautomatiseerd, herhaalbaar Conversiemechanisme bestaat dat het volledig uit een ander getrackt bestand in dezelfde repository genereert.">bronbestand</a> of de <a href="/bron/terms/bron-repository" title="Bron-repository: De git-repository <code>orthodox-groningen/bron</code> (of een expliciet aangewezen opvolger); de centrale opslagplaats voor Representaties van Uitvoeringsvormen (van Varianten) van Zangstukken, alsmede voor de specificaties van de opslag, en van manieren om daarin te zoeken.">bron-repository</a> zelf.<br><strong>Opmerkingen:</strong><br>- Herkomst mag onbekend zijn: de entiteit bestaat desondanks.<br>- Herkomst is geen bestand; het is <a href="/VSA-tooling/preview/terminologie/metadata" title="Metadata: gegevens die als gestructureerde blokparameters of YAML-frontmatter bij VSA-bronmateriaal staan, verwerking of identificatie sturen en zelf niet tot de zichtbare VSA-notatie behoren.">metadata</a> (zoals <code>reference:</code> in <code>zangstuk.yaml</code>).</td>
+<td>Metadata die beschrijft <em>waar</em> een <a href="/VSA-tooling/preview/terminologie/zangstuk" title="Zangstuk: een inhoudelijke eenheid die een afgebakend gezang of muzikale tekst vormt en zelfstandig kan worden geidentificeerd, vastgelegd, verwerkt of gepubliceerd.">zangstuk</a>, <a href="/bron/terms/variant" title="Variant (van een Zangstuk): Een zekere zelfstandige muzikale realisatie van het Zangstuk, dat zich van andere varianten van datzelfde Zangstuk onderscheidt door geheel eigen en wezenlijk andere muzikale kenmerken.">variant</a>, <a href="/bron/terms/uitvoeringsvorm" title="Uitvoeringsvorm: Een concrete realisatie van een bepaalde Variant van een Zangstuk, waarbij de muzikale identiteit van die variant behouden blijft.">uitvoeringsvorm</a> of <a href="/bron/terms/representatie" title="Representatie: Een bestand waarin een uitvoeringsvorm concreet is vastgelegd.">representatie</a> vandaan komt — mens, traditie, publicatie of parochie — maar niet zijnde een <a href="/bron/terms/bronbestand" title="Bronbestand: Een bestand waarvoor geen geautomatiseerd, herhaalbaar Conversiemechanisme bestaat dat het volledig uit een ander getrackt bestand in dezelfde repository genereert.">bronbestand</a> of de <a href="/bron/terms/bron-repository" title="Bron-repository: De git-repository <code>orthodox-groningen/bron</code> (of een expliciet aangewezen opvolger); de centrale opslagplaats voor Representaties van Uitvoeringsvormen (van Varianten) van Zangstukken, alsmede voor de specificaties van de opslag, en van manieren om daarin te zoeken.">bron-repository</a> zelf.<br><strong>Opmerkingen:</strong><br>- Herkomst mag onbekend zijn: de entiteit bestaat desondanks.<br>- Herkomst is geen bestand; het is metadata (zoals <code>reference:</code> in <code>zangstuk.yaml</code>).</td>
 </tr>
 <tr>
 <td><a href="/VSA-tooling/preview/terminologie/pitch-marker">Hoogte-markering</a></td>
-<td>Alias voor <a href="/VSA-tooling/preview/terminologie/pitch-marker" title="Pitch-marker: een bracket-directive met de vorm <code>[&lt;EHM&gt;:]</code>, waarbij <code>&lt;EHM&gt;</code> leeg is of een geldige enkelvoudige hoogte-modifier bevat.">Pitch-marker</a>.</td>
+<td>Alias voor <a href="/VSA-tooling/preview/terminologie/pitch-marker">Pitch-marker</a>.</td>
 </tr>
 <tr>
 <td><a href="/VSA-tooling/preview/terminologie/hoogte-modifier">Hoogte-modifier</a></td>
-<td>een <a href="/VSA-tooling/preview/terminologie/modifier" title="Modifier: een tekenreeks die binnen een VSA-scope als hoogte-modifier voor het zangelement of als lengte-modifier na het zangelement wordt geparseerd.">modifier</a> die voor het zangelement in een <a href="/VSA-tooling/preview/terminologie/vsa-scope" title="VSA-scope: een tekstfragment dat met <code>{</code> begint, met <code>}</code> eindigt, geen whitespace binnen de accolades bevat en door de parser kan worden opgesplitst in optionele hoogte-modifier, verplicht zangelement en optionele lengte-modifier.">VSA-scope</a> staat en bestaat uit een geldige <a href="/VSA-tooling/preview/terminologie/enkelvoudige-hoogte-modifier" title="Enkelvoudige hoogte-modifier: een hoogte-modifier die uit precies één geldige EHM bestaat: een basis-hoogtebeweging, eventueel voorafgegaan door een halftoon-prefix.">EHM</a> of uit meerdere geldige <a href="/VSA-tooling/preview/terminologie/enkelvoudige-hoogte-modifier" title="Enkelvoudige hoogte-modifier: een hoogte-modifier die uit precies één geldige EHM bestaat: een basis-hoogtebeweging, eventueel voorafgegaan door een halftoon-prefix.">EHM</a>'s gescheiden door <code>&amp;</code>.</td>
+<td>een modifier die voor het zangelement in een VSA-scope staat en bestaat uit een geldige EHM of uit meerdere geldige EHM's gescheiden door <code>&amp;</code>.</td>
 </tr>
 <tr>
 <td><a href="/VSA-tooling/preview/terminologie/hugo-output">Hugo-content</a></td>
-<td>Alias voor <a href="/VSA-tooling/preview/terminologie/hugo-output" title="Hugo-output: een artifactset die door een VSA-buildstap gegenereerde Hugo-compatibele Markdown en de daarbij verwezen assets bevat.">Hugo-output</a>.</td>
+<td>Alias voor <a href="/VSA-tooling/preview/terminologie/hugo-output">Hugo-output</a>.</td>
 </tr>
 <tr>
 <td><a href="/VSA-tooling/preview/terminologie/hugo-output">Hugo-output</a></td>
@@ -2844,15 +2816,15 @@ Zie ook <a href="../guides/tev2-docs/">TEv2 in tool-docs</a>.</p>
 </tr>
 <tr>
 <td><a href="/VSA-tooling/preview/terminologie/lengte-modifier">Lengte-modifier</a></td>
-<td>een <a href="/VSA-tooling/preview/terminologie/modifier" title="Modifier: een tekenreeks die binnen een VSA-scope als hoogte-modifier voor het zangelement of als lengte-modifier na het zangelement wordt geparseerd.">modifier</a> die na het zangelement in een <a href="/VSA-tooling/preview/terminologie/vsa-scope" title="VSA-scope: een tekstfragment dat met <code>{</code> begint, met <code>}</code> eindigt, geen whitespace binnen de accolades bevat en door de parser kan worden opgesplitst in optionele hoogte-modifier, verplicht zangelement en optionele lengte-modifier.">VSA-scope</a> staat en bestaat uit een geldige <a href="/VSA-tooling/preview/terminologie/enkelvoudige-lengte-modifier" title="Enkelvoudige lengte-modifier: een lengte-modifier die uit precies één geldige ELM bestaat en daarmee precies een duurpositie representeert.">ELM</a> of uit meerdere geldige <a href="/VSA-tooling/preview/terminologie/enkelvoudige-lengte-modifier" title="Enkelvoudige lengte-modifier: een lengte-modifier die uit precies één geldige ELM bestaat en daarmee precies een duurpositie representeert.">ELM</a>'s gescheiden door <code>&amp;</code>.</td>
+<td>een modifier die na het zangelement in een VSA-scope staat en bestaat uit een geldige ELM of uit meerdere geldige ELM's gescheiden door <code>&amp;</code>.</td>
 </tr>
 <tr>
 <td><a href="/VSA-tooling/preview/terminologie/lengte-modifier">Length modifier</a></td>
-<td>Alias voor <a href="/VSA-tooling/preview/terminologie/lengte-modifier" title="Lengte-modifier: een modifier die na het zangelement in een VSA-scope staat en bestaat uit een geldige ELM of uit meerdere geldige ELM's gescheiden door <code>&amp;</code>.">Lengte-modifier</a>.</td>
+<td>Alias voor <a href="/VSA-tooling/preview/terminologie/lengte-modifier">Lengte-modifier</a>.</td>
 </tr>
 <tr>
 <td><a href="/bron/terms/manifest">Manifest</a></td>
-<td>Een YAML-bestand met vaste bestandsnaam (<code>variant.yaml</code> of <code>uitvoeringsvorm.yaml</code>) dat precies één entiteit op <a href="/bron/terms/variant" title="Variant (van een Zangstuk): Een zekere zelfstandige muzikale realisatie van het Zangstuk, dat zich van andere varianten van datzelfde Zangstuk onderscheidt door geheel eigen en wezenlijk andere muzikale kenmerken.">variant</a>- of <a href="/bron/terms/uitvoeringsvorm" title="Uitvoeringsvorm: Een concrete realisatie van een bepaalde Variant van een Zangstuk, waarbij de muzikale identiteit van die variant behouden blijft.">uitvoeringsvorm</a>-niveau registreert en uitsluitend <a href="/VSA-tooling/preview/terminologie/metadata" title="Metadata: gegevens die als gestructureerde blokparameters of YAML-frontmatter bij VSA-bronmateriaal staan, verwerking of identificatie sturen en zelf niet tot de zichtbare VSA-notatie behoren.">metadata</a> over die entiteit beschrijft.<br><strong>Opmerkingen:</strong><br>- Niet verwarren met npm-package-manifest, PWA-manifest, CI-build-manifest of andere generieke gebruiken van het woord <em>manifest</em>.<br>- <code>zangstuk.yaml</code> in de <a href="/bron/terms/bron-repository" title="Bron-repository: De git-repository <code>orthodox-groningen/bron</code> (of een expliciet aangewezen opvolger); de centrale opslagplaats voor Representaties van Uitvoeringsvormen (van Varianten) van Zangstukken, alsmede voor de specificaties van de opslag, en van manieren om daarin te zoeken.">bron-repository</a> is geen manifest — dat volgt het <a href="/bron/terms/source-entry" title="Source-entry: Een element in de <code>sources:</code>-lijst van <code>zangstuk.yaml</code> in de Bron-repository, met een uniek <code>id</code> binnen dat Zangstuk; registreert een Representatie of placeholder op het huidige platte model.">source-entry</a>-model.<br>- Een manifest is zelf geen <a href="/bron/terms/representatie" title="Representatie: Een bestand waarin een uitvoeringsvorm concreet is vastgelegd.">representatie</a>, <a href="/bron/terms/bronbestand" title="Bronbestand: Een bestand waarvoor geen geautomatiseerd, herhaalbaar Conversiemechanisme bestaat dat het volledig uit een ander getrackt bestand in dezelfde repository genereert.">bronbestand</a> of <a href="/bron/terms/samenstelling" title="Samenstelling: Een markdown-document (met VSA-directives) dat Representaties ordent voor een lezersdoel, zonder zelf Representatie te zijn.">samenstelling</a>.</td>
+<td>Een YAML-bestand met vaste bestandsnaam (<code>variant.yaml</code> of <code>uitvoeringsvorm.yaml</code>) dat precies één entiteit op <a href="/bron/terms/variant" title="Variant (van een Zangstuk): Een zekere zelfstandige muzikale realisatie van het Zangstuk, dat zich van andere varianten van datzelfde Zangstuk onderscheidt door geheel eigen en wezenlijk andere muzikale kenmerken.">variant</a>- of <a href="/bron/terms/uitvoeringsvorm" title="Uitvoeringsvorm: Een concrete realisatie van een bepaalde Variant van een Zangstuk, waarbij de muzikale identiteit van die variant behouden blijft.">uitvoeringsvorm</a>-niveau registreert en uitsluitend metadata over die entiteit beschrijft.<br><strong>Opmerkingen:</strong><br>- Niet verwarren met npm-package-manifest, PWA-manifest, CI-build-manifest of andere generieke gebruiken van het woord <em>manifest</em>.<br>- <code>zangstuk.yaml</code> in de <a href="/bron/terms/bron-repository" title="Bron-repository: De git-repository <code>orthodox-groningen/bron</code> (of een expliciet aangewezen opvolger); de centrale opslagplaats voor Representaties van Uitvoeringsvormen (van Varianten) van Zangstukken, alsmede voor de specificaties van de opslag, en van manieren om daarin te zoeken.">bron-repository</a> is geen manifest — dat volgt het <a href="/bron/terms/source-entry" title="Source-entry: Een element in de <code>sources:</code>-lijst van <code>zangstuk.yaml</code> in de Bron-repository, met een uniek <code>id</code> binnen dat Zangstuk; registreert een Representatie of placeholder op het huidige platte model.">source-entry</a>-model.<br>- Een manifest is zelf geen <a href="/bron/terms/representatie" title="Representatie: Een bestand waarin een uitvoeringsvorm concreet is vastgelegd.">representatie</a>, <a href="/bron/terms/bronbestand" title="Bronbestand: Een bestand waarvoor geen geautomatiseerd, herhaalbaar Conversiemechanisme bestaat dat het volledig uit een ander getrackt bestand in dezelfde repository genereert.">bronbestand</a> of <a href="/bron/terms/samenstelling" title="Samenstelling: Een markdown-document (met VSA-directives) dat Representaties ordent voor een lezersdoel, zonder zelf Representatie te zijn.">samenstelling</a>.</td>
 </tr>
 <tr>
 <td><a href="/VSA-tooling/preview/terminologie/metadata">Metadata</a></td>
@@ -2860,7 +2832,7 @@ Zie ook <a href="../guides/tev2-docs/">TEv2 in tool-docs</a>.</p>
 </tr>
 <tr>
 <td><a href="/VSA-tooling/preview/terminologie/modifier">Modifier</a></td>
-<td>een tekenreeks die binnen een <a href="/VSA-tooling/preview/terminologie/vsa-scope" title="VSA-scope: een tekstfragment dat met <code>{</code> begint, met <code>}</code> eindigt, geen whitespace binnen de accolades bevat en door de parser kan worden opgesplitst in optionele hoogte-modifier, verplicht zangelement en optionele lengte-modifier.">VSA-scope</a> als <a href="/VSA-tooling/preview/terminologie/hoogte-modifier" title="Hoogte-modifier: een modifier die voor het zangelement in een VSA-scope staat en bestaat uit een geldige EHM of uit meerdere geldige EHM's gescheiden door <code>&amp;</code>.">hoogte-modifier</a> voor het zangelement of als <a href="/VSA-tooling/preview/terminologie/lengte-modifier" title="Lengte-modifier: een modifier die na het zangelement in een VSA-scope staat en bestaat uit een geldige ELM of uit meerdere geldige ELM's gescheiden door <code>&amp;</code>.">lengte-modifier</a> na het zangelement wordt geparseerd.</td>
+<td>een tekenreeks die binnen een VSA-scope als hoogte-modifier voor het zangelement of als lengte-modifier na het zangelement wordt geparseerd.</td>
 </tr>
 <tr>
 <td><a href="/bron/terms/parochie-lokale-representatie">Parochie-lokale representatie</a></td>
@@ -2872,11 +2844,11 @@ Zie ook <a href="../guides/tev2-docs/">TEv2 in tool-docs</a>.</p>
 </tr>
 <tr>
 <td><a href="/VSA-tooling/preview/terminologie/pitch-marker">Pitch-marker</a></td>
-<td>een <a href="/VSA-tooling/preview/terminologie/bracket-directive" title="Bracket-directive: een tekstfragment dat als afzonderlijk VSA-token tussen <code>[</code> en <code>]</code> voorkomt en door bracket-dispatch wordt geclassificeerd voordat de inhoudelijke parsing verdergaat.">bracket-directive</a> met de vorm <code>[&lt;EHM&gt;:]</code>, waarbij <code>&lt;EHM&gt;</code> leeg is of een geldige <a href="/VSA-tooling/preview/terminologie/enkelvoudige-hoogte-modifier" title="Enkelvoudige hoogte-modifier: een hoogte-modifier die uit precies één geldige EHM bestaat: een basis-hoogtebeweging, eventueel voorafgegaan door een halftoon-prefix.">enkelvoudige hoogte-modifier</a> bevat.<br><strong>Opmerking</strong>: Voorbeeld: <code>[:]</code> of <code>[/:]</code> vóór of na zangtekst; zonder afsluitende <code>:</code> is het geen <a href="/VSA-tooling/preview/terminologie/pitch-marker" title="Pitch-marker: een bracket-directive met de vorm <code>[&lt;EHM&gt;:]</code>, waarbij <code>&lt;EHM&gt;</code> leeg is of een geldige enkelvoudige hoogte-modifier bevat.">pitch-marker</a>.</td>
+<td>een bracket-directive met de vorm <code>[&lt;EHM&gt;:]</code>, waarbij <code>&lt;EHM&gt;</code> leeg is of een geldige enkelvoudige hoogte-modifier bevat.</td>
 </tr>
 <tr>
 <td><a href="/VSA-tooling/preview/terminologie/vsa-toml">Projectconfiguratie</a></td>
-<td>Alias voor <a href="/VSA-tooling/preview/terminologie/vsa-toml" title="vsa.toml: een projectconfiguratiebestand met de naam <code>vsa.toml</code> dat herkende VSA-toolinginstellingen bevat voor rendering, output of validatie.">vsa.toml</a>.</td>
+<td>Alias voor <a href="/VSA-tooling/preview/terminologie/vsa-toml">vsa.toml</a>.</td>
 </tr>
 <tr>
 <td><a href="/bron/terms/promotie">Promotie (registratie)</a></td>
@@ -2888,7 +2860,7 @@ Zie ook <a href="../guides/tev2-docs/">TEv2 in tool-docs</a>.</p>
 </tr>
 <tr>
 <td><a href="/VSA-tooling/preview/terminologie/renderer">Renderer</a></td>
-<td>een component die een gevalideerde <a href="/VSA-tooling/preview/terminologie/ast" title="Abstract Syntax Tree: een expliciete nodeboom die door de parser uit VSA-invoer wordt geproduceerd en die validator en renderer zonder semantische herinterpretatie kunnen lezen.">AST</a> of daarvan afgeleid layoutmodel omzet naar concrete uitvoer, zoals SVG, JSON, Markdown, <a href="/VSA-tooling/preview/terminologie/hugo-output" title="Hugo-output: een artifactset die door een VSA-buildstap gegenereerde Hugo-compatibele Markdown en de daarbij verwezen assets bevat.">Hugo-output</a> of MusicXML, zonder de <a href="/VSA-tooling/preview/terminologie/ast" title="Abstract Syntax Tree: een expliciete nodeboom die door de parser uit VSA-invoer wordt geproduceerd en die validator en renderer zonder semantische herinterpretatie kunnen lezen.">AST</a> semantisch te wijzigen.</td>
+<td>een component die een gevalideerde AST of daarvan afgeleid layoutmodel omzet naar concrete uitvoer, zoals SVG, JSON, Markdown, Hugo-output of MusicXML, zonder de AST semantisch te wijzigen.</td>
 </tr>
 <tr>
 <td><a href="/bron/terms/representatie">Representatie</a></td>
@@ -2896,11 +2868,11 @@ Zie ook <a href="../guides/tev2-docs/">TEv2 in tool-docs</a>.</p>
 </tr>
 <tr>
 <td><a href="/VSA-tooling/preview/terminologie/samengestelde-hoogte-modifier">Samengestelde hoogte-modifier</a></td>
-<td>een <a href="/VSA-tooling/preview/terminologie/hoogte-modifier" title="Hoogte-modifier: een modifier die voor het zangelement in een VSA-scope staat en bestaat uit een geldige EHM of uit meerdere geldige EHM's gescheiden door <code>&amp;</code>.">hoogte-modifier</a> die uit twee of meer geldige <a href="/VSA-tooling/preview/terminologie/enkelvoudige-hoogte-modifier" title="Enkelvoudige hoogte-modifier: een hoogte-modifier die uit precies één geldige EHM bestaat: een basis-hoogtebeweging, eventueel voorafgegaan door een halftoon-prefix.">EHM</a>'s bestaat die onderling door <code>&amp;</code> zijn gescheiden.</td>
+<td>een hoogte-modifier die uit twee of meer geldige EHM's bestaat die onderling door <code>&amp;</code> zijn gescheiden.</td>
 </tr>
 <tr>
 <td><a href="/VSA-tooling/preview/terminologie/samengestelde-lengte-modifier">Samengestelde lengte-modifier</a></td>
-<td>een <a href="/VSA-tooling/preview/terminologie/lengte-modifier" title="Lengte-modifier: een modifier die na het zangelement in een VSA-scope staat en bestaat uit een geldige ELM of uit meerdere geldige ELM's gescheiden door <code>&amp;</code>.">lengte-modifier</a> die uit twee of meer geldige <a href="/VSA-tooling/preview/terminologie/enkelvoudige-lengte-modifier" title="Enkelvoudige lengte-modifier: een lengte-modifier die uit precies één geldige ELM bestaat en daarmee precies een duurpositie representeert.">ELM</a>'s bestaat die onderling door <code>&amp;</code> zijn gescheiden.</td>
+<td>een lengte-modifier die uit twee of meer geldige ELM's bestaat die onderling door <code>&amp;</code> zijn gescheiden.</td>
 </tr>
 <tr>
 <td><a href="/bron/terms/samenstelling">Samenstelling</a></td>
@@ -2908,11 +2880,11 @@ Zie ook <a href="../guides/tev2-docs/">TEv2 in tool-docs</a>.</p>
 </tr>
 <tr>
 <td><a href="/VSA-tooling/preview/terminologie/vsa-scope">Scope</a></td>
-<td>Alias voor <a href="/VSA-tooling/preview/terminologie/vsa-scope" title="VSA-scope: een tekstfragment dat met <code>{</code> begint, met <code>}</code> eindigt, geen whitespace binnen de accolades bevat en door de parser kan worden opgesplitst in optionele hoogte-modifier, verplicht zangelement en optionele lengte-modifier.">VSA-scope</a>.</td>
+<td>Alias voor <a href="/VSA-tooling/preview/terminologie/vsa-scope">VSA-scope</a>.</td>
 </tr>
 <tr>
 <td><a href="/VSA-tooling/preview/terminologie/severity">Severity</a></td>
-<td>een waarde die aan een <a href="/VSA-tooling/preview/terminologie/diagnostic" title="Diagnostic: een melding die door parser of validator wordt geproduceerd en ten minste een foutcode, severity, bronlocatie en uitleg of context bij een vastgestelde afwijking bevat.">diagnostic</a> is gekoppeld en aangeeft of de vastgestelde afwijking als blokkerende fout of als waarschuwing moet worden behandeld.</td>
+<td>een waarde die aan een diagnostic is gekoppeld en aangeeft of de vastgestelde afwijking als blokkerende fout of als waarschuwing moet worden behandeld.</td>
 </tr>
 <tr>
 <td><a href="/bron/terms/source-entry">Source-entry</a></td>
@@ -2920,7 +2892,7 @@ Zie ook <a href="../guides/tev2-docs/">TEv2 in tool-docs</a>.</p>
 </tr>
 <tr>
 <td><a href="/VSA-tooling/preview/terminologie/ast">Syntactische boom</a></td>
-<td>Alias voor <a href="/VSA-tooling/preview/terminologie/ast" title="Abstract Syntax Tree: een expliciete nodeboom die door de parser uit VSA-invoer wordt geproduceerd en die validator en renderer zonder semantische herinterpretatie kunnen lezen.">Abstract Syntax Tree</a>.</td>
+<td>Alias voor <a href="/VSA-tooling/preview/terminologie/ast">Abstract Syntax Tree</a>.</td>
 </tr>
 <tr>
 <td><a href="/bron/terms/uitvoeringsvorm">Uitvoeringsvorm</a></td>
@@ -2928,11 +2900,11 @@ Zie ook <a href="../guides/tev2-docs/">TEv2 in tool-docs</a>.</p>
 </tr>
 <tr>
 <td><a href="/VSA-tooling/preview/terminologie/validator">Validator</a></td>
-<td>een component die een geparseerde <a href="/VSA-tooling/preview/terminologie/ast" title="Abstract Syntax Tree: een expliciete nodeboom die door de parser uit VSA-invoer wordt geproduceerd en die validator en renderer zonder semantische herinterpretatie kunnen lezen.">AST</a> of VSA-invoer toetst aan semantische en normatieve regels en overtredingen als <a href="/VSA-tooling/preview/terminologie/diagnostic" title="Diagnostic: een melding die door parser of validator wordt geproduceerd en ten minste een foutcode, severity, bronlocatie en uitleg of context bij een vastgestelde afwijking bevat.">diagnostics</a> rapporteert zonder ze stilzwijgend te repareren.</td>
+<td>een component die een geparseerde AST of VSA-invoer toetst aan semantische en normatieve regels en overtredingen als diagnostics rapporteert zonder ze stilzwijgend te repareren.</td>
 </tr>
 <tr>
 <td><a href="/bron/terms/variant">Variant (van een Zangstuk)</a></td>
-<td>Een zekere zelfstandige muzikale realisatie van het <a href="/VSA-tooling/preview/terminologie/zangstuk" title="Zangstuk: een inhoudelijke eenheid die een afgebakend gezang of muzikale tekst vormt en zelfstandig kan worden geidentificeerd, vastgelegd, verwerkt of gepubliceerd.">zangstuk</a>, dat zich van andere varianten van datzelfde <a href="/VSA-tooling/preview/terminologie/zangstuk" title="Zangstuk: een inhoudelijke eenheid die een afgebakend gezang of muzikale tekst vormt en zelfstandig kan worden geidentificeerd, vastgelegd, verwerkt of gepubliceerd.">zangstuk</a> onderscheidt door geheel eigen en wezenlijk andere muzikale kenmerken.<br><strong>Opmerkingen:</strong><br>- Varianten van het <a href="/VSA-tooling/preview/terminologie/zangstuk" title="Zangstuk: een inhoudelijke eenheid die een afgebakend gezang of muzikale tekst vormt en zelfstandig kan worden geidentificeerd, vastgelegd, verwerkt of gepubliceerd.">zangstuk</a> dat we kennen als de Cherubijnenhymne zijn gemaakt door Kastorski, Tchikhinashvili, Rachmaninov en anderen.<br>- Twee varianten van hetzelfde <a href="/VSA-tooling/preview/terminologie/zangstuk" title="Zangstuk: een inhoudelijke eenheid die een afgebakend gezang of muzikale tekst vormt en zelfstandig kan worden geidentificeerd, vastgelegd, verwerkt of gepubliceerd.">zangstuk</a> klinken heel anders; als je de tekst niet hoort of zou kennen kun je denken dat het uitvoeringen van verschillende <a href="/VSA-tooling/preview/terminologie/zangstuk" title="Zangstuk: een inhoudelijke eenheid die een afgebakend gezang of muzikale tekst vormt en zelfstandig kan worden geidentificeerd, vastgelegd, verwerkt of gepubliceerd.">zangstukken</a> zijn.<br>- Vergelijkbare begrippen die buiten de <a href="/VSA-tooling/preview/terminologie/vsa-scope" title="VSA-scope: een tekstfragment dat met <code>{</code> begint, met <code>}</code> eindigt, geen whitespace binnen de accolades bevat en door de parser kan worden opgesplitst in optionele hoogte-modifier, verplicht zangelement en optionele lengte-modifier.">scope</a> van deze terminologie ook wel worden gehanteerd zijn <code>bewerking</code>, <code>versie</code>, <code>setting</code>, <code>compositievariant</code>.</td>
+<td>Een zekere zelfstandige muzikale realisatie van het <a href="/VSA-tooling/preview/terminologie/zangstuk" title="Zangstuk: een inhoudelijke eenheid die een afgebakend gezang of muzikale tekst vormt en zelfstandig kan worden geidentificeerd, vastgelegd, verwerkt of gepubliceerd.">zangstuk</a>, dat zich van andere varianten van datzelfde <a href="/VSA-tooling/preview/terminologie/zangstuk" title="Zangstuk: een inhoudelijke eenheid die een afgebakend gezang of muzikale tekst vormt en zelfstandig kan worden geidentificeerd, vastgelegd, verwerkt of gepubliceerd.">zangstuk</a> onderscheidt door geheel eigen en wezenlijk andere muzikale kenmerken.<br><strong>Opmerkingen:</strong><br>- Varianten van het <a href="/VSA-tooling/preview/terminologie/zangstuk" title="Zangstuk: een inhoudelijke eenheid die een afgebakend gezang of muzikale tekst vormt en zelfstandig kan worden geidentificeerd, vastgelegd, verwerkt of gepubliceerd.">zangstuk</a> dat we kennen als de Cherubijnenhymne zijn gemaakt door Kastorski, Tchikhinashvili, Rachmaninov en anderen.<br>- Twee varianten van hetzelfde <a href="/VSA-tooling/preview/terminologie/zangstuk" title="Zangstuk: een inhoudelijke eenheid die een afgebakend gezang of muzikale tekst vormt en zelfstandig kan worden geidentificeerd, vastgelegd, verwerkt of gepubliceerd.">zangstuk</a> klinken heel anders; als je de tekst niet hoort of zou kennen kun je denken dat het uitvoeringen van verschillende <a href="/VSA-tooling/preview/terminologie/zangstuk" title="Zangstuk: een inhoudelijke eenheid die een afgebakend gezang of muzikale tekst vormt en zelfstandig kan worden geidentificeerd, vastgelegd, verwerkt of gepubliceerd.">zangstukken</a> zijn.<br>- Vergelijkbare begrippen die buiten de scope van deze terminologie ook wel worden gehanteerd zijn <code>bewerking</code>, <code>versie</code>, <code>setting</code>, <code>compositievariant</code>.</td>
 </tr>
 <tr>
 <td><a href="/VSA-tooling/preview/terminologie/vsa">Vereenvoudigde Slavische Accentnotatie</a></td>
@@ -2940,7 +2912,7 @@ Zie ook <a href="../guides/tev2-docs/">TEv2 in tool-docs</a>.</p>
 </tr>
 <tr>
 <td><a href="/VSA-tooling/preview/terminologie/vsa">VSA</a></td>
-<td>Afkorting van <a href="/VSA-tooling/preview/terminologie/vsa" title="Vereenvoudigde Slavische Accentnotatie: wordt gebruikt om te verwijzen naar een Formele Notatie voor het vastleggen van Zangstukken en ook naar de Toolset waarmee zulke vastleggingen kunnen worden gevalideerd en naar publiceerbare vormen worden omgezet.">Vereenvoudigde Slavische Accentnotatie</a>.</td>
+<td>Afkorting van <a href="/VSA-tooling/preview/terminologie/vsa">Vereenvoudigde Slavische Accentnotatie</a>.</td>
 </tr>
 <tr>
 <td><a href="/bron/terms/vsa-bestand">vsa-bestand</a></td>
@@ -2952,19 +2924,19 @@ Zie ook <a href="../guides/tev2-docs/">TEv2 in tool-docs</a>.</p>
 </tr>
 <tr>
 <td><a href="/VSA-tooling/preview/terminologie/include-vsa">VSA-inline-include</a></td>
-<td>Alias voor <a href="/VSA-tooling/preview/terminologie/include-vsa" title="@include-vsa: een string die met <code>@include-vsa</code> begint, precies één ondersteunde resolverparameter bevat (<code>zoek=</code>, <code>id=</code> of <code>lokaal=</code>) en tijdens verwerking door de body van het doelbestand wordt vervangen.">include-vsa</a>.</td>
+<td>Alias voor <a href="/VSA-tooling/preview/terminologie/include-vsa">@include-vsa</a>.</td>
 </tr>
 <tr>
 <td><a href="/bron/terms/vsa-notatie">VSA-notatie</a></td>
-<td>Het tekstgebaseerde notatieformaat waarmee liturgische zangteksten worden vastgelegd: een formeel gespecificeerde taal met <a href="/VSA-tooling/preview/terminologie/vsa-scope" title="VSA-scope: een tekstfragment dat met <code>{</code> begint, met <code>}</code> eindigt, geen whitespace binnen de accolades bevat en door de parser kan worden opgesplitst in optionele hoogte-modifier, verplicht zangelement en optionele lengte-modifier.">scopes</a>, <a href="/VSA-tooling/preview/terminologie/modifier" title="Modifier: een tekenreeks die binnen een VSA-scope als hoogte-modifier voor het zangelement of als lengte-modifier na het zangelement wordt geparseerd.">modifiers</a> en <a href="/VSA-tooling/preview/terminologie/bracket-directive" title="Bracket-directive: een tekstfragment dat als afzonderlijk VSA-token tussen <code>[</code> en <code>]</code> voorkomt en door bracket-dispatch wordt geclassificeerd voordat de inhoudelijke parsing verdergaat.">bracket-directives</a>, parseeerbaar en valideerbaar door <a href="/bron/terms/vsa-tooling" title="VSA-tooling: De Python-toolchain (<code>vsa</code> CLI) waarmee Vsa-notatie-bestanden worden geparseerd, gevalideerd en omgezet naar Afgeleiden zoals SVG en MusicXML.">vsa-tooling</a>.<br><strong>Opmerkingen:</strong><br>- Een <a href="/bron/terms/vsa-bestand" title="vsa-bestand: Een bestand met de extensie <code>.vsa</code> waarvan de inhoud uitsluitend syntactisch geldige Vsa-notatie bevat — d.w.z. door de Vsa-tooling foutloos wordt geparseerd en gevalideerd.">vsa-bestand</a> is een <a href="/bron/terms/bronbestand" title="Bronbestand: Een bestand waarvoor geen geautomatiseerd, herhaalbaar Conversiemechanisme bestaat dat het volledig uit een ander getrackt bestand in dezelfde repository genereert.">bronbestand</a> en tevens een <a href="/bron/terms/representatie" title="Representatie: Een bestand waarin een uitvoeringsvorm concreet is vastgelegd.">representatie</a> van een <a href="/bron/terms/uitvoeringsvorm" title="Uitvoeringsvorm: Een concrete realisatie van een bepaalde Variant van een Zangstuk, waarbij de muzikale identiteit van die variant behouden blijft.">uitvoeringsvorm</a>.<br>- VSA-notatie sluit aan bij de notatiepraktijk zoals beschreven in het Nederlandse Liturgikon (Den Haag, 1968).<br>- VSA-notatie is niet bedoeld als vervanging van historische neumennotaties, maar als een formeel definieerbare variant van de vereenvoudigde praktijk in Nederlandse orthodoxe parochies.</td>
+<td>Het tekstgebaseerde notatieformaat waarmee liturgische zangteksten worden vastgelegd: een formeel gespecificeerde taal met scopes, modifiers en bracket-directives, parseeerbaar en valideerbaar door <a href="/bron/terms/vsa-tooling" title="VSA-tooling: De Python-toolchain (<code>vsa</code> CLI) waarmee Vsa-notatie-bestanden worden geparseerd, gevalideerd en omgezet naar Afgeleiden zoals SVG en MusicXML.">vsa-tooling</a>.<br><strong>Opmerkingen:</strong><br>- Een <a href="/bron/terms/vsa-bestand" title="vsa-bestand: Een bestand met de extensie <code>.vsa</code> waarvan de inhoud uitsluitend syntactisch geldige Vsa-notatie bevat — d.w.z. door de Vsa-tooling foutloos wordt geparseerd en gevalideerd.">vsa-bestand</a> is een <a href="/bron/terms/bronbestand" title="Bronbestand: Een bestand waarvoor geen geautomatiseerd, herhaalbaar Conversiemechanisme bestaat dat het volledig uit een ander getrackt bestand in dezelfde repository genereert.">bronbestand</a> en tevens een <a href="/bron/terms/representatie" title="Representatie: Een bestand waarin een uitvoeringsvorm concreet is vastgelegd.">representatie</a> van een <a href="/bron/terms/uitvoeringsvorm" title="Uitvoeringsvorm: Een concrete realisatie van een bepaalde Variant van een Zangstuk, waarbij de muzikale identiteit van die variant behouden blijft.">uitvoeringsvorm</a>.<br>- VSA-notatie sluit aan bij de notatiepraktijk zoals beschreven in het Nederlandse Liturgikon (Den Haag, 1968).<br>- VSA-notatie is niet bedoeld als vervanging van historische neumennotaties, maar als een formeel definieerbare variant van de vereenvoudigde praktijk in Nederlandse orthodoxe parochies.</td>
 </tr>
 <tr>
 <td><a href="/VSA-tooling/preview/terminologie/vsa-scope">VSA-scope</a></td>
-<td>een tekstfragment dat met <code>{</code> begint, met <code>}</code> eindigt, geen whitespace binnen de accolades bevat en door de <a href="/VSA-tooling/preview/terminologie/parser" title="Parser: een component die VSA-brontekst of tokens volgens de grammatica omzet naar expliciete AST-nodes, bronlocaties behoudt en geen semantische reparaties of renderlogica uitvoert.">parser</a> kan worden opgesplitst in optionele <a href="/VSA-tooling/preview/terminologie/hoogte-modifier" title="Hoogte-modifier: een modifier die voor het zangelement in een VSA-scope staat en bestaat uit een geldige EHM of uit meerdere geldige EHM's gescheiden door <code>&amp;</code>.">hoogte-modifier</a>, verplicht zangelement en optionele <a href="/VSA-tooling/preview/terminologie/lengte-modifier" title="Lengte-modifier: een modifier die na het zangelement in een VSA-scope staat en bestaat uit een geldige ELM of uit meerdere geldige ELM's gescheiden door <code>&amp;</code>.">lengte-modifier</a>.<br><strong>Opmerkingen:</strong><br>- Voorbeeld: <code>{/Hei_}</code> — <a href="/VSA-tooling/preview/terminologie/hoogte-modifier" title="Hoogte-modifier: een modifier die voor het zangelement in een VSA-scope staat en bestaat uit een geldige EHM of uit meerdere geldige EHM's gescheiden door <code>&amp;</code>.">hoogte-modifier</a> <code>/</code>, zangelement <code>Hei</code>, <a href="/VSA-tooling/preview/terminologie/lengte-modifier" title="Lengte-modifier: een modifier die na het zangelement in een VSA-scope staat en bestaat uit een geldige ELM of uit meerdere geldige ELM's gescheiden door <code>&amp;</code>.">lengte-modifier</a> <code>_</code>.<br>- Lege <code>{}</code> of <code>{te kst}</code> (spatie) zijn geen geldige <a href="/VSA-tooling/preview/terminologie/vsa-scope" title="VSA-scope: een tekstfragment dat met <code>{</code> begint, met <code>}</code> eindigt, geen whitespace binnen de accolades bevat en door de parser kan worden opgesplitst in optionele hoogte-modifier, verplicht zangelement en optionele lengte-modifier.">VSA-scope</a>.</td>
+<td>een tekstfragment dat met <code>{</code> begint, met <code>}</code> eindigt, geen whitespace binnen de accolades bevat en door de parser kan worden opgesplitst in optionele hoogte-modifier, verplicht zangelement en optionele lengte-modifier.</td>
 </tr>
 <tr>
 <td><a href="/VSA-tooling/preview/terminologie/vsa-tekst">VSA-tekst</a></td>
-<td>tekst waarin naast gewone tekst ook constructies in <a href="/bron/terms/vsa-notatie" title="VSA-notatie: Het tekstgebaseerde notatieformaat waarmee liturgische zangteksten worden vastgelegd: een formeel gespecificeerde taal met scopes, modifiers en bracket-directives, parseeerbaar en valideerbaar door Vsa-tooling.">VSA-notatie</a> voorkomen; een <a href="/VSA-tooling/preview/terminologie/vsa-tekst" title="VSA-tekst: tekst waarin naast gewone tekst ook constructies in VSA-notatie voorkomen; een VSA-tekst kan door de Vsa-toolset worden geparsed, gevalideerd en omgezet (bijvoorbeeld naar SVG).">VSA-tekst</a> kan door de <a href="/VSA-tooling/preview/terminologie/vsa-toolset" title="vsa.toolset: de verzameling van Vsa-gerelateerde tools waarmee Vsa-blokken kunnen worden opgezocht, gevalideerd, gerenderd, enz.">vsa-toolset</a> worden geparsed, gevalideerd en omgezet (bijvoorbeeld naar SVG).</td>
+<td>tekst waarin naast gewone tekst ook constructies in <a href="/bron/terms/vsa-notatie" title="VSA-notatie: Het tekstgebaseerde notatieformaat waarmee liturgische zangteksten worden vastgelegd: een formeel gespecificeerde taal met scopes, modifiers en bracket-directives, parseeerbaar en valideerbaar door Vsa-tooling.">VSA-notatie</a> voorkomen; een VSA-tekst kan door de <a href="/VSA-tooling/preview/terminologie/vsa-toolset" title="vsa.toolset: de verzameling van Vsa-gerelateerde tools waarmee Vsa-blokken kunnen worden opgezocht, gevalideerd, gerenderd, enz.">vsa-toolset</a> worden geparsed, gevalideerd en omgezet (bijvoorbeeld naar SVG).</td>
 </tr>
 <tr>
 <td><a href="/bron/terms/vsa-tooling">VSA-tooling</a></td>

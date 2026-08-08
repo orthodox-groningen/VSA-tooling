@@ -126,8 +126,8 @@ Default-waarden staan (net als `max-line-width` en `output-mode`) in
 SVG's die je met [`vsa svg`](../reference/cli/svg.md),
 [`vsa process`](../reference/cli/process.md) of
 [`vsa build-markdown`](../reference/cli/build-markdown.md) genereert,
-zijn **[afgeleide](@bron)** bestanden: ze worden opnieuw gegenereerd uit de
-`.vsa`-bron en horen niet gecommit te worden naast de bron. Gebruik
+zijn **[afgeleide](@bron)** bestanden uit de `.vsa`-bron en horen niet gecommit
+te worden naast de bron. Gebruik
 lokaal een map als `generated\` (of `tmp\`) die in `.gitignore` staat:
 
 ```text

@@ -1,6 +1,6 @@
 # Ontwikkeltijdlijn
 
-Deze tijdlijn groepeert de historische parser-stappen thematisch. De afzonderlijke bestanden blijven in `parser-steps/` behouden.
+Deze tijdlijn groepeert de historische [parser](@)-stappen thematisch. De afzonderlijke bestanden blijven in `parser-steps/` behouden.
 
 ## Tijdlijn
 

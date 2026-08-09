@@ -1,6 +1,6 @@
 # Parser stap 1
 
-Deze stap maakt van VSA-brontekst een eenvoudige AST.
+Deze stap maakt van [VSA](@)-brontekst een eenvoudige [AST](@).
 
 Ondersteunde nodes:
 

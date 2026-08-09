@@ -1,6 +1,6 @@
 # TEv2 in tool-docs
 
-VSA-tooling gebruikt TEv2 voor **tool-termen** (parser, renderer, includes, …) in
+VSA-tooling gebruikt TEv2 voor **tool-termen** ([parser](@), [renderer](@), includes, …) in
 `docs/terminologie/`. De mensleesbare glossary staat in `docs/glossary.md` (zelfde
 patroon als bron: één bronbestand met `{% hrg="vsa-tooling" %}`, geen
 `_index.template`/rename). Org-termen uit

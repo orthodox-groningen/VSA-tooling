@@ -22,14 +22,14 @@ Voor afspelen/oefenen gebruik je in plaats daarvan
 
 ## Drie manieren om SVG te genereren
 
-| Commando                                                   | Wanneer                                                                     |
-| ---------------------------------------------------------- | --------------------------------------------------------------------------- |
-| [`vsa svg`](../reference/cli/svg.md)                       | Eén los `.vsa`-bestand snel als afbeelding bekijken.                        |
-| [`vsa process`](../reference/cli/process.md)               | SVG's uit VSA-blokken in Markdown, zonder de Markdown te herschrijven.      |
-| [`vsa build-markdown`](../reference/cli/build-markdown.md) | Hugo-publicatie: Markdown **en** SVG-assets in één stap (inline rendering). |
+| Commando                                                   | Wanneer                                                                          |
+| ---------------------------------------------------------- | -------------------------------------------------------------------------------- |
+| [`vsa svg`](../reference/cli/svg.md)                       | Eén los `.vsa`-bestand snel als afbeelding bekijken.                             |
+| [`vsa process`](../reference/cli/process.md)               | SVG's uit [VSA-blokken](@) in Markdown, zonder de Markdown te herschrijven.      |
+| [`vsa build-markdown`](../reference/cli/build-markdown.md) | Hugo-[publicatie](@): Markdown **en** SVG-assets in één stap (inline rendering). |
 
 Voor een losse controle tijdens het schrijven is
-[`vsa svg`](../reference/cli/svg.md) het snelst. Voor een echte publicatie
+[`vsa svg`](../reference/cli/svg.md) het snelst. Voor een echte [publicatie](@)
 (Hugo-site) gebruik je [`vsa build-markdown`](../reference/cli/build-markdown.md),
 dat de `::: vsa-notatie … :::`-blokken in je Markdown automatisch vervangt door een
 verwijzing naar de gegenereerde SVG (zie
@@ -59,7 +59,7 @@ SVG geschreven naar: generated\vsa\svg-phrase-kort.svg
 
 Zelfde start, langere tekst
 (`examples\docs-walkthroughs\svg-phrase-lang.vsa`), met smallere
-`--max-line-width` zodat de renderer afbreekt:
+`--max-line-width` zodat de [renderer](@) afbreekt:
 
 ```cmd
 vsa svg examples\docs-walkthroughs\svg-phrase-lang.vsa generated\vsa\svg-phrase-lang.svg --max-line-width 400
@@ -74,7 +74,7 @@ SVG's uit een map met Markdown, zonder Hugo-Markdown te genereren
 vsa process examples\site-demo generated\vsa
 ```
 
-Volledige Hugo-publicatie (Markdown + SVG-assets):
+Volledige Hugo-[publicatie](@) (Markdown + SVG-assets):
 
 ```cmd
 vsa build-markdown examples\consumer-minimal\content-source generated\content generated\static\vsa
@@ -93,7 +93,7 @@ python scripts\sync-docs-walkthrough-svgs.py
 
 ## Inline rendering via `build-markdown`
 
-[`vsa build-markdown`](../reference/cli/build-markdown.md) vervangt in de gegenereerde Markdown elk VSA-blok door
+[`vsa build-markdown`](../reference/cli/build-markdown.md) vervangt in de gegenereerde Markdown elk [VSA-blok](@) door
 een verwijzing naar de gegenereerde SVG. Bron-Markdown:
 
 ```markdown
@@ -147,8 +147,8 @@ afbeeldingen niet — de SVG-bestanden bestaan wel, maar de link in de HTML
 wijst naar de verkeerde plek.
 
 Default-waarden staan (net als `max-line-width` en `output-mode`) in
-`vsa.toml`; zie [config.md](../reference/config.md) voor de voorrangsregel
-(CLI-optie → `vsa.toml` → interne default).
+[vsa.toml](@); zie [config.md](../reference/config.md) voor de voorrangsregel
+(CLI-optie → [vsa.toml](@) → interne default).
 
 ## Waar komen de gegenereerde bestanden terecht?
 
@@ -191,7 +191,7 @@ en het `derived/`-concept daar voor build-output dat nooit in git komt).
 - Man-pagina's: [`vsa svg`](../reference/cli/svg.md), [`vsa process`](../reference/cli/process.md), [`vsa build-markdown`](../reference/cli/build-markdown.md)
 - CLI-overzicht: [CLI-referentie](../reference/cli/index.md)
 - MusicXML-workflow (afspelen/oefenen, alternatief voor SVG): [musicxml-export.md](musicxml-export.md)
-- `vsa.toml`-defaults en voorrang: [config.md](../reference/config.md)
+- [vsa.toml](@)-defaults en voorrang: [config.md](../reference/config.md)
 - Consumer-site-structuur: [consumer-site.md](../manuals/consumer-site.md)
 - Integratie in andere repo's/CI: [reuse-vsa-tooling.md](reuse-vsa-tooling.md)
 - Bron-contracten (normatief): [conversie-vsa-svg](https://orthodox-groningen.github.io/bron/reference/conversie-vsa-svg/), [exporttype-svg](https://orthodox-groningen.github.io/bron/reference/exporttype-svg/) ([exporttype](@bron) `svg`)

@@ -1,8 +1,8 @@
-# Testvoorbeelden en regressietests voor VSA Tooling
+# Testvoorbeelden en regressietests voor VSA-tooling
 
-Deze map bevat kleine VSA-voorbeelden die bedoeld zijn om parser, validator, renderer en exporter stap voor stap te kunnen bouwen en testen.
+Deze map bevat kleine [VSA](@)-voorbeelden die bedoeld zijn om [parser](@), [validator](@), [renderer](@) en exporter stap voor stap te kunnen bouwen en testen.
 
-De voorbeelden zijn bewust klein gehouden. Grote echte zangstukken zijn nuttig als eindtest, maar kleine gevallen zijn veel beter voor debugging.
+De voorbeelden zijn bewust klein gehouden. Grote echte [zangstukken](@bron) zijn nuttig als eindtest, maar kleine gevallen zijn veel beter voor debugging.
 
 ## Indeling
 
@@ -19,8 +19,8 @@ Deze map bevat geldige, kleine VSA-fragmenten.
 
 Doel:
 
-- parser controleren;
-- AST-vorm controleren;
+- [parser](@) controleren;
+- [AST](@)-vorm controleren;
 - eenvoudige rendering controleren;
 - eenvoudige MusicXML-export voorbereiden.
 

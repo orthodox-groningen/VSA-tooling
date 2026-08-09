@@ -101,7 +101,7 @@ Meerdere regels met **dezelfde** `zoek=` → één catalogus-zoekactie, meerdere
 
 #### Implementatie
 
-- Parser: `markdown_include.py` — weigert open `zoek=` in build.
+- [Parser](@): `markdown_include.py` — weigert open `zoek=` in build.
 - Resolve: [`vsa resolve-catalogus`](../reference/cli/resolve-catalogus.md) (CLI).
 - Afhankelijkheid: **`catalogus`** uit bron-repo ([`catalogus zoek`](https://orthodox-groningen.github.io/bron/reference/catalogus-cli/#catalogus-zoek)).
 
@@ -180,7 +180,7 @@ Inline (kort fragment):
 :::
 ```
 
-**Opmerking:** annotaties in `.vsa` als `<!-- … -->` (HTML-comment), niet als `[//:]` — dat laatste is een hoogte-markering.
+**Opmerking:** annotaties in `.vsa` als `<!-- … -->` (HTML-comment), niet als `[//:]` — dat laatste is een [hoogte-markering](@).
 
 ---
 

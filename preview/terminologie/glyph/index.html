@@ -10,7 +10,7 @@
       
       
       
-        <link rel="canonical" href="https://orthodox-groningen.github.io/VSA-tooling/preview/terminologie/metadata/">
+        <link rel="canonical" href="https://orthodox-groningen.github.io/VSA-tooling/preview/terminologie/glyph/">
       
       
       
@@ -23,7 +23,7 @@
     
     
       
-        <title>Metadata - VSA-tooling — documentatie</title>
+        <title>Glyph - VSA-tooling — documentatie</title>
       
     
     
@@ -80,7 +80,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#metadata" class="md-skip">
+        <a href="#glyph" class="md-skip">
           Ga naar inhoud
         </a>
       
@@ -130,7 +130,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Metadata
+              Glyph
             
           </span>
         </div>
@@ -2695,6 +2695,36 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Inhoudsopgave
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#motivatie" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Motivatie
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gerelateerd-verder-lezen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Gerelateerd / verder lezen
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -2710,7 +2740,7 @@
 
 
   
-    <a href="https://github.com/orthodox-groningen/VSA-tooling/edit/main/docs/terminologie/metadata.md" title="Wijzig deze pagina" class="md-content__button md-icon" rel="edit">
+    <a href="https://github.com/orthodox-groningen/VSA-tooling/edit/main/docs/terminologie/glyph.md" title="Wijzig deze pagina" class="md-content__button md-icon" rel="edit">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
     </a>
@@ -2718,8 +2748,36 @@
   
 
 
-<h1 id="metadata">Metadata<a class="headerlink" href="#metadata" title="Permanent link">&para;</a></h1>
-<p>Metadata kan in blokmetadata of frontmatter staan en stuurt validatie, rendering, export of identificatie zonder zelf als gezongen tekst of VSA-token te worden weergegeven.</p>
+<h1 id="glyph">Glyph<a class="headerlink" href="#glyph" title="Permanent link">&para;</a></h1>
+<p>Een glyph is het zichtbare teken dat de <a href="/VSA-tooling/preview/terminologie/renderer" title="Renderer: een component die een gevalideerde AST of daarvan afgeleid layoutmodel omzet naar concrete uitvoer, zoals SVG, JSON, Markdown, Hugo-output of MusicXML, zonder de AST semantisch te wijzigen.">renderer</a> voor een VSA-markering
+tekent (boven of onder de tekst), niet de lettertekens van het zangelement zelf.</p>
+<table>
+<thead>
+<tr>
+<th>Wel</th>
+<th>Niet</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Strepen, punten, connectors van modifiers</td>
+<td>De letters in <code>Hei</code> binnen <code>{/Hei_}</code></td>
+</tr>
+<tr>
+<td>Visuele weergave van een <a href="/VSA-tooling/preview/terminologie/pitch-marker" title="Pitch-marker: een bracket-directive met de vorm <code>[&lt;EHM&gt;:]</code>, waarbij <code>&lt;EHM&gt;</code> leeg is of een geldige enkelvoudige hoogte-modifier bevat.">pitch-marker</a></td>
+<td>De brontekens <code>/</code> of <code>_</code> als platte ASCII in de <code>.vsa</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="motivatie">Motivatie<a class="headerlink" href="#motivatie" title="Permanent link">&para;</a></h2>
+<p>Parser en validator werken op tokens; lezers zien strepen en punten. Het
+glyphbegrip scheidt die visuele laag van de syntactische tokens, zodat
+layout- en SVG-regels eenduidig te specificeren zijn.</p>
+<h2 id="gerelateerd-verder-lezen">Gerelateerd / verder lezen<a class="headerlink" href="#gerelateerd-verder-lezen" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="/VSA-tooling/preview/terminologie/renderer" title="Renderer: een component die een gevalideerde AST of daarvan afgeleid layoutmodel omzet naar concrete uitvoer, zoals SVG, JSON, Markdown, Hugo-output of MusicXML, zonder de AST semantisch te wijzigen.">renderer</a>, <a href="/VSA-tooling/preview/terminologie/hoogte-modifier" title="Hoogte-modifier: een modifier die voor het zangelement in een VSA-scope staat en bestaat uit een geldige EHM of uit meerdere geldige EHM's gescheiden door <code>&amp;</code>.">hoogte-modifier</a>, <a href="/VSA-tooling/preview/terminologie/lengte-modifier" title="Lengte-modifier: een modifier die na het zangelement in een VSA-scope staat en bestaat uit een geldige ELM of uit meerdere geldige ELM's gescheiden door <code>&amp;</code>.">lengte-modifier</a>, <a href="/VSA-tooling/preview/terminologie/pitch-marker" title="Pitch-marker: een bracket-directive met de vorm <code>[&lt;EHM&gt;:]</code>, waarbij <code>&lt;EHM&gt;</code> leeg is of een geldige enkelvoudige hoogte-modifier bevat.">pitch-marker</a></li>
+<li>Specificatie: <a href="../../specification/rendering/">Rendering</a></li>
+</ul>
 
 
 
@@ -2756,7 +2814,7 @@
       
       
       <p class="og-footer-stamps">
-        Bijgewerkt: 2026-07-08
+        Bijgewerkt: 2026-08-09
         
       </p>
       

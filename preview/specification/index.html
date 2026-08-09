@@ -98,7 +98,7 @@
   
   <strong>Preview</strong>
    — branch <code>docs/walkthrough-examples</code>
-  , gebouwd 2026-08-09 15:47 CEST.
+  , gebouwd 2026-08-09 15:51 CEST.
   <a href="https://orthodox-groningen.github.io/VSA-tooling/">Live documentatie (main)</a>.
   
 
@@ -2805,10 +2805,11 @@
 
 
 <h1 id="overzicht">Overzicht<a class="headerlink" href="#overzicht" title="Permanent link">&para;</a></h1>
-<p>Deze map bevat de geconsolideerde <strong>normatieve specificatie</strong> van VSA versie 1.0.</p>
-<p>VSA (Vereenvoudigde Slavische Accentnotatie) is een tekstgebaseerde
+<p>Deze map bevat de geconsolideerde <strong>normatieve specificatie</strong> van <a href="/VSA-tooling/preview/terminologie/vsa" title="Vereenvoudigde Slavische Accentnotatie: wordt gebruikt om te verwijzen naar een Formele Notatie voor het vastleggen van Zangstukken en ook naar de Toolset waarmee zulke vastleggingen kunnen worden gevalideerd en naar publiceerbare vormen worden omgezet.">VSA</a>
+versie 1.0.</p>
+<p><a href="/VSA-tooling/preview/terminologie/vsa" title="Vereenvoudigde Slavische Accentnotatie: wordt gebruikt om te verwijzen naar een Formele Notatie voor het vastleggen van Zangstukken en ook naar de Toolset waarmee zulke vastleggingen kunnen worden gevalideerd en naar publiceerbare vormen worden omgezet.">VSA</a> (Vereenvoudigde Slavische Accentnotatie) is een tekstgebaseerde
 domeinspecifieke taal voor Slavische accentnotatie. De specificatie beschrijft
-wat de notatie en tooling moeten betekenen. Architectuurkeuzes,
+wat de <a href="/bron/terms/vsa-notatie" title="VSA-notatie: Het tekstgebaseerde notatieformaat waarmee liturgische zangteksten worden vastgelegd: een formeel gespecificeerde taal met scopes, modifiers en bracket-directives, parseeerbaar en valideerbaar door Vsa-tooling.">VSA-notatie</a> en tooling moeten betekenen. Architectuurkeuzes,
 implementatiegeschiedenis en gebruikershandleidingen staan buiten deze map.</p>
 <h2 id="documenten">Documenten<a class="headerlink" href="#documenten" title="Permanent link">&para;</a></h2>
 <table>
@@ -2825,23 +2826,23 @@ implementatiegeschiedenis en gebruikershandleidingen staan buiten deze map.</p>
 </tr>
 <tr>
 <td><a href="syntax/">Syntax</a></td>
-<td>VSA-syntax, bloksyntax, modifiers, pitchmarkers en EBNF.</td>
+<td><a href="/bron/terms/vsa-notatie" title="VSA-notatie: Het tekstgebaseerde notatieformaat waarmee liturgische zangteksten worden vastgelegd: een formeel gespecificeerde taal met scopes, modifiers en bracket-directives, parseeerbaar en valideerbaar door Vsa-tooling.">VSA-notatie</a>-syntax, <a href="/VSA-tooling/preview/terminologie/vsa-blokken" title="VSA-blok: een tekstfragment in een Markdownbestand dat begint met <code>::: vsa-notatie</code> en eindigt met <code>:::</code>, beide aan het begin van een regel, met daartussen VSA-notatie; typisch ontdekt en verwerkt door de Vsa-toolset (o.a. <code>vsa blocks</code>, <code>vsa validate</code>, <code>vsa process</code>).">VSA-blokken</a>, <a href="/VSA-tooling/preview/terminologie/modifier" title="Modifier: een tekenreeks die binnen een VSA-scope als hoogte-modifier voor het zangelement of als lengte-modifier na het zangelement wordt geparseerd.">modifiers</a>, <a href="/VSA-tooling/preview/terminologie/pitch-marker" title="Pitch-marker: een bracket-directive met de vorm <code>[&lt;EHM&gt;:]</code>, waarbij <code>&lt;EHM&gt;</code> leeg is of een geldige enkelvoudige hoogte-modifier bevat.">pitch-markers</a> en EBNF.</td>
 </tr>
 <tr>
 <td><a href="semantics/">Semantiek</a></td>
-<td>Muzikale betekenis van scopes, modifiers, posities en tooncontext.</td>
+<td>Muzikale betekenis van <a href="/VSA-tooling/preview/terminologie/vsa-scope" title="VSA-scope: een tekstfragment dat met <code>{</code> begint, met <code>}</code> eindigt, geen whitespace binnen de accolades bevat en door de parser kan worden opgesplitst in optionele hoogte-modifier, verplicht zangelement en optionele lengte-modifier.">scopes</a>, <a href="/VSA-tooling/preview/terminologie/modifier" title="Modifier: een tekenreeks die binnen een VSA-scope als hoogte-modifier voor het zangelement of als lengte-modifier na het zangelement wordt geparseerd.">modifiers</a>, <a href="/VSA-tooling/preview/terminologie/muzikale-positie" title="Muzikale positie: de kleinste muzikale eenheid binnen VSA-notatie: één relatieve toonhoogtebeweging (één Enkelvoudige Hoogte-modifier), één duur (één Enkelvoudige Lengte-modifier) en een koppeling aan één zangelement in een VSA-scope.">muzikale posities</a> en <a href="/VSA-tooling/preview/terminologie/do-context" title="Do-context: de grondtooncontext waarbinnen relatieve toonhoogtebewegingen in VSA-notatie worden geïnterpreteerd; voor MusicXML-export of afspelen vastgelegd via blok-Metadata (<code>do</code>, <code>mode</code>), niet via de zangtekst zelf.">do-context</a>.</td>
 </tr>
 <tr>
 <td><a href="validation/">Validatie</a></td>
-<td>Validatieregels, foutcategorieën en severity-model.</td>
+<td>Validatieregels, foutcategorieën en <a href="/VSA-tooling/preview/terminologie/severity" title="Severity: een waarde die aan een diagnostic is gekoppeld en aangeeft of de vastgestelde afwijking als blokkerende fout of als waarschuwing moet worden behandeld.">severity</a>-model.</td>
 </tr>
 <tr>
 <td><a href="directives/">Directives</a></td>
-<td>Control tokens, comments, includes en document-samenstelling.</td>
+<td><a href="/VSA-tooling/preview/terminologie/control-token" title="Control-token: een bracket-directive waarvan de tokenwaarde een ondersteunde control-tokenvorm is, zoals <code>[*]</code>, <code>[/]</code>, <code>[*?]</code> of <code>[/?]</code>, en die niet als pitch-marker wordt geparseerd.">Control-tokens</a>, comments, includes en document-samenstelling.</td>
 </tr>
 <tr>
 <td><a href="rendering/">Rendering</a></td>
-<td>SVG-rendering, glyphmodel, layout, configuratie en export.</td>
+<td>SVG-rendering, <a href="/VSA-tooling/preview/terminologie/glyph" title="Glyph: een zichtbaar grafisch teken dat de Renderer tekent voor een VSA-markering (bijvoorbeeld een streep van een Hoogte-modifier of een onderstreping van een Lengte-modifier), los van de zangtekst zelf.">glyphmodel</a>, layout, configuratie en export.</td>
 </tr>
 <tr>
 <td><a href="cli/">CLI</a></td>
@@ -2849,11 +2850,11 @@ implementatiegeschiedenis en gebruikershandleidingen staan buiten deze map.</p>
 </tr>
 <tr>
 <td><a href="conformance/">Conformance</a></td>
-<td>Criteria voor parser, validator, renderer en CLI.</td>
+<td>Criteria voor <a href="/VSA-tooling/preview/terminologie/parser" title="Parser: een component die VSA-brontekst of tokens volgens de grammatica omzet naar expliciete AST-nodes, bronlocaties behoudt en geen semantische reparaties of renderlogica uitvoert.">parser</a>, <a href="/VSA-tooling/preview/terminologie/validator" title="Validator: een component die een geparseerde AST of VSA-invoer toetst aan semantische en normatieve regels en overtredingen als diagnostics rapporteert zonder ze stilzwijgend te repareren.">validator</a>, <a href="/VSA-tooling/preview/terminologie/renderer" title="Renderer: een component die een gevalideerde AST of daarvan afgeleid layoutmodel omzet naar concrete uitvoer, zoals SVG, JSON, Markdown, Hugo-output of MusicXML, zonder de AST semantisch te wijzigen.">renderer</a> en CLI.</td>
 </tr>
 <tr>
 <td><a href="error-handling/">Error-handling</a></td>
-<td>Foutafhandeling en meldingen.</td>
+<td>Foutafhandeling en <a href="/VSA-tooling/preview/terminologie/diagnostic" title="Diagnostic: een melding die door parser of validator wordt geproduceerd en ten minste een foutcode, severity, bronlocatie en uitleg of context bij een vastgestelde afwijking bevat.">diagnostics</a>.</td>
 </tr>
 <tr>
 <td><a href="examples/">Voorbeelden</a></td>

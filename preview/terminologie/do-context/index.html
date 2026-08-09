@@ -10,7 +10,7 @@
       
       
       
-        <link rel="canonical" href="https://orthodox-groningen.github.io/VSA-tooling/preview/terminologie/metadata/">
+        <link rel="canonical" href="https://orthodox-groningen.github.io/VSA-tooling/preview/terminologie/do-context/">
       
       
       
@@ -23,7 +23,7 @@
     
     
       
-        <title>Metadata - VSA-tooling — documentatie</title>
+        <title>Do-context - VSA-tooling — documentatie</title>
       
     
     
@@ -80,7 +80,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#metadata" class="md-skip">
+        <a href="#do-context" class="md-skip">
           Ga naar inhoud
         </a>
       
@@ -130,7 +130,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Metadata
+              Do-context
             
           </span>
         </div>
@@ -2695,6 +2695,36 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Inhoudsopgave
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#motivatie" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Motivatie
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gerelateerd-verder-lezen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Gerelateerd / verder lezen
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -2710,7 +2740,7 @@
 
 
   
-    <a href="https://github.com/orthodox-groningen/VSA-tooling/edit/main/docs/terminologie/metadata.md" title="Wijzig deze pagina" class="md-content__button md-icon" rel="edit">
+    <a href="https://github.com/orthodox-groningen/VSA-tooling/edit/main/docs/terminologie/do-context.md" title="Wijzig deze pagina" class="md-content__button md-icon" rel="edit">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
     </a>
@@ -2718,8 +2748,36 @@
   
 
 
-<h1 id="metadata">Metadata<a class="headerlink" href="#metadata" title="Permanent link">&para;</a></h1>
-<p>Metadata kan in blokmetadata of frontmatter staan en stuurt validatie, rendering, export of identificatie zonder zelf als gezongen tekst of VSA-token te worden weergegeven.</p>
+<h1 id="do-context">Do-context<a class="headerlink" href="#do-context" title="Permanent link">&para;</a></h1>
+<p>De do-context is de grondtoon waartegen relatieve <a href="/VSA-tooling/preview/terminologie/hoogte-modifier" title="Hoogte-modifier: een modifier die voor het zangelement in een VSA-scope staat en bestaat uit een geldige EHM of uit meerdere geldige EHM's gescheiden door <code>&amp;</code>.">hoogte-modifiers</a> en
+<a href="/VSA-tooling/preview/terminologie/pitch-marker" title="Pitch-marker: een bracket-directive met de vorm <code>[&lt;EHM&gt;:]</code>, waarbij <code>&lt;EHM&gt;</code> leeg is of een geldige enkelvoudige hoogte-modifier bevat.">pitch-markers</a> worden gerekend.</p>
+<table>
+<thead>
+<tr>
+<th>Wel</th>
+<th>Niet</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>do</code> / <code>mode</code> in <a href="/VSA-tooling/preview/terminologie/metadata" title="Metadata: gegevens die als gestructureerde blokparameters of YAML-frontmatter bij VSA-bronmateriaal staan, verwerking of identificatie sturen en zelf niet tot de zichtbare VSA-notatie behoren.">metadata</a></td>
+<td>Een losse nootnaam in de zangtekst</td>
+</tr>
+<tr>
+<td>Referentiepunt voor ladderstappen</td>
+<td>De absolute MIDI-tuning van een instrument</td>
+</tr>
+</tbody>
+</table>
+<h2 id="motivatie">Motivatie<a class="headerlink" href="#motivatie" title="Permanent link">&para;</a></h2>
+<p>Relatieve VSA-hoogte is zonder startpunt niet om te zetten naar absolute
+toonhoogten (MusicXML, Coria). Visuele SVG-weergave kan zonder absolute
+do-context; export en afspelen niet.</p>
+<h2 id="gerelateerd-verder-lezen">Gerelateerd / verder lezen<a class="headerlink" href="#gerelateerd-verder-lezen" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="/VSA-tooling/preview/terminologie/metadata" title="Metadata: gegevens die als gestructureerde blokparameters of YAML-frontmatter bij VSA-bronmateriaal staan, verwerking of identificatie sturen en zelf niet tot de zichtbare VSA-notatie behoren.">metadata</a>, <a href="/VSA-tooling/preview/terminologie/pitch-marker" title="Pitch-marker: een bracket-directive met de vorm <code>[&lt;EHM&gt;:]</code>, waarbij <code>&lt;EHM&gt;</code> leeg is of een geldige enkelvoudige hoogte-modifier bevat.">pitch-marker</a>, <a href="/VSA-tooling/preview/terminologie/hoogte-modifier" title="Hoogte-modifier: een modifier die voor het zangelement in een VSA-scope staat en bestaat uit een geldige EHM of uit meerdere geldige EHM's gescheiden door <code>&amp;</code>.">hoogte-modifier</a></li>
+<li>Specificatie: <a href="../../specification/semantics/#do-context">Semantiek — Do-context</a></li>
+</ul>
 
 
 
@@ -2756,7 +2814,7 @@
       
       
       <p class="og-footer-stamps">
-        Bijgewerkt: 2026-07-08
+        Bijgewerkt: 2026-08-09
         
       </p>
       

@@ -1,0 +1,88 @@
+# Tropaar toon 4 — do=F4 major. Openingsakkoord frase 1: S=mi A=do T=sol-1 B=do-1
+# (was A4,F4,C4,F3). Overige graden provisional.
+
+spec_version: draft-v0
+id: tropaar-toon-4
+genre: tropaar
+tone: 4
+do: F4
+mode: major
+duration-model: default
+pitches_status: provisional
+source: "tonen (vers, stichier, tropaar).pdf — Tropaarmelodie toon 4"
+cycle:
+  - "1"
+  - "2"
+final: laatste
+
+phrases:
+  - id: "1"
+    events:
+      - role: open
+        duration: "~"
+        pitches: { S: mi, A: do, T: sol-1, B: do-1 }
+      - role: recite
+        duration: "~"
+        pitches: { S: mi, A: do, T: sol-1, B: do-1 }
+      - role: cadence
+        duration: "~"
+        pitches: { S: mi, A: do, T: sol-1, B: la-2 }
+      - role: cadence
+        duration: "_"
+        anchor: l.st.
+        pitches: { S: fa, A: re, T: re-1, B: re-2 }
+      - role: cadence
+        duration: "_"
+        pitches: { S: mi, A: do, T: do-1, B: do-1 }
+      - role: cadence
+        duration: "_"
+        pitches: { S: "#re", A: ti-1, T: ti-2, B: ti-3 }
+
+  - id: "2"
+    events:
+      - role: link
+        duration: "_"
+        optional: true
+        pitches: { S: "#re", A: ti-1, T: ti-2, B: ti-3 }
+      - role: cadence
+        duration: "~"
+        anchor: e.st.
+        pitches: { S: fa, A: re, T: re-1, B: re-2 }
+      - role: recite
+        duration: "~"
+        pitches: { S: mi, A: do, T: sol-1, B: do-1 }
+      - role: cadence
+        duration: "~"
+        pitches: { S: mi, A: do, T: sol-1, B: la-2 }
+      - role: cadence
+        duration: "_"
+        anchor: l.st.
+        pitches: { S: fa, A: re, T: re-1, B: re-2 }
+      - role: cadence
+        duration: "_"
+        pitches: { S: mi, A: do, T: la-2, B: la-3 }
+
+  - id: laatste
+    events:
+      - role: open
+        duration: "~"
+        pitches: { S: mi, A: do, T: sol-1, B: do-1 }
+      - role: recite
+        duration: "~"
+        pitches: { S: mi, A: do, T: sol-1, B: do-1 }
+      - role: cadence
+        duration: "~"
+        pitches: { S: mi, A: do, T: sol-1, B: la-2 }
+      - role: cadence
+        duration: "_"
+        anchor: l.st.
+        pitches: { S: fa, A: re, T: re-1, B: re-2 }
+      - role: cadence
+        duration: "_"
+        pitches: { S: mi, A: do, T: do-1, B: do-1 }
+      - role: cadence
+        duration: "_"
+        pitches: { S: re, A: ti-1, T: sol-2, B: sol-3 }
+      - role: cadence
+        duration: "__"
+        pitches: { S: do, A: sol-1, T: do-1, B: do-2 }

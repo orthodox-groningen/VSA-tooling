@@ -28,6 +28,7 @@ not_in_nav: |
   plans/onderzoeks-prompt.md
   reference/cli.md
   terminologie/**
+  specification-vsa-templates/**
 
 validation:
   nav:

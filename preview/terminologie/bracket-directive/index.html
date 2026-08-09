@@ -94,7 +94,7 @@
   
   <strong>Preview</strong>
    — branch <code>docs/termrefs-body</code>
-  , gebouwd 2026-08-09 19:55 CEST.
+  , gebouwd 2026-08-09 20:22 CEST.
   <a href="https://orthodox-groningen.github.io/VSA-tooling/">Live documentatie (main)</a>.
   
 
@@ -1875,7 +1875,7 @@
   <span class="md-ellipsis">
     
   
-    vsa blocks — ::: vsa-notatie en eindigt met :::, beide aan het begin van een regel, met daartussen VSA-notatie; typisch ontdekt en verwerkt door de Vsa-toolset (o.a. vsa blocks, vsa validate, vsa process).">VSA-blokken in Markdown vinden
+    vsa blocks — VSA-blokken in Markdown vinden
   
 
     
@@ -1903,7 +1903,7 @@
   <span class="md-ellipsis">
     
   
-    vsa svg — één .vsa waarvan de inhoud uitsluitend syntactisch geldige Vsa-notatie bevat — d.w.z. door de Vsa-tooling foutloos wordt geparseerd en gevalideerd.">vsa-bestand naar SVG renderen
+    vsa svg — één vsa-bestand naar SVG renderen
   
 
     
@@ -2719,15 +2719,15 @@
 
 
 <h1 id="bracket-directive">Bracket-directive<a class="headerlink" href="#bracket-directive" title="Permanent link">&para;</a></h1>
-<p>Bracket-directives / <a href="/VSA-tooling/preview/terminologie/bracket-directive" title="Bracket-directive: een tekstfragment dat als afzonderlijk VSA-token tussen <code>[</code> en <code>]</code> voorkomt en door bracket-dispatch wordt geclassificeerd voordat de inhoudelijke parsing verdergaat.">bracket-tokens</a> zijn de <code>[...]</code>-tokens die de
-<a href="/VSA-tooling/preview/terminologie/parser" title="Parser: een component die VSA-brontekst of tokens volgens de grammatica omzet naar expliciete AST / Syntactische Boom-nodes, bronlocaties behoudt en geen semantische reparaties of renderlogica uitvoert.">parser</a> eerst routeert naar een specifiek parserpad, bijvoorbeeld
-<a href="/VSA-tooling/preview/terminologie/pitch-marker" title="Pitch-marker: een Bracket-directive / Bracket-token met de vorm <code>[&lt;EHM&gt;:]</code>, waarbij <code>&lt;EHM&gt;</code> leeg is of een geldige EHM bevat.">pitch-marker</a> / <a href="/VSA-tooling/preview/terminologie/pitch-marker" title="Pitch-marker: een Bracket-directive / Bracket-token met de vorm <code>[&lt;EHM&gt;:]</code>, waarbij <code>&lt;EHM&gt;</code> leeg is of een geldige EHM bevat.">hoogte-markering</a>, <a href="/VSA-tooling/preview/terminologie/control-token" title="Control-token: een Bracket-directive / Bracket-token waarvan de tokenwaarde een ondersteunde control-tokenvorm is, zoals <code>[*]</code>, <code>[/]</code>, <code>[*?]</code> of <code>[/?]</code>, en die niet als Pitch-marker / Hoogte-markering wordt geparseerd.">control-token</a>, onbekende
+<p>Bracket-directives / <a class="og-termref" href="/VSA-tooling/preview/terminologie/bracket-directive" title="Bracket-directive: een tekstfragment dat als afzonderlijk VSA-token tussen <code>[</code> en <code>]</code> voorkomt en door bracket-dispatch wordt geclassificeerd voordat de inhoudelijke parsing verdergaat.">bracket-tokens</a> zijn de <code>[...]</code>-tokens die de
+<a class="og-termref" href="/VSA-tooling/preview/terminologie/parser" title="Parser: een component die VSA-brontekst of tokens volgens de grammatica omzet naar expliciete AST / Syntactische Boom-nodes, bronlocaties behoudt en geen semantische reparaties of renderlogica uitvoert.">parser</a> eerst routeert naar een specifiek parserpad, bijvoorbeeld
+<a class="og-termref" href="/VSA-tooling/preview/terminologie/pitch-marker" title="Pitch-marker: een Bracket-directive / Bracket-token met de vorm <code>[&lt;EHM&gt;:]</code>, waarbij <code>&lt;EHM&gt;</code> leeg is of een geldige EHM bevat.">pitch-marker</a> / <a class="og-termref" href="/VSA-tooling/preview/terminologie/pitch-marker" title="Pitch-marker: een Bracket-directive / Bracket-token met de vorm <code>[&lt;EHM&gt;:]</code>, waarbij <code>&lt;EHM&gt;</code> leeg is of een geldige EHM bevat.">hoogte-markering</a>, <a class="og-termref" href="/VSA-tooling/preview/terminologie/control-token" title="Control-token: een Bracket-directive / Bracket-token waarvan de tokenwaarde een ondersteunde control-tokenvorm is, zoals <code>[*]</code>, <code>[/]</code>, <code>[*?]</code> of <code>[/?]</code>, en die niet als Pitch-marker / Hoogte-markering wordt geparseerd.">control-token</a>, onbekende
 directive of syntaxfout.</p>
 <p>Goede/valide voorbeelden van Bracket-directive zijn:
 - <code>[...]</code>-token vóór inhoudelijke parsing
 - Classificatie via bracket-dispatch</p>
 <p>Geen goede/niet valide voorbeelden van Bracket-directive zijn:
-- Accolade-<a href="/VSA-tooling/preview/terminologie/vsa-scope" title="VSA-scope: een tekstfragment dat met <code>{</code> begint, met <code>}</code> eindigt, geen whitespace binnen de accolades bevat en door de Parser kan worden opgesplitst in optionele Hoogte-modifier, verplicht zangelement en optionele Lengte-modifier.">scope</a> <code>{...}</code>
+- Accolade-<a class="og-termref" href="/VSA-tooling/preview/terminologie/vsa-scope" title="VSA-scope: een tekstfragment dat met <code>{</code> begint, met <code>}</code> eindigt, geen whitespace binnen de accolades bevat en door de Parser kan worden opgesplitst in optionele Hoogte-modifier, verplicht zangelement en optionele Lengte-modifier.">scope</a> <code>{...}</code>
 - Platte tekst zonder brackets</p>
 
 

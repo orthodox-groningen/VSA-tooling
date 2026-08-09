@@ -98,7 +98,7 @@
   
   <strong>Preview</strong>
    — branch <code>docs/termrefs-body</code>
-  , gebouwd 2026-08-09 19:55 CEST.
+  , gebouwd 2026-08-09 20:22 CEST.
   <a href="https://orthodox-groningen.github.io/VSA-tooling/">Live documentatie (main)</a>.
   
 
@@ -2019,7 +2019,7 @@
   <span class="md-ellipsis">
     
   
-    vsa blocks — ::: vsa-notatie en eindigt met :::, beide aan het begin van een regel, met daartussen VSA-notatie; typisch ontdekt en verwerkt door de Vsa-toolset (o.a. vsa blocks, vsa validate, vsa process).">VSA-blokken in Markdown vinden
+    vsa blocks — VSA-blokken in Markdown vinden
   
 
     
@@ -2047,7 +2047,7 @@
   <span class="md-ellipsis">
     
   
-    vsa svg — één .vsa waarvan de inhoud uitsluitend syntactisch geldige Vsa-notatie bevat — d.w.z. door de Vsa-tooling foutloos wordt geparseerd en gevalideerd.">vsa-bestand naar SVG renderen
+    vsa svg — één vsa-bestand naar SVG renderen
   
 
     
@@ -2960,10 +2960,10 @@
 
 <h1 id="foutafhandeling">Foutafhandeling<a class="headerlink" href="#foutafhandeling" title="Permanent link">&para;</a></h1>
 <h2 id="doel">Doel<a class="headerlink" href="#doel" title="Permanent link">&para;</a></h2>
-<p>Dit document beschrijft hoe VSA-implementaties fouten, waarschuwingen en <a href="/VSA-tooling/preview/terminologie/diagnostic" title="Diagnostic: een melding die door Parser of Validator wordt geproduceerd en ten minste een foutcode, Severity / Ernstniveau, bronlocatie en uitleg of context bij een vastgestelde afwijking bevat.">diagnostische meldingen</a> behoren te genereren en te rapporteren.</p>
+<p>Dit document beschrijft hoe VSA-implementaties fouten, waarschuwingen en <a class="og-termref" href="/VSA-tooling/preview/terminologie/diagnostic" title="Diagnostic: een melding die door Parser of Validator wordt geproduceerd en ten minste een foutcode, Severity / Ernstniveau, bronlocatie en uitleg of context bij een vastgestelde afwijking bevat.">diagnostische meldingen</a> behoren te genereren en te rapporteren.</p>
 <hr />
-<h2 id="severity-levels"><a href="/VSA-tooling/preview/terminologie/severity" title="Severity: een waarde die aan een Diagnostic / Diagnostische Melding is gekoppeld en aangeeft of de vastgestelde afwijking als blokkerende fout of als waarschuwing moet worden behandeld.">Severity</a> levels<a class="headerlink" href="#severity-levels" title="Permanent link">&para;</a></h2>
-<p><a href="/VSA-tooling/preview/terminologie/vsa" title="Vereenvoudigde Slavische Accentnotatie: wordt gebruikt om te verwijzen naar een Formele Notatie voor het vastleggen van Zangstukken en ook naar de Toolset waarmee zulke vastleggingen kunnen worden gevalideerd en naar publiceerbare vormen worden omgezet.">VSA</a> onderscheidt drie soorten <a href="/VSA-tooling/preview/terminologie/diagnostic" title="Diagnostic: een melding die door Parser of Validator wordt geproduceerd en ten minste een foutcode, Severity / Ernstniveau, bronlocatie en uitleg of context bij een vastgestelde afwijking bevat.">diagnostische meldingen</a>:</p>
+<h2 id="severity-levels">Severity levels<a class="headerlink" href="#severity-levels" title="Permanent link">&para;</a></h2>
+<p><a class="og-termref" href="/VSA-tooling/preview/terminologie/vsa" title="Vereenvoudigde Slavische Accentnotatie: wordt gebruikt om te verwijzen naar een Formele Notatie voor het vastleggen van Zangstukken en ook naar de Toolset waarmee zulke vastleggingen kunnen worden gevalideerd en naar publiceerbare vormen worden omgezet.">VSA</a> onderscheidt drie soorten <a class="og-termref" href="/VSA-tooling/preview/terminologie/diagnostic" title="Diagnostic: een melding die door Parser of Validator wordt geproduceerd en ten minste een foutcode, Severity / Ernstniveau, bronlocatie en uitleg of context bij een vastgestelde afwijking bevat.">diagnostische meldingen</a>:</p>
 <ul>
 <li><code>error</code> — het document is ongeldig.</li>
 <li><code>warning</code> — het document is geldig, maar bevat een mogelijk probleem.</li>
@@ -2971,7 +2971,7 @@
 </ul>
 <hr />
 <h2 id="foutcategorieen">Foutcategorieën<a class="headerlink" href="#foutcategorieen" title="Permanent link">&para;</a></h2>
-<p><a href="/VSA-tooling/preview/terminologie/diagnostic" title="Diagnostic: een melding die door Parser of Validator wordt geproduceerd en ten minste een foutcode, Severity / Ernstniveau, bronlocatie en uitleg of context bij een vastgestelde afwijking bevat.">Diagnostische meldingen</a> worden onderverdeeld in de volgende categorieën:</p>
+<p><a class="og-termref" href="/VSA-tooling/preview/terminologie/diagnostic" title="Diagnostic: een melding die door Parser of Validator wordt geproduceerd en ten minste een foutcode, Severity / Ernstniveau, bronlocatie en uitleg of context bij een vastgestelde afwijking bevat.">Diagnostische meldingen</a> worden onderverdeeld in de volgende categorieën:</p>
 <ul>
 <li><strong>syntax error</strong> — de invoer voldoet niet aan de grammatica;</li>
 <li><strong>semantic error</strong> — de invoer is syntactisch geldig, maar de betekenis is ongeldig;</li>
@@ -2982,13 +2982,13 @@
 <hr />
 <h2 id="diagnostiek">Diagnostiek<a class="headerlink" href="#diagnostiek" title="Permanent link">&para;</a></h2>
 <p>Het doel van diagnostiek is de gebruiker zoveel mogelijk bruikbare informatie te geven over problemen die tijdens de verwerking van een VSA-document worden aangetroffen.</p>
-<p>Implementaties behoren daarom, waar redelijkerwijs mogelijk, de verwerking van een document voort te zetten nadat een fout is vastgesteld. Ook meldingen met <a href="/VSA-tooling/preview/terminologie/severity" title="Severity: een waarde die aan een Diagnostic / Diagnostische Melding is gekoppeld en aangeeft of de vastgestelde afwijking als blokkerende fout of als waarschuwing moet worden behandeld.">severity</a> <code>error</code> behoren niet automatisch te leiden tot onmiddellijke beëindiging van de verwerking. Hierdoor kunnen meerdere onafhankelijke fouten tijdens één verwerkingsronde worden gerapporteerd, zodat de auteur deze in één keer kan corrigeren.</p>
+<p>Implementaties behoren daarom, waar redelijkerwijs mogelijk, de verwerking van een document voort te zetten nadat een fout is vastgesteld. Ook meldingen met <a class="og-termref" href="/VSA-tooling/preview/terminologie/severity" title="Severity: een waarde die aan een Diagnostic / Diagnostische Melding is gekoppeld en aangeeft of de vastgestelde afwijking als blokkerende fout of als waarschuwing moet worden behandeld.">severity</a> <code>error</code> behoren niet automatisch te leiden tot onmiddellijke beëindiging van de verwerking. Hierdoor kunnen meerdere onafhankelijke fouten tijdens één verwerkingsronde worden gerapporteerd, zodat de auteur deze in één keer kan corrigeren.</p>
 <p>Een implementatie mag de verwerking uitsluitend beëindigen wanneer verdere verwerking niet meer mogelijk is, bijvoorbeeld doordat de resterende documentstructuur niet meer betrouwbaar kan worden geïnterpreteerd of doordat geen zinvolle diagnostiek meer kan worden geproduceerd.</p>
 <hr />
 <h2 id="diagnostische-meldingen">Diagnostische meldingen<a class="headerlink" href="#diagnostische-meldingen" title="Permanent link">&para;</a></h2>
-<p>Standaard behoort iedere <a href="/VSA-tooling/preview/terminologie/diagnostic" title="Diagnostic: een melding die door Parser of Validator wordt geproduceerd en ten minste een foutcode, Severity / Ernstniveau, bronlocatie en uitleg of context bij een vastgestelde afwijking bevat.">diagnostische melding</a> minimaal de volgende informatie te bevatten:</p>
+<p>Standaard behoort iedere <a class="og-termref" href="/VSA-tooling/preview/terminologie/diagnostic" title="Diagnostic: een melding die door Parser of Validator wordt geproduceerd en ten minste een foutcode, Severity / Ernstniveau, bronlocatie en uitleg of context bij een vastgestelde afwijking bevat.">diagnostische melding</a> minimaal de volgende informatie te bevatten:</p>
 <ul>
-<li><a href="/VSA-tooling/preview/terminologie/severity" title="Severity: een waarde die aan een Diagnostic / Diagnostische Melding is gekoppeld en aangeeft of de vastgestelde afwijking als blokkerende fout of als waarschuwing moet worden behandeld.">severity</a>;</li>
+<li><a class="og-termref" href="/VSA-tooling/preview/terminologie/severity" title="Severity: een waarde die aan een Diagnostic / Diagnostische Melding is gekoppeld en aangeeft of de vastgestelde afwijking als blokkerende fout of als waarschuwing moet worden behandeld.">severity</a>;</li>
 <li>foutcode;</li>
 <li>foutcategorie;</li>
 <li>naam van het bronbestand;</li>
@@ -2998,7 +2998,7 @@
 </ul>
 <hr />
 <h2 id="compacte-uitvoer">Compacte uitvoer<a class="headerlink" href="#compacte-uitvoer" title="Permanent link">&para;</a></h2>
-<p>Implementaties behoren een optie te bieden waarmee <a href="/VSA-tooling/preview/terminologie/diagnostic" title="Diagnostic: een melding die door Parser of Validator wordt geproduceerd en ten minste een foutcode, Severity / Ernstniveau, bronlocatie en uitleg of context bij een vastgestelde afwijking bevat.">diagnostische meldingen</a> in een compacte, machinevriendelijke vorm worden weergegeven.</p>
+<p>Implementaties behoren een optie te bieden waarmee <a class="og-termref" href="/VSA-tooling/preview/terminologie/diagnostic" title="Diagnostic: een melding die door Parser of Validator wordt geproduceerd en ten minste een foutcode, Severity / Ernstniveau, bronlocatie en uitleg of context bij een vastgestelde afwijking bevat.">diagnostische meldingen</a> in een compacte, machinevriendelijke vorm worden weergegeven.</p>
 <p>In deze modus bevat iedere melding uitsluitend:</p>
 <ul>
 <li>foutcode;</li>
@@ -3009,7 +3009,7 @@
 <p>Deze uitvoervorm is bedoeld voor geautomatiseerde omgevingen, zoals CI/CD-pipelines en GitHub Actions, waar compacte, stabiele en eenvoudig verwerkbare diagnostiek de voorkeur heeft boven uitgebreide toelichtingen.</p>
 <hr />
 <h2 id="samenvattingen">Samenvattingen<a class="headerlink" href="#samenvattingen" title="Permanent link">&para;</a></h2>
-<p>Implementaties mogen na afloop van de verwerking een samenvatting van de aangetroffen <a href="/VSA-tooling/preview/terminologie/diagnostic" title="Diagnostic: een melding die door Parser of Validator wordt geproduceerd en ten minste een foutcode, Severity / Ernstniveau, bronlocatie en uitleg of context bij een vastgestelde afwijking bevat.">diagnostische meldingen</a> tonen.</p>
+<p>Implementaties mogen na afloop van de verwerking een samenvatting van de aangetroffen <a class="og-termref" href="/VSA-tooling/preview/terminologie/diagnostic" title="Diagnostic: een melding die door Parser of Validator wordt geproduceerd en ten minste een foutcode, Severity / Ernstniveau, bronlocatie en uitleg of context bij een vastgestelde afwijking bevat.">diagnostische meldingen</a> tonen.</p>
 <p>Een samenvatting kan bijvoorbeeld het aantal <code>error</code>-, <code>warning</code>- en <code>info</code>-meldingen bevatten en is uitsluitend informatief.</p>
 <hr />
 <h2 id="compatibiliteit">Compatibiliteit<a class="headerlink" href="#compatibiliteit" title="Permanent link">&para;</a></h2>

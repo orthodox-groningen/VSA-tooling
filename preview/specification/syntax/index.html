@@ -98,7 +98,7 @@
   
   <strong>Preview</strong>
    — branch <code>docs/termrefs-body</code>
-  , gebouwd 2026-08-09 19:55 CEST.
+  , gebouwd 2026-08-09 20:22 CEST.
   <a href="https://orthodox-groningen.github.io/VSA-tooling/">Live documentatie (main)</a>.
   
 
@@ -2075,7 +2075,7 @@
   <span class="md-ellipsis">
     
   
-    vsa blocks — ::: vsa-notatie en eindigt met :::, beide aan het begin van een regel, met daartussen VSA-notatie; typisch ontdekt en verwerkt door de Vsa-toolset (o.a. vsa blocks, vsa validate, vsa process).">VSA-blokken in Markdown vinden
+    vsa blocks — VSA-blokken in Markdown vinden
   
 
     
@@ -2103,7 +2103,7 @@
   <span class="md-ellipsis">
     
   
-    vsa svg — één .vsa waarvan de inhoud uitsluitend syntactisch geldige Vsa-notatie bevat — d.w.z. door de Vsa-tooling foutloos wordt geparseerd en gevalideerd.">vsa-bestand naar SVG renderen
+    vsa svg — één vsa-bestand naar SVG renderen
   
 
     
@@ -3072,9 +3072,9 @@
 
 <h1 id="syntax">Syntax<a class="headerlink" href="#syntax" title="Permanent link">&para;</a></h1>
 <p>Dit document beschrijft de normatieve VSA-syntax.</p>
-<p>Bronbasis: <code>docs/spec/vsa-spec-v1.0.1.md</code>, aangevuld met latere documenten over <a href="/VSA-tooling/preview/terminologie/control-token" title="Control-token: een Bracket-directive / Bracket-token waarvan de tokenwaarde een ondersteunde control-tokenvorm is, zoals <code>[*]</code>, <code>[/]</code>, <code>[*?]</code> of <code>[/?]</code>, en die niet als Pitch-marker / Hoogte-markering wordt geparseerd.">control tokens</a>, comments en includes waar die syntax uitbreiden.</p>
+<p>Bronbasis: <code>docs/spec/vsa-spec-v1.0.1.md</code>, aangevuld met latere documenten over <a class="og-termref" href="/VSA-tooling/preview/terminologie/control-token" title="Control-token: een Bracket-directive / Bracket-token waarvan de tokenwaarde een ondersteunde control-tokenvorm is, zoals <code>[*]</code>, <code>[/]</code>, <code>[*?]</code> of <code>[/?]</code>, en die niet als Pitch-marker / Hoogte-markering wordt geparseerd.">control tokens</a>, comments en includes waar die syntax uitbreiden.</p>
 <h3 id="hugo-markdown-bloksyntax">Hugo Markdown bloksyntax<a class="headerlink" href="#hugo-markdown-bloksyntax" title="Permanent link">&para;</a></h3>
-<p>VSA-<a href="/bron/terms/zangstuk" title="Zangstuk: Een liturgisch-muzikaal geheel met een stabiele <code>zangstuk-id</code>, waaronder nul of meer Varianten bestaan.">zangstukken</a> worden beschreven in een zo genaamd <code>Hugo Markdown blok</code> (zie <a href="#ebnf-voor-hugo-markdown-bloksyntax">EBNF voor Hugo Markdown bloksyntax</a> voor de formele syntax, en <a href="../semantics/">Semantiek</a>). We geven hier alvast een voorbeeld:</p>
+<p>VSA-<a class="og-termref" href="/bron/terms/zangstuk" title="Zangstuk: Een liturgisch-muzikaal geheel met een stabiele <code>zangstuk-id</code>, waaronder nul of meer Varianten bestaan.">zangstukken</a> worden beschreven in een zo genaamd <code>Hugo Markdown blok</code> (zie <a href="#ebnf-voor-hugo-markdown-bloksyntax">EBNF voor Hugo Markdown bloksyntax</a> voor de formele syntax, en <a href="../semantics/">Semantiek</a>). We geven hier alvast een voorbeeld:</p>
 <div class="highlight"><pre><span></span><code>::: vsa-notatie
 do=&quot;F4&quot;
 mode=&quot;major&quot;
@@ -3085,7 +3085,7 @@ duration-model=&quot;default&quot;
 [:] {/Hei_}{/lig_} is de Heer. [//:]
 :::
 </code></pre></div>
-<p>De <a href="/VSA-tooling/preview/terminologie/metadata" title="Metadata: gegevens die als gestructureerde blokparameters of YAML-frontmatter bij VSA-bronmateriaal staan, verwerking of identificatie sturen en zelf niet tot de zichtbare VSA-notatie behoren.">blokparameters</a> behoren niet tot de zichtbare <a href="/bron/terms/vsa-notatie" title="VSA-notatie: Het tekstgebaseerde notatieformaat waarmee liturgische zangteksten worden vastgelegd: een formeel gespecificeerde taal met scopes, modifiers en bracket-directives, parseeerbaar en valideerbaar door Vsa-tooling.">VSA-notatie</a>, maar leveren context voor validatie, rendering en export. Absolute toonhoogten, modi, tempi e.d. worden als parameters gespecificeerd, en niet in het <a href="/bron/terms/zangstuk" title="Zangstuk: Een liturgisch-muzikaal geheel met een stabiele <code>zangstuk-id</code>, waaronder nul of meer Varianten bestaan.">zangstuk</a> (in het voorbeeld: <code>[:] {/Hei_}{/lig_} is de Heer. [//:]</code>). Dit sluit aan bij de praktijk waarin alleen <a href="/bron/terms/zangstuk" title="Zangstuk: Een liturgisch-muzikaal geheel met een stabiele <code>zangstuk-id</code>, waaronder nul of meer Varianten bestaan.">zangstukken</a> op papier staan, en de eigenlijke toon waarop gezongen wordt, de modi en tempi worden aangegeven door de koorleider.</p>
+<p>De <a class="og-termref" href="/VSA-tooling/preview/terminologie/metadata" title="Metadata: gegevens die als gestructureerde blokparameters of YAML-frontmatter bij VSA-bronmateriaal staan, verwerking of identificatie sturen en zelf niet tot de zichtbare VSA-notatie behoren.">blokparameters</a> behoren niet tot de zichtbare <a class="og-termref" href="/bron/terms/vsa-notatie" title="VSA-notatie: Het tekstgebaseerde notatieformaat waarmee liturgische zangteksten worden vastgelegd: een formeel gespecificeerde taal met scopes, modifiers en bracket-directives, parseeerbaar en valideerbaar door Vsa-tooling.">VSA-notatie</a>, maar leveren context voor validatie, rendering en export. Absolute toonhoogten, modi, tempi e.d. worden als parameters gespecificeerd, en niet in het <a class="og-termref" href="/bron/terms/zangstuk" title="Zangstuk: Een liturgisch-muzikaal geheel met een stabiele <code>zangstuk-id</code>, waaronder nul of meer Varianten bestaan.">zangstuk</a> (in het voorbeeld: <code>[:] {/Hei_}{/lig_} is de Heer. [//:]</code>). Dit sluit aan bij de praktijk waarin alleen <a class="og-termref" href="/bron/terms/zangstuk" title="Zangstuk: Een liturgisch-muzikaal geheel met een stabiele <code>zangstuk-id</code>, waaronder nul of meer Varianten bestaan.">zangstukken</a> op papier staan, en de eigenlijke toon waarop gezongen wordt, de modi en tempi worden aangegeven door de koorleider.</p>
 <p>Een aantal parameters van de bloksyntax hebben normatieve defaultwaarde, wat het mogelijk maakt om blokken waarin deze parameters niet zijn gespecificeerd, toch speelbaar te maken. Het gaat om de volgende parameters:</p>
 <table>
 <thead>
@@ -3123,7 +3123,7 @@ duration-model=&quot;default&quot;
 </tr>
 </tbody>
 </table>
-<p>Andere parameters mogen eveneens voorkomen, bijvoorbeeld <code>title</code>, <code>subtitle</code>, <code>composer</code>, <code>language</code>, <code>meter</code>, <code>tone</code> of renderer-specifieke <a href="/VSA-tooling/preview/terminologie/metadata" title="Metadata: gegevens die als gestructureerde blokparameters of YAML-frontmatter bij VSA-bronmateriaal staan, verwerking of identificatie sturen en zelf niet tot de zichtbare VSA-notatie behoren.">metadata</a>. Zie Appendix 3 voor voorbeelden. De <a href="/VSA-tooling/preview/terminologie/metadata" title="Metadata: gegevens die als gestructureerde blokparameters of YAML-frontmatter bij VSA-bronmateriaal staan, verwerking of identificatie sturen en zelf niet tot de zichtbare VSA-notatie behoren.">blokmetadata</a> heeft voorrang op implementatie-defaults.</p>
+<p>Andere parameters mogen eveneens voorkomen, bijvoorbeeld <code>title</code>, <code>subtitle</code>, <code>composer</code>, <code>language</code>, <code>meter</code>, <code>tone</code> of renderer-specifieke <a class="og-termref" href="/VSA-tooling/preview/terminologie/metadata" title="Metadata: gegevens die als gestructureerde blokparameters of YAML-frontmatter bij VSA-bronmateriaal staan, verwerking of identificatie sturen en zelf niet tot de zichtbare VSA-notatie behoren.">metadata</a>. Zie Appendix 3 voor voorbeelden. De <a class="og-termref" href="/VSA-tooling/preview/terminologie/metadata" title="Metadata: gegevens die als gestructureerde blokparameters of YAML-frontmatter bij VSA-bronmateriaal staan, verwerking of identificatie sturen en zelf niet tot de zichtbare VSA-notatie behoren.">blokmetadata</a> heeft voorrang op implementatie-defaults.</p>
 <h4 id="ebnf-voor-hugo-markdown-bloksyntax">EBNF voor Hugo Markdown bloksyntax<a class="headerlink" href="#ebnf-voor-hugo-markdown-bloksyntax" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="k">vsa-codeblok </span><span class="err">::</span><span class="o">=</span>
     <span class="s2">&quot;::: vsa-notatie&quot;</span>
@@ -3162,7 +3162,7 @@ duration-model=&quot;default&quot;
 </code></pre></div>
 <h3 id="yaml-frontmatter-in-vsa-bestanden">YAML frontmatter in <code>.vsa</code>-bestanden<a class="headerlink" href="#yaml-frontmatter-in-vsa-bestanden" title="Permanent link">&para;</a></h3>
 <p>Zelfstandige <code>.vsa</code>-bestanden (buiten een Hugo Markdown-blok) kunnen dezelfde
-<a href="/VSA-tooling/preview/terminologie/metadata" title="Metadata: gegevens die als gestructureerde blokparameters of YAML-frontmatter bij VSA-bronmateriaal staan, verwerking of identificatie sturen en zelf niet tot de zichtbare VSA-notatie behoren.">metadata</a> bevatten via een optionele YAML-kop aan het begin van het bestand,
+<a class="og-termref" href="/VSA-tooling/preview/terminologie/metadata" title="Metadata: gegevens die als gestructureerde blokparameters of YAML-frontmatter bij VSA-bronmateriaal staan, verwerking of identificatie sturen en zelf niet tot de zichtbare VSA-notatie behoren.">metadata</a> bevatten via een optionele YAML-kop aan het begin van het bestand,
 afgebakend door <code>---</code>. Dit maakt het mogelijk om <code>.vsa</code>-bestanden als
 zelfbeschrijvende eenheden te exporteren zonder de rest van een repository.</p>
 <div class="highlight"><pre><span></span><code><span class="nn">---</span>
@@ -3178,7 +3178,7 @@ zelfbeschrijvende eenheden te exporteren zonder de rest van een repository.</p>
 <span class="p p-Indicator">[:]</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Ter{/&amp;/wijl_&amp;_} {\\de} steen ...</span>
 </code></pre></div>
 <p>De <code>muziek</code>-sectie bevat dezelfde parameters als de <a href="#hugo-markdown-bloksyntax">bloksyntax</a>. De
-<code>identificatie</code>-sectie bevat bibliografische <a href="/VSA-tooling/preview/terminologie/metadata" title="Metadata: gegevens die als gestructureerde blokparameters of YAML-frontmatter bij VSA-bronmateriaal staan, verwerking of identificatie sturen en zelf niet tot de zichtbare VSA-notatie behoren.">metadata</a> die wordt opgenomen in
+<code>identificatie</code>-sectie bevat bibliografische <a class="og-termref" href="/VSA-tooling/preview/terminologie/metadata" title="Metadata: gegevens die als gestructureerde blokparameters of YAML-frontmatter bij VSA-bronmateriaal staan, verwerking of identificatie sturen en zelf niet tot de zichtbare VSA-notatie behoren.">metadata</a> die wordt opgenomen in
 het MusicXML <code>&lt;identification&gt;</code>-blok (zie <a href="../rendering/#musicxml-export">MusicXML-export</a>). De optionele <code>typografie</code>-
 sectie bevat lettertype-instellingen voor export-renderers (zie <a href="../rendering/#typografie">Typografie</a>).</p>
 <p>Toekomstige secties (bijv. <code>liturgie</code>, <code>publicatie</code>) kunnen worden toegevoegd
@@ -3255,7 +3255,7 @@ zonder de bestaande syntaxis te breken.</p>
 <tr>
 <td><code>identificatie</code></td>
 <td><code>title</code></td>
-<td>titel van het <a href="/bron/terms/zangstuk" title="Zangstuk: Een liturgisch-muzikaal geheel met een stabiele <code>zangstuk-id</code>, waaronder nul of meer Varianten bestaan.">zangstuk</a></td>
+<td>titel van het <a class="og-termref" href="/bron/terms/zangstuk" title="Zangstuk: Een liturgisch-muzikaal geheel met een stabiele <code>zangstuk-id</code>, waaronder nul of meer Varianten bestaan.">zangstuk</a></td>
 </tr>
 <tr>
 <td><code>identificatie</code></td>
@@ -3323,39 +3323,39 @@ zonder de bestaande syntaxis te breken.</p>
 defaults hierboven (ook zonder YAML-frontmatter, via blokmetadata-defaults).
 Renderers die een veld niet ondersteunen negeren het. Overschrijven kan in
 frontmatter of Hugo-blokmetadata, bijv. <code>typografie.lyric-size="14"</code>.</p>
-<p>Bestanden zonder <code>---</code>-kop worden behandeld als gewone <a href="/VSA-tooling/preview/terminologie/vsa-tekst" title="VSA-tekst: tekst waarin naast gewone tekst ook constructies in VSA-notatie voorkomen; een VSA-tekst kan door de Vsa-toolset worden geparsed, gevalideerd en omgezet (bijvoorbeeld naar SVG).">VSA-tekst</a> zonder
-<a href="/VSA-tooling/preview/terminologie/metadata" title="Metadata: gegevens die als gestructureerde blokparameters of YAML-frontmatter bij VSA-bronmateriaal staan, verwerking of identificatie sturen en zelf niet tot de zichtbare VSA-notatie behoren.">metadata</a>.</p>
+<p>Bestanden zonder <code>---</code>-kop worden behandeld als gewone <a class="og-termref" href="/VSA-tooling/preview/terminologie/vsa-tekst" title="VSA-tekst: tekst waarin naast gewone tekst ook constructies in VSA-notatie voorkomen; een VSA-tekst kan door de Vsa-toolset worden geparsed, gevalideerd en omgezet (bijvoorbeeld naar SVG).">VSA-tekst</a> zonder
+<a class="og-termref" href="/VSA-tooling/preview/terminologie/metadata" title="Metadata: gegevens die als gestructureerde blokparameters of YAML-frontmatter bij VSA-bronmateriaal staan, verwerking of identificatie sturen en zelf niet tot de zichtbare VSA-notatie behoren.">metadata</a>.</p>
 <h3 id="algemene-regels">Algemene regels<a class="headerlink" href="#algemene-regels" title="Permanent link">&para;</a></h3>
-<p>Een VSA-zangstuk is gewone Unicode-tekst waarin sommige tekstfragmenten worden voorzien van VSA-markering. In een <a href="/bron/terms/zangstuk" title="Zangstuk: Een liturgisch-muzikaal geheel met een stabiele <code>zangstuk-id</code>, waaronder nul of meer Varianten bestaan.">zangstuk</a> kunnen <a href="/VSA-tooling/preview/terminologie/vsa-scope" title="VSA-scope: een tekstfragment dat met <code>{</code> begint, met <code>}</code> eindigt, geen whitespace binnen de accolades bevat en door de Parser kan worden opgesplitst in optionele Hoogte-modifier, verplicht zangelement en optionele Lengte-modifier.">zangelement-scopes</a> voorkomen. Die zijn van de vorm:</p>
+<p>Een VSA-zangstuk is gewone Unicode-tekst waarin sommige tekstfragmenten worden voorzien van VSA-markering. In een <a class="og-termref" href="/bron/terms/zangstuk" title="Zangstuk: Een liturgisch-muzikaal geheel met een stabiele <code>zangstuk-id</code>, waaronder nul of meer Varianten bestaan.">zangstuk</a> kunnen <a class="og-termref" href="/VSA-tooling/preview/terminologie/vsa-scope" title="VSA-scope: een tekstfragment dat met <code>{</code> begint, met <code>}</code> eindigt, geen whitespace binnen de accolades bevat en door de Parser kan worden opgesplitst in optionele Hoogte-modifier, verplicht zangelement en optionele Lengte-modifier.">zangelement-scopes</a> voorkomen. Die zijn van de vorm:</p>
 <div class="highlight"><pre><span></span><code>{&lt;hoogte-modifier&gt;&lt;zangelement&gt;&lt;lengte-modifier&gt;}
 </code></pre></div>
 <p>Daarbij geldt:</p>
 <ul>
-<li>een <a href="/VSA-tooling/preview/terminologie/vsa-scope" title="VSA-scope: een tekstfragment dat met <code>{</code> begint, met <code>}</code> eindigt, geen whitespace binnen de accolades bevat en door de Parser kan worden opgesplitst in optionele Hoogte-modifier, verplicht zangelement en optionele Lengte-modifier.">scope</a> begint met <code>{</code> en eindigt met <code>}</code>;</li>
-<li>binnen een <a href="/VSA-tooling/preview/terminologie/vsa-scope" title="VSA-scope: een tekstfragment dat met <code>{</code> begint, met <code>}</code> eindigt, geen whitespace binnen de accolades bevat en door de Parser kan worden opgesplitst in optionele Hoogte-modifier, verplicht zangelement en optionele Lengte-modifier.">scope</a> mag geen whitespace voorkomen;</li>
-<li>het <a href="/VSA-tooling/preview/terminologie/zangelement" title="Zangelement: het verplichte tekstfragment binnen een VSA-scope waaraan optionele Hoogte-modifiers en Lengte-modifiers hangen; de gezongen lettergreep of tekst die bij de Muzikale Posities hoort.">zangelement</a> (gezongen tekstframgment) is verplicht;</li>
-<li>de <a href="/VSA-tooling/preview/terminologie/hoogte-modifier" title="Hoogte-modifier: een Modifier die voor het zangelement in een VSA-scope staat en bestaat uit een geldige EHM of uit meerdere geldige EHMs gescheiden door <code>&amp;</code>.">hoogte-modifier</a> is optioneel;</li>
-<li>de <a href="/VSA-tooling/preview/terminologie/lengte-modifier" title="Lengte-modifier: een Modifier die na het zangelement in een VSA-scope staat en bestaat uit een geldige ELM of uit meerdere geldige ELMs gescheiden door <code>&amp;</code>.">lengte-modifier</a> is optioneel;</li>
-<li>tekens die als modifierteken worden gebruikt, mogen niet in het <a href="/VSA-tooling/preview/terminologie/zangelement" title="Zangelement: het verplichte tekstfragment binnen een VSA-scope waaraan optionele Hoogte-modifiers en Lengte-modifiers hangen; de gezongen lettergreep of tekst die bij de Muzikale Posities hoort.">zangelement</a> voorkomen;</li>
-<li>leestekens zoals komma’s, dubbele punten en uitroeptekens horen buiten <a href="/VSA-tooling/preview/terminologie/vsa-scope" title="VSA-scope: een tekstfragment dat met <code>{</code> begint, met <code>}</code> eindigt, geen whitespace binnen de accolades bevat en door de Parser kan worden opgesplitst in optionele Hoogte-modifier, verplicht zangelement en optionele Lengte-modifier.">scopes</a> te staan.</li>
+<li>een <a class="og-termref" href="/VSA-tooling/preview/terminologie/vsa-scope" title="VSA-scope: een tekstfragment dat met <code>{</code> begint, met <code>}</code> eindigt, geen whitespace binnen de accolades bevat en door de Parser kan worden opgesplitst in optionele Hoogte-modifier, verplicht zangelement en optionele Lengte-modifier.">scope</a> begint met <code>{</code> en eindigt met <code>}</code>;</li>
+<li>binnen een <a class="og-termref" href="/VSA-tooling/preview/terminologie/vsa-scope" title="VSA-scope: een tekstfragment dat met <code>{</code> begint, met <code>}</code> eindigt, geen whitespace binnen de accolades bevat en door de Parser kan worden opgesplitst in optionele Hoogte-modifier, verplicht zangelement en optionele Lengte-modifier.">scope</a> mag geen whitespace voorkomen;</li>
+<li>het <a class="og-termref" href="/VSA-tooling/preview/terminologie/zangelement" title="Zangelement: het verplichte tekstfragment binnen een VSA-scope waaraan optionele Hoogte-modifiers en Lengte-modifiers hangen; de gezongen lettergreep of tekst die bij de Muzikale Posities hoort.">zangelement</a> (gezongen tekstframgment) is verplicht;</li>
+<li>de <a class="og-termref" href="/VSA-tooling/preview/terminologie/hoogte-modifier" title="Hoogte-modifier: een Modifier die voor het zangelement in een VSA-scope staat en bestaat uit een geldige EHM of uit meerdere geldige EHMs gescheiden door <code>&amp;</code>.">hoogte-modifier</a> is optioneel;</li>
+<li>de <a class="og-termref" href="/VSA-tooling/preview/terminologie/lengte-modifier" title="Lengte-modifier: een Modifier die na het zangelement in een VSA-scope staat en bestaat uit een geldige ELM of uit meerdere geldige ELMs gescheiden door <code>&amp;</code>.">lengte-modifier</a> is optioneel;</li>
+<li>tekens die als modifierteken worden gebruikt, mogen niet in het <a class="og-termref" href="/VSA-tooling/preview/terminologie/zangelement" title="Zangelement: het verplichte tekstfragment binnen een VSA-scope waaraan optionele Hoogte-modifiers en Lengte-modifiers hangen; de gezongen lettergreep of tekst die bij de Muzikale Posities hoort.">zangelement</a> voorkomen;</li>
+<li>leestekens zoals komma’s, dubbele punten en uitroeptekens horen buiten <a class="og-termref" href="/VSA-tooling/preview/terminologie/vsa-scope" title="VSA-scope: een tekstfragment dat met <code>{</code> begint, met <code>}</code> eindigt, geen whitespace binnen de accolades bevat en door de Parser kan worden opgesplitst in optionele Hoogte-modifier, verplicht zangelement en optionele Lengte-modifier.">scopes</a> te staan.</li>
 </ul>
 <p>Voorbeeld:</p>
 <div class="highlight"><pre><span></span><code>{/Hei_}{\&amp;/li}{/ge}
 </code></pre></div>
-<p>Tekst buiten <a href="/VSA-tooling/preview/terminologie/vsa-scope" title="VSA-scope: een tekstfragment dat met <code>{</code> begint, met <code>}</code> eindigt, geen whitespace binnen de accolades bevat en door de Parser kan worden opgesplitst in optionele Hoogte-modifier, verplicht zangelement en optionele Lengte-modifier.">scopes</a> blijft gewone tekst en wordt ongewijzigd weergegeven, behalve dat <code>{</code> en <code>}</code> daar niet als gewone tekens gebruikt mogen worden.</p>
+<p>Tekst buiten <a class="og-termref" href="/VSA-tooling/preview/terminologie/vsa-scope" title="VSA-scope: een tekstfragment dat met <code>{</code> begint, met <code>}</code> eindigt, geen whitespace binnen de accolades bevat en door de Parser kan worden opgesplitst in optionele Hoogte-modifier, verplicht zangelement en optionele Lengte-modifier.">scopes</a> blijft gewone tekst en wordt ongewijzigd weergegeven, behalve dat <code>{</code> en <code>}</code> daar niet als gewone tekens gebruikt mogen worden.</p>
 <p>In ongescopte tekst mag <code>-</code> lettergrepen scheiden (bijv. <code>mel-se</code>). De
 SVG-renderer toont dit als gewone tekst; bij MusicXML-export wordt elk deel een
 eigen reciteernoot (zie <a href="../rendering/#ongescopte-tekst-reciteertoon">Ongescopte tekst (reciteertoon)</a>).</p>
-<h3 id="enkelvoudige-hoogte-modifiers-ehms">Enkelvoudige Hoogte-Modifiers (<a href="/VSA-tooling/preview/terminologie/enkelvoudige-hoogte-modifier" title="Enkelvoudige hoogte-modifier: een Hoogte-modifier die uit precies één geldige EHM bestaat: een basis-hoogtebeweging, eventueel voorafgegaan door een halftoon-prefix.">EHMs</a>)<a class="headerlink" href="#enkelvoudige-hoogte-modifiers-ehms" title="Permanent link">&para;</a></h3>
-<p>Een <a href="/VSA-tooling/preview/terminologie/enkelvoudige-hoogte-modifier" title="Enkelvoudige hoogte-modifier: een Hoogte-modifier die uit precies één geldige EHM bestaat: een basis-hoogtebeweging, eventueel voorafgegaan door een halftoon-prefix.">EHM</a> beschrijft één relatieve toonhoogtebeweging of een lege grafische positie. Een <a href="/VSA-tooling/preview/terminologie/enkelvoudige-hoogte-modifier" title="Enkelvoudige hoogte-modifier: een Hoogte-modifier die uit precies één geldige EHM bestaat: een basis-hoogtebeweging, eventueel voorafgegaan door een halftoon-prefix.">EHM</a> is ofwel een enkelvoudige basisbeweging, ofwel een halftoon-prefix gevolgd door een basisbeweging.</p>
+<h3 id="enkelvoudige-hoogte-modifiers-ehms">Enkelvoudige Hoogte-Modifiers (EHMs)<a class="headerlink" href="#enkelvoudige-hoogte-modifiers-ehms" title="Permanent link">&para;</a></h3>
+<p>Een <a class="og-termref" href="/VSA-tooling/preview/terminologie/enkelvoudige-hoogte-modifier" title="Enkelvoudige hoogte-modifier: een Hoogte-modifier die uit precies één geldige EHM bestaat: een basis-hoogtebeweging, eventueel voorafgegaan door een halftoon-prefix.">EHM</a> beschrijft één relatieve toonhoogtebeweging of een lege grafische positie. Een <a class="og-termref" href="/VSA-tooling/preview/terminologie/enkelvoudige-hoogte-modifier" title="Enkelvoudige hoogte-modifier: een Hoogte-modifier die uit precies één geldige EHM bestaat: een basis-hoogtebeweging, eventueel voorafgegaan door een halftoon-prefix.">EHM</a> is ofwel een enkelvoudige basisbeweging, ofwel een halftoon-prefix gevolgd door een basisbeweging.</p>
 <h4 id="basisbewegingen">Basisbewegingen<a class="headerlink" href="#basisbewegingen" title="Permanent link">&para;</a></h4>
 <table>
 <thead>
 <tr>
-<th><a href="/VSA-tooling/preview/terminologie/enkelvoudige-hoogte-modifier" title="Enkelvoudige hoogte-modifier: een Hoogte-modifier die uit precies één geldige EHM bestaat: een basis-hoogtebeweging, eventueel voorafgegaan door een halftoon-prefix.">EHM</a></th>
+<th><a class="og-termref" href="/VSA-tooling/preview/terminologie/enkelvoudige-hoogte-modifier" title="Enkelvoudige hoogte-modifier: een Hoogte-modifier die uit precies één geldige EHM bestaat: een basis-hoogtebeweging, eventueel voorafgegaan door een halftoon-prefix.">EHM</a></th>
 <th>Voorbeeld</th>
 <th>Betekenis</th>
-<th>Visuele rendering (<a href="/VSA-tooling/preview/terminologie/glyph" title="Glyph: een zichtbaar grafisch teken dat de Renderer tekent voor een VSA-markering (bijvoorbeeld een streep van een Hoogte-modifier of een onderstreping van een Lengte-modifier), los van de zangtekst zelf.">glyph</a>)</th>
+<th>Visuele rendering (<a class="og-termref" href="/VSA-tooling/preview/terminologie/glyph" title="Glyph: een zichtbaar grafisch teken dat de Renderer tekent voor een VSA-markering (bijvoorbeeld een streep van een Hoogte-modifier of een onderstreping van een Lengte-modifier), los van de zangtekst zelf.">glyph</a>)</th>
 </tr>
 </thead>
 <tbody>
@@ -3429,7 +3429,7 @@ eigen reciteernoot (zie <a href="../rendering/#ongescopte-tekst-reciteertoon">On
 <td><code>~</code></td>
 <td><code>{~tekst}</code></td>
 <td>zelfde toonhoogte</td>
-<td>geen zichtbare <a href="/VSA-tooling/preview/terminologie/glyph" title="Glyph: een zichtbaar grafisch teken dat de Renderer tekent voor een VSA-markering (bijvoorbeeld een streep van een Hoogte-modifier of een onderstreping van een Lengte-modifier), los van de zangtekst zelf.">glyph</a></td>
+<td>geen zichtbare <a class="og-termref" href="/VSA-tooling/preview/terminologie/glyph" title="Glyph: een zichtbaar grafisch teken dat de Renderer tekent voor een VSA-markering (bijvoorbeeld een streep van een Hoogte-modifier of een onderstreping van een Lengte-modifier), los van de zangtekst zelf.">glyph</a></td>
 </tr>
 </tbody>
 </table>
@@ -3459,11 +3459,11 @@ eigen reciteernoot (zie <a href="../rendering/#ongescopte-tekst-reciteertoon">On
 </tr>
 </tbody>
 </table>
-<p>Voorbeelden van gecombineerde <a href="/VSA-tooling/preview/terminologie/enkelvoudige-hoogte-modifier" title="Enkelvoudige hoogte-modifier: een Hoogte-modifier die uit precies één geldige EHM bestaat: een basis-hoogtebeweging, eventueel voorafgegaan door een halftoon-prefix.">EHMs</a>:</p>
+<p>Voorbeelden van gecombineerde <a class="og-termref" href="/VSA-tooling/preview/terminologie/enkelvoudige-hoogte-modifier" title="Enkelvoudige hoogte-modifier: een Hoogte-modifier die uit precies één geldige EHM bestaat: een basis-hoogtebeweging, eventueel voorafgegaan door een halftoon-prefix.">EHMs</a>:</p>
 <table>
 <thead>
 <tr>
-<th><a href="/VSA-tooling/preview/terminologie/enkelvoudige-hoogte-modifier" title="Enkelvoudige hoogte-modifier: een Hoogte-modifier die uit precies één geldige EHM bestaat: een basis-hoogtebeweging, eventueel voorafgegaan door een halftoon-prefix.">EHM</a></th>
+<th><a class="og-termref" href="/VSA-tooling/preview/terminologie/enkelvoudige-hoogte-modifier" title="Enkelvoudige hoogte-modifier: een Hoogte-modifier die uit precies één geldige EHM bestaat: een basis-hoogtebeweging, eventueel voorafgegaan door een halftoon-prefix.">EHM</a></th>
 <th>Basisbeweging</th>
 <th>Prefix</th>
 <th>Netto beweging</th>
@@ -3529,16 +3529,16 @@ eigen reciteernoot (zie <a href="../rendering/#ongescopte-tekst-reciteertoon">On
 </tr>
 </tbody>
 </table>
-<p>Alle combinaties van een halftoon-prefix met een basisbeweging zijn syntactisch geldig. De semantische geldigheid hangt af van de <a href="/VSA-tooling/preview/terminologie/do-context" title="Do-context: de grondtooncontext waarbinnen relatieve toonhoogtebewegingen in VSA-notatie worden geïnterpreteerd; voor MusicXML-export of afspelen vastgelegd via blok-Metadata (<code>do</code>, <code>mode</code>), niet via de zangtekst zelf.">do-context</a> en modus (zie <a href="../semantics/#geldigheid-van-halftoon-prefix-combinaties">Geldigheid van halftoon-prefix combinaties</a>).</p>
-<h3 id="enkelvoudige-lengte-modifiers-elms">Enkelvoudige Lengte-Modifiers (<a href="/VSA-tooling/preview/terminologie/enkelvoudige-lengte-modifier" title="Enkelvoudige lengte-modifier: een Lengte-modifier die uit precies één geldige ELM bestaat en daarmee precies een duurpositie representeert.">ELMs</a>)<a class="headerlink" href="#enkelvoudige-lengte-modifiers-elms" title="Permanent link">&para;</a></h3>
-<p>Een <a href="/VSA-tooling/preview/terminologie/enkelvoudige-lengte-modifier" title="Enkelvoudige lengte-modifier: een Lengte-modifier die uit precies één geldige ELM bestaat en daarmee precies een duurpositie representeert.">ELM</a> beschrijft de duur van één <a href="/VSA-tooling/preview/terminologie/muzikale-positie" title="Muzikale positie: de kleinste muzikale eenheid binnen VSA-notatie: één relatieve toonhoogtebeweging (één EHM), één duur (één ELM) en een koppeling aan één zangelement in een VSA-scope.">muzikale positie</a> ten opzichte van de standaardduur.</p>
+<p>Alle combinaties van een halftoon-prefix met een basisbeweging zijn syntactisch geldig. De semantische geldigheid hangt af van de <a class="og-termref" href="/VSA-tooling/preview/terminologie/do-context" title="Do-context: de grondtooncontext waarbinnen relatieve toonhoogtebewegingen in VSA-notatie worden geïnterpreteerd; voor MusicXML-export of afspelen vastgelegd via blok-Metadata (<code>do</code>, <code>mode</code>), niet via de zangtekst zelf.">do-context</a> en modus (zie <a href="../semantics/#geldigheid-van-halftoon-prefix-combinaties">Geldigheid van halftoon-prefix combinaties</a>).</p>
+<h3 id="enkelvoudige-lengte-modifiers-elms">Enkelvoudige Lengte-Modifiers (ELMs)<a class="headerlink" href="#enkelvoudige-lengte-modifiers-elms" title="Permanent link">&para;</a></h3>
+<p>Een <a class="og-termref" href="/VSA-tooling/preview/terminologie/enkelvoudige-lengte-modifier" title="Enkelvoudige lengte-modifier: een Lengte-modifier die uit precies één geldige ELM bestaat en daarmee precies een duurpositie representeert.">ELM</a> beschrijft de duur van één <a class="og-termref" href="/VSA-tooling/preview/terminologie/muzikale-positie" title="Muzikale positie: de kleinste muzikale eenheid binnen VSA-notatie: één relatieve toonhoogtebeweging (één EHM), één duur (één ELM) en een koppeling aan één zangelement in een VSA-scope.">muzikale positie</a> ten opzichte van de standaardduur.</p>
 <table>
 <thead>
 <tr>
-<th><a href="/VSA-tooling/preview/terminologie/enkelvoudige-lengte-modifier" title="Enkelvoudige lengte-modifier: een Lengte-modifier die uit precies één geldige ELM bestaat en daarmee precies een duurpositie representeert.">ELM</a></th>
+<th><a class="og-termref" href="/VSA-tooling/preview/terminologie/enkelvoudige-lengte-modifier" title="Enkelvoudige lengte-modifier: een Lengte-modifier die uit precies één geldige ELM bestaat en daarmee precies een duurpositie representeert.">ELM</a></th>
 <th>Voorbeeld</th>
 <th>Duur</th>
-<th>Visuele <a href="/VSA-tooling/preview/terminologie/glyph" title="Glyph: een zichtbaar grafisch teken dat de Renderer tekent voor een VSA-markering (bijvoorbeeld een streep van een Hoogte-modifier of een onderstreping van een Lengte-modifier), los van de zangtekst zelf.">glyph</a></th>
+<th>Visuele <a class="og-termref" href="/VSA-tooling/preview/terminologie/glyph" title="Glyph: een zichtbaar grafisch teken dat de Renderer tekent voor een VSA-markering (bijvoorbeeld een streep van een Hoogte-modifier of een onderstreping van een Lengte-modifier), los van de zangtekst zelf.">glyph</a></th>
 </tr>
 </thead>
 <tbody>
@@ -3546,7 +3546,7 @@ eigen reciteernoot (zie <a href="../rendering/#ongescopte-tekst-reciteertoon">On
 <td><code>_</code></td>
 <td><code>{tekst_}</code></td>
 <td>2 × standaardduur</td>
-<td>één horizontale lijn onder het <a href="/VSA-tooling/preview/terminologie/zangelement" title="Zangelement: het verplichte tekstfragment binnen een VSA-scope waaraan optionele Hoogte-modifiers en Lengte-modifiers hangen; de gezongen lettergreep of tekst die bij de Muzikale Posities hoort.">zangelement</a></td>
+<td>één horizontale lijn onder het <a class="og-termref" href="/VSA-tooling/preview/terminologie/zangelement" title="Zangelement: het verplichte tekstfragment binnen een VSA-scope waaraan optionele Hoogte-modifiers en Lengte-modifiers hangen; de gezongen lettergreep of tekst die bij de Muzikale Posities hoort.">zangelement</a></td>
 </tr>
 <tr>
 <td><code>_.</code></td>
@@ -3564,7 +3564,7 @@ eigen reciteernoot (zie <a href="../rendering/#ongescopte-tekst-reciteertoon">On
 <td><code>.</code></td>
 <td><code>{tekst.}</code></td>
 <td>1/2 × standaardduur</td>
-<td>één punt onder het <a href="/VSA-tooling/preview/terminologie/zangelement" title="Zangelement: het verplichte tekstfragment binnen een VSA-scope waaraan optionele Hoogte-modifiers en Lengte-modifiers hangen; de gezongen lettergreep of tekst die bij de Muzikale Posities hoort.">zangelement</a></td>
+<td>één punt onder het <a class="og-termref" href="/VSA-tooling/preview/terminologie/zangelement" title="Zangelement: het verplichte tekstfragment binnen een VSA-scope waaraan optionele Hoogte-modifiers en Lengte-modifiers hangen; de gezongen lettergreep of tekst die bij de Muzikale Posities hoort.">zangelement</a></td>
 </tr>
 <tr>
 <td><code>..</code></td>
@@ -3582,41 +3582,41 @@ eigen reciteernoot (zie <a href="../rendering/#ongescopte-tekst-reciteertoon">On
 <td><code>~</code></td>
 <td><code>{tekst~}</code></td>
 <td>standaardduur</td>
-<td>geen zichtbare <a href="/VSA-tooling/preview/terminologie/glyph" title="Glyph: een zichtbaar grafisch teken dat de Renderer tekent voor een VSA-markering (bijvoorbeeld een streep van een Hoogte-modifier of een onderstreping van een Lengte-modifier), los van de zangtekst zelf.">glyph</a></td>
+<td>geen zichtbare <a class="og-termref" href="/VSA-tooling/preview/terminologie/glyph" title="Glyph: een zichtbaar grafisch teken dat de Renderer tekent voor een VSA-markering (bijvoorbeeld een streep van een Hoogte-modifier of een onderstreping van een Lengte-modifier), los van de zangtekst zelf.">glyph</a></td>
 </tr>
 </tbody>
 </table>
-<h3 id="samengestelde-modifiers">Samengestelde <a href="/VSA-tooling/preview/terminologie/modifier" title="Modifier: een tekenreeks die binnen een VSA-scope als Hoogte-modifier voor het zangelement of als Lengte-modifier na het zangelement wordt geparseerd.">modifiers</a><a class="headerlink" href="#samengestelde-modifiers" title="Permanent link">&para;</a></h3>
-<p>Een samengestelde <a href="/VSA-tooling/preview/terminologie/modifier" title="Modifier: een tekenreeks die binnen een VSA-scope als Hoogte-modifier voor het zangelement of als Lengte-modifier na het zangelement wordt geparseerd.">modifier</a> bestaat uit twee of meer <a href="/VSA-tooling/preview/terminologie/enkelvoudige-hoogte-modifier" title="Enkelvoudige hoogte-modifier: een Hoogte-modifier die uit precies één geldige EHM bestaat: een basis-hoogtebeweging, eventueel voorafgegaan door een halftoon-prefix.">EHMs</a> of twee of meer <a href="/VSA-tooling/preview/terminologie/enkelvoudige-lengte-modifier" title="Enkelvoudige lengte-modifier: een Lengte-modifier die uit precies één geldige ELM bestaat en daarmee precies een duurpositie representeert.">ELMs</a>, gescheiden door <code>&amp;</code>.</p>
+<h3 id="samengestelde-modifiers">Samengestelde modifiers<a class="headerlink" href="#samengestelde-modifiers" title="Permanent link">&para;</a></h3>
+<p>Een samengestelde <a class="og-termref" href="/VSA-tooling/preview/terminologie/modifier" title="Modifier: een tekenreeks die binnen een VSA-scope als Hoogte-modifier voor het zangelement of als Lengte-modifier na het zangelement wordt geparseerd.">modifier</a> bestaat uit twee of meer <a class="og-termref" href="/VSA-tooling/preview/terminologie/enkelvoudige-hoogte-modifier" title="Enkelvoudige hoogte-modifier: een Hoogte-modifier die uit precies één geldige EHM bestaat: een basis-hoogtebeweging, eventueel voorafgegaan door een halftoon-prefix.">EHMs</a> of twee of meer <a class="og-termref" href="/VSA-tooling/preview/terminologie/enkelvoudige-lengte-modifier" title="Enkelvoudige lengte-modifier: een Lengte-modifier die uit precies één geldige ELM bestaat en daarmee precies een duurpositie representeert.">ELMs</a>, gescheiden door <code>&amp;</code>.</p>
 <p>Voorbeelden:</p>
 <div class="highlight"><pre><span></span><code>{/&amp;\tekst}
 {tekst_&amp;_}
 {/&amp;\&amp;/tekst_&amp;~&amp;~}
 </code></pre></div>
-<p>Elke enkelvoudige <a href="/VSA-tooling/preview/terminologie/modifier" title="Modifier: een tekenreeks die binnen een VSA-scope als Hoogte-modifier voor het zangelement of als Lengte-modifier na het zangelement wordt geparseerd.">modifier</a> binnen een samengestelde <a href="/VSA-tooling/preview/terminologie/modifier" title="Modifier: een tekenreeks die binnen een VSA-scope als Hoogte-modifier voor het zangelement of als Lengte-modifier na het zangelement wordt geparseerd.">modifier</a> representeert precies één <a href="/VSA-tooling/preview/terminologie/muzikale-positie" title="Muzikale positie: de kleinste muzikale eenheid binnen VSA-notatie: één relatieve toonhoogtebeweging (één EHM), één duur (één ELM) en een koppeling aan één zangelement in een VSA-scope.">muzikale positie</a>.</p>
+<p>Elke enkelvoudige <a class="og-termref" href="/VSA-tooling/preview/terminologie/modifier" title="Modifier: een tekenreeks die binnen een VSA-scope als Hoogte-modifier voor het zangelement of als Lengte-modifier na het zangelement wordt geparseerd.">modifier</a> binnen een samengestelde <a class="og-termref" href="/VSA-tooling/preview/terminologie/modifier" title="Modifier: een tekenreeks die binnen een VSA-scope als Hoogte-modifier voor het zangelement of als Lengte-modifier na het zangelement wordt geparseerd.">modifier</a> representeert precies één <a class="og-termref" href="/VSA-tooling/preview/terminologie/muzikale-positie" title="Muzikale positie: de kleinste muzikale eenheid binnen VSA-notatie: één relatieve toonhoogtebeweging (één EHM), één duur (één ELM) en een koppeling aan één zangelement in een VSA-scope.">muzikale positie</a>.</p>
 <h3 id="toonhoogte-markering">Toonhoogte-markering<a class="headerlink" href="#toonhoogte-markering" title="Permanent link">&para;</a></h3>
-<p>Een <a href="/VSA-tooling/preview/terminologie/pitch-marker" title="Pitch-marker: een Bracket-directive / Bracket-token met de vorm <code>[&lt;EHM&gt;:]</code>, waarbij <code>&lt;EHM&gt;</code> leeg is of een geldige EHM bevat.">toonhoogte-markering</a> heeft de vorm:</p>
+<p>Een <a class="og-termref" href="/VSA-tooling/preview/terminologie/pitch-marker" title="Pitch-marker: een Bracket-directive / Bracket-token met de vorm <code>[&lt;EHM&gt;:]</code>, waarbij <code>&lt;EHM&gt;</code> leeg is of een geldige EHM bevat.">toonhoogte-markering</a> heeft de vorm:</p>
 <p><div class="highlight"><pre><span></span><code>[&lt;EHM&gt;:]
 </code></pre></div>
 Voorbeelden:</p>
 <div class="highlight"><pre><span></span><code>[:]
 [//:]
 </code></pre></div>
-<p>Elke <a href="/VSA-tooling/preview/terminologie/pitch-marker" title="Pitch-marker: een Bracket-directive / Bracket-token met de vorm <code>[&lt;EHM&gt;:]</code>, waarbij <code>&lt;EHM&gt;</code> leeg is of een geldige EHM bevat.">toonhoogte-markering</a> geeft een toonhoogte aan ten opzichte van de basistoon
-van de <a href="/VSA-tooling/preview/terminologie/do-context" title="Do-context: de grondtooncontext waarbinnen relatieve toonhoogtebewegingen in VSA-notatie worden geïnterpreteerd; voor MusicXML-export of afspelen vastgelegd via blok-Metadata (<code>do</code>, <code>mode</code>), niet via de zangtekst zelf.">do-context</a>.</p>
-<p>Voor de eerste <a href="/VSA-tooling/preview/terminologie/pitch-marker" title="Pitch-marker: een Bracket-directive / Bracket-token met de vorm <code>[&lt;EHM&gt;:]</code>, waarbij <code>&lt;EHM&gt;</code> leeg is of een geldige EHM bevat.">toonhoogte-markering</a> wordt de <a href="/VSA-tooling/preview/terminologie/do-context" title="Do-context: de grondtooncontext waarbinnen relatieve toonhoogtebewegingen in VSA-notatie worden geïnterpreteerd; voor MusicXML-export of afspelen vastgelegd via blok-Metadata (<code>do</code>, <code>mode</code>), niet via de zangtekst zelf.">do-context</a> extern gespecificeerd: 
+<p>Elke <a class="og-termref" href="/VSA-tooling/preview/terminologie/pitch-marker" title="Pitch-marker: een Bracket-directive / Bracket-token met de vorm <code>[&lt;EHM&gt;:]</code>, waarbij <code>&lt;EHM&gt;</code> leeg is of een geldige EHM bevat.">toonhoogte-markering</a> geeft een toonhoogte aan ten opzichte van de basistoon
+van de <a class="og-termref" href="/VSA-tooling/preview/terminologie/do-context" title="Do-context: de grondtooncontext waarbinnen relatieve toonhoogtebewegingen in VSA-notatie worden geïnterpreteerd; voor MusicXML-export of afspelen vastgelegd via blok-Metadata (<code>do</code>, <code>mode</code>), niet via de zangtekst zelf.">do-context</a>.</p>
+<p>Voor de eerste <a class="og-termref" href="/VSA-tooling/preview/terminologie/pitch-marker" title="Pitch-marker: een Bracket-directive / Bracket-token met de vorm <code>[&lt;EHM&gt;:]</code>, waarbij <code>&lt;EHM&gt;</code> leeg is of een geldige EHM bevat.">toonhoogte-markering</a> wordt de <a class="og-termref" href="/VSA-tooling/preview/terminologie/do-context" title="Do-context: de grondtooncontext waarbinnen relatieve toonhoogtebewegingen in VSA-notatie worden geïnterpreteerd; voor MusicXML-export of afspelen vastgelegd via blok-Metadata (<code>do</code>, <code>mode</code>), niet via de zangtekst zelf.">do-context</a> extern gespecificeerd: 
 - in de praktijk van het zingen door de koorlei(st)er.
 - binnen de context van conversies, bijvoorbeeld naar MusicXML, wordt dat gespecificeerd 
-door de feitelijke conversie - dat is buiten de scope van de pure <a href="/VSA-tooling/preview/terminologie/vsa" title="Vereenvoudigde Slavische Accentnotatie: wordt gebruikt om te verwijzen naar een Formele Notatie voor het vastleggen van Zangstukken en ook naar de Toolset waarmee zulke vastleggingen kunnen worden gevalideerd en naar publiceerbare vormen worden omgezet.">VSA</a>.</p>
-<p>Elke volgende <a href="/VSA-tooling/preview/terminologie/pitch-marker" title="Pitch-marker: een Bracket-directive / Bracket-token met de vorm <code>[&lt;EHM&gt;:]</code>, waarbij <code>&lt;EHM&gt;</code> leeg is of een geldige EHM bevat.">toonhoogte-markering</a> geeft aan dat de zang op die positie op die hoogte moet zitten.
+door de feitelijke conversie - dat is buiten de scope van de pure <a class="og-termref" href="/VSA-tooling/preview/terminologie/vsa" title="Vereenvoudigde Slavische Accentnotatie: wordt gebruikt om te verwijzen naar een Formele Notatie voor het vastleggen van Zangstukken en ook naar de Toolset waarmee zulke vastleggingen kunnen worden gevalideerd en naar publiceerbare vormen worden omgezet.">VSA</a>.</p>
+<p>Elke volgende <a class="og-termref" href="/VSA-tooling/preview/terminologie/pitch-marker" title="Pitch-marker: een Bracket-directive / Bracket-token met de vorm <code>[&lt;EHM&gt;:]</code>, waarbij <code>&lt;EHM&gt;</code> leeg is of een geldige EHM bevat.">toonhoogte-markering</a> geeft aan dat de zang op die positie op die hoogte moet zitten.
 Dat betekent
 - in de praktijk dat zangers een check hebben of ze daar op de goede hoogte zitten;
 - in de context van conversies, bijvoorbeeld naar MusicXML, dat het mogelijk is om een controle uit te voeren op de toonhoogte van het converteerde materiaal.</p>
-<p>Het is een gangbare praktijk om zowel voor als na een <a href="/bron/terms/zangstuk" title="Zangstuk: Een liturgisch-muzikaal geheel met een stabiele <code>zangstuk-id</code>, waaronder nul of meer Varianten bestaan.">zangstuk</a> een <a href="/VSA-tooling/preview/terminologie/pitch-marker" title="Pitch-marker: een Bracket-directive / Bracket-token met de vorm <code>[&lt;EHM&gt;:]</code>, waarbij <code>&lt;EHM&gt;</code> leeg is of een geldige EHM bevat.">toonhoogte-markering</a> te schrijven.
-Indien twee <a href="/bron/terms/zangstuk" title="Zangstuk: Een liturgisch-muzikaal geheel met een stabiele <code>zangstuk-id</code>, waaronder nul of meer Varianten bestaan.">zangstukken</a> elkaar opvolgen, kan dat dus ook (vanuit <a href="/VSA-tooling/preview/terminologie/vsa" title="Vereenvoudigde Slavische Accentnotatie: wordt gebruikt om te verwijzen naar een Formele Notatie voor het vastleggen van Zangstukken en ook naar de Toolset waarmee zulke vastleggingen kunnen worden gevalideerd en naar publiceerbare vormen worden omgezet.">VSA</a> perspectief) gezien worden
-als een enkel <a href="/bron/terms/zangstuk" title="Zangstuk: Een liturgisch-muzikaal geheel met een stabiele <code>zangstuk-id</code>, waaronder nul of meer Varianten bestaan.">zangstuk</a> met tussenliggende <a href="/VSA-tooling/preview/terminologie/pitch-marker" title="Pitch-marker: een Bracket-directive / Bracket-token met de vorm <code>[&lt;EHM&gt;:]</code>, waarbij <code>&lt;EHM&gt;</code> leeg is of een geldige EHM bevat.">toonhoogte-markeringen</a>.</p>
-<p>De tekst <code>:]</code> is de syntactische afsluiter van een <a href="/VSA-tooling/preview/terminologie/pitch-marker" title="Pitch-marker: een Bracket-directive / Bracket-token met de vorm <code>[&lt;EHM&gt;:]</code>, waarbij <code>&lt;EHM&gt;</code> leeg is of een geldige EHM bevat.">toonhoogte-markering</a>. Hij wordt visueel gerenderd als een horizontale lijn rond het verticale midden van de tekstregel, met daarboven de rendering van de <a href="/VSA-tooling/preview/terminologie/enkelvoudige-hoogte-modifier" title="Enkelvoudige hoogte-modifier: een Hoogte-modifier die uit precies één geldige EHM bestaat: een basis-hoogtebeweging, eventueel voorafgegaan door een halftoon-prefix.">EHM</a>.</p>
-<h3 id="absolute-toonhoogte-binnen-hugo-blokmetadata">Absolute toonhoogte binnen Hugo <a href="/VSA-tooling/preview/terminologie/metadata" title="Metadata: gegevens die als gestructureerde blokparameters of YAML-frontmatter bij VSA-bronmateriaal staan, verwerking of identificatie sturen en zelf niet tot de zichtbare VSA-notatie behoren.">blokmetadata</a><a class="headerlink" href="#absolute-toonhoogte-binnen-hugo-blokmetadata" title="Permanent link">&para;</a></h3>
+<p>Het is een gangbare praktijk om zowel voor als na een <a class="og-termref" href="/bron/terms/zangstuk" title="Zangstuk: Een liturgisch-muzikaal geheel met een stabiele <code>zangstuk-id</code>, waaronder nul of meer Varianten bestaan.">zangstuk</a> een <a class="og-termref" href="/VSA-tooling/preview/terminologie/pitch-marker" title="Pitch-marker: een Bracket-directive / Bracket-token met de vorm <code>[&lt;EHM&gt;:]</code>, waarbij <code>&lt;EHM&gt;</code> leeg is of een geldige EHM bevat.">toonhoogte-markering</a> te schrijven.
+Indien twee <a class="og-termref" href="/bron/terms/zangstuk" title="Zangstuk: Een liturgisch-muzikaal geheel met een stabiele <code>zangstuk-id</code>, waaronder nul of meer Varianten bestaan.">zangstukken</a> elkaar opvolgen, kan dat dus ook (vanuit <a class="og-termref" href="/VSA-tooling/preview/terminologie/vsa" title="Vereenvoudigde Slavische Accentnotatie: wordt gebruikt om te verwijzen naar een Formele Notatie voor het vastleggen van Zangstukken en ook naar de Toolset waarmee zulke vastleggingen kunnen worden gevalideerd en naar publiceerbare vormen worden omgezet.">VSA</a> perspectief) gezien worden
+als een enkel <a class="og-termref" href="/bron/terms/zangstuk" title="Zangstuk: Een liturgisch-muzikaal geheel met een stabiele <code>zangstuk-id</code>, waaronder nul of meer Varianten bestaan.">zangstuk</a> met tussenliggende <a class="og-termref" href="/VSA-tooling/preview/terminologie/pitch-marker" title="Pitch-marker: een Bracket-directive / Bracket-token met de vorm <code>[&lt;EHM&gt;:]</code>, waarbij <code>&lt;EHM&gt;</code> leeg is of een geldige EHM bevat.">toonhoogte-markeringen</a>.</p>
+<p>De tekst <code>:]</code> is de syntactische afsluiter van een <a class="og-termref" href="/VSA-tooling/preview/terminologie/pitch-marker" title="Pitch-marker: een Bracket-directive / Bracket-token met de vorm <code>[&lt;EHM&gt;:]</code>, waarbij <code>&lt;EHM&gt;</code> leeg is of een geldige EHM bevat.">toonhoogte-markering</a>. Hij wordt visueel gerenderd als een horizontale lijn rond het verticale midden van de tekstregel, met daarboven de rendering van de <a class="og-termref" href="/VSA-tooling/preview/terminologie/enkelvoudige-hoogte-modifier" title="Enkelvoudige hoogte-modifier: een Hoogte-modifier die uit precies één geldige EHM bestaat: een basis-hoogtebeweging, eventueel voorafgegaan door een halftoon-prefix.">EHM</a>.</p>
+<h3 id="absolute-toonhoogte-binnen-hugo-blokmetadata">Absolute toonhoogte binnen Hugo blokmetadata<a class="headerlink" href="#absolute-toonhoogte-binnen-hugo-blokmetadata" title="Permanent link">&para;</a></h3>
 <p>Een absolute toonhoogte bestaat uit:</p>
 <div class="highlight"><pre><span></span><code>&lt;toonnaam&gt;&lt;optionele alteratie&gt;&lt;octaaf&gt;
 </code></pre></div>
@@ -3636,7 +3636,7 @@ Bb2
 <div class="highlight"><pre><span></span><code>0 1 2 3 4 5 6 7 8
 </code></pre></div>
 <h3 id="ebnf">EBNF<a class="headerlink" href="#ebnf" title="Permanent link">&para;</a></h3>
-<p>De <a href="/VSA-tooling/preview/terminologie/vsa" title="Vereenvoudigde Slavische Accentnotatie: wordt gebruikt om te verwijzen naar een Formele Notatie voor het vastleggen van Zangstukken en ook naar de Toolset waarmee zulke vastleggingen kunnen worden gevalideerd en naar publiceerbare vormen worden omgezet.">VSA</a> grammatica wordt beschreven in ISO-14977 EBNF, aangevuld met informele karakterklassen tussen <code>? ... ?</code>.</p>
+<p>De <a class="og-termref" href="/VSA-tooling/preview/terminologie/vsa" title="Vereenvoudigde Slavische Accentnotatie: wordt gebruikt om te verwijzen naar een Formele Notatie voor het vastleggen van Zangstukken en ook naar de Toolset waarmee zulke vastleggingen kunnen worden gevalideerd en naar publiceerbare vormen worden omgezet.">VSA</a> grammatica wordt beschreven in ISO-14977 EBNF, aangevuld met informele karakterklassen tussen <code>? ... ?</code>.</p>
 <p>Betekenis van gebruikte EBNF-notatie:</p>
 <table>
 <thead>
@@ -3730,7 +3730,7 @@ Bb2
 <span class="ni">      &quot;{&quot;, &quot;}&quot;,</span>
 <span class="ni">      &quot;&amp;&quot;, &quot;~&quot;, &quot;+&quot;, &quot;-&quot;, &quot;\\&quot;, &quot;/&quot;, &quot;_&quot;, &quot;.&quot; ?</span> <span class="p">;</span>
 </code></pre></div>
-<p>Deze grammatica valideert uitsluitend de VSA-inhoud binnen het codeblok. De <a href="/VSA-tooling/preview/terminologie/metadata" title="Metadata: gegevens die als gestructureerde blokparameters of YAML-frontmatter bij VSA-bronmateriaal staan, verwerking of identificatie sturen en zelf niet tot de zichtbare VSA-notatie behoren.">blokmetadata</a> wordt apart geparseerd volgens de <a href="#ebnf-voor-hugo-markdown-bloksyntax">EBNF voor Hugo Markdown bloksyntax</a>. Semantische regels worden na het parsen gecontroleerd.</p>
+<p>Deze grammatica valideert uitsluitend de VSA-inhoud binnen het codeblok. De <a class="og-termref" href="/VSA-tooling/preview/terminologie/metadata" title="Metadata: gegevens die als gestructureerde blokparameters of YAML-frontmatter bij VSA-bronmateriaal staan, verwerking of identificatie sturen en zelf niet tot de zichtbare VSA-notatie behoren.">blokmetadata</a> wordt apart geparseerd volgens de <a href="#ebnf-voor-hugo-markdown-bloksyntax">EBNF voor Hugo Markdown bloksyntax</a>. Semantische regels worden na het parsen gecontroleerd.</p>
 <hr />
 
 

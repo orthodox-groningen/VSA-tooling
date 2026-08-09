@@ -98,7 +98,7 @@
   
   <strong>Preview</strong>
    — branch <code>docs/termrefs-body</code>
-  , gebouwd 2026-08-09 19:55 CEST.
+  , gebouwd 2026-08-09 20:22 CEST.
   <a href="https://orthodox-groningen.github.io/VSA-tooling/">Live documentatie (main)</a>.
   
 
@@ -1890,7 +1890,7 @@
   <span class="md-ellipsis">
     
   
-    vsa blocks — ::: vsa-notatie en eindigt met :::, beide aan het begin van een regel, met daartussen VSA-notatie; typisch ontdekt en verwerkt door de Vsa-toolset (o.a. vsa blocks, vsa validate, vsa process).">VSA-blokken in Markdown vinden
+    vsa blocks — VSA-blokken in Markdown vinden
   
 
     
@@ -1918,7 +1918,7 @@
   <span class="md-ellipsis">
     
   
-    vsa svg — één .vsa waarvan de inhoud uitsluitend syntactisch geldige Vsa-notatie bevat — d.w.z. door de Vsa-tooling foutloos wordt geparseerd en gevalideerd.">vsa-bestand naar SVG renderen
+    vsa svg — één vsa-bestand naar SVG renderen
   
 
     
@@ -2152,10 +2152,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#en-voorkomt-en-door-bracket-dispatch-wordt-geclassificeerd-voordat-de-inhoudelijke-parsing-verdergaatbracket-tokens" class="md-nav__link">
+  <a href="#bracket-tokens" class="md-nav__link">
     <span class="md-ellipsis">
       
-        [ en ] voorkomt en door bracket-dispatch wordt geclassificeerd voordat de inhoudelijke parsing verdergaat.">Bracket tokens
+        Bracket tokens
       
     </span>
   </a>
@@ -2163,10 +2163,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#ehm-waarbij-ehm-leeg-is-of-een-geldige-ehm-bevattoonhoogte-markering" class="md-nav__link">
+  <a href="#toonhoogte-markering" class="md-nav__link">
     <span class="md-ellipsis">
       
-        [&lt;EHM&gt;:], waarbij &lt;EHM&gt; leeg is of een geldige EHM bevat.">Toonhoogte-markering
+        Toonhoogte-markering
       
     </span>
   </a>
@@ -2874,10 +2874,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#en-voorkomt-en-door-bracket-dispatch-wordt-geclassificeerd-voordat-de-inhoudelijke-parsing-verdergaatbracket-tokens" class="md-nav__link">
+  <a href="#bracket-tokens" class="md-nav__link">
     <span class="md-ellipsis">
       
-        [ en ] voorkomt en door bracket-dispatch wordt geclassificeerd voordat de inhoudelijke parsing verdergaat.">Bracket tokens
+        Bracket tokens
       
     </span>
   </a>
@@ -2885,10 +2885,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#ehm-waarbij-ehm-leeg-is-of-een-geldige-ehm-bevattoonhoogte-markering" class="md-nav__link">
+  <a href="#toonhoogte-markering" class="md-nav__link">
     <span class="md-ellipsis">
       
-        [&lt;EHM&gt;:], waarbij &lt;EHM&gt; leeg is of een geldige EHM bevat.">Toonhoogte-markering
+        Toonhoogte-markering
       
     </span>
   </a>
@@ -2943,7 +2943,7 @@
 
 
 <h1 id="grammatica-referentie">Grammatica-referentie<a class="headerlink" href="#grammatica-referentie" title="Permanent link">&para;</a></h1>
-<p>Deze pagina bevat compacte EBNF-fragmenten voor <a href="/VSA-tooling/preview/terminologie/vsa" title="Vereenvoudigde Slavische Accentnotatie: wordt gebruikt om te verwijzen naar een Formele Notatie voor het vastleggen van Zangstukken en ook naar de Toolset waarmee zulke vastleggingen kunnen worden gevalideerd en naar publiceerbare vormen worden omgezet.">VSA</a>.</p>
+<p>Deze pagina bevat compacte EBNF-fragmenten voor <a class="og-termref" href="/VSA-tooling/preview/terminologie/vsa" title="Vereenvoudigde Slavische Accentnotatie: wordt gebruikt om te verwijzen naar een Formele Notatie voor het vastleggen van Zangstukken en ook naar de Toolset waarmee zulke vastleggingen kunnen worden gevalideerd en naar publiceerbare vormen worden omgezet.">VSA</a>.</p>
 <h2 id="vsa-codeblok-in-markdown">VSA-codeblok in Markdown<a class="headerlink" href="#vsa-codeblok-in-markdown" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code><span class="k">vsa-codeblok </span><span class="err">::</span><span class="o">=</span>
     <span class="s2">&quot;::: vsa-notatie&quot;</span>
@@ -2971,7 +2971,7 @@
 <span class="k">alteratie </span><span class="err">::</span><span class="o">=</span> <span class="s2">&quot;#&quot;</span> <span class="p">|</span> <span class="s2">&quot;♯&quot;</span> <span class="p">|</span> <span class="s2">&quot;b&quot;</span> <span class="p">|</span> <span class="s2">&quot;♭&quot;</span> <span class="p">;</span>
 <span class="k">octaaf </span><span class="err">::</span><span class="o">=</span> <span class="s2">&quot;0&quot;</span> <span class="p">|</span> <span class="s2">&quot;1&quot;</span> <span class="p">|</span> <span class="s2">&quot;2&quot;</span> <span class="p">|</span> <span class="s2">&quot;3&quot;</span> <span class="p">|</span> <span class="s2">&quot;4&quot;</span> <span class="p">|</span> <span class="s2">&quot;5&quot;</span> <span class="p">|</span> <span class="s2">&quot;6&quot;</span> <span class="p">|</span> <span class="s2">&quot;7&quot;</span> <span class="p">|</span> <span class="s2">&quot;8&quot;</span> <span class="p">;</span>
 </code></pre></div>
-<h2 id="en-voorkomt-en-door-bracket-dispatch-wordt-geclassificeerd-voordat-de-inhoudelijke-parsing-verdergaatbracket-tokens"><a href="/VSA-tooling/preview/terminologie/bracket-directive" title="Bracket-directive: een tekstfragment dat als afzonderlijk VSA-token tussen <code>[</code> en <code>]</code> voorkomt en door bracket-dispatch wordt geclassificeerd voordat de inhoudelijke parsing verdergaat.">Bracket tokens</a><a class="headerlink" href="#en-voorkomt-en-door-bracket-dispatch-wordt-geclassificeerd-voordat-de-inhoudelijke-parsing-verdergaatbracket-tokens" title="Permanent link">&para;</a></h2>
+<h2 id="bracket-tokens">Bracket tokens<a class="headerlink" href="#bracket-tokens" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code><span class="k">bracket-token </span><span class="err">::</span><span class="o">=</span>
       <span class="k">height-marker</span>
     <span class="p">|</span> <span class="k">control-token </span><span class="p">;</span>
@@ -2984,9 +2984,9 @@
     <span class="p">|</span> <span class="s2">&quot;[/?]&quot;</span>
     <span class="p">|</span> <span class="s2">&quot;[*?]&quot;</span> <span class="p">;</span>
 </code></pre></div>
-<h2 id="ehm-waarbij-ehm-leeg-is-of-een-geldige-ehm-bevattoonhoogte-markering"><a href="/VSA-tooling/preview/terminologie/pitch-marker" title="Pitch-marker: een Bracket-directive / Bracket-token met de vorm <code>[&lt;EHM&gt;:]</code>, waarbij <code>&lt;EHM&gt;</code> leeg is of een geldige EHM bevat.">Toonhoogte-markering</a><a class="headerlink" href="#ehm-waarbij-ehm-leeg-is-of-een-geldige-ehm-bevattoonhoogte-markering" title="Permanent link">&para;</a></h2>
+<h2 id="toonhoogte-markering">Toonhoogte-markering<a class="headerlink" href="#toonhoogte-markering" title="Permanent link">&para;</a></h2>
 <p><code>height-marker</code> in het bracket-token-schema stemt overeen met
-<a href="/VSA-tooling/preview/terminologie/pitch-marker" title="Pitch-marker: een Bracket-directive / Bracket-token met de vorm <code>[&lt;EHM&gt;:]</code>, waarbij <code>&lt;EHM&gt;</code> leeg is of een geldige EHM bevat.">toonhoogte-markering</a> in de normatieve EBNF (<code>docs/specification/syntax.md</code>).</p>
+<a class="og-termref" href="/VSA-tooling/preview/terminologie/pitch-marker" title="Pitch-marker: een Bracket-directive / Bracket-token met de vorm <code>[&lt;EHM&gt;:]</code>, waarbij <code>&lt;EHM&gt;</code> leeg is of een geldige EHM bevat.">toonhoogte-markering</a> in de normatieve EBNF (<code>docs/specification/syntax.md</code>).</p>
 <p>Voorbeelden:</p>
 <table>
 <thead>

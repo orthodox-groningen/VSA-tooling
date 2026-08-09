@@ -1,7 +1,7 @@
 # `vsa blocks` — [VSA-blokken](@) in Markdown vinden
 
-Vind [VSA-blokken](@) in een Markdownbestand en toon optioneel hun metadata,
-body en AST.
+Vind [VSA-blokken](@) in een Markdownbestand en toon optioneel hun [metadata](@),
+body en [AST](@).
 
 ## Synopsis
 
@@ -15,17 +15,17 @@ vsa blocks [-h] [--json] path
 commando parset de gevonden blokken niet semantisch — het telt en (met `--json`)
 inspecteert ze.
 
-Gebruik dit om te controleren of blokken herkend worden, of om metadata/body/AST
+Gebruik dit om te controleren of blokken herkend worden, of om [metadata](@)/body/[AST](@)
 te bekijken tijdens het debuggen. Voor normaal dagelijks gebruik heb je
 `--json` meestal niet nodig.
 
 ## Argumenten en opties
 
-| Naam             | Verplicht | Betekenis                                              | Default           | Beperkingen   |
-| ---------------- | --------- | ------------------------------------------------------ | ----------------- | ------------- |
-| `path`           | Ja        | Markdownbestand om te doorzoeken.                      | —                 | Moet bestaan. |
-| `--json`         | Nee       | Toon metadata, body en AST per gevonden blok als JSON. | Uit (telt alleen) | —             |
-| `-h`, `--help`   | Nee       | Toon hulp voor dit subcommando.                        | —                 | —             |
+| Naam             | Verplicht | Betekenis                                                        | Default           | Beperkingen   |
+| ---------------- | --------- | ---------------------------------------------------------------- | ----------------- | ------------- |
+| `path`           | Ja        | Markdownbestand om te doorzoeken.                                | —                 | Moet bestaan. |
+| `--json`         | Nee       | Toon [metadata](@), body en [AST](@) per gevonden blok als JSON. | Uit (telt alleen) | —             |
+| `-h`, `--help`   | Nee       | Toon hulp voor dit subcommando.                                  | —                 | —             |
 
 ## Output
 
@@ -111,14 +111,14 @@ Fix: controleer het pad, bijvoorbeeld met `dir`.
 
 ## Wanneer gebruik je `--json`?
 
-| Situatie                                | Gebruik            |
-| --------------------------------------- | ------------------ |
-| Controleren of blokken herkend worden   | Zonder `--json`    |
-| Metadata/body/AST bekijken (debuggen)   | Met `--json`       |
+| Situatie                                   | Gebruik            |
+| ------------------------------------------ | ------------------ |
+| Controleren of blokken herkend worden      | Zonder `--json`    |
+| Metadata/body/[AST](@) bekijken (debuggen) | Met `--json`       |
 
 ## Zie ook
 
-- [`vsa parse`](parse.md) — AST van een los `.vsa`-bestand (buiten Markdown).
-- [`vsa process`](process.md) — SVG's genereren uit dezelfde VSA-blokken.
+- [`vsa parse`](parse.md) — [AST](@) van een los `.vsa`-bestand (buiten Markdown).
+- [`vsa process`](process.md) — SVG's genereren uit dezelfde [VSA-blokken](@).
 - Outputreferentie (JSON-velden): [outputs.md](../outputs.md)
 - Blokmetadata: [metadata.md](../metadata.md)

@@ -12,12 +12,12 @@ Fixture: `examples/docs-walkthroughs/svg-phrase-kort.vsa`
 
 ## Uitleg
 
-| Onderdeel     | Betekenis                 |
-| ------------- | ------------------------- |
-| `[:]`         | openings-pitch-marker     |
-| `{/Hei_}`     | scope met hoogte-modifier |
-| `is de Heer.` | gewone tekst              |
-| `[//:]`       | afsluitende pitch-marker  |
+| Onderdeel     | Betekenis                           |
+| ------------- | ----------------------------------- |
+| `[:]`         | openings-pitch-marker               |
+| `{/Hei_}`     | [scope](@) met [hoogte-modifier](@) |
+| `is de Heer.` | gewone tekst                        |
+| `[//:]`       | afsluitende [pitch-marker](@)       |
 
 ## Commando
 

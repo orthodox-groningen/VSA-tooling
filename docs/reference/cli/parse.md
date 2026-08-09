@@ -1,7 +1,7 @@
 # `vsa parse` — parserstructuur bekijken
 
-Toon de interne parserstructuur (AST) van één VSA-bestand, of controleer
-alleen of de parser het bestand kan lezen.
+Toon de interne parserstructuur ([AST](@)) van één VSA-bestand, of controleer
+alleen of de [parser](@) het bestand kan lezen.
 
 ## Synopsis
 
@@ -12,7 +12,7 @@ vsa parse [-h] [--ast] path
 ## Beschrijving
 
 `vsa parse` leest één VSA-bestand (`.vsa`), lost `@include-vsa` op indien
-aanwezig, en voert het door de parser. Dit commando is bedoeld voor
+aanwezig, en voert het door de [parser](@). Dit commando is bedoeld voor
 parserdebugging en het maken van regressietests — niet voor dagelijkse
 controle (gebruik daarvoor [`vsa validate`](validate.md)).
 
@@ -21,7 +21,7 @@ worden. Met `--ast` verschijnt de volledige interne structuur (Abstract
 Syntax Tree) als JSON.
 
 `vsa parse` doet geen semantische controle (zoals de modifier-aantallen-check
-van `validate`); het toont alleen of de parser het bestand structureel kan
+van `validate`); het toont alleen of de [parser](@) het bestand structureel kan
 verwerken.
 
 ## Argumenten en opties
@@ -114,6 +114,6 @@ Fix: controleer het pad achter `@include-vsa` en of het doelbestand bestaat.
 ## Zie ook
 
 - [`vsa validate`](validate.md) — volledige controle inclusief semantiek.
-- [`vsa blocks`](blocks.md) — AST per VSA-blok in een Markdownbestand (`--json`).
+- [`vsa blocks`](blocks.md) — [AST](@) per [VSA-blok](@) in een Markdownbestand (`--json`).
 - Handleiding: [Gebruikershandleiding](../../guides/user-guide.md) (tour), [CLI-taken](../../guides/cli-taken.md)
 - Outputreferentie (AST-vorm): [outputs.md](../outputs.md)

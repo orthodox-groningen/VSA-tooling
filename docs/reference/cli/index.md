@@ -30,11 +30,11 @@ vsa [--config CONFIG] [--version] <subcommando> …
 
 ## Globale opties
 
-| Optie             | Verplicht | Betekenis                                                                                                                         |
-| ----------------- | --------- | --------------------------------------------------------------------------------------------------------------------------------- |
-| `--config CONFIG` | Nee       | Pad naar een alternatief `vsa.toml`. Zonder deze optie zoekt elk commando zelf naar `vsa.toml` (zie [`config.md`](../config.md)). |
-| `--version`       | Nee       | Toon de geïnstalleerde versie en stop direct (subcommando wordt genegeerd).                                                       |
-| `-h`, `--help`    | Nee       | Toon hulp. Werkt zowel op `vsa --help` als op `vsa <subcommando> --help`.                                                         |
+| Optie             | Verplicht | Betekenis                                                                                                                               |
+| ----------------- | --------- | --------------------------------------------------------------------------------------------------------------------------------------- |
+| `--config CONFIG` | Nee       | Pad naar een alternatief [vsa.toml](@). Zonder deze optie zoekt elk commando zelf naar [vsa.toml](@) (zie [`config.md`](../config.md)). |
+| `--version`       | Nee       | Toon de geïnstalleerde versie en stop direct (subcommando wordt genegeerd).                                                             |
+| `-h`, `--help`    | Nee       | Toon hulp. Werkt zowel op `vsa --help` als op `vsa <subcommando> --help`.                                                               |
 
 Sommige subcommando's (`svg`, `process`, `build-markdown`, `musicxml`)
 accepteren `--config` ook als **subcommando-optie**. Die overschrijft dan de
@@ -64,7 +64,7 @@ echo %ERRORLEVEL%
 | [`process`](process.md)                          | Genereer SVG-bestanden uit [VSA-blokken](@) in Markdown (zonder Markdown te herschrijven). |
 | [`build-markdown`](build-markdown.md)            | Genereer Hugo-geschikte Markdown én SVG-assets uit content-source.                         |
 | [`resolve-catalogus`](resolve-catalogus.md)      | Los `:::include … zoek="…"` op naar catalogus-paden (`bron:…` / `lokaal:…`).               |
-| [`musicxml`](musicxml.md)                        | Exporteer VSA naar MusicXML (`.mxl` of `.musicxml`).                                       |
+| [`musicxml`](musicxml.md)                        | Exporteer [VSA](@) naar MusicXML (`.mxl` of `.musicxml`).                                  |
 
 Elke pagina hierboven beschrijft de volledige syntax, alle argumenten en
 opties (inclusief defaults), voorbeeldoutput, en typische foutgevallen. Deze
@@ -94,11 +94,11 @@ Bij problemen: eerst [`vsa validate`](validate.md), daarna `scripts\test.cmd`, e
 - Taakgerichte uitleg per doel: [CLI-taken](../../guides/cli-taken.md)
 - Gebruikershandleiding (tour + links): [gebruikershandleiding](../../guides/user-guide.md)
 - Functioneel contract (normatief, alle commando's): [specification/cli.md](../../specification/cli.md)
-- `vsa.toml`-instellingen en voorrangsregels: [config.md](../config.md)
-- Foutcodes en severity: [diagnostics.md](../diagnostics.md)
+- [vsa.toml](@)-instellingen en voorrangsregels: [config.md](../config.md)
+- Foutcodes en [severity](@): [diagnostics.md](../diagnostics.md)
 - SVG-workflow: [svg-export.md](../../guides/svg-export.md)
 - MusicXML-workflow: [musicxml-export.md](../../guides/musicxml-export.md)
-- Parochie-lokale VSA (catalogus, includes): [parochie-lokaal-vsa.md](../../guides/parochie-lokaal-vsa.md)
+- Parochie-lokale [VSA](@) (catalogus, includes): [parochie-lokaal-vsa.md](../../guides/parochie-lokaal-vsa.md)
 - Bron-contracten (org-breed, normatief): [conversie-vsa-svg](https://orthodox-groningen.github.io/bron/reference/conversie-vsa-svg/),
   [exporttype-svg](https://orthodox-groningen.github.io/bron/reference/exporttype-svg/),
   [catalogus-cli](https://orthodox-groningen.github.io/bron/reference/catalogus-cli/)

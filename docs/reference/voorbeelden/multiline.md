@@ -1,6 +1,6 @@
 # Multiline
 
-Langere VSA-regel die de renderer over meerdere regels kan zetten.
+Langere VSA-regel die de [renderer](@) over meerdere regels kan zetten.
 
 ## Invoer
 
@@ -19,7 +19,7 @@ vsa svg examples\docs-walkthroughs\svg-phrase-lang.vsa generated\docs-demo-multi
 
 ## Uitleg
 
-Met `--max-line-width` breekt de renderer af als een regel te breed wordt voor
+Met `--max-line-width` breekt de [renderer](@) af als een regel te breed wordt voor
 de gekozen breedte (pixels).
 
 ![Langere VSA-frase, afgebroken SVG](../../guides/assets/walkthroughs/svg-phrase-lang.svg)

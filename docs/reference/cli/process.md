@@ -45,7 +45,7 @@ debuggen — voor normaal gebruik laat je validatie aan staan.
 
 | Exitcode | Betekenis                                                   |
 | -------- | ----------------------------------------------------------- |
-| `0`      | Alle gevonden VSA-blokken succesvol gerenderd.              |
+| `0`      | Alle gevonden [VSA-blokken](@) succesvol gerenderd.         |
 | `1`      | Validatiefout (zonder `--no-validate`), of een andere fout. |
 
 ## Voorbeelden — succes
@@ -100,7 +100,7 @@ do="C4"
 
 Exitcode: `1`. Er worden geen SVG's geschreven.
 
-Fix: corrigeer de gemelde VSA-blokken (zie [`vsa validate`](validate.md) voor
+Fix: corrigeer de gemelde [VSA-blokken](@) (zie [`vsa validate`](validate.md) voor
 de foutcodes), of beperk `input` tot bestanden die al geldig zijn. Gebruik
 `--no-validate` alleen tijdelijk om te zien hoe de SVG's er ondanks de fout
 uit zouden zien.
@@ -117,5 +117,5 @@ Gebruik `vsa process` als je:
 
 - [`vsa validate`](validate.md) — dezelfde controles die `process` standaard uitvoert.
 - [`vsa build-markdown`](build-markdown.md) — SVG's + Hugo-Markdown in één stap.
-- [`vsa blocks`](blocks.md) — VSA-blokken inspecteren vóór het genereren.
+- [`vsa blocks`](blocks.md) — [VSA-blokken](@) inspecteren vóór het genereren.
 - Workflow-uitleg: [svg-export.md](../../guides/svg-export.md)

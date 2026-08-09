@@ -1,23 +1,23 @@
 # Tokenreferentie
 
-## Hoogte-markeringen
+## [Hoogte-markeringen](@)
 
-Een hoogte-markering heeft de vorm:
+Een [hoogte-markering](@) heeft de vorm:
 
 ```text
 [<EHM>:]
 ```
 
-| Token   | Soort             | Opmerking                         |
-| ------- | ----------------- | --------------------------------- |
-| `[:]`   | Hoogte-markering  | Neutraal                          |
-| `[/:]`  | Hoogte-markering  | Enkelvoudige hoogtebeweging       |
-| `[//:]` | Hoogte-markering  | Samengestelde hoogtebeweging      |
-| `[\:]`  | Hoogte-markering  | Dalende hoogtebeweging            |
+| Token   | Soort                    | Opmerking                    |
+| ------- | ------------------------ | ---------------------------- |
+| `[:]`   | [Hoogte-markering](@)    | Neutraal                     |
+| `[/:]`  | [Hoogte-markering](@)    | Enkelvoudige hoogtebeweging  |
+| `[//:]` | [Hoogte-markering](@)    | Samengestelde hoogtebeweging |
+| `[\:]`  | [Hoogte-markering](@)    | Dalende hoogtebeweging       |
 
-## Control tokens
+## [Control tokens](@)
 
-Control tokens zijn geen hoogte-markeringen.
+[Control tokens](@) zijn geen [hoogte-markeringen](@).
 
 | Token  | Abstracte betekenis          |
 | ------ | ---------------------------- |
@@ -35,6 +35,6 @@ Control tokens zijn geen hoogte-markeringen.
 
 ## Ontwerpregel
 
-Control tokens hebben geen universele visuele betekenis.
+[Control tokens](@) hebben geen universele visuele betekenis.
 
-De parser legt de abstracte intentie vast; renderers bepalen de concrete uitvoer.
+De [parser](@) legt de abstracte intentie vast; [renderers](@) bepalen de concrete uitvoer.

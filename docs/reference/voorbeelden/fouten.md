@@ -1,6 +1,6 @@
 # Fouten
 
-Ongeldige VSA-invoer en de foutcode die de validator teruggeeft.
+Ongeldige VSA-invoer en de foutcode die de [validator](@) teruggeeft.
 
 ## Invoer
 
@@ -28,7 +28,7 @@ ERROR: VSA-SYNTAX-UNCLOSED-SCOPE: Scope zonder afsluitende accolade.
 
 ## Uitleg
 
-De scope is niet afgesloten. Sluit af met `}`, bijvoorbeeld `{tekst}`.
+De [scope](@) is niet afgesloten. Sluit af met `}`, bijvoorbeeld `{tekst}`.
 
 Voor een semantische mismatch (hoogte- vs. lengteposities) zie
 `examples/expected-fail/semantic-mismatch.vsa` en

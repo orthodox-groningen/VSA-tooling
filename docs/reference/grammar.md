@@ -1,6 +1,6 @@
 # Grammatica-referentie
 
-Deze pagina bevat compacte EBNF-fragmenten voor VSA.
+Deze pagina bevat compacte EBNF-fragmenten voor [VSA](@).
 
 ## VSA-codeblok in Markdown
 
@@ -38,7 +38,7 @@ alteratie ::= "#" | "♯" | "b" | "♭" ;
 octaaf ::= "0" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" ;
 ```
 
-## Bracket tokens
+## [Bracket tokens](@)
 
 ```ebnf
 bracket-token ::=
@@ -54,9 +54,10 @@ control-token ::=
     | "[*?]" ;
 ```
 
-## Toonhoogte-markering
+## [Toonhoogte-markering](@)
 
-`height-marker` in het bracket-token-schema stemt overeen met `toonhoogte-markering` in de normatieve EBNF (`docs/specification/syntax.md`).
+`height-marker` in het bracket-token-schema stemt overeen met
+[toonhoogte-markering](@) in de normatieve EBNF (`docs/specification/syntax.md`).
 
 Voorbeelden:
 

@@ -1,6 +1,6 @@
 # Glyphs-overzicht
 
-Visuele controle van veelgebruikte VSA-glyphs: bron naast rendering.
+Visuele controle van veelgebruikte [VSA](@)-[glyphs](@): bron naast rendering.
 Hersteld uit de oude Hugo-demo
 (`voorbeelden/rendering/glyphs-basis`).
 
@@ -27,7 +27,7 @@ vsa svg examples\docs-walkthroughs\svg-glyphs-overzicht.vsa generated\docs-glyph
 
 ![Glyphs-overzicht SVG](../../guides/assets/walkthroughs/svg-glyphs-overzicht.svg)
 
-## Hoogtemarkers (compact)
+## [Hoogtemarkers](@) (compact)
 
 Fixture: `examples/docs-walkthroughs/svg-glyphs-hoogte.vsa`
 

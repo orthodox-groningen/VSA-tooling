@@ -29,13 +29,13 @@ Leesvoorbeeld: [Basis](voorbeelden/basis.md).
 | `examples/regression/invalid-unbalanced-modifiers/` | `{/&\tekst_}` | `VSA-SEMANTIC-MODIFIER-COUNT-MISMATCH` |
 | `examples/regression/semantic-mismatch/`            | `{/&\tekst_}` | `VSA-SEMANTIC-MODIFIER-COUNT-MISMATCH` |
 
-### Expected-fail (validator moet afkeuren)
+### Expected-fail ([validator](@) moet afkeuren)
 
 | Bestand                                                 | Doel (kort)                  |
 | ------------------------------------------------------- | ---------------------------- |
 | `examples/expected-fail/semantic-mismatch.vsa`          | modifier-telling mismatch    |
-| `examples/expected-fail/empty-scope.vsa`                | lege scope                   |
-| `examples/expected-fail/unclosed-scope.vsa`             | niet-gesloten scope          |
+| `examples/expected-fail/empty-scope.vsa`                | lege [scope](@)              |
+| `examples/expected-fail/unclosed-scope.vsa`             | niet-gesloten [scope](@)     |
 | `examples/expected-fail/missing-final-pitch-marker.vsa` | ontbrekende eind-pitchmarker |
 | `examples/expected-fail/empty-final-pitch-marker.vsa`   | lege eind-pitchmarker        |
 

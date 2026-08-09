@@ -1,6 +1,6 @@
 # Doel en scope
 
-VSA (Vereenvoudigde Slavische Accentnotatie) is een tekstgebaseerde
+[VSA](@) ([Vereenvoudigde Slavische Accentnotatie](vsa@)) is een tekstgebaseerde
 domeinspecifieke taal (DSL) voor Slavische accentnotatie. De taal definieert
 een eenduidige, machineleesbare en menselijk leesbare notatie waarmee
 [zangstukken](@bron) kunnen worden vastgelegd, gevalideerd en verder verwerkt
@@ -19,7 +19,7 @@ tool-termen in de [glossary](../glossary.md).
 Dit document consolideert algemene specificatie-informatie uit de bestaande
 VSA-documentatie (betekenis behouden, structuur opgeschoond).
 
-## 1. Inleiding
+## Inleiding
 
 <!-- ter herinnering: http://www.ivanmoody.co.uk/orthodoxliturgylinks.htm bevat allerlei links over orthodoxe liturgie -->
 
@@ -42,7 +42,7 @@ per regio, koorleider of lokale traditie. Historische uitleg uit het
 Nederlandse Liturgikon: [Liturgikon-notatie](../guides/liturgikon-notatie.md).
 
 Dit document introduceert een formele codificatie van deze praktijkgerichte
-notatie: de **Vereenvoudigde Slavische Accentnotatie (VSA‑notatie)**. VSA is
+notatie: de **[Vereenvoudigde Slavische Accentnotatie](vsa@) ([VSA-notatie](@bron))**. [VSA](@) is
 geen vervanging van historische kriuki- of znamenny-notatie, maar een lichte,
 consistente en reproduceerbare manier om Slavisch‑orthodoxe congregatiezang
 digitaal te noteren.
@@ -54,15 +54,15 @@ Het doel is een notatie die:
 - formeel definieerbaar is in een grammatica;
 - betrouwbaar te parseren, valideren en renderen is;
 - bruikbaar is in tekstgebaseerde workflows, statische websites en
-  automatische renderers of weergavecomponenten;
+  automatische [renderers](@) of weergavecomponenten;
 - voldoende semantische informatie bevat voor conversie naar symbolische
   muziekformaten zoals MusicXML.
 
-VSA beschrijft melodische beweging binnen een modaal toonstelsel waarin
+[VSA](@) beschrijft melodische beweging binnen een modaal toonstelsel waarin
 stapgrootten niet uniform zijn en afhankelijk zijn van de gekozen grondtoon:
 de `do` van de toonladder.
 
-## 2. Terminologie
+## Terminologie
 
 **Geen parallelle glossary hier.** Definities:
 

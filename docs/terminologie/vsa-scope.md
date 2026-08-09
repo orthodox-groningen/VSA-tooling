@@ -3,13 +3,15 @@ slug: vsa-scope
 term: vsa-scope
 termType: concept
 glossaryTerm: VSA-scope
-glossaryText: "een tekstfragment dat met `{` begint, met `}` eindigt, geen whitespace binnen de accolades bevat en door de parser kan worden opgesplitst in optionele hoogte-modifier, verplicht zangelement en optionele lengte-modifier."
+glossaryText: "een tekstfragment dat met `{` begint, met `}` eindigt, geen whitespace binnen de accolades bevat en door de [parser](@) kan worden opgesplitst in optionele [hoogte-modifier](@), verplicht zangelement en optionele [lengte-modifier](@)."
 glossaryAlias: Scope
 formPhrases:
   - vsa-scope
   - vsa-scopes
   - scope
   - scopes
+  - zangelement-scope
+  - zangelement-scopes
 glossaryNotes:
   - "Voorbeeld: `{/Hei_}` — hoogte-modifier `/`, zangelement `Hei`, lengte-modifier `_`."
   - "Lege `{}` of `{te kst}` (spatie) zijn geen geldige VSA-scope."
@@ -17,20 +19,29 @@ glossaryNotes:
 
 # VSA-scope
 
-Een VSA-scope koppelt gezongen tekst aan modifiers, bijvoorbeeld `{/Hei_}`.
+Een VSA-scope / [scope](@) koppelt gezongen tekst aan [modifiers](@),
+bijvoorbeeld `{/Hei_}`.
 
-De parser gebruikt scopes om tekst en muzikale markeringen structureel te
+De [parser](@) gebruikt scopes om tekst en muzikale markeringen structureel te
 herkennen; een lege scope of een scope met whitespace binnen de accolades
 voldoet niet.
+
+Goede/valide voorbeelden van VSA-scope zijn:
+- `{/Hei_}` zonder whitespace binnen de accolades
+- Optionele [EHM](@)/[ELM](@)-modifiers + zangelement
+
+Geen goede/niet valide voorbeelden van VSA-scope zijn:
+- `{}` of `{te kst}`
+- Losse tekst buiten accolades
 
 ## Motivatie
 
 Zonder scopes is er geen eenduidige eenheid “zangtekst + hoogte/lengte” voor
-parser, validator en renderer. Het begrip is de kernbouwsteen van
+[parser](@), [validator](@) en [renderer](@). Het begrip is de kernbouwsteen van
 [geldige VSA-notatie](@).
 
 ## Gerelateerd / verder lezen
 
-- [hoogte-modifier](@), [lengte-modifier](@), [pitch-marker](@)
+- [hoogte-modifier](@), [lengte-modifier](@), [pitch-marker](@), [EHM](@), [ELM](@)
 - Org-begrip notatie vs tooling: [vsa-notatie](@bron), [vsa-tooling](@bron)
 - Specificatie: [syntax](../specification/syntax.md)

@@ -4,7 +4,7 @@ term: samengestelde-hoogte-modifier
 termType: concept
 isa: hoogte-modifier
 glossaryTerm: Samengestelde hoogte-modifier
-glossaryText: "een hoogte-modifier die uit twee of meer geldige EHM's bestaat die onderling door `&` zijn gescheiden."
+glossaryText: "een [hoogte-modifier](@) die uit twee of meer geldige [EHMs](@) bestaat die onderling door `&` zijn gescheiden."
 formPhrases:
   - samengestelde hoogte-modifier
   - samengestelde hoogte-modifiers
@@ -12,4 +12,14 @@ formPhrases:
 
 # Samengestelde hoogte-modifier
 
-Een samengestelde hoogte-modifier koppelt meerdere hoogteposities aan hetzelfde zangelement of dezelfde scope-inhoud. Een enkele EHM zonder `&` is geen samengestelde hoogte-modifier.
+Een samengestelde hoogte-modifier koppelt meerdere hoogteposities aan hetzelfde
+zangelement of dezelfde [scope](@)-inhoud. Een enkele [EHM](@) zonder `&` is
+geen samengestelde hoogte-modifier.
+
+Goede/valide voorbeelden van Samengestelde hoogte-modifier zijn:
+- Twee of meer [EHMs](@) gescheiden door `&`
+- Onderdeel van een [hoogte-modifier](@)
+
+Geen goede/niet valide voorbeelden van Samengestelde hoogte-modifier zijn:
+- Eén [EHM](@) zonder `&`
+- Een [lengte-modifier](@)

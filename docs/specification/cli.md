@@ -84,16 +84,16 @@ vsa validate <bestand-of-map>
 | Input          | Voorbeeld                                  | Gedrag                                          |
 | -------------- | ------------------------------------------ | ----------------------------------------------- |
 | `.vsa` bestand | `examples\minimal\001_plain_text.vsa`      | controleert één VSA-bestand                     |
-| `.md` bestand  | `pagina.md`                                | controleert VSA-blokken in Markdown             |
+| `.md` bestand  | `pagina.md`                                | controleert [VSA-blokken](@) in Markdown        |
 | map            | `examples\consumer-minimal\content-source` | zoekt recursief naar `.vsa`, `.md`, `.markdown` |
 
 ### Wat wordt gecontroleerd?
 
-| Fase       | Controle                                                    |
-| ---------- | ----------------------------------------------------------- |
-| syntaxscan | accolades, lege scopes, whitespace in scopes, pitch-markers |
-| parser     | of de VSA naar interne structuur kan worden omgezet         |
-| semantiek  | of modifier-aantallen logisch bij elkaar passen             |
+| Fase        | Controle                                                                   |
+| ----------- | -------------------------------------------------------------------------- |
+| syntaxscan  | accolades, lege [scopes](@), whitespace in [scopes](@), [pitch-markers](@) |
+| [parser](@) | of de [VSA](@) naar interne structuur kan worden omgezet                   |
+| semantiek   | of modifier-aantallen logisch bij elkaar passen                            |
 
 ### Succesoutput
 
@@ -119,18 +119,18 @@ examples\demo.md:blok-1:1:1: VSA-SYNTAX-EMPTY-SCOPE: Scope zonder zangelement.
 
 | Foutcode                                | Betekenis                                   | Wat doen?                                                |
 | --------------------------------------- | ------------------------------------------- | -------------------------------------------------------- |
-| `VSA-SYNTAX-EMPTY-SCOPE`                | `{}` gevonden                               | zet tekst of zangelement in de scope                     |
-| `VSA-SYNTAX-UNCLOSED-SCOPE`             | `{tekst` zonder `}`                         | sluit de scope af                                        |
-| `VSA-SYNTAX-UNEXPECTED-CLOSE-BRACE`     | losse `}`                                   | verwijder of herstel de scope                            |
+| `VSA-SYNTAX-EMPTY-SCOPE`                | `{}` gevonden                               | zet tekst of [zangelement](@) in de [scope](@)           |
+| `VSA-SYNTAX-UNCLOSED-SCOPE`             | `{tekst` zonder `}`                         | sluit de [scope](@) af                                   |
+| `VSA-SYNTAX-UNEXPECTED-CLOSE-BRACE`     | losse `}`                                   | verwijder of herstel de [scope](@)                       |
 | `VSA-SYNTAX-WHITESPACE-IN-SCOPE`        | spatie binnen `{...}`                       | splits tekst buiten de scope of gebruik correcte notatie |
-| `VSA-SYNTAX-UNCLOSED-PITCH-MARKER`      | `[` zonder `]`                              | sluit pitch-marker af                                    |
-| `VSA-SYNTAX-PITCH-MARKER-MISSING-COLON` | pitch-marker zonder `:`                     | gebruik bijvoorbeeld `[:]`                               |
-| `VSA-SEMANTIC-MODIFIER-COUNT-MISMATCH`  | aantallen hoogte/lengteposities passen niet | controleer samengestelde modifiers                       |
+| `VSA-SYNTAX-UNCLOSED-PITCH-MARKER`      | `[` zonder `]`                              | sluit [pitch-marker](@) af                               |
+| `VSA-SYNTAX-PITCH-MARKER-MISSING-COLON` | [pitch-marker](@) zonder `:`                | gebruik bijvoorbeeld `[:]`                               |
+| `VSA-SEMANTIC-MODIFIER-COUNT-MISMATCH`  | aantallen hoogte/lengteposities passen niet | controleer samengestelde [modifiers](@)                  |
 
 ### Wat doe je bij fouten?
 
 1. Open het genoemde bestand.
-2. Zoek het genoemde VSA-blok.
+2. Zoek het genoemde [VSA-blok](@).
 3. Corrigeer de genoemde fout.
 4. Draai hetzelfde commando opnieuw.
 5. Herhaal tot `OK`.
@@ -139,8 +139,8 @@ examples\demo.md:blok-1:1:1: VSA-SYNTAX-EMPTY-SCOPE: Scope zonder zangelement.
 
 ### Doel
 
-Debuggen hoe de parser een VSA-bestand intern ziet: de Abstract Syntax Tree
-(AST) als JSON.
+Debuggen hoe de [parser](@) een VSA-bestand intern ziet: de [Abstract Syntax Tree](@)
+([AST](@)) als JSON.
 
 ### Gebruik
 
@@ -200,7 +200,7 @@ als het bestand gelezen kan worden.
 
 ### Doel
 
-VSA-blokken in een Markdownbestand vinden.
+[VSA-blokken](@) in een Markdownbestand vinden.
 
 ### Gebruik
 
@@ -242,7 +242,7 @@ Per blok:
 | Situatie                              | Gebruik         |
 | ------------------------------------- | --------------- |
 | controleren of blokken herkend worden | zonder `--json` |
-| metadata/body/AST bekijken            | met `--json`    |
+| [metadata](@)/body/[AST](@) bekijken  | met `--json`    |
 
 ## `vsa svg <input.vsa> <output.svg>`
 
@@ -297,7 +297,7 @@ vsa build-markdown
 
 ### Doel
 
-SVG-bestanden genereren uit VSA-blokken in Markdown.
+SVG-bestanden genereren uit [VSA-blokken](@) in Markdown.
 
 ### Gebruik
 
@@ -307,10 +307,10 @@ vsa process <bestand-of-map> <output-dir>
 
 ### Inputvarianten
 
-| Input               | Gedrag                                   |
-| ------------------- | ---------------------------------------- |
-| één Markdownbestand | verwerkt alle VSA-blokken in dat bestand |
-| map                 | zoekt recursief naar Markdownbestanden   |
+| Input               | Gedrag                                        |
+| ------------------- | --------------------------------------------- |
+| één Markdownbestand | verwerkt alle [VSA-blokken](@) in dat bestand |
+| map                 | zoekt recursief naar Markdownbestanden        |
 
 ### Parameters
 
@@ -364,8 +364,8 @@ vsa build-markdown <input-dir> <output-dir> <assets-dir>
 
 | Output   | Voorbeeld                                        |
 | -------- | ------------------------------------------------ |
-| Markdown | `generated\content\zondag\toon-1.md`             |
-| SVG      | `generated\static\vsa\zondag-toon-1-block-1.svg` |
+| Markdown | `generated\content\toon-1.md`                    |
+| SVG      | `generated\static\vsa\toon-1-block-1.svg`        |
 
 ### Wat wordt vervangen?
 

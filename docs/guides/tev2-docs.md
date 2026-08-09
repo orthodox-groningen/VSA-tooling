@@ -1,6 +1,6 @@
 # TEv2 in tool-docs
 
-VSA-tooling gebruikt TEv2 voor **tool-termen** (parser, renderer, includes, …) in
+VSA-tooling gebruikt TEv2 voor **tool-termen** ([parser](@), [renderer](@), includes, …) in
 `docs/terminologie/`. De mensleesbare glossary staat in `docs/glossary.md` (zelfde
 patroon als bron: één bronbestand met `{% hrg="vsa-tooling" %}`, geen
 `_index.template`/rename). Org-termen uit
@@ -89,6 +89,13 @@ Lokale `vsa.md` houdt alleen form phrases `vsa` / `vsa's`, zodat
 
 Voorbeeld: [exporttype](@) is een geïmporteerde org-term; [zangstuk](@) is de
 lokale herdefinitie, terwijl [zangstuk](@bron) naar scope `bron` wijst.
+
+**Geen TermRefs in headings** (`#` … `######`): TRRT maakt HTML-links met
+`title="…"`, en MkDocs’ inhoudsopgave toont dan kapotte TOC-labels. Gebruik in
+koppen platte showtext; TermRefs horen in de lopende tekst.
+
+Opgeloste TermRefs krijgen class `og-termref` (zie `tev2-config.yaml` +
+`stylesheets/extra.css`).
 
 ## Markdown-tabellen
 

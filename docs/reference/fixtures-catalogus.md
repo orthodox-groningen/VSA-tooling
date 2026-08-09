@@ -2,11 +2,11 @@
 
 Canonieke bronnen staan onder `examples/`. Deze pagina **citeert** die paden;
 wijzig golden files alleen via tests, niet door deze docs te “updaten” zonder
-de fixture.
+de [fixture](@).
 
 ## Correct (geldig of met verwachte SVG)
 
-| Fixture                                       | Invoer (samenvatting)                | Verwacht                |
+| [Fixture](@)                                  | Invoer (samenvatting)                | Verwacht                |
 | --------------------------------------------- | ------------------------------------ | ----------------------- |
 | `examples/regression/scope-plain/`            | `{tekst}`                            | syntax valid            |
 | `examples/regression/scope-up-double-length/` | `{/tekst_}`                          | syntax valid            |
@@ -23,7 +23,7 @@ Leesvoorbeeld: [Basis](voorbeelden/basis.md).
 
 ### Regressie met golden validation
 
-| Fixture                                             | Invoer        | Foutcode                               |
+| [Fixture](@)                                        | Invoer        | Foutcode                               |
 | --------------------------------------------------- | ------------- | -------------------------------------- |
 | `examples/regression/invalid-empty-scope/`          | `{}`          | `VSA-SYNTAX-EMPTY-SCOPE`               |
 | `examples/regression/invalid-unbalanced-modifiers/` | `{/&\tekst_}` | `VSA-SEMANTIC-MODIFIER-COUNT-MISMATCH` |
@@ -34,8 +34,8 @@ Leesvoorbeeld: [Basis](voorbeelden/basis.md).
 | Bestand                                                 | Doel (kort)                  |
 | ------------------------------------------------------- | ---------------------------- |
 | `examples/expected-fail/semantic-mismatch.vsa`          | modifier-telling mismatch    |
-| `examples/expected-fail/empty-scope.vsa`                | lege scope                   |
-| `examples/expected-fail/unclosed-scope.vsa`             | niet-gesloten scope          |
+| `examples/expected-fail/empty-scope.vsa`                | lege [scope](@)              |
+| `examples/expected-fail/unclosed-scope.vsa`             | niet-gesloten [scope](@)     |
 | `examples/expected-fail/missing-final-pitch-marker.vsa` | ontbrekende eind-pitchmarker |
 | `examples/expected-fail/empty-final-pitch-marker.vsa`   | lege eind-pitchmarker        |
 

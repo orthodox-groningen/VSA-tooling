@@ -1,7 +1,7 @@
 # Gebruikseisen dragers (papier / tablet / telefoon)
 
 **Status:** concept — nog niet gevalideerd met echte bestanden/gebruikers  
-**Canonieke plek:** VSA-tooling (tool-/producteisen). Org-stub:
+**Canonieke plek:** [VSA-tooling](@bron) (tool-/producteisen). Org-stub:
 [bron — gebruikseisen](https://github.com/orthodox-groningen/bron/blob/main/docs/plans/gebruikseisen-representatievormen.md).
 
 **Doel:** vastleggen welke eisen gelden voor **presentatie op een drager**
@@ -10,7 +10,7 @@
 (`.vsa`, scan, …). Dit is een eisendocument, geen ontwerp: kolom `status` =
 `vastgesteld` / `open` / `bewust uitgesteld`.
 
-**Gerelateerd:** [uitgaveprofielen.md](https://github.com/orthodox-groningen/VSA-tooling/blob/focus-on-tooling/docs/plans/uitgaveprofielen.md) (samenstelling/export),
+**Gerelateerd:** [uitgaveprofielen.md](https://github.com/orthodox-groningen/VSA-tooling/blob/focus-on-tooling/docs/plans/uitgaveprofielen.md) ([samenstelling](@bron)/export),
 [rendering.md](../specification/rendering.md).
 
 Elke eis krijgt drie kolommen:
@@ -23,7 +23,7 @@ Elke eis krijgt drie kolommen:
 
 ## 1. Dragers
 
-Een zangstuk/variant kan in meerdere vormen gepresenteerd worden. Dit document
+Een [zangstuk](@bron)/[variant](@bron) kan in meerdere vormen gepresenteerd worden. Dit document
 onderscheidt drie dragers, die elk andere eisen meebrengen:
 
 - **Papier** — gedrukte koormap, A4, vaste paginering.
@@ -64,7 +64,7 @@ ontwikkelen. In plaats daarvan geldt:
 | Als er geen lokale server beschikbaar is, is een internetverbinding naar een externe server wél nodig.                                                                                                                                       | Zonder app of lokale server is een externe verbinding de enige overgebleven optie.                                                                            | vastgesteld  |
 
 **Voordeel:** omdat er sowieso een server in het spel is, kan die server ook
-afgeleiden **genereren** (bijv. SVG's, MusicXML, PDF's) in plaats van dat alles
+[afgeleiden](@bron) **genereren** (bijv. SVG's, MusicXML, PDF's) in plaats van dat alles
 vooraf statisch klaar moet staan of dat de client dit zelf moet doen. Dat
 vereenvoudigt ook §6: de server is de plek die weet of iets al bestaat, nog
 gegenereerd moet worden, of nog gekopieerd moet worden.
@@ -112,7 +112,7 @@ op tablet/telefoon expliciet gemaakt via de oefenmodus (§5).
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ |
 | Papier heeft geen oefenmodus.                                                                                                                                             | Volgt direct uit §4.1: er is sowieso geen online-afhankelijk materiaal aanwezig om achter een modus te verbergen.                                                           | vastgesteld  |
 | Tablet/telefoon kan een oefenmodus hebben. Alles wat met oefenmateriaal te maken heeft (links naar Coria, audio, e.d.) wordt achter deze modus verborgen.                 | Zo blijft de digitale presentatie buiten oefenmodus qua gedrag gelijkwaardig aan papier: geen verbindingsafhankelijkheid, geen geluid, niets dat afleidt tijdens uitvoeren. | vastgesteld  |
-| Oefenmodus is een **globale schakelaar**: voor de hele applicatie/website-sessie, niet per zangstuk of presentatie apart.                                                 | Eenvoudiger en voorspelbaarder voor de gebruiker dan een schakelaar per stuk; sluit aan bij hoe je van tevoren weet of je gaat oefenen of uitvoeren.                        | vastgesteld  |
+| Oefenmodus is een **globale schakelaar**: voor de hele applicatie/website-sessie, niet per [zangstuk](@bron) of presentatie apart.                                        | Eenvoudiger en voorspelbaarder voor de gebruiker dan een schakelaar per stuk; sluit aan bij hoe je van tevoren weet of je gaat oefenen of uitvoeren.                        | vastgesteld  |
 | De schakelaar moet een **zichtbaar icoontje/knop** zijn. Die mag in een menu zitten, maar dan **niet meer dan één niveau diep** — geen uitgebreid zoeken in instellingen. | Toegankelijk genoeg om te vinden zonder handleiding, maar hoeft niet permanent in beeld te staan.                                                                           | vastgesteld  |
 
 ### 5.2 Wat "non-invasief" betekent, ook binnen oefenmodus (vastgesteld)
@@ -129,9 +129,9 @@ op tablet/telefoon expliciet gemaakt via de oefenmodus (§5).
 
 ## 6. Koppeling van de link aan het model
 
-**Org-model (bron):** een link naar oefenmateriaal hoort bij variant/uitvoeringsvorm,
+**Org-model (bron):** een link naar oefenmateriaal hoort bij [variant](@bron)/[uitvoeringsvorm](@bron),
 niet bij één catalogus-[representatie](https://github.com/orthodox-groningen/bron/blob/main/docs/specs/terminologie.md#8-representatie)
-— anders moet dezelfde link per bronbestand apart onderhouden worden. Zie stub in bron.
+— anders moet dezelfde link per [bronbestand](@bron) apart onderhouden worden. Zie stub in bron.
 
 **Presentatie (deze repo):** de *drager*-output (PDF vs. HTML) bepaalt wél wat je
 ermee kunt: een PDF kun je niet laten afspelen; alleen een digitale, interactieve
@@ -139,10 +139,10 @@ presentatie kan dat.
 
 Voorstel (te valideren met een experiment, zie §7):
 
-- Rene specificeert bij een variant/uitvoeringsvorm een **directive**: welke
+- Rene specificeert bij een [variant](@bron)/[uitvoeringsvorm](@bron) een **directive**: welke
   presentatievorm(en) van oefenmateriaal er relevant zijn (bijv. `audio`,
   `visueel`, verder te specificeren), zonder zelf op te zoeken/te weten waar het
-  bronbestand precies vandaan komt.
+  [bronbestand](@bron) precies vandaan komt.
 - De server (§3) zoekt vervolgens op:
   - waar het bijbehorende bestand al bestaat, of
   - of het nog gegenereerd moet worden uit ander bronmateriaal, of
@@ -162,18 +162,18 @@ Voorstel (te valideren met een experiment, zie §7):
 
 | Openstaande punten                                                                                                                                                     | Status                          |
 | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------- |
-| Exacte vorm van de directive (syntax, plek in manifest)                                                                                                                | open                            |
+| Exacte vorm van de directive (syntax, plek in [manifest](@bron))                                                                                                       | open                            |
 | Volledige lijst van presentatievormen (audio, visueel, …)                                                                                                              | open — "verder te specificeren" |
-| Wat een digitale presentatie doet als het bronbestand van de link nog niet bestaat/nog gegenereerd moet worden — foutmelding, stil negeren, placeholder?               | open                            |
+| Wat een digitale presentatie doet als het [bronbestand](@bron) van de link nog niet bestaat/nog gegenereerd moet worden — foutmelding, stil negeren, placeholder?      | open                            |
 
 ---
 
 ## 7. Validatie-aanpak
 
 Dit document wordt niet in één keer "af" verklaard. Per open vraag: een klein
-experiment met een bestaand zangstuk en een echt koorlid, bijvoorbeeld:
+experiment met een bestaand [zangstuk](@bron) en een echt koorlid, bijvoorbeeld:
 
-- één zangstuk zowel als PDF als kale HTML-pagina op een echte tablet/telefoon
+- één [zangstuk](@bron) zowel als PDF als kale HTML-pagina op een echte tablet/telefoon
   laten zien tijdens oefenen (niet tijdens een dienst), en vragen wat er misgaat;
 - een testlink naar oefenmateriaal toevoegen en checken of geluid inderdaad
   standaard uit staat en niets vanzelf opent;
@@ -192,8 +192,8 @@ stilzwijgend laten vervallen.
 - **Consistentie in nummering/paginaverwijzing** tussen papier- en
   tabletgebruikers binnen dezelfde context (bijv. een repetitie) hoeft hier niet
   apart behandeld te worden. Uitgangspunt: binnen zo'n context bestaat er altijd
-  al een indexeringsmechanisme (het nummer van de variant/uitvoeringsvorm in de
-  koormap, of de titel van het zangstuk), en dat sluit aan bij wat nu al
+  al een indexeringsmechanisme (het nummer van de [variant](@bron)/[uitvoeringsvorm](@bron) in de
+  koormap, of de titel van het [zangstuk](@bron)), en dat sluit aan bij wat nu al
   gangbare praktijk is. Rene brengt dit vanzelf in orde; er is geen aparte eis
   of ontwerpbeslissing nodig.
 

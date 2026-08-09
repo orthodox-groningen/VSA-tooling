@@ -13,7 +13,7 @@ VSA-demo; [zangstukken](@bron)/org-specs = [bron-repository](@bron).
 
 | Repo                                                           | Rol                                          |
 | -------------------------------------------------------------- | -------------------------------------------- |
-| **[VSA-tooling](@bron)** (deze docs)                           | Package, CLI, specs, fixtures                |
+| **[VSA-tooling](@bron)** (deze docs)                           | Package, CLI, specs, [fixtures](@)           |
 | **[VSA-demo](https://github.com/orthodox-groningen/VSA-demo)** | Voorbeeld-Hugo-site + Pages                  |
 | **[bron](https://github.com/orthodox-groningen/bron)**         | [Zangstukken](@bron) en org-specs            |
 
@@ -34,6 +34,14 @@ cd /d C:\Git\orthodox-groningen\VSA-tooling
 vsa validate examples\consumer-minimal\content-source
 vsa build-markdown examples\consumer-minimal\content-source generated\ci\content generated\ci\static\vsa
 ```
+
+Voor een rijkere Markdown + Coria-oefenlink (lokale kopie tropaar toon 3):
+
+```cmd
+vsa build-markdown examples\docs-walkthroughs\coria-oefenlink generated\docs-walkthrough-coria\content generated\docs-walkthrough-coria\static\vsa
+```
+
+Zie [MusicXML-export — Coria-walkthrough](../guides/musicxml-export.md#walkthrough-lokale-fixture).
 
 ## Lokaal (voorbeeldconsumer)
 

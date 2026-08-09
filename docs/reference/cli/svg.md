@@ -1,4 +1,4 @@
-# `vsa svg` — één [vsa-bestand](@bron) naar SVG renderen
+# `vsa svg` — één vsa-bestand naar SVG renderen
 
 !!! note "Waartoe"
     Eén `.vsa`-bestand snel als SVG-afbeelding bekijken (scherm of afdruk).
@@ -17,7 +17,7 @@ vsa svg [-h] [--config CONFIG] [--max-line-width MAX_LINE_WIDTH] input output
 
 `vsa svg` leest één `.vsa`-bestand, lost `@include-vsa` op indien aanwezig,
 parset de [VSA-notatie](@bron) en rendert het resultaat naar een SVG-bestand. Dit
-commando verwerkt **geen** Markdownblokken — voor Markdown met VSA-blokken
+commando verwerkt **geen** Markdownblokken — voor Markdown met [VSA-blokken](@)
 gebruik je [`vsa process`](process.md) of [`vsa build-markdown`](build-markdown.md).
 
 `vsa svg` valideert de invoer niet expliciet vooraf; een parsefout leidt tot
@@ -98,7 +98,7 @@ Exitcode: `1`.
 
 Fix: controleer het invoerpad, bijvoorbeeld met `dir`.
 
-Parsefout (onafgesloten scope) — voorbeeldinvoer met `{tekst` zonder `}`:
+Parsefout (onafgesloten [scope](@)) — voorbeeldinvoer met `{tekst` zonder `}`:
 
 ```cmd
 vsa svg kapot.vsa tmp\out.svg
@@ -111,7 +111,7 @@ regel/kolom; herstel de [VSA-notatie](@bron); daarna opnieuw `vsa svg`.
 
 ## Zie ook
 
-- [`vsa validate`](validate.md) — controleer VSA-notatie vóór het renderen.
+- [`vsa validate`](validate.md) — controleer [VSA-notatie](@bron) vóór het renderen.
 - [`vsa process`](process.md) — SVG's genereren uit meerdere Markdownbestanden.
 - [`vsa build-markdown`](build-markdown.md) — SVG's + Hugo-Markdown in één stap.
 - Workflow-uitleg: [svg-export.md](../../guides/svg-export.md)

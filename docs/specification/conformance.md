@@ -2,7 +2,7 @@
 
 ## Doel
 
-Dit hoofdstuk definieert wanneer een implementatie conform de VSA-specificatie is.
+Dit document definieert wanneer een implementatie conform de VSA-specificatie is.
 
 Conformance heeft uitsluitend betrekking op het extern waarneembare gedrag van een implementatie. Interne architectuur, datastructuren en programmeertaal zijn volledig implementatie-onafhankelijk.
 
@@ -12,19 +12,19 @@ Conformance heeft uitsluitend betrekking op het extern waarneembare gedrag van e
 
 Een implementatie mag zichzelf uitsluitend aanduiden als *VSA-conform* indien alle relevante conformance-eisen uit deze specificatie worden nageleefd.
 
-Een implementatie hoeft niet noodzakelijk alle onderdelen van VSA te ondersteunen. Conformance wordt daarom per component gedefinieerd.
+Een implementatie hoeft niet noodzakelijk alle onderdelen van [VSA](@) te ondersteunen. Conformance wordt daarom per component gedefinieerd.
 
 ---
 
 # Conforming parser
 
-Een parser is conform indien deze:
+Een [parser](@) is conform indien deze:
 
 - de normatieve grammatica accepteert;
 - alle geldige VSA-documenten correct parseert;
 - ongeldige syntax detecteert;
 - syntaxfouten rapporteert overeenkomstig de specificatie;
-- dezelfde AST produceert als voorgeschreven door de semantiek van de specificatie.
+- dezelfde [AST](@) produceert als voorgeschreven door de semantiek van de specificatie.
 
 De interne parserarchitectuur is niet voorgeschreven.
 
@@ -32,10 +32,10 @@ De interne parserarchitectuur is niet voorgeschreven.
 
 # Conforming validator
 
-Een validator is conform indien deze:
+Een [validator](@) is conform indien deze:
 
 - alle normatieve validatieregels toepast;
-- fouten classificeert volgens de voorgeschreven severity;
+- fouten classificeert volgens de voorgeschreven [severity](@);
 - geen documenten accepteert die volgens de specificatie ongeldig zijn;
 - geen geldige documenten afwijst.
 
@@ -45,7 +45,7 @@ Extra waarschuwingen zijn toegestaan, mits deze niet strijdig zijn met de specif
 
 # Conforming renderer
 
-Een renderer is conform indien:
+Een [renderer](@) is conform indien:
 
 - de semantische betekenis van het document behouden blijft;
 - alle normatieve renderregels worden gevolgd;

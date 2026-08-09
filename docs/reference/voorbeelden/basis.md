@@ -4,24 +4,26 @@ Klein voorbeeld van VSA-invoer en SVG-rendering.
 
 ## Invoer
 
+[Fixture](@): `examples/docs-walkthroughs/svg-phrase-kort.vsa`
+
 ```text
 [:] {/Hei_}{/lig_} is de Heer. [//:]
 ```
 
 ## Uitleg
 
-| Onderdeel     | Betekenis                 |
-| ------------- | ------------------------- |
-| `[:]`         | openings-pitch-marker     |
-| `{/Hei_}`     | scope met hoogte-modifier |
-| `is de Heer.` | gewone tekst              |
-| `[\\:]`       | afsluitende pitch-marker  |
+| Onderdeel     | Betekenis                           |
+| ------------- | ----------------------------------- |
+| `[:]`         | openings-pitch-marker               |
+| `{/Hei_}`     | [scope](@) met [hoogte-modifier](@) |
+| `is de Heer.` | gewone tekst                        |
+| `[//:]`       | afsluitende [pitch-marker](@)       |
 
 ## Commando
 
 ```cmd
 cd /d C:\Git\orthodox-groningen\VSA-tooling
-vsa svg examples\minimal\valid-demo.vsa generated\docs-demo-basis.svg
+vsa svg examples\docs-walkthroughs\svg-phrase-kort.vsa generated\docs-demo-basis.svg
 ```
 
 ## Verwachte output
@@ -30,4 +32,6 @@ vsa svg examples\minimal\valid-demo.vsa generated\docs-demo-basis.svg
 SVG geschreven naar: generated\docs-demo-basis.svg
 ```
 
-Gerelateerde fixture: `examples/regression/svg-basic/input.vsa`.
+![Korte VSA-frase als SVG](../../guides/assets/walkthroughs/svg-phrase-kort.svg)
+
+Gerelateerde [fixture](@): `examples/regression/svg-basic/input.vsa`.

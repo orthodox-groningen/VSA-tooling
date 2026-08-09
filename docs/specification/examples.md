@@ -2,9 +2,9 @@
 
 Dit document bewaart de voorbeelden en niet-normatieve toelichting uit de hoofdspecificatie.
 
-## 9. Voorbeelden
+## Voorbeelden
 
-### 9.1 Korte voorbeelden
+### Korte voorbeelden
 
 | Voorbeeld           | Betekenis                                                             |
 | ------------------- | --------------------------------------------------------------------- |
@@ -15,9 +15,9 @@ Dit document bewaart de voorbeelden en niet-normatieve toelichting uit de hoofds
 | `{/tekst_.}`        | één stap omhoog, driemaal standaardduur                               |
 | `{/&\&/tekst_&~&~}` | drie posities: omhoog, omlaag, omhoog; alleen eerste positie verlengd |
 | `[:]`               | horizontale lijn op baseline                                          |
-| `[//:]`             | toonhoogte-markering met initiële beweging `//`                       |
+| `[//:]`             | [toonhoogte-markering](@) met initiële beweging `//`                  |
 
-### 9.2 Voorbeeld in Hugo Markdown
+### Voorbeeld in Hugo Markdown
 
 ```markdown
 ## TROPARION Toon 3 - Donderdag (H. Apostelen)
@@ -30,22 +30,36 @@ bidt tot de barm{\har_}{\ti}{\ge} {\God_}, *
 :::
 ```
 
+### Brug naar tooling (niet-normatief)
+
+Zelfde soort notatie kun je lokaal als SVG bekijken. Korte demofrase:
+
+```text
+[:] {/Hei_}{/lig_} is de Heer. [//:]
+```
+
+![Korte VSA-frase als SVG](../guides/assets/walkthroughs/svg-phrase-kort.svg)
+
+Werkstroom en CLI: [SVG exporteren](../guides/svg-export.md),
+[Starten](../getting-started/README.md). Repertoire-achtig voorbeeld
+(tropaar zondag toon 3): [MusicXML-export](../guides/musicxml-export.md).
+
 ---
 
 
-## 10. Niet-normatieve opmerkingen
+## Niet-normatieve opmerkingen
 
 Deze specificatie bevat bewust ruimte voor implementatiekeuzes.
 
-Voor puur visuele renderers is het voldoende om:
+Voor puur visuele [renderers](@) is het voldoende om:
 
 - de syntax te parsen;
-- EHM- en ELM-glyphs te tekenen;
+- [EHM](@)- en [ELM](@)-glyphs te tekenen;
 - grids correct uit te lijnen.
 
 Voor semantische validatie en MusicXML-export zijn aanvullend nodig:
 
-- een do-context;
+- een [do-context](@);
 - een modusdefinitie;
 - een mapping van toonladdergraden naar concrete toonhoogten;
 - een duurmapping naar MusicXML-durationwaarden.
@@ -54,7 +68,7 @@ De historische en liturgische praktijk blijft leidend. De formele specificatie i
 
 ---
 
-## Appendix 1 - Uitleg van notatie volgens Nederlands Liturgikon
+## Appendix: Uitleg van notatie volgens Nederlands Liturgikon
 
 De volgende tekst komt uit het Liturgikon, pp 27-30 (een uitgave van
 de Nederlands Orthodoxe Kerk, dr. Kuyperstraat 2, den Haag, maart 1968):
@@ -162,75 +176,75 @@ Ze kunnen ook gemakkelijk aan bestaande boeken worden toegevoegd.
 
 ### Relatie tussen de Liturgikon-notatie en VSA
 
-De VSA-notatie is sterk geïnspireerd door de vereenvoudigde neumennotatie zoals beschreven in het Nederlands Liturgikon (1968), maar is daar niet volledig identiek aan. VSA formaliseert en generaliseert verschillende aspecten van deze praktijknotatie om parsing, validatie, rendering en export naar formaten zoals MusicXML mogelijk te maken.
+De [VSA-notatie](@bron) is sterk geïnspireerd door de vereenvoudigde neumennotatie zoals beschreven in het Nederlands Liturgikon (1968), maar is daar niet volledig identiek aan. [VSA](@) formaliseert en generaliseert verschillende aspecten van deze praktijknotatie om parsing, validatie, rendering en export naar formaten zoals MusicXML mogelijk te maken.
 
 De belangrijkste verschillen zijn:
 
-| Onderwerp          | Liturgikon-notatie                              | VSA                                                                                                 |
+| Onderwerp          | Liturgikon-notatie                              | [VSA](@)                                                                                            |
 | ------------------ | ----------------------------------------------- | --------------------------------------------------------------------------------------------------- |
 | Doel               | Praktische zanghulp voor menselijke zangers     | Formele, machine-verwerkbare notatie                                                                |
 | Syntax             | Geen formele grammatica                         | Volledig formele syntax (EBNF)                                                                      |
-| Structuur          | Markeringen direct boven/onder tekst            | Gestructureerde scopes `{...}`                                                                      |
-| Toonhoogte         | Relatieve intervalnotatie                       | Relatieve toonladder-notatie binnen een do-context                                                  |
+| Structuur          | Markeringen direct boven/onder tekst            | Gestructureerde [scopes](@) `{...}`                                                                 |
+| Toonhoogte         | Relatieve intervalnotatie                       | Relatieve toonladder-notatie binnen een [do-context](@)                                             |
 | `#`/`b` als prefix | Extra halve toon bovenop een bestaande beweging | Prefix-modifier vóór een basisbeweging; `#` = +½, `b` = −½; aliases: `+`/`♯` voor `#`, `♭` voor `b` |
 | Lege posities      | Impliciet                                       | Expliciet via `~`                                                                                   |
-| Melisma            | Impliciet / ad hoc                              | Formeel model via samengestelde modifiers                                                           |
+| Melisma            | Impliciet / ad hoc                              | Formeel model via samengestelde [modifiers](@)                                                      |
 | Validatie          | Alleen muzikaal gehoor                          | Syntactische en semantische validatie                                                               |
 | Export             | Niet voorzien                                   | SVG en MusicXML                                                                                     |
 
-Het grootste inhoudelijke verschil betreft de halftoon-modificatoren. In het Liturgikon staat dat een kruis (+) een *extra* stijging van een halve toon betekent bovenop een bestaande richtingspijl, en een mol (♭) een *extra* daling. VSA volgt deze semantiek: `#` (alias `+`, `♯`) en `b` (alias `♭`) zijn prefix-modificatoren die altijd gecombineerd worden met een basisbeweging (`/`, `\`, `-`, `~`, of meerdere pijlen).
+Het grootste inhoudelijke verschil betreft de halftoon-modificatoren. In het Liturgikon staat dat een kruis (+) een *extra* stijging van een halve toon betekent bovenop een bestaande richtingspijl, en een mol (♭) een *extra* daling. [VSA](@) volgt deze semantiek: `#` (alias `+`, `♯`) en `b` (alias `♭`) zijn prefix-modificatoren die altijd gecombineerd worden met een basisbeweging (`/`, `\`, `-`, `~`, of meerdere pijlen).
 
 Voorbeelden van de correspondentie:
 
-| Liturgikon | VSA  | Netto beweging              |
-| ---------- | ---- | --------------------------- |
-| `+` op `/` | `#/` | +1 graad + ½ toon           |
-| `♭` op `/` | `b/` | +1 graad − ½ toon           |
-| `+` op `\` | `#\` | −1 graad + ½ toon           |
-| `♭` op `\` | `b\` | −1 graad − ½ toon           |
-| `+` op `-` | `#-` | ½ toon omhoog (chromatisch) |
-| `♭` op `-` | `b-` | ½ toon omlaag (chromatisch) |
+| Liturgikon | [VSA](@) | Netto beweging              |
+| ---------- | -------- | --------------------------- |
+| `+` op `/` | `#/`     | +1 graad + ½ toon           |
+| `♭` op `/` | `b/`     | +1 graad − ½ toon           |
+| `+` op `\` | `#\`     | −1 graad + ½ toon           |
+| `♭` op `\` | `b\`     | −1 graad − ½ toon           |
+| `+` op `-` | `#-`     | ½ toon omhoog (chromatisch) |
+| `♭` op `-` | `b-`     | ½ toon omlaag (chromatisch) |
 
-Een standalone `#` of `b` zonder basisbeweging is niet geldig in VSA. Als een historische notatie een kruis of mol plaatst bij een toon zonder expliciete richtingspijl, moet dit in VSA worden uitgeschreven als `#-` of `b-`.
+Een standalone `#` of `b` zonder basisbeweging is niet geldig in [VSA](@). Als een historische notatie een kruis of mol plaatst bij een toon zonder expliciete richtingspijl, moet dit in [VSA](@) worden uitgeschreven als `#-` of `b-`.
 
-Bij omzetting van historische notaties naar VSA kunnen de volgende situaties optreden:
+Bij omzetting van historische notaties naar [VSA](@) kunnen de volgende situaties optreden:
 
-- historische notaties laten sommige toonladderinformatie impliciet, terwijl VSA die expliciet moet modelleren;
-- melismatische passages moeten in VSA soms explicieter worden gespecificeerd dan in historische bronnen.
+- historische notaties laten sommige toonladderinformatie impliciet, terwijl [VSA](@) die expliciet moet modelleren;
+- melismatische passages moeten in [VSA](@) soms explicieter worden gespecificeerd dan in historische bronnen.
 
-VSA moet worden gezien als een geformaliseerde afleiding van deze historische praktijknotatie, niet als een exacte reproductie ervan.
+[VSA](@) moet worden gezien als een geformaliseerde afleiding van deze historische praktijknotatie, niet als een exacte reproductie ervan.
 
-## Appendix 2. Voorbeeldmapping van toonladdergraden
+## Appendix: Voorbeeldmapping van toonladdergraden
 
 ### Majeur
 
-| do-context | do  | re  | mi  | fa  | sol | la  | ti  | do  |
-| ---------- | --- | --- | --- | --- | --- | --- | --- | --- |
-| `C4`       | C4  | D4  | E4  | F4  | G4  | A4  | B4  | C5  |
-| `C#4`      | C#4 | D#4 | F4  | F#4 | G#4 | A#4 | C5  | C#5 |
-| `D4`       | D4  | E4  | F#4 | G4  | A4  | B4  | C#5 | D5  |
-| `E4`       | E4  | F#4 | G#4 | A4  | B4  | C#5 | D#5 | E5  |
-| `F4`       | F4  | G4  | A4  | Bb4 | C5  | D5  | E5  | F5  |
-| `G4`       | G4  | A4  | B4  | C5  | D5  | E5  | F#5 | G5  |
-| `A4`       | A4  | B4  | C#5 | D5  | E5  | F#5 | G#5 | A5  |
-| `B4`       | B4  | C#5 | D#5 | E5  | F#5 | G#5 | A#5 | B5  |
+| [do-context](@) | do  | re  | mi  | fa  | sol | la  | ti  | do  |
+| --------------- | --- | --- | --- | --- | --- | --- | --- | --- |
+| `C4`            | C4  | D4  | E4  | F4  | G4  | A4  | B4  | C5  |
+| `C#4`           | C#4 | D#4 | F4  | F#4 | G#4 | A#4 | C5  | C#5 |
+| `D4`            | D4  | E4  | F#4 | G4  | A4  | B4  | C#5 | D5  |
+| `E4`            | E4  | F#4 | G#4 | A4  | B4  | C#5 | D#5 | E5  |
+| `F4`            | F4  | G4  | A4  | Bb4 | C5  | D5  | E5  | F5  |
+| `G4`            | G4  | A4  | B4  | C5  | D5  | E5  | F#5 | G5  |
+| `A4`            | A4  | B4  | C#5 | D5  | E5  | F#5 | G#5 | A5  |
+| `B4`            | B4  | C#5 | D#5 | E5  | F#5 | G#5 | A#5 | B5  |
 
 ### Natuurlijke mineur
 
-| do-context | do | re  | mi  | fa  | sol | la  | ti  | do |
-| ---------- | --- | --- | --- | --- | --- | --- | --- | --- |
-| `C4`       | C4 | D4  | Eb4 | F4  | G4  | Ab4 | Bb4 | C5 |
-| `D4`       | D4 | E4  | F4  | G4  | A4  | Bb4 | C5  | D5 |
-| `E4`       | E4 | F#4 | G4  | A4  | B4  | C5  | D5  | E5 |
-| `F4`       | F4 | G4  | Ab4 | Bb4 | C5  | Db5 | Eb5 | F5 |
-| `G4`       | G4 | A4  | Bb4 | C5  | D5  | Eb5 | F5  | G5 |
-| `A4`       | A4 | B4  | C5  | D5  | E5  | F5  | G5  | A5 |
-| `B4`       | B4 | C#5 | D5  | E5  | F#5 | G5  | A5  | B5 |
+| [do-context](@) | do  | re  | mi  | fa  | sol | la  | ti  | do  |
+| --------------- | --- | --- | --- | --- | --- | --- | --- | --- |
+| `C4`            | C4  | D4  | Eb4 | F4  | G4  | Ab4 | Bb4 | C5  |
+| `D4`            | D4  | E4  | F4  | G4  | A4  | Bb4 | C5  | D5  |
+| `E4`            | E4  | F#4 | G4  | A4  | B4  | C5  | D5  | E5  |
+| `F4`            | F4  | G4  | Ab4 | Bb4 | C5  | Db5 | Eb5 | F5  |
+| `G4`            | G4  | A4  | Bb4 | C5  | D5  | Eb5 | F5  | G5  |
+| `A4`            | A4  | B4  | C5  | D5  | E5  | F5  | G5  | A5  |
+| `B4`            | B4  | C#5 | D5  | E5  | F#5 | G5  | A5  | B5  |
 
 
 ---
 
-## Appendix 3. Voorbeelden van aanvullende blokparameters
+## Appendix: Voorbeelden van aanvullende blokparameters
 
 | Parameter  | Voorbeeld                   | Betekenis         |
 | ---------- | --------------------------- | ----------------- |

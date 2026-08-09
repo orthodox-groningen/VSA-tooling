@@ -13,7 +13,8 @@ formPhrases:
 
 # VSA-blok
 
-Een VSA-blok is het Markdown-omhulsel waarin [VSA-notatie](@bron) in documentatie of content-source staat:
+Een VSA-blok is het Markdown-omhulsel waarin [VSA-notatie](@bron) in
+documentatie of content-source staat:
 
 ```markdown
 ::: vsa-notatie
@@ -27,3 +28,11 @@ Commando’s zoals [`vsa blocks`](../reference/cli/blocks.md),
 [`vsa validate`](../reference/cli/validate.md) en
 [`vsa process`](../reference/cli/process.md) werken op zulke
 blokken in `.md`-bestanden (naast losse `.vsa`-bestanden).
+
+Goede/valide voorbeelden van VSA-blok zijn:
+- `::: vsa-notatie` … `:::` aan regelbegin
+- Inhoud = [VSA-tekst](@) voor [parser](@)
+
+Geen goede/niet valide voorbeelden van VSA-blok zijn:
+- Inline backticks zonder fence
+- Willekeurige codefence zonder VSA-inhoud

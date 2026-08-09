@@ -18,9 +18,9 @@ Het leest recursief alle Markdown in `input_dir`, en schrijft voor elk
 bestand:
 
 1. gegenereerde Markdown in `output_dir` (met dezelfde relatieve
-   mapstructuur als `input_dir`), waarin elk VSA-blok is vervangen door een
+   mapstructuur als `input_dir`), waarin elk [VSA-blok](@) is vervangen door een
    `<img>`-tag of Hugo-shortcode die naar de bijbehorende SVG verwijst;
-2. één SVG-bestand per VSA-blok in `assets_dir`.
+2. één SVG-bestand per [VSA-blok](@) in `assets_dir`.
 
 Publishbare bestanden met open `:::include … zoek="…"` includes worden
 automatisch opgelost via dezelfde stap als
@@ -28,7 +28,7 @@ automatisch opgelost via dezelfde stap als
 buiten de publishbare structuur draai je die stap zelf vooraf.
 
 Vóór het renderen valideert dit commando dezelfde controles als
-[`vsa validate`](validate.md) op de gevonden VSA-blokken.
+[`vsa validate`](validate.md) op de gevonden [VSA-blokken](@).
 
 ## Argumenten en opties
 
@@ -89,10 +89,10 @@ Gegenereerde Markdown met `--output-mode shortcode`:
 
 ## Exit status
 
-| Exitcode | Betekenis                                              |
-| -------- | ------------------------------------------------------ |
-| `0`      | Alle Markdown en SVG's succesvol geschreven.           |
-| `1`      | Validatiefout in een VSA-blok, of een andere fout.     |
+| Exitcode | Betekenis                                               |
+| -------- | ------------------------------------------------------- |
+| `0`      | Alle Markdown en SVG's succesvol geschreven.            |
+| `1`      | Validatiefout in een [VSA-blok](@), of een andere fout. |
 
 ## Voorbeelden — succes
 

@@ -107,21 +107,21 @@ Ze kunnen ook gemakkelijk aan bestaande boeken worden toegevoegd.
 
 Onderstaande tekst is mogelijk niet geheel correct en moet wellicht worden gereviseerd.
 
-De VSA-notatie is sterk geïnspireerd door de vereenvoudigde neumennotatie zoals beschreven in het Nederlands Liturgikon (1968), maar is daar niet volledig identiek aan. VSA formaliseert en generaliseert verschillende aspecten van deze praktijknotatie om parsing, validatie, rendering en export naar formaten zoals SVG en MusicXML mogelijk te maken.
+De [VSA-notatie](@bron) is sterk geïnspireerd door de vereenvoudigde neumennotatie zoals beschreven in het Nederlands Liturgikon (1968), maar is daar niet volledig identiek aan. [VSA](@) formaliseert en generaliseert verschillende aspecten van deze praktijknotatie om parsing, validatie, rendering en export naar formaten zoals SVG en MusicXML mogelijk te maken.
 
 De belangrijkste verschillen zijn:
 
-| Onderwerp     | Liturgikon-notatie                              | VSA                                                |
-| ------------- | ----------------------------------------------- | -------------------------------------------------- |
-| Doel          | Praktische zanghulp voor menselijke zangers     | Formele, machine-verwerkbare notatie               |
-| Syntax        | Geen formele grammatica                         | Volledig formele syntax (EBNF)                     |
-| Structuur     | Markeringen direct boven/onder tekst            | Gestructureerde scopes `{...}`                     |
-| Toonhoogte    | Relatieve intervalnotatie                       | Relatieve toonladder-notatie binnen een do-context |
-| `+/` en `-\`  | Extra halve toon bovenop een bestaande beweging | Zelfstandige halve ladderstap                      |
-| Lege posities | Impliciet                                       | Expliciet via `~`                                  |
-| Melisma       | Impliciet / ad hoc                              | Formeel model via samengestelde modifiers          |
-| Validatie     | Alleen muzikaal gehoor                          | Syntactische en semantische validatie              |
-| Export        | Niet voorzien                                   | SVG en MusicXML                                    |
+| Onderwerp     | Liturgikon-notatie                              | [VSA](@)                                                |
+| ------------- | ----------------------------------------------- | ------------------------------------------------------- |
+| Doel          | Praktische zanghulp voor menselijke zangers     | Formele, machine-verwerkbare notatie                    |
+| Syntax        | Geen formele grammatica                         | Volledig formele syntax (EBNF)                          |
+| Structuur     | Markeringen direct boven/onder tekst            | Gestructureerde [scopes](@) `{...}`                     |
+| Toonhoogte    | Relatieve intervalnotatie                       | Relatieve toonladder-notatie binnen een [do-context](@) |
+| `+/` en `-\`  | Extra halve toon bovenop een bestaande beweging | Zelfstandige halve ladderstap                           |
+| Lege posities | Impliciet                                       | Expliciet via `~`                                       |
+| Melisma       | Impliciet / ad hoc                              | Formeel model via samengestelde [modifiers](@)          |
+| Validatie     | Alleen muzikaal gehoor                          | Syntactische en semantische validatie                   |
+| Export        | Niet voorzien                                   | SVG en MusicXML                                         |
 
 Het grootste inhoudelijke verschil betreft de interpretatie van `+/` en `-\`.
 In het Liturgikon staat dat een kruis (+) een *extra* stijging van een halve toon betekent
@@ -129,15 +129,15 @@ In het Liturgikon staat dat een kruis (+) een *extra* stijging van een halve too
 het bijbehorende voorbeeld. Echter, een dergelijke notatie maakt het dan onmogelijk 
 om een halve ladderstap omhoog of omlaag te gaan. 
 De zangpraktijk van de auteur is dat `+/` en `-\` (ook?) worden gebruikt om 
-een stijging/daling van een halve toon mee aan te geven. Dat is ook zoals zij in VSA
+een stijging/daling van een halve toon mee aan te geven. Dat is ook zoals zij in [VSA](@)
 worden geïnterpreteerd: als zelfstandige relatieve toonhoogtebewegingen van een halve
 ladderstap.
 
-Bij omzetting van historische notaties naar VSA kunnen daardoor de volgende situaties optreden:
+Bij omzetting van historische notaties naar [VSA](@) kunnen daardoor de volgende situaties optreden:
 
 - een historische `+/` moet soms worden herschreven als een combinatie van een hele en halve beweging;
-- de exacte melodische uitkomst kan afhankelijk zijn van de gekozen modus en do-context;
-- historische notaties laten sommige toonladderinformatie impliciet, terwijl VSA die expliciet moet modelleren;
-- melismatische passages moeten in VSA soms explicieter worden gespecificeerd dan in historische bronnen.
+- de exacte melodische uitkomst kan afhankelijk zijn van de gekozen modus en [do-context](@);
+- historische notaties laten sommige toonladderinformatie impliciet, terwijl [VSA](@) die expliciet moet modelleren;
+- melismatische passages moeten in [VSA](@) soms explicieter worden gespecificeerd dan in historische bronnen.
 
-VSA moet daarom worden gezien als een geformaliseerde afleiding van deze historische praktijknotatie, niet als een exacte reproductie ervan.
+[VSA](@) moet daarom worden gezien als een geformaliseerde afleiding van deze historische praktijknotatie, niet als een exacte reproductie ervan.

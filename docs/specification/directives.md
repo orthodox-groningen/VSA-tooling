@@ -1,6 +1,6 @@
 # Directives en document-samenstelling
 
-Dit document consolideert de specificaties voor control tokens, renderer directives, comments, includes en samengestelde VSA-documenten.
+Dit document consolideert de specificaties voor [control tokens](@), [renderer directives](@), comments, includes en samengestelde VSA-documenten.
 
 Deze onderdelen zijn syntactische of structurele uitbreidingen rond de VSA-kernnotatie.
 
@@ -16,8 +16,8 @@ Deze onderdelen zijn syntactische of structurele uitbreidingen rond de VSA-kernn
 Maak onderscheid tussen:
 
 1. gewone tekst
-2. hoogte-markeringen
-3. renderer-directives
+2. [hoogte-markeringen](@)
+3. [renderer-directives](@)
 
 ## Hoogte-markering
 
@@ -45,7 +45,7 @@ Deze hebben uitsluitend betrekking op toonhoogte.
 [*?]
 ```
 
-Deze zijn geen hoogte-markeringen.
+Deze zijn geen [hoogte-markeringen](@).
 
 ## Semantiek
 
@@ -225,7 +225,7 @@ Er is geen aparte print-pipeline; één HTML-bestand dient beide doelen.
 
 Basis: Markdown met GFM-extensies (tabellen, doorhalen), en uitgebreid met de volgende directives.
 
-### 1. VSA-blok (bestaand)
+### VSA-blok (bestaand)
 
     ::: vsa-notatie
     [VSA-inhoud]
@@ -233,7 +233,7 @@ Basis: Markdown met GFM-extensies (tabellen, doorhalen), en uitgebreid met de vo
 
 Wordt door [`vsa build-markdown`](../reference/cli/build-markdown.md) omgezet naar SVG en ingevoegd als shortcode of `<img>`.
 
-### 2. Paginabreuk
+### Paginabreuk
 
     :::pagebreak:::
 
@@ -241,7 +241,7 @@ Wordt door [`vsa build-markdown`](../reference/cli/build-markdown.md) omgezet na
 - In browser: onzichtbaar
 - Bij afdrukken: CSS zorgt voor een harde A4-paginabreuk
 
-### 3. Transclusion (include)
+### Transclusion (include)
 
     :::include pad/naar/bestand.ext:::
 
@@ -276,7 +276,7 @@ Ondersteunde bestandstypen:
 | `.svg`                                   | Wordt ingevoegd als `<img src="...">`                                         |
 | `.jpg`, `.jpeg`, `.png`, `.webp`, `.gif` | Wordt ingevoegd als `<img src="...">`                                         |
 
-### 3b. Coria-oefenlink
+### Coria-oefenlink
 
     :::coria "pad/naar/melodie.vsa" [label="…"] [mode="auto|html|mxl"]:::
 
@@ -288,7 +288,7 @@ Pad relatief aan het includerende bestand, zoals bij `:::include`.
 
 Wordt bij `build-markdown` omgezet naar Hugo-shortcode `coria-html` of `coria`.
 
-### 4. Conditionele inhoud
+### Conditionele inhoud
 
     :::web-only:::
     [inhoud die alleen op de website verschijnt]
@@ -301,7 +301,7 @@ Wordt bij `build-markdown` omgezet naar Hugo-shortcode `coria-html` of `coria`.
 - `web-only` — verborgen bij afdrukken, zichtbaar in browser
 - `print-only` — verborgen in browser, zichtbaar bij afdrukken
 
-### 5. Samen op één pagina
+### Samen op één pagina
 
     :::keep-together:::
     [inhoud die bij afdrukken bij elkaar gehouden wordt]
@@ -363,7 +363,7 @@ De verwerker lost dit van buiten naar binnen op.
   aan een paginabreuk in het hoofdbestand
 - Blok-directives (`web-only`, `print-only`, `keep-together`) in included
   bestanden werken identiek aan die in het hoofdbestand
-- VSA-blokken in included bestanden worden verwerkt als onderdeel
+- [VSA-blokken](@) in included bestanden worden verwerkt als onderdeel
   van het uiteindelijke document; elk blok krijgt een unieke SVG-bestandsnaam
 
 **Voorbeeld:**
@@ -386,7 +386,7 @@ De verwerking loopt via de bestaande [`vsa build-markdown`](../reference/cli/bui
 1. **Include-resolutie** — recursief, vóór alle andere verwerking
 2. **Paginabreuk-omzetting** — `:::pagebreak:::` → HTML-markering
 3. **Blok-directives** — omgezet naar Hugo shortcodes
-4. **VSA-rendering** — ongewijzigd; VSA-blokken (ook uit included `.vsa`-bestanden)
+4. **VSA-rendering** — ongewijzigd; [VSA-blokken](@) (ook uit included `.vsa`-bestanden)
    worden omgezet naar SVG
 
 Hugo verwerkt daarna het gegenereerde Markdown-bestand tot HTML.
@@ -440,7 +440,7 @@ Hugo verwerkt daarna het gegenereerde Markdown-bestand tot HTML.
 
 ---
 
-## [Exporttypen](@bron) (normatief contract)
+## Exporttypen (normatief contract)
 
 Authoring-syntax voor **export** (niet conversie) is contractueel vastgelegd in de
 **[bron-repository](@bron)**:
@@ -454,11 +454,11 @@ Conversie ([`vsa svg`](../reference/cli/svg.md), [`vsa musicxml`](../reference/c
 [Conversiemechanismen](https://orthodox-groningen.github.io/bron/reference/conversiemechanismen/)
 ([conversiemechanisme](@bron)).
 
-### Implementatiestatus ([VSA-tooling](@bron))
+### Implementatiestatus (VSA-tooling)
 
 | Syntax                                        | Status                                                                                                 |
 | --------------------------------------------- | ------------------------------------------------------------------------------------------------------ |
-| `:::include "melodie.vsa"`                    | Geïmplementeerd (SVG via VSA-blok)                                                                     |
+| `:::include "melodie.vsa"`                    | Geïmplementeerd (SVG via [VSA-blok](@))                                                                |
 | `:::coria "melodie.vsa"`                      | Geïmplementeerd                                                                                        |
 | `:::include svg\|coria\|mxl "…"`              | Geïmplementeerd; zie demo `export-demo.md`                                                             |
 | `:::include svg id:…` / `lokaal:…` / `bron:…` | Geïmplementeerd (fase 3); zie demo `antifonen-hemelum.md`                                              |

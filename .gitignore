@@ -8,6 +8,9 @@ public/
 resources/
 node_modules/
 
+# Lokale docs-checks (scripts/check-docs.py) — niet committen
+docs/reports/
+
 # CI / lokaal: bron-checkout (GitHub Actions) — niet committen
 vendor/
 

@@ -2,7 +2,7 @@
 
 ## Doel
 
-Dit hoofdstuk beschrijft het versiebeleid van de VSA-specificatie.
+Dit document beschrijft het versiebeleid van de VSA-specificatie.
 
 Het versiebeleid zorgt ervoor dat gebruikers en implementaties kunnen bepalen welke wijzigingen compatibel zijn en welke aanpassingen een nieuwe hoofdversie vereisen.
 

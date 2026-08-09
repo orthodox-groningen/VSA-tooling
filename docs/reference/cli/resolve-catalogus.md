@@ -142,7 +142,7 @@ Geen content-root of bron-root; geef --content-root en/of --bron-root op.
 
 Exitcode: `1`. Fix: geef `--content-root` en/of `--bron-root` expliciet op.
 
-Bij ambiguïteit (meerdere zangstukken matchen dezelfde zoekterm + context)
+Bij ambiguïteit (meerdere [zangstukken](@bron) matchen dezelfde zoekterm + context)
 stopt het commando met een foutmelding van [`catalogus zoek`](https://orthodox-groningen.github.io/bron/reference/catalogus-cli/#catalogus-zoek). Fix: gebruik
 [`catalogus zoek --lijst`](https://orthodox-groningen.github.io/bron/reference/catalogus-cli/#catalogus-zoek) (in de `bron`-repo) om de kandidaten te bekijken en
 verfijn de zoekterm of `default.*`-context.

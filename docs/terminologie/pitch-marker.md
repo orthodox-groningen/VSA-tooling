@@ -3,7 +3,7 @@ slug: pitch-marker
 term: pitch-marker
 termType: concept
 glossaryTerm: Pitch-marker
-glossaryText: "een bracket-directive met de vorm `[<EHM>:]`, waarbij `<EHM>` leeg is of een geldige enkelvoudige hoogte-modifier bevat."
+glossaryText: "een [bracket-directive](@) / [bracket-token](@) met de vorm `[<EHM>:]`, waarbij `<EHM>` leeg is of een geldige [EHM](@) bevat."
 glossaryAlias: Hoogte-markering
 formPhrases:
   - pitch-marker
@@ -20,12 +20,20 @@ glossaryNotes:
 
 # Pitch-marker
 
-Een pitch-marker geeft in VSA een relatieve toonhoogte of toonpositie aan.
-Vorm: `[<EHM>:]` — bijvoorbeeld `[:]` of `[/:]`.
+Een pitch-marker / [hoogte-markering](@) geeft in [VSA](@) een relatieve
+toonhoogte of toonpositie aan. Vorm: `[<EHM>:]` — bijvoorbeeld `[:]` of `[/:]`.
 
-De parser bewaart pitch-markers als positionele tokens in de volgorde van de
-bron; een bracket-directive zonder afsluitende dubbele punt valt niet onder
-dit begrip.
+De [parser](@) bewaart pitch-markers als positionele tokens in de volgorde van
+de bron; een [bracket-directive](@) zonder afsluitende dubbele punt valt niet
+onder dit begrip.
+
+Goede/valide voorbeelden van Pitch-marker zijn:
+- `[:]` of `[/:]` (afgesloten met `:`)
+- Lege of geldige [EHM](@) vóór de `:`
+
+Geen goede/niet valide voorbeelden van Pitch-marker zijn:
+- `[/]` zonder `:` ([control-token](@) of andere)
+- Ongeldige [EHM](@)-vorm binnen de brackets
 
 ## Motivatie
 
@@ -35,5 +43,5 @@ machineleesbaar. Pitch-markers maken hoogte-afspraken in de notatie toetsbaar
 
 ## Gerelateerd / verder lezen
 
-- [hoogte-modifier](@), [bracket-directive](@), [vsa-scope](@)
+- [hoogte-modifier](@), [bracket-directive](@), [vsa-scope](@), [EHM](@)
 - Specificatie: [syntax](../specification/syntax.md) (bracket-/hoogte-secties)

@@ -21,7 +21,7 @@ tempo="132"
 | `validate-ending`   | Eindmarkering valideren                        |
 | `duration-model`    | Model voor duurinterpretatie                   |
 
-Vrije parameters mogen voorkomen en kunnen door renderers of exporteurs worden gebruikt.
+Vrije parameters mogen voorkomen en kunnen door [renderers](@) of exporteurs worden gebruikt.
 
 ## `.vsa`-frontmatter
 
@@ -48,7 +48,7 @@ identificatie:
 | `muziek`         | Muzikale interpretatie                    |
 | `identificatie`  | Titel, componist, taal en brongegevens    |
 | `typografie`     | Lettertype- en rendererinstellingen       |
-| `liturgie`       | Toekomstige liturgische metadata          |
+| `liturgie`       | Toekomstige liturgische [metadata](@)     |
 | `publicatie`     | Toekomstige publicatiemetadata            |
 
 ## Velden in `muziek`
@@ -72,7 +72,7 @@ identificatie:
 
 | Veld        | Betekenis                       |
 | ----------- | ------------------------------- |
-| `title`     | Titel van het zangstuk          |
+| `title`     | Titel van het [zangstuk](@bron) |
 | `subtitle`  | Ondertitel                      |
 | `composer`  | Componist of bron               |
 | `language`  | Taalcode                        |

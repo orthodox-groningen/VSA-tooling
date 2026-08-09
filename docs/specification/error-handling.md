@@ -2,13 +2,13 @@
 
 ## Doel
 
-Dit document beschrijft hoe VSA-implementaties fouten, waarschuwingen en diagnostische meldingen behoren te genereren en te rapporteren.
+Dit document beschrijft hoe VSA-implementaties fouten, waarschuwingen en [diagnostische meldingen](@) behoren te genereren en te rapporteren.
 
 ---
 
 ## Severity levels
 
-VSA onderscheidt drie soorten diagnostische meldingen:
+[VSA](@) onderscheidt drie soorten [diagnostische meldingen](@):
 
 * `error` — het document is ongeldig.
 * `warning` — het document is geldig, maar bevat een mogelijk probleem.
@@ -18,7 +18,7 @@ VSA onderscheidt drie soorten diagnostische meldingen:
 
 ## Foutcategorieën
 
-Diagnostische meldingen worden onderverdeeld in de volgende categorieën:
+[Diagnostische meldingen](@) worden onderverdeeld in de volgende categorieën:
 
 * **syntax error** — de invoer voldoet niet aan de grammatica;
 * **semantic error** — de invoer is syntactisch geldig, maar de betekenis is ongeldig;
@@ -32,7 +32,7 @@ Diagnostische meldingen worden onderverdeeld in de volgende categorieën:
 
 Het doel van diagnostiek is de gebruiker zoveel mogelijk bruikbare informatie te geven over problemen die tijdens de verwerking van een VSA-document worden aangetroffen.
 
-Implementaties behoren daarom, waar redelijkerwijs mogelijk, de verwerking van een document voort te zetten nadat een fout is vastgesteld. Ook meldingen met severity `error` behoren niet automatisch te leiden tot onmiddellijke beëindiging van de verwerking. Hierdoor kunnen meerdere onafhankelijke fouten tijdens één verwerkingsronde worden gerapporteerd, zodat de auteur deze in één keer kan corrigeren.
+Implementaties behoren daarom, waar redelijkerwijs mogelijk, de verwerking van een document voort te zetten nadat een fout is vastgesteld. Ook meldingen met [severity](@) `error` behoren niet automatisch te leiden tot onmiddellijke beëindiging van de verwerking. Hierdoor kunnen meerdere onafhankelijke fouten tijdens één verwerkingsronde worden gerapporteerd, zodat de auteur deze in één keer kan corrigeren.
 
 Een implementatie mag de verwerking uitsluitend beëindigen wanneer verdere verwerking niet meer mogelijk is, bijvoorbeeld doordat de resterende documentstructuur niet meer betrouwbaar kan worden geïnterpreteerd of doordat geen zinvolle diagnostiek meer kan worden geproduceerd.
 
@@ -40,9 +40,9 @@ Een implementatie mag de verwerking uitsluitend beëindigen wanneer verdere verw
 
 ## Diagnostische meldingen
 
-Standaard behoort iedere diagnostische melding minimaal de volgende informatie te bevatten:
+Standaard behoort iedere [diagnostische melding](@) minimaal de volgende informatie te bevatten:
 
-* severity;
+* [severity](@);
 * foutcode;
 * foutcategorie;
 * naam van het bronbestand;
@@ -54,7 +54,7 @@ Standaard behoort iedere diagnostische melding minimaal de volgende informatie t
 
 ## Compacte uitvoer
 
-Implementaties behoren een optie te bieden waarmee diagnostische meldingen in een compacte, machinevriendelijke vorm worden weergegeven.
+Implementaties behoren een optie te bieden waarmee [diagnostische meldingen](@) in een compacte, machinevriendelijke vorm worden weergegeven.
 
 In deze modus bevat iedere melding uitsluitend:
 
@@ -69,7 +69,7 @@ Deze uitvoervorm is bedoeld voor geautomatiseerde omgevingen, zoals CI/CD-pipeli
 
 ## Samenvattingen
 
-Implementaties mogen na afloop van de verwerking een samenvatting van de aangetroffen diagnostische meldingen tonen.
+Implementaties mogen na afloop van de verwerking een samenvatting van de aangetroffen [diagnostische meldingen](@) tonen.
 
 Een samenvatting kan bijvoorbeeld het aantal `error`-, `warning`- en `info`-meldingen bevatten en is uitsluitend informatief.
 

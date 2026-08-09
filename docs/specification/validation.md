@@ -22,33 +22,33 @@ semantische validatie
 rendering of export
 ```
 
-Een renderer of exporteur mag uitsluitend werken op een zangstuk dat syntactisch en semantisch geldig is.
+Een [renderer](@) of exporteur mag uitsluitend werken op een [zangstuk](@bron) dat syntactisch en semantisch geldig is.
 
 ### Syntactische fouten
 
 Een syntactische fout treedt op wanneer de invoer niet voldoet aan de grammatica.
 Hier is een aantal voorbeelden:
 
-| Voorbeeld    | Fout                                    |
-| ------------ | --------------------------------------- |
-| `{tekst`     | ontbrekende afsluitende accolade        |
-| `{tekst&&_}` | ongeldige modifier-syntax               |
-| `{tekst _}`  | whitespace binnen een zangelement-scope |
-| `{te/tekst}` | modifierteken `/` binnen zangelement    |
-| `{}`         | ontbrekend zangelement                  |
+| Voorbeeld    | Fout                                         |
+| ------------ | -------------------------------------------- |
+| `{tekst`     | ontbrekende afsluitende accolade             |
+| `{tekst&&_}` | ongeldige modifier-syntax                    |
+| `{tekst _}`  | whitespace binnen een [zangelement-scope](@) |
+| `{te/tekst}` | modifierteken `/` binnen [zangelement](@)    |
+| `{}`         | ontbrekend [zangelement](@)                  |
 
 Syntactische fouten worden gedetecteerd vóór semantische validatie.
 
 ### Semantische fouten
 
 Een semantische fout treedt op wanneer de invoer syntactisch geldig is,
-maar niet voldoet aan de betekenisregels van VSA.
-De laatste twee voorbeelden gaan uit van een do-context 
+maar niet voldoet aan de betekenisregels van [VSA](@).
+De laatste twee voorbeelden gaan uit van een [do-context](@) 
 met parameters `do="C4"` en `mode="major"`.
 
 | Voorbeeld          | Fout                                                                                      |
 | ------------------ | ----------------------------------------------------------------------------------------- |
-| `{/&\tekst_}`      | hoogte-modifier bevat twee posities; lengte-modifier bevat één positie                    |
+| `{/&\tekst_}`      | [hoogte-modifier](@) bevat twee posities; [lengte-modifier](@) bevat één positie          |
 | `[//:] tekst [/:]` | eindmarkering komt niet overeen met berekende eindtoon, indien eindcontrole actief is     |
 | `[//:] {+/tekst}`  | halve stap toegepast op een overgang waarvoor geen verdere onderverdeling is gedefinieerd |
 | `[///:] {-\tekst}` | halve stap toegepast op een overgang waarvoor geen verdere onderverdeling is gedefinieerd |
@@ -153,7 +153,7 @@ blijft validatie en generatie stoppen.
 
 Gebruik warnings tijdelijk bij migratie of experimenten.
 
-Gebruik errors voor CI, demo-sites en publicatie wanneer de notatie stabiel moet zijn.
+Gebruik errors voor CI, demo-sites en [publicatie](@) wanneer de notatie stabiel moet zijn.
 
 
 ## Verouderde pitchmarker-foutcodes

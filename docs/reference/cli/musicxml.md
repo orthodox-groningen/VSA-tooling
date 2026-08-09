@@ -1,6 +1,6 @@
 # `vsa musicxml` — exporteren naar MusicXML
 
-Exporteer VSA naar gecomprimeerde MusicXML (`.mxl`, standaard) of platte
+Exporteer [VSA](@) naar gecomprimeerde MusicXML (`.mxl`, standaard) of platte
 MusicXML (`.musicxml`).
 
 ## Synopsis
@@ -15,9 +15,9 @@ vsa musicxml [-h] [--config CONFIG] [--format {musicxml,mxl}] [--do DO]
 ## Beschrijving
 
 `vsa musicxml` leest `input` — een `.vsa`-bestand, een Markdownbestand met
-VSA-blokken, of een map — en schrijft één of meer MusicXML-bestanden. De
-gebruikte metadata (grondtoon, mode, tempo, exportprofiel, …) komt uit de
-YAML-frontmatter van het `.vsa`-bestand (of de blokmetadata in Markdown); de
+[VSA-blokken](@), of een map — en schrijft één of meer MusicXML-bestanden. De
+gebruikte [metadata](@) (grondtoon, mode, tempo, exportprofiel, …) komt uit de
+YAML-frontmatter van het `.vsa`-bestand (of de [blokmetadata](@) in Markdown); de
 CLI-opties `--do`, `--mode`, `--tempo` en `--musicxml-profile` overschrijven
 die bestand-metadata.
 
@@ -26,7 +26,7 @@ Gedrag hangt af van het type van `input`:
 | `input`-type              | Gedrag van `output`                                                                                                                                               |
 | ------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `.vsa`-bestand            | `output` is het doelbestand. Zonder herkende extensie wordt `--format` (of default `.mxl`) toegevoegd; met een expliciete extensie (`.mxl`/`.musicxml`) wint die. |
-| `.md`/`.markdown`-bestand | `output` is een map; per VSA-blok komt er één bestand (`<stem>-<n>.<ext>` bij meer dan 1 blok).                                                                   |
+| `.md`/`.markdown`-bestand | `output` is een map; per [VSA-blok](@) komt er één bestand (`<stem>-<n>.<ext>` bij meer dan 1 blok).                                                              |
 | Map                       | `output` is een map; alle `.vsa`- en `.md`-bestanden worden recursief verwerkt, met behoud van relatieve mapstructuur.                                            |
 
 Standaard gebruikt `vsa musicxml` het `playback`-profiel (bedoeld voor
@@ -147,6 +147,6 @@ sluiten.
 ## Zie ook
 
 - Volledige workflow, profielen, Coria-integratie en frontmatter-instellingen: [musicxml-export.md](../../guides/musicxml-export.md)
-- [`vsa validate`](validate.md) — controleer VSA-notatie vóór export.
+- [`vsa validate`](validate.md) — controleer [VSA-notatie](@bron) vóór export.
 - Outputreferentie: [outputs.md](../outputs.md)
 - Bron-contract (exporttype mxl/coria): [exporttype-coria](https://orthodox-groningen.github.io/bron/reference/exporttype-coria/)

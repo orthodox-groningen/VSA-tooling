@@ -10,7 +10,7 @@ Het org-brede werkplan (persona’s, paginatypen, audit, fasen 0–E) staat in
 
 ## VSA-specifieke werkstromen uit dat plan
 
-| Fase    | Wat hier in VSA-tooling gebeurt                                                                         |
+| Fase    | Wat hier in [VSA-tooling](@bron) gebeurt                                                                |
 | ------- | ------------------------------------------------------------------------------------------------------- |
 | **0**   | Demo-bug: geen succes-`validate` op `050_svg_demo.vsa` — **gedaan** (succespad `001_plain_text.vsa`)    |
 | **B.4** | Lokale curated terms: voorbeeld + `@bron` waar org-term bedoeld is — **gedaan** (steekproef)            |

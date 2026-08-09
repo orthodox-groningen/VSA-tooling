@@ -7,6 +7,9 @@ glossaryText: "gegevens die als gestructureerde blokparameters of YAML-frontmatt
 formPhrases:
   - metadata
   - metadata-items
+  - blokmetadata
+  - blokparameter
+  - blokparameters
 ---
 
 # Metadata

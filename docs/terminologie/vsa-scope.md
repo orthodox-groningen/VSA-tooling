@@ -10,6 +10,8 @@ formPhrases:
   - vsa-scopes
   - scope
   - scopes
+  - zangelement-scope
+  - zangelement-scopes
 glossaryNotes:
   - "Voorbeeld: `{/Hei_}` — hoogte-modifier `/`, zangelement `Hei`, lengte-modifier `_`."
   - "Lege `{}` of `{te kst}` (spatie) zijn geen geldige VSA-scope."

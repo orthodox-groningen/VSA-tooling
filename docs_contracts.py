@@ -1,3 +1,4 @@
+import re
 from pathlib import Path
 
 
@@ -11,6 +12,9 @@ HISTORY = DOCS / "history"
 ADDENDA = HISTORY / "addenda"
 PARSER_STEPS = HISTORY / "parser-steps"
 TERMINOLOGIE = DOCS / "terminologie"
+
+# TEv2 TermRefs: [showtext](@), [showtext](@bron), [showtext](term@), …
+_TERMREF_RE = re.compile(r"\[([^\]]+)\]\([^)\n]*@[a-z0-9_:-]*\)", re.IGNORECASE)
 
 
 CANONICAL_DOCS = {
@@ -58,6 +62,12 @@ def read_docs(*names: str) -> str:
     return "\n".join(read_doc(name) for name in names)
 
 
+def plain_docs_text(text: str) -> str:
+    """Replace TEv2 TermRefs with their showtext for content-contract matching."""
+    return _TERMREF_RE.sub(r"\1", text)
+
+
 def assert_terms(text: str, terms: list[str] | tuple[str, ...]) -> None:
-    missing = [term for term in terms if term not in text]
-    assert missing == []
+    plain = plain_docs_text(text)
+    missing = [term for term in terms if term not in text and term not in plain]
+    assert missing == [], missing

@@ -6,16 +6,16 @@
 
 ## Uitgangspunt
 
-De huidige VSA-notatie richt zich op een melodische hoofdstem waarbij de melodie direct boven en onder de tekst wordt genoteerd.
+De huidige [VSA-notatie](@bron) richt zich op een melodische hoofdstem waarbij de melodie direct boven en onder de tekst wordt genoteerd.
 
-In de orthodoxe praktijk bestaan echter meestal meerdere stemmen (S, A, T, B) die dezelfde tekst zingen, vaak met min of meer vergelijkbare ritmische structuur en (vooral) afwijkende toonhoogtebewegingen. Ook is de orthodoxe praktijk dat zangstukken als troparen, kondaken, stichieren e.d. een klein aantal melodielijnen hebben die cyclisch worden uitgevoerd over het (grotere aantal) strofes van zo'n zangstuk, met nog een of twee melodielijnen die voor de laatste (twee) strofe(s) word(en) gebruikt.
+In de orthodoxe praktijk bestaan echter meestal meerdere stemmen (S, A, T, B) die dezelfde tekst zingen, vaak met min of meer vergelijkbare ritmische structuur en (vooral) afwijkende toonhoogtebewegingen. Ook is de orthodoxe praktijk dat [zangstukken](@bron) als troparen, kondaken, stichieren e.d. een klein aantal melodielijnen hebben die cyclisch worden uitgevoerd over het (grotere aantal) strofes van zo'n [zangstuk](@bron), met nog een of twee melodielijnen die voor de laatste (twee) strofe(s) word(en) gebruikt.
 
 Doelen van een toekomstige uitbreiding:
 
 - de hoeveelheid typwerk minimaliseren voor beheerders die andere teksten op een bestaande melodie willen schrijven;
 - minimale duplicatie van tekst;
 - behoud van synchronisatie tussen stemmen;
-- compatibiliteit met bestaande VSA-notatie;
+- compatibiliteit met bestaande [VSA-notatie](@bron);
 - ondersteuning van formulematige orthodoxe zangpraktijk.
 
 ---
@@ -58,7 +58,7 @@ Alle stemmen blijven hierdoor automatisch tekstueel synchroon.
 
 ## Betekenis van placeholders
 
-Een placeholder representeert een tekstsegment dat op een muzikale positie wordt geprojecteerd.
+Een placeholder representeert een tekstsegment dat op een [muzikale positie](@) wordt geprojecteerd.
 
 De mappinglaag koppelt:
 
@@ -82,7 +82,7 @@ Hierdoor kunnen:
 
 ## Rol van `~` en `-`
 
-De modifiers `~` en `-` blijven beide belangrijk.
+De [modifiers](@) `~` en `-` blijven beide belangrijk.
 
 ### `~`
 
@@ -90,18 +90,18 @@ Betekenis:
 
 - semantisch aanwezig;
 - standaardtoon of standaardduur;
-- renderer toont geen glyph (of onzichtbaar).
+- [renderer](@) toont geen [glyph](@) (of onzichtbaar).
 
 ### `-`
 
 Betekenis:
 
 - semantisch gelijk aan standaardtoon of standaardduur;
-- renderer toont een zichtbare glyph.
+- [renderer](@) toont een zichtbare [glyph](@).
 
 Daardoor kunnen implementaties per stem bepalen:
 
-- welke muzikale posities expliciet zichtbaar zijn;
+- welke [muzikale posities](@) expliciet zichtbaar zijn;
 - welke alleen structureel aanwezig zijn.
 
 ---
@@ -110,7 +110,7 @@ Daardoor kunnen implementaties per stem bepalen:
 
 Orthodoxe tonen (glas 1 t/m 8) functioneren vaak als formulebibliotheken.
 
-Een toekomstige uitbreiding van VSA kan daarom werken met:
+Een toekomstige uitbreiding van [VSA](@) kan daarom werken met:
 
 ```text
 toon/glas
@@ -125,6 +125,6 @@ Daardoor hoeven melodieën niet steeds volledig opnieuw genoteerd te worden.
 
 ## Status
 
-Dit document beschrijft een toekomstig uitbreidingsvoorstel voor VSA.
+Dit document beschrijft een toekomstig uitbreidingsvoorstel voor [VSA](@).
 
 Het maakt nadrukkelijk geen onderdeel uit van de huidige eenstemmige VSA-specificatie.

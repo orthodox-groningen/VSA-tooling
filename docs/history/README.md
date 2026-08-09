@@ -1,6 +1,6 @@
 # Ontwerpgeschiedenis
 
-Deze map bewaart de historische ontwerpdocumenten van de VSA-tooling.
+Deze map bewaart de historische ontwerpdocumenten van de [VSA](@)-tooling.
 
 De bestanden in deze map zijn **informatief**. De actuele normatieve beschrijving staat in `../specification/`; de actuele ontwerpdocumentatie staat in `../architecture/`.
 

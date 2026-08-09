@@ -46,12 +46,12 @@ vsa validate examples\consumer-minimal\content-source
 
 | Controle                                                                 | Voorbeeld van fout |
 | ------------------------------------------------------------------------ | ------------------ |
-| scope is goed afgesloten                                                 | `{tekst`           |
-| scope is niet leeg                                                       | `{}`               |
-| geen whitespace binnen scope                                             | `{te kst}`         |
+| [scope](@) is goed afgesloten                                            | `{tekst`           |
+| [scope](@) is niet leeg                                                  | `{}`               |
+| geen whitespace binnen [scope](@)                                        | `{te kst}`         |
 | geen losse sluitaccolade                                                 | `tekst}`           |
 | [pitch-marker](@) is goed afgesloten                                     | `[//:`             |
-| pitch-marker heeft dubbele punt                                          | `[//]`             |
+| [pitch-marker](@) heeft dubbele punt                                     | `[//]`             |
 | [hoogte-modifier](@)- en [lengte-modifier](@)-posities passen bij elkaar | `{/&\tekst_}`      |
 
 ## Succesoutput
@@ -66,7 +66,7 @@ Exitcode: `0`. Details: [`vsa validate`](../reference/cli/validate.md).
 
 ## Foutoutput lezen
 
-Concrete fail-fixture
+Concrete [fail-fixture](@)
 (`examples\docs-walkthroughs\validate-unclosed-scope.vsa`):
 
 ```text
@@ -92,9 +92,9 @@ ERROR: VSA-SYNTAX-UNCLOSED-SCOPE: Scope zonder afsluitende accolade.
 | `VSA-SYNTAX-UNCLOSED-SCOPE`    | foutcode ([diagnostic](@))                 |
 | tekst erna + `^`               | uitleg en positie-indicator                |
 
-**Fix:** sluit de scope af, bijvoorbeeld `{tekst}`.
+**Fix:** sluit de [scope](@) af, bijvoorbeeld `{tekst}`.
 
-In Markdown met VSA-blokken ziet de locatie er zo uit:
+In Markdown met [VSA-blokken](@) ziet de locatie er zo uit:
 
 ```text
 examples\demo.md:blok-1:1:1: VSA-SYNTAX-EMPTY-SCOPE: Scope zonder zangelement.
@@ -110,13 +110,13 @@ examples\demo.md:blok-1:1:1: VSA-SYNTAX-EMPTY-SCOPE: Scope zonder zangelement.
 
 ## Diagnose bij problemen
 
-| Symptoom / melding                             | Oorzaak                              | Fix                                                                  |
-| ---------------------------------------------- | ------------------------------------ | -------------------------------------------------------------------- |
-| `VSA-SYNTAX-EMPTY-SCOPE`                       | `{}` of lege scope                   | Zangelement tussen `{` en `}` zetten                                 |
-| `VSA-SYNTAX-UNCLOSED-SCOPE` (of vergelijkbaar) | Ontbrekende `}`                      | Scope afsluiten; regel/kolom in de melding volgen                    |
-| Semantische modifier-mismatch                  | Aantal hoogte- ≠ lengte-posities     | Modifiers tellen; zie [semantics](../specification/semantics.md)     |
-| `OK` lokaal, CI faalt                          | Andere map / andere `vsa.toml`       | Zelfde pad als CI; severity-overrides controleren                    |
-| SVG werkt, validate faalt                      | `svg` doet geen volle semantiek      | Verwacht gedrag — zie hierboven; herstel of accepteer bewust         |
+| Symptoom / melding                             | Oorzaak                              | Fix                                                                   |
+| ---------------------------------------------- | ------------------------------------ | --------------------------------------------------------------------- |
+| `VSA-SYNTAX-EMPTY-SCOPE`                       | `{}` of lege [scope](@)              | [Zangelement](@) tussen `{` en `}` zetten                             |
+| `VSA-SYNTAX-UNCLOSED-SCOPE` (of vergelijkbaar) | Ontbrekende `}`                      | [Scope](@) afsluiten; regel/kolom in de melding volgen                |
+| Semantische modifier-mismatch                  | Aantal hoogte- ≠ lengte-posities     | [Modifiers](@) tellen; zie [semantics](../specification/semantics.md) |
+| `OK` lokaal, CI faalt                          | Andere map / andere `vsa.toml`       | Zelfde pad als CI; severity-overrides controleren                     |
+| SVG werkt, validate faalt                      | `svg` doet geen volle semantiek      | Verwacht gedrag — zie hierboven; herstel of accepteer bewust          |
 
 Concrete fail + Fix: man-page [`vsa validate`](../reference/cli/validate.md).
 

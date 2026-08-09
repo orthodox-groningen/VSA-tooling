@@ -4,10 +4,10 @@
 
 | Output       | Gebruik                                      |
 | ------------ | -------------------------------------------- |
-| SVG          | Visuele weergave van VSA-notatie             |
+| SVG          | Visuele weergave van [VSA-notatie](@bron)    |
 | Markdown     | Hugo-geschikte publicatie-output             |
 | JSON         | Machineleesbare inspectie                    |
-| AST          | Interne parserrepresentatie                  |
+| [AST](@)     | Interne parserrepresentatie                  |
 | MusicXML     | Muzikale export                              |
 
 ## SVG
@@ -64,7 +64,7 @@ vsa build-markdown <input-dir> <output-dir> <assets-dir>
 
 ## MusicXML
 
-MusicXML-export gebruikt metadata uit `.vsa`-frontmatter en renderer-/exportconfiguratie.
+MusicXML-export gebruikt [metadata](@) uit `.vsa`-frontmatter en renderer-/exportconfiguratie.
 
 | Metadata                 | Gebruik in MusicXML                         |
 | ------------------------ | ------------------------------------------- |

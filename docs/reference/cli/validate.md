@@ -19,11 +19,11 @@ vsa validate [-h] [--config CONFIG] [--summary] path
 `vsa validate` voert drie controlefasen achtereenvolgens uit op elk gevonden
 [VSA-blok](@) of [vsa-bestand](@bron):
 
-| Fase       | Controle                                                             |
-| ---------- | -------------------------------------------------------------------- |
-| syntaxscan | accolades, lege scopes, whitespace in scopes, pitch-markers          |
-| parser     | of de VSA naar interne structuur kan worden omgezet                  |
-| semantiek  | of hoogte- en lengte-modifiers logisch (in aantal) bij elkaar passen |
+| Fase        | Controle                                                                   |
+| ----------- | -------------------------------------------------------------------------- |
+| syntaxscan  | accolades, lege [scopes](@), whitespace in [scopes](@), [pitch-markers](@) |
+| [parser](@) | of de [VSA](@) naar interne structuur kan worden omgezet                   |
+| semantiek   | of hoogte- en [lengte-modifiers](@) logisch (in aantal) bij elkaar passen  |
 
 `path` mag verwijzen naar één bestand of naar een map:
 
@@ -85,7 +85,7 @@ OK
 
 !!! note "Let op bij `050_svg_demo.vsa`"
     `examples\minimal\050_svg_demo.vsa` is bewust een SVG-renderdemo en
-    bevat een hoogte-markering die niet overeenkomt met het aantal
+    bevat een [hoogte-markering](@) die niet overeenkomt met het aantal
     scope-modifiers. `vsa validate` op dat bestand faalt daarom met
     `VSA-SEMANTIC-HEIGHT-MARKER-MISMATCH` (zie hieronder). Gebruik voor een
     schone validatie-demo bijvoorbeeld `001_plain_text.vsa` of
@@ -117,10 +117,10 @@ ERROR: VSA-SYNTAX-UNCLOSED-SCOPE: Scope zonder afsluitende accolade.
 
 Exitcode: `1`.
 
-Fix: sluit de scope af, bijvoorbeeld `{tekst}`.
+Fix: sluit de [scope](@) af, bijvoorbeeld `{tekst}`.
 
 Een ander typisch geval — semantische mismatch tussen hoogte- en
-lengte-modifiers:
+[lengte-modifiers](@):
 
 ```cmd
 vsa validate examples\minimal\050_svg_demo.vsa
@@ -135,7 +135,7 @@ ERROR: VSA-SEMANTIC-HEIGHT-MARKER-MISMATCH: computed = marker + 2
                                ^
 ```
 
-Fix: pas de eindmarkering of het aantal hoogte-modifiers aan, of draai
+Fix: pas de eindmarkering of het aantal [hoogte-modifiers](@) aan, of draai
 `vsa validate --summary` voor een compacte lijst als je meerdere van dit
 soort fouten tegelijk wilt zien.
 
@@ -143,13 +143,13 @@ soort fouten tegelijk wilt zien.
 
 | Foutcode                                 | Betekenis                                      | Wat doen?                                                    |
 | ---------------------------------------- | ---------------------------------------------- | ------------------------------------------------------------ |
-| `VSA-SYNTAX-EMPTY-SCOPE`                 | `{}` gevonden                                  | Zet tekst of een zangelement in de scope.                    |
-| `VSA-SYNTAX-UNCLOSED-SCOPE`              | `{tekst` zonder `}`                            | Sluit de scope af.                                           |
-| `VSA-SYNTAX-UNEXPECTED-CLOSE-BRACE`      | Losse `}`                                      | Verwijder of herstel de scope.                               |
+| `VSA-SYNTAX-EMPTY-SCOPE`                 | `{}` gevonden                                  | Zet tekst of een [zangelement](@) in de [scope](@).          |
+| `VSA-SYNTAX-UNCLOSED-SCOPE`              | `{tekst` zonder `}`                            | Sluit de [scope](@) af.                                      |
+| `VSA-SYNTAX-UNEXPECTED-CLOSE-BRACE`      | Losse `}`                                      | Verwijder of herstel de [scope](@).                          |
 | `VSA-SYNTAX-WHITESPACE-IN-SCOPE`         | Spatie binnen `{...}`                          | Splits tekst buiten de scope of gebruik correcte notatie.    |
-| `VSA-SYNTAX-UNCLOSED-PITCH-MARKER`       | `[` zonder `]`                                 | Sluit de pitch-marker af.                                    |
+| `VSA-SYNTAX-UNCLOSED-PITCH-MARKER`       | `[` zonder `]`                                 | Sluit de [pitch-marker](@) af.                               |
 | `VSA-SYNTAX-PITCH-MARKER-MISSING-COLON`  | Pitch-marker zonder `:`                        | Gebruik bijvoorbeeld `[:]`.                                  |
-| `VSA-SEMANTIC-MODIFIER-COUNT-MISMATCH`   | Aantallen hoogte-/lengteposities passen niet   | Controleer samengestelde modifiers.                          |
+| `VSA-SEMANTIC-MODIFIER-COUNT-MISMATCH`   | Aantallen hoogte-/lengteposities passen niet   | Controleer samengestelde [modifiers](@).                     |
 | `VSA-SEMANTIC-HEIGHT-MARKER-MISMATCH`    | Berekende hoogte komt niet overeen met marker  | Pas de eindmarkering of de scope-modifiers aan.              |
 
 Zie [diagnostics.md](../diagnostics.md) voor de volledige lijst en severity-instellingen.
@@ -159,4 +159,4 @@ Zie [diagnostics.md](../diagnostics.md) voor de volledige lijst en severity-inst
 - [`vsa parse`](parse.md) — parserdebugging op één bestand.
 - [`vsa svg`](svg.md), [`vsa process`](process.md), [`vsa build-markdown`](build-markdown.md) — draaien impliciet validatie (behalve met `--no-validate`).
 - Handleiding: [Validatie](../../guides/validation.md), [CLI-taken](../../guides/cli-taken.md)
-- Foutcodes en severity: [config.md](../config.md), [diagnostics.md](../diagnostics.md)
+- Foutcodes en [severity](@): [config.md](../config.md), [diagnostics.md](../diagnostics.md)

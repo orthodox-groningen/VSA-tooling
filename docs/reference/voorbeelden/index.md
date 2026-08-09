@@ -1,7 +1,7 @@
 # Overzicht
 
 Korte, leesbare voorbeelden van VSA-invoer en wat de tool ermee doet. Geen
-Hugo-shortcodes: kopieer de CLI-commando’s lokaal. Fixtures staan onder
+Hugo-shortcodes: kopieer de CLI-commando’s lokaal. [Fixtures](@) staan onder
 `examples/docs-walkthroughs/`.
 
 | Pagina                                  | Inhoud                                              |
@@ -13,5 +13,5 @@ Hugo-shortcodes: kopieer de CLI-commando’s lokaal. Fixtures staan onder
 
 Coria / MusicXML-walkthrough: [MusicXML-export](../../guides/musicxml-export.md).
 
-Uitgebreide fixture-catalogus (correct / incorrect, met paden naar
+Uitgebreide [fixture-catalogus](@) (correct / incorrect, met paden naar
 `examples/`): [Fixtures-catalogus](../fixtures-catalogus.md).

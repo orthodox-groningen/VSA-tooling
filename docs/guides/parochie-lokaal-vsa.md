@@ -1,4 +1,4 @@
-# Parochie-lokaal — [VSA-tooling](@bron)
+# Parochie-lokaal — VSA-tooling
 
 **Algemene handleiding (canoniek):** [bron/docs/manuals/parochie-lokaal-zangstukken.md](https://github.com/orthodox-groningen/bron/blob/main/docs/manuals/parochie-lokaal-zangstukken.md)
 
@@ -21,7 +21,7 @@ zie VSA-demo en
 
 ---
 
-## VSA-includes in [samenstellingen](@bron)
+## VSA-includes in samenstellingen
 
 ### Opgelost catalogus-pad (fase 3)
 
@@ -101,7 +101,7 @@ Meerdere regels met **dezelfde** `zoek=` → één catalogus-zoekactie, meerdere
 
 #### Implementatie
 
-- Parser: `markdown_include.py` — weigert open `zoek=` in build.
+- [Parser](@): `markdown_include.py` — weigert open `zoek=` in build.
 - Resolve: [`vsa resolve-catalogus`](../reference/cli/resolve-catalogus.md) (CLI).
 - Afhankelijkheid: **`catalogus`** uit bron-repo ([`catalogus zoek`](https://orthodox-groningen.github.io/bron/reference/catalogus-cli/#catalogus-zoek)).
 
@@ -180,11 +180,11 @@ Inline (kort fragment):
 :::
 ```
 
-**Opmerking:** annotaties in `.vsa` als `<!-- … -->` (HTML-comment), niet als `[//:]` — dat laatste is een hoogte-markering.
+**Opmerking:** annotaties in `.vsa` als `<!-- … -->` (HTML-comment), niet als `[//:]` — dat laatste is een [hoogte-markering](@).
 
 ---
 
-## Build-pipeline ([VSA-tooling](@bron))
+## Build-pipeline (VSA-tooling)
 
 | Stap                                                             | [Parochie-lokaal](@bron)                                                                |
 | ---------------------------------------------------------------- | --------------------------------------------------------------------------------------- |

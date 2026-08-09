@@ -4,10 +4,17 @@ term: control-token
 termType: concept
 isa: bracket-directive
 glossaryTerm: Control-token
+glossaryAlias: Renderer-directive
 glossaryText: "een [bracket-directive](@) / [bracket-token](@) waarvan de tokenwaarde een ondersteunde control-tokenvorm is, zoals `[*]`, `[/]`, `[*?]` of `[/?]`, en die niet als [pitch-marker](@) / [hoogte-markering](@) wordt geparseerd."
 formPhrases:
   - control-token
   - control-tokens
+  - control token
+  - control tokens
+  - renderer-directive
+  - renderer-directives
+  - renderer directive
+  - renderer directives
 ---
 
 # Control-token

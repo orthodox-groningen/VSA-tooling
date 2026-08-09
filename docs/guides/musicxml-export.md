@@ -10,7 +10,7 @@ volledige CLI-syntax, alle argumenten en foutgevallen: zie de man-pagina
 
 ## Snel starten
 
-Eén bestand (docs-fixture: tropaar zondag toon 3):
+Eén bestand ([docs-fixture](@): tropaar zondag toon 3):
 
 ```cmd
 cd /d C:\Git\orthodox-groningen\VSA-tooling

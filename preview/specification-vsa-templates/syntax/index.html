@@ -98,7 +98,7 @@
   
   <strong>Preview</strong>
    — branch <code>feat/vsa-templates-spec</code>
-  , gebouwd 2026-08-09 21:16 CEST.
+  , gebouwd 2026-08-09 21:29 CEST.
   <a href="https://orthodox-groningen.github.io/VSA-tooling/">Live documentatie (main)</a>.
   
 
@@ -2211,6 +2211,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../reference/voorbeelden/glyphs-overzicht/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Glyphs-overzicht
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../reference/voorbeelden/fouten/" class="md-nav__link">
         
   
@@ -2420,7 +2448,7 @@
   <span class="md-ellipsis">
     
   
-    vsa blocks — ::: vsa-notatie en eindigt met :::, beide aan het begin van een regel, met daartussen VSA-notatie; typisch ontdekt en verwerkt door de Vsa-toolset (o.a. vsa blocks, vsa validate, vsa process).">VSA-blokken in Markdown vinden
+    vsa blocks — VSA-blokken in Markdown vinden
   
 
     
@@ -2448,7 +2476,7 @@
   <span class="md-ellipsis">
     
   
-    vsa svg — één .vsa waarvan de inhoud uitsluitend syntactisch geldige Vsa-notatie bevat — d.w.z. door de Vsa-tooling foutloos wordt geparseerd en gevalideerd.">vsa-bestand naar SVG renderen
+    vsa svg — één vsa-bestand naar SVG renderen
   
 
     
@@ -3374,11 +3402,11 @@
 <h1 id="syntax">Syntax<a class="headerlink" href="#syntax" title="Permanent link">&para;</a></h1>
 <p>Canonieke bronvorm: <strong>YAML</strong>. Structurele toetsing:
 <a href="../schema/vsa-template.schema.json"><code>schema/vsa-template.schema.json</code></a>.</p>
-<p>Toonhoogte- en duurmodel sluiten aan op <a href="/VSA-tooling/preview/terminologie/vsa" title="Vereenvoudigde Slavische Accentnotatie: wordt gebruikt om te verwijzen naar een Formele Notatie voor het vastleggen van Zangstukken en ook naar de Toolset waarmee zulke vastleggingen kunnen worden gevalideerd en naar publiceerbare vormen worden omgezet.">VSA</a> 1.0 (<a href="/VSA-tooling/preview/terminologie/do-context" title="Do-context: de grondtooncontext waarbinnen relatieve toonhoogtebewegingen in VSA en in een Vsa-template worden geïnterpreteerd; voor export of afspelen vastgelegd via <code>do</code> en <code>mode</code>, niet via de zangtekst zelf.">do-context</a>,
-<a href="/VSA-tooling/preview/terminologie/enkelvoudige-lengte-modifier" title="Enkelvoudige lengte-modifier: een lengte-modifier die uit precies één geldige ELM bestaat en daarmee precies een duurpositie representeert.">ELM</a>). Zie
+<p>Toonhoogte- en duurmodel sluiten aan op <a class="og-termref" href="/VSA-tooling/preview/terminologie/vsa" title="Vereenvoudigde Slavische Accentnotatie: wordt gebruikt om te verwijzen naar een Formele Notatie voor het vastleggen van Zangstukken en ook naar de Toolset waarmee zulke vastleggingen kunnen worden gevalideerd en naar publiceerbare vormen worden omgezet.">VSA</a> 1.0 (<a class="og-termref" href="/VSA-tooling/preview/terminologie/do-context" title="Do-context: de grondtooncontext waarbinnen relatieve toonhoogtebewegingen in VSA-notatie en in een Vsa-template worden geïnterpreteerd; voor MusicXML-export of afspelen vastgelegd via blok-Metadata (<code>do</code>, <code>mode</code>), niet via de zangtekst zelf.">do-context</a>,
+<a class="og-termref" href="/VSA-tooling/preview/terminologie/enkelvoudige-lengte-modifier" title="Enkelvoudige lengte-modifier: een Lengte-modifier die uit precies één geldige ELM bestaat en daarmee precies een duurpositie representeert.">ELM</a>). Zie
 <a href="../../specification/semantics/">Semantiek</a> §5.5–5.10.</p>
 <h2 id="topniveau">Topniveau<a class="headerlink" href="#topniveau" title="Permanent link">&para;</a></h2>
-<p>Elk <a href="/VSA-tooling/preview/terminologie/vsa-template" title="VSA-template: een machineleesbaar YAML-document dat een formulematige liturgische melodie vastlegt (frasen, herhaling of vaste volgorde, Reciteertoon, ankers, SATB-Laddergraden) binnen een Do-context, bedoeld om later tekst uit VSA erop te mappen.">vsa-template</a> is <strong>één</strong> van drie vormen:</p>
+<p>Elk <a class="og-termref" href="/VSA-tooling/preview/terminologie/vsa-template" title="VSA-template: een machineleesbaar YAML-document dat een formulematige liturgische melodie vastlegt (frasen, herhaling of vaste volgorde, Reciteertoon, ankers, SATB-Laddergraden) binnen een Do-context, bedoeld om later tekst uit VSA erop te mappen.">vsa-template</a> is <strong>één</strong> van drie vormen:</p>
 <ol>
 <li><strong>cycle-form</strong> — <code>cycle</code> + <code>final</code>;</li>
 <li><strong>sequence-form</strong> — <code>sequence</code>;</li>
@@ -3403,7 +3431,7 @@
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;1a&quot;</span>
 <span class="w">    </span><span class="nt">events</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="w"> </span><span class="nv">...</span><span class="w"> </span><span class="p p-Indicator">]</span>
 </code></pre></div>
-<p><a href="/VSA-tooling/preview/terminologie/template-frase" title="Template-frase: een genaamde melodische eenheid binnen een Vsa-template (bijv. id <code>1</code>, <code>2</code>, <code>1a</code> of <code>laatste</code>), opgebouwd uit geordende Template-events.">Template-frasen</a> in <code>phrases</code> die <strong>niet</strong> in <code>cycle</code>/<code>final</code>
+<p><a class="og-termref" href="/VSA-tooling/preview/terminologie/template-frase" title="Template-frase: een genaamde melodische eenheid binnen een Vsa-template (bijv. id <code>1</code>, <code>2</code>, <code>1a</code> of <code>laatste</code>), opgebouwd uit geordende Template-events.">Template-frasen</a> in <code>phrases</code> die <strong>niet</strong> in <code>cycle</code>/<code>final</code>
 staan (zoals <code>"1a"</code>) horen bij de bibliotheek.</p>
 <h3 id="sequence-form-alias-form">Sequence-form / alias-form<a class="headerlink" href="#sequence-form-alias-form" title="Permanent link">&para;</a></h3>
 <p>Zelfde <code>do</code> / <code>mode</code> (verplicht). Alias heeft geen <code>phrases</code>.</p>
@@ -3418,7 +3446,7 @@ staan (zoals <code>"1a"</code>) horen bij de bibliotheek.</p>
 <span class="w">    </span><span class="nt">T</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sol-1</span>
 <span class="w">    </span><span class="nt">B</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">do-1</span>
 </code></pre></div>
-<h3 id="duration-elm">Duration (<a href="/VSA-tooling/preview/terminologie/enkelvoudige-lengte-modifier" title="Enkelvoudige lengte-modifier: een lengte-modifier die uit precies één geldige ELM bestaat en daarmee precies een duurpositie representeert.">ELM</a>)<a class="headerlink" href="#duration-elm" title="Permanent link">&para;</a></h3>
+<h3 id="duration-elm">Duration (<a class="og-termref" href="/VSA-tooling/preview/terminologie/enkelvoudige-lengte-modifier" title="Enkelvoudige lengte-modifier: een Lengte-modifier die uit precies één geldige ELM bestaat en daarmee precies een duurpositie representeert.">ELM</a>)<a class="headerlink" href="#duration-elm" title="Permanent link">&para;</a></h3>
 <p>Standaardduur ↔ kwartnoot bij <code>duration-model: default</code>.</p>
 <table>
 <thead>
@@ -3466,8 +3494,8 @@ staan (zoals <code>"1a"</code>) horen bij de bibliotheek.</p>
 </tr>
 </tbody>
 </table>
-<p><code>role: recite</code> = <a href="/VSA-tooling/preview/terminologie/reciteertoon" title="Reciteertoon: een Template-event (of bladnotatie) waarop een variabel aantal syllaben op hetzelfde SATB-akkoord wordt gezongen; in een Vsa-template gemarkeerd als <code>role: recite</code>.">reciteertoon</a>; typisch <code>duration: "~"</code> per syllabe.</p>
-<h3 id="pitches-do-re-mi-optioneel-chromatisch-b-en-met-octaafverschuiving-do-1-in-een-vsa-template-de-canonieke-vorm-van-satb-pitchesladdergraad">Pitches (<a href="/VSA-tooling/preview/terminologie/laddergraad" title="Laddergraad: een toonpositie op de ladder binnen een Do-context (<code>do</code>, <code>re</code>, <code>mi</code>, …), optioneel chromatisch (<code>#</code>/<code>b</code>) en met octaafverschuiving (<code>do-1</code>); in een Vsa-template de canonieke vorm van SATB-pitches.">laddergraad</a>)<a class="headerlink" href="#pitches-do-re-mi-optioneel-chromatisch-b-en-met-octaafverschuiving-do-1-in-een-vsa-template-de-canonieke-vorm-van-satb-pitchesladdergraad" title="Permanent link">&para;</a></h3>
+<p><code>role: recite</code> = <a class="og-termref" href="/VSA-tooling/preview/terminologie/reciteertoon" title="Reciteertoon: een Template-event (of bladnotatie) waarop een variabel aantal syllaben op hetzelfde SATB-akkoord wordt gezongen; in een Vsa-template gemarkeerd als <code>role: recite</code>.">reciteertoon</a>; typisch <code>duration: "~"</code> per syllabe.</p>
+<h3 id="pitches-do-re-mi-optioneel-chromatisch-b-en-met-octaafverschuiving-do-1-in-een-vsa-template-de-canonieke-vorm-van-satb-pitchesladdergraad">Pitches (<a class="og-termref" href="/VSA-tooling/preview/terminologie/laddergraad" title="Laddergraad: een toonpositie op de ladder binnen een Do-context (<code>do</code>, <code>re</code>, <code>mi</code>, …), optioneel chromatisch (<code>#</code>/<code>b</code>) en met octaafverschuiving (<code>do-1</code>); in een Vsa-template de canonieke vorm van SATB-pitches.">laddergraad</a>)<a class="headerlink" href="#pitches-do-re-mi-optioneel-chromatisch-b-en-met-octaafverschuiving-do-1-in-een-vsa-template-de-canonieke-vorm-van-satb-pitchesladdergraad" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code>pitch := [&#39;#&#39; | &#39;b&#39;] degree [ &#39;+&#39; n | &#39;-&#39; n ]
 degree := &#39;do&#39; | &#39;re&#39; | &#39;mi&#39; | &#39;fa&#39; | &#39;sol&#39; | &#39;la&#39; | &#39;ti&#39;
 </code></pre></div>
@@ -3476,9 +3504,9 @@ degree := &#39;do&#39; | &#39;re&#39; | &#39;mi&#39; | &#39;fa&#39; | &#39;sol&#
 <ol>
 <li>Frase-ids uniek; mogen <code>1a</code> / <code>2a</code> bevatten.</li>
 <li>Cycle- / sequence- / alias-form zoals hierboven.</li>
-<li>Elk <a href="/VSA-tooling/preview/terminologie/template-event" title="Template-event: de kleinste muzikale stap in een Template-frase: een rol (open, Reciteertoon, cadens, link), een duur als Enkelvoudige Lengte-modifier, en SATB-Laddergraden.">template-event</a>: <code>role</code>, <code>duration</code> (ELM), <code>pitches</code> met S/A/T/B.</li>
+<li>Elk <a class="og-termref" href="/VSA-tooling/preview/terminologie/template-event" title="Template-event: de kleinste muzikale stap in een Template-frase: een rol (open, Reciteertoon, cadens, link), een duur als Enkelvoudige Lengte-modifier, en SATB-Laddergraden.">template-event</a>: <code>role</code>, <code>duration</code> (ELM), <code>pitches</code> met S/A/T/B.</li>
 <li><code>do</code> matcht scientific pitch; <code>mode</code> niet-lege identifier.</li>
-<li><code>anchor</code> ∈ {<code>e.st.</code>, <code>l.st.</code>, <code>vl.st.</code>} indien aanwezig (<a href="/VSA-tooling/preview/terminologie/frase-anker" title="Frase-anker: een label op een Template-event (<code>e.st.</code>, <code>l.st.</code>, <code>vl.st.</code>) dat op het toonboekblad aangeeft welke tekstklemtoon (eerste / laatste / voorlaatste streek) op die noot hoort te vallen.">frase-anker</a>).</li>
+<li><code>anchor</code> ∈ {<code>e.st.</code>, <code>l.st.</code>, <code>vl.st.</code>} indien aanwezig (<a class="og-termref" href="/VSA-tooling/preview/terminologie/frase-anker" title="Frase-anker: een label op een Template-event (<code>e.st.</code>, <code>l.st.</code>, <code>vl.st.</code>) dat op het toonboekblad aangeeft welke tekstklemtoon (eerste / laatste / voorlaatste streek) op die noot hoort te vallen.">frase-anker</a>).</li>
 </ol>
 <h2 id="wat-syntax-niet-uitdrukt">Wat syntax niet uitdrukt<a class="headerlink" href="#wat-syntax-niet-uitdrukt" title="Permanent link">&para;</a></h2>
 <ul>

@@ -94,7 +94,7 @@
   
   <strong>Preview</strong>
    — branch <code>feat/vsa-templates-spec</code>
-  , gebouwd 2026-08-09 21:16 CEST.
+  , gebouwd 2026-08-09 21:29 CEST.
   <a href="https://orthodox-groningen.github.io/VSA-tooling/">Live documentatie (main)</a>.
   
 
@@ -2055,6 +2055,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../reference/voorbeelden/glyphs-overzicht/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Glyphs-overzicht
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../reference/voorbeelden/fouten/" class="md-nav__link">
         
   
@@ -2264,7 +2292,7 @@
   <span class="md-ellipsis">
     
   
-    vsa blocks — ::: vsa-notatie en eindigt met :::, beide aan het begin van een regel, met daartussen VSA-notatie; typisch ontdekt en verwerkt door de Vsa-toolset (o.a. vsa blocks, vsa validate, vsa process).">VSA-blokken in Markdown vinden
+    vsa blocks — VSA-blokken in Markdown vinden
   
 
     
@@ -2292,7 +2320,7 @@
   <span class="md-ellipsis">
     
   
-    vsa svg — één .vsa waarvan de inhoud uitsluitend syntactisch geldige Vsa-notatie bevat — d.w.z. door de Vsa-tooling foutloos wordt geparseerd en gevalideerd.">vsa-bestand naar SVG renderen
+    vsa svg — één vsa-bestand naar SVG renderen
   
 
     
@@ -3108,7 +3136,16 @@
 
 
 <h1 id="ast">AST<a class="headerlink" href="#ast" title="Permanent link">&para;</a></h1>
-<p>De AST legt de documentstructuur vast nadat de parser tokens heeft verwerkt. Validator en renderer lezen dezelfde structuur; de renderer mag de AST niet wijzigen om semantiek te repareren.</p>
+<p>De AST / <a class="og-termref" href="/VSA-tooling/preview/terminologie/ast" title="Abstract Syntax Tree: een expliciete nodeboom die door de Parser uit VSA-invoer wordt geproduceerd en die Validator en Renderer zonder semantische herinterpretatie kunnen lezen.">syntactische boom</a> legt de documentstructuur vast nadat de
+<a class="og-termref" href="/VSA-tooling/preview/terminologie/parser" title="Parser: een component die VSA-brontekst of tokens volgens de grammatica omzet naar expliciete AST / Syntactische Boom-nodes, bronlocaties behoudt en geen semantische reparaties of renderlogica uitvoert.">parser</a> tokens heeft verwerkt. <a class="og-termref" href="/VSA-tooling/preview/terminologie/validator" title="Validator: een component die een geparseerde AST / Syntactische Boom of VSA-invoer toetst aan semantische en normatieve regels en overtredingen als Diagnostics / Diagnostische Meldingen rapporteert zonder ze stilzwijgend te repareren.">Validator</a> en <a class="og-termref" href="/VSA-tooling/preview/terminologie/renderer" title="Renderer: een component die een gevalideerde AST / Syntactische Boom of daarvan afgeleid layoutmodel omzet naar concrete uitvoer, zoals SVG, JSON, Markdown, Hugo-output of MusicXML, zonder de AST semantisch te wijzigen.">renderer</a> lezen
+dezelfde structuur; de <a class="og-termref" href="/VSA-tooling/preview/terminologie/renderer" title="Renderer: een component die een gevalideerde AST / Syntactische Boom of daarvan afgeleid layoutmodel omzet naar concrete uitvoer, zoals SVG, JSON, Markdown, Hugo-output of MusicXML, zonder de AST semantisch te wijzigen.">renderer</a> mag de AST niet wijzigen om semantiek te
+repareren.</p>
+<p>Goede/valide voorbeelden van AST zijn:
+- Nodeboom uit de <a class="og-termref" href="/VSA-tooling/preview/terminologie/parser" title="Parser: een component die VSA-brontekst of tokens volgens de grammatica omzet naar expliciete AST / Syntactische Boom-nodes, bronlocaties behoudt en geen semantische reparaties of renderlogica uitvoert.">parser</a> voor <a class="og-termref" href="/VSA-tooling/preview/terminologie/validator" title="Validator: een component die een geparseerde AST / Syntactische Boom of VSA-invoer toetst aan semantische en normatieve regels en overtredingen als Diagnostics / Diagnostische Meldingen rapporteert zonder ze stilzwijgend te repareren.">validator</a>/<a class="og-termref" href="/VSA-tooling/preview/terminologie/renderer" title="Renderer: een component die een gevalideerde AST / Syntactische Boom of daarvan afgeleid layoutmodel omzet naar concrete uitvoer, zoals SVG, JSON, Markdown, Hugo-output of MusicXML, zonder de AST semantisch te wijzigen.">renderer</a>
+- Bronlocaties behouden in nodes</p>
+<p>Geen goede/niet valide voorbeelden van AST zijn:
+- Een losse logregel of platte brontekst
+- Semantische reparaties door de <a class="og-termref" href="/VSA-tooling/preview/terminologie/renderer" title="Renderer: een component die een gevalideerde AST / Syntactische Boom of daarvan afgeleid layoutmodel omzet naar concrete uitvoer, zoals SVG, JSON, Markdown, Hugo-output of MusicXML, zonder de AST semantisch te wijzigen.">renderer</a></p>
 
 
 
@@ -3145,7 +3182,7 @@
       
       
       <p class="og-footer-stamps">
-        Bijgewerkt: 2026-07-08
+        Bijgewerkt: 2026-08-09
         
       </p>
       

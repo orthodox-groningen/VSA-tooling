@@ -98,7 +98,7 @@
   
   <strong>Preview</strong>
    — branch <code>feat/vsa-templates-spec</code>
-  , gebouwd 2026-08-09 21:16 CEST.
+  , gebouwd 2026-08-09 21:29 CEST.
   <a href="https://orthodox-groningen.github.io/VSA-tooling/">Live documentatie (main)</a>.
   
 
@@ -880,6 +880,23 @@
       
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="Snel starten">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#langere-frase-regelbreedte" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Langere frase + regelbreedte
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -2199,6 +2216,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../reference/voorbeelden/glyphs-overzicht/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Glyphs-overzicht
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../reference/voorbeelden/fouten/" class="md-nav__link">
         
   
@@ -2408,7 +2453,7 @@
   <span class="md-ellipsis">
     
   
-    vsa blocks — ::: vsa-notatie en eindigt met :::, beide aan het begin van een regel, met daartussen VSA-notatie; typisch ontdekt en verwerkt door de Vsa-toolset (o.a. vsa blocks, vsa validate, vsa process).">VSA-blokken in Markdown vinden
+    vsa blocks — VSA-blokken in Markdown vinden
   
 
     
@@ -2436,7 +2481,7 @@
   <span class="md-ellipsis">
     
   
-    vsa svg — één .vsa waarvan de inhoud uitsluitend syntactisch geldige Vsa-notatie bevat — d.w.z. door de Vsa-tooling foutloos wordt geparseerd en gevalideerd.">vsa-bestand naar SVG renderen
+    vsa svg — één vsa-bestand naar SVG renderen
   
 
     
@@ -3265,6 +3310,23 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Snel starten">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#langere-frase-regelbreedte" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Langere frase + regelbreedte
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -3349,7 +3411,7 @@
 
 <h1 id="svg-exporteren">SVG exporteren<a class="headerlink" href="#svg-exporteren" title="Permanent link">&para;</a></h1>
 <p><a href="../../reference/cli/svg/"><code>vsa svg</code></a>, <a href="../../reference/cli/process/"><code>vsa process</code></a>
-en <a href="../../reference/cli/build-markdown/"><code>vsa build-markdown</code></a> renderen <a href="/bron/terms/vsa-notatie" title="VSA-notatie: Het tekstgebaseerde notatieformaat waarmee liturgische zangteksten worden vastgelegd: een formeel gespecificeerde taal met scopes, modifiers en bracket-directives, parseeerbaar en valideerbaar door Vsa-tooling.">VSA-notatie</a> naar
+en <a href="../../reference/cli/build-markdown/"><code>vsa build-markdown</code></a> renderen <a class="og-termref" href="/bron/terms/vsa-notatie" title="VSA-notatie: Het tekstgebaseerde notatieformaat waarmee liturgische zangteksten worden vastgelegd: een formeel gespecificeerde taal met scopes, modifiers en bracket-directives, parseeerbaar en valideerbaar door Vsa-tooling.">VSA-notatie</a> naar
 <strong>SVG</strong> — een schaalbare vectorafbeelding die je inline toont naast gewone
 tekst, op scherm of afdruk. Dit is de meest gebruikte workflow: geen
 externe player nodig, werkt zonder JavaScript, en schaalt scherp op elk
@@ -3402,38 +3464,54 @@ scherm.</p>
 </tr>
 <tr>
 <td><a href="../../reference/cli/process/"><code>vsa process</code></a></td>
-<td>SVG's uit VSA-blokken in Markdown, zonder de Markdown te herschrijven.</td>
+<td>SVG's uit <a class="og-termref" href="/VSA-tooling/preview/terminologie/vsa-blokken" title="VSA-blok: een tekstfragment in een Markdownbestand dat begint met <code>::: vsa-notatie</code> en eindigt met <code>:::</code>, beide aan het begin van een regel, met daartussen VSA-notatie; typisch ontdekt en verwerkt door de Vsa-toolset (o.a. <code>vsa blocks</code>, <code>vsa validate</code>, <code>vsa process</code>).">VSA-blokken</a> in Markdown, zonder de Markdown te herschrijven.</td>
 </tr>
 <tr>
 <td><a href="../../reference/cli/build-markdown/"><code>vsa build-markdown</code></a></td>
-<td>Hugo-publicatie: Markdown <strong>en</strong> SVG-assets in één stap (inline rendering).</td>
+<td>Hugo-<a class="og-termref" href="/VSA-tooling/preview/terminologie/publicatie" title="Publicatie: een proces dat gegenereerde demo-, preview- of productie-output bouwt, controleert en beschikbaar maakt voor GitHub Pages of hergebruik.">publicatie</a>: Markdown <strong>en</strong> SVG-assets in één stap (inline rendering).</td>
 </tr>
 </tbody>
 </table>
 <p>Voor een losse controle tijdens het schrijven is
-<a href="../../reference/cli/svg/"><code>vsa svg</code></a> het snelst. Voor een echte publicatie
+<a href="../../reference/cli/svg/"><code>vsa svg</code></a> het snelst. Voor een echte <a class="og-termref" href="/VSA-tooling/preview/terminologie/publicatie" title="Publicatie: een proces dat gegenereerde demo-, preview- of productie-output bouwt, controleert en beschikbaar maakt voor GitHub Pages of hergebruik.">publicatie</a>
 (Hugo-site) gebruik je <a href="../../reference/cli/build-markdown/"><code>vsa build-markdown</code></a>,
 dat de <code>::: vsa-notatie … :::</code>-blokken in je Markdown automatisch vervangt door een
 verwijzing naar de gegenereerde SVG (zie
 <a href="#inline-rendering-via-build-markdown">"Inline rendering via <code>build-markdown</code>"</a>
 hieronder).</p>
 <h2 id="snel-starten">Snel starten<a class="headerlink" href="#snel-starten" title="Permanent link">&para;</a></h2>
-<p>Eén bestand bekijken:</p>
-<div class="highlight"><pre><span></span><code>vsa svg examples\minimal\050_svg_demo.vsa tmp\demo.svg
-start tmp\demo.svg
+<p>Eén geldige frase bekijken (<code>examples\docs-walkthroughs\svg-phrase-kort.vsa</code>):</p>
+<div class="highlight"><pre><span></span><code>[:] {/Hei_}{/lig_} is de Heer. [//:]
 </code></pre></div>
-<p>SVG's uit een map met Markdown, zonder Hugo-Markdown te genereren:</p>
+<div class="highlight"><pre><span></span><code>cd /d C:\Git\orthodox-groningen\VSA-tooling
+vsa svg examples\docs-walkthroughs\svg-phrase-kort.vsa generated\vsa\svg-phrase-kort.svg
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>SVG geschreven naar: generated\vsa\svg-phrase-kort.svg
+</code></pre></div>
+<p><img alt="Korte VSA-frase als SVG" src="../assets/walkthroughs/svg-phrase-kort.svg" /></p>
+<h3 id="langere-frase-regelbreedte">Langere frase + regelbreedte<a class="headerlink" href="#langere-frase-regelbreedte" title="Permanent link">&para;</a></h3>
+<p>Zelfde start, langere tekst
+(<code>examples\docs-walkthroughs\svg-phrase-lang.vsa</code>), met smallere
+<code>--max-line-width</code> zodat de <a class="og-termref" href="/VSA-tooling/preview/terminologie/renderer" title="Renderer: een component die een gevalideerde AST / Syntactische Boom of daarvan afgeleid layoutmodel omzet naar concrete uitvoer, zoals SVG, JSON, Markdown, Hugo-output of MusicXML, zonder de AST semantisch te wijzigen.">renderer</a> afbreekt:</p>
+<div class="highlight"><pre><span></span><code>vsa svg examples\docs-walkthroughs\svg-phrase-lang.vsa generated\vsa\svg-phrase-lang.svg --max-line-width 400
+</code></pre></div>
+<p><img alt="Langere VSA-frase, afgebroken SVG" src="../assets/walkthroughs/svg-phrase-lang.svg" /></p>
+<p>SVG's uit een map met Markdown, zonder Hugo-Markdown te genereren
+(levert o.a. <code>toon-1-block-1.svg</code> en <code>toon-2-block-1.svg</code>):</p>
 <div class="highlight"><pre><span></span><code>vsa process examples\site-demo generated\vsa
 </code></pre></div>
-<p>Volledige Hugo-publicatie (Markdown + SVG-assets):</p>
+<p>Volledige Hugo-<a class="og-termref" href="/VSA-tooling/preview/terminologie/publicatie" title="Publicatie: een proces dat gegenereerde demo-, preview- of productie-output bouwt, controleert en beschikbaar maakt voor GitHub Pages of hergebruik.">publicatie</a> (Markdown + SVG-assets):</p>
 <div class="highlight"><pre><span></span><code>vsa build-markdown examples\consumer-minimal\content-source generated\content generated\static\vsa
 </code></pre></div>
 <p>Zie de man-pagina's voor de volledige argumentenlijst, opties en
 foutgevallen: <a href="../../reference/cli/svg/"><code>cli/svg.md</code></a>,
 <a href="../../reference/cli/process/"><code>cli/process.md</code></a>,
 <a href="../../reference/cli/build-markdown/"><code>cli/build-markdown.md</code></a>.</p>
+<p>Preview-SVG's in deze docs regenereren (na wijziging van de bron-<code>.vsa</code>):</p>
+<div class="highlight"><pre><span></span><code>python scripts\sync-docs-walkthrough-svgs.py
+</code></pre></div>
 <h2 id="inline-rendering-via-build-markdown">Inline rendering via <code>build-markdown</code><a class="headerlink" href="#inline-rendering-via-build-markdown" title="Permanent link">&para;</a></h2>
-<p><a href="../../reference/cli/build-markdown/"><code>vsa build-markdown</code></a> vervangt in de gegenereerde Markdown elk VSA-blok door
+<p><a href="../../reference/cli/build-markdown/"><code>vsa build-markdown</code></a> vervangt in de gegenereerde Markdown elk <a class="og-termref" href="/VSA-tooling/preview/terminologie/vsa-blokken" title="VSA-blok: een tekstfragment in een Markdownbestand dat begint met <code>::: vsa-notatie</code> en eindigt met <code>:::</code>, beide aan het begin van een regel, met daartussen VSA-notatie; typisch ontdekt en verwerkt door de Vsa-toolset (o.a. <code>vsa blocks</code>, <code>vsa validate</code>, <code>vsa process</code>).">VSA-blok</a> door
 een verwijzing naar de gegenereerde SVG. Bron-Markdown:</p>
 <div class="highlight"><pre><span></span><code>::: vsa-notatie
 [:] {/Hei_}{/lig_} is de Heer. [:]
@@ -3490,13 +3568,13 @@ publiceert (meestal de <code>static\vsa</code>-submap van de Hugo-site), tonen
 afbeeldingen niet — de SVG-bestanden bestaan wel, maar de link in de HTML
 wijst naar de verkeerde plek.</p>
 <p>Default-waarden staan (net als <code>max-line-width</code> en <code>output-mode</code>) in
-<code>vsa.toml</code>; zie <a href="../../reference/config/">config.md</a> voor de voorrangsregel
-(CLI-optie → <code>vsa.toml</code> → interne default).</p>
+<a class="og-termref" href="/VSA-tooling/preview/terminologie/vsa-toml" title="vsa.toml: een projectconfiguratiebestand met de naam <code>vsa.toml</code> dat herkende VSA-toolinginstellingen bevat voor rendering, output of validatie.">vsa.toml</a>; zie <a href="../../reference/config/">config.md</a> voor de voorrangsregel
+(CLI-optie → <a class="og-termref" href="/VSA-tooling/preview/terminologie/vsa-toml" title="vsa.toml: een projectconfiguratiebestand met de naam <code>vsa.toml</code> dat herkende VSA-toolinginstellingen bevat voor rendering, output of validatie.">vsa.toml</a> → interne default).</p>
 <h2 id="waar-komen-de-gegenereerde-bestanden-terecht">Waar komen de gegenereerde bestanden terecht?<a class="headerlink" href="#waar-komen-de-gegenereerde-bestanden-terecht" title="Permanent link">&para;</a></h2>
 <p>SVG's die je met <a href="../../reference/cli/svg/"><code>vsa svg</code></a>,
 <a href="../../reference/cli/process/"><code>vsa process</code></a> of
 <a href="../../reference/cli/build-markdown/"><code>vsa build-markdown</code></a> genereert,
-zijn <strong><a href="/bron/terms/afgeleide" title="Afgeleide: Een bestand dat volledig en herhaalbaar door een Conversiemechanisme uit een Bronbestand wordt gegenereerd, en dat (dus) niet als Bronbestand in de Bron-repository staat.">afgeleide</a></strong> bestanden uit de <code>.vsa</code>-bron en horen niet gecommit
+zijn <strong><a class="og-termref" href="/bron/terms/afgeleide" title="Afgeleide: Een bestand dat volledig en herhaalbaar door een Conversiemechanisme uit een Bronbestand wordt gegenereerd, en dat (dus) niet als Bronbestand in de Bron-repository staat.">afgeleide</a></strong> bestanden uit de <code>.vsa</code>-bron en horen niet gecommit
 te worden naast de bron. Gebruik
 lokaal een map als <code>generated\</code> (of <code>tmp\</code>) die in <code>.gitignore</code> staat:</p>
 <div class="highlight"><pre><span></span><code>mijn-repo/
@@ -3509,7 +3587,7 @@ lokaal een map als <code>generated\</code> (of <code>tmp\</code>) die in <code>.
 <p>In een Hugo-consumer-site komt de <code>assets_dir</code> overeen met de <code>static\vsa</code>-map
 van die site (zie <a href="../../manuals/consumer-site/">consumer-site.md</a> en
 <a href="../reuse-vsa-tooling/">reuse-vsa-tooling.md</a> voor het volledige
-build-in-CI-voorbeeld). In de <a href="/bron/terms/bron-repository" title="Bron-repository: De git-repository <code>orthodox-groningen/bron</code> (of een expliciet aangewezen opvolger); de centrale opslagplaats voor Representaties van Uitvoeringsvormen (van Varianten) van Zangstukken, alsmede voor de specificaties van de opslag, en van manieren om daarin te zoeken.">bron-repository</a> zelf worden geen <a href="/bron/terms/afgeleide" title="Afgeleide: Een bestand dat volledig en herhaalbaar door een Conversiemechanisme uit een Bronbestand wordt gegenereerd, en dat (dus) niet als Bronbestand in de Bron-repository staat.">afgeleide</a>
+build-in-CI-voorbeeld). In de <a class="og-termref" href="/bron/terms/bron-repository" title="Bron-repository: De git-repository <code>orthodox-groningen/bron</code> (of een expliciet aangewezen opvolger); de centrale opslagplaats voor Representaties van Uitvoeringsvormen (van Varianten) van Zangstukken, alsmede voor de specificaties van de opslag, en van manieren om daarin te zoeken.">bron-repository</a> zelf worden geen <a class="og-termref" href="/bron/terms/afgeleide" title="Afgeleide: Een bestand dat volledig en herhaalbaar door een Conversiemechanisme uit een Bronbestand wordt gegenereerd, en dat (dus) niet als Bronbestand in de Bron-repository staat.">afgeleide</a>
 SVG's opgeslagen — daar staat alleen de <code>.vsa</code>-bron (zie
 <a href="https://github.com/orthodox-groningen/bron/blob/main/docs/specs/repo-structuur.md">repo-structuur</a>
 en het <code>derived/</code>-concept daar voor build-output dat nooit in git komt).</p>
@@ -3549,10 +3627,10 @@ en het <code>derived/</code>-concept daar voor build-output dat nooit in git kom
 <li>Man-pagina's: <a href="../../reference/cli/svg/"><code>vsa svg</code></a>, <a href="../../reference/cli/process/"><code>vsa process</code></a>, <a href="../../reference/cli/build-markdown/"><code>vsa build-markdown</code></a></li>
 <li>CLI-overzicht: <a href="../../reference/cli/">CLI-referentie</a></li>
 <li>MusicXML-workflow (afspelen/oefenen, alternatief voor SVG): <a href="../musicxml-export/">musicxml-export.md</a></li>
-<li><code>vsa.toml</code>-defaults en voorrang: <a href="../../reference/config/">config.md</a></li>
+<li><a class="og-termref" href="/VSA-tooling/preview/terminologie/vsa-toml" title="vsa.toml: een projectconfiguratiebestand met de naam <code>vsa.toml</code> dat herkende VSA-toolinginstellingen bevat voor rendering, output of validatie.">vsa.toml</a>-defaults en voorrang: <a href="../../reference/config/">config.md</a></li>
 <li>Consumer-site-structuur: <a href="../../manuals/consumer-site/">consumer-site.md</a></li>
 <li>Integratie in andere repo's/CI: <a href="../reuse-vsa-tooling/">reuse-vsa-tooling.md</a></li>
-<li>Bron-contracten (normatief): <a href="https://orthodox-groningen.github.io/bron/reference/conversie-vsa-svg/">conversie-vsa-svg</a>, <a href="https://orthodox-groningen.github.io/bron/reference/exporttype-svg/">exporttype-svg</a> (<a href="/bron/terms/exporttype" title="Exporttype: De naam die in een <code>:::include &lt;exporttype&gt;</code>-directive aangeeft welk Exportmechanisme wordt gebruikt, zoals <code>svg</code>, <code>coria</code> of <code>mxl</code>.">exporttype</a> <code>svg</code>)</li>
+<li>Bron-contracten (normatief): <a href="https://orthodox-groningen.github.io/bron/reference/conversie-vsa-svg/">conversie-vsa-svg</a>, <a href="https://orthodox-groningen.github.io/bron/reference/exporttype-svg/">exporttype-svg</a> (<a class="og-termref" href="/bron/terms/exporttype" title="Exporttype: De naam die in een <code>:::include &lt;exporttype&gt;</code>-directive aangeeft welk Exportmechanisme wordt gebruikt, zoals <code>svg</code>, <code>coria</code> of <code>mxl</code>.">exporttype</a> <code>svg</code>)</li>
 </ul>
 
 
@@ -3590,7 +3668,7 @@ en het <code>derived/</code>-concept daar voor build-output dat nooit in git kom
       
       
       <p class="og-footer-stamps">
-        Bijgewerkt: 2026-08-08
+        Bijgewerkt: 2026-08-09
         
       </p>
       

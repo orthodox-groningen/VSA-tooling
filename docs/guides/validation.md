@@ -33,7 +33,7 @@ Voorbeeld: `examples\minimal\050_svg_demo.vsa` kan op `validate` falen
 
 ```cmd
 cd /d C:\Git\orthodox-groningen\VSA-tooling
-vsa validate examples\minimal\001_plain_text.vsa
+vsa validate examples\docs-walkthroughs\svg-phrase-kort.vsa
 ```
 
 Bij succes: `OK`. Map valideren:
@@ -66,7 +66,35 @@ Exitcode: `0`. Details: [`vsa validate`](../reference/cli/validate.md).
 
 ## Foutoutput lezen
 
-Voorbeeld:
+Concrete fail-fixture
+(`examples\docs-walkthroughs\validate-unclosed-scope.vsa`):
+
+```text
+{tekst
+```
+
+```cmd
+cd /d C:\Git\orthodox-groningen\VSA-tooling
+vsa validate examples\docs-walkthroughs\validate-unclosed-scope.vsa
+```
+
+```text
+validate-unclosed-scope.vsa:1:1
+ERROR: VSA-SYNTAX-UNCLOSED-SCOPE: Scope zonder afsluitende accolade.
+{tekst
+^
+```
+
+| Deel                           | Betekenis                                  |
+| ------------------------------ | ------------------------------------------ |
+| `validate-unclosed-scope.vsa`  | bestand waarin de fout zit                 |
+| `1:1`                          | regel en kolom                             |
+| `VSA-SYNTAX-UNCLOSED-SCOPE`    | foutcode ([diagnostic](@))                 |
+| tekst erna + `^`               | uitleg en positie-indicator                |
+
+**Fix:** sluit de scope af, bijvoorbeeld `{tekst}`.
+
+In Markdown met VSA-blokken ziet de locatie er zo uit:
 
 ```text
 examples\demo.md:blok-1:1:1: VSA-SYNTAX-EMPTY-SCOPE: Scope zonder zangelement.
@@ -74,7 +102,7 @@ examples\demo.md:blok-1:1:1: VSA-SYNTAX-EMPTY-SCOPE: Scope zonder zangelement.
 
 | Deel                     | Betekenis                           |
 | ------------------------ | ----------------------------------- |
-| `examples\demo.md`       | bestand waarin de fout zit          |
+| `examples\demo.md`       | Markdown-bestand                    |
 | `blok-1`                 | eerste [VSA-blok](@) in dat bestand |
 | `1:1`                    | regel en kolom binnen dat blok      |
 | `VSA-SYNTAX-EMPTY-SCOPE` | foutcode ([diagnostic](@))          |

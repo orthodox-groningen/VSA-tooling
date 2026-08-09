@@ -16,8 +16,9 @@ glossaryNotes:
 
 # @include-vsa
 
-`@include-vsa` vervangt alleen de directive-substring door VSA-bronmateriaal
-tijdens verwerking. Omringende tekst in dezelfde regel blijft bestaan.
+`@include-vsa` / [vsa-inline-include](@) vervangt alleen de directive-substring
+door [VSA](@)-bronmateriaal tijdens verwerking. Omringende tekst in dezelfde
+regel blijft bestaan.
 
 Voorbeeld:
 
@@ -25,9 +26,17 @@ Voorbeeld:
 refrein: @include-vsa lokaal=cherubijnenhymne/kastorski/groningen/groningen-vsa
 ```
 
+Goede/valide voorbeelden van @include-vsa zijn:
+- Exact één van `zoek=` / `id=` / `lokaal=`
+- Alleen de directive-substring wordt vervangen
+
+Geen goede/niet valide voorbeelden van @include-vsa zijn:
+- Meerdere resolverparameters tegelijk
+- Hele regel of heel [VSA-blok](@) wissen
+
 ## Motivatie
 
-Zo kun je herbruikbare VSA-fragmenten (refreinen, gedeelde regels) één keer
+Zo kun je herbruikbare [VSA](@)-fragmenten (refreinen, gedeelde regels) één keer
 onderhouden en op meerdere plaatsen includen, zonder de omringende regeltekst
 te verliezen.
 

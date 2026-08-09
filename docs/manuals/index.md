@@ -11,14 +11,14 @@ Taakgerichte documentatie voor werken met de [VSA-tooling](@bron). Dit is het
 
 ## Leespad
 
-| Stap | Pagina                                           | Wanneer                                              |
-| ---- | ------------------------------------------------ | ---------------------------------------------------- |
-| 1    | [Starten](../getting-started/README.md)          | Omgeving en eerste `vsa`-commando’s                  |
-| 2    | [Gebruikershandleiding](../guides/user-guide.md) | Tour: welke taak → welke pagina                      |
-| 3    | [CLI-taken](../guides/cli-taken.md)              | Commando kiezen zonder flags te lezen                |
-| 4    | [Validatie](../guides/validation.md)             | Foutmeldingen en [severity](@)                       |
-| 5    | [SVG exporteren](../guides/svg-export.md)        | Notatie als afbeelding / Hugo                        |
-| 6    | [Integratie](../integratie/index.md)             | Gebruik in andere repo’s / CI                        |
+| Stap | Pagina                                           | Wanneer                                                          |
+| ---- | ------------------------------------------------ | ---------------------------------------------------------------- |
+| 1    | [Starten](../getting-started/README.md)          | Omgeving en eerste `vsa`-commando’s                              |
+| 2    | [Gebruikershandleiding](../guides/user-guide.md) | Tour: welke taak → welke pagina                                  |
+| 3    | [CLI-taken](../guides/cli-taken.md)              | Commando kiezen zonder flags te lezen                            |
+| 4    | [Validatie](../guides/validation.md)             | [Diagnostische meldingen](@) en [severity](@) / [ernstniveau](@) |
+| 5    | [SVG exporteren](../guides/svg-export.md)        | [VSA-notatie](@bron) als afbeelding / Hugo                       |
+| 6    | [Integratie](../integratie/index.md)             | Gebruik in andere repo’s / CI                                    |
 
 ## Overige handleidingen
 

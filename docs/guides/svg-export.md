@@ -38,14 +38,37 @@ hieronder).
 
 ## Snel starten
 
-Eén bestand bekijken:
+Eén geldige frase bekijken (`examples\docs-walkthroughs\svg-phrase-kort.vsa`):
 
-```cmd
-vsa svg examples\minimal\050_svg_demo.vsa tmp\demo.svg
-start tmp\demo.svg
+```text
+[:] {/Hei_}{/lig_} is de Heer. [//:]
 ```
 
-SVG's uit een map met Markdown, zonder Hugo-Markdown te genereren:
+```cmd
+cd /d C:\Git\orthodox-groningen\VSA-tooling
+vsa svg examples\docs-walkthroughs\svg-phrase-kort.vsa generated\vsa\svg-phrase-kort.svg
+```
+
+```text
+SVG geschreven naar: generated\vsa\svg-phrase-kort.svg
+```
+
+![Korte VSA-frase als SVG](assets/walkthroughs/svg-phrase-kort.svg)
+
+### Langere frase + regelbreedte
+
+Zelfde start, langere tekst
+(`examples\docs-walkthroughs\svg-phrase-lang.vsa`), met smallere
+`--max-line-width` zodat de renderer afbreekt:
+
+```cmd
+vsa svg examples\docs-walkthroughs\svg-phrase-lang.vsa generated\vsa\svg-phrase-lang.svg --max-line-width 400
+```
+
+![Langere VSA-frase, afgebroken SVG](assets/walkthroughs/svg-phrase-lang.svg)
+
+SVG's uit een map met Markdown, zonder Hugo-Markdown te genereren
+(levert o.a. `toon-1-block-1.svg` en `toon-2-block-1.svg`):
 
 ```cmd
 vsa process examples\site-demo generated\vsa
@@ -61,6 +84,12 @@ Zie de man-pagina's voor de volledige argumentenlijst, opties en
 foutgevallen: [`cli/svg.md`](../reference/cli/svg.md),
 [`cli/process.md`](../reference/cli/process.md),
 [`cli/build-markdown.md`](../reference/cli/build-markdown.md).
+
+Preview-SVG's in deze docs regenereren (na wijziging van de bron-`.vsa`):
+
+```cmd
+python scripts\sync-docs-walkthrough-svgs.py
+```
 
 ## Inline rendering via `build-markdown`
 

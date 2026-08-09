@@ -2,7 +2,7 @@
 
 ## Doel
 
-Dit hoofdstuk definieert wanneer een implementatie conform de VSA-specificatie is.
+Dit document definieert wanneer een implementatie conform de VSA-specificatie is.
 
 Conformance heeft uitsluitend betrekking op het extern waarneembare gedrag van een implementatie. Interne architectuur, datastructuren en programmeertaal zijn volledig implementatie-onafhankelijk.
 

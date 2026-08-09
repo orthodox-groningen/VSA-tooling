@@ -40,23 +40,45 @@ Verwachte vorm: `vsa 0.1.0` (of hoger).
 ## 4. Valideren
 
 De [validator](@) controleert of [VSA-notatie](@bron) bruikbaar is
-([`vsa validate`](../reference/cli/validate.md)):
+([`vsa validate`](../reference/cli/validate.md)).
 
-```cmd
-vsa validate examples\minimal\001_plain_text.vsa
+Voorbeeldinvoer (`examples\docs-walkthroughs\svg-phrase-kort.vsa`):
+
+```text
+[:] {/Hei_}{/lig_} is de Heer. [//:]
 ```
 
-Bij succes: `OK`.
+```cmd
+vsa validate examples\docs-walkthroughs\svg-phrase-kort.vsa
+```
+
+Bij succes:
+
+```text
+OK
+```
 
 ## 5. SVG genereren
 
-Met [`vsa svg`](../reference/cli/svg.md) (zelfde schone demo; rijkere
-SVG-voorbeelden zoals `050_svg_demo.vsa` mogen op `validate` falen — zie
-[`vsa svg`](../reference/cli/svg.md)):
+Met [`vsa svg`](../reference/cli/svg.md) (zelfde geldige demo):
 
 ```cmd
-vsa svg examples\minimal\001_plain_text.vsa generated\vsa\001_plain_text.svg
+vsa svg examples\docs-walkthroughs\svg-phrase-kort.vsa generated\vsa\svg-phrase-kort.svg
 ```
+
+Verwachte stdout:
+
+```text
+SVG geschreven naar: generated\vsa\svg-phrase-kort.svg
+```
+
+Zo ziet die frase eruit (vaste preview; regenereren via
+`python scripts\sync-docs-walkthrough-svgs.py`):
+
+![Korte VSA-frase als SVG](../guides/assets/walkthroughs/svg-phrase-kort.svg)
+
+Rijkere of bewust ongeldige demos (bijv. `050_svg_demo.vsa`) mogen op
+`validate` falen — zie [`vsa svg`](../reference/cli/svg.md).
 
 ## Volgende stappen
 

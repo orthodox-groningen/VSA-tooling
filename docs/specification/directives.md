@@ -225,7 +225,7 @@ Er is geen aparte print-pipeline; één HTML-bestand dient beide doelen.
 
 Basis: Markdown met GFM-extensies (tabellen, doorhalen), en uitgebreid met de volgende directives.
 
-### 1. VSA-blok (bestaand)
+### VSA-blok (bestaand)
 
     ::: vsa-notatie
     [VSA-inhoud]
@@ -233,7 +233,7 @@ Basis: Markdown met GFM-extensies (tabellen, doorhalen), en uitgebreid met de vo
 
 Wordt door [`vsa build-markdown`](../reference/cli/build-markdown.md) omgezet naar SVG en ingevoegd als shortcode of `<img>`.
 
-### 2. Paginabreuk
+### Paginabreuk
 
     :::pagebreak:::
 
@@ -241,7 +241,7 @@ Wordt door [`vsa build-markdown`](../reference/cli/build-markdown.md) omgezet na
 - In browser: onzichtbaar
 - Bij afdrukken: CSS zorgt voor een harde A4-paginabreuk
 
-### 3. Transclusion (include)
+### Transclusion (include)
 
     :::include pad/naar/bestand.ext:::
 
@@ -276,7 +276,7 @@ Ondersteunde bestandstypen:
 | `.svg`                                   | Wordt ingevoegd als `<img src="...">`                                         |
 | `.jpg`, `.jpeg`, `.png`, `.webp`, `.gif` | Wordt ingevoegd als `<img src="...">`                                         |
 
-### 3b. Coria-oefenlink
+### Coria-oefenlink
 
     :::coria "pad/naar/melodie.vsa" [label="…"] [mode="auto|html|mxl"]:::
 
@@ -288,7 +288,7 @@ Pad relatief aan het includerende bestand, zoals bij `:::include`.
 
 Wordt bij `build-markdown` omgezet naar Hugo-shortcode `coria-html` of `coria`.
 
-### 4. Conditionele inhoud
+### Conditionele inhoud
 
     :::web-only:::
     [inhoud die alleen op de website verschijnt]
@@ -301,7 +301,7 @@ Wordt bij `build-markdown` omgezet naar Hugo-shortcode `coria-html` of `coria`.
 - `web-only` — verborgen bij afdrukken, zichtbaar in browser
 - `print-only` — verborgen in browser, zichtbaar bij afdrukken
 
-### 5. Samen op één pagina
+### Samen op één pagina
 
     :::keep-together:::
     [inhoud die bij afdrukken bij elkaar gehouden wordt]

@@ -5,7 +5,7 @@ terminology:
   glossarydir: "mrgs"
   defaultvsn: "vsa-tooling"
   defaulttype: "concept"
-  website: "https://orthodox-groningen.github.io/VSA-tooling"
+  website: "https://orthodox-groningen.github.io/VSA-tooling/preview"
   navpath: "/terminologie"
   navid: "slug"
   license: "../LICENSE"
@@ -33,7 +33,7 @@ entries:
       - "Afgeleiden worden niet getrackt in de [bron-repository](@); ze worden gegenereerd tijdens de build."
     scopetag: "bron"
     locator: "afgeleide.md"
-    navurl: "https://orthodox-groningen.github.io/bron/preview/terms/afgeleide"
+    navurl: "https://orthodox-groningen.github.io/bron/terms/afgeleide"
     headingids:
       - "afgeleide"
       - "motivatie"
@@ -53,7 +53,7 @@ entries:
       - "Niet verwarren met het [canonieke id](@) zelf, noch met [herkomst](@) (waar iets vandaan komt)."
     scopetag: "bron"
     locator: "alias.md"
-    navurl: "https://orthodox-groningen.github.io/bron/preview/terms/alias"
+    navurl: "https://orthodox-groningen.github.io/bron/terms/alias"
     headingids:
       - "alias"
       - "motivatie"
@@ -61,13 +61,13 @@ entries:
     termType: "concept"
     termid: "concept:alias"
     vsntag: "bron"
-  - git_date: 2026-07-08T00:00:00.000Z
+  - git_date: 2026-08-09T00:00:00.000Z
     slug: "ast"
     term: "ast"
     termType: "concept"
     glossaryTerm: "Abstract Syntax Tree"
     glossaryAbbr: "AST"
-    glossaryText: "een expliciete nodeboom die door de parser uit VSA-invoer wordt geproduceerd en die validator en renderer zonder semantische herinterpretatie kunnen lezen."
+    glossaryText: "een expliciete nodeboom die door de [parser](@) uit [VSA](@)-invoer wordt geproduceerd en die [validator](@) en [renderer](@) zonder semantische herinterpretatie kunnen lezen."
     glossaryAlias: "Syntactische boom"
     formPhrases:
       - "ast"
@@ -78,17 +78,17 @@ entries:
       - "syntactische-bomen"
     scopetag: "vsa-tooling"
     locator: "ast.md"
-    navurl: "https://orthodox-groningen.github.io/VSA-tooling/terminologie/ast"
+    navurl: "https://orthodox-groningen.github.io/VSA-tooling/preview/terminologie/ast"
     headingids:
       - "ast"
     termid: "concept:ast"
     vsntag: "vsa-tooling"
-  - git_date: 2026-07-08T00:00:00.000Z
+  - git_date: 2026-08-09T00:00:00.000Z
     slug: "bracket-directive"
     term: "bracket-directive"
     termType: "concept"
     glossaryTerm: "Bracket-directive"
-    glossaryText: "een tekstfragment dat als afzonderlijk VSA-token tussen `[` en `]` voorkomt en door bracket-dispatch wordt geclassificeerd voordat de inhoudelijke parsing verdergaat."
+    glossaryText: "een tekstfragment dat als afzonderlijk [VSA](@)-token tussen `[` en `]` voorkomt en door bracket-dispatch wordt geclassificeerd voordat de inhoudelijke parsing verdergaat."
     glossaryAlias: "Bracket-token"
     formPhrases:
       - "bracket-directive"
@@ -97,7 +97,7 @@ entries:
       - "bracket-tokens"
     scopetag: "vsa-tooling"
     locator: "bracket-directive.md"
-    navurl: "https://orthodox-groningen.github.io/VSA-tooling/terminologie/bracket-directive"
+    navurl: "https://orthodox-groningen.github.io/VSA-tooling/preview/terminologie/bracket-directive"
     headingids:
       - "bracket-directive"
     termid: "concept:bracket-directive"
@@ -119,7 +119,7 @@ entries:
       - "Repositories voor de [VSA-tooling](https://github.com/orthodox-groningen/VSA-tooling/), of parochie-specifieke zaken en vendor-checkouts zijn geen bron-repository."
     scopetag: "bron"
     locator: "bron-repository.md"
-    navurl: "https://orthodox-groningen.github.io/bron/preview/terms/bron-repository"
+    navurl: "https://orthodox-groningen.github.io/bron/terms/bron-repository"
     headingids:
       - "bron-repository"
       - "motivatie"
@@ -147,7 +147,7 @@ entries:
           - "HTML bestanden zoals die zijn gegenereerd uit geautomatiseerde workflows."
     scopetag: "bron"
     locator: "bronbestand.md"
-    navurl: "https://orthodox-groningen.github.io/bron/preview/terms/bronbestand"
+    navurl: "https://orthodox-groningen.github.io/bron/terms/bronbestand"
     headingids:
       - "bronbestand"
       - "motivatie"
@@ -170,7 +170,7 @@ entries:
       - "Niet verwarren met [alias](@) (menselijke werknaam) of met [herkomst](@) (waar iets vandaan komt)."
     scopetag: "bron"
     locator: "canoniek-id.md"
-    navurl: "https://orthodox-groningen.github.io/bron/preview/terms/canoniek-id"
+    navurl: "https://orthodox-groningen.github.io/bron/terms/canoniek-id"
     headingids:
       - "canonieke-id"
       - "motivatie"
@@ -190,26 +190,26 @@ entries:
       - "Niet verwarren met [samenstelling](@) (parochie-markdown met `:::include`) of sjabloon (markdown met `:::include zoek=`)."
     scopetag: "bron"
     locator: "compositie.md"
-    navurl: "https://orthodox-groningen.github.io/bron/preview/terms/compositie"
+    navurl: "https://orthodox-groningen.github.io/bron/terms/compositie"
     headingids:
       - "compositie"
       - "motivatie"
     termType: "concept"
     termid: "concept:compositie"
     vsntag: "bron"
-  - git_date: 2026-07-08T00:00:00.000Z
+  - git_date: 2026-08-09T00:00:00.000Z
     slug: "control-token"
     term: "control-token"
     termType: "concept"
     isa: "bracket-directive"
     glossaryTerm: "Control-token"
-    glossaryText: "een bracket-directive waarvan de tokenwaarde een ondersteunde control-tokenvorm is, zoals `[*]`, `[/]`, `[*?]` of `[/?]`, en die niet als pitch-marker wordt geparseerd."
+    glossaryText: "een [bracket-directive](@) / [bracket-token](@) waarvan de tokenwaarde een ondersteunde control-tokenvorm is, zoals `[*]`, `[/]`, `[*?]` of `[/?]`, en die niet als [pitch-marker](@) / [hoogte-markering](@) wordt geparseerd."
     formPhrases:
       - "control-token"
       - "control-tokens"
     scopetag: "vsa-tooling"
     locator: "control-token.md"
-    navurl: "https://orthodox-groningen.github.io/VSA-tooling/terminologie/control-token"
+    navurl: "https://orthodox-groningen.github.io/VSA-tooling/preview/terminologie/control-token"
     headingids:
       - "control-token"
     termid: "concept:control-token"
@@ -226,19 +226,19 @@ entries:
       - "Het bestaan van een conversiemechanisme is het criterium waarmee onderscheid wordt gemaakt tussen [bronbestand](@) en [afgeleide](@)."
     scopetag: "bron"
     locator: "conversiemechanisme.md"
-    navurl: "https://orthodox-groningen.github.io/bron/preview/terms/conversiemechanisme"
+    navurl: "https://orthodox-groningen.github.io/bron/terms/conversiemechanisme"
     headingids:
       - "conversiemechanisme"
       - "motivatie"
     termType: "concept"
     termid: "concept:conversiemechanisme"
     vsntag: "bron"
-  - git_date: 2026-07-08T00:00:00.000Z
+  - git_date: 2026-08-09T00:00:00.000Z
     slug: "diagnostic"
     term: "diagnostic"
     termType: "concept"
     glossaryTerm: "Diagnostic"
-    glossaryText: "een melding die door parser of validator wordt geproduceerd en ten minste een foutcode, severity, bronlocatie en uitleg of context bij een vastgestelde afwijking bevat."
+    glossaryText: "een melding die door [parser](@) of [validator](@) wordt geproduceerd en ten minste een foutcode, [severity](@) / [ernstniveau](@), bronlocatie en uitleg of context bij een vastgestelde afwijking bevat."
     glossaryAlias: "Diagnostische melding"
     formPhrases:
       - "diagnostic"
@@ -247,19 +247,43 @@ entries:
       - "diagnostische-meldingen"
     scopetag: "vsa-tooling"
     locator: "diagnostic.md"
-    navurl: "https://orthodox-groningen.github.io/VSA-tooling/terminologie/diagnostic"
+    navurl: "https://orthodox-groningen.github.io/VSA-tooling/preview/terminologie/diagnostic"
     headingids:
       - "diagnostic"
     termid: "concept:diagnostic"
     vsntag: "vsa-tooling"
-  - git_date: 2026-08-06T00:00:00.000Z
+  - git_date: 2026-08-09T00:00:00.000Z
+    slug: "do-context"
+    term: "do-context"
+    termType: "concept"
+    glossaryTerm: "Do-context"
+    glossaryText: "de grondtooncontext waarbinnen relatieve toonhoogtebewegingen in [VSA-notatie](@bron) worden geïnterpreteerd; voor MusicXML-export of afspelen vastgelegd via blok-[metadata](@) (`do`, `mode`), niet via de zangtekst zelf."
+    glossaryAlias: "Tooncontext"
+    formPhrases:
+      - "do-context"
+      - "do-contexts"
+      - "tooncontext"
+      - "tooncontexten"
+    glossaryNotes:
+      - "Voorbeeld: `do=\"F4\"` en `mode=\"major\"` in een [VSA-blok](@) of `.vsa`-frontmatter."
+      - "Een begin-[pitch-marker](@) / [hoogte-markering](@) `[:]` betekent: start op de do-context."
+    scopetag: "vsa-tooling"
+    locator: "do-context.md"
+    navurl: "https://orthodox-groningen.github.io/VSA-tooling/preview/terminologie/do-context"
+    headingids:
+      - "do-context"
+      - "motivatie"
+      - "gerelateerd-/-verder-lezen"
+    termid: "concept:do-context"
+    vsntag: "vsa-tooling"
+  - git_date: 2026-08-09T00:00:00.000Z
     slug: "enkelvoudige-hoogte-modifier"
     term: "enkelvoudige-hoogte-modifier"
     termType: "concept"
     isa: "hoogte-modifier"
     glossaryTerm: "Enkelvoudige hoogte-modifier"
     glossaryAbbr: "EHM"
-    glossaryText: "een hoogte-modifier die uit precies één geldige EHM bestaat: een basis-hoogtebeweging, eventueel voorafgegaan door een halftoon-prefix."
+    glossaryText: "een [hoogte-modifier](@) die uit precies één geldige EHM bestaat: een basis-hoogtebeweging, eventueel voorafgegaan door een halftoon-prefix."
     formPhrases:
       - "enkelvoudige-hoogte-modifier"
       - "enkelvoudige-hoogte-modifiers"
@@ -267,19 +291,19 @@ entries:
       - "ehms"
     scopetag: "vsa-tooling"
     locator: "enkelvoudige-hoogte-modifier.md"
-    navurl: "https://orthodox-groningen.github.io/VSA-tooling/terminologie/enkelvoudige-hoogte-modifier"
+    navurl: "https://orthodox-groningen.github.io/VSA-tooling/preview/terminologie/enkelvoudige-hoogte-modifier"
     headingids:
       - "enkelvoudige-hoogte-modifier"
     termid: "concept:enkelvoudige-hoogte-modifier"
     vsntag: "vsa-tooling"
-  - git_date: 2026-08-06T00:00:00.000Z
+  - git_date: 2026-08-09T00:00:00.000Z
     slug: "enkelvoudige-lengte-modifier"
     term: "enkelvoudige-lengte-modifier"
     termType: "concept"
     isa: "lengte-modifier"
     glossaryTerm: "Enkelvoudige lengte-modifier"
     glossaryAbbr: "ELM"
-    glossaryText: "een lengte-modifier die uit precies één geldige ELM bestaat en daarmee precies een duurpositie representeert."
+    glossaryText: "een [lengte-modifier](@) die uit precies één geldige ELM bestaat en daarmee precies een duurpositie representeert."
     formPhrases:
       - "enkelvoudige-lengte-modifier"
       - "enkelvoudige-lengte-modifiers"
@@ -287,7 +311,7 @@ entries:
       - "elms"
     scopetag: "vsa-tooling"
     locator: "enkelvoudige-lengte-modifier.md"
-    navurl: "https://orthodox-groningen.github.io/VSA-tooling/terminologie/enkelvoudige-lengte-modifier"
+    navurl: "https://orthodox-groningen.github.io/VSA-tooling/preview/terminologie/enkelvoudige-lengte-modifier"
     headingids:
       - "enkelvoudige-lengte-modifier"
     termid: "concept:enkelvoudige-lengte-modifier"
@@ -304,7 +328,7 @@ entries:
       - "Voorbeeld: `:::include svg zoek=\"…\" :::` kiest exporttype `svg`."
     scopetag: "bron"
     locator: "exportmechanisme.md"
-    navurl: "https://orthodox-groningen.github.io/bron/preview/terms/exportmechanisme"
+    navurl: "https://orthodox-groningen.github.io/bron/terms/exportmechanisme"
     headingids:
       - "exportmechanisme"
       - "motivatie"
@@ -324,25 +348,25 @@ entries:
       - "Huidige exporttypen: `svg`, `coria`, `mxl`."
     scopetag: "bron"
     locator: "exporttype.md"
-    navurl: "https://orthodox-groningen.github.io/bron/preview/terms/exporttype"
+    navurl: "https://orthodox-groningen.github.io/bron/terms/exporttype"
     headingids:
       - "exporttype"
       - "motivatie"
     termType: "concept"
     termid: "concept:exporttype"
     vsntag: "bron"
-  - git_date: 2026-08-08T00:00:00.000Z
+  - git_date: 2026-08-09T00:00:00.000Z
     slug: "geldige-vsa-notatie"
     term: "geldige-vsa-notatie"
     termType: "concept"
     glossaryTerm: "geldige VSA-notatie"
-    glossaryText: "[VSA-notatie](@bron) die de [validator](@) (`vsa validate`) accepteert: syntactisch en semantisch in orde volgens de actieve [severity](@)-regels (syntaxfouten zijn altijd hard)."
+    glossaryText: "[VSA-notatie](@bron) die de [validator](@) (`vsa validate`) accepteert: syntactisch en semantisch in orde volgens de actieve [severity](@) / [ernstniveau](@)-regels (syntaxfouten zijn altijd hard)."
     formPhrases:
       - "geldige-vsa-notatie"
       - "geldige-vsa"
     scopetag: "vsa-tooling"
     locator: "geldige-vsa-notatie.md"
-    navurl: "https://orthodox-groningen.github.io/VSA-tooling/terminologie/geldige-vsa-notatie"
+    navurl: "https://orthodox-groningen.github.io/VSA-tooling/preview/terminologie/geldige-vsa-notatie"
     headingids:
       - "geldige-vsa-notatie"
     termid: "concept:geldige-vsa-notatie"
@@ -360,13 +384,35 @@ entries:
       - "Registratie vindt plaats via [promotie](@): een PR naar de [bron-repository](@) met [source-entry](@) en [bronbestand](@)."
     scopetag: "bron"
     locator: "geregistreerde-representatie.md"
-    navurl: "https://orthodox-groningen.github.io/bron/preview/terms/geregistreerde-representatie"
+    navurl: "https://orthodox-groningen.github.io/bron/terms/geregistreerde-representatie"
     headingids:
       - "geregistreerde-representatie"
       - "motivatie"
     termType: "concept"
     termid: "concept:geregistreerde-representatie"
     vsntag: "bron"
+  - git_date: 2026-08-09T00:00:00.000Z
+    slug: "glyph"
+    term: "glyph"
+    termType: "concept"
+    glossaryTerm: "Glyph"
+    glossaryText: "een zichtbaar grafisch teken dat de [renderer](@) tekent voor een [VSA](@)-markering (bijvoorbeeld een streep van een [hoogte-modifier](@) of een onderstreping van een [lengte-modifier](@)), los van de zangtekst zelf."
+    formPhrases:
+      - "glyph"
+      - "glyphs"
+      - "glyphmodel"
+    glossaryNotes:
+      - "Voorbeeld: `/` in `{/Hei_}` wordt als bovenglyph gerenderd; `_` als onderglyph."
+      - "[Pitch-markers](@) / [hoogte-markeringen](@) en [control-tokens](@) kunnen eveneens als glyphs of layout-aanwijzingen worden weergegeven."
+    scopetag: "vsa-tooling"
+    locator: "glyph.md"
+    navurl: "https://orthodox-groningen.github.io/VSA-tooling/preview/terminologie/glyph"
+    headingids:
+      - "glyph"
+      - "motivatie"
+      - "gerelateerd-/-verder-lezen"
+    termid: "concept:glyph"
+    vsntag: "vsa-tooling"
   - git_date: 2026-07-11T00:00:00.000Z
     term: "herkomst"
     formPhrases:
@@ -378,20 +424,20 @@ entries:
       - "Herkomst is geen bestand; het is metadata (zoals `reference:` in `zangstuk.yaml`)."
     scopetag: "bron"
     locator: "herkomst.md"
-    navurl: "https://orthodox-groningen.github.io/bron/preview/terms/herkomst"
+    navurl: "https://orthodox-groningen.github.io/bron/terms/herkomst"
     headingids:
       - "herkomst"
       - "motivatie"
     termType: "concept"
     termid: "concept:herkomst"
     vsntag: "bron"
-  - git_date: 2026-07-08T00:00:00.000Z
+  - git_date: 2026-08-09T00:00:00.000Z
     slug: "hoogte-modifier"
     term: "hoogte-modifier"
     termType: "concept"
     isa: "modifier"
     glossaryTerm: "Hoogte-modifier"
-    glossaryText: "een modifier die voor het zangelement in een VSA-scope staat en bestaat uit een geldige EHM of uit meerdere geldige EHM's gescheiden door `&`."
+    glossaryText: "een [modifier](@) die voor het zangelement in een [VSA-scope](@) staat en bestaat uit een geldige [EHM](@) of uit meerdere geldige [EHMs](@) gescheiden door `&`."
     glossaryAlias: "Height modifier"
     formPhrases:
       - "hoogte-modifier"
@@ -400,17 +446,17 @@ entries:
       - "height-modifiers"
     scopetag: "vsa-tooling"
     locator: "hoogte-modifier.md"
-    navurl: "https://orthodox-groningen.github.io/VSA-tooling/terminologie/hoogte-modifier"
+    navurl: "https://orthodox-groningen.github.io/VSA-tooling/preview/terminologie/hoogte-modifier"
     headingids:
       - "hoogte-modifier"
     termid: "concept:hoogte-modifier"
     vsntag: "vsa-tooling"
-  - git_date: 2026-07-08T00:00:00.000Z
+  - git_date: 2026-08-09T00:00:00.000Z
     slug: "hugo-output"
     term: "hugo-output"
     termType: "concept"
     glossaryTerm: "Hugo-output"
-    glossaryText: "een artifactset die door een VSA-buildstap gegenereerde Hugo-compatibele Markdown en de daarbij verwezen assets bevat."
+    glossaryText: "een artifactset die door een [VSA](@)-buildstap gegenereerde Hugo-compatibele Markdown en de daarbij verwezen assets bevat."
     glossaryAlias: "Hugo-content"
     formPhrases:
       - "hugo-output"
@@ -419,12 +465,12 @@ entries:
       - "hugo-contentsets"
     scopetag: "vsa-tooling"
     locator: "hugo-output.md"
-    navurl: "https://orthodox-groningen.github.io/VSA-tooling/terminologie/hugo-output"
+    navurl: "https://orthodox-groningen.github.io/VSA-tooling/preview/terminologie/hugo-output"
     headingids:
       - "hugo-output"
     termid: "concept:hugo-output"
     vsntag: "vsa-tooling"
-  - git_date: 2026-08-08T00:00:00.000Z
+  - git_date: 2026-08-09T00:00:00.000Z
     slug: "include-vsa"
     term: "include-vsa"
     termType: "concept"
@@ -440,20 +486,20 @@ entries:
       - "Voorbeeld: `refrein: @include-vsa zoek=\"Troparion\"` — alleen de `@include-vsa …`-substring wordt vervangen."
     scopetag: "vsa-tooling"
     locator: "include-vsa.md"
-    navurl: "https://orthodox-groningen.github.io/VSA-tooling/terminologie/include-vsa"
+    navurl: "https://orthodox-groningen.github.io/VSA-tooling/preview/terminologie/include-vsa"
     headingids:
       - "@include-vsa"
       - "motivatie"
       - "gerelateerd-/-verder-lezen"
     termid: "concept:include-vsa"
     vsntag: "vsa-tooling"
-  - git_date: 2026-07-08T00:00:00.000Z
+  - git_date: 2026-08-09T00:00:00.000Z
     slug: "lengte-modifier"
     term: "lengte-modifier"
     termType: "concept"
     isa: "modifier"
     glossaryTerm: "Lengte-modifier"
-    glossaryText: "een modifier die na het zangelement in een VSA-scope staat en bestaat uit een geldige ELM of uit meerdere geldige ELM's gescheiden door `&`."
+    glossaryText: "een [modifier](@) die na het zangelement in een [VSA-scope](@) staat en bestaat uit een geldige [ELM](@) of uit meerdere geldige [ELMs](@) gescheiden door `&`."
     glossaryAlias: "Length modifier"
     formPhrases:
       - "lengte-modifier"
@@ -462,7 +508,7 @@ entries:
       - "length-modifiers"
     scopetag: "vsa-tooling"
     locator: "lengte-modifier.md"
-    navurl: "https://orthodox-groningen.github.io/VSA-tooling/terminologie/lengte-modifier"
+    navurl: "https://orthodox-groningen.github.io/VSA-tooling/preview/terminologie/lengte-modifier"
     headingids:
       - "lengte-modifier"
     termid: "concept:lengte-modifier"
@@ -480,44 +526,65 @@ entries:
       - "Een manifest is zelf geen [representatie](@), [bronbestand](@) of [samenstelling](@)."
     scopetag: "bron"
     locator: "manifest.md"
-    navurl: "https://orthodox-groningen.github.io/bron/preview/terms/manifest"
+    navurl: "https://orthodox-groningen.github.io/bron/terms/manifest"
     headingids:
       - "manifest"
       - "motivatie"
     termType: "concept"
     termid: "concept:manifest"
     vsntag: "bron"
-  - git_date: 2026-07-08T00:00:00.000Z
+  - git_date: 2026-08-09T00:00:00.000Z
     slug: "metadata"
     term: "metadata"
     termType: "concept"
     glossaryTerm: "Metadata"
-    glossaryText: "gegevens die als gestructureerde blokparameters of YAML-frontmatter bij VSA-bronmateriaal staan, verwerking of identificatie sturen en zelf niet tot de zichtbare VSA-notatie behoren."
+    glossaryText: "gegevens die als gestructureerde blokparameters of YAML-frontmatter bij [VSA](@)-bronmateriaal staan, verwerking of identificatie sturen en zelf niet tot de zichtbare [VSA-notatie](@bron) behoren."
     formPhrases:
       - "metadata"
       - "metadata-items"
     scopetag: "vsa-tooling"
     locator: "metadata.md"
-    navurl: "https://orthodox-groningen.github.io/VSA-tooling/terminologie/metadata"
+    navurl: "https://orthodox-groningen.github.io/VSA-tooling/preview/terminologie/metadata"
     headingids:
       - "metadata"
     termid: "concept:metadata"
     vsntag: "vsa-tooling"
-  - git_date: 2026-07-08T00:00:00.000Z
+  - git_date: 2026-08-09T00:00:00.000Z
     slug: "modifier"
     term: "modifier"
     termType: "concept"
     glossaryTerm: "Modifier"
-    glossaryText: "een tekenreeks die binnen een VSA-scope als hoogte-modifier voor het zangelement of als lengte-modifier na het zangelement wordt geparseerd."
+    glossaryText: "een tekenreeks die binnen een [VSA-scope](@) als [hoogte-modifier](@) voor het zangelement of als [lengte-modifier](@) na het zangelement wordt geparseerd."
     formPhrases:
       - "modifier"
       - "modifiers"
     scopetag: "vsa-tooling"
     locator: "modifier.md"
-    navurl: "https://orthodox-groningen.github.io/VSA-tooling/terminologie/modifier"
+    navurl: "https://orthodox-groningen.github.io/VSA-tooling/preview/terminologie/modifier"
     headingids:
       - "modifier"
     termid: "concept:modifier"
+    vsntag: "vsa-tooling"
+  - git_date: 2026-08-09T00:00:00.000Z
+    slug: "muzikale-positie"
+    term: "muzikale-positie"
+    termType: "concept"
+    glossaryTerm: "Muzikale positie"
+    glossaryText: "de kleinste muzikale eenheid binnen [VSA-notatie](@bron): één relatieve toonhoogtebeweging (één [EHM](@)), één duur (één [ELM](@)) en een koppeling aan één zangelement in een [VSA-scope](@)."
+    formPhrases:
+      - "muzikale-positie"
+      - "muzikale-posities"
+    glossaryNotes:
+      - "Voorbeeld: `{/tekst_}` bevat één muzikale positie (hoogte `/`, zangelement `tekst`, duur `_`)."
+      - "Samengestelde [modifiers](@) met `&`, zoals `{/&/tekst_&-}`, leveren meerdere muzikale posities binnen één [scope](@) (melisma)."
+    scopetag: "vsa-tooling"
+    locator: "muzikale-positie.md"
+    navurl: "https://orthodox-groningen.github.io/VSA-tooling/preview/terminologie/muzikale-positie"
+    headingids:
+      - "muzikale-positie"
+      - "motivatie"
+      - "gerelateerd-/-verder-lezen"
+    termid: "concept:muzikale-positie"
     vsntag: "vsa-tooling"
   - git_date: 2026-07-11T00:00:00.000Z
     term: "parochie-lokale-representatie"
@@ -532,35 +599,35 @@ entries:
       - "Parochie-lokale representaties staan onder `content-source/lokaal/<zangstuk-id>/<variant-id>/…`."
     scopetag: "bron"
     locator: "parochie-lokale-representatie.md"
-    navurl: "https://orthodox-groningen.github.io/bron/preview/terms/parochie-lokale-representatie"
+    navurl: "https://orthodox-groningen.github.io/bron/terms/parochie-lokale-representatie"
     headingids:
       - "parochie-lokale-representatie"
       - "motivatie"
     termType: "concept"
     termid: "concept:parochie-lokale-representatie"
     vsntag: "bron"
-  - git_date: 2026-07-08T00:00:00.000Z
+  - git_date: 2026-08-09T00:00:00.000Z
     slug: "parser"
     term: "parser"
     termType: "concept"
     glossaryTerm: "Parser"
-    glossaryText: "een component die VSA-brontekst of tokens volgens de grammatica omzet naar expliciete AST-nodes, bronlocaties behoudt en geen semantische reparaties of renderlogica uitvoert."
+    glossaryText: "een component die [VSA](@)-brontekst of tokens volgens de grammatica omzet naar expliciete [AST](@) / [syntactische boom](@)-nodes, bronlocaties behoudt en geen semantische reparaties of renderlogica uitvoert."
     formPhrases:
       - "parser"
       - "parsers"
     scopetag: "vsa-tooling"
     locator: "parser.md"
-    navurl: "https://orthodox-groningen.github.io/VSA-tooling/terminologie/parser"
+    navurl: "https://orthodox-groningen.github.io/VSA-tooling/preview/terminologie/parser"
     headingids:
       - "parser"
     termid: "concept:parser"
     vsntag: "vsa-tooling"
-  - git_date: 2026-08-08T00:00:00.000Z
+  - git_date: 2026-08-09T00:00:00.000Z
     slug: "pitch-marker"
     term: "pitch-marker"
     termType: "concept"
     glossaryTerm: "Pitch-marker"
-    glossaryText: "een bracket-directive met de vorm `[<EHM>:]`, waarbij `<EHM>` leeg is of een geldige enkelvoudige hoogte-modifier bevat."
+    glossaryText: "een [bracket-directive](@) / [bracket-token](@) met de vorm `[<EHM>:]`, waarbij `<EHM>` leeg is of een geldige [EHM](@) bevat."
     glossaryAlias: "Hoogte-markering"
     formPhrases:
       - "pitch-marker"
@@ -575,7 +642,7 @@ entries:
       - "Voorbeeld: `[:]` of `[/:]` vóór of na zangtekst; zonder afsluitende `:` is het geen pitch-marker."
     scopetag: "vsa-tooling"
     locator: "pitch-marker.md"
-    navurl: "https://orthodox-groningen.github.io/VSA-tooling/terminologie/pitch-marker"
+    navurl: "https://orthodox-groningen.github.io/VSA-tooling/preview/terminologie/pitch-marker"
     headingids:
       - "pitch-marker"
       - "motivatie"
@@ -594,14 +661,14 @@ entries:
       - "Promotie vereist een PR op de [bron-repository](@) met [source-entry](@) én [bronbestand](@)."
     scopetag: "bron"
     locator: "promotie.md"
-    navurl: "https://orthodox-groningen.github.io/bron/preview/terms/promotie"
+    navurl: "https://orthodox-groningen.github.io/bron/terms/promotie"
     headingids:
       - "promotie"
       - "motivatie"
     termType: "concept"
     termid: "concept:promotie"
     vsntag: "bron"
-  - git_date: 2026-07-08T00:00:00.000Z
+  - git_date: 2026-08-09T00:00:00.000Z
     slug: "publicatie"
     term: "publicatie"
     termType: "concept"
@@ -612,23 +679,23 @@ entries:
       - "publicaties"
     scopetag: "vsa-tooling"
     locator: "publicatie.md"
-    navurl: "https://orthodox-groningen.github.io/VSA-tooling/terminologie/publicatie"
+    navurl: "https://orthodox-groningen.github.io/VSA-tooling/preview/terminologie/publicatie"
     headingids:
       - "publicatie"
     termid: "concept:publicatie"
     vsntag: "vsa-tooling"
-  - git_date: 2026-07-08T00:00:00.000Z
+  - git_date: 2026-08-09T00:00:00.000Z
     slug: "renderer"
     term: "renderer"
     termType: "concept"
     glossaryTerm: "Renderer"
-    glossaryText: "een component die een gevalideerde AST of daarvan afgeleid layoutmodel omzet naar concrete uitvoer, zoals SVG, JSON, Markdown, Hugo-output of MusicXML, zonder de AST semantisch te wijzigen."
+    glossaryText: "een component die een gevalideerde [AST](@) / [syntactische boom](@) of daarvan afgeleid layoutmodel omzet naar concrete uitvoer, zoals SVG, JSON, Markdown, [hugo-output](@) of MusicXML, zonder de [AST](@) semantisch te wijzigen."
     formPhrases:
       - "renderer"
       - "renderers"
     scopetag: "vsa-tooling"
     locator: "renderer.md"
-    navurl: "https://orthodox-groningen.github.io/VSA-tooling/terminologie/renderer"
+    navurl: "https://orthodox-groningen.github.io/VSA-tooling/preview/terminologie/renderer"
     headingids:
       - "renderer"
     termid: "concept:renderer"
@@ -646,7 +713,7 @@ entries:
       - "Onder dezelfde [uitvoeringsvorm](@) mogen meerdere representaties bestaan (bijv. scan + getrouwe [vsa-bestand](@))."
     scopetag: "bron"
     locator: "representatie.md"
-    navurl: "https://orthodox-groningen.github.io/bron/preview/terms/representatie"
+    navurl: "https://orthodox-groningen.github.io/bron/terms/representatie"
     headingids:
       - "representatie"
       - "motivatie"
@@ -654,36 +721,36 @@ entries:
     termType: "concept"
     termid: "concept:representatie"
     vsntag: "bron"
-  - git_date: 2026-07-08T00:00:00.000Z
+  - git_date: 2026-08-09T00:00:00.000Z
     slug: "samengestelde-hoogte-modifier"
     term: "samengestelde-hoogte-modifier"
     termType: "concept"
     isa: "hoogte-modifier"
     glossaryTerm: "Samengestelde hoogte-modifier"
-    glossaryText: "een hoogte-modifier die uit twee of meer geldige EHM's bestaat die onderling door `&` zijn gescheiden."
+    glossaryText: "een [hoogte-modifier](@) die uit twee of meer geldige [EHMs](@) bestaat die onderling door `&` zijn gescheiden."
     formPhrases:
       - "samengestelde-hoogte-modifier"
       - "samengestelde-hoogte-modifiers"
     scopetag: "vsa-tooling"
     locator: "samengestelde-hoogte-modifier.md"
-    navurl: "https://orthodox-groningen.github.io/VSA-tooling/terminologie/samengestelde-hoogte-modifier"
+    navurl: "https://orthodox-groningen.github.io/VSA-tooling/preview/terminologie/samengestelde-hoogte-modifier"
     headingids:
       - "samengestelde-hoogte-modifier"
     termid: "concept:samengestelde-hoogte-modifier"
     vsntag: "vsa-tooling"
-  - git_date: 2026-07-08T00:00:00.000Z
+  - git_date: 2026-08-09T00:00:00.000Z
     slug: "samengestelde-lengte-modifier"
     term: "samengestelde-lengte-modifier"
     termType: "concept"
     isa: "lengte-modifier"
     glossaryTerm: "Samengestelde lengte-modifier"
-    glossaryText: "een lengte-modifier die uit twee of meer geldige ELM's bestaat die onderling door `&` zijn gescheiden."
+    glossaryText: "een [lengte-modifier](@) die uit twee of meer geldige [ELMs](@) bestaat die onderling door `&` zijn gescheiden."
     formPhrases:
       - "samengestelde-lengte-modifier"
       - "samengestelde-lengte-modifiers"
     scopetag: "vsa-tooling"
     locator: "samengestelde-lengte-modifier.md"
-    navurl: "https://orthodox-groningen.github.io/VSA-tooling/terminologie/samengestelde-lengte-modifier"
+    navurl: "https://orthodox-groningen.github.io/VSA-tooling/preview/terminologie/samengestelde-lengte-modifier"
     headingids:
       - "samengestelde-lengte-modifier"
     termid: "concept:samengestelde-lengte-modifier"
@@ -701,19 +768,19 @@ entries:
       - "Niet verwarren met [compositie](@) (org-brede ordered list van [zangstukken](@) in yaml) of sjabloon (markdown met `:::include zoek=`)."
     scopetag: "bron"
     locator: "samenstelling.md"
-    navurl: "https://orthodox-groningen.github.io/bron/preview/terms/samenstelling"
+    navurl: "https://orthodox-groningen.github.io/bron/terms/samenstelling"
     headingids:
       - "samenstelling"
       - "motivatie"
     termType: "concept"
     termid: "concept:samenstelling"
     vsntag: "bron"
-  - git_date: 2026-07-08T00:00:00.000Z
+  - git_date: 2026-08-09T00:00:00.000Z
     slug: "severity"
     term: "severity"
     termType: "concept"
     glossaryTerm: "Severity"
-    glossaryText: "een waarde die aan een diagnostic is gekoppeld en aangeeft of de vastgestelde afwijking als blokkerende fout of als waarschuwing moet worden behandeld."
+    glossaryText: "een waarde die aan een [diagnostic](@) / [diagnostische melding](@) is gekoppeld en aangeeft of de vastgestelde afwijking als blokkerende fout of als waarschuwing moet worden behandeld."
     glossaryAlias: "Ernstniveau"
     formPhrases:
       - "severity"
@@ -722,7 +789,7 @@ entries:
       - "ernstniveaus"
     scopetag: "vsa-tooling"
     locator: "severity.md"
-    navurl: "https://orthodox-groningen.github.io/VSA-tooling/terminologie/severity"
+    navurl: "https://orthodox-groningen.github.io/VSA-tooling/preview/terminologie/severity"
     headingids:
       - "severity"
     termid: "concept:severity"
@@ -739,7 +806,7 @@ entries:
       - "Meerdere source-entries kunnen meerdere [representaties](@) registreren, of (legacy) nog niet onderscheiden [variant](@)/[uitvoeringsvorm](@)-structuur bevatten — bij nieuw werk gebruik het vier-niveaumodel."
     scopetag: "bron"
     locator: "source-entry.md"
-    navurl: "https://orthodox-groningen.github.io/bron/preview/terms/source-entry"
+    navurl: "https://orthodox-groningen.github.io/bron/terms/source-entry"
     headingids:
       - "source-entry"
       - "voorbeelden-van-source-entries"
@@ -762,7 +829,7 @@ entries:
           - "de verdeling van lettergrepen over de noten"
     scopetag: "bron"
     locator: "uitvoeringsvorm.md"
-    navurl: "https://orthodox-groningen.github.io/bron/preview/terms/uitvoeringsvorm"
+    navurl: "https://orthodox-groningen.github.io/bron/terms/uitvoeringsvorm"
     headingids:
       - "uitvoeringsvorm"
       - "motivatie"
@@ -770,18 +837,18 @@ entries:
     termType: "concept"
     termid: "concept:uitvoeringsvorm"
     vsntag: "bron"
-  - git_date: 2026-07-08T00:00:00.000Z
+  - git_date: 2026-08-09T00:00:00.000Z
     slug: "validator"
     term: "validator"
     termType: "concept"
     glossaryTerm: "Validator"
-    glossaryText: "een component die een geparseerde AST of VSA-invoer toetst aan semantische en normatieve regels en overtredingen als diagnostics rapporteert zonder ze stilzwijgend te repareren."
+    glossaryText: "een component die een geparseerde [AST](@) / [syntactische boom](@) of [VSA](@)-invoer toetst aan semantische en normatieve regels en overtredingen als [diagnostics](@) / [diagnostische meldingen](@) rapporteert zonder ze stilzwijgend te repareren."
     formPhrases:
       - "validator"
       - "validators"
     scopetag: "vsa-tooling"
     locator: "validator.md"
-    navurl: "https://orthodox-groningen.github.io/VSA-tooling/terminologie/validator"
+    navurl: "https://orthodox-groningen.github.io/VSA-tooling/preview/terminologie/validator"
     headingids:
       - "validator"
     termid: "concept:validator"
@@ -802,7 +869,7 @@ entries:
       - "Vergelijkbare begrippen die buiten de scope van deze terminologie ook wel worden gehanteerd zijn `bewerking`, `versie`, `setting`, `compositievariant`."
     scopetag: "bron"
     locator: "variant.md"
-    navurl: "https://orthodox-groningen.github.io/bron/preview/terms/variant"
+    navurl: "https://orthodox-groningen.github.io/bron/terms/variant"
     headingids:
       - "variant"
       - "motivatie"
@@ -810,7 +877,7 @@ entries:
     termType: "concept"
     termid: "concept:variant"
     vsntag: "bron"
-  - git_date: 2026-08-06T00:00:00.000Z
+  - git_date: 2026-08-09T00:00:00.000Z
     slug: "vsa"
     term: "vsa"
     termType: "concept"
@@ -822,7 +889,7 @@ entries:
       - "vsa-s"
     scopetag: "vsa-tooling"
     locator: "vsa.md"
-    navurl: "https://orthodox-groningen.github.io/VSA-tooling/terminologie/vsa"
+    navurl: "https://orthodox-groningen.github.io/VSA-tooling/preview/terminologie/vsa"
     headingids:
       - "vsa"
       - "gebruik-van-deze-en-vergelijkbare-termen-in-de-'bron'-repo."
@@ -842,7 +909,7 @@ entries:
       - "vsa-bestanden"
     scopetag: "bron"
     locator: "vsa-bestand.md"
-    navurl: "https://orthodox-groningen.github.io/bron/preview/terms/vsa-bestand"
+    navurl: "https://orthodox-groningen.github.io/bron/terms/vsa-bestand"
     headingids:
       - "vsa-bestand"
       - "structuur"
@@ -851,7 +918,7 @@ entries:
       - "zie-ook:"
     termid: "concept:vsa-bestand"
     vsntag: "bron"
-  - git_date: 2026-08-08T00:00:00.000Z
+  - git_date: 2026-08-09T00:00:00.000Z
     slug: "vsa-blokken"
     term: "vsa-blokken"
     termType: "concept"
@@ -862,7 +929,7 @@ entries:
       - "vsa-blok"
     scopetag: "vsa-tooling"
     locator: "vsa-blokken.md"
-    navurl: "https://orthodox-groningen.github.io/VSA-tooling/terminologie/vsa-blokken"
+    navurl: "https://orthodox-groningen.github.io/VSA-tooling/preview/terminologie/vsa-blokken"
     headingids:
       - "vsa-blok"
     termid: "concept:vsa-blokken"
@@ -881,7 +948,7 @@ entries:
       - "vsa-notaties"
     scopetag: "bron"
     locator: "vsa-notatie.md"
-    navurl: "https://orthodox-groningen.github.io/bron/preview/terms/vsa-notatie"
+    navurl: "https://orthodox-groningen.github.io/bron/terms/vsa-notatie"
     headingids:
       - "vsa-notatie"
       - "kernprincipes"
@@ -889,12 +956,12 @@ entries:
       - "zie-ook:"
     termid: "concept:vsa-notatie"
     vsntag: "bron"
-  - git_date: 2026-08-08T00:00:00.000Z
+  - git_date: 2026-08-09T00:00:00.000Z
     slug: "vsa-scope"
     term: "vsa-scope"
     termType: "concept"
     glossaryTerm: "VSA-scope"
-    glossaryText: "een tekstfragment dat met `{` begint, met `}` eindigt, geen whitespace binnen de accolades bevat en door de parser kan worden opgesplitst in optionele hoogte-modifier, verplicht zangelement en optionele lengte-modifier."
+    glossaryText: "een tekstfragment dat met `{` begint, met `}` eindigt, geen whitespace binnen de accolades bevat en door de [parser](@) kan worden opgesplitst in optionele [hoogte-modifier](@), verplicht zangelement en optionele [lengte-modifier](@)."
     glossaryAlias: "Scope"
     formPhrases:
       - "vsa-scope"
@@ -906,14 +973,14 @@ entries:
       - "Lege `{}` of `{te kst}` (spatie) zijn geen geldige VSA-scope."
     scopetag: "vsa-tooling"
     locator: "vsa-scope.md"
-    navurl: "https://orthodox-groningen.github.io/VSA-tooling/terminologie/vsa-scope"
+    navurl: "https://orthodox-groningen.github.io/VSA-tooling/preview/terminologie/vsa-scope"
     headingids:
       - "vsa-scope"
       - "motivatie"
       - "gerelateerd-/-verder-lezen"
     termid: "concept:vsa-scope"
     vsntag: "vsa-tooling"
-  - git_date: 2026-08-07T00:00:00.000Z
+  - git_date: 2026-08-09T00:00:00.000Z
     slug: "vsa-tekst"
     term: "vsa-tekst"
     termType: "concept"
@@ -924,17 +991,17 @@ entries:
       - "vsa-teksten"
     scopetag: "vsa-tooling"
     locator: "vsa-tekst.md"
-    navurl: "https://orthodox-groningen.github.io/VSA-tooling/terminologie/vsa-tekst"
+    navurl: "https://orthodox-groningen.github.io/VSA-tooling/preview/terminologie/vsa-tekst"
     headingids:
       - "vsa-tekst"
     termid: "concept:vsa-tekst"
     vsntag: "vsa-tooling"
-  - git_date: 2026-07-08T00:00:00.000Z
+  - git_date: 2026-08-09T00:00:00.000Z
     slug: "vsa-toml"
     term: "vsa-toml"
     termType: "concept"
     glossaryTerm: "vsa.toml"
-    glossaryText: "een projectconfiguratiebestand met de naam `vsa.toml` dat herkende VSA-toolinginstellingen bevat voor rendering, output of validatie."
+    glossaryText: "een projectconfiguratiebestand met de naam `vsa.toml` dat herkende [VSA](@)-toolinginstellingen bevat voor rendering, output of validatie."
     glossaryAlias: "Projectconfiguratie"
     formPhrases:
       - "vsa-toml"
@@ -943,7 +1010,7 @@ entries:
       - "projectconfiguraties"
     scopetag: "vsa-tooling"
     locator: "vsa-toml.md"
-    navurl: "https://orthodox-groningen.github.io/VSA-tooling/terminologie/vsa-toml"
+    navurl: "https://orthodox-groningen.github.io/VSA-tooling/preview/terminologie/vsa-toml"
     headingids:
       - "vsa.toml"
     termid: "concept:vsa-toml"
@@ -963,7 +1030,7 @@ entries:
       - "vsa-tools"
     scopetag: "bron"
     locator: "vsa-tooling.md"
-    navurl: "https://orthodox-groningen.github.io/bron/preview/terms/vsa-tooling"
+    navurl: "https://orthodox-groningen.github.io/bron/terms/vsa-tooling"
     headingids:
       - "vsa-tooling"
       - "wat-je-ermee-doet"
@@ -972,7 +1039,7 @@ entries:
       - "zie-ook"
     termid: "concept:vsa-tooling"
     vsntag: "bron"
-  - git_date: 2026-08-07T00:00:00.000Z
+  - git_date: 2026-08-09T00:00:00.000Z
     slug: "vsa-toolset"
     term: "vsa-toolset"
     termType: "concept"
@@ -982,23 +1049,23 @@ entries:
       - "vsa-toolset"
     scopetag: "vsa-tooling"
     locator: "vsa-toolset.md"
-    navurl: "https://orthodox-groningen.github.io/VSA-tooling/terminologie/vsa-toolset"
+    navurl: "https://orthodox-groningen.github.io/VSA-tooling/preview/terminologie/vsa-toolset"
     headingids:
       - "vsa.toolset"
     termid: "concept:vsa-toolset"
     vsntag: "vsa-tooling"
-  - git_date: 2026-08-06T00:00:00.000Z
+  - git_date: 2026-08-09T00:00:00.000Z
     slug: "zangstuk"
     term: "zangstuk"
     termType: "concept"
     glossaryTerm: "Zangstuk"
-    glossaryText: "een inhoudelijke eenheid die een afgebakend gezang of muzikale tekst vormt en zelfstandig kan worden geidentificeerd, vastgelegd, verwerkt of gepubliceerd."
+    glossaryText: "een inhoudelijke eenheid die een afgebakend gezang of muzikale tekst vormt en zelfstandig kan worden geïdentificeerd, vastgelegd, verwerkt of gepubliceerd."
     formPhrases:
       - "zangstuk"
       - "zangstukken"
     scopetag: "vsa-tooling"
     locator: "zangstuk.md"
-    navurl: "https://orthodox-groningen.github.io/VSA-tooling/terminologie/zangstuk"
+    navurl: "https://orthodox-groningen.github.io/VSA-tooling/preview/terminologie/zangstuk"
     headingids:
       - "zangstuk"
     termid: "concept:zangstuk"

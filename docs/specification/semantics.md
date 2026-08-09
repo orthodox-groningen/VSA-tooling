@@ -4,9 +4,7 @@ Dit document beschrijft de betekenis van syntactisch geldige VSA-notatie.
 
 Bronbasis: `docs/spec/vsa-spec-v1.0.1.md`, aangevuld met latere documenten over hoogte-markeringen en control tokens.
 
-## 5. Semantiek
-
-### 5.1 Overzicht
+### Overzicht
 
 De VSA-notatie wordt geïnterpreteerd via een gelaagd toonmodel:
 
@@ -28,7 +26,7 @@ rendering of export
 
 De absolute toonhoogte maakt geen deel uit van de VSA-kernsyntax. Zij wordt, indien nodig voor interpretatie of MusicXML-export, geleverd via de blokmetadata.
 
-### 5.2 Muzikale positie
+### Muzikale positie
 
 Een muzikale positie is de kleinste muzikale eenheid binnen VSA.
 
@@ -52,7 +50,7 @@ Dit betekent:
 - toonhoogtebeweging: `/`;
 - duur: `_`.
 
-### 5.3 Impliciete modifiers
+### Impliciete modifiers
 
 Als in een scope geen hoogte-modifier aanwezig is, wordt impliciet één `~` gebruikt.
 
@@ -84,7 +82,7 @@ is semantisch gelijk aan:
 {/&\tekst~&~}
 ```
 
-### 5.4 Samengestelde modifiers en melisma
+### Samengestelde modifiers en melisma
 
 Wanneer een zangelement meerdere muzikale posities bevat, wordt hetzelfde zangelement over meerdere opeenvolgende tonen gezongen. Dit heet een **melisma**.
 
@@ -112,7 +110,7 @@ Het zangelement `tekst` wordt over beide posities gezongen.
 
 Als zowel een hoogte-modifier als een lengte-modifier aanwezig zijn, moeten zij hetzelfde aantal muzikale posities bevatten.
 
-### 5.5 Do-context
+### Do-context
 
 De do-context is de grondtooncontext waarbinnen relatieve toonhoogtebewegingen worden geïnterpreteerd. In de zangpraktijk wordt deze context doorgaans niet expliciet genoteerd: de koorleid(st)er bepaalt de inzet op basis van de lokale traditie en vaak op basis van de toon waarop priester of diaken inzet. Koorleden volgen die context in de praktijk meestal stilzwijgend.
 
@@ -127,7 +125,7 @@ mode="major"
 
 Hier levert `do="C4"` de absolute starttoon voor interpretatie en export. De toonhoogte-markeringen in de VSA-tekst zelf bevatten uitsluitend relatieve hoogte-modifiers.
 
-### 5.6 Toonladder en toonladdergraden
+### Toonladder en toonladdergraden
 
 Binnen een do-context wordt een geordende reeks toonladdergraden afgeleid:
 
@@ -139,7 +137,7 @@ Deze graden vormen een cyclische structuur.
 
 De afstand tussen opeenvolgende graden is niet uniform. De stapstructuur wordt bepaald door de gekozen modus.
 
-### 5.7 Modusdefinitie
+### Modusdefinitie
 
 Een modus definieert de intervalstructuur van de toonladder binnen een do-context.
 
@@ -198,7 +196,7 @@ Lydisch:   G G G K G G K
 
 De do-context bepaalt dus het startpunt. De modus bepaalt de interne structuur van de toonladder.
 
-### 5.8 Interpretatie van EHMs
+### Interpretatie van EHMs
 
 Een EHM is een operator op de actuele toonladderpositie. Een EHM bestaat uit een optionele halftoon-prefix en een basisbeweging. Het semantische effect is:
 
@@ -244,7 +242,7 @@ C4 → D4 → B3 → E4
 
 Hierbij wordt uitgegaan van opeenvolgende toonladderstappen binnen de gekozen modus.
 
-### 5.9 Geldigheid van halftoon-prefix combinaties
+### Geldigheid van halftoon-prefix combinaties
 
 Een EHM met halftoon-prefix is semantisch geldig als het resulterende interval (basisbeweging ± ½ toon) zinvol is binnen de do-context en modus. Een prefix mag nooit standalone voorkomen; hij moet altijd onmiddellijk voorafgaan aan een basisbeweging.
 
@@ -270,7 +268,7 @@ Als de actuele positie op `mi` staat en de overgang `mi → fa` al een kleine st
 
 De onderscheiding tussen een halftoon-prefix op een basisbeweging en een zelfstandige chromatische aanpassing (`#-`, `b-`) heeft ook semantisch gevolgen voor MusicXML-export: `b-` beschrijft een chromatische verschuiving op de huidige positie, terwijl `b/` een combinatie is van een ladderstap en een halvering.
 
-### 5.10 Interpretatie van ELMs
+### Interpretatie van ELMs
 
 Een ELM bepaalt de duur van één muzikale positie ten opzichte van de standaardduur.
 
@@ -286,7 +284,7 @@ Een ELM bepaalt de duur van één muzikale positie ten opzichte van de standaard
 
 Voor MusicXML-export wordt de standaardduur gemapt naar een kwartnoot, tenzij extern anders gespecificeerd.
 
-### 5.11 Absolute en relatieve toonhoogte
+### Absolute en relatieve toonhoogte
 
 VSA legt toonhoogten primair relatief vast. Elke muzikale positie bevat een EHM die de toonhoogteverandering ten opzichte van de voorgaande muzikale positie specificeert.
 
@@ -309,7 +307,7 @@ produceert, bij interpretatie in majeur met `C4` als `do`, de toonreeks:
 B3 C4 B3 C4 D4 C4 D4
 ```
 
-### 5.12 Toonhoogte-markeringen
+### Toonhoogte-markeringen
 
 Een toonhoogte-markering bevat alleen een relatieve hoogte-modifier en geeft daarmee aan op welke toonladdergraad de zang zicht bevindt ten opzichte van de do-context op de positie van die toonhoogte-markering.
 
@@ -333,7 +331,7 @@ gezien worden als een enkel zangstuk met tussenliggende hoogte-markeringen.
 
 Een eindmarkering kan worden gebruikt als visuele afsluiting en als semantische eindcontrole. Een ontbrekende eindmarkering is toegestaan en betekent dat er geen expliciete eindtooncontrole is genoteerd. Een eindmarkering `[:]` is niet leeg in semantische zin: zij betekent dat de zang op de do-context eindigt en is equivalent aan `[-:]` c.q. `[~:]`. Een markering `[//:]` betekent dat de zang twee ladderstappen boven de do-context eindigt. Een implementatie mag een aanwezige eindmarkering controleren tegen de berekende eindtoon van het zangstuk.
 
-### 5.13 Tekstmarkeringen buiten scopes
+### Tekstmarkeringen buiten scopes
 
 Bepaalde tekstfragmenten buiten scopes kunnen door implementaties semantisch worden geïnterpreteerd.
 

@@ -22,13 +22,13 @@ en genereert per VSA-blok een SVG-bestand.
 Bij een bestand:
 
 ```text
-examples/site-demo/zondag/toon-1.md
+examples/site-demo/toon-1.md
 ```
 
 wordt de uitvoer:
 
 ```text
-zondag-toon-1-block-1.svg
+toon-1-block-1.svg
 ```
 
 Dit voorkomt naamconflicten bij grotere sites.

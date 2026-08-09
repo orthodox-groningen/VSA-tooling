@@ -2,9 +2,9 @@
 
 Dit document beschrijft de normatieve validatieregels en het severity-model.
 
-## 6. Validatie en fouten
+## Validatie en fouten
 
-### 6.1 Verwerkingspipeline
+### Verwerkingspipeline
 
 Een implementatie verwerkt een VSA-zangstuk bij voorkeur in deze volgorde:
 
@@ -24,7 +24,7 @@ rendering of export
 
 Een renderer of exporteur mag uitsluitend werken op een zangstuk dat syntactisch en semantisch geldig is.
 
-### 6.2 Syntactische fouten
+### Syntactische fouten
 
 Een syntactische fout treedt op wanneer de invoer niet voldoet aan de grammatica.
 Hier is een aantal voorbeelden:
@@ -39,7 +39,7 @@ Hier is een aantal voorbeelden:
 
 Syntactische fouten worden gedetecteerd vóór semantische validatie.
 
-### 6.3 Semantische fouten
+### Semantische fouten
 
 Een semantische fout treedt op wanneer de invoer syntactisch geldig is,
 maar niet voldoet aan de betekenisregels van VSA.

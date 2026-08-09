@@ -1885,7 +1885,7 @@
   <span class="md-ellipsis">
     
   
-    vsa blocks — ::: vsa-notatie en eindigt met :::, beide aan het begin van een regel, met daartussen VSA-notatie; typisch ontdekt en verwerkt door de Vsa-toolset (o.a. vsa blocks, vsa validate, vsa process).">VSA-blokken in Markdown vinden
+    vsa blocks — VSA-blokken in Markdown vinden
   
 
     
@@ -1913,7 +1913,7 @@
   <span class="md-ellipsis">
     
   
-    vsa svg — één .vsa waarvan de inhoud uitsluitend syntactisch geldige Vsa-notatie bevat — d.w.z. door de Vsa-tooling foutloos wordt geparseerd en gevalideerd.">vsa-bestand naar SVG renderen
+    vsa svg — één vsa-bestand naar SVG renderen
   
 
     
@@ -3063,16 +3063,16 @@ Het leest recursief alle Markdown in <code>input_dir</code>, en schrijft voor el
 bestand:</p>
 <ol>
 <li>gegenereerde Markdown in <code>output_dir</code> (met dezelfde relatieve
-   mapstructuur als <code>input_dir</code>), waarin elk VSA-blok is vervangen door een
+   mapstructuur als <code>input_dir</code>), waarin elk <a class="og-termref" href="/VSA-tooling/terminologie/vsa-blokken" title="VSA-blok: een tekstfragment in een Markdownbestand dat begint met <code>::: vsa-notatie</code> en eindigt met <code>:::</code>, beide aan het begin van een regel, met daartussen VSA-notatie; typisch ontdekt en verwerkt door de Vsa-toolset (o.a. <code>vsa blocks</code>, <code>vsa validate</code>, <code>vsa process</code>).">VSA-blok</a> is vervangen door een
    <code>&lt;img&gt;</code>-tag of Hugo-shortcode die naar de bijbehorende SVG verwijst;</li>
-<li>één SVG-bestand per VSA-blok in <code>assets_dir</code>.</li>
+<li>één SVG-bestand per <a class="og-termref" href="/VSA-tooling/terminologie/vsa-blokken" title="VSA-blok: een tekstfragment in een Markdownbestand dat begint met <code>::: vsa-notatie</code> en eindigt met <code>:::</code>, beide aan het begin van een regel, met daartussen VSA-notatie; typisch ontdekt en verwerkt door de Vsa-toolset (o.a. <code>vsa blocks</code>, <code>vsa validate</code>, <code>vsa process</code>).">VSA-blok</a> in <code>assets_dir</code>.</li>
 </ol>
 <p>Publishbare bestanden met open <code>:::include … zoek="…"</code> includes worden
 automatisch opgelost via dezelfde stap als
 <a href="../resolve-catalogus/"><code>vsa resolve-catalogus</code></a>; voor sjablonen en sessies
 buiten de publishbare structuur draai je die stap zelf vooraf.</p>
 <p>Vóór het renderen valideert dit commando dezelfde controles als
-<a href="../validate/"><code>vsa validate</code></a> op de gevonden VSA-blokken.</p>
+<a href="../validate/"><code>vsa validate</code></a> op de gevonden <a class="og-termref" href="/VSA-tooling/terminologie/vsa-blokken" title="VSA-blok: een tekstfragment in een Markdownbestand dat begint met <code>::: vsa-notatie</code> en eindigt met <code>:::</code>, beide aan het begin van een regel, met daartussen VSA-notatie; typisch ontdekt en verwerkt door de Vsa-toolset (o.a. <code>vsa blocks</code>, <code>vsa validate</code>, <code>vsa process</code>).">VSA-blokken</a>.</p>
 <h2 id="argumenten-en-opties">Argumenten en opties<a class="headerlink" href="#argumenten-en-opties" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
@@ -3205,7 +3205,7 @@ terechtkomt). Bijvoorbeeld:</p>
 </tr>
 <tr>
 <td><code>1</code></td>
-<td>Validatiefout in een VSA-blok, of een andere fout.</td>
+<td>Validatiefout in een <a class="og-termref" href="/VSA-tooling/terminologie/vsa-blokken" title="VSA-blok: een tekstfragment in een Markdownbestand dat begint met <code>::: vsa-notatie</code> en eindigt met <code>:::</code>, beide aan het begin van een regel, met daartussen VSA-notatie; typisch ontdekt en verwerkt door de Vsa-toolset (o.a. <code>vsa blocks</code>, <code>vsa validate</code>, <code>vsa process</code>).">VSA-blok</a>, of een andere fout.</td>
 </tr>
 </tbody>
 </table>
@@ -3308,7 +3308,7 @@ do=&quot;F4&quot;
       
       
       <p class="og-footer-stamps">
-        Bijgewerkt: 2026-08-02
+        Bijgewerkt: 2026-08-09
         
       </p>
       

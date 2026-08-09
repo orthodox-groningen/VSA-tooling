@@ -1889,7 +1889,7 @@
   <span class="md-ellipsis">
     
   
-    vsa blocks — ::: vsa-notatie en eindigt met :::, beide aan het begin van een regel, met daartussen VSA-notatie; typisch ontdekt en verwerkt door de Vsa-toolset (o.a. vsa blocks, vsa validate, vsa process).">VSA-blokken in Markdown vinden
+    vsa blocks — VSA-blokken in Markdown vinden
   
 
     
@@ -1917,7 +1917,7 @@
   <span class="md-ellipsis">
     
   
-    vsa svg — één .vsa waarvan de inhoud uitsluitend syntactisch geldige Vsa-notatie bevat — d.w.z. door de Vsa-tooling foutloos wordt geparseerd en gevalideerd.">vsa-bestand naar SVG renderen
+    vsa svg — één vsa-bestand naar SVG renderen
   
 
     
@@ -2806,7 +2806,7 @@
 <tr>
 <td><code>.md</code> bestand</td>
 <td><code>pagina.md</code></td>
-<td>controleert VSA-blokken in Markdown</td>
+<td>controleert <a class="og-termref" href="/VSA-tooling/terminologie/vsa-blokken" title="VSA-blok: een tekstfragment in een Markdownbestand dat begint met <code>::: vsa-notatie</code> en eindigt met <code>:::</code>, beide aan het begin van een regel, met daartussen VSA-notatie; typisch ontdekt en verwerkt door de Vsa-toolset (o.a. <code>vsa blocks</code>, <code>vsa validate</code>, <code>vsa process</code>).">VSA-blokken</a> in Markdown</td>
 </tr>
 <tr>
 <td>map</td>
@@ -2826,11 +2826,11 @@
 <tbody>
 <tr>
 <td>syntaxscan</td>
-<td>accolades, lege scopes, whitespace in scopes, pitch-markers</td>
+<td>accolades, lege <a class="og-termref" href="/VSA-tooling/terminologie/vsa-scope" title="VSA-scope: een tekstfragment dat met <code>{</code> begint, met <code>}</code> eindigt, geen whitespace binnen de accolades bevat en door de Parser kan worden opgesplitst in optionele Hoogte-modifier, verplicht zangelement en optionele Lengte-modifier.">scopes</a>, whitespace in <a class="og-termref" href="/VSA-tooling/terminologie/vsa-scope" title="VSA-scope: een tekstfragment dat met <code>{</code> begint, met <code>}</code> eindigt, geen whitespace binnen de accolades bevat en door de Parser kan worden opgesplitst in optionele Hoogte-modifier, verplicht zangelement en optionele Lengte-modifier.">scopes</a>, <a class="og-termref" href="/VSA-tooling/terminologie/pitch-marker" title="Pitch-marker: een Bracket-directive / Bracket-token met de vorm <code>[&lt;EHM&gt;:]</code>, waarbij <code>&lt;EHM&gt;</code> leeg is of een geldige EHM bevat.">pitch-markers</a></td>
 </tr>
 <tr>
-<td>parser</td>
-<td>of de VSA naar interne structuur kan worden omgezet</td>
+<td><a class="og-termref" href="/VSA-tooling/terminologie/parser" title="Parser: een component die VSA-brontekst of tokens volgens de grammatica omzet naar expliciete AST / Syntactische Boom-nodes, bronlocaties behoudt en geen semantische reparaties of renderlogica uitvoert.">parser</a></td>
+<td>of de <a class="og-termref" href="/VSA-tooling/terminologie/vsa" title="Vereenvoudigde Slavische Accentnotatie: wordt gebruikt om te verwijzen naar een Formele Notatie voor het vastleggen van Zangstukken en ook naar de Toolset waarmee zulke vastleggingen kunnen worden gevalideerd en naar publiceerbare vormen worden omgezet.">VSA</a> naar interne structuur kan worden omgezet</td>
 </tr>
 <tr>
 <td>semantiek</td>
@@ -2861,17 +2861,17 @@
 <tr>
 <td><code>VSA-SYNTAX-EMPTY-SCOPE</code></td>
 <td><code>{}</code> gevonden</td>
-<td>zet tekst of zangelement in de scope</td>
+<td>zet tekst of <a class="og-termref" href="/VSA-tooling/terminologie/zangelement" title="Zangelement: het verplichte tekstfragment binnen een VSA-scope waaraan optionele Hoogte-modifiers en Lengte-modifiers hangen; de gezongen lettergreep of tekst die bij de Muzikale Posities hoort.">zangelement</a> in de <a class="og-termref" href="/VSA-tooling/terminologie/vsa-scope" title="VSA-scope: een tekstfragment dat met <code>{</code> begint, met <code>}</code> eindigt, geen whitespace binnen de accolades bevat en door de Parser kan worden opgesplitst in optionele Hoogte-modifier, verplicht zangelement en optionele Lengte-modifier.">scope</a></td>
 </tr>
 <tr>
 <td><code>VSA-SYNTAX-UNCLOSED-SCOPE</code></td>
 <td><code>{tekst</code> zonder <code>}</code></td>
-<td>sluit de scope af</td>
+<td>sluit de <a class="og-termref" href="/VSA-tooling/terminologie/vsa-scope" title="VSA-scope: een tekstfragment dat met <code>{</code> begint, met <code>}</code> eindigt, geen whitespace binnen de accolades bevat en door de Parser kan worden opgesplitst in optionele Hoogte-modifier, verplicht zangelement en optionele Lengte-modifier.">scope</a> af</td>
 </tr>
 <tr>
 <td><code>VSA-SYNTAX-UNEXPECTED-CLOSE-BRACE</code></td>
 <td>losse <code>}</code></td>
-<td>verwijder of herstel de scope</td>
+<td>verwijder of herstel de <a class="og-termref" href="/VSA-tooling/terminologie/vsa-scope" title="VSA-scope: een tekstfragment dat met <code>{</code> begint, met <code>}</code> eindigt, geen whitespace binnen de accolades bevat en door de Parser kan worden opgesplitst in optionele Hoogte-modifier, verplicht zangelement en optionele Lengte-modifier.">scope</a></td>
 </tr>
 <tr>
 <td><code>VSA-SYNTAX-WHITESPACE-IN-SCOPE</code></td>
@@ -2881,32 +2881,32 @@
 <tr>
 <td><code>VSA-SYNTAX-UNCLOSED-PITCH-MARKER</code></td>
 <td><code>[</code> zonder <code>]</code></td>
-<td>sluit pitch-marker af</td>
+<td>sluit <a class="og-termref" href="/VSA-tooling/terminologie/pitch-marker" title="Pitch-marker: een Bracket-directive / Bracket-token met de vorm <code>[&lt;EHM&gt;:]</code>, waarbij <code>&lt;EHM&gt;</code> leeg is of een geldige EHM bevat.">pitch-marker</a> af</td>
 </tr>
 <tr>
 <td><code>VSA-SYNTAX-PITCH-MARKER-MISSING-COLON</code></td>
-<td>pitch-marker zonder <code>:</code></td>
+<td><a class="og-termref" href="/VSA-tooling/terminologie/pitch-marker" title="Pitch-marker: een Bracket-directive / Bracket-token met de vorm <code>[&lt;EHM&gt;:]</code>, waarbij <code>&lt;EHM&gt;</code> leeg is of een geldige EHM bevat.">pitch-marker</a> zonder <code>:</code></td>
 <td>gebruik bijvoorbeeld <code>[:]</code></td>
 </tr>
 <tr>
 <td><code>VSA-SEMANTIC-MODIFIER-COUNT-MISMATCH</code></td>
 <td>aantallen hoogte/lengteposities passen niet</td>
-<td>controleer samengestelde modifiers</td>
+<td>controleer samengestelde <a class="og-termref" href="/VSA-tooling/terminologie/modifier" title="Modifier: een tekenreeks die binnen een VSA-scope als Hoogte-modifier voor het zangelement of als Lengte-modifier na het zangelement wordt geparseerd.">modifiers</a></td>
 </tr>
 </tbody>
 </table>
 <h3 id="wat-doe-je-bij-fouten">Wat doe je bij fouten?<a class="headerlink" href="#wat-doe-je-bij-fouten" title="Permanent link">&para;</a></h3>
 <ol>
 <li>Open het genoemde bestand.</li>
-<li>Zoek het genoemde VSA-blok.</li>
+<li>Zoek het genoemde <a class="og-termref" href="/VSA-tooling/terminologie/vsa-blokken" title="VSA-blok: een tekstfragment in een Markdownbestand dat begint met <code>::: vsa-notatie</code> en eindigt met <code>:::</code>, beide aan het begin van een regel, met daartussen VSA-notatie; typisch ontdekt en verwerkt door de Vsa-toolset (o.a. <code>vsa blocks</code>, <code>vsa validate</code>, <code>vsa process</code>).">VSA-blok</a>.</li>
 <li>Corrigeer de genoemde fout.</li>
 <li>Draai hetzelfde commando opnieuw.</li>
 <li>Herhaal tot <code>OK</code>.</li>
 </ol>
 <h2 id="vsa-parse-bestandvsa-ast"><code>vsa parse &lt;bestand.vsa&gt; --ast</code><a class="headerlink" href="#vsa-parse-bestandvsa-ast" title="Permanent link">&para;</a></h2>
 <h3 id="doel_2">Doel<a class="headerlink" href="#doel_2" title="Permanent link">&para;</a></h3>
-<p>Debuggen hoe de parser een VSA-bestand intern ziet: de Abstract Syntax Tree
-(AST) als JSON.</p>
+<p>Debuggen hoe de <a class="og-termref" href="/VSA-tooling/terminologie/parser" title="Parser: een component die VSA-brontekst of tokens volgens de grammatica omzet naar expliciete AST / Syntactische Boom-nodes, bronlocaties behoudt en geen semantische reparaties of renderlogica uitvoert.">parser</a> een VSA-bestand intern ziet: de <a class="og-termref" href="/VSA-tooling/terminologie/ast" title="Abstract Syntax Tree: een expliciete nodeboom die door de Parser uit VSA-invoer wordt geproduceerd en die Validator en Renderer zonder semantische herinterpretatie kunnen lezen.">Abstract Syntax Tree</a>
+(<a class="og-termref" href="/VSA-tooling/terminologie/ast" title="Abstract Syntax Tree: een expliciete nodeboom die door de Parser uit VSA-invoer wordt geproduceerd en die Validator en Renderer zonder semantische herinterpretatie kunnen lezen.">AST</a>) als JSON.</p>
 <h3 id="gebruik_2">Gebruik<a class="headerlink" href="#gebruik_2" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code>vsa parse &lt;bestand.vsa&gt; --ast
 </code></pre></div>
@@ -2984,7 +2984,7 @@
 </table>
 <h2 id="vsa-blocks-bestandmd-json"><code>vsa blocks &lt;bestand.md&gt; [--json]</code><a class="headerlink" href="#vsa-blocks-bestandmd-json" title="Permanent link">&para;</a></h2>
 <h3 id="doel_3">Doel<a class="headerlink" href="#doel_3" title="Permanent link">&para;</a></h3>
-<p>VSA-blokken in een Markdownbestand vinden.</p>
+<p><a class="og-termref" href="/VSA-tooling/terminologie/vsa-blokken" title="VSA-blok: een tekstfragment in een Markdownbestand dat begint met <code>::: vsa-notatie</code> en eindigt met <code>:::</code>, beide aan het begin van een regel, met daartussen VSA-notatie; typisch ontdekt en verwerkt door de Vsa-toolset (o.a. <code>vsa blocks</code>, <code>vsa validate</code>, <code>vsa process</code>).">VSA-blokken</a> in een Markdownbestand vinden.</p>
 <h3 id="gebruik_3">Gebruik<a class="headerlink" href="#gebruik_3" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code>vsa blocks &lt;bestand.md&gt;
 </code></pre></div>
@@ -3061,7 +3061,7 @@
 <td>zonder <code>--json</code></td>
 </tr>
 <tr>
-<td>metadata/body/AST bekijken</td>
+<td><a class="og-termref" href="/VSA-tooling/terminologie/metadata" title="Metadata: gegevens die als gestructureerde blokparameters of YAML-frontmatter bij VSA-bronmateriaal staan, verwerking of identificatie sturen en zelf niet tot de zichtbare VSA-notatie behoren.">metadata</a>/body/<a class="og-termref" href="/VSA-tooling/terminologie/ast" title="Abstract Syntax Tree: een expliciete nodeboom die door de Parser uit VSA-invoer wordt geproduceerd en die Validator en Renderer zonder semantische herinterpretatie kunnen lezen.">AST</a> bekijken</td>
 <td>met <code>--json</code></td>
 </tr>
 </tbody>
@@ -3125,7 +3125,7 @@
 </code></pre></div>
 <h2 id="vsa-process-bestand-of-map-output-dir"><code>vsa process &lt;bestand-of-map&gt; &lt;output-dir&gt;</code><a class="headerlink" href="#vsa-process-bestand-of-map-output-dir" title="Permanent link">&para;</a></h2>
 <h3 id="doel_5">Doel<a class="headerlink" href="#doel_5" title="Permanent link">&para;</a></h3>
-<p>SVG-bestanden genereren uit VSA-blokken in Markdown.</p>
+<p>SVG-bestanden genereren uit <a class="og-termref" href="/VSA-tooling/terminologie/vsa-blokken" title="VSA-blok: een tekstfragment in een Markdownbestand dat begint met <code>::: vsa-notatie</code> en eindigt met <code>:::</code>, beide aan het begin van een regel, met daartussen VSA-notatie; typisch ontdekt en verwerkt door de Vsa-toolset (o.a. <code>vsa blocks</code>, <code>vsa validate</code>, <code>vsa process</code>).">VSA-blokken</a> in Markdown.</p>
 <h3 id="gebruik_5">Gebruik<a class="headerlink" href="#gebruik_5" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code>vsa process &lt;bestand-of-map&gt; &lt;output-dir&gt;
 </code></pre></div>
@@ -3140,7 +3140,7 @@
 <tbody>
 <tr>
 <td>één Markdownbestand</td>
-<td>verwerkt alle VSA-blokken in dat bestand</td>
+<td>verwerkt alle <a class="og-termref" href="/VSA-tooling/terminologie/vsa-blokken" title="VSA-blok: een tekstfragment in een Markdownbestand dat begint met <code>::: vsa-notatie</code> en eindigt met <code>:::</code>, beide aan het begin van een regel, met daartussen VSA-notatie; typisch ontdekt en verwerkt door de Vsa-toolset (o.a. <code>vsa blocks</code>, <code>vsa validate</code>, <code>vsa process</code>).">VSA-blokken</a> in dat bestand</td>
 </tr>
 <tr>
 <td>map</td>

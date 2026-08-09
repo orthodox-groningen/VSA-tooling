@@ -1987,7 +1987,7 @@
   <span class="md-ellipsis">
     
   
-    vsa blocks — ::: vsa-notatie en eindigt met :::, beide aan het begin van een regel, met daartussen VSA-notatie; typisch ontdekt en verwerkt door de Vsa-toolset (o.a. vsa blocks, vsa validate, vsa process).">VSA-blokken in Markdown vinden
+    vsa blocks — VSA-blokken in Markdown vinden
   
 
     
@@ -2015,7 +2015,7 @@
   <span class="md-ellipsis">
     
   
-    vsa svg — één .vsa waarvan de inhoud uitsluitend syntactisch geldige Vsa-notatie bevat — d.w.z. door de Vsa-tooling foutloos wordt geparseerd en gevalideerd.">vsa-bestand naar SVG renderen
+    vsa svg — één vsa-bestand naar SVG renderen
   
 
     
@@ -2916,7 +2916,7 @@ semantische validatie
   ↓
 rendering of export
 </code></pre></div>
-<p>Een renderer of exporteur mag uitsluitend werken op een zangstuk dat syntactisch en semantisch geldig is.</p>
+<p>Een <a class="og-termref" href="/VSA-tooling/terminologie/renderer" title="Renderer: een component die een gevalideerde AST / Syntactische Boom of daarvan afgeleid layoutmodel omzet naar concrete uitvoer, zoals SVG, JSON, Markdown, Hugo-output of MusicXML, zonder de AST semantisch te wijzigen.">renderer</a> of exporteur mag uitsluitend werken op een <a class="og-termref" href="/bron/terms/zangstuk" title="Zangstuk: Een liturgisch-muzikaal geheel met een stabiele <code>zangstuk-id</code>, waaronder nul of meer Varianten bestaan.">zangstuk</a> dat syntactisch en semantisch geldig is.</p>
 <h3 id="syntactische-fouten">Syntactische fouten<a class="headerlink" href="#syntactische-fouten" title="Permanent link">&para;</a></h3>
 <p>Een syntactische fout treedt op wanneer de invoer niet voldoet aan de grammatica.
 Hier is een aantal voorbeelden:</p>
@@ -2938,23 +2938,23 @@ Hier is een aantal voorbeelden:</p>
 </tr>
 <tr>
 <td><code>{tekst _}</code></td>
-<td>whitespace binnen een zangelement-scope</td>
+<td>whitespace binnen een <a class="og-termref" href="/VSA-tooling/terminologie/vsa-scope" title="VSA-scope: een tekstfragment dat met <code>{</code> begint, met <code>}</code> eindigt, geen whitespace binnen de accolades bevat en door de Parser kan worden opgesplitst in optionele Hoogte-modifier, verplicht zangelement en optionele Lengte-modifier.">zangelement-scope</a></td>
 </tr>
 <tr>
 <td><code>{te/tekst}</code></td>
-<td>modifierteken <code>/</code> binnen zangelement</td>
+<td>modifierteken <code>/</code> binnen <a class="og-termref" href="/VSA-tooling/terminologie/zangelement" title="Zangelement: het verplichte tekstfragment binnen een VSA-scope waaraan optionele Hoogte-modifiers en Lengte-modifiers hangen; de gezongen lettergreep of tekst die bij de Muzikale Posities hoort.">zangelement</a></td>
 </tr>
 <tr>
 <td><code>{}</code></td>
-<td>ontbrekend zangelement</td>
+<td>ontbrekend <a class="og-termref" href="/VSA-tooling/terminologie/zangelement" title="Zangelement: het verplichte tekstfragment binnen een VSA-scope waaraan optionele Hoogte-modifiers en Lengte-modifiers hangen; de gezongen lettergreep of tekst die bij de Muzikale Posities hoort.">zangelement</a></td>
 </tr>
 </tbody>
 </table>
 <p>Syntactische fouten worden gedetecteerd vóór semantische validatie.</p>
 <h3 id="semantische-fouten">Semantische fouten<a class="headerlink" href="#semantische-fouten" title="Permanent link">&para;</a></h3>
 <p>Een semantische fout treedt op wanneer de invoer syntactisch geldig is,
-maar niet voldoet aan de betekenisregels van VSA.
-De laatste twee voorbeelden gaan uit van een do-context 
+maar niet voldoet aan de betekenisregels van <a class="og-termref" href="/VSA-tooling/terminologie/vsa" title="Vereenvoudigde Slavische Accentnotatie: wordt gebruikt om te verwijzen naar een Formele Notatie voor het vastleggen van Zangstukken en ook naar de Toolset waarmee zulke vastleggingen kunnen worden gevalideerd en naar publiceerbare vormen worden omgezet.">VSA</a>.
+De laatste twee voorbeelden gaan uit van een <a class="og-termref" href="/VSA-tooling/terminologie/do-context" title="Do-context: de grondtooncontext waarbinnen relatieve toonhoogtebewegingen in VSA-notatie worden geïnterpreteerd; voor MusicXML-export of afspelen vastgelegd via blok-Metadata (<code>do</code>, <code>mode</code>), niet via de zangtekst zelf.">do-context</a> 
 met parameters <code>do="C4"</code> en <code>mode="major"</code>.</p>
 <table>
 <thead>
@@ -2966,7 +2966,7 @@ met parameters <code>do="C4"</code> en <code>mode="major"</code>.</p>
 <tbody>
 <tr>
 <td><code>{/&amp;\tekst_}</code></td>
-<td>hoogte-modifier bevat twee posities; lengte-modifier bevat één positie</td>
+<td><a class="og-termref" href="/VSA-tooling/terminologie/hoogte-modifier" title="Hoogte-modifier: een Modifier die voor het zangelement in een VSA-scope staat en bestaat uit een geldige EHM of uit meerdere geldige EHMs gescheiden door <code>&amp;</code>.">hoogte-modifier</a> bevat twee posities; <a class="og-termref" href="/VSA-tooling/terminologie/lengte-modifier" title="Lengte-modifier: een Modifier die na het zangelement in een VSA-scope staat en bestaat uit een geldige ELM of uit meerdere geldige ELMs gescheiden door <code>&amp;</code>.">lengte-modifier</a> bevat één positie</td>
 </tr>
 <tr>
 <td><code>[//:] tekst [/:]</code></td>
@@ -3077,7 +3077,7 @@ met parameters <code>do="C4"</code> en <code>mode="major"</code>.</p>
 <p>blijft validatie en generatie stoppen.</p>
 <h2 id="praktisch-advies">Praktisch advies<a class="headerlink" href="#praktisch-advies" title="Permanent link">&para;</a></h2>
 <p>Gebruik warnings tijdelijk bij migratie of experimenten.</p>
-<p>Gebruik errors voor CI, demo-sites en publicatie wanneer de notatie stabiel moet zijn.</p>
+<p>Gebruik errors voor CI, demo-sites en <a class="og-termref" href="/VSA-tooling/terminologie/publicatie" title="Publicatie: een proces dat gegenereerde demo-, preview- of productie-output bouwt, controleert en beschikbaar maakt voor GitHub Pages of hergebruik.">publicatie</a> wanneer de notatie stabiel moet zijn.</p>
 <h2 id="verouderde-pitchmarker-foutcodes">Verouderde pitchmarker-foutcodes<a class="headerlink" href="#verouderde-pitchmarker-foutcodes" title="Permanent link">&para;</a></h2>
 <p>De oude foutcodes <code>VSA-SEMANTIC-MISSING-FINAL-PITCH-MARKER</code> en <code>VSA-SEMANTIC-EMPTY-FINAL-PITCH-MARKER</code> zijn obsolete.</p>
 <p>Een ontbrekende eindmarkering is toegestaan. Een eindmarkering <code>[:]</code> is geldig en betekent neutrale hoogte, equivalent aan <code>[-:]</code> c.q. <code>[~:]</code>.</p>

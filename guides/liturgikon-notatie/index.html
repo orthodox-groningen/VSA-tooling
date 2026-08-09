@@ -1976,7 +1976,7 @@
   <span class="md-ellipsis">
     
   
-    vsa blocks — ::: vsa-notatie en eindigt met :::, beide aan het begin van een regel, met daartussen VSA-notatie; typisch ontdekt en verwerkt door de Vsa-toolset (o.a. vsa blocks, vsa validate, vsa process).">VSA-blokken in Markdown vinden
+    vsa blocks — VSA-blokken in Markdown vinden
   
 
     
@@ -2004,7 +2004,7 @@
   <span class="md-ellipsis">
     
   
-    vsa svg — één .vsa waarvan de inhoud uitsluitend syntactisch geldige Vsa-notatie bevat — d.w.z. door de Vsa-tooling foutloos wordt geparseerd en gevalideerd.">vsa-bestand naar SVG renderen
+    vsa svg — één vsa-bestand naar SVG renderen
   
 
     
@@ -2956,14 +2956,14 @@ zoals die juist in de kerkmuziek het meeste voorkomen.
 Ze kunnen ook gemakkelijk aan bestaande boeken worden toegevoegd.</p>
 <h3 id="relatie-tussen-de-liturgikon-notatie-en-vsa">Relatie tussen de Liturgikon-notatie en VSA<a class="headerlink" href="#relatie-tussen-de-liturgikon-notatie-en-vsa" title="Permanent link">&para;</a></h3>
 <p>Onderstaande tekst is mogelijk niet geheel correct en moet wellicht worden gereviseerd.</p>
-<p>De VSA-notatie is sterk geïnspireerd door de vereenvoudigde neumennotatie zoals beschreven in het Nederlands Liturgikon (1968), maar is daar niet volledig identiek aan. VSA formaliseert en generaliseert verschillende aspecten van deze praktijknotatie om parsing, validatie, rendering en export naar formaten zoals SVG en MusicXML mogelijk te maken.</p>
+<p>De <a class="og-termref" href="/bron/terms/vsa-notatie" title="VSA-notatie: Het tekstgebaseerde notatieformaat waarmee liturgische zangteksten worden vastgelegd: een formeel gespecificeerde taal met scopes, modifiers en bracket-directives, parseeerbaar en valideerbaar door Vsa-tooling.">VSA-notatie</a> is sterk geïnspireerd door de vereenvoudigde neumennotatie zoals beschreven in het Nederlands Liturgikon (1968), maar is daar niet volledig identiek aan. <a class="og-termref" href="/VSA-tooling/terminologie/vsa" title="Vereenvoudigde Slavische Accentnotatie: wordt gebruikt om te verwijzen naar een Formele Notatie voor het vastleggen van Zangstukken en ook naar de Toolset waarmee zulke vastleggingen kunnen worden gevalideerd en naar publiceerbare vormen worden omgezet.">VSA</a> formaliseert en generaliseert verschillende aspecten van deze praktijknotatie om parsing, validatie, rendering en export naar formaten zoals SVG en MusicXML mogelijk te maken.</p>
 <p>De belangrijkste verschillen zijn:</p>
 <table>
 <thead>
 <tr>
 <th>Onderwerp</th>
 <th>Liturgikon-notatie</th>
-<th>VSA</th>
+<th><a class="og-termref" href="/VSA-tooling/terminologie/vsa" title="Vereenvoudigde Slavische Accentnotatie: wordt gebruikt om te verwijzen naar een Formele Notatie voor het vastleggen van Zangstukken en ook naar de Toolset waarmee zulke vastleggingen kunnen worden gevalideerd en naar publiceerbare vormen worden omgezet.">VSA</a></th>
 </tr>
 </thead>
 <tbody>
@@ -2980,12 +2980,12 @@ Ze kunnen ook gemakkelijk aan bestaande boeken worden toegevoegd.</p>
 <tr>
 <td>Structuur</td>
 <td>Markeringen direct boven/onder tekst</td>
-<td>Gestructureerde scopes <code>{...}</code></td>
+<td>Gestructureerde <a class="og-termref" href="/VSA-tooling/terminologie/vsa-scope" title="VSA-scope: een tekstfragment dat met <code>{</code> begint, met <code>}</code> eindigt, geen whitespace binnen de accolades bevat en door de Parser kan worden opgesplitst in optionele Hoogte-modifier, verplicht zangelement en optionele Lengte-modifier.">scopes</a> <code>{...}</code></td>
 </tr>
 <tr>
 <td>Toonhoogte</td>
 <td>Relatieve intervalnotatie</td>
-<td>Relatieve toonladder-notatie binnen een do-context</td>
+<td>Relatieve toonladder-notatie binnen een <a class="og-termref" href="/VSA-tooling/terminologie/do-context" title="Do-context: de grondtooncontext waarbinnen relatieve toonhoogtebewegingen in VSA-notatie worden geïnterpreteerd; voor MusicXML-export of afspelen vastgelegd via blok-Metadata (<code>do</code>, <code>mode</code>), niet via de zangtekst zelf.">do-context</a></td>
 </tr>
 <tr>
 <td><code>+/</code> en <code>-\</code></td>
@@ -3000,7 +3000,7 @@ Ze kunnen ook gemakkelijk aan bestaande boeken worden toegevoegd.</p>
 <tr>
 <td>Melisma</td>
 <td>Impliciet / ad hoc</td>
-<td>Formeel model via samengestelde modifiers</td>
+<td>Formeel model via samengestelde <a class="og-termref" href="/VSA-tooling/terminologie/modifier" title="Modifier: een tekenreeks die binnen een VSA-scope als Hoogte-modifier voor het zangelement of als Lengte-modifier na het zangelement wordt geparseerd.">modifiers</a></td>
 </tr>
 <tr>
 <td>Validatie</td>
@@ -3020,17 +3020,17 @@ In het Liturgikon staat dat een kruis (+) een <em>extra</em> stijging van een ha
 het bijbehorende voorbeeld. Echter, een dergelijke notatie maakt het dan onmogelijk 
 om een halve ladderstap omhoog of omlaag te gaan. 
 De zangpraktijk van de auteur is dat <code>+/</code> en <code>-\</code> (ook?) worden gebruikt om 
-een stijging/daling van een halve toon mee aan te geven. Dat is ook zoals zij in VSA
+een stijging/daling van een halve toon mee aan te geven. Dat is ook zoals zij in <a class="og-termref" href="/VSA-tooling/terminologie/vsa" title="Vereenvoudigde Slavische Accentnotatie: wordt gebruikt om te verwijzen naar een Formele Notatie voor het vastleggen van Zangstukken en ook naar de Toolset waarmee zulke vastleggingen kunnen worden gevalideerd en naar publiceerbare vormen worden omgezet.">VSA</a>
 worden geïnterpreteerd: als zelfstandige relatieve toonhoogtebewegingen van een halve
 ladderstap.</p>
-<p>Bij omzetting van historische notaties naar VSA kunnen daardoor de volgende situaties optreden:</p>
+<p>Bij omzetting van historische notaties naar <a class="og-termref" href="/VSA-tooling/terminologie/vsa" title="Vereenvoudigde Slavische Accentnotatie: wordt gebruikt om te verwijzen naar een Formele Notatie voor het vastleggen van Zangstukken en ook naar de Toolset waarmee zulke vastleggingen kunnen worden gevalideerd en naar publiceerbare vormen worden omgezet.">VSA</a> kunnen daardoor de volgende situaties optreden:</p>
 <ul>
 <li>een historische <code>+/</code> moet soms worden herschreven als een combinatie van een hele en halve beweging;</li>
-<li>de exacte melodische uitkomst kan afhankelijk zijn van de gekozen modus en do-context;</li>
-<li>historische notaties laten sommige toonladderinformatie impliciet, terwijl VSA die expliciet moet modelleren;</li>
-<li>melismatische passages moeten in VSA soms explicieter worden gespecificeerd dan in historische bronnen.</li>
+<li>de exacte melodische uitkomst kan afhankelijk zijn van de gekozen modus en <a class="og-termref" href="/VSA-tooling/terminologie/do-context" title="Do-context: de grondtooncontext waarbinnen relatieve toonhoogtebewegingen in VSA-notatie worden geïnterpreteerd; voor MusicXML-export of afspelen vastgelegd via blok-Metadata (<code>do</code>, <code>mode</code>), niet via de zangtekst zelf.">do-context</a>;</li>
+<li>historische notaties laten sommige toonladderinformatie impliciet, terwijl <a class="og-termref" href="/VSA-tooling/terminologie/vsa" title="Vereenvoudigde Slavische Accentnotatie: wordt gebruikt om te verwijzen naar een Formele Notatie voor het vastleggen van Zangstukken en ook naar de Toolset waarmee zulke vastleggingen kunnen worden gevalideerd en naar publiceerbare vormen worden omgezet.">VSA</a> die expliciet moet modelleren;</li>
+<li>melismatische passages moeten in <a class="og-termref" href="/VSA-tooling/terminologie/vsa" title="Vereenvoudigde Slavische Accentnotatie: wordt gebruikt om te verwijzen naar een Formele Notatie voor het vastleggen van Zangstukken en ook naar de Toolset waarmee zulke vastleggingen kunnen worden gevalideerd en naar publiceerbare vormen worden omgezet.">VSA</a> soms explicieter worden gespecificeerd dan in historische bronnen.</li>
 </ul>
-<p>VSA moet daarom worden gezien als een geformaliseerde afleiding van deze historische praktijknotatie, niet als een exacte reproductie ervan.</p>
+<p><a class="og-termref" href="/VSA-tooling/terminologie/vsa" title="Vereenvoudigde Slavische Accentnotatie: wordt gebruikt om te verwijzen naar een Formele Notatie voor het vastleggen van Zangstukken en ook naar de Toolset waarmee zulke vastleggingen kunnen worden gevalideerd en naar publiceerbare vormen worden omgezet.">VSA</a> moet daarom worden gezien als een geformaliseerde afleiding van deze historische praktijknotatie, niet als een exacte reproductie ervan.</p>
 
 
 
@@ -3067,7 +3067,7 @@ ladderstap.</p>
       
       
       <p class="og-footer-stamps">
-        Bijgewerkt: 2026-08-08
+        Bijgewerkt: 2026-08-09
         
       </p>
       

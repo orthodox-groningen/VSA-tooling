@@ -2081,7 +2081,7 @@
   <span class="md-ellipsis">
     
   
-    vsa blocks — ::: vsa-notatie en eindigt met :::, beide aan het begin van een regel, met daartussen VSA-notatie; typisch ontdekt en verwerkt door de Vsa-toolset (o.a. vsa blocks, vsa validate, vsa process).">VSA-blokken in Markdown vinden
+    vsa blocks — VSA-blokken in Markdown vinden
   
 
     
@@ -2109,7 +2109,7 @@
   <span class="md-ellipsis">
     
   
-    vsa svg — één .vsa waarvan de inhoud uitsluitend syntactisch geldige Vsa-notatie bevat — d.w.z. door de Vsa-tooling foutloos wordt geparseerd en gevalideerd.">vsa-bestand naar SVG renderen
+    vsa svg — één vsa-bestand naar SVG renderen
   
 
     
@@ -3088,14 +3088,14 @@
 
 
 <h1 id="musicxml-exporteren">MusicXML exporteren<a class="headerlink" href="#musicxml-exporteren" title="Permanent link">&para;</a></h1>
-<p>Met <a href="../../reference/cli/musicxml/"><code>vsa musicxml</code></a> zet je <a href="/bron/terms/vsa-notatie" title="VSA-notatie: Het tekstgebaseerde notatieformaat waarmee liturgische zangteksten worden vastgelegd: een formeel gespecificeerde taal met scopes, modifiers en bracket-directives, parseeerbaar en valideerbaar door Vsa-tooling.">VSA-notatie</a> om naar <strong><code>.mxl</code></strong> (gecomprimeerd MusicXML, standaard)
+<p>Met <a href="../../reference/cli/musicxml/"><code>vsa musicxml</code></a> zet je <a class="og-termref" href="/bron/terms/vsa-notatie" title="VSA-notatie: Het tekstgebaseerde notatieformaat waarmee liturgische zangteksten worden vastgelegd: een formeel gespecificeerde taal met scopes, modifiers en bracket-directives, parseeerbaar en valideerbaar door Vsa-tooling.">VSA-notatie</a> om naar <strong><code>.mxl</code></strong> (gecomprimeerd MusicXML, standaard)
 of naar platte <strong><code>.musicxml</code></strong>. Open het in MuseScore of speel af op
 <a href="https://coria.nl">Coria</a>.</p>
 <p>Deze pagina is de workflow-uitleg (profielen, Coria, mappen, opties). Voor de
 volledige CLI-syntax, alle argumenten en foutgevallen: zie de man-pagina
 <a href="../../reference/cli/musicxml/"><code>vsa musicxml</code></a>.</p>
 <h2 id="snel-starten">Snel starten<a class="headerlink" href="#snel-starten" title="Permanent link">&para;</a></h2>
-<p>Eén bestand (docs-fixture: tropaar zondag toon 3):</p>
+<p>Eén bestand (<a class="og-termref" href="/VSA-tooling/terminologie/fixture" title="Fixture: een vastgelegd voorbeeld of testset (meestal onder <code>examples/</code>) waarmee VSA-gedrag van Parser, Validator, Renderer of CLI reproduceerbaar wordt gecontroleerd; vaak met vaste verwachte uitvoer.">docs-fixture</a>: tropaar zondag toon 3):</p>
 <div class="highlight"><pre><span></span><code>cd /d C:\Git\orthodox-groningen\VSA-tooling
 vsa musicxml examples\docs-walkthroughs\coria-oefenlink\oefenmelodie.vsa generated\mxl\oefenmelodie.mxl
 </code></pre></div>
@@ -3179,7 +3179,7 @@ coria-oefenlink/oefenmelodie.coria.html
 </table>
 <p>Volledige parameterdocumentatie:
 <a href="https://orthodox-groningen.github.io/bron/reference/exporttype-coria/">exporttype coria</a>
-(<a href="/bron/terms/exporttype" title="Exporttype: De naam die in een <code>:::include &lt;exporttype&gt;</code>-directive aangeeft welk Exportmechanisme wordt gebruikt, zoals <code>svg</code>, <code>coria</code> of <code>mxl</code>.">exporttype</a> <code>coria</code>).</p>
+(<a class="og-termref" href="/bron/terms/exporttype" title="Exporttype: De naam die in een <code>:::include &lt;exporttype&gt;</code>-directive aangeeft welk Exportmechanisme wordt gebruikt, zoals <code>svg</code>, <code>coria</code> of <code>mxl</code>.">exporttype</a> <code>coria</code>).</p>
 <h3 id="hugo-shortcodes-edge-cases">Hugo-shortcodes (edge cases)<a class="headerlink" href="#hugo-shortcodes-edge-cases" title="Permanent link">&para;</a></h3>
 <p>De build emitteert <code>{{&lt; coria-html &gt;}}</code> of <code>{{&lt; coria &gt;}}</code> met het juiste pad.
 Handmatig shortcodes schrijven is niet nodig in content-source.</p>

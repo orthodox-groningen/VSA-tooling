@@ -1870,7 +1870,7 @@
   <span class="md-ellipsis">
     
   
-    vsa blocks — ::: vsa-notatie en eindigt met :::, beide aan het begin van een regel, met daartussen VSA-notatie; typisch ontdekt en verwerkt door de Vsa-toolset (o.a. vsa blocks, vsa validate, vsa process).">VSA-blokken in Markdown vinden
+    vsa blocks — VSA-blokken in Markdown vinden
   
 
     
@@ -1898,7 +1898,7 @@
   <span class="md-ellipsis">
     
   
-    vsa svg — één .vsa waarvan de inhoud uitsluitend syntactisch geldige Vsa-notatie bevat — d.w.z. door de Vsa-tooling foutloos wordt geparseerd en gevalideerd.">vsa-bestand naar SVG renderen
+    vsa svg — één vsa-bestand naar SVG renderen
   
 
     
@@ -2714,21 +2714,21 @@
 
 
 <h1 id="geldige-vsa-notatie">Geldige VSA-notatie<a class="headerlink" href="#geldige-vsa-notatie" title="Permanent link">&para;</a></h1>
-<p><strong>Geldige VSA-notatie</strong> is <a href="/bron/terms/vsa-notatie" title="VSA-notatie: Het tekstgebaseerde notatieformaat waarmee liturgische zangteksten worden vastgelegd: een formeel gespecificeerde taal met scopes, modifiers en bracket-directives, parseeerbaar en valideerbaar door Vsa-tooling.">VSA-notatie</a> die
+<p><strong>Geldige VSA-notatie</strong> is <a class="og-termref" href="/bron/terms/vsa-notatie" title="VSA-notatie: Het tekstgebaseerde notatieformaat waarmee liturgische zangteksten worden vastgelegd: een formeel gespecificeerde taal met scopes, modifiers en bracket-directives, parseeerbaar en valideerbaar door Vsa-tooling.">VSA-notatie</a> die
 <a href="../../reference/cli/validate/"><code>vsa validate</code></a> accepteert.
-De <a href="/VSA-tooling/terminologie/validator" title="Validator: een component die een geparseerde AST / Syntactische Boom of VSA-invoer toetst aan semantische en normatieve regels en overtredingen als Diagnostics / Diagnostische Meldingen rapporteert zonder ze stilzwijgend te repareren.">validator</a> controleert syntax en semantiek; syntaxfouten blijven altijd
-fouten, semantische <a href="/VSA-tooling/terminologie/diagnostic" title="Diagnostic: een melding die door Parser of Validator wordt geproduceerd en ten minste een foutcode, Severity / Ernstniveau, bronlocatie en uitleg of context bij een vastgestelde afwijking bevat.">diagnostics</a> / <a href="/VSA-tooling/terminologie/diagnostic" title="Diagnostic: een melding die door Parser of Validator wordt geproduceerd en ten minste een foutcode, Severity / Ernstniveau, bronlocatie en uitleg of context bij een vastgestelde afwijking bevat.">diagnostische meldingen</a> kunnen via
-<a href="/VSA-tooling/terminologie/vsa-toml" title="vsa.toml: een projectconfiguratiebestand met de naam <code>vsa.toml</code> dat herkende VSA-toolinginstellingen bevat voor rendering, output of validatie.">vsa.toml</a> / <a href="/VSA-tooling/terminologie/vsa-toml" title="vsa.toml: een projectconfiguratiebestand met de naam <code>vsa.toml</code> dat herkende VSA-toolinginstellingen bevat voor rendering, output of validatie.">projectconfiguratie</a> als <a href="/VSA-tooling/terminologie/severity" title="Severity: een waarde die aan een Diagnostic / Diagnostische Melding is gekoppeld en aangeeft of de vastgestelde afwijking als blokkerende fout of als waarschuwing moet worden behandeld.">severity</a> / <a href="/VSA-tooling/terminologie/severity" title="Severity: een waarde die aan een Diagnostic / Diagnostische Melding is gekoppeld en aangeeft of de vastgestelde afwijking als blokkerende fout of als waarschuwing moet worden behandeld.">ernstniveau</a>
+De <a class="og-termref" href="/VSA-tooling/terminologie/validator" title="Validator: een component die een geparseerde AST / Syntactische Boom of VSA-invoer toetst aan semantische en normatieve regels en overtredingen als Diagnostics / Diagnostische Meldingen rapporteert zonder ze stilzwijgend te repareren.">validator</a> controleert syntax en semantiek; syntaxfouten blijven altijd
+fouten, semantische <a class="og-termref" href="/VSA-tooling/terminologie/diagnostic" title="Diagnostic: een melding die door Parser of Validator wordt geproduceerd en ten minste een foutcode, Severity / Ernstniveau, bronlocatie en uitleg of context bij een vastgestelde afwijking bevat.">diagnostics</a> / <a class="og-termref" href="/VSA-tooling/terminologie/diagnostic" title="Diagnostic: een melding die door Parser of Validator wordt geproduceerd en ten minste een foutcode, Severity / Ernstniveau, bronlocatie en uitleg of context bij een vastgestelde afwijking bevat.">diagnostische meldingen</a> kunnen via
+<a class="og-termref" href="/VSA-tooling/terminologie/vsa-toml" title="vsa.toml: een projectconfiguratiebestand met de naam <code>vsa.toml</code> dat herkende VSA-toolinginstellingen bevat voor rendering, output of validatie.">vsa.toml</a> / <a class="og-termref" href="/VSA-tooling/terminologie/vsa-toml" title="vsa.toml: een projectconfiguratiebestand met de naam <code>vsa.toml</code> dat herkende VSA-toolinginstellingen bevat voor rendering, output of validatie.">projectconfiguratie</a> als <a class="og-termref" href="/VSA-tooling/terminologie/severity" title="Severity: een waarde die aan een Diagnostic / Diagnostische Melding is gekoppeld en aangeeft of de vastgestelde afwijking als blokkerende fout of als waarschuwing moet worden behandeld.">severity</a> / <a class="og-termref" href="/VSA-tooling/terminologie/severity" title="Severity: een waarde die aan een Diagnostic / Diagnostische Melding is gekoppeld en aangeeft of de vastgestelde afwijking als blokkerende fout of als waarschuwing moet worden behandeld.">ernstniveau</a>
 <code>warning</code> worden behandeld.</p>
 <p>Goede/valide voorbeelden van Geldige VSA-notatie zijn:
 - Geaccepteerd door <code>vsa validate</code>
-- Syntax hard; semantiek via <a href="/VSA-tooling/terminologie/severity" title="Severity: een waarde die aan een Diagnostic / Diagnostische Melding is gekoppeld en aangeeft of de vastgestelde afwijking als blokkerende fout of als waarschuwing moet worden behandeld.">severity</a></p>
+- Syntax hard; semantiek via <a class="og-termref" href="/VSA-tooling/terminologie/severity" title="Severity: een waarde die aan een Diagnostic / Diagnostische Melding is gekoppeld en aangeeft of de vastgestelde afwijking als blokkerende fout of als waarschuwing moet worden behandeld.">severity</a></p>
 <p>Geen goede/niet valide voorbeelden van Geldige VSA-notatie zijn:
 - Spreektaal “VSA klopt” zonder validatie
 - Stilzwijgend “gerepareerde” bron</p>
 <p>Gebruik deze term in plaats van spreektaal zoals “VSA klopt”. Een
-<a href="/bron/terms/vsa-bestand" title="vsa-bestand: Een bestand met de extensie <code>.vsa</code> waarvan de inhoud uitsluitend syntactisch geldige Vsa-notatie bevat — d.w.z. door de Vsa-tooling foutloos wordt geparseerd en gevalideerd.">vsa-bestand</a> bevat per definitie geldige VSA-notatie; in een
-<a href="/VSA-tooling/terminologie/vsa-blokken" title="VSA-blok: een tekstfragment in een Markdownbestand dat begint met <code>::: vsa-notatie</code> en eindigt met <code>:::</code>, beide aan het begin van een regel, met daartussen VSA-notatie; typisch ontdekt en verwerkt door de Vsa-toolset (o.a. <code>vsa blocks</code>, <code>vsa validate</code>, <code>vsa process</code>).">VSA-blok</a> of losse <a href="/VSA-tooling/terminologie/vsa-tekst" title="VSA-tekst: tekst waarin naast gewone tekst ook constructies in VSA-notatie voorkomen; een VSA-tekst kan door de Vsa-toolset worden geparsed, gevalideerd en omgezet (bijvoorbeeld naar SVG).">VSA-tekst</a> kan de notatie nog ongeldig zijn totdat
+<a class="og-termref" href="/bron/terms/vsa-bestand" title="vsa-bestand: Een bestand met de extensie <code>.vsa</code> waarvan de inhoud uitsluitend syntactisch geldige Vsa-notatie bevat — d.w.z. door de Vsa-tooling foutloos wordt geparseerd en gevalideerd.">vsa-bestand</a> bevat per definitie geldige VSA-notatie; in een
+<a class="og-termref" href="/VSA-tooling/terminologie/vsa-blokken" title="VSA-blok: een tekstfragment in een Markdownbestand dat begint met <code>::: vsa-notatie</code> en eindigt met <code>:::</code>, beide aan het begin van een regel, met daartussen VSA-notatie; typisch ontdekt en verwerkt door de Vsa-toolset (o.a. <code>vsa blocks</code>, <code>vsa validate</code>, <code>vsa process</code>).">VSA-blok</a> of losse <a class="og-termref" href="/VSA-tooling/terminologie/vsa-tekst" title="VSA-tekst: tekst waarin naast gewone tekst ook constructies in VSA-notatie voorkomen; een VSA-tekst kan door de Vsa-toolset worden geparsed, gevalideerd en omgezet (bijvoorbeeld naar SVG).">VSA-tekst</a> kan de notatie nog ongeldig zijn totdat
 validatie slaagt.</p>
 
 

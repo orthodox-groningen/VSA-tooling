@@ -2087,7 +2087,7 @@
   <span class="md-ellipsis">
     
   
-    vsa blocks — ::: vsa-notatie en eindigt met :::, beide aan het begin van een regel, met daartussen VSA-notatie; typisch ontdekt en verwerkt door de Vsa-toolset (o.a. vsa blocks, vsa validate, vsa process).">VSA-blokken in Markdown vinden
+    vsa blocks — VSA-blokken in Markdown vinden
   
 
     
@@ -2115,7 +2115,7 @@
   <span class="md-ellipsis">
     
   
-    vsa svg — één .vsa waarvan de inhoud uitsluitend syntactisch geldige Vsa-notatie bevat — d.w.z. door de Vsa-tooling foutloos wordt geparseerd en gevalideerd.">vsa-bestand naar SVG renderen
+    vsa svg — één vsa-bestand naar SVG renderen
   
 
     
@@ -3141,7 +3141,7 @@
 </tr>
 <tr>
 <td><code>[//:]</code></td>
-<td>toonhoogte-markering met initiële beweging <code>//</code></td>
+<td><a class="og-termref" href="/VSA-tooling/terminologie/pitch-marker" title="Pitch-marker: een Bracket-directive / Bracket-token met de vorm <code>[&lt;EHM&gt;:]</code>, waarbij <code>&lt;EHM&gt;</code> leeg is of een geldige EHM bevat.">toonhoogte-markering</a> met initiële beweging <code>//</code></td>
 </tr>
 </tbody>
 </table>
@@ -3166,15 +3166,15 @@ bidt tot de barm{\har_}{\ti}{\ge} {\God_}, *
 <hr />
 <h2 id="niet-normatieve-opmerkingen">Niet-normatieve opmerkingen<a class="headerlink" href="#niet-normatieve-opmerkingen" title="Permanent link">&para;</a></h2>
 <p>Deze specificatie bevat bewust ruimte voor implementatiekeuzes.</p>
-<p>Voor puur visuele renderers is het voldoende om:</p>
+<p>Voor puur visuele <a class="og-termref" href="/VSA-tooling/terminologie/renderer" title="Renderer: een component die een gevalideerde AST / Syntactische Boom of daarvan afgeleid layoutmodel omzet naar concrete uitvoer, zoals SVG, JSON, Markdown, Hugo-output of MusicXML, zonder de AST semantisch te wijzigen.">renderers</a> is het voldoende om:</p>
 <ul>
 <li>de syntax te parsen;</li>
-<li>EHM- en ELM-glyphs te tekenen;</li>
+<li><a class="og-termref" href="/VSA-tooling/terminologie/enkelvoudige-hoogte-modifier" title="Enkelvoudige hoogte-modifier: een Hoogte-modifier die uit precies één geldige EHM bestaat: een basis-hoogtebeweging, eventueel voorafgegaan door een halftoon-prefix.">EHM</a>- en <a class="og-termref" href="/VSA-tooling/terminologie/enkelvoudige-lengte-modifier" title="Enkelvoudige lengte-modifier: een Lengte-modifier die uit precies één geldige ELM bestaat en daarmee precies een duurpositie representeert.">ELM</a>-glyphs te tekenen;</li>
 <li>grids correct uit te lijnen.</li>
 </ul>
 <p>Voor semantische validatie en MusicXML-export zijn aanvullend nodig:</p>
 <ul>
-<li>een do-context;</li>
+<li>een <a class="og-termref" href="/VSA-tooling/terminologie/do-context" title="Do-context: de grondtooncontext waarbinnen relatieve toonhoogtebewegingen in VSA-notatie worden geïnterpreteerd; voor MusicXML-export of afspelen vastgelegd via blok-Metadata (<code>do</code>, <code>mode</code>), niet via de zangtekst zelf.">do-context</a>;</li>
 <li>een modusdefinitie;</li>
 <li>een mapping van toonladdergraden naar concrete toonhoogten;</li>
 <li>een duurmapping naar MusicXML-durationwaarden.</li>
@@ -3261,14 +3261,14 @@ en zijn vooral bruikbaar voor eenvoudige melodieën,
 zoals die juist in de kerkmuziek het meeste voorkomen. 
 Ze kunnen ook gemakkelijk aan bestaande boeken worden toegevoegd.</p>
 <h3 id="relatie-tussen-de-liturgikon-notatie-en-vsa">Relatie tussen de Liturgikon-notatie en VSA<a class="headerlink" href="#relatie-tussen-de-liturgikon-notatie-en-vsa" title="Permanent link">&para;</a></h3>
-<p>De VSA-notatie is sterk geïnspireerd door de vereenvoudigde neumennotatie zoals beschreven in het Nederlands Liturgikon (1968), maar is daar niet volledig identiek aan. VSA formaliseert en generaliseert verschillende aspecten van deze praktijknotatie om parsing, validatie, rendering en export naar formaten zoals MusicXML mogelijk te maken.</p>
+<p>De <a class="og-termref" href="/bron/terms/vsa-notatie" title="VSA-notatie: Het tekstgebaseerde notatieformaat waarmee liturgische zangteksten worden vastgelegd: een formeel gespecificeerde taal met scopes, modifiers en bracket-directives, parseeerbaar en valideerbaar door Vsa-tooling.">VSA-notatie</a> is sterk geïnspireerd door de vereenvoudigde neumennotatie zoals beschreven in het Nederlands Liturgikon (1968), maar is daar niet volledig identiek aan. <a class="og-termref" href="/VSA-tooling/terminologie/vsa" title="Vereenvoudigde Slavische Accentnotatie: wordt gebruikt om te verwijzen naar een Formele Notatie voor het vastleggen van Zangstukken en ook naar de Toolset waarmee zulke vastleggingen kunnen worden gevalideerd en naar publiceerbare vormen worden omgezet.">VSA</a> formaliseert en generaliseert verschillende aspecten van deze praktijknotatie om parsing, validatie, rendering en export naar formaten zoals MusicXML mogelijk te maken.</p>
 <p>De belangrijkste verschillen zijn:</p>
 <table>
 <thead>
 <tr>
 <th>Onderwerp</th>
 <th>Liturgikon-notatie</th>
-<th>VSA</th>
+<th><a class="og-termref" href="/VSA-tooling/terminologie/vsa" title="Vereenvoudigde Slavische Accentnotatie: wordt gebruikt om te verwijzen naar een Formele Notatie voor het vastleggen van Zangstukken en ook naar de Toolset waarmee zulke vastleggingen kunnen worden gevalideerd en naar publiceerbare vormen worden omgezet.">VSA</a></th>
 </tr>
 </thead>
 <tbody>
@@ -3285,12 +3285,12 @@ Ze kunnen ook gemakkelijk aan bestaande boeken worden toegevoegd.</p>
 <tr>
 <td>Structuur</td>
 <td>Markeringen direct boven/onder tekst</td>
-<td>Gestructureerde scopes <code>{...}</code></td>
+<td>Gestructureerde <a class="og-termref" href="/VSA-tooling/terminologie/vsa-scope" title="VSA-scope: een tekstfragment dat met <code>{</code> begint, met <code>}</code> eindigt, geen whitespace binnen de accolades bevat en door de Parser kan worden opgesplitst in optionele Hoogte-modifier, verplicht zangelement en optionele Lengte-modifier.">scopes</a> <code>{...}</code></td>
 </tr>
 <tr>
 <td>Toonhoogte</td>
 <td>Relatieve intervalnotatie</td>
-<td>Relatieve toonladder-notatie binnen een do-context</td>
+<td>Relatieve toonladder-notatie binnen een <a class="og-termref" href="/VSA-tooling/terminologie/do-context" title="Do-context: de grondtooncontext waarbinnen relatieve toonhoogtebewegingen in VSA-notatie worden geïnterpreteerd; voor MusicXML-export of afspelen vastgelegd via blok-Metadata (<code>do</code>, <code>mode</code>), niet via de zangtekst zelf.">do-context</a></td>
 </tr>
 <tr>
 <td><code>#</code>/<code>b</code> als prefix</td>
@@ -3305,7 +3305,7 @@ Ze kunnen ook gemakkelijk aan bestaande boeken worden toegevoegd.</p>
 <tr>
 <td>Melisma</td>
 <td>Impliciet / ad hoc</td>
-<td>Formeel model via samengestelde modifiers</td>
+<td>Formeel model via samengestelde <a class="og-termref" href="/VSA-tooling/terminologie/modifier" title="Modifier: een tekenreeks die binnen een VSA-scope als Hoogte-modifier voor het zangelement of als Lengte-modifier na het zangelement wordt geparseerd.">modifiers</a></td>
 </tr>
 <tr>
 <td>Validatie</td>
@@ -3319,13 +3319,13 @@ Ze kunnen ook gemakkelijk aan bestaande boeken worden toegevoegd.</p>
 </tr>
 </tbody>
 </table>
-<p>Het grootste inhoudelijke verschil betreft de halftoon-modificatoren. In het Liturgikon staat dat een kruis (+) een <em>extra</em> stijging van een halve toon betekent bovenop een bestaande richtingspijl, en een mol (♭) een <em>extra</em> daling. VSA volgt deze semantiek: <code>#</code> (alias <code>+</code>, <code>♯</code>) en <code>b</code> (alias <code>♭</code>) zijn prefix-modificatoren die altijd gecombineerd worden met een basisbeweging (<code>/</code>, <code>\</code>, <code>-</code>, <code>~</code>, of meerdere pijlen).</p>
+<p>Het grootste inhoudelijke verschil betreft de halftoon-modificatoren. In het Liturgikon staat dat een kruis (+) een <em>extra</em> stijging van een halve toon betekent bovenop een bestaande richtingspijl, en een mol (♭) een <em>extra</em> daling. <a class="og-termref" href="/VSA-tooling/terminologie/vsa" title="Vereenvoudigde Slavische Accentnotatie: wordt gebruikt om te verwijzen naar een Formele Notatie voor het vastleggen van Zangstukken en ook naar de Toolset waarmee zulke vastleggingen kunnen worden gevalideerd en naar publiceerbare vormen worden omgezet.">VSA</a> volgt deze semantiek: <code>#</code> (alias <code>+</code>, <code>♯</code>) en <code>b</code> (alias <code>♭</code>) zijn prefix-modificatoren die altijd gecombineerd worden met een basisbeweging (<code>/</code>, <code>\</code>, <code>-</code>, <code>~</code>, of meerdere pijlen).</p>
 <p>Voorbeelden van de correspondentie:</p>
 <table>
 <thead>
 <tr>
 <th>Liturgikon</th>
-<th>VSA</th>
+<th><a class="og-termref" href="/VSA-tooling/terminologie/vsa" title="Vereenvoudigde Slavische Accentnotatie: wordt gebruikt om te verwijzen naar een Formele Notatie voor het vastleggen van Zangstukken en ook naar de Toolset waarmee zulke vastleggingen kunnen worden gevalideerd en naar publiceerbare vormen worden omgezet.">VSA</a></th>
 <th>Netto beweging</th>
 </tr>
 </thead>
@@ -3362,19 +3362,19 @@ Ze kunnen ook gemakkelijk aan bestaande boeken worden toegevoegd.</p>
 </tr>
 </tbody>
 </table>
-<p>Een standalone <code>#</code> of <code>b</code> zonder basisbeweging is niet geldig in VSA. Als een historische notatie een kruis of mol plaatst bij een toon zonder expliciete richtingspijl, moet dit in VSA worden uitgeschreven als <code>#-</code> of <code>b-</code>.</p>
-<p>Bij omzetting van historische notaties naar VSA kunnen de volgende situaties optreden:</p>
+<p>Een standalone <code>#</code> of <code>b</code> zonder basisbeweging is niet geldig in <a class="og-termref" href="/VSA-tooling/terminologie/vsa" title="Vereenvoudigde Slavische Accentnotatie: wordt gebruikt om te verwijzen naar een Formele Notatie voor het vastleggen van Zangstukken en ook naar de Toolset waarmee zulke vastleggingen kunnen worden gevalideerd en naar publiceerbare vormen worden omgezet.">VSA</a>. Als een historische notatie een kruis of mol plaatst bij een toon zonder expliciete richtingspijl, moet dit in <a class="og-termref" href="/VSA-tooling/terminologie/vsa" title="Vereenvoudigde Slavische Accentnotatie: wordt gebruikt om te verwijzen naar een Formele Notatie voor het vastleggen van Zangstukken en ook naar de Toolset waarmee zulke vastleggingen kunnen worden gevalideerd en naar publiceerbare vormen worden omgezet.">VSA</a> worden uitgeschreven als <code>#-</code> of <code>b-</code>.</p>
+<p>Bij omzetting van historische notaties naar <a class="og-termref" href="/VSA-tooling/terminologie/vsa" title="Vereenvoudigde Slavische Accentnotatie: wordt gebruikt om te verwijzen naar een Formele Notatie voor het vastleggen van Zangstukken en ook naar de Toolset waarmee zulke vastleggingen kunnen worden gevalideerd en naar publiceerbare vormen worden omgezet.">VSA</a> kunnen de volgende situaties optreden:</p>
 <ul>
-<li>historische notaties laten sommige toonladderinformatie impliciet, terwijl VSA die expliciet moet modelleren;</li>
-<li>melismatische passages moeten in VSA soms explicieter worden gespecificeerd dan in historische bronnen.</li>
+<li>historische notaties laten sommige toonladderinformatie impliciet, terwijl <a class="og-termref" href="/VSA-tooling/terminologie/vsa" title="Vereenvoudigde Slavische Accentnotatie: wordt gebruikt om te verwijzen naar een Formele Notatie voor het vastleggen van Zangstukken en ook naar de Toolset waarmee zulke vastleggingen kunnen worden gevalideerd en naar publiceerbare vormen worden omgezet.">VSA</a> die expliciet moet modelleren;</li>
+<li>melismatische passages moeten in <a class="og-termref" href="/VSA-tooling/terminologie/vsa" title="Vereenvoudigde Slavische Accentnotatie: wordt gebruikt om te verwijzen naar een Formele Notatie voor het vastleggen van Zangstukken en ook naar de Toolset waarmee zulke vastleggingen kunnen worden gevalideerd en naar publiceerbare vormen worden omgezet.">VSA</a> soms explicieter worden gespecificeerd dan in historische bronnen.</li>
 </ul>
-<p>VSA moet worden gezien als een geformaliseerde afleiding van deze historische praktijknotatie, niet als een exacte reproductie ervan.</p>
+<p><a class="og-termref" href="/VSA-tooling/terminologie/vsa" title="Vereenvoudigde Slavische Accentnotatie: wordt gebruikt om te verwijzen naar een Formele Notatie voor het vastleggen van Zangstukken en ook naar de Toolset waarmee zulke vastleggingen kunnen worden gevalideerd en naar publiceerbare vormen worden omgezet.">VSA</a> moet worden gezien als een geformaliseerde afleiding van deze historische praktijknotatie, niet als een exacte reproductie ervan.</p>
 <h2 id="appendix-voorbeeldmapping-van-toonladdergraden">Appendix: Voorbeeldmapping van toonladdergraden<a class="headerlink" href="#appendix-voorbeeldmapping-van-toonladdergraden" title="Permanent link">&para;</a></h2>
 <h3 id="majeur">Majeur<a class="headerlink" href="#majeur" title="Permanent link">&para;</a></h3>
 <table>
 <thead>
 <tr>
-<th>do-context</th>
+<th><a class="og-termref" href="/VSA-tooling/terminologie/do-context" title="Do-context: de grondtooncontext waarbinnen relatieve toonhoogtebewegingen in VSA-notatie worden geïnterpreteerd; voor MusicXML-export of afspelen vastgelegd via blok-Metadata (<code>do</code>, <code>mode</code>), niet via de zangtekst zelf.">do-context</a></th>
 <th>do</th>
 <th>re</th>
 <th>mi</th>
@@ -3480,7 +3480,7 @@ Ze kunnen ook gemakkelijk aan bestaande boeken worden toegevoegd.</p>
 <table>
 <thead>
 <tr>
-<th>do-context</th>
+<th><a class="og-termref" href="/VSA-tooling/terminologie/do-context" title="Do-context: de grondtooncontext waarbinnen relatieve toonhoogtebewegingen in VSA-notatie worden geïnterpreteerd; voor MusicXML-export of afspelen vastgelegd via blok-Metadata (<code>do</code>, <code>mode</code>), niet via de zangtekst zelf.">do-context</a></th>
 <th>do</th>
 <th>re</th>
 <th>mi</th>

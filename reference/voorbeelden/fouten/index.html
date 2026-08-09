@@ -1976,7 +1976,7 @@
   <span class="md-ellipsis">
     
   
-    vsa blocks — ::: vsa-notatie en eindigt met :::, beide aan het begin van een regel, met daartussen VSA-notatie; typisch ontdekt en verwerkt door de Vsa-toolset (o.a. vsa blocks, vsa validate, vsa process).">VSA-blokken in Markdown vinden
+    vsa blocks — VSA-blokken in Markdown vinden
   
 
     
@@ -2004,7 +2004,7 @@
   <span class="md-ellipsis">
     
   
-    vsa svg — één .vsa waarvan de inhoud uitsluitend syntactisch geldige Vsa-notatie bevat — d.w.z. door de Vsa-tooling foutloos wordt geparseerd en gevalideerd.">vsa-bestand naar SVG renderen
+    vsa svg — één vsa-bestand naar SVG renderen
   
 
     
@@ -2872,9 +2872,9 @@
 
 
 <h1 id="fouten">Fouten<a class="headerlink" href="#fouten" title="Permanent link">&para;</a></h1>
-<p>Ongeldige VSA-invoer en de foutcode die de validator teruggeeft.</p>
+<p>Ongeldige VSA-invoer en de foutcode die de <a class="og-termref" href="/VSA-tooling/terminologie/validator" title="Validator: een component die een geparseerde AST / Syntactische Boom of VSA-invoer toetst aan semantische en normatieve regels en overtredingen als Diagnostics / Diagnostische Meldingen rapporteert zonder ze stilzwijgend te repareren.">validator</a> teruggeeft.</p>
 <h2 id="invoer">Invoer<a class="headerlink" href="#invoer" title="Permanent link">&para;</a></h2>
-<p>Fixture: <code>examples/docs-walkthroughs/validate-unclosed-scope.vsa</code></p>
+<p><a class="og-termref" href="/VSA-tooling/terminologie/fixture" title="Fixture: een vastgelegd voorbeeld of testset (meestal onder <code>examples/</code>) waarmee VSA-gedrag van Parser, Validator, Renderer of CLI reproduceerbaar wordt gecontroleerd; vaak met vaste verwachte uitvoer.">Fixture</a>: <code>examples/docs-walkthroughs/validate-unclosed-scope.vsa</code></p>
 <div class="highlight"><pre><span></span><code>{tekst
 </code></pre></div>
 <h2 id="commando">Commando<a class="headerlink" href="#commando" title="Permanent link">&para;</a></h2>
@@ -2888,7 +2888,7 @@ ERROR: VSA-SYNTAX-UNCLOSED-SCOPE: Scope zonder afsluitende accolade.
 ^
 </code></pre></div>
 <h2 id="uitleg">Uitleg<a class="headerlink" href="#uitleg" title="Permanent link">&para;</a></h2>
-<p>De scope is niet afgesloten. Sluit af met <code>}</code>, bijvoorbeeld <code>{tekst}</code>.</p>
+<p>De <a class="og-termref" href="/VSA-tooling/terminologie/vsa-scope" title="VSA-scope: een tekstfragment dat met <code>{</code> begint, met <code>}</code> eindigt, geen whitespace binnen de accolades bevat en door de Parser kan worden opgesplitst in optionele Hoogte-modifier, verplicht zangelement en optionele Lengte-modifier.">scope</a> is niet afgesloten. Sluit af met <code>}</code>, bijvoorbeeld <code>{tekst}</code>.</p>
 <p>Voor een semantische mismatch (hoogte- vs. lengteposities) zie
 <code>examples/expected-fail/semantic-mismatch.vsa</code> en
 <code>examples/regression/semantic-mismatch/</code> (met <code>expected-validation.json</code>).</p>

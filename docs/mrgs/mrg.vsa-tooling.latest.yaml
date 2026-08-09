@@ -5,7 +5,7 @@ terminology:
   glossarydir: "mrgs"
   defaultvsn: "vsa-tooling"
   defaulttype: "concept"
-  website: "https://orthodox-groningen.github.io/VSA-tooling/preview"
+  website: "https://orthodox-groningen.github.io/VSA-tooling"
   navpath: "/terminologie"
   navid: "slug"
   license: "../LICENSE"
@@ -78,7 +78,7 @@ entries:
       - "syntactische-bomen"
     scopetag: "vsa-tooling"
     locator: "ast.md"
-    navurl: "https://orthodox-groningen.github.io/VSA-tooling/preview/terminologie/ast"
+    navurl: "https://orthodox-groningen.github.io/VSA-tooling/terminologie/ast"
     headingids:
       - "ast"
     termid: "concept:ast"
@@ -97,7 +97,7 @@ entries:
       - "bracket-tokens"
     scopetag: "vsa-tooling"
     locator: "bracket-directive.md"
-    navurl: "https://orthodox-groningen.github.io/VSA-tooling/preview/terminologie/bracket-directive"
+    navurl: "https://orthodox-groningen.github.io/VSA-tooling/terminologie/bracket-directive"
     headingids:
       - "bracket-directive"
     termid: "concept:bracket-directive"
@@ -209,7 +209,7 @@ entries:
       - "control-tokens"
     scopetag: "vsa-tooling"
     locator: "control-token.md"
-    navurl: "https://orthodox-groningen.github.io/VSA-tooling/preview/terminologie/control-token"
+    navurl: "https://orthodox-groningen.github.io/VSA-tooling/terminologie/control-token"
     headingids:
       - "control-token"
     termid: "concept:control-token"
@@ -247,7 +247,7 @@ entries:
       - "diagnostische-meldingen"
     scopetag: "vsa-tooling"
     locator: "diagnostic.md"
-    navurl: "https://orthodox-groningen.github.io/VSA-tooling/preview/terminologie/diagnostic"
+    navurl: "https://orthodox-groningen.github.io/VSA-tooling/terminologie/diagnostic"
     headingids:
       - "diagnostic"
     termid: "concept:diagnostic"
@@ -269,7 +269,7 @@ entries:
       - "Een begin-[pitch-marker](@) / [hoogte-markering](@) `[:]` betekent: start op de do-context."
     scopetag: "vsa-tooling"
     locator: "do-context.md"
-    navurl: "https://orthodox-groningen.github.io/VSA-tooling/preview/terminologie/do-context"
+    navurl: "https://orthodox-groningen.github.io/VSA-tooling/terminologie/do-context"
     headingids:
       - "do-context"
       - "motivatie"
@@ -291,7 +291,7 @@ entries:
       - "ehms"
     scopetag: "vsa-tooling"
     locator: "enkelvoudige-hoogte-modifier.md"
-    navurl: "https://orthodox-groningen.github.io/VSA-tooling/preview/terminologie/enkelvoudige-hoogte-modifier"
+    navurl: "https://orthodox-groningen.github.io/VSA-tooling/terminologie/enkelvoudige-hoogte-modifier"
     headingids:
       - "enkelvoudige-hoogte-modifier"
     termid: "concept:enkelvoudige-hoogte-modifier"
@@ -311,7 +311,7 @@ entries:
       - "elms"
     scopetag: "vsa-tooling"
     locator: "enkelvoudige-lengte-modifier.md"
-    navurl: "https://orthodox-groningen.github.io/VSA-tooling/preview/terminologie/enkelvoudige-lengte-modifier"
+    navurl: "https://orthodox-groningen.github.io/VSA-tooling/terminologie/enkelvoudige-lengte-modifier"
     headingids:
       - "enkelvoudige-lengte-modifier"
     termid: "concept:enkelvoudige-lengte-modifier"
@@ -366,7 +366,7 @@ entries:
       - "geldige-vsa"
     scopetag: "vsa-tooling"
     locator: "geldige-vsa-notatie.md"
-    navurl: "https://orthodox-groningen.github.io/VSA-tooling/preview/terminologie/geldige-vsa-notatie"
+    navurl: "https://orthodox-groningen.github.io/VSA-tooling/terminologie/geldige-vsa-notatie"
     headingids:
       - "geldige-vsa-notatie"
     termid: "concept:geldige-vsa-notatie"
@@ -406,7 +406,7 @@ entries:
       - "[Pitch-markers](@) / [hoogte-markeringen](@) en [control-tokens](@) kunnen eveneens als glyphs of layout-aanwijzingen worden weergegeven."
     scopetag: "vsa-tooling"
     locator: "glyph.md"
-    navurl: "https://orthodox-groningen.github.io/VSA-tooling/preview/terminologie/glyph"
+    navurl: "https://orthodox-groningen.github.io/VSA-tooling/terminologie/glyph"
     headingids:
       - "glyph"
       - "motivatie"
@@ -446,7 +446,7 @@ entries:
       - "height-modifiers"
     scopetag: "vsa-tooling"
     locator: "hoogte-modifier.md"
-    navurl: "https://orthodox-groningen.github.io/VSA-tooling/preview/terminologie/hoogte-modifier"
+    navurl: "https://orthodox-groningen.github.io/VSA-tooling/terminologie/hoogte-modifier"
     headingids:
       - "hoogte-modifier"
     termid: "concept:hoogte-modifier"
@@ -465,7 +465,7 @@ entries:
       - "hugo-contentsets"
     scopetag: "vsa-tooling"
     locator: "hugo-output.md"
-    navurl: "https://orthodox-groningen.github.io/VSA-tooling/preview/terminologie/hugo-output"
+    navurl: "https://orthodox-groningen.github.io/VSA-tooling/terminologie/hugo-output"
     headingids:
       - "hugo-output"
     termid: "concept:hugo-output"
@@ -486,7 +486,7 @@ entries:
       - "Voorbeeld: `refrein: @include-vsa zoek=\"Troparion\"` — alleen de `@include-vsa …`-substring wordt vervangen."
     scopetag: "vsa-tooling"
     locator: "include-vsa.md"
-    navurl: "https://orthodox-groningen.github.io/VSA-tooling/preview/terminologie/include-vsa"
+    navurl: "https://orthodox-groningen.github.io/VSA-tooling/terminologie/include-vsa"
     headingids:
       - "@include-vsa"
       - "motivatie"
@@ -508,7 +508,7 @@ entries:
       - "length-modifiers"
     scopetag: "vsa-tooling"
     locator: "lengte-modifier.md"
-    navurl: "https://orthodox-groningen.github.io/VSA-tooling/preview/terminologie/lengte-modifier"
+    navurl: "https://orthodox-groningen.github.io/VSA-tooling/terminologie/lengte-modifier"
     headingids:
       - "lengte-modifier"
     termid: "concept:lengte-modifier"
@@ -544,7 +544,7 @@ entries:
       - "metadata-items"
     scopetag: "vsa-tooling"
     locator: "metadata.md"
-    navurl: "https://orthodox-groningen.github.io/VSA-tooling/preview/terminologie/metadata"
+    navurl: "https://orthodox-groningen.github.io/VSA-tooling/terminologie/metadata"
     headingids:
       - "metadata"
     termid: "concept:metadata"
@@ -560,7 +560,7 @@ entries:
       - "modifiers"
     scopetag: "vsa-tooling"
     locator: "modifier.md"
-    navurl: "https://orthodox-groningen.github.io/VSA-tooling/preview/terminologie/modifier"
+    navurl: "https://orthodox-groningen.github.io/VSA-tooling/terminologie/modifier"
     headingids:
       - "modifier"
     termid: "concept:modifier"
@@ -579,7 +579,7 @@ entries:
       - "Samengestelde [modifiers](@) met `&`, zoals `{/&/tekst_&-}`, leveren meerdere muzikale posities binnen één [scope](@) (melisma)."
     scopetag: "vsa-tooling"
     locator: "muzikale-positie.md"
-    navurl: "https://orthodox-groningen.github.io/VSA-tooling/preview/terminologie/muzikale-positie"
+    navurl: "https://orthodox-groningen.github.io/VSA-tooling/terminologie/muzikale-positie"
     headingids:
       - "muzikale-positie"
       - "motivatie"
@@ -617,7 +617,7 @@ entries:
       - "parsers"
     scopetag: "vsa-tooling"
     locator: "parser.md"
-    navurl: "https://orthodox-groningen.github.io/VSA-tooling/preview/terminologie/parser"
+    navurl: "https://orthodox-groningen.github.io/VSA-tooling/terminologie/parser"
     headingids:
       - "parser"
     termid: "concept:parser"
@@ -642,7 +642,7 @@ entries:
       - "Voorbeeld: `[:]` of `[/:]` vóór of na zangtekst; zonder afsluitende `:` is het geen pitch-marker."
     scopetag: "vsa-tooling"
     locator: "pitch-marker.md"
-    navurl: "https://orthodox-groningen.github.io/VSA-tooling/preview/terminologie/pitch-marker"
+    navurl: "https://orthodox-groningen.github.io/VSA-tooling/terminologie/pitch-marker"
     headingids:
       - "pitch-marker"
       - "motivatie"
@@ -679,7 +679,7 @@ entries:
       - "publicaties"
     scopetag: "vsa-tooling"
     locator: "publicatie.md"
-    navurl: "https://orthodox-groningen.github.io/VSA-tooling/preview/terminologie/publicatie"
+    navurl: "https://orthodox-groningen.github.io/VSA-tooling/terminologie/publicatie"
     headingids:
       - "publicatie"
     termid: "concept:publicatie"
@@ -695,7 +695,7 @@ entries:
       - "renderers"
     scopetag: "vsa-tooling"
     locator: "renderer.md"
-    navurl: "https://orthodox-groningen.github.io/VSA-tooling/preview/terminologie/renderer"
+    navurl: "https://orthodox-groningen.github.io/VSA-tooling/terminologie/renderer"
     headingids:
       - "renderer"
     termid: "concept:renderer"
@@ -733,7 +733,7 @@ entries:
       - "samengestelde-hoogte-modifiers"
     scopetag: "vsa-tooling"
     locator: "samengestelde-hoogte-modifier.md"
-    navurl: "https://orthodox-groningen.github.io/VSA-tooling/preview/terminologie/samengestelde-hoogte-modifier"
+    navurl: "https://orthodox-groningen.github.io/VSA-tooling/terminologie/samengestelde-hoogte-modifier"
     headingids:
       - "samengestelde-hoogte-modifier"
     termid: "concept:samengestelde-hoogte-modifier"
@@ -750,7 +750,7 @@ entries:
       - "samengestelde-lengte-modifiers"
     scopetag: "vsa-tooling"
     locator: "samengestelde-lengte-modifier.md"
-    navurl: "https://orthodox-groningen.github.io/VSA-tooling/preview/terminologie/samengestelde-lengte-modifier"
+    navurl: "https://orthodox-groningen.github.io/VSA-tooling/terminologie/samengestelde-lengte-modifier"
     headingids:
       - "samengestelde-lengte-modifier"
     termid: "concept:samengestelde-lengte-modifier"
@@ -789,7 +789,7 @@ entries:
       - "ernstniveaus"
     scopetag: "vsa-tooling"
     locator: "severity.md"
-    navurl: "https://orthodox-groningen.github.io/VSA-tooling/preview/terminologie/severity"
+    navurl: "https://orthodox-groningen.github.io/VSA-tooling/terminologie/severity"
     headingids:
       - "severity"
     termid: "concept:severity"
@@ -848,7 +848,7 @@ entries:
       - "validators"
     scopetag: "vsa-tooling"
     locator: "validator.md"
-    navurl: "https://orthodox-groningen.github.io/VSA-tooling/preview/terminologie/validator"
+    navurl: "https://orthodox-groningen.github.io/VSA-tooling/terminologie/validator"
     headingids:
       - "validator"
     termid: "concept:validator"
@@ -889,7 +889,7 @@ entries:
       - "vsa-s"
     scopetag: "vsa-tooling"
     locator: "vsa.md"
-    navurl: "https://orthodox-groningen.github.io/VSA-tooling/preview/terminologie/vsa"
+    navurl: "https://orthodox-groningen.github.io/VSA-tooling/terminologie/vsa"
     headingids:
       - "vsa"
       - "gebruik-van-deze-en-vergelijkbare-termen-in-de-'bron'-repo."
@@ -929,7 +929,7 @@ entries:
       - "vsa-blok"
     scopetag: "vsa-tooling"
     locator: "vsa-blokken.md"
-    navurl: "https://orthodox-groningen.github.io/VSA-tooling/preview/terminologie/vsa-blokken"
+    navurl: "https://orthodox-groningen.github.io/VSA-tooling/terminologie/vsa-blokken"
     headingids:
       - "vsa-blok"
     termid: "concept:vsa-blokken"
@@ -973,7 +973,7 @@ entries:
       - "Lege `{}` of `{te kst}` (spatie) zijn geen geldige VSA-scope."
     scopetag: "vsa-tooling"
     locator: "vsa-scope.md"
-    navurl: "https://orthodox-groningen.github.io/VSA-tooling/preview/terminologie/vsa-scope"
+    navurl: "https://orthodox-groningen.github.io/VSA-tooling/terminologie/vsa-scope"
     headingids:
       - "vsa-scope"
       - "motivatie"
@@ -991,7 +991,7 @@ entries:
       - "vsa-teksten"
     scopetag: "vsa-tooling"
     locator: "vsa-tekst.md"
-    navurl: "https://orthodox-groningen.github.io/VSA-tooling/preview/terminologie/vsa-tekst"
+    navurl: "https://orthodox-groningen.github.io/VSA-tooling/terminologie/vsa-tekst"
     headingids:
       - "vsa-tekst"
     termid: "concept:vsa-tekst"
@@ -1010,7 +1010,7 @@ entries:
       - "projectconfiguraties"
     scopetag: "vsa-tooling"
     locator: "vsa-toml.md"
-    navurl: "https://orthodox-groningen.github.io/VSA-tooling/preview/terminologie/vsa-toml"
+    navurl: "https://orthodox-groningen.github.io/VSA-tooling/terminologie/vsa-toml"
     headingids:
       - "vsa.toml"
     termid: "concept:vsa-toml"
@@ -1049,7 +1049,7 @@ entries:
       - "vsa-toolset"
     scopetag: "vsa-tooling"
     locator: "vsa-toolset.md"
-    navurl: "https://orthodox-groningen.github.io/VSA-tooling/preview/terminologie/vsa-toolset"
+    navurl: "https://orthodox-groningen.github.io/VSA-tooling/terminologie/vsa-toolset"
     headingids:
       - "vsa.toolset"
     termid: "concept:vsa-toolset"
@@ -1065,7 +1065,7 @@ entries:
       - "zangstukken"
     scopetag: "vsa-tooling"
     locator: "zangstuk.md"
-    navurl: "https://orthodox-groningen.github.io/VSA-tooling/preview/terminologie/zangstuk"
+    navurl: "https://orthodox-groningen.github.io/VSA-tooling/terminologie/zangstuk"
     headingids:
       - "zangstuk"
     termid: "concept:zangstuk"

@@ -769,7 +769,7 @@ entries:
     glossaryText: "een [template-event](@) (of bladnotatie) waarop een variabel aantal syllaben op hetzelfde SATB-akkoord wordt gezongen; in een [vsa-template](@) gemarkeerd als `role: recite`."
     formPhrases:
       - "reciteertoon"
-      - "reciteertonnen"
+      - "reciteertonen"
     glossaryNotes:
       - "Op het blad vaak als breve of ‘box’-nootkop; dat is geen aparte VSA-[ELM](enkelvoudige-lengte-modifier@), maar de recite-rol."
       - "In YAML: `role: recite`."

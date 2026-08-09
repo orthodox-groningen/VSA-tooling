@@ -5,7 +5,7 @@
 In de liturgische praktijk bestaan **formulemelodieën**: vaste melodische
 patronen (tropaar, stichier, vers, …) waarop telkens **andere teksten** worden
 gezongen. Op het toonboekblad staan die formules vaak **zonder lyrics**, met
-herhaalstructuur (`||: 1, 2 :|| laatste`), [reciteertonnen](reciteertoon@) en
+herhaalstructuur (`||: 1, 2 :|| laatste`), [reciteertonen](reciteertoon@) en
 klemtoonlabels (`e. st.`, `l. st.`, …).
 
 Een [vsa-template](@) is de **machineleesbare vastlegging** van zo’n formule:

@@ -4,7 +4,7 @@
 
 Deze map is de specificatie van [vsa-templates](vsa-template@): YAML voor
 formulematige melodieën met [template-frasen](template-frase@), herhaling of
-vaste volgorde, [reciteertonnen](reciteertoon@), [frase-ankers](frase-anker@) en
+vaste volgorde, [reciteertonen](reciteertoon@), [frase-ankers](frase-anker@) en
 SATB-[laddergraden](laddergraad@) binnen een [do-context](@).
 
 Lees eerst het **idee**: [Doel en scope](overview.md).

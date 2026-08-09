@@ -28,7 +28,8 @@ not_in_nav: |
   plans/onderzoeks-prompt.md
   reference/cli.md
   terminologie/**
-  specification-vsa-templates/**
+  specification-vsa-templates/examples/**
+  specification-vsa-templates/schema/**
 
 validation:
   nav:
@@ -114,6 +115,19 @@ nav:
     - Versionering: specification/versioning.md
     - Traceerbaarheid: specification/traceability.md
     - Open punten: specification/open-points.md
+  - VSA-templates:
+    - Overzicht: specification-vsa-templates/README.md
+    - Doel en scope: specification-vsa-templates/overview.md
+    - Requirements-inventory: specification-vsa-templates/requirements-inventory.md
+    - Metamodel: specification-vsa-templates/metamodel.md
+    - Syntax: specification-vsa-templates/syntax.md
+    - Semantiek: specification-vsa-templates/semantics.md
+    - Validatie: specification-vsa-templates/validation.md
+    - Mapping VSA: specification-vsa-templates/mapping-vsa.md
+    - Voorbeelden: specification-vsa-templates/examples.md
+    - Conformiteit: specification-vsa-templates/conformance.md
+    - Open punten: specification-vsa-templates/open-points.md
+    - Versionering: specification-vsa-templates/versioning.md
   - Referentie:
     - Overzicht: reference/README.md
     - Voorbeelden:

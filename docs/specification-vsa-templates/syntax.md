@@ -3,12 +3,13 @@
 Canonieke bronvorm: **YAML**. Structurele toetsing:
 [`schema/vsa-template.schema.json`](schema/vsa-template.schema.json).
 
-Toonhoogte- en duurmodel sluiten aan op VSA 1.0 (`do`/`mode`, ELMs). Zie
-[`docs/specification/semantics.md`](../specification/semantics.md) §5.5–5.10.
+Toonhoogte- en duurmodel sluiten aan op [VSA](@) 1.0 ([do-context](@),
+[ELM](enkelvoudige-lengte-modifier@)). Zie
+[Semantiek](../specification/semantics.md) §5.5–5.10.
 
 ## Topniveau
 
-Elk document is **één** van drie vormen:
+Elk [vsa-template](@) is **één** van drie vormen:
 
 1. **cycle-form** — `cycle` + `final`;
 2. **sequence-form** — `sequence`;
@@ -21,9 +22,9 @@ spec_version: draft-v0
 id: tropaar-toon-4
 genre: tropaar
 tone: 4
-do: F4                             # scientific pitch van de do (zoals VSA)
-mode: major                        # major | minor | dorian | phrygian | lydian | …
-duration-model: default            # optioneel; zelfde betekenis als VSA
+do: F4
+mode: major
+duration-model: default
 pitches_status: provisional
 source: "…"
 also_used_as: [stichier]
@@ -32,32 +33,34 @@ final: laatste
 phrases:
   - id: "1"
     events: [ ... ]
+  - id: "1a"
+    events: [ ... ]
 ```
 
-`key_signature` is **niet** meer het toonhoogtemodel; eventueel alleen als
-niet-normatieve bladnotitie (af te leiden uit `do`+`mode`).
+[Template-frasen](template-frase@) in `phrases` die **niet** in `cycle`/`final`
+staan (zoals `"1a"`) horen bij de bibliotheek.
 
 ### Sequence-form / alias-form
 
 Zelfde `do` / `mode` (verplicht). Alias heeft geen `phrases`.
 
-## Event
+## Template-event
 
 ```yaml
 - role: recite
-  duration: "~"                    # VSA-ELM; zie tabel
+  duration: "~"
   optional: false
   anchor: l.st.
   pitches:
-    S: mi                          # laddergraad t.o.v. do
+    S: mi
     A: do
     T: sol-1
     B: do-1
 ```
 
-### Duration (VSA-ELM)
+### Duration ([ELM](enkelvoudige-lengte-modifier@))
 
-Standaardduur ↔ kwartnoot bij `duration-model: default` (zoals VSA).
+Standaardduur ↔ kwartnoot bij `duration-model: default`.
 
 | ELM  | Semantiek (VSA)       | MusicXML (default) |
 | ---- | --------------------- | ------------------ |
@@ -69,42 +72,27 @@ Standaardduur ↔ kwartnoot bij `duration-model: default` (zoals VSA).
 | `.`  | ½ × standaardduur     | eighth             |
 | `..` | ¼ × standaardduur     | 16th               |
 
-`role: recite` = variabel aantal syllaben; elke syllabe krijgt typisch `duration: "~"`.
-De breve/“box” op het blad is **geen** aparte ELM, maar de recite-rol.
+`role: recite` = [reciteertoon](@); typisch `duration: "~"` per syllabe.
 
-### Pitches (laddergraden)
-
-Per stem een graad t.o.v. `do`, optioneel chromatisch en octaafverschuiving:
+### Pitches ([laddergraad](@))
 
 ```text
 pitch := ['#' | 'b'] degree [ '+' n | '-' n ]
 degree := 'do' | 're' | 'mi' | 'fa' | 'sol' | 'la' | 'ti'
-n := 1..3
 ```
 
-Voorbeelden (bij `do: F4`, `mode: major`):
-
-| String   | Betekenis                          |
-| -------- | ---------------------------------- |
-| `do`     | F4                                 |
-| `mi`     | A4                                 |
-| `fa`     | Bb4                                |
-| `sol-1`  | C4                                 |
-| `do-1`   | F3                                 |
-| `#re`    | G♯ (chromatisch)                   |
+Voorbeelden bij `do: F4`, `mode: major`: `do`→F4, `mi`→A4, `sol-1`→C4.
 
 ### Regels (syntactisch)
 
 1. Frase-ids uniek; mogen `1a` / `2a` bevatten.
-2. Cycle- / sequence- / alias-form zoals eerder.
-3. Elk event: `role`, `duration` (ELM), `pitches` met S/A/T/B.
-4. `do` matcht scientific pitch `^[A-G](#|b)?[0-9]$`.
-5. `mode` is een niet-lege identifier (minimaal `major` / `minor`; overige
-   modi zoals in VSA-semantiek).
-6. `anchor` ∈ {`e.st.`, `l.st.`, `vl.st.`} indien aanwezig.
+2. Cycle- / sequence- / alias-form zoals hierboven.
+3. Elk [template-event](@): `role`, `duration` (ELM), `pitches` met S/A/T/B.
+4. `do` matcht scientific pitch; `mode` niet-lege identifier.
+5. `anchor` ∈ {`e.st.`, `l.st.`, `vl.st.`} indien aanwezig ([frase-anker](@)).
 
 ## Wat syntax niet uitdrukt
 
-- Syllabe-tekst / VSA-scopes (mapping).
+- Syllabe-tekst / VSA-scopes (zie [mapping](mapping-vsa.md)).
 - SVG-/MusicXML-layout.
 - Ongelijke ritmes per stem.

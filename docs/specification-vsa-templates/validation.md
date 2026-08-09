@@ -1,6 +1,6 @@
 # Validatie
 
-Validatie van een vsa-template gebeurt in twee lagen.
+Validatie van een [vsa-template](@) gebeurt in twee lagen.
 
 ## 1. Structureel (schema)
 

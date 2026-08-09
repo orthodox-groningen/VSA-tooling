@@ -1,48 +1,83 @@
 # Doel en scope
 
+## Het idee in het kort
+
+In de liturgische praktijk bestaan **formulemelodieën**: vaste melodische
+patronen (tropaar, stichier, vers, …) waarop telkens **andere teksten** worden
+gezongen. Op het toonboekblad staan die formules vaak **zonder lyrics**, met
+herhaalstructuur (`||: 1, 2 :|| laatste`), [reciteertonnen](reciteertoon@) en
+klemtoonlabels (`e. st.`, `l. st.`, …).
+
+Een [vsa-template](@) is de **machineleesbare vastlegging** van zo’n formule:
+
+1. welke [template-frasen](template-frase@) er zijn;
+2. hoe ze herhaald of vast geordend worden;
+3. welke SATB-[laddergraden](laddergraad@) en duren ([ELM](enkelvoudige-lengte-modifier@))
+   elk [template-event](@) heeft;
+4. binnen welke [do-context](@) (`do` + `mode`) die graden klinken.
+
+De **tekst** van een concreet [zangstuk](@bron) blijft in [VSA](@). Later kan
+tooling tekst + template combineren tot bijvoorbeeld MusicXML. Zo scheid je
+**herbruikbare melodie** van **unieke tekst**.
+
+```text
+toonboekblad (formule)  →  vsa-template (YAML)
+VSA-tekst (lyrics+relatieve melodie)  →  mapping (experimenteel)
+                                         ↓
+                              afgeleide (bijv. MusicXML SATB)
+```
+
 ## Doel
 
-Een **vsa-template** legt een formulematige liturgische melodie machineleesbaar
-vast, zodat:
-
-1. frasen, herhalingsstructuur en muzikale rollen eenduidig zijn;
-2. latere tooling tekst (bijv. VSA) op die formule kan mappen;
-3. afgeleide uitvoer (bijv. MusicXML SATB) reproduceerbaar kan worden.
+- Formules eenduidig en diffbaar in git vastleggen.
+- Zelfde formule hergebruiken voor veel teksten.
+- Aansluiten op VSA-begrippen: [do-context](@), [ELM](enkelvoudige-lengte-modifier@),
+  relatieve/[laddergraad](@)-denken.
+- Pad openhouden naar reproduceerbare [afgeleiden](@bron) (SVG/MusicXML) zonder
+  OMR als bron van waarheid.
 
 ## Niet-doelen (deze draft)
 
-- Vervanging van VSA-tekstnotatie;
-- volledige transcriptie van alle toonboekpagina’s;
-- layout/engraving-regels voor drukwerk;
-- canonieke pitches uit AI- of OMR-lezing van scans.
+- Vervanging van [VSA](@)-tekstnotatie.
+- Volledige transcriptie van alle toonboekpagina’s in één keer.
+- Layout-/drukwerkregels.
+- Canonieke toonhoogtes uit AI- of OMR-lezing van scans.
 
-## Bronregel voor pitches
+## Bronregel voor toonhoogtes
 
 PDF’s en plaatjes leveren **feature-eisen** (wat de taal moet kunnen uitdrukken).
-Normatieve toonhoogtes in voorbeelden komen alleen uit **menselijk gecontroleerde**
-invoer. Onzekere octaven of akkoorden horen in [`open-points.md`](open-points.md)
-of als `pitches_status: provisional` in metadata.
-
-## Do-context
-
-Templates gebruiken dezelfde **do-context** als VSA (`do` + `mode`). Event-pitches
-zijn laddergraden, geen losse scientific pitches. Duur gebruikt VSA-ELMs.
+Normatieve graden in voorbeelden komen alleen uit **menselijk gecontroleerde**
+invoer. Onzekerheden: [`open-points.md`](open-points.md) of
+`pitches_status: provisional`.
 
 ## Architectuurdefault
 
-Het template beschrijft de **volledige SATB-formule** (zoals op het blad).
-Koppeling met VSA-tekst is een aparte laag ([`mapping-vsa.md`](mapping-vsa.md)).
-Alternatief “VSA = S, template = alleen harmony” blijft een open punt.
+Het [vsa-template](@) beschrijft de **volledige SATB-formule** (zoals op het
+blad). Koppeling met VSA-tekst is een aparte laag
+([Mapping VSA](mapping-vsa.md)). Alternatief “VSA = sopraan, template = alleen
+harmony” blijft een open punt.
 
-## Werknaam
+## Begrippen (TermRefs)
 
-| Term             | Betekenis                                                   |
-| ---------------- | ----------------------------------------------------------- |
-| **vsa-template** | YAML-document volgens deze specificatie                     |
-| frase            | Genoemde melodische eenheid met id (`1`, `2`, `laatste`, …) |
-| event            | Eén muzikale stap in een frase (recite, cadensnoot, …)      |
-| anker            | Label zoals `e.st.`, `l.st.`, `vl.st.` op een event         |
+Geen parallelle termtabel bijhouden: definities staan in curated texts /
+[glossary](../glossary.md). In deze specificatie:
 
-Org-brede termen (`zangstuk-id`, `variant-id`, …): zie
-[bron terminologie](https://github.com/orthodox-groningen/bron/blob/main/docs/specs/terminologie.md).
-Nieuwe glossarytermen alleen via PR op **bron** (zie open punten).
+| Begrip                   | TermRef                                                             |
+| ------------------------ | ------------------------------------------------------------------- |
+| Document / formule       | [vsa-template](@)                                                   |
+| Melodisch blok           | [template-frase](@)                                                 |
+| Één stap/akkoord         | [template-event](@)                                                 |
+| Klemtoonlabel op noot    | [frase-anker](@)                                                    |
+| Variabel syllabe-akkoord | [reciteertoon](@)                                                   |
+| Graad t.o.v. do          | [laddergraad](@)                                                    |
+| Grondtoon + modus        | [do-context](@)                                                     |
+| Duursymbool              | [enkelvoudige lengte-modifier](enkelvoudige-lengte-modifier@) (ELM) |
+| Org: werk                | [zangstuk](@bron)                                                   |
+
+Genre-labels op het blad (`tropaar`, `stichier`, `vers`) en toonnummers (1–8)
+zijn metadata in het YAML; nog geen aparte glossarytermen.
+
+## Status
+
+Draft **v0**: syntax/semantiek/validatie + voorbeelden + schematests. Nog geen
+export-CLI. Zie [README](README.md) voor documentenlijst en v0-criteria.

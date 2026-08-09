@@ -2,14 +2,14 @@
 
 ## Conforming template-document
 
-Een YAML-bestand is een **conform vsa-template (draft-v0)** indien:
+Een YAML-bestand is een **conform [vsa-template](@) (draft-v0)** indien:
 
 1. het voldoet aan het JSON Schema;
 2. het alle semantische documentregels uit [`validation.md`](validation.md) haalt;
 3. `spec_version` gelijk is aan `draft-v0`.
 
-`pitches_status: provisional` mag: het document blijft structureel conform.
-Normatieve pitch-claims vereisen `verified` én menselijke audit.
+`pitches_status: provisional` mag: structureel conform.
+Normatieve [laddergraad](@)-claims vereisen `verified` én menselijke audit.
 
 ## Conforming validator
 

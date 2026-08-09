@@ -1,7 +1,8 @@
 # Requirements-inventory
 
 Feature-eisen afgeleid uit toonboekbladen (vers-, stichier-, tropaarmelodieën),
-**zonder** canonieke pitchlijsten uit AI/OMR.
+**zonder** canonieke pitchlijsten uit AI/OMR. Doel: wat een [vsa-template](@)
+minimaal moet kunnen uitdrukken.
 
 Kolommen:
 

@@ -26,55 +26,39 @@ Event
 
 ### VsaTemplate
 
-Eén document dat één formulevariant beschrijft (bijv. tropaarmelodie toon 4).
-Komt overeen met één herbruikbaar melodisch type, niet met één concreet
-zangstuk-met-tekst.
+Zie [vsa-template](@): één document = één formulevariant (bijv. tropaarmelodie
+toon 4), geen concreet [zangstuk](@bron).
 
-### Phrase
+### Template-frase
 
-Genaamde melodische eenheid. Ids: `"1"`, `"2"`, `"1a"`, `"2a"`, `"laatste"`, …
-
-Frasen mogen in de bibliotheek staan zonder in `cycle`/`final`/`sequence` te
-horen (alternatieven voor mapping).
+Zie [template-frase](@). Ids: `"1"`, `"2"`, `"1a"`, `"laatste"`, …
+Bibliotheekfrasen mogen buiten `cycle`/`final`/`sequence` staan.
 
 ### Cycle, final, sequence, same_as
 
-- **cycle-form:** `cycle` + `final` (herhaling tot slotfrase).
-- **sequence-form:** `sequence` (vaste volgorde, bijv. toon 3).
-- **alias-form:** `same_as` (andere template is de melodische bron).
+- **cycle-form:** herhaling tot slotfrase.
+- **sequence-form:** vaste volgorde.
+- **alias-form:** `same_as` naar ander template-id.
 
-Semantiek: zie [`semantics.md`](semantics.md).
+Semantiek: [semantics.md](semantics.md).
 
-### Event
+### Template-event
 
-Kleinste muzikale stap binnen een frase. Alle stemmen delen dezelfde
-ritmische/role-structuur (homofone formule); afwijkende stemritmes
-(slurs op alleen A/B) zijn een **open punt**.
+Zie [template-event](@). Homofone tijdlijn; stem-autonome ritmes zijn open.
 
-### Role
+### Role / reciteertoon / frase-anker
 
-| Role       | Betekenis                                              |
-| ---------- | ------------------------------------------------------ |
-| `open`     | Openingsaanhef (vaak zelfde pitch als recite)          |
-| `recite`   | Reciteertoon: duur dekt een variabel aantal syllaben   |
-| `cadence`  | Vaste cadens- of slotstap                              |
-| `link`     | Verbinding / overgangsnoot (vaak tevens `optional`)    |
+Zie [reciteertoon](@) en [frase-anker](@).
 
-### Anchor
+### Laddergraad
 
-Optioneel label dat op het blad als tekstanker fungeert (`e. st.`, `l. st.`,
-`vl. st.`). In YAML genormaliseerd zonder spaties: `e.st.`, `l.st.`, `vl.st.`.
-
-### Pitch
-
-Laddergraad t.o.v. `do` (`mi`, `sol-1`, `#re`, …), niet scientific pitch per stem.
-Absolute toonhoogte volgt uit `do` + `mode` + graad (zoals VSA).
+Zie [laddergraad](@). Absolute toonhoogte = [do-context](@) + graad.
 
 ## Relatie tot org-terminologie
 
-| Metamodel     | Org-term (bron)                                      | Opmerking                                                                      |
-| ------------- | ---------------------------------------------------- | ------------------------------------------------------------------------------ |
-| VsaTemplate   | (nieuw)                                              | glossary-PR nodig                                                              |
-| —             | zangstuk / variant / uitvoeringsvorm / representatie | template is géén van deze niveaus; het is een herbruikbare formulebeschrijving |
+| Metamodel         | Org-term (bron)                                               | Opmerking                         |
+| ----------------- | ------------------------------------------------------------- | --------------------------------- |
+| [vsa-template](@) | (tool-term)                                                   | lokaal in `docs/terminologie/`    |
+| —                 | [zangstuk](@bron) / variant / uitvoeringsvorm / representatie | template is géén van deze niveaus |
 
-Zie [`open-points.md`](open-points.md) voor glossary-acties.
+Zie [open-points.md](open-points.md) voor eventuele latere glossary-PR op bron.

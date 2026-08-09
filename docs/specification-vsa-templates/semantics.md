@@ -2,68 +2,84 @@
 
 ## Do-context en modus
 
-Zoals in VSA:
+Zoals in [VSA](@):
 
 - `do` — absolute scientific pitch van de grondtoon;
 - `mode` — intervalstructuur van de ladder (`major`, `minor`, …).
 
-Alle `pitches` in events zijn **laddergraden** binnen die context, geen
-losse absolute noten. Export naar MusicXML (later) resolvet graad → pitch via
+Samen vormen zij de [do-context](@). Alle `pitches` in
+[template-events](template-event@) zijn [laddergraden](laddergraad@) binnen die
+context. Export naar MusicXML (later) resolvet graad → klinkende toon via
 dezelfde ladderlogica als VSA.
 
-Optionele `key_signature` op het blad is afleidbaar uit `do`+`mode` en is in
-templates geen primaire bron van waarheid.
+Optionele `key_signature` is afleidbaar uit `do`+`mode` en is geen primaire
+bron van waarheid.
 
 ## Duration
 
-ELMs hebben dezelfde vermenigvuldiging t.o.v. standaardduur als VSA §5.10.
-`duration-model` (default `default`) bepaalt de MusicXML-mapping van die
-standaardduur (standaard = kwartnoot).
+Duur gebruikt [enkelvoudige lengte-modifiers](enkelvoudige-lengte-modifier@)
+(ELMs) met dezelfde vermenigvuldiging t.o.v. standaardduur als VSA §5.10.
+`duration-model` (default `default`) bepaalt de MusicXML-mapping (standaard =
+kwartnoot).
 
-## Recite
+## Reciteertoon
 
-`role: recite` betekent: één akkoord (vaste graden) voor N≥1 syllaben.
-De duur-ELM is de duur **per syllabe** (meestal `~`), niet een “breve-ELM”.
+`role: recite` markeert een [reciteertoon](@): één akkoord voor N≥1 syllaben.
+De ELM is de duur **per syllabe** (meestal `~`). De breve/“box” op het blad is
+geen aparte ELM, maar die rol.
 
-## Vormen (cycle / sequence / alias)
+## Vormen
 
-Ongewijzigd t.o.v. eerdere draft: zie cycle-form, sequence-form, alias-form in
-[`syntax.md`](syntax.md).
+### Cycle-form (`cycle` + `final`)
 
-### Cycle-form
+Gegeven `cycle: ["1", "2"]` en `final: laatste`:
 
-Tekstfrasen → herhaalde `cycle`, laatste tekstfrase → `final`.
-Bibliotheekfrasen (`1a`, …) alleen via mapping/variant.
+1. Wijs tekstdelen in volgorde toe aan [template-frasen](template-frase@) `1`,
+   `2`, `1`, `2`, … totdat de **laatste** tekstfrase resteert.
+2. Die laatste gebruikt altijd `final`.
+3. Bibliotheekfrasen (in `phrases` maar niet in `cycle`/`final`), zoals `"1a"`,
+   alleen via mapping of expliciete variant.
 
-### Sequence-form
+### Sequence-form (`sequence`)
 
-Vaste lijst phrase-ids; lengte moet (na mapping) bij de tekst passen.
+Vaste toewijzing van tekstdelen 1..N aan phrase-ids. Geen impliciete herhaling.
 
-### Alias-form
+### Alias-form (`same_as`)
 
-`same_as` erft melodische inhoud van een ander template-id.
+Het document erft melodische inhoud van een ander [vsa-template](@)-id (bijv.
+tropaar = stichier op het blad).
 
 ## Roles
 
-| Role       | Betekenis                                            |
-| ---------- | ---------------------------------------------------- |
-| `open`     | Vaste openingsstap (vaak zelfde graad als recite)    |
-| `recite`   | Reciteertoon; N syllaben × `duration`                |
-| `cadence`  | Vaste cadens-/slotstap                               |
-| `link`     | Verbinding; vaak `optional: true`                    |
+| Role       | Betekenis                                         |
+| ---------- | ------------------------------------------------- |
+| `open`     | Vaste openingsstap (vaak zelfde graad als recite) |
+| `recite`   | [Reciteertoon](@); N syllaben × `duration`        |
+| `cadence`  | Vaste cadens-/slotstap                            |
+| `link`     | Verbinding; vaak `optional: true`                 |
 
-## Optional / anchors
+## Optional
 
-Ongewijzigd: optional mag worden overgeslagen; ankers registreren bladlabels
-`e.st.` / `l.st.` / `vl.st.`.
+Als `optional: true`: mag bij mapping worden overgeslagen als er geen syllabe
+voor is.
 
-## Chromatische graden
+## Frase-ankers
 
-Prefix `#` / `b` op een graad = chromatische wijziging t.o.v. de laddertoon
-(vergelijkbaar met VSA halftoon-prefix op EHM, maar hier op een **absolute
-graadpositie** in het template).
+| Anchor   | Bedoeling (werkhypothese)         |
+| -------- | --------------------------------- |
+| `e.st.`  | Eerste streek / inzet             |
+| `l.st.`  | Laatste streek op deze cadensnoot |
+| `vl.st.` | Voorlaatste streek                |
+
+Zie [frase-anker](@). Mapping naar syllaben: [mapping-vsa.md](mapping-vsa.md)
+(experimenteel).
+
+## Chromatische laddergraden
+
+Prefix `#` / `b` op een [laddergraad](@) = chromatische wijziging t.o.v. de
+laddertoon.
 
 ## Wat semantiek niet claimt
 
-- Automatische gelijkheid VSA-EHM-contour ↔ template-S.
+- Automatische gelijkheid VSA-hoogtecontour ↔ template-sopraan.
 - Stem-autonome ritmes.

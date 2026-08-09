@@ -1,4 +1,4 @@
-# VSA-tooling — documentatie
+# [VSA-tooling](@bron) — documentatie
 
 Welkom bij de documentatie van de **VSA-toolchain**: [parser](@), validatie,
 SVG- en MusicXML-export, Markdown-build en hergebruik in andere repositories.
@@ -9,14 +9,14 @@ dat een dienst oefent. Daarvoor: de parochie-site
 
 ## Wie ben je? (kies je route)
 
-| Ik wil …                                              | Voor wie                    | Start hier                                                                                 |
-| ----------------------------------------------------- | --------------------------- | ------------------------------------------------------------------------------------------ |
-| VSA schrijven / valideren / SVG maken                 | Notatie-auteur              | [Starten](getting-started/README.md) · [Validatie](guides/validation.md)                   |
-| Hugo/CI aan `vsa-tool` hangen                         | Consumer-site builder       | [Consumer-site](manuals/consumer-site.md) · [Integratie](integratie/index.md)              |
-| Docs of TEv2 bijdragen                                | Docs-/tool-contributor      | [TEv2 in tool-docs](guides/tev2-docs.md)                                                   |
-| Formele taal-/toolregels                              | Spec-/PR-reviewer           | [Specificaties](specification/README.md) · [Terminologie](glossary.md)                     |
-| Zangstuk / `access:` in de bron-repo                  | Bron-contentbeheerder       | [bron — handleidingen](https://orthodox-groningen.github.io/bron/manuals/)                 |
-| Partituur oefenen / liturgie volgen                   | Koor / liturgie             | **Niet hier** — parochie-site / [VSA-demo](https://github.com/orthodox-groningen/VSA-demo) |
+| Ik wil …                                               | Voor wie                    | Start hier                                                                                 |
+| ------------------------------------------------------ | --------------------------- | ------------------------------------------------------------------------------------------ |
+| [VSA](@) schrijven / valideren / SVG maken             | Notatie-auteur              | [Starten](getting-started/README.md) · [Validatie](guides/validation.md)                   |
+| Hugo/CI aan `vsa-tool` hangen                          | Consumer-site builder       | [Consumer-site](manuals/consumer-site.md) · [Integratie](integratie/index.md)              |
+| Docs of TEv2 bijdragen                                 | Docs-/tool-contributor      | [TEv2 in tool-docs](guides/tev2-docs.md)                                                   |
+| Formele taal-/toolregels                               | Spec-/PR-reviewer           | [Specificaties](specification/README.md) · [Terminologie](glossary.md)                     |
+| [Zangstuk](@bron) / `access:` in de [bron-repo](@bron) | Bron-contentbeheerder       | [bron — handleidingen](https://orthodox-groningen.github.io/bron/manuals/)                 |
+| Partituur oefenen / liturgie volgen                    | Koor / liturgie             | **Niet hier** — parochie-site / [VSA-demo](https://github.com/orthodox-groningen/VSA-demo) |
 
 Rollen en toon: [bron — schrijfconventies](https://orthodox-groningen.github.io/bron/specs/schrijfconventies/).
 

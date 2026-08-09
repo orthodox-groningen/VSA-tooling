@@ -13,7 +13,7 @@ VSA-demo; [zangstukken](@bron)/org-specs = [bron-repository](@bron).
 
 | Repo                                                           | Rol                                          |
 | -------------------------------------------------------------- | -------------------------------------------- |
-| **[VSA-tooling](@bron)** (deze docs)                           | Package, CLI, specs, fixtures                |
+| **[VSA-tooling](@bron)** (deze docs)                           | Package, CLI, specs, [fixtures](@)           |
 | **[VSA-demo](https://github.com/orthodox-groningen/VSA-demo)** | Voorbeeld-Hugo-site + Pages                  |
 | **[bron](https://github.com/orthodox-groningen/bron)**         | [Zangstukken](@bron) en org-specs            |
 

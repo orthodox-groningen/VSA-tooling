@@ -4,7 +4,7 @@ Langere VSA-regel die de [renderer](@) over meerdere regels kan zetten.
 
 ## Invoer
 
-Fixture: `examples/docs-walkthroughs/svg-phrase-lang.vsa`
+[Fixture](@): `examples/docs-walkthroughs/svg-phrase-lang.vsa`
 
 ```text
 [:] {/Hei_}{/lig_} is de Heer en Hij is heilig en wonderbaar in al Zijn werken. [//:]

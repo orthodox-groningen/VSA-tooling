@@ -389,7 +389,7 @@ Geoptimaliseerd voor partituurweergave en handmatige nabewerking in MuseScore.
 ##### Validatie
 
 Automatische regressietests vergelijken nootstructuur (pitch, duur, lyric-tekst)
-tegen fixture-bestanden die het **`engraving`-profiel** beschrijven. Coria-
+tegen [fixture-bestanden](@) die het **`engraving`-profiel** beschrijven. Coria-
 compatibiliteit van het **`playback`-profiel** wordt structureel getest (MIDI,
 voice/stem, beaming, melisma-encoding) maar vereist handmatige verificatie in
 Coria of MuseScore voor volledige garantie.

@@ -4,7 +4,7 @@ Ongeldige VSA-invoer en de foutcode die de [validator](@) teruggeeft.
 
 ## Invoer
 
-Fixture: `examples/docs-walkthroughs/validate-unclosed-scope.vsa`
+[Fixture](@): `examples/docs-walkthroughs/validate-unclosed-scope.vsa`
 
 ```text
 {tekst

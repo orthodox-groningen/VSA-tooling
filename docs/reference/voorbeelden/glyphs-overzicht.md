@@ -4,7 +4,7 @@ Visuele controle van veelgebruikte [VSA](@)-[glyphs](@): bron naast rendering.
 Hersteld uit de oude Hugo-demo
 (`voorbeelden/rendering/glyphs-basis`).
 
-Fixture: `examples/docs-walkthroughs/svg-glyphs-overzicht.vsa`
+[Fixture](@): `examples/docs-walkthroughs/svg-glyphs-overzicht.vsa`
 
 ## Overzicht (bijna alle basisglyphs)
 
@@ -29,7 +29,7 @@ vsa svg examples\docs-walkthroughs\svg-glyphs-overzicht.vsa generated\docs-glyph
 
 ## Hoogtemarkers (compact)
 
-Fixture: `examples/docs-walkthroughs/svg-glyphs-hoogte.vsa`
+[Fixture](@): `examples/docs-walkthroughs/svg-glyphs-hoogte.vsa`
 
 ```text
 [:] {/op} {\neer} {-vlak} {~niets} {//dubbel} {///drie} {\\\\\vijf} [:]
@@ -39,7 +39,7 @@ Fixture: `examples/docs-walkthroughs/svg-glyphs-hoogte.vsa`
 
 ## Lengtemarkers (compact)
 
-Fixture: `examples/docs-walkthroughs/svg-glyphs-lengte.vsa`
+[Fixture](@): `examples/docs-walkthroughs/svg-glyphs-lengte.vsa`
 
 ```text
 [:] {kort_} {anderhalf_.} {dubbel__} {punt.} {punten..} [:]

@@ -66,7 +66,7 @@ Exitcode: `0`. Details: [`vsa validate`](../reference/cli/validate.md).
 
 ## Foutoutput lezen
 
-Concrete fail-fixture
+Concrete [fail-fixture](@)
 (`examples\docs-walkthroughs\validate-unclosed-scope.vsa`):
 
 ```text

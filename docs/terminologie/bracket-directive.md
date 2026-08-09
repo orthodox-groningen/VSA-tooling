@@ -10,6 +10,8 @@ formPhrases:
   - bracket-directives
   - bracket-token
   - bracket-tokens
+  - bracket token
+  - bracket tokens
 ---
 
 # Bracket-directive

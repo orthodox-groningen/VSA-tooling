@@ -1,9 +1,9 @@
 # Rendering en export
 
-Dit document consolideert het rendering- en exportcontract voor VSA.
+Dit document consolideert het rendering- en exportcontract voor [VSA](@).
 
 Het omvat de algemene renderingregels uit de hoofdspecificatie en de latere SVG-, glyph-, layout- en configuratiespecificaties.
-Onder renderen verstaan we het omzetten van gevalideerde VSA-notatie naar een ander weergave- of uitwisselingsformaat.
+Onder renderen verstaan we het omzetten van gevalideerde [VSA-notatie](@bron) naar een ander weergave- of uitwisselingsformaat.
 
 Deze specificatie behandelt twee doelen:
 
@@ -14,44 +14,44 @@ Deze specificatie behandelt twee doelen:
 
 #### Algemeen model
 
-Een zangstuk wordt visueel in zijn geheel gerenderd naar SVG.
+Een [zangstuk](@bron) wordt visueel in zijn geheel gerenderd naar SVG.
 
 De invoer wordt behandeld als Unicode NFC. Dit maakt gebruik mogelijk voor teksten in onder meer Nederlands, Duits, Engels, Russisch, Grieks en Roemeens.
 
-Een zangelement-scope wordt gerenderd op een grid met `N` kolommen en drie rijen:
+Een [zangelement-scope](@) wordt gerenderd op een grid met `N` kolommen en drie rijen:
 
-| Rij           | Inhoud      |
-| ------------- | ----------- |
-| Bovenste rij  | EHM-glyphs  |
-| Middelste rij | zangelement |
-| Onderste rij  | ELM-glyphs  |
+| Rij           | Inhoud           |
+| ------------- | ---------------- |
+| Bovenste rij  | EHM-glyphs       |
+| Middelste rij | [zangelement](@) |
+| Onderste rij  | ELM-glyphs       |
 
-Elke kolom representeert één muzikale positie.
+Elke kolom representeert één [muzikale positie](@).
 
-Implementaties mogen daarnaast een lineair overlaymodel gebruiken waarbij tekst links wordt uitgelijnd en muzikale posities progressief naar rechts worden geplaatst, overeenkomstig historische Liturgikon-praktijken.
+Implementaties mogen daarnaast een lineair overlaymodel gebruiken waarbij tekst links wordt uitgelijnd en [muzikale posities](@) progressief naar rechts worden geplaatst, overeenkomstig historische Liturgikon-praktijken.
 
 #### Aantal kolommen
 
-Het aantal muzikale posities van een modifier is gelijk aan het aantal enkelvoudige modifiers waaruit deze bestaat.
+Het aantal [muzikale posities](@) van een [modifier](@) is gelijk aan het aantal enkelvoudige [modifiers](@) waaruit deze bestaat.
 
 Regels:
 
-- als hoogte- en lengte-modifier beide aanwezig zijn, moeten zij evenveel posities bevatten;
-- als slechts één modifier aanwezig is, bepaalt die modifier `N`;
-- de ontbrekende modifier wordt aangevuld met `~`;
-- als beide modifiers ontbreken, is `N = 1`.
+- als hoogte- en [lengte-modifier](@) beide aanwezig zijn, moeten zij evenveel posities bevatten;
+- als slechts één [modifier](@) aanwezig is, bepaalt die [modifier](@) `N`;
+- de ontbrekende [modifier](@) wordt aangevuld met `~`;
+- als beide [modifiers](@) ontbreken, is `N = 1`.
 
 #### Toonhoogte-markering
 
-Een toonhoogte-markering van de vorm:
+Een [toonhoogte-markering](@) van de vorm:
 
 ```text
 [<hoogte-modifier>:]
 ```
 
-wordt gerenderd als een horizontale streep rond het verticale midden van de tekstregel, met daarboven de rendering van de opgegeven hoogte-modifier. Als geen hoogte-modifier aanwezig is, wordt alleen de horizontale streep weergegeven.
+wordt gerenderd als een horizontale streep rond het verticale midden van de tekstregel, met daarboven de rendering van de opgegeven [hoogte-modifier](@). Als geen [hoogte-modifier](@) aanwezig is, wordt alleen de horizontale streep weergegeven.
 
-Absolute toonhoogten worden niet in toonhoogte-markeringen opgenomen en worden dus ook niet als onderdeel daarvan gerenderd.
+Absolute toonhoogten worden niet in [toonhoogte-markeringen](@) opgenomen en worden dus ook niet als onderdeel daarvan gerenderd.
 
 #### Kolombreedtes en rijhoogtes
 
@@ -62,7 +62,7 @@ Voor elke kolom `i` wordt een minimale kolombreedte `W[i]` bepaald.
 - de minimale breedte die nodig is om `EHM[i]` volledig te renderen;
 - de minimale breedte die nodig is om `ELM[i]` volledig te renderen.
 
-Laat `TB` de minimale tekstbreedte van het zangelement zijn.
+Laat `TB` de minimale tekstbreedte van het [zangelement](@) zijn.
 
 De totale gridbreedte is:
 
@@ -72,7 +72,7 @@ W = max(TB, Σ W[i])
 
 Als `TB > Σ W[i]`, worden de kolommen proportioneel verbreed totdat de totale breedte gelijk is aan `TB`.
 
-Als `TB < Σ W[i]`, behoudt het zangelement standaard zijn normale typografische breedte en wordt het gecentreerd in de middelste rij. Als daardoor storende witruimte ontstaat, wordt het zangelement links uitgelijnd en de resterende ruimte rechts opgevuld met een horizontale lijn overeenkomstig de Liturgikon-voorbeelden.
+Als `TB < Σ W[i]`, behoudt het [zangelement](@) standaard zijn normale typografische breedte en wordt het gecentreerd in de middelste rij. Als daardoor storende witruimte ontstaat, wordt het [zangelement](@) links uitgelijnd en de resterende ruimte rechts opgevuld met een horizontale lijn overeenkomstig de Liturgikon-voorbeelden.
 
 #### Render-eenheid
 
@@ -87,7 +87,7 @@ Alle glyph-afmetingen worden uitgedrukt in een basiseenheid `U`.
 | verticale afstand tussen gestapelde elementen | `U`    |
 | diameter van een punt                         | `U/4`  |
 
-#### Rendering van EHMs
+#### Rendering van [EHMs](@)
 
 Een schuine streep omhoog wordt gerenderd als een lijnsegment met:
 
@@ -107,7 +107,7 @@ Een schuine streep omlaag wordt gerenderd als een lijnsegment met:
 
 Gestapelde strepen worden verticaal boven elkaar geplaatst. De verticale afstand tussen twee gestapelde strepen is gelijk aan `U`.
 
-#### Rendering van ELMs
+#### Rendering van [ELMs](@)
 
 Een underscore (`_`) wordt gerenderd als een horizontale lijn.
 
@@ -131,7 +131,7 @@ Meerdere punten worden verticaal gestapeld.
 
 #### Doel
 
-Export naar MusicXML is bedoeld als een lossless of near-lossless vertaling van de muzikale structuur van VSA naar een gestandaardiseerd muziekuitwisselingsformaat.
+Export naar MusicXML is bedoeld als een lossless of near-lossless vertaling van de muzikale structuur van [VSA](@) naar een gestandaardiseerd muziekuitwisselingsformaat.
 
 MusicXML representeert hierbij:
 
@@ -142,7 +142,7 @@ MusicXML representeert hierbij:
 
 #### Uitgangspunten
 
-MusicXML-export gebruikt dezelfde defaults als de Hugo blokmetadata in [Syntax](syntax.md#hugo-markdown-bloksyntax), tenzij het blok expliciet andere waarden opgeeft.
+MusicXML-export gebruikt dezelfde defaults als de Hugo [blokmetadata](@) in [Syntax](syntax.md#hugo-markdown-bloksyntax), tenzij het blok expliciet andere waarden opgeeft.
 
 | Aspect                  | Default                |
 | ----------------------- | ---------------------- |
@@ -160,11 +160,11 @@ MusicXML-export gebruikt dezelfde defaults als de Hugo blokmetadata in [Syntax](
 | `typografie.word-font`  | `Source Sans 3`        |
 | `typografie.word-size`  | `12` pt                |
 
-Maatsoort wordt niet uit VSA afgeleid. Als een MusicXML-export maatsoort nodig heeft, moet die als aanvullende blokparameter worden opgegeven, bijvoorbeeld `meter="4/4"`.
+Maatsoort wordt niet uit [VSA](@) afgeleid. Als een MusicXML-export maatsoort nodig heeft, moet die als aanvullende blokparameter worden opgegeven, bijvoorbeeld `meter="4/4"`.
 
 #### Absolute toonhoogtebepaling
 
-De absolute toonhoogte voor MusicXML-export wordt bepaald vanuit de Hugo blokmetadata, niet vanuit toonhoogte-markeringen.
+De absolute toonhoogte voor MusicXML-export wordt bepaald vanuit de Hugo [blokmetadata](@), niet vanuit [toonhoogte-markeringen](@).
 
 Voorbeeld:
 
@@ -179,14 +179,14 @@ De effectieve starttoonhoogte wordt bepaald door:
 
 1. de `do`-parameter lezen;
 2. de `mode`-parameter lezen;
-3. eventuele beginmarkering toepassen als relatieve hoogte-modifier;
-4. het resultaat gebruiken als actuele toonhoogte voor de daaropvolgende muzikale posities.
+3. eventuele beginmarkering toepassen als relatieve [hoogte-modifier](@);
+4. het resultaat gebruiken als actuele toonhoogte voor de daaropvolgende [muzikale posities](@).
 
 Als geen `do`-parameter aanwezig is, wordt de default `F4` gebruikt.
 
 #### Toonhoogteberekening per noot
 
-Elke muzikale positie correspondeert met één MusicXML `<note>`.
+Elke [muzikale positie](@) correspondeert met één MusicXML `<note>`.
 
 De pitch wordt cumulatief berekend:
 
@@ -194,29 +194,29 @@ De pitch wordt cumulatief berekend:
 starttoon + EHM1 + EHM2 + ... + EHMn
 ```
 
-Daarbij worden EHMs geïnterpreteerd binnen de do-context en modus.
+Daarbij worden [EHMs](@) geïnterpreteerd binnen de [do-context](@) en modus.
 
 #### Ritme en duur
 
-Elke ELM binnen een lengte-modifier bepaalt de duur van een muzikale positie. Als geen lengte-modifier aanwezig is, wordt `~` gebruikt.
+Elke [ELM](@) binnen een [lengte-modifier](@) bepaalt de duur van een [muzikale positie](@). Als geen [lengte-modifier](@) aanwezig is, wordt `~` gebruikt.
 
 Mapping naar MusicXML bij `duration-model="default"`:
 
-| ELM  | MusicXML-duur   |
-| ---- | --------------- |
-| `~`  | kwartnoot       |
-| `-`  | kwartnoot       |
-| `_`  | halve noot      |
-| `_.` | anderhalve noot |
-| `__` | hele noot       |
-| `.`  | achtste noot    |
-| `..` | zestiende noot  |
+| [ELM](@) | MusicXML-duur   |
+| -------- | --------------- |
+| `~`      | kwartnoot       |
+| `-`      | kwartnoot       |
+| `_`      | halve noot      |
+| `_.`     | anderhalve noot |
+| `__`     | hele noot       |
+| `.`      | achtste noot    |
+| `..`     | zestiende noot  |
 
-Andere duration-modellen mogen hiervan afwijken. Als meerdere ELMs aanwezig zijn binnen één zangelement-scope, krijgt elke muzikale positie haar eigen duurwaarde.
+Andere duration-modellen mogen hiervan afwijken. Als meerdere [ELMs](@) aanwezig zijn binnen één [zangelement-scope](@), krijgt elke [muzikale positie](@) haar eigen duurwaarde.
 
 #### Melismatische mapping
 
-Als een zangelement meerdere muzikale posities bevat, wordt dit in MusicXML weergegeven als één tekstfragment dat over meerdere noten wordt verdeeld.
+Als een [zangelement](@) meerdere [muzikale posities](@) bevat, wordt dit in MusicXML weergegeven als één tekstfragment dat over meerdere noten wordt verdeeld.
 
 Conceptueel:
 
@@ -233,11 +233,11 @@ aparte syllabe-tekst.
 
 #### Ongescopte tekst (reciteertoon)
 
-Tekst buiten zangelement-scopes heeft in VSA geen eigen toonhoogte of duur. Bij
+Tekst buiten [zangelement-scopes](@) heeft in [VSA](@) geen eigen toonhoogte of duur. Bij
 MusicXML-export wordt zulk tekstmateriaal omgezet naar **reciteertoon**: noten
 op de laatst bekende toonhoogte.
 
-Parameter `reciting-mode` (in blokmetadata of YAML-frontmatter onder `muziek`):
+Parameter `reciting-mode` (in [blokmetadata](@) of YAML-frontmatter onder `muziek`):
 
 | Waarde               | Gedrag                                                                                                                                     |
 | -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -249,8 +249,8 @@ Parameter `reciting-mode` (in blokmetadata of YAML-frontmatter onder `muziek`):
 In ongescopte tekst mag een `-` woorden in lettergrepen splitsen, bijvoorbeeld
 `{//he}mel-se en {\aard}se`. Elk deel krijgt een eigen kwartnoot; de lyric
 volgt de gangbare notatie (`mel-` + `se`, met MusicXML `syllabic`
-`begin`/`end`). Dit geldt alleen voor `-` in platte tekst tussen scopes, niet
-binnen `{...}`-scopes (daar is `-` een ELM).
+`begin`/`end`). Dit geldt alleen voor `-` in platte tekst tussen [scopes](@), niet
+binnen `{...}`-scopes (daar is `-` een [ELM](@)).
 
 Leestekens (`,`, `.`, `:`, …) worden aan het voorafgaande woord of de
 voorafgaande noot geplakt.
@@ -258,24 +258,24 @@ voorafgaande noot geplakt.
 Barline-markeringen `*`, `/` en `//` in platte tekst sluiten de huidige maat
 af.
 
-#### Conversieregel per muzikale positie
+#### Conversieregel per [muzikale positie](@)
 
-Voor elke muzikale positie geldt:
+Voor elke [muzikale positie](@) geldt:
 
-| VSA                                      | MusicXML                   |
-| ---------------------------------------- | -------------------------- |
-| muzikale positie                         | één `<note>`               |
-| EHM                                      | cumulatief berekende pitch |
-| ELM                                      | duration                   |
-| zangelement                              | lyric                      |
-| meerdere posities binnen één zangelement | melisma                    |
+| [VSA](@)                                      | MusicXML                   |
+| --------------------------------------------- | -------------------------- |
+| [muzikale positie](@)                         | één `<note>`               |
+| [EHM](@)                                      | cumulatief berekende pitch |
+| [ELM](@)                                      | duration                   |
+| [zangelement](@)                              | lyric                      |
+| meerdere posities binnen één [zangelement](@) | melisma                    |
 
 #### Foutafhandeling bij export
 
 MusicXML-export moet worden geweigerd of als ongeldig gemarkeerd wanneer:
 
 - EHM- en ELM-aantallen inconsistent zijn;
-- een onbekende modifier voorkomt;
+- een onbekende [modifier](@) voorkomt;
 - geen geldige toonhoogte kan worden afgeleid;
 - een halve ladderstap wordt gebruikt waar de modus dit niet toestaat;
 - de implementatie geen mappingstrategie heeft voor de gekozen modus.
@@ -289,7 +289,7 @@ In alle gevallen moet een foutmelding minimaal bevatten:
 #### Typografie
 
 De optionele `typografie`-sectie in YAML-frontmatter ([YAML frontmatter in `.vsa`-bestanden](syntax.md#yaml-frontmatter-in-vsa-bestanden)) of de equivalente
-blokparameters worden bij MusicXML-export **alleen in het `engraving`-profiel**
+[blokparameters](@) worden bij MusicXML-export **alleen in het `engraving`-profiel**
 ([MusicXML-exportprofielen](#musicxml-exportprofielen)) vertaald naar `<defaults>`-elementen:
 
 | Metadata                | MusicXML                       |
@@ -324,7 +324,7 @@ doelrenderer (bijv. MuseScore) gebruikt zijn eigen notatiefont.
 
 MusicXML kan op verschillende manieren worden geëncodeerd terwijl dezelfde
 muzikale inhoud behouden blijft. `vsa-tool` ondersteunt twee profielen,
-selecteerbaar via `musicxml-profile` in blokmetadata, YAML-frontmatter
+selecteerbaar via `musicxml-profile` in [blokmetadata](@), YAML-frontmatter
 (`muziek.musicxml-profile`) of CLI (`--musicxml-profile`).
 
 | Profiel     | Doel                                                                                                    | Default |
@@ -334,10 +334,10 @@ selecteerbaar via `musicxml-profile` in blokmetadata, YAML-frontmatter
 
 ##### Gemeenschappelijk gedrag
 
-Ongeacht profiel geldt pitch-resolutie, ELM→duur, reciteertoon,
+Ongeacht profiel geldt pitch-resolutie, [ELM](@)→duur, reciteertoon,
 syllabische splitsing met `-`, slur over melisma, barlines op `*`, `/`, `//` en
-formele control tokens, en conditionele tempo-markering (alleen bij expliciet
-`tempo` in metadata).
+formele [control tokens](@), en conditionele tempo-markering (alleen bij expliciet
+`tempo` in [metadata](@)).
 
 ##### Profiel `playback`
 
@@ -357,7 +357,7 @@ partwise-bestanden.
 | Maatstrepen            | Alleen `light-light` (dubbele streep `//`) en `light-heavy` (slot); **geen** expliciete `regular` tussen maten |
 | `xml:lang` op lyrics   | niet geëmitteerd                                                                                               |
 
-MIDI-parameters (blokmetadata / `muziek`-sectie):
+MIDI-parameters ([blokmetadata](@) / `muziek`-sectie):
 
 | Veld           | Default                | MusicXML-locatie     |
 | -------------- | ---------------------- | -------------------- |
@@ -440,15 +440,15 @@ niet: Coria haalt het bestand server-side op.
 > **Implementatiestatus:** nog niet geïmplementeerd.
 
 Naast losse SVG-tekst ([SVG-rendering](#svg-rendering)) en MusicXML voor bewerking ([MusicXML-export](#musicxml-export)) is een
-**geïntegreerde partituur-export** gepland: een renderer die VSA omzet naar
+**geïntegreerde partituur-export** gepland: een [renderer](@) die [VSA](@) omzet naar
 HTML en/of PDF waarin **notenbalk en lyrics tegelijk** voorkomen.
 
 Doelgroep: **koorzangers** die niet alleen van de notenbalk kunnen zingen en
 behoefte hebben aan de volledige VSA-visuele taal in de lyric-regel:
 
-- hoogte-modifiers (EHM) boven tekst;
-- lengte-modifiers (ELM) onder tekst;
-- toonhoogte-markeringen (`[:]`, `[//:]`, …);
+- [hoogte-modifiers](@) ([EHM](@)) boven tekst;
+- [lengte-modifiers](@) ([ELM](@)) onder tekst;
+- [toonhoogte-markeringen](@) (`[:]`, `[//:]`, …);
 - configureerbare typografie via dezelfde `typografie`-frontmatter.
 
 ```text
@@ -459,7 +459,7 @@ behoefte hebben aan de volledige VSA-visuele taal in de lyric-regel:
 ```
 
 Dit pad volgt de layoutlogica van de SVG-renderer waar mogelijk, aangevuld met
-een notenbalkcomponent. EHMs/ELMs en pitch-markers horen **niet** in MusicXML
+een notenbalkcomponent. [EHMs](@)/[ELMs](@) en [pitch-markers](@) horen **niet** in MusicXML
 te worden gerepliceerd; daarvoor is deze export bedoeld.
 
 Open ontwerpbesluiten (voor implementatie):
@@ -477,11 +477,11 @@ Open ontwerpbesluiten (voor implementatie):
 
 ## Bron: `docs/spec/vsa-svg-rendering-spec.md`
 
-# VSA SVG Rendering Specification (Draft 2)
+# [VSA](@) SVG Rendering Specification (Draft 2)
 
 ## Doel en scope
 
-Dit document beschrijft de SVG-rendering van VSA-notatie.
+Dit document beschrijft de SVG-rendering van [VSA-notatie](@bron).
 
 De VSA-taalspecificatie (deze map) definieert:
 
@@ -519,7 +519,7 @@ Default rendering gebruikt:
 
 * links uitgelijnde regels;
 * natuurlijke tekstspatiëring;
-* compacte muzikale glyphs;
+* compacte muzikale [glyphs](@);
 * consistente verticale uitlijning.
 
 Alle regeluitlijningen zijn toegestaan:
@@ -535,18 +535,18 @@ Links uitlijnen is de default.
 
 # Glossary
 
-| Term             | Betekenis                                                                                         |
-| ---------------- | ------------------------------------------------------------------------------------------------- |
-| Render-run       | Een visueel opeenvolgend rendering-element zoals vrije tekst, een zangelement of een pitch-marker |
-| Zangelement      | Een `{...}` constructie met gezongen tekst en eventuele modifiers                                 |
-| Glyph            | Een grafisch teken dat een muzikale eigenschap weergeeft                                          |
-| Bovenglyph       | Glyph boven de tekst                                                                              |
-| Onderglyph       | Glyph onder de tekst                                                                              |
-| Pitch-marker     | Constructie zoals `[:]`                                                                           |
-| Alignment-marker | Het `&`-teken dat modifiers visueel koppelt                                                       |
-| Wrapping         | Het afbreken van regels                                                                           |
-| Layout-engine    | Het onderdeel dat bepaalt waar elementen worden geplaatst                                         |
-| Renderer         | Het onderdeel dat SVG genereert                                                                   |
+| Term             | Betekenis                                                                                                   |
+| ---------------- | ----------------------------------------------------------------------------------------------------------- |
+| Render-run       | Een visueel opeenvolgend rendering-element zoals vrije tekst, een [zangelement](@) of een [pitch-marker](@) |
+| Zangelement      | Een `{...}` constructie met gezongen tekst en eventuele [modifiers](@)                                      |
+| Glyph            | Een grafisch teken dat een muzikale eigenschap weergeeft                                                    |
+| Bovenglyph       | Glyph boven de tekst                                                                                        |
+| Onderglyph       | Glyph onder de tekst                                                                                        |
+| Pitch-marker     | Constructie zoals `[:]`                                                                                     |
+| Alignment-marker | Het `&`-teken dat [modifiers](@) visueel koppelt                                                            |
+| Wrapping         | Het afbreken van regels                                                                                     |
+| Layout-engine    | Het onderdeel dat bepaalt waar elementen worden geplaatst                                                   |
+| Renderer         | Het onderdeel dat SVG genereert                                                                             |
 
 ---
 
@@ -559,13 +559,13 @@ Een VSA-regel wordt gerenderd als een reeks render-runs.
 Voorbeelden van render-runs:
 
 * vrije tekst;
-* zangelementen;
-* pitch-markers;
+* [zangelementen](@);
+* [pitch-markers](@);
 * whitespace.
 
 ## Regeluitlijning
 
-De renderer ondersteunt:
+De [renderer](@) ondersteunt:
 
 * left;
 * right;
@@ -578,12 +578,12 @@ Default:
 
 ## Regelbreedte
 
-De renderer gebruikt een maximale regelbreedte.
+De [renderer](@) gebruikt een maximale regelbreedte.
 
 Wanneer een regel te breed wordt:
 
 * wordt afgebroken op natuurlijke grenzen;
-* blijven zangelementen zoveel mogelijk intact.
+* blijven [zangelementen](@) zoveel mogelijk intact.
 
 ## Natuurlijke afbreekpunten
 
@@ -595,9 +595,9 @@ Default wrapping gebruikt:
 4. grenzen tussen render-runs;
 5. optionele interne zangelement-grenzen.
 
-De renderer mag:
+De [renderer](@) mag:
 
-* geen modifiers scheiden van hun tekst;
+* geen [modifiers](@) scheiden van hun tekst;
 * geen glyphgroepen splitsen.
 
 ## Woordverbindingen en wrapping
@@ -635,12 +635,12 @@ Naast natuurlijke afbreekpunten kan de gebruiker wrapping expliciet beïnvloeden
 
 Wrapcontrole moet configureerbaar zijn. Dat betekent:
 
-* de standaardtokens zijn door de renderer gedefinieerd;
+* de standaardtokens zijn door de [renderer](@) gedefinieerd;
 * een project mag andere tokens configureren;
 * configuratie moet vóór gebruik gevalideerd worden;
 * ongeldige configuratie mag niet leiden tot parserfouten of ambigu gedrag.
 
-De renderer moet wraptokens herkennen vóór reguliere VSA-parsing of via een aparte preprocessorlaag.
+De [renderer](@) moet wraptokens herkennen vóór reguliere VSA-parsing of via een aparte preprocessorlaag.
 
 ## Forced line break
 
@@ -683,7 +683,7 @@ Voor MusicXML-rendering kan dit bijvoorbeeld relevant zijn:
 
 ## Preferred breakpoint
 
-Een preferred breakpoint geeft aan waar de renderer bij voorkeur mag afbreken als wrapping nodig is.
+Een preferred breakpoint geeft aan waar de [renderer](@) bij voorkeur mag afbreken als wrapping nodig is.
 
 Standaard voorgestelde syntax:
 
@@ -700,7 +700,7 @@ Voorbeeld:
 
 Betekenis:
 
-* renderer mag hier afbreken als dat nodig is;
+* [renderer](@) mag hier afbreken als dat nodig is;
 * als afbreken niet nodig is, blijft `[/?]` onzichtbaar.
 
 `[*?]` kan worden gebruikt als sterker preferred breakpoint dan `[/?]`.
@@ -724,8 +724,8 @@ De exacte prioriteitsweging is renderer-configuratie.
 
 Reden:
 
-* `[:]` is al een pitch-marker;
-* toekomstige pitch-markers kunnen mogelijk ook midden in een muziekstuk voorkomen;
+* `[:]` is al een [pitch-marker](@);
+* toekomstige [pitch-markers](@) kunnen mogelijk ook midden in een muziekstuk voorkomen;
 * hergebruik van dezelfde tokenvorm voor wrapping zou parserambiguïteit veroorzaken.
 
 Daarom gebruiken wraptokens expliciet herkenbare vormen zoals:
@@ -741,7 +741,7 @@ Deze zijn:
 
 * visueel onderscheidbaar;
 * semantisch expliciet;
-* uitbreidbaar voor toekomstige renderers.
+* uitbreidbaar voor toekomstige [renderers](@).
 
 ---
 
@@ -764,7 +764,7 @@ Voorbeeld:
 Betekenis:
 
 * de inhoud binnen `[= ... =]` blijft op één renderregel;
-* als de groep te breed is, mag de renderer pas buiten de groep wrappen;
+* als de groep te breed is, mag de [renderer](@) pas buiten de groep wrappen;
 * de markers `[=` en `=]` worden niet zichtbaar gerenderd.
 
 Non-breaking groups zijn bedoeld voor:
@@ -835,7 +835,7 @@ Configuratieregels:
 * tokens mogen elkaar niet ambigu overlappen;
 * tokens mogen bestaande VSA-syntax niet breken;
 * tokens moeten vóór gebruik gevalideerd worden;
-* bij ongeldige configuratie stopt de renderer met een duidelijke configuratiefout.
+* bij ongeldige configuratie stopt de [renderer](@) met een duidelijke configuratiefout.
 
 ---
 
@@ -874,7 +874,7 @@ Minder geschikte voorbeelden:
 
 omdat deze:
 
-* lijken op bestaande of toekomstige pitch-markers;
+* lijken op bestaande of toekomstige [pitch-markers](@);
 * semantisch onvoldoende onderscheidend zijn;
 * ambigu kunnen worden bij uitbreiding van de taal.
 
@@ -913,7 +913,7 @@ Tussen render-runs moet een minimale horizontale afstand bestaan.
 
 Doel:
 
-* voorkomen dat tekst en glyphs tegen elkaar aan staan;
+* voorkomen dat tekst en [glyphs](@) tegen elkaar aan staan;
 * visuele rust creëren.
 
 ## Whitespace
@@ -924,7 +924,7 @@ Extra renderer-spacing komt bovenop de tekstuele spacing.
 
 ## Zangelementen
 
-Een zangelement bestaat visueel uit:
+Een [zangelement](@) bestaat visueel uit:
 
 * gezongen tekst;
 * bovenglyphs;
@@ -943,9 +943,9 @@ TB < Σ W[i]
 waarbij:
 
 * `TB` = tekstbreedte;
-* `Σ W[i]` = totale breedte van de muzikale posities;
+* `Σ W[i]` = totale breedte van de [muzikale posities](@);
 
-dan behoudt het zangelement standaard zijn normale typografische breedte.
+dan behoudt het [zangelement](@) standaard zijn normale typografische breedte.
 
 Default gedrag:
 
@@ -1018,7 +1018,7 @@ Onderglyphs:
 
 Onderglyphs hoeven niet de volledige positiebreedte te beslaan.
 
-## Configureerbare glyphs
+## Configureerbare [glyphs](@)
 
 Gebruikers moeten glyph-rendering kunnen aanpassen.
 
@@ -1032,17 +1032,17 @@ Voorbeelden:
 * SVG-shapes;
 * alternatieve glyphsymbolen.
 
-De renderer moet daarom werken met een abstract glyphmodel en niet met hardcoded vormen.
+De [renderer](@) moet daarom werken met een abstract [glyphmodel](@) en niet met hardcoded vormen.
 
 ## Alignment-markers
 
 Het `&`-teken is een alignment-marker.
 
-Alignment-markers koppelen modifiers visueel aan elkaar zodat:
+Alignment-markers koppelen [modifiers](@) visueel aan elkaar zodat:
 
 * muzikale continuïteit zichtbaar wordt;
 * glyphgroepen als één geheel ogen;
-* muzikale posities optisch uitgelijnd blijven.
+* [muzikale posities](@) optisch uitgelijnd blijven.
 
 Voorbeelden:
 
@@ -1063,7 +1063,7 @@ Regelafstand moet configureerbaar zijn.
 De regelafstand moet:
 
 * voldoende ruimte geven voor bovenglyphs;
-* voorkomen dat glyphs tussen regels botsen.
+* voorkomen dat [glyphs](@) tussen regels botsen.
 
 ## Verticale offsets
 
@@ -1075,7 +1075,7 @@ Boven- en onderglyphs gebruiken configureerbare verticale offsets.
 
 ## Fonts
 
-De renderer ondersteunt configureerbare fonts.
+De [renderer](@) ondersteunt configureerbare fonts.
 
 De default-font moet:
 
@@ -1115,7 +1115,7 @@ SVG-rendering-configuratie wordt opgenomen in `vsa.toml`.
 
 ## Default-configuratie
 
-De renderer levert een ingebouwde default-configuratie.
+De [renderer](@) levert een ingebouwde default-configuratie.
 
 ## User overrides
 
@@ -1195,7 +1195,7 @@ Nog nader te bepalen:
 De volgende onderwerpen moeten relatief vroeg worden uitgewerkt:
 
 * wrapping-strategieën;
-* glyphmodel;
+* [glyphmodel](@);
 * configuratie-architectuur.
 
 De overige onderwerpen kunnen later worden uitgewerkt.
@@ -1206,20 +1206,20 @@ De overige onderwerpen kunnen later worden uitgewerkt.
 
 ## Bron: `docs/spec/vsa-glyph-model.md`
 
-# VSA Glyph Model Specification (Draft 1)
+# [VSA](@) Glyph Model Specification (Draft 1)
 
 ## Doel
 
-Dit document beschrijft het abstracte glyphmodel voor VSA-rendering.
+Dit document beschrijft het abstracte [glyphmodel](@) voor VSA-rendering.
 
-Het glyphmodel vormt de brug tussen:
+Het [glyphmodel](@) vormt de brug tussen:
 
 * de VSA-semantiek;
 * layoutberekening;
 * concrete SVG-rendering;
 * toekomstige exportformaten zoals MusicXML.
 
-Het glyphmodel definieert:
+Het [glyphmodel](@) definieert:
 
 * glyph-typen;
 * positionering;
@@ -1230,7 +1230,7 @@ Het glyphmodel definieert:
 * theming;
 * configuratie.
 
-Het glyphmodel definieert niet:
+Het [glyphmodel](@) definieert niet:
 
 * parsergedrag;
 * syntax;
@@ -1247,7 +1247,7 @@ Zie:
 
 ## Drie renderlagen
 
-De renderer bestaat conceptueel uit drie lagen:
+De [renderer](@) bestaat conceptueel uit drie lagen:
 
 ```text id="a7zqfc"
 VSA AST
@@ -1257,7 +1257,7 @@ VSA AST
 
 ### Laag 1 — Semantische representatie
 
-De parser en AST kennen alleen muzikale intentie.
+De [parser](@) en [AST](@) kennen alleen muzikale intentie.
 
 Voorbeelden:
 
@@ -1277,9 +1277,9 @@ Deze laag kent geen:
 
 ---
 
-### Laag 2 — Abstract glyphmodel
+### Laag 2 — Abstract [glyphmodel](@)
 
-De renderer vertaalt semantiek naar abstracte glyph-objecten.
+De [renderer](@) vertaalt semantiek naar abstracte glyph-objecten.
 
 Voorbeelden:
 
@@ -1317,7 +1317,7 @@ Deze laag is renderer-specifiek.
 
 ## Basisprincipe
 
-De renderer werkt primair met muzikale posities en niet met letters.
+De [renderer](@) werkt primair met [muzikale posities](@) en niet met letters.
 
 Voorbeeld:
 
@@ -1327,7 +1327,7 @@ Voorbeeld:
 
 heeft:
 
-* één muzikale positie;
+* één [muzikale positie](@);
 * een tekstbreedte;
 * een glyphstructuur.
 
@@ -1335,7 +1335,7 @@ heeft:
 
 ## Positie-eenheden
 
-Elke muzikale positie heeft:
+Elke [muzikale positie](@) heeft:
 
 * een horizontale breedte;
 * een center-anchor;
@@ -1347,7 +1347,7 @@ Positiebreedte hoeft niet gelijk te zijn aan tekstbreedte.
 
 ## Positiegroepen
 
-Verbonden glyphgroepen kunnen meerdere muzikale posities omvatten.
+Verbonden glyphgroepen kunnen meerdere [muzikale posities](@) omvatten.
 
 Voorbeeld:
 
@@ -1361,9 +1361,9 @@ vormt één verbonden glyphgroep.
 
 # Glyphfamilies
 
-## Upper glyphs
+## Upper [glyphs](@)
 
-Upper glyphs representeren:
+Upper [glyphs](@) representeren:
 
 * stijging;
 * daling;
@@ -1385,9 +1385,9 @@ Visuele eigenschappen:
 
 ---
 
-## Lower glyphs
+## Lower [glyphs](@)
 
-Lower glyphs representeren:
+Lower [glyphs](@) representeren:
 
 * lengte;
 * duur;
@@ -1399,7 +1399,7 @@ Visuele eigenschappen:
 * compact;
 * dicht onder de tekst.
 
-Lower glyphs mogen:
+Lower [glyphs](@) mogen:
 
 * korter zijn dan de volledige positiebreedte;
 * afgeronde uiteinden gebruiken;
@@ -1407,17 +1407,17 @@ Lower glyphs mogen:
 
 ---
 
-## Connector glyphs
+## Connector [glyphs](@)
 
-Connector glyphs ontstaan uit alignment-markers (`&`).
+Connector [glyphs](@) ontstaan uit alignment-markers (`&`).
 
-Connector glyphs:
+Connector [glyphs](@):
 
-* verbinden omliggende glyphs;
+* verbinden omliggende [glyphs](@);
 * creëren visuele continuïteit;
 * beïnvloeden layout.
 
-Connector glyphs zijn geen zelfstandige muzikale posities.
+Connector [glyphs](@) zijn geen zelfstandige [muzikale posities](@).
 
 Voorbeeld:
 
@@ -1427,17 +1427,17 @@ Voorbeeld:
 
 Hier ontstaan:
 
-* meerdere upper glyphs;
-* meerdere lower glyphs;
-* connectorlijnen tussen de glyphs.
+* meerdere upper [glyphs](@);
+* meerdere lower [glyphs](@);
+* connectorlijnen tussen de [glyphs](@).
 
 ---
 
-## Structural glyphs
+## Structural [glyphs](@)
 
-Structural glyphs representeren:
+Structural [glyphs](@) representeren:
 
-* pitch-markers;
+* [pitch-markers](@);
 * wraptokens;
 * layoutmarkeringen;
 * toekomstige exporthints.
@@ -1448,7 +1448,7 @@ Voorbeelden:
 * `[/]`
 * `[/?]`
 
-Niet alle structural glyphs hoeven zichtbaar te renderen.
+Niet alle structural [glyphs](@) hoeven zichtbaar te renderen.
 
 ---
 
@@ -1468,17 +1468,17 @@ Dit voorkomt:
 
 ## Standaard anchors
 
-De renderer ondersteunt minimaal:
+De [renderer](@) ondersteunt minimaal:
 
-| Anchor          | Betekenis                       |
-| --------------- | ------------------------------- |
-| baseline        | tekstbaseline                   |
-| text-top        | bovenkant van tekst             |
-| text-bottom     | onderkant van tekst             |
-| position-center | centrum van muzikale positie    |
-| glyph-center    | centrum van glyph               |
-| upper-anchor    | default anchor voor bovenglyphs |
-| lower-anchor    | default anchor voor onderglyphs |
+| Anchor          | Betekenis                         |
+| --------------- | --------------------------------- |
+| baseline        | tekstbaseline                     |
+| text-top        | bovenkant van tekst               |
+| text-bottom     | onderkant van tekst               |
+| position-center | centrum van [muzikale positie](@) |
+| glyph-center    | centrum van [glyph](@)            |
+| upper-anchor    | default anchor voor bovenglyphs   |
+| lower-anchor    | default anchor voor onderglyphs   |
 
 ---
 
@@ -1515,7 +1515,7 @@ Aanbevolen:
 
 ## Glyph properties
 
-Elke glyph kan eigenschappen hebben zoals:
+Elke [glyph](@) kan eigenschappen hebben zoals:
 
 ```text id="jj8h6f"
 width
@@ -1561,11 +1561,11 @@ AST
 
 ## Optische compensatie
 
-De renderer mag optische compensatie toepassen.
+De [renderer](@) mag optische compensatie toepassen.
 
 Voorbeelden:
 
-* iets bredere glyphs bij kleine fonts;
+* iets bredere [glyphs](@) bij kleine fonts;
 * verticale correctie bij cursieve fonts;
 * smallere connectors bij dichte tekst.
 
@@ -1690,9 +1690,9 @@ Voorbeelden:
 * custom SVG paths;
 * alternatieve lijnvormen;
 * ornamentsets;
-* kalligrafische glyphs.
+* kalligrafische [glyphs](@).
 
-Dit vereist een abstract glyphmodel en geen hardcoded SVG-primitives.
+Dit vereist een abstract [glyphmodel](@) en geen hardcoded SVG-primitives.
 
 ---
 
@@ -1700,24 +1700,24 @@ Dit vereist een abstract glyphmodel en geen hardcoded SVG-primitives.
 
 ## MusicXML
 
-Het glyphmodel moet later gekoppeld kunnen worden aan:
+Het [glyphmodel](@) moet later gekoppeld kunnen worden aan:
 
 * MusicXML;
 * maatstructuren;
 * frasegrenzen;
 * systeemindeling.
 
-Daarom moeten glyphs semantisch interpreteerbaar blijven.
+Daarom moeten [glyphs](@) semantisch interpreteerbaar blijven.
 
 ---
 
 ## Multi-voice rendering
 
-Toekomstige renderers kunnen:
+Toekomstige [renderers](@) kunnen:
 
 * meerdere stemmen;
 * syncgroepen;
-* gedeelde muzikale posities;
+* gedeelde [muzikale posities](@);
 
 ondersteunen.
 
@@ -1729,12 +1729,12 @@ Toekomstige SVG-renderers kunnen:
 
 * hoverinformatie;
 * debugging overlays;
-* clickable glyphs;
+* clickable [glyphs](@);
 * synchronized playback;
 
 ondersteunen.
 
-Het glyphmodel moet dit niet blokkeren.
+Het [glyphmodel](@) moet dit niet blokkeren.
 
 ---
 
@@ -1757,7 +1757,7 @@ Nog nader te bepalen:
 
 ## Bron: `docs/spec/vsa-glyph-layout-rules.md`
 
-# VSA Glyph Layout Rules (Draft 2)
+# [VSA](@) Glyph Layout Rules (Draft 2)
 
 ## Doel
 
@@ -1784,26 +1784,26 @@ Deze specificatie is niet bedoeld voor professionele drukwerktypografie.
 
 # Glossary
 
-| Term             | Betekenis                                                                 |
-| ---------------- | ------------------------------------------------------------------------- |
-| VSA              | De tekstuele notatie voor zangtekst, pitchmarkers en muzikale modifiers   |
-| Renderer         | Het onderdeel dat VSA omzet naar zichtbare output, bijvoorbeeld SVG       |
-| SVG              | Scalable Vector Graphics; het uitvoerformaat voor schaalbare tekeningen   |
-| Glyph            | Een zichtbaar teken of vormpje dat door de renderer wordt getekend        |
-| EHM              | Een elementaire hoogtemodifier, bijvoorbeeld `/`, `\` of `///`            |
-| ELM              | Een elementaire lengtemodifier, bijvoorbeeld `_`                          |
-| Bovenglyph       | Een glyph boven de gezongen tekst                                         |
-| Onderglyph       | Een glyph onder de gezongen tekst                                         |
-| Pitchmarker      | Een constructie zoals `[:]`, `[/:]` of `[\\:]`                            |
-| Zangelement      | Een VSA-constructie tussen `{` en `}`, bijvoorbeeld `{/Heer_}`            |
-| Render-unit      | Een ondeelbaar visueel element voor layout en wrapping                    |
-| Glyphgroep       | Een groep glyphs die samen bij één render-unit horen                      |
-| Alignment-marker | Het `&`-teken dat glyphs binnen een zangelement visueel koppelt           |
-| Baseline         | De denkbeeldige lijn waarop tekst rust                                    |
-| Text box         | De visuele ruimte die de tekst inneemt                                    |
-| Collision        | Een botsing of overlap tussen tekst, glyphs of render-units               |
-| Wrapping         | Het afbreken van render-units naar een volgende regel                     |
-| Overflow         | Situatie waarin een render-unit breder is dan de beschikbare regelbreedte |
+| Term             | Betekenis                                                                    |
+| ---------------- | ---------------------------------------------------------------------------- |
+| [VSA](@)         | De tekstuele notatie voor zangtekst, pitchmarkers en muzikale [modifiers](@) |
+| Renderer         | Het onderdeel dat [VSA](@) omzet naar zichtbare output, bijvoorbeeld SVG     |
+| SVG              | Scalable Vector Graphics; het uitvoerformaat voor schaalbare tekeningen      |
+| Glyph            | Een zichtbaar teken of vormpje dat door de [renderer](@) wordt getekend      |
+| [EHM](@)         | Een elementaire hoogtemodifier, bijvoorbeeld `/`, `\` of `///`               |
+| [ELM](@)         | Een elementaire lengtemodifier, bijvoorbeeld `_`                             |
+| Bovenglyph       | Een [glyph](@) boven de gezongen tekst                                       |
+| Onderglyph       | Een [glyph](@) onder de gezongen tekst                                       |
+| Pitchmarker      | Een constructie zoals `[:]`, `[/:]` of `[\\:]`                               |
+| Zangelement      | Een VSA-constructie tussen `{` en `}`, bijvoorbeeld `{/Heer_}`               |
+| Render-unit      | Een ondeelbaar visueel element voor layout en wrapping                       |
+| Glyphgroep       | Een groep [glyphs](@) die samen bij één render-unit horen                    |
+| Alignment-marker | Het `&`-teken dat [glyphs](@) binnen een [zangelement](@) visueel koppelt    |
+| Baseline         | De denkbeeldige lijn waarop tekst rust                                       |
+| Text box         | De visuele ruimte die de tekst inneemt                                       |
+| Collision        | Een botsing of overlap tussen tekst, [glyphs](@) of render-units             |
+| Wrapping         | Het afbreken van render-units naar een volgende regel                        |
+| Overflow         | Situatie waarin een render-unit breder is dan de beschikbare regelbreedte    |
 
 ---
 
@@ -1821,9 +1821,9 @@ Glyphs moeten de tekst ondersteunen, niet domineren.
 
 De belangrijkste visuele prioriteiten zijn:
 1. tekst blijft goed leesbaar;
-2. glyphs zijn duidelijk herkenbaar;
-3. glyphs zitten dicht genoeg op de tekst om erbij te horen;
-4. glyphs overlappen niet;
+2. [glyphs](@) zijn duidelijk herkenbaar;
+3. [glyphs](@) zitten dicht genoeg op de tekst om erbij te horen;
+4. [glyphs](@) overlappen niet;
 5. de layout blijft compact.
 
 ---
@@ -1832,7 +1832,7 @@ De belangrijkste visuele prioriteiten zijn:
 
 ## Praktische keuze
 
-De renderer gebruikt een baseline-gebaseerd coordinate system.
+De [renderer](@) gebruikt een baseline-gebaseerd coordinate system.
 
 Elke renderregel heeft:
 - een baseline;
@@ -1848,14 +1848,14 @@ Glyphs worden relatief aan tekst-anchors geplaatst.
 
 Minimale anchors:
 
-| Anchor          | Betekenis                                  |
-| --------------- | ------------------------------------------ |
-| baseline        | lijn waarop tekst rust                     |
-| text-top        | bovenkant van de tekst-box                 |
-| text-bottom     | onderkant van de tekst-box                 |
-| position-center | horizontaal midden van de muzikale positie |
-| unit-left       | linkerrand van de render-unit              |
-| unit-right      | rechterrand van de render-unit             |
+| Anchor          | Betekenis                                       |
+| --------------- | ----------------------------------------------- |
+| baseline        | lijn waarop tekst rust                          |
+| text-top        | bovenkant van de tekst-box                      |
+| text-bottom     | onderkant van de tekst-box                      |
+| position-center | horizontaal midden van de [muzikale positie](@) |
+| unit-left       | linkerrand van de render-unit                   |
+| unit-right      | rechterrand van de render-unit                  |
 
 ## Bovenglyph-positionering
 
@@ -1889,13 +1889,13 @@ Default:
 offset-y = 0.18
 ```
 
-De renderer mag de onderglyph iets lager plaatsen als het font veel descenders heeft.
+De [renderer](@) mag de onderglyph iets lager plaatsen als het font veel descenders heeft.
 
 ---
 
 # Render-units
 
-Voor layout gebruikt de renderer ondeelbare render-units.
+Voor layout gebruikt de [renderer](@) ondeelbare render-units.
 
 Voorbeelden:
 
@@ -1907,7 +1907,7 @@ non-breaking group
 wraptoken
 ```
 
-Een zangelement met glyphs is één render-unit.
+Een [zangelement](@) met [glyphs](@) is één render-unit.
 
 Voorbeeld:
 
@@ -1917,7 +1917,7 @@ Voorbeeld:
 
 mag niet over twee regels worden verdeeld.
 
-Ook een complex zangelement blijft ondeelbaar:
+Ook een complex [zangelement](@) blijft ondeelbaar:
 
 ```text
 {\&/&/trou-.&.&_}
@@ -1939,9 +1939,9 @@ mag niet gesplitst worden.
 
 ## Renderingdefinitie
 
-Voor SVG-rendering is een muzikale positie de horizontale plaats waarop één glyph of glyphgroep wordt gecentreerd ten opzichte van tekst.
+Voor SVG-rendering is een [muzikale positie](@) de horizontale plaats waarop één [glyph](@) of glyphgroep wordt gecentreerd ten opzichte van tekst.
 
-Een muzikale positie is dus een layoutbegrip.
+Een [muzikale positie](@) is dus een layoutbegrip.
 
 Het is niet noodzakelijk hetzelfde als:
 - een letter;
@@ -1949,32 +1949,32 @@ Het is niet noodzakelijk hetzelfde als:
 - een MusicXML-noot;
 - een toekomstige SATB-syncpositie.
 
-## Waarvoor gebruikt de renderer muzikale posities?
+## Waarvoor gebruikt de [renderer](@) [muzikale posities](@)?
 
-De renderer gebruikt muzikale posities om te beslissen:
+De [renderer](@) gebruikt [muzikale posities](@) om te beslissen:
 - waar bovenglyphs komen;
 - waar onderglyphs komen;
-- hoe breed een zangelement minimaal moet zijn;
+- hoe breed een [zangelement](@) minimaal moet zijn;
 - waar alignment-groepen optisch worden geplaatst;
-- of glyphs elkaar raken;
+- of [glyphs](@) elkaar raken;
 - of een render-unit te breed wordt voor de regel.
 
-## Breedte van een muzikale positie
+## Breedte van een [muzikale positie](@)
 
-De breedte van een muzikale positie wordt bepaald door:
+De breedte van een [muzikale positie](@) wordt bepaald door:
 
 ```text
 max(tekstdeelbreedte, glyphbreedte + minimale marge)
 ```
 
 Dus:
-- korte tekst met brede glyph krijgt extra ruimte;
-- lange tekst met smalle glyph wordt niet samengedrukt;
-- glyphs mogen niet overlappen.
+- korte tekst met brede [glyph](@) krijgt extra ruimte;
+- lange tekst met smalle [glyph](@) wordt niet samengedrukt;
+- [glyphs](@) mogen niet overlappen.
 
 ## Breedte van een render-unit
 
-De breedte van een zangelement is de som van de benodigde muzikale posities.
+De breedte van een [zangelement](@) is de som van de benodigde [muzikale posities](@).
 
 Als de glyphstructuur breder is dan de tekst:
 - wordt de render-unit breder;
@@ -1985,13 +1985,13 @@ Als de glyphstructuur breder is dan de tekst:
 
 # Wrapping
 
-De renderer mag afbreken tussen render-units volgens de wrapping-regels uit de SVG-rendering-spec.
+De [renderer](@) mag afbreken tussen render-units volgens de wrapping-regels uit de SVG-rendering-spec.
 
 Een render-unit wordt niet intern gesplitst.
 
 Als een render-unit te breed is voor de resterende regelruimte, wordt deze naar de volgende regel verplaatst.
 
-Als een render-unit op zichzelf breder is dan de maximale regelbreedte, gebruikt de renderer fallbackgedrag.
+Als een render-unit op zichzelf breder is dan de maximale regelbreedte, gebruikt de [renderer](@) fallbackgedrag.
 
 Default fallback:
 
@@ -2017,24 +2017,24 @@ Dit geldt voor:
 - bovenglyphs en tekst;
 - onderglyphs en tekst;
 - pitchmarkers en tekst;
-- glyphs van aangrenzende render-units.
+- [glyphs](@) van aangrenzende render-units.
 
-Als overlap dreigt, probeert de renderer in deze volgorde:
+Als overlap dreigt, probeert de [renderer](@) in deze volgorde:
 
 1. compacte glyphmetriek toepassen;
 2. horizontale spacing binnen de render-unit vergroten;
 3. render-unit naar de volgende regel verplaatsen;
 4. fallbackgedrag toepassen.
 
-De renderer mag glyphs niet laten samenvallen om ruimte te besparen.
+De [renderer](@) mag [glyphs](@) niet laten samenvallen om ruimte te besparen.
 
 ---
 
 # Elementaire hoogtemodifiers en stacking
 
-## Eén EHM is één glyph
+## Eén [EHM](@) is één [glyph](@)
 
-Een EHM wordt als één glyph gerenderd.
+Een [EHM](@) wordt als één [glyph](@) gerenderd.
 
 Voorbeeld:
 
@@ -2042,19 +2042,19 @@ Voorbeeld:
 /
 ```
 
-is één glyph.
+is één [glyph](@).
 
-Ook dit is één EHM en dus één glyph:
+Ook dit is één [EHM](@) en dus één [glyph](@):
 
 ```text
 ///
 ```
 
-Het is dus niet een stack van drie losse glyphs.
+Het is dus niet een stack van drie losse [glyphs](@).
 
 ## Leesbaarheid
 
-Een glyph voor `///` moet duidelijk herkenbaar zijn, ook op enige afstand.
+Een [glyph](@) voor `///` moet duidelijk herkenbaar zijn, ook op enige afstand.
 
 Default rendering mag bestaan uit drie duidelijk onderscheidbare schuine streepjes.
 
@@ -2068,7 +2068,7 @@ Voorbeeld van een mogelijk alternatief:
 
 of een compactere gestileerde vorm.
 
-Deze alternatieven zijn niet voor de eerste renderer vereist, maar het glyphmodel mag ze niet blokkeren.
+Deze alternatieven zijn niet voor de eerste [renderer](@) vereist, maar het [glyphmodel](@) mag ze niet blokkeren.
 
 ## Geen whitespace-stacking
 
@@ -2088,11 +2088,11 @@ Voor nu geldt:
 
 ---
 
-# Gekoppelde glyphs en alignment-markers
+# Gekoppelde [glyphs](@) en alignment-markers
 
 ## Betekenis van `&`
 
-Alignment-markers (`&`) koppelen glyphs visueel.
+Alignment-markers (`&`) koppelen [glyphs](@) visueel.
 
 Default betekent `&`:
 
@@ -2108,14 +2108,14 @@ teken altijd een expliciete connectorlijn
 
 ## Visueel gedrag
 
-Gekoppelde glyphs:
+Gekoppelde [glyphs](@):
 - blijven afzonderlijk herkenbaar;
 - staan compact bij elkaar;
 - vormen één optische groep;
 - worden samen gewrapped;
 - worden samen gecontroleerd op collisions.
 
-Gekoppelde glyphs mogen niet:
+Gekoppelde [glyphs](@) mogen niet:
 - volledig samenvallen;
 - versmelten tot één onleesbare lijn;
 - visueel losraken van hun groep.
@@ -2132,7 +2132,7 @@ bevat gekoppelde hoogte-informatie.
 {\&/&/trou-.&.&_}
 ```
 
-bevat meerdere gekoppelde glyphs die als groep moeten ogen, maar waarvan de afzonderlijke glyphposities zichtbaar blijven.
+bevat meerdere gekoppelde [glyphs](@) die als groep moeten ogen, maar waarvan de afzonderlijke glyphposities zichtbaar blijven.
 
 ## Connectorvorm
 
@@ -2189,7 +2189,7 @@ offset-y = 0.18
 stroke-width-factor = 0.055
 ```
 
-De renderer mag onderglyphs iets lager plaatsen bij fonts met lange descenders.
+De [renderer](@) mag onderglyphs iets lager plaatsen bij fonts met lange descenders.
 
 ---
 
@@ -2261,7 +2261,7 @@ De horizontale markerlijn is compact.
 
 # Spacing tussen render-units
 
-De renderer gebruikt minimale horizontale spacing tussen render-units.
+De [renderer](@) gebruikt minimale horizontale spacing tussen render-units.
 
 Default:
 
@@ -2285,7 +2285,7 @@ Spacing mag niet worden uitgerekt om regels tweezijdig uit te vullen, tenzij exp
 Regelafstand moet voldoende ruimte bieden voor:
 - bovenglyphs;
 - onderglyphs;
-- samengestelde glyphs;
+- samengestelde [glyphs](@);
 - pitchmarkers.
 
 Default:
@@ -2302,16 +2302,16 @@ De regelafstand is configureerbaar.
 
 # Layoutprioriteiten
 
-Bij conflicten gebruikt de renderer deze prioriteit:
+Bij conflicten gebruikt de [renderer](@) deze prioriteit:
 
 1. syntax correct renderen;
 2. tekst leesbaar houden;
-3. glyphs niet laten overlappen;
+3. [glyphs](@) niet laten overlappen;
 4. render-units ondeelbaar houden;
 5. compacte layout behouden;
 6. regelbreedte respecteren.
 
-Dit betekent dat de renderer liever een regel eerder afbreekt dan glyphs laat overlappen.
+Dit betekent dat de [renderer](@) liever een regel eerder afbreekt dan [glyphs](@) laat overlappen.
 
 ---
 
@@ -2319,12 +2319,12 @@ Dit betekent dat de renderer liever een regel eerder afbreekt dan glyphs laat ov
 
 Een debug-theme mag tonen:
 - render-unit boundaries;
-- glyph bounding boxes;
+- [glyph](@) bounding boxes;
 - anchors;
 - collision boxes;
 - wrap candidates;
 - overflow;
-- muzikale posities.
+- [muzikale posities](@).
 
 Dit is bedoeld voor ontwikkeling en correctie van praktijkvoorbeelden.
 
@@ -2381,7 +2381,7 @@ Ongeldig zijn bijvoorbeeld:
 - onbekende alignment-waarden;
 - niet-numerieke offsets;
 - line-gap kleiner dan minimum;
-- glyphs met nulbreedte;
+- [glyphs](@) met nulbreedte;
 - tokens die VSA-syntax breken.
 
 Bij ongeldige configuratie stopt rendering met een duidelijke configuratiefout.
@@ -2404,7 +2404,7 @@ Nog nader uit te werken:
 
 ## Bron: `docs/spec/vsa-layout-algorithm.md`
 
-# VSA Layout Algorithm Specification (Draft 1)
+# [VSA](@) Layout Algorithm Specification (Draft 1)
 
 ## Doel
 
@@ -2429,29 +2429,29 @@ Dit document vult aan:
 - `vsa-svg-dom-structure.md`
 - `vsa-rendering-config-model.md`
 
-De focus ligt op een praktische, goed leesbare renderer voor scherm en website.
+De focus ligt op een praktische, goed leesbare [renderer](@) voor scherm en website.
 
 ---
 
 # Hoofdprincipes
 
-De renderer moet:
+De [renderer](@) moet:
 
 - tekst leesbaar houden;
-- glyphs dicht bij de tekst plaatsen;
-- glyphs niet laten overlappen;
+- [glyphs](@) dicht bij de tekst plaatsen;
+- [glyphs](@) niet laten overlappen;
 - render-units ondeelbaar houden;
 - links uitlijnen als default;
 - deterministic output geven;
 - configuratie vóór rendering valideren.
 
-De renderer is niet bedoeld als professionele drukwerk-engine.
+De [renderer](@) is niet bedoeld als professionele drukwerk-engine.
 
 ---
 
 # Renderpipeline
 
-De renderer doorloopt conceptueel deze fasen:
+De [renderer](@) doorloopt conceptueel deze fasen:
 
 ```text
 1. Config laden en valideren
@@ -2497,25 +2497,25 @@ Voorbeelden van ongeldige configuratie:
 - lege kleurwaarde;
 - wraptoken dat bestaande VSA-syntax breekt;
 - line-gap kleiner dan minimum;
-- glyph met nulbreedte.
+- [glyph](@) met nulbreedte.
 
 ---
 
-# Fase 2: AST ontvangen
+# Fase 2: [AST](@) ontvangen
 
-De renderer werkt niet rechtstreeks op ruwe tekst, maar op de geparseerde VSA-structuur.
+De [renderer](@) werkt niet rechtstreeks op ruwe tekst, maar op de geparseerde VSA-structuur.
 
-De AST bevat betekenisvolle constructies zoals:
+De [AST](@) bevat betekenisvolle constructies zoals:
 
 - vrije tekst;
-- zangelement;
+- [zangelement](@);
 - pitchmarker;
-- modifiers;
+- [modifiers](@);
 - alignment-markers.
 
-De renderer mag geen syntax herstellen.
+De [renderer](@) mag geen syntax herstellen.
 
-Syntaxfouten horen vóór rendering te zijn afgehandeld door parser en validator.
+Syntaxfouten horen vóór rendering te zijn afgehandeld door [parser](@) en [validator](@).
 
 ---
 
@@ -2551,20 +2551,20 @@ Ook dit blijft één render-unit:
 
 ---
 
-# Fase 4: muzikale posities bepalen
+# Fase 4: [muzikale posities](@) bepalen
 
-Voor SVG-rendering is een muzikale positie een horizontale plaats waarop één glyph of glyphgroep wordt gecentreerd.
+Voor SVG-rendering is een [muzikale positie](@) een horizontale plaats waarop één [glyph](@) of glyphgroep wordt gecentreerd.
 
-De renderer gebruikt muzikale posities voor:
+De [renderer](@) gebruikt [muzikale posities](@) voor:
 
 - bovenglyphplaatsing;
 - onderglyphplaatsing;
 - collisiondetectie;
-- minimale breedte van zangelementen;
+- minimale breedte van [zangelementen](@);
 - alignment-groepen;
 - toekomstige MusicXML- en polyfonievoorbereiding.
 
-Een muzikale positie is niet noodzakelijk hetzelfde als:
+Een [muzikale positie](@) is niet noodzakelijk hetzelfde als:
 
 - een letter;
 - een lettergreep;
@@ -2575,7 +2575,7 @@ Een muzikale positie is niet noodzakelijk hetzelfde als:
 
 # Fase 5: tekst meten
 
-De renderer meet tekst met:
+De [renderer](@) meet tekst met:
 
 - actief font;
 - actieve font-size;
@@ -2583,7 +2583,7 @@ De renderer meet tekst met:
 
 Tekstmeting moet deterministic zijn binnen dezelfde omgeving.
 
-De renderer mag ligatures standaard uitschakelen om voorspelbare meting te krijgen.
+De [renderer](@) mag ligatures standaard uitschakelen om voorspelbare meting te krijgen.
 
 Fallbackfonts moeten expliciet in de configuratie kunnen worden opgenomen.
 
@@ -2595,13 +2595,13 @@ Modifiers worden vertaald naar abstracte glyphgroepen.
 
 Voorbeelden:
 
-| VSA   | Renderbetekenis                    |
-| ----- | ---------------------------------- |
-| `/`   | bovenglyph voor stijgende beweging |
-| `\`   | bovenglyph voor dalende beweging   |
-| `///` | één samengestelde EHM-glyph        |
-| `_`   | onderglyph / lengte-indicatie      |
-| `&`   | alignmentrelatie binnen glyphgroep |
+| [VSA](@) | Renderbetekenis                    |
+| -------- | ---------------------------------- |
+| `/`      | bovenglyph voor stijgende beweging |
+| `\`      | bovenglyph voor dalende beweging   |
+| `///`    | één samengestelde EHM-glyph        |
+| `_`      | onderglyph / lengte-indicatie      |
+| `&`      | alignmentrelatie binnen glyphgroep |
 
 Alignment-markers creëren standaard geen zware verbindingslijn.
 
@@ -2611,25 +2611,25 @@ Defaultinterpretatie:
 & = compacte gekoppelde glyphgroep
 ```
 
-Gekoppelde glyphs blijven afzonderlijk herkenbaar.
+Gekoppelde [glyphs](@) blijven afzonderlijk herkenbaar.
 
 ---
 
 # Fase 7: minimale breedtes bepalen
 
-De minimale breedte van een muzikale positie is:
+De minimale breedte van een [muzikale positie](@) is:
 
 ```text
 max(tekstdeelbreedte, glyphbreedte + marge)
 ```
 
-De minimale breedte van een zangelement is de som van de benodigde posities.
+De minimale breedte van een [zangelement](@) is de som van de benodigde posities.
 
 Gevolgen:
 
 - tekst wordt niet samengedrukt;
-- glyphs overlappen niet;
-- brede glyphstructuren kunnen een zangelement breder maken dan de tekst;
+- [glyphs](@) overlappen niet;
+- brede glyphstructuren kunnen een [zangelement](@) breder maken dan de tekst;
 - wrapping gebeurt tussen render-units als de unit niet meer past.
 
 ---
@@ -2647,30 +2647,30 @@ Glyphs worden geplaatst ten opzichte van anchors.
 
 Minimale anchors:
 
-| Anchor          | Betekenis                               |
-| --------------- | --------------------------------------- |
-| baseline        | lijn waarop tekst rust                  |
-| text-top        | bovenkant tekst-box                     |
-| text-bottom     | onderkant tekst-box                     |
-| position-center | horizontaal midden van muzikale positie |
-| unit-left       | linkerrand render-unit                  |
-| unit-right      | rechterrand render-unit                 |
+| Anchor          | Betekenis                                    |
+| --------------- | -------------------------------------------- |
+| baseline        | lijn waarop tekst rust                       |
+| text-top        | bovenkant tekst-box                          |
+| text-bottom     | onderkant tekst-box                          |
+| position-center | horizontaal midden van [muzikale positie](@) |
+| unit-left       | linkerrand render-unit                       |
+| unit-right      | rechterrand render-unit                      |
 
 ---
 
 # Fase 9: collisiondetectie
 
-Collisiondetectie controleert dat tekst, glyphs en units elkaar niet visueel hinderen.
+Collisiondetectie controleert dat tekst, [glyphs](@) en units elkaar niet visueel hinderen.
 
 Verboden overlap:
 
-- glyph met glyph;
-- glyph met tekst;
-- glyph met pitchmarker;
+- [glyph](@) met [glyph](@);
+- [glyph](@) met tekst;
+- [glyph](@) met pitchmarker;
 - aangrenzende render-units;
-- glyphs tussen regels.
+- [glyphs](@) tussen regels.
 
-Als collision dreigt, gebruikt de renderer deze volgorde:
+Als collision dreigt, gebruikt de [renderer](@) deze volgorde:
 
 ```text
 1. compacte glyphmetriek toepassen
@@ -2699,7 +2699,7 @@ Forced breaks winnen altijd van automatische layout.
 
 Non-breaking groups worden niet intern gesplitst.
 
-Als een non-breaking group breder is dan de maximale regelbreedte, gebruikt de renderer overflow fallback.
+Als een non-breaking group breder is dan de maximale regelbreedte, gebruikt de [renderer](@) overflow fallback.
 
 ---
 
@@ -2724,13 +2724,13 @@ Niet uitrekken:
 - glyphgroepen;
 - pitchmarkers;
 - interne glyphspacing;
-- tekst binnen zangelementen.
+- tekst binnen [zangelementen](@).
 
 ---
 
 # Fase 12: SVG-DOM genereren
 
-De renderer genereert SVG volgens `vsa-svg-dom-structure.md`.
+De [renderer](@) genereert SVG volgens `vsa-svg-dom-structure.md`.
 
 Minimaal:
 
@@ -2752,9 +2752,9 @@ Glyphs krijgen semantische CSS-klassen.
 
 ---
 
-# Renderer diagnostics
+# Renderer [diagnostics](@)
 
-De renderer mag diagnostics produceren.
+De [renderer](@) mag [diagnostics](@) produceren.
 
 Voorbeelden:
 
@@ -2768,7 +2768,7 @@ Voorbeelden:
 Default:
 - overflow is warning;
 - configfouten zijn error;
-- unsupported glyph is error of warning afhankelijk van fallback.
+- unsupported [glyph](@) is error of warning afhankelijk van fallback.
 
 ---
 
@@ -2802,7 +2802,7 @@ Nog nader uit te werken:
 
 ## Bron: `docs/spec/vsa-svg-dom-structure.md`
 
-# VSA SVG DOM Structure Specification (Draft 1)
+# [VSA](@) SVG DOM Structure Specification (Draft 1)
 
 ## Doel
 
@@ -2867,7 +2867,7 @@ Alle inhoud staat binnen:
 <g class="vsa-score">
 ```
 
-Deze groep vertegenwoordigt één gerenderd VSA-document of VSA-blok.
+Deze groep vertegenwoordigt één gerenderd VSA-document of [VSA-blok](@).
 
 ---
 
@@ -2906,7 +2906,7 @@ Mogelijke unittypes:
 | Type                | Betekenis                     |
 | ------------------- | ----------------------------- |
 | `text`              | vrije tekst                   |
-| `scope`             | zangelement                   |
+| `scope`             | [zangelement](@)              |
 | `pitch-marker`      | pitchmarker                   |
 | `wrap-token`        | niet-zichtbare wrapinstructie |
 | `nonbreaking-group` | non-breaking group            |
@@ -2921,7 +2921,7 @@ Tekst wordt gerenderd met:
 <text class="vsa-text">...</text>
 ```
 
-Voor zangelementen kan de gezongen tekst apart worden geclassificeerd:
+Voor [zangelementen](@) kan de gezongen tekst apart worden geclassificeerd:
 
 ```xml
 <text class="vsa-sung-text">...</text>
@@ -2950,13 +2950,13 @@ Specifiek:
 <g class="vsa-lower-glyphs">
 ```
 
-Gekoppelde glyphs via `&` staan binnen één glyphgroep.
+Gekoppelde [glyphs](@) via `&` staan binnen één glyphgroep.
 
 ---
 
-# Individual glyphs
+# Individual [glyphs](@)
 
-Elke glyph krijgt een semantische klasse.
+Elke [glyph](@) krijgt een semantische klasse.
 
 Voorbeelden:
 
@@ -3066,14 +3066,14 @@ vsa-glyph-1-3-2
 
 De structuur moet geschikt blijven voor:
 
-- hover diagnostics;
+- hover [diagnostics](@);
 - source mapping;
 - editorselectie;
 - synced playback;
 - click-to-source;
 - debug overlays.
 
-Daarom mogen renderers data-attributen toevoegen zolang ze geen bestaande output breken.
+Daarom mogen [renderers](@) data-attributen toevoegen zolang ze geen bestaande output breken.
 
 ---
 
@@ -3093,7 +3093,7 @@ Nog nader uit te werken:
 
 ## Bron: `docs/spec/vsa-rendering-config-model.md`
 
-# VSA Rendering Configuration Model (Draft 1)
+# [VSA](@) Rendering Configuration Model (Draft 1)
 
 ## Doel
 
@@ -3130,7 +3130,7 @@ Latere lagen overschrijven eerdere lagen.
 
 # Ingebouwde defaults
 
-De renderer bevat ingebouwde defaults voor:
+De [renderer](@) bevat ingebouwde defaults voor:
 
 - font;
 - font-size;
@@ -3261,7 +3261,7 @@ Voor rendering wordt de effectieve config gevalideerd.
 Ongeldig:
 
 - negatieve afstanden;
-- nulbreedte glyphs;
+- nulbreedte [glyphs](@);
 - onbekende alignmentwaarden;
 - lege fontnaam;
 - lege kleurwaarde;
@@ -3333,7 +3333,7 @@ Wraptokens en toekomstige layouttokens moeten:
 - uniek zijn;
 - niet ambigu overlappen;
 - bestaande VSA-syntax niet breken;
-- vóór parser/rendering gevalideerd worden.
+- vóór [parser](@)/rendering gevalideerd worden.
 
 Ongeldig:
 
@@ -3348,7 +3348,7 @@ Omdat `[:]` al een pitchmarker is.
 
 # Rendererdiagnostics
 
-Configvalidatie produceert diagnostics.
+Configvalidatie produceert [diagnostics](@).
 
 Voorbeelden:
 
@@ -3411,13 +3411,13 @@ Nog nader uit te werken:
 
 ## Bron: `docs/spec/vsa-height-markers.md`
 
-# VSA hoogte-markeringen
+# [VSA](@) [hoogte-markeringen](@)
 
 Status: ontwerpbesluit voor opname in de VSA-specificatie.
 
 ## Begrip
 
-Een hoogte-markering is een positionele markering in een `vsa-notatie`blok.
+Een [hoogte-markering](@) is een positionele markering in een `vsa-notatie`blok.
 
 Voorbeelden:
 
@@ -3432,7 +3432,7 @@ De exacte syntaxis van de markering wordt door de VSA-taalspecificatie bepaald.
 
 ## Aantal markeringen
 
-Binnen één `vsa-notatie`blok mogen meerdere hoogte-markeringen voorkomen.
+Binnen één `vsa-notatie`blok mogen meerdere [hoogte-markeringen](@) voorkomen.
 
 Voorbeeld:
 
@@ -3446,7 +3446,7 @@ Dit is syntactisch geldig.
 
 ## Positie ten opzichte van tekst
 
-Er is geen syntactisch voorschrift over de positie van hoogte-markeringen ten opzichte van gezongen tekst.
+Er is geen syntactisch voorschrift over de positie van [hoogte-markeringen](@) ten opzichte van gezongen tekst.
 
 Daarom zijn onder meer geldig:
 
@@ -3476,15 +3476,15 @@ Heer, [:] ontferm [/:] U [\:]
 
 Tekst mag dus voorkomen:
 
-- vóór de eerste hoogte-markering;
-- tussen hoogte-markeringen;
-- na de laatste hoogte-markering.
+- vóór de eerste [hoogte-markering](@);
+- tussen [hoogte-markeringen](@);
+- na de laatste [hoogte-markering](@).
 
 ## Semantiek
 
-De eerste hoogte-markering in een `vsa-notatie`blok geeft de beginhoogte aan.
+De eerste [hoogte-markering](@) in een `vsa-notatie`blok geeft de beginhoogte aan.
 
-Elke latere hoogte-markering geeft de zanghoogte aan waar de zang op die positie moet zitten.
+Elke latere [hoogte-markering](@) geeft de zanghoogte aan waar de zang op die positie moet zitten.
 
 Hoogte-markeringen zijn daarmee gewone positionele semantische nodes in de documentstroom, met één aanvullende regel:
 
@@ -3495,13 +3495,13 @@ latere hoogte-markering = lokale hoogte op die positie
 
 ## Rendering
 
-Voor SVG-rendering worden alle hoogte-markeringen op dezelfde manier behandeld.
+Voor SVG-rendering worden alle [hoogte-markeringen](@) op dezelfde manier behandeld.
 
-De renderer maakt dus geen visueel onderscheid tussen:
+De [renderer](@) maakt dus geen visueel onderscheid tussen:
 
-- eerste hoogte-markering;
-- latere hoogte-markeringen;
-- eventueel laatste hoogte-markering.
+- eerste [hoogte-markering](@);
+- latere [hoogte-markeringen](@);
+- eventueel laatste [hoogte-markering](@).
 
 Rendering is positioneel:
 
@@ -3511,16 +3511,16 @@ hoogte-markering in bron → hoogte-marker-glyph op die renderpositie
 
 ## Validatie
 
-De validator mag semantische controles uitvoeren op hoogte-markeringen, maar mag niet eisen dat:
+De [validator](@) mag semantische controles uitvoeren op [hoogte-markeringen](@), maar mag niet eisen dat:
 
-- de eerste hoogte-markering helemaal aan het begin staat;
-- de laatste hoogte-markering helemaal aan het eind staat;
-- er geen tekst vóór de eerste hoogte-markering staat;
-- er geen tekst na de laatste hoogte-markering staat.
+- de eerste [hoogte-markering](@) helemaal aan het begin staat;
+- de laatste [hoogte-markering](@) helemaal aan het eind staat;
+- er geen tekst vóór de eerste [hoogte-markering](@) staat;
+- er geen tekst na de laatste [hoogte-markering](@) staat.
 
-Wel kan de validator controleren:
+Wel kan de [validator](@) controleren:
 
-- of hoogte-markeringen syntactisch geldig zijn;
+- of [hoogte-markeringen](@) syntactisch geldig zijn;
 - of de eerste markering als beginhoogte geïnterpreteerd kan worden;
 - of latere markeringen betekenisvol zijn binnen de gekozen toon/semantiek;
 - of een expliciete eindmarkering overeenkomt met de berekende eindtoon, zodra eindtooncontrole is gespecificeerd.
@@ -3533,7 +3533,7 @@ Een eindmarkering `[:]` is niet leeg in semantische zin: zij betekent neutrale h
 
 ### Parser
 
-De parser moet hoogte-markeringen representeren als gewone nodes in de documentstroom.
+De [parser](@) moet [hoogte-markeringen](@) representeren als gewone nodes in de documentstroom.
 
 Niet gewenst:
 
@@ -3551,7 +3551,7 @@ of equivalent.
 
 ### Validator
 
-De validator moet hoogte-markeringen verzamelen uit de documentstroom.
+De [validator](@) moet [hoogte-markeringen](@) verzamelen uit de documentstroom.
 
 Semantiek:
 
@@ -3563,7 +3563,7 @@ local_heights = height_markers[1:]
 
 ### SVG-renderer
 
-De renderer behandelt elke hoogte-markering hetzelfde.
+De [renderer](@) behandelt elke [hoogte-markering](@) hetzelfde.
 
 Daarom hoort rendering niet afhankelijk te zijn van:
 
@@ -3573,9 +3573,9 @@ Daarom hoort rendering niet afhankelijk te zijn van:
 
 ### MusicXML
 
-Voor toekomstige MusicXML-export is waarschijnlijk vooral de eerste hoogte-markering relevant als startinformatie.
+Voor toekomstige MusicXML-export is waarschijnlijk vooral de eerste [hoogte-markering](@) relevant als startinformatie.
 
-Latere hoogte-markeringen kunnen later worden gebruikt voor:
+Latere [hoogte-markeringen](@) kunnen later worden gebruikt voor:
 
 - controlepunten;
 - pitch hints;

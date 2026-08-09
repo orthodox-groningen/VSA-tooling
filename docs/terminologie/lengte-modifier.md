@@ -9,6 +9,8 @@ glossaryAlias: Length modifier
 formPhrases:
   - lengte-modifier
   - lengte-modifiers
+  - lengte modifier
+  - lengte modifiers
   - length modifier
   - length modifiers
 ---

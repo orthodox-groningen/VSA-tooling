@@ -8,6 +8,8 @@ glossaryAlias: Ernstniveau
 formPhrases:
   - severity
   - severities
+  - severity level
+  - severity levels
   - ernstniveau
   - ernstniveaus
 ---

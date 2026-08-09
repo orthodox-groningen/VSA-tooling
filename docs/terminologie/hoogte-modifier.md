@@ -9,6 +9,8 @@ glossaryAlias: Height modifier
 formPhrases:
   - hoogte-modifier
   - hoogte-modifiers
+  - hoogte modifier
+  - hoogte modifiers
   - height modifier
   - height modifiers
 ---

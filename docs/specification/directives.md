@@ -1,6 +1,6 @@
 # Directives en document-samenstelling
 
-Dit document consolideert de specificaties voor control tokens, renderer directives, comments, includes en samengestelde VSA-documenten.
+Dit document consolideert de specificaties voor [control tokens](@), [renderer directives](@), comments, includes en samengestelde VSA-documenten.
 
 Deze onderdelen zijn syntactische of structurele uitbreidingen rond de VSA-kernnotatie.
 
@@ -16,8 +16,8 @@ Deze onderdelen zijn syntactische of structurele uitbreidingen rond de VSA-kernn
 Maak onderscheid tussen:
 
 1. gewone tekst
-2. hoogte-markeringen
-3. renderer-directives
+2. [hoogte-markeringen](@)
+3. [renderer-directives](@)
 
 ## Hoogte-markering
 
@@ -45,7 +45,7 @@ Deze hebben uitsluitend betrekking op toonhoogte.
 [*?]
 ```
 
-Deze zijn geen hoogte-markeringen.
+Deze zijn geen [hoogte-markeringen](@).
 
 ## Semantiek
 
@@ -108,7 +108,7 @@ Renderers bepalen zelf hoe de abstracte betekenis wordt uitgewerkt.
 
 ## Bron: `docs/spec/include-vsa.md`
 
-# `@include-vsa` — VSA inline includes
+# `@include-vsa` — [VSA](@) inline includes
 
 Status: **geïmplementeerd** (`id=` / `lokaal=` / **`zoek=`**).
 
@@ -207,7 +207,7 @@ Binnen een `::: vsa-notatie` blok mag HTML-commentaar voorkomen:
 
 ## Bron: `docs/spec-vsa-document-samenstellen.md`
 
-# VSA Document Samenstellen — specificatie
+# [VSA](@) Document Samenstellen — specificatie
 
 ## Doel
 
@@ -225,7 +225,7 @@ Er is geen aparte print-pipeline; één HTML-bestand dient beide doelen.
 
 Basis: Markdown met GFM-extensies (tabellen, doorhalen), en uitgebreid met de volgende directives.
 
-### VSA-blok (bestaand)
+### [VSA-blok](@) (bestaand)
 
     ::: vsa-notatie
     [VSA-inhoud]
@@ -363,7 +363,7 @@ De verwerker lost dit van buiten naar binnen op.
   aan een paginabreuk in het hoofdbestand
 - Blok-directives (`web-only`, `print-only`, `keep-together`) in included
   bestanden werken identiek aan die in het hoofdbestand
-- VSA-blokken in included bestanden worden verwerkt als onderdeel
+- [VSA-blokken](@) in included bestanden worden verwerkt als onderdeel
   van het uiteindelijke document; elk blok krijgt een unieke SVG-bestandsnaam
 
 **Voorbeeld:**
@@ -386,7 +386,7 @@ De verwerking loopt via de bestaande [`vsa build-markdown`](../reference/cli/bui
 1. **Include-resolutie** — recursief, vóór alle andere verwerking
 2. **Paginabreuk-omzetting** — `:::pagebreak:::` → HTML-markering
 3. **Blok-directives** — omgezet naar Hugo shortcodes
-4. **VSA-rendering** — ongewijzigd; VSA-blokken (ook uit included `.vsa`-bestanden)
+4. **VSA-rendering** — ongewijzigd; [VSA-blokken](@) (ook uit included `.vsa`-bestanden)
    worden omgezet naar SVG
 
 Hugo verwerkt daarna het gegenereerde Markdown-bestand tot HTML.
@@ -458,7 +458,7 @@ Conversie ([`vsa svg`](../reference/cli/svg.md), [`vsa musicxml`](../reference/c
 
 | Syntax                                        | Status                                                                                                 |
 | --------------------------------------------- | ------------------------------------------------------------------------------------------------------ |
-| `:::include "melodie.vsa"`                    | Geïmplementeerd (SVG via VSA-blok)                                                                     |
+| `:::include "melodie.vsa"`                    | Geïmplementeerd (SVG via [VSA-blok](@))                                                                |
 | `:::coria "melodie.vsa"`                      | Geïmplementeerd                                                                                        |
 | `:::include svg\|coria\|mxl "…"`              | Geïmplementeerd; zie demo `export-demo.md`                                                             |
 | `:::include svg id:…` / `lokaal:…` / `bron:…` | Geïmplementeerd (fase 3); zie demo `antifonen-hemelum.md`                                              |

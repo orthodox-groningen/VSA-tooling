@@ -97,8 +97,8 @@
             
   
   <strong>Preview</strong>
-   — branch <code>docs/walkthrough-examples</code>
-  , gebouwd 2026-08-09 16:17 CEST.
+   — branch <code>docs/termrefs-body</code>
+  , gebouwd 2026-08-09 16:38 CEST.
   <a href="https://orthodox-groningen.github.io/VSA-tooling/">Live documentatie (main)</a>.
   
 
@@ -3435,9 +3435,9 @@
 
 
 <h1 id="rendering-en-export">Rendering en export<a class="headerlink" href="#rendering-en-export" title="Permanent link">&para;</a></h1>
-<p>Dit document consolideert het rendering- en exportcontract voor VSA.</p>
+<p>Dit document consolideert het rendering- en exportcontract voor <a href="/VSA-tooling/preview/terminologie/vsa" title="Vereenvoudigde Slavische Accentnotatie: wordt gebruikt om te verwijzen naar een Formele Notatie voor het vastleggen van Zangstukken en ook naar de Toolset waarmee zulke vastleggingen kunnen worden gevalideerd en naar publiceerbare vormen worden omgezet.">VSA</a>.</p>
 <p>Het omvat de algemene renderingregels uit de hoofdspecificatie en de latere SVG-, glyph-, layout- en configuratiespecificaties.
-Onder renderen verstaan we het omzetten van gevalideerde VSA-notatie naar een ander weergave- of uitwisselingsformaat.</p>
+Onder renderen verstaan we het omzetten van gevalideerde <a href="/bron/terms/vsa-notatie" title="VSA-notatie: Het tekstgebaseerde notatieformaat waarmee liturgische zangteksten worden vastgelegd: een formeel gespecificeerde taal met scopes, modifiers en bracket-directives, parseeerbaar en valideerbaar door Vsa-tooling.">VSA-notatie</a> naar een ander weergave- of uitwisselingsformaat.</p>
 <p>Deze specificatie behandelt twee doelen:</p>
 <ol>
 <li><strong>SVG</strong>: visuele weergave van tekst met VSA-glyphs boven en onder de tekst.</li>
@@ -3445,9 +3445,9 @@ Onder renderen verstaan we het omzetten van gevalideerde VSA-notatie naar een an
 </ol>
 <h3 id="svg-rendering">SVG-rendering<a class="headerlink" href="#svg-rendering" title="Permanent link">&para;</a></h3>
 <h4 id="algemeen-model">Algemeen model<a class="headerlink" href="#algemeen-model" title="Permanent link">&para;</a></h4>
-<p>Een zangstuk wordt visueel in zijn geheel gerenderd naar SVG.</p>
+<p>Een <a href="/bron/terms/zangstuk" title="Zangstuk: Een liturgisch-muzikaal geheel met een stabiele <code>zangstuk-id</code>, waaronder nul of meer Varianten bestaan.">zangstuk</a> wordt visueel in zijn geheel gerenderd naar SVG.</p>
 <p>De invoer wordt behandeld als Unicode NFC. Dit maakt gebruik mogelijk voor teksten in onder meer Nederlands, Duits, Engels, Russisch, Grieks en Roemeens.</p>
-<p>Een zangelement-scope wordt gerenderd op een grid met <code>N</code> kolommen en drie rijen:</p>
+<p>Een <a href="/VSA-tooling/preview/terminologie/vsa-scope" title="VSA-scope: een tekstfragment dat met <code>{</code> begint, met <code>}</code> eindigt, geen whitespace binnen de accolades bevat en door de Parser kan worden opgesplitst in optionele Hoogte-modifier, verplicht zangelement en optionele Lengte-modifier.">zangelement-scope</a> wordt gerenderd op een grid met <code>N</code> kolommen en drie rijen:</p>
 <table>
 <thead>
 <tr>
@@ -3462,7 +3462,7 @@ Onder renderen verstaan we het omzetten van gevalideerde VSA-notatie naar een an
 </tr>
 <tr>
 <td>Middelste rij</td>
-<td>zangelement</td>
+<td><a href="/VSA-tooling/preview/terminologie/zangelement" title="Zangelement: het verplichte tekstfragment binnen een VSA-scope waaraan optionele Hoogte-modifiers en Lengte-modifiers hangen; de gezongen lettergreep of tekst die bij de Muzikale Posities hoort.">zangelement</a></td>
 </tr>
 <tr>
 <td>Onderste rij</td>
@@ -3470,23 +3470,23 @@ Onder renderen verstaan we het omzetten van gevalideerde VSA-notatie naar een an
 </tr>
 </tbody>
 </table>
-<p>Elke kolom representeert één muzikale positie.</p>
-<p>Implementaties mogen daarnaast een lineair overlaymodel gebruiken waarbij tekst links wordt uitgelijnd en muzikale posities progressief naar rechts worden geplaatst, overeenkomstig historische Liturgikon-praktijken.</p>
+<p>Elke kolom representeert één <a href="/VSA-tooling/preview/terminologie/muzikale-positie" title="Muzikale positie: de kleinste muzikale eenheid binnen VSA-notatie: één relatieve toonhoogtebeweging (één EHM), één duur (één ELM) en een koppeling aan één zangelement in een VSA-scope.">muzikale positie</a>.</p>
+<p>Implementaties mogen daarnaast een lineair overlaymodel gebruiken waarbij tekst links wordt uitgelijnd en <a href="/VSA-tooling/preview/terminologie/muzikale-positie" title="Muzikale positie: de kleinste muzikale eenheid binnen VSA-notatie: één relatieve toonhoogtebeweging (één EHM), één duur (één ELM) en een koppeling aan één zangelement in een VSA-scope.">muzikale posities</a> progressief naar rechts worden geplaatst, overeenkomstig historische Liturgikon-praktijken.</p>
 <h4 id="aantal-kolommen">Aantal kolommen<a class="headerlink" href="#aantal-kolommen" title="Permanent link">&para;</a></h4>
-<p>Het aantal muzikale posities van een modifier is gelijk aan het aantal enkelvoudige modifiers waaruit deze bestaat.</p>
+<p>Het aantal <a href="/VSA-tooling/preview/terminologie/muzikale-positie" title="Muzikale positie: de kleinste muzikale eenheid binnen VSA-notatie: één relatieve toonhoogtebeweging (één EHM), één duur (één ELM) en een koppeling aan één zangelement in een VSA-scope.">muzikale posities</a> van een <a href="/VSA-tooling/preview/terminologie/modifier" title="Modifier: een tekenreeks die binnen een VSA-scope als Hoogte-modifier voor het zangelement of als Lengte-modifier na het zangelement wordt geparseerd.">modifier</a> is gelijk aan het aantal enkelvoudige <a href="/VSA-tooling/preview/terminologie/modifier" title="Modifier: een tekenreeks die binnen een VSA-scope als Hoogte-modifier voor het zangelement of als Lengte-modifier na het zangelement wordt geparseerd.">modifiers</a> waaruit deze bestaat.</p>
 <p>Regels:</p>
 <ul>
-<li>als hoogte- en lengte-modifier beide aanwezig zijn, moeten zij evenveel posities bevatten;</li>
-<li>als slechts één modifier aanwezig is, bepaalt die modifier <code>N</code>;</li>
-<li>de ontbrekende modifier wordt aangevuld met <code>~</code>;</li>
-<li>als beide modifiers ontbreken, is <code>N = 1</code>.</li>
+<li>als hoogte- en <a href="/VSA-tooling/preview/terminologie/lengte-modifier" title="Lengte-modifier: een Modifier die na het zangelement in een VSA-scope staat en bestaat uit een geldige ELM of uit meerdere geldige ELMs gescheiden door <code>&amp;</code>.">lengte-modifier</a> beide aanwezig zijn, moeten zij evenveel posities bevatten;</li>
+<li>als slechts één <a href="/VSA-tooling/preview/terminologie/modifier" title="Modifier: een tekenreeks die binnen een VSA-scope als Hoogte-modifier voor het zangelement of als Lengte-modifier na het zangelement wordt geparseerd.">modifier</a> aanwezig is, bepaalt die <a href="/VSA-tooling/preview/terminologie/modifier" title="Modifier: een tekenreeks die binnen een VSA-scope als Hoogte-modifier voor het zangelement of als Lengte-modifier na het zangelement wordt geparseerd.">modifier</a> <code>N</code>;</li>
+<li>de ontbrekende <a href="/VSA-tooling/preview/terminologie/modifier" title="Modifier: een tekenreeks die binnen een VSA-scope als Hoogte-modifier voor het zangelement of als Lengte-modifier na het zangelement wordt geparseerd.">modifier</a> wordt aangevuld met <code>~</code>;</li>
+<li>als beide <a href="/VSA-tooling/preview/terminologie/modifier" title="Modifier: een tekenreeks die binnen een VSA-scope als Hoogte-modifier voor het zangelement of als Lengte-modifier na het zangelement wordt geparseerd.">modifiers</a> ontbreken, is <code>N = 1</code>.</li>
 </ul>
 <h4 id="toonhoogte-markering">Toonhoogte-markering<a class="headerlink" href="#toonhoogte-markering" title="Permanent link">&para;</a></h4>
-<p>Een toonhoogte-markering van de vorm:</p>
+<p>Een <a href="/VSA-tooling/preview/terminologie/pitch-marker" title="Pitch-marker: een Bracket-directive / Bracket-token met de vorm <code>[&lt;EHM&gt;:]</code>, waarbij <code>&lt;EHM&gt;</code> leeg is of een geldige EHM bevat.">toonhoogte-markering</a> van de vorm:</p>
 <div class="highlight"><pre><span></span><code>[&lt;hoogte-modifier&gt;:]
 </code></pre></div>
-<p>wordt gerenderd als een horizontale streep rond het verticale midden van de tekstregel, met daarboven de rendering van de opgegeven hoogte-modifier. Als geen hoogte-modifier aanwezig is, wordt alleen de horizontale streep weergegeven.</p>
-<p>Absolute toonhoogten worden niet in toonhoogte-markeringen opgenomen en worden dus ook niet als onderdeel daarvan gerenderd.</p>
+<p>wordt gerenderd als een horizontale streep rond het verticale midden van de tekstregel, met daarboven de rendering van de opgegeven <a href="/VSA-tooling/preview/terminologie/hoogte-modifier" title="Hoogte-modifier: een Modifier die voor het zangelement in een VSA-scope staat en bestaat uit een geldige EHM of uit meerdere geldige EHMs gescheiden door <code>&amp;</code>.">hoogte-modifier</a>. Als geen <a href="/VSA-tooling/preview/terminologie/hoogte-modifier" title="Hoogte-modifier: een Modifier die voor het zangelement in een VSA-scope staat en bestaat uit een geldige EHM of uit meerdere geldige EHMs gescheiden door <code>&amp;</code>.">hoogte-modifier</a> aanwezig is, wordt alleen de horizontale streep weergegeven.</p>
+<p>Absolute toonhoogten worden niet in <a href="/VSA-tooling/preview/terminologie/pitch-marker" title="Pitch-marker: een Bracket-directive / Bracket-token met de vorm <code>[&lt;EHM&gt;:]</code>, waarbij <code>&lt;EHM&gt;</code> leeg is of een geldige EHM bevat.">toonhoogte-markeringen</a> opgenomen en worden dus ook niet als onderdeel daarvan gerenderd.</p>
 <h4 id="kolombreedtes-en-rijhoogtes">Kolombreedtes en rijhoogtes<a class="headerlink" href="#kolombreedtes-en-rijhoogtes" title="Permanent link">&para;</a></h4>
 <p>Voor elke kolom <code>i</code> wordt een minimale kolombreedte <code>W[i]</code> bepaald.</p>
 <p><code>W[i]</code> is de grootste van:</p>
@@ -3494,12 +3494,12 @@ Onder renderen verstaan we het omzetten van gevalideerde VSA-notatie naar een an
 <li>de minimale breedte die nodig is om <code>EHM[i]</code> volledig te renderen;</li>
 <li>de minimale breedte die nodig is om <code>ELM[i]</code> volledig te renderen.</li>
 </ul>
-<p>Laat <code>TB</code> de minimale tekstbreedte van het zangelement zijn.</p>
+<p>Laat <code>TB</code> de minimale tekstbreedte van het <a href="/VSA-tooling/preview/terminologie/zangelement" title="Zangelement: het verplichte tekstfragment binnen een VSA-scope waaraan optionele Hoogte-modifiers en Lengte-modifiers hangen; de gezongen lettergreep of tekst die bij de Muzikale Posities hoort.">zangelement</a> zijn.</p>
 <p>De totale gridbreedte is:</p>
 <div class="highlight"><pre><span></span><code>W = max(TB, Σ W[i])
 </code></pre></div>
 <p>Als <code>TB &gt; Σ W[i]</code>, worden de kolommen proportioneel verbreed totdat de totale breedte gelijk is aan <code>TB</code>.</p>
-<p>Als <code>TB &lt; Σ W[i]</code>, behoudt het zangelement standaard zijn normale typografische breedte en wordt het gecentreerd in de middelste rij. Als daardoor storende witruimte ontstaat, wordt het zangelement links uitgelijnd en de resterende ruimte rechts opgevuld met een horizontale lijn overeenkomstig de Liturgikon-voorbeelden.</p>
+<p>Als <code>TB &lt; Σ W[i]</code>, behoudt het <a href="/VSA-tooling/preview/terminologie/zangelement" title="Zangelement: het verplichte tekstfragment binnen een VSA-scope waaraan optionele Hoogte-modifiers en Lengte-modifiers hangen; de gezongen lettergreep of tekst die bij de Muzikale Posities hoort.">zangelement</a> standaard zijn normale typografische breedte en wordt het gecentreerd in de middelste rij. Als daardoor storende witruimte ontstaat, wordt het <a href="/VSA-tooling/preview/terminologie/zangelement" title="Zangelement: het verplichte tekstfragment binnen een VSA-scope waaraan optionele Hoogte-modifiers en Lengte-modifiers hangen; de gezongen lettergreep of tekst die bij de Muzikale Posities hoort.">zangelement</a> links uitgelijnd en de resterende ruimte rechts opgevuld met een horizontale lijn overeenkomstig de Liturgikon-voorbeelden.</p>
 <h4 id="render-eenheid">Render-eenheid<a class="headerlink" href="#render-eenheid" title="Permanent link">&para;</a></h4>
 <p>Alle glyph-afmetingen worden uitgedrukt in een basiseenheid <code>U</code>.</p>
 <p><code>U</code> is gelijk aan de hoogte van een EHM-streep.</p>
@@ -3529,7 +3529,7 @@ Onder renderen verstaan we het omzetten van gevalideerde VSA-notatie naar een an
 </tr>
 </tbody>
 </table>
-<h4 id="rendering-van-ehms">Rendering van EHMs<a class="headerlink" href="#rendering-van-ehms" title="Permanent link">&para;</a></h4>
+<h4 id="rendering-van-ehms">Rendering van <a href="/VSA-tooling/preview/terminologie/enkelvoudige-hoogte-modifier" title="Enkelvoudige hoogte-modifier: een Hoogte-modifier die uit precies één geldige EHM bestaat: een basis-hoogtebeweging, eventueel voorafgegaan door een halftoon-prefix.">EHMs</a><a class="headerlink" href="#rendering-van-ehms" title="Permanent link">&para;</a></h4>
 <p>Een schuine streep omhoog wordt gerenderd als een lijnsegment met:</p>
 <table>
 <thead>
@@ -3577,7 +3577,7 @@ Onder renderen verstaan we het omzetten van gevalideerde VSA-notatie naar een an
 </tbody>
 </table>
 <p>Gestapelde strepen worden verticaal boven elkaar geplaatst. De verticale afstand tussen twee gestapelde strepen is gelijk aan <code>U</code>.</p>
-<h4 id="rendering-van-elms">Rendering van ELMs<a class="headerlink" href="#rendering-van-elms" title="Permanent link">&para;</a></h4>
+<h4 id="rendering-van-elms">Rendering van <a href="/VSA-tooling/preview/terminologie/enkelvoudige-lengte-modifier" title="Enkelvoudige lengte-modifier: een Lengte-modifier die uit precies één geldige ELM bestaat en daarmee precies een duurpositie representeert.">ELMs</a><a class="headerlink" href="#rendering-van-elms" title="Permanent link">&para;</a></h4>
 <p>Een underscore (<code>_</code>) wordt gerenderd als een horizontale lijn.</p>
 <p>De lijn:</p>
 <ul>
@@ -3595,7 +3595,7 @@ Zie <code>src/vsa/musicxml_renderer.py</code>, <code>src/vsa/pitch_resolver.py</
 <code>src/vsa/duration_model.py</code>.</p>
 </blockquote>
 <h4 id="doel">Doel<a class="headerlink" href="#doel" title="Permanent link">&para;</a></h4>
-<p>Export naar MusicXML is bedoeld als een lossless of near-lossless vertaling van de muzikale structuur van VSA naar een gestandaardiseerd muziekuitwisselingsformaat.</p>
+<p>Export naar MusicXML is bedoeld als een lossless of near-lossless vertaling van de muzikale structuur van <a href="/VSA-tooling/preview/terminologie/vsa" title="Vereenvoudigde Slavische Accentnotatie: wordt gebruikt om te verwijzen naar een Formele Notatie voor het vastleggen van Zangstukken en ook naar de Toolset waarmee zulke vastleggingen kunnen worden gevalideerd en naar publiceerbare vormen worden omgezet.">VSA</a> naar een gestandaardiseerd muziekuitwisselingsformaat.</p>
 <p>MusicXML representeert hierbij:</p>
 <ul>
 <li>melodie;</li>
@@ -3604,7 +3604,7 @@ Zie <code>src/vsa/musicxml_renderer.py</code>, <code>src/vsa/pitch_resolver.py</
 <li>melismatische tekstverdeling.</li>
 </ul>
 <h4 id="uitgangspunten">Uitgangspunten<a class="headerlink" href="#uitgangspunten" title="Permanent link">&para;</a></h4>
-<p>MusicXML-export gebruikt dezelfde defaults als de Hugo blokmetadata in <a href="../syntax/#hugo-markdown-bloksyntax">Syntax</a>, tenzij het blok expliciet andere waarden opgeeft.</p>
+<p>MusicXML-export gebruikt dezelfde defaults als de Hugo <a href="/VSA-tooling/preview/terminologie/metadata" title="Metadata: gegevens die als gestructureerde blokparameters of YAML-frontmatter bij VSA-bronmateriaal staan, verwerking of identificatie sturen en zelf niet tot de zichtbare VSA-notatie behoren.">blokmetadata</a> in <a href="../syntax/#hugo-markdown-bloksyntax">Syntax</a>, tenzij het blok expliciet andere waarden opgeeft.</p>
 <table>
 <thead>
 <tr>
@@ -3667,9 +3667,9 @@ Zie <code>src/vsa/musicxml_renderer.py</code>, <code>src/vsa/pitch_resolver.py</
 </tr>
 </tbody>
 </table>
-<p>Maatsoort wordt niet uit VSA afgeleid. Als een MusicXML-export maatsoort nodig heeft, moet die als aanvullende blokparameter worden opgegeven, bijvoorbeeld <code>meter="4/4"</code>.</p>
+<p>Maatsoort wordt niet uit <a href="/VSA-tooling/preview/terminologie/vsa" title="Vereenvoudigde Slavische Accentnotatie: wordt gebruikt om te verwijzen naar een Formele Notatie voor het vastleggen van Zangstukken en ook naar de Toolset waarmee zulke vastleggingen kunnen worden gevalideerd en naar publiceerbare vormen worden omgezet.">VSA</a> afgeleid. Als een MusicXML-export maatsoort nodig heeft, moet die als aanvullende blokparameter worden opgegeven, bijvoorbeeld <code>meter="4/4"</code>.</p>
 <h4 id="absolute-toonhoogtebepaling">Absolute toonhoogtebepaling<a class="headerlink" href="#absolute-toonhoogtebepaling" title="Permanent link">&para;</a></h4>
-<p>De absolute toonhoogte voor MusicXML-export wordt bepaald vanuit de Hugo blokmetadata, niet vanuit toonhoogte-markeringen.</p>
+<p>De absolute toonhoogte voor MusicXML-export wordt bepaald vanuit de Hugo <a href="/VSA-tooling/preview/terminologie/metadata" title="Metadata: gegevens die als gestructureerde blokparameters of YAML-frontmatter bij VSA-bronmateriaal staan, verwerking of identificatie sturen en zelf niet tot de zichtbare VSA-notatie behoren.">blokmetadata</a>, niet vanuit <a href="/VSA-tooling/preview/terminologie/pitch-marker" title="Pitch-marker: een Bracket-directive / Bracket-token met de vorm <code>[&lt;EHM&gt;:]</code>, waarbij <code>&lt;EHM&gt;</code> leeg is of een geldige EHM bevat.">toonhoogte-markeringen</a>.</p>
 <p>Voorbeeld:</p>
 <div class="highlight"><pre><span></span><code>::: vsa-notatie
 do=&quot;C4&quot;
@@ -3680,23 +3680,23 @@ mode=&quot;major&quot;
 <ol>
 <li>de <code>do</code>-parameter lezen;</li>
 <li>de <code>mode</code>-parameter lezen;</li>
-<li>eventuele beginmarkering toepassen als relatieve hoogte-modifier;</li>
-<li>het resultaat gebruiken als actuele toonhoogte voor de daaropvolgende muzikale posities.</li>
+<li>eventuele beginmarkering toepassen als relatieve <a href="/VSA-tooling/preview/terminologie/hoogte-modifier" title="Hoogte-modifier: een Modifier die voor het zangelement in een VSA-scope staat en bestaat uit een geldige EHM of uit meerdere geldige EHMs gescheiden door <code>&amp;</code>.">hoogte-modifier</a>;</li>
+<li>het resultaat gebruiken als actuele toonhoogte voor de daaropvolgende <a href="/VSA-tooling/preview/terminologie/muzikale-positie" title="Muzikale positie: de kleinste muzikale eenheid binnen VSA-notatie: één relatieve toonhoogtebeweging (één EHM), één duur (één ELM) en een koppeling aan één zangelement in een VSA-scope.">muzikale posities</a>.</li>
 </ol>
 <p>Als geen <code>do</code>-parameter aanwezig is, wordt de default <code>F4</code> gebruikt.</p>
 <h4 id="toonhoogteberekening-per-noot">Toonhoogteberekening per noot<a class="headerlink" href="#toonhoogteberekening-per-noot" title="Permanent link">&para;</a></h4>
-<p>Elke muzikale positie correspondeert met één MusicXML <code>&lt;note&gt;</code>.</p>
+<p>Elke <a href="/VSA-tooling/preview/terminologie/muzikale-positie" title="Muzikale positie: de kleinste muzikale eenheid binnen VSA-notatie: één relatieve toonhoogtebeweging (één EHM), één duur (één ELM) en een koppeling aan één zangelement in een VSA-scope.">muzikale positie</a> correspondeert met één MusicXML <code>&lt;note&gt;</code>.</p>
 <p>De pitch wordt cumulatief berekend:</p>
 <div class="highlight"><pre><span></span><code>starttoon + EHM1 + EHM2 + ... + EHMn
 </code></pre></div>
-<p>Daarbij worden EHMs geïnterpreteerd binnen de do-context en modus.</p>
+<p>Daarbij worden <a href="/VSA-tooling/preview/terminologie/enkelvoudige-hoogte-modifier" title="Enkelvoudige hoogte-modifier: een Hoogte-modifier die uit precies één geldige EHM bestaat: een basis-hoogtebeweging, eventueel voorafgegaan door een halftoon-prefix.">EHMs</a> geïnterpreteerd binnen de <a href="/VSA-tooling/preview/terminologie/do-context" title="Do-context: de grondtooncontext waarbinnen relatieve toonhoogtebewegingen in VSA-notatie worden geïnterpreteerd; voor MusicXML-export of afspelen vastgelegd via blok-Metadata (<code>do</code>, <code>mode</code>), niet via de zangtekst zelf.">do-context</a> en modus.</p>
 <h4 id="ritme-en-duur">Ritme en duur<a class="headerlink" href="#ritme-en-duur" title="Permanent link">&para;</a></h4>
-<p>Elke ELM binnen een lengte-modifier bepaalt de duur van een muzikale positie. Als geen lengte-modifier aanwezig is, wordt <code>~</code> gebruikt.</p>
+<p>Elke <a href="/VSA-tooling/preview/terminologie/enkelvoudige-lengte-modifier" title="Enkelvoudige lengte-modifier: een Lengte-modifier die uit precies één geldige ELM bestaat en daarmee precies een duurpositie representeert.">ELM</a> binnen een <a href="/VSA-tooling/preview/terminologie/lengte-modifier" title="Lengte-modifier: een Modifier die na het zangelement in een VSA-scope staat en bestaat uit een geldige ELM of uit meerdere geldige ELMs gescheiden door <code>&amp;</code>.">lengte-modifier</a> bepaalt de duur van een <a href="/VSA-tooling/preview/terminologie/muzikale-positie" title="Muzikale positie: de kleinste muzikale eenheid binnen VSA-notatie: één relatieve toonhoogtebeweging (één EHM), één duur (één ELM) en een koppeling aan één zangelement in een VSA-scope.">muzikale positie</a>. Als geen <a href="/VSA-tooling/preview/terminologie/lengte-modifier" title="Lengte-modifier: een Modifier die na het zangelement in een VSA-scope staat en bestaat uit een geldige ELM of uit meerdere geldige ELMs gescheiden door <code>&amp;</code>.">lengte-modifier</a> aanwezig is, wordt <code>~</code> gebruikt.</p>
 <p>Mapping naar MusicXML bij <code>duration-model="default"</code>:</p>
 <table>
 <thead>
 <tr>
-<th>ELM</th>
+<th><a href="/VSA-tooling/preview/terminologie/enkelvoudige-lengte-modifier" title="Enkelvoudige lengte-modifier: een Lengte-modifier die uit precies één geldige ELM bestaat en daarmee precies een duurpositie representeert.">ELM</a></th>
 <th>MusicXML-duur</th>
 </tr>
 </thead>
@@ -3731,9 +3731,9 @@ mode=&quot;major&quot;
 </tr>
 </tbody>
 </table>
-<p>Andere duration-modellen mogen hiervan afwijken. Als meerdere ELMs aanwezig zijn binnen één zangelement-scope, krijgt elke muzikale positie haar eigen duurwaarde.</p>
+<p>Andere duration-modellen mogen hiervan afwijken. Als meerdere <a href="/VSA-tooling/preview/terminologie/enkelvoudige-lengte-modifier" title="Enkelvoudige lengte-modifier: een Lengte-modifier die uit precies één geldige ELM bestaat en daarmee precies een duurpositie representeert.">ELMs</a> aanwezig zijn binnen één <a href="/VSA-tooling/preview/terminologie/vsa-scope" title="VSA-scope: een tekstfragment dat met <code>{</code> begint, met <code>}</code> eindigt, geen whitespace binnen de accolades bevat en door de Parser kan worden opgesplitst in optionele Hoogte-modifier, verplicht zangelement en optionele Lengte-modifier.">zangelement-scope</a>, krijgt elke <a href="/VSA-tooling/preview/terminologie/muzikale-positie" title="Muzikale positie: de kleinste muzikale eenheid binnen VSA-notatie: één relatieve toonhoogtebeweging (één EHM), één duur (één ELM) en een koppeling aan één zangelement in een VSA-scope.">muzikale positie</a> haar eigen duurwaarde.</p>
 <h4 id="melismatische-mapping">Melismatische mapping<a class="headerlink" href="#melismatische-mapping" title="Permanent link">&para;</a></h4>
-<p>Als een zangelement meerdere muzikale posities bevat, wordt dit in MusicXML weergegeven als één tekstfragment dat over meerdere noten wordt verdeeld.</p>
+<p>Als een <a href="/VSA-tooling/preview/terminologie/zangelement" title="Zangelement: het verplichte tekstfragment binnen een VSA-scope waaraan optionele Hoogte-modifiers en Lengte-modifiers hangen; de gezongen lettergreep of tekst die bij de Muzikale Posities hoort.">zangelement</a> meerdere <a href="/VSA-tooling/preview/terminologie/muzikale-positie" title="Muzikale positie: de kleinste muzikale eenheid binnen VSA-notatie: één relatieve toonhoogtebeweging (één EHM), één duur (één ELM) en een koppeling aan één zangelement in een VSA-scope.">muzikale posities</a> bevat, wordt dit in MusicXML weergegeven als één tekstfragment dat over meerdere noten wordt verdeeld.</p>
 <p>Conceptueel:</p>
 <div class="highlight"><pre><span></span><code>1 VSA-zangelement met N muzikale posities
 →
@@ -3744,10 +3744,10 @@ van het gekozen exportprofiel (<a href="#musicxml-exportprofielen">MusicXML-expo
 tekstfragment op de eerste noot van het melisma; vervolgnoten dragen geen
 aparte syllabe-tekst.</p>
 <h4 id="ongescopte-tekst-reciteertoon">Ongescopte tekst (reciteertoon)<a class="headerlink" href="#ongescopte-tekst-reciteertoon" title="Permanent link">&para;</a></h4>
-<p>Tekst buiten zangelement-scopes heeft in VSA geen eigen toonhoogte of duur. Bij
+<p>Tekst buiten <a href="/VSA-tooling/preview/terminologie/vsa-scope" title="VSA-scope: een tekstfragment dat met <code>{</code> begint, met <code>}</code> eindigt, geen whitespace binnen de accolades bevat en door de Parser kan worden opgesplitst in optionele Hoogte-modifier, verplicht zangelement en optionele Lengte-modifier.">zangelement-scopes</a> heeft in <a href="/VSA-tooling/preview/terminologie/vsa" title="Vereenvoudigde Slavische Accentnotatie: wordt gebruikt om te verwijzen naar een Formele Notatie voor het vastleggen van Zangstukken en ook naar de Toolset waarmee zulke vastleggingen kunnen worden gevalideerd en naar publiceerbare vormen worden omgezet.">VSA</a> geen eigen toonhoogte of duur. Bij
 MusicXML-export wordt zulk tekstmateriaal omgezet naar <strong>reciteertoon</strong>: noten
 op de laatst bekende toonhoogte.</p>
-<p>Parameter <code>reciting-mode</code> (in blokmetadata of YAML-frontmatter onder <code>muziek</code>):</p>
+<p>Parameter <code>reciting-mode</code> (in <a href="/VSA-tooling/preview/terminologie/metadata" title="Metadata: gegevens die als gestructureerde blokparameters of YAML-frontmatter bij VSA-bronmateriaal staan, verwerking of identificatie sturen en zelf niet tot de zichtbare VSA-notatie behoren.">blokmetadata</a> of YAML-frontmatter onder <code>muziek</code>):</p>
 <table>
 <thead>
 <tr>
@@ -3770,40 +3770,40 @@ op de laatst bekende toonhoogte.</p>
 <p>In ongescopte tekst mag een <code>-</code> woorden in lettergrepen splitsen, bijvoorbeeld
 <code>{//he}mel-se en {\aard}se</code>. Elk deel krijgt een eigen kwartnoot; de lyric
 volgt de gangbare notatie (<code>mel-</code> + <code>se</code>, met MusicXML <code>syllabic</code>
-<code>begin</code>/<code>end</code>). Dit geldt alleen voor <code>-</code> in platte tekst tussen scopes, niet
-binnen <code>{...}</code>-scopes (daar is <code>-</code> een ELM).</p>
+<code>begin</code>/<code>end</code>). Dit geldt alleen voor <code>-</code> in platte tekst tussen <a href="/VSA-tooling/preview/terminologie/vsa-scope" title="VSA-scope: een tekstfragment dat met <code>{</code> begint, met <code>}</code> eindigt, geen whitespace binnen de accolades bevat en door de Parser kan worden opgesplitst in optionele Hoogte-modifier, verplicht zangelement en optionele Lengte-modifier.">scopes</a>, niet
+binnen <code>{...}</code>-scopes (daar is <code>-</code> een <a href="/VSA-tooling/preview/terminologie/enkelvoudige-lengte-modifier" title="Enkelvoudige lengte-modifier: een Lengte-modifier die uit precies één geldige ELM bestaat en daarmee precies een duurpositie representeert.">ELM</a>).</p>
 <p>Leestekens (<code>,</code>, <code>.</code>, <code>:</code>, …) worden aan het voorafgaande woord of de
 voorafgaande noot geplakt.</p>
 <p>Barline-markeringen <code>*</code>, <code>/</code> en <code>//</code> in platte tekst sluiten de huidige maat
 af.</p>
-<h4 id="conversieregel-per-muzikale-positie">Conversieregel per muzikale positie<a class="headerlink" href="#conversieregel-per-muzikale-positie" title="Permanent link">&para;</a></h4>
-<p>Voor elke muzikale positie geldt:</p>
+<h4 id="conversieregel-per-muzikale-positie">Conversieregel per <a href="/VSA-tooling/preview/terminologie/muzikale-positie" title="Muzikale positie: de kleinste muzikale eenheid binnen VSA-notatie: één relatieve toonhoogtebeweging (één EHM), één duur (één ELM) en een koppeling aan één zangelement in een VSA-scope.">muzikale positie</a><a class="headerlink" href="#conversieregel-per-muzikale-positie" title="Permanent link">&para;</a></h4>
+<p>Voor elke <a href="/VSA-tooling/preview/terminologie/muzikale-positie" title="Muzikale positie: de kleinste muzikale eenheid binnen VSA-notatie: één relatieve toonhoogtebeweging (één EHM), één duur (één ELM) en een koppeling aan één zangelement in een VSA-scope.">muzikale positie</a> geldt:</p>
 <table>
 <thead>
 <tr>
-<th>VSA</th>
+<th><a href="/VSA-tooling/preview/terminologie/vsa" title="Vereenvoudigde Slavische Accentnotatie: wordt gebruikt om te verwijzen naar een Formele Notatie voor het vastleggen van Zangstukken en ook naar de Toolset waarmee zulke vastleggingen kunnen worden gevalideerd en naar publiceerbare vormen worden omgezet.">VSA</a></th>
 <th>MusicXML</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>muzikale positie</td>
+<td><a href="/VSA-tooling/preview/terminologie/muzikale-positie" title="Muzikale positie: de kleinste muzikale eenheid binnen VSA-notatie: één relatieve toonhoogtebeweging (één EHM), één duur (één ELM) en een koppeling aan één zangelement in een VSA-scope.">muzikale positie</a></td>
 <td>één <code>&lt;note&gt;</code></td>
 </tr>
 <tr>
-<td>EHM</td>
+<td><a href="/VSA-tooling/preview/terminologie/enkelvoudige-hoogte-modifier" title="Enkelvoudige hoogte-modifier: een Hoogte-modifier die uit precies één geldige EHM bestaat: een basis-hoogtebeweging, eventueel voorafgegaan door een halftoon-prefix.">EHM</a></td>
 <td>cumulatief berekende pitch</td>
 </tr>
 <tr>
-<td>ELM</td>
+<td><a href="/VSA-tooling/preview/terminologie/enkelvoudige-lengte-modifier" title="Enkelvoudige lengte-modifier: een Lengte-modifier die uit precies één geldige ELM bestaat en daarmee precies een duurpositie representeert.">ELM</a></td>
 <td>duration</td>
 </tr>
 <tr>
-<td>zangelement</td>
+<td><a href="/VSA-tooling/preview/terminologie/zangelement" title="Zangelement: het verplichte tekstfragment binnen een VSA-scope waaraan optionele Hoogte-modifiers en Lengte-modifiers hangen; de gezongen lettergreep of tekst die bij de Muzikale Posities hoort.">zangelement</a></td>
 <td>lyric</td>
 </tr>
 <tr>
-<td>meerdere posities binnen één zangelement</td>
+<td>meerdere posities binnen één <a href="/VSA-tooling/preview/terminologie/zangelement" title="Zangelement: het verplichte tekstfragment binnen een VSA-scope waaraan optionele Hoogte-modifiers en Lengte-modifiers hangen; de gezongen lettergreep of tekst die bij de Muzikale Posities hoort.">zangelement</a></td>
 <td>melisma</td>
 </tr>
 </tbody>
@@ -3812,7 +3812,7 @@ af.</p>
 <p>MusicXML-export moet worden geweigerd of als ongeldig gemarkeerd wanneer:</p>
 <ul>
 <li>EHM- en ELM-aantallen inconsistent zijn;</li>
-<li>een onbekende modifier voorkomt;</li>
+<li>een onbekende <a href="/VSA-tooling/preview/terminologie/modifier" title="Modifier: een tekenreeks die binnen een VSA-scope als Hoogte-modifier voor het zangelement of als Lengte-modifier na het zangelement wordt geparseerd.">modifier</a> voorkomt;</li>
 <li>geen geldige toonhoogte kan worden afgeleid;</li>
 <li>een halve ladderstap wordt gebruikt waar de modus dit niet toestaat;</li>
 <li>de implementatie geen mappingstrategie heeft voor de gekozen modus.</li>
@@ -3825,7 +3825,7 @@ af.</p>
 </ul>
 <h4 id="typografie">Typografie<a class="headerlink" href="#typografie" title="Permanent link">&para;</a></h4>
 <p>De optionele <code>typografie</code>-sectie in YAML-frontmatter (<a href="../syntax/#yaml-frontmatter-in-vsa-bestanden">YAML frontmatter in <code>.vsa</code>-bestanden</a>) of de equivalente
-blokparameters worden bij MusicXML-export <strong>alleen in het <code>engraving</code>-profiel</strong>
+<a href="/VSA-tooling/preview/terminologie/metadata" title="Metadata: gegevens die als gestructureerde blokparameters of YAML-frontmatter bij VSA-bronmateriaal staan, verwerking of identificatie sturen en zelf niet tot de zichtbare VSA-notatie behoren.">blokparameters</a> worden bij MusicXML-export <strong>alleen in het <code>engraving</code>-profiel</strong>
 (<a href="#musicxml-exportprofielen">MusicXML-exportprofielen</a>) vertaald naar <code>&lt;defaults&gt;</code>-elementen:</p>
 <table>
 <thead>
@@ -3900,7 +3900,7 @@ worden typografie-hints niet geëmitteerd (conform MuseScore-roundtrip).</p>
 <h4 id="musicxml-exportprofielen">MusicXML-exportprofielen<a class="headerlink" href="#musicxml-exportprofielen" title="Permanent link">&para;</a></h4>
 <p>MusicXML kan op verschillende manieren worden geëncodeerd terwijl dezelfde
 muzikale inhoud behouden blijft. <code>vsa-tool</code> ondersteunt twee profielen,
-selecteerbaar via <code>musicxml-profile</code> in blokmetadata, YAML-frontmatter
+selecteerbaar via <code>musicxml-profile</code> in <a href="/VSA-tooling/preview/terminologie/metadata" title="Metadata: gegevens die als gestructureerde blokparameters of YAML-frontmatter bij VSA-bronmateriaal staan, verwerking of identificatie sturen en zelf niet tot de zichtbare VSA-notatie behoren.">blokmetadata</a>, YAML-frontmatter
 (<code>muziek.musicxml-profile</code>) of CLI (<code>--musicxml-profile</code>).</p>
 <table>
 <thead>
@@ -3924,10 +3924,10 @@ selecteerbaar via <code>musicxml-profile</code> in blokmetadata, YAML-frontmatte
 </tbody>
 </table>
 <h5 id="gemeenschappelijk-gedrag">Gemeenschappelijk gedrag<a class="headerlink" href="#gemeenschappelijk-gedrag" title="Permanent link">&para;</a></h5>
-<p>Ongeacht profiel geldt pitch-resolutie, ELM→duur, reciteertoon,
+<p>Ongeacht profiel geldt pitch-resolutie, <a href="/VSA-tooling/preview/terminologie/enkelvoudige-lengte-modifier" title="Enkelvoudige lengte-modifier: een Lengte-modifier die uit precies één geldige ELM bestaat en daarmee precies een duurpositie representeert.">ELM</a>→duur, reciteertoon,
 syllabische splitsing met <code>-</code>, slur over melisma, barlines op <code>*</code>, <code>/</code>, <code>//</code> en
-formele control tokens, en conditionele tempo-markering (alleen bij expliciet
-<code>tempo</code> in metadata).</p>
+formele <a href="/VSA-tooling/preview/terminologie/control-token" title="Control-token: een Bracket-directive / Bracket-token waarvan de tokenwaarde een ondersteunde control-tokenvorm is, zoals <code>[*]</code>, <code>[/]</code>, <code>[*?]</code> of <code>[/?]</code>, en die niet als Pitch-marker / Hoogte-markering wordt geparseerd.">control tokens</a>, en conditionele tempo-markering (alleen bij expliciet
+<code>tempo</code> in <a href="/VSA-tooling/preview/terminologie/metadata" title="Metadata: gegevens die als gestructureerde blokparameters of YAML-frontmatter bij VSA-bronmateriaal staan, verwerking of identificatie sturen en zelf niet tot de zichtbare VSA-notatie behoren.">metadata</a>).</p>
 <h5 id="profiel-playback">Profiel <code>playback</code><a class="headerlink" href="#profiel-playback" title="Permanent link">&para;</a></h5>
 <p>Geoptimaliseerd voor compatibiliteit met MuseScore-roundtrip en Coria. Het
 volgt structureel het patroon van door MuseScore opgeslagen MusicXML 4.0
@@ -3978,7 +3978,7 @@ partwise-bestanden.</p>
 </tr>
 </tbody>
 </table>
-<p>MIDI-parameters (blokmetadata / <code>muziek</code>-sectie):</p>
+<p>MIDI-parameters (<a href="/VSA-tooling/preview/terminologie/metadata" title="Metadata: gegevens die als gestructureerde blokparameters of YAML-frontmatter bij VSA-bronmateriaal staan, verwerking of identificatie sturen en zelf niet tot de zichtbare VSA-notatie behoren.">blokmetadata</a> / <code>muziek</code>-sectie):</p>
 <table>
 <thead>
 <tr>
@@ -4116,14 +4116,14 @@ niet: Coria haalt het bestand server-side op.</p>
 <p><strong>Implementatiestatus:</strong> nog niet geïmplementeerd.</p>
 </blockquote>
 <p>Naast losse SVG-tekst (<a href="#svg-rendering">SVG-rendering</a>) en MusicXML voor bewerking (<a href="#musicxml-export">MusicXML-export</a>) is een
-<strong>geïntegreerde partituur-export</strong> gepland: een renderer die VSA omzet naar
+<strong>geïntegreerde partituur-export</strong> gepland: een <a href="/VSA-tooling/preview/terminologie/renderer" title="Renderer: een component die een gevalideerde AST / Syntactische Boom of daarvan afgeleid layoutmodel omzet naar concrete uitvoer, zoals SVG, JSON, Markdown, Hugo-output of MusicXML, zonder de AST semantisch te wijzigen.">renderer</a> die <a href="/VSA-tooling/preview/terminologie/vsa" title="Vereenvoudigde Slavische Accentnotatie: wordt gebruikt om te verwijzen naar een Formele Notatie voor het vastleggen van Zangstukken en ook naar de Toolset waarmee zulke vastleggingen kunnen worden gevalideerd en naar publiceerbare vormen worden omgezet.">VSA</a> omzet naar
 HTML en/of PDF waarin <strong>notenbalk en lyrics tegelijk</strong> voorkomen.</p>
 <p>Doelgroep: <strong>koorzangers</strong> die niet alleen van de notenbalk kunnen zingen en
 behoefte hebben aan de volledige VSA-visuele taal in de lyric-regel:</p>
 <ul>
-<li>hoogte-modifiers (EHM) boven tekst;</li>
-<li>lengte-modifiers (ELM) onder tekst;</li>
-<li>toonhoogte-markeringen (<code>[:]</code>, <code>[//:]</code>, …);</li>
+<li><a href="/VSA-tooling/preview/terminologie/hoogte-modifier" title="Hoogte-modifier: een Modifier die voor het zangelement in een VSA-scope staat en bestaat uit een geldige EHM of uit meerdere geldige EHMs gescheiden door <code>&amp;</code>.">hoogte-modifiers</a> (<a href="/VSA-tooling/preview/terminologie/enkelvoudige-hoogte-modifier" title="Enkelvoudige hoogte-modifier: een Hoogte-modifier die uit precies één geldige EHM bestaat: een basis-hoogtebeweging, eventueel voorafgegaan door een halftoon-prefix.">EHM</a>) boven tekst;</li>
+<li><a href="/VSA-tooling/preview/terminologie/lengte-modifier" title="Lengte-modifier: een Modifier die na het zangelement in een VSA-scope staat en bestaat uit een geldige ELM of uit meerdere geldige ELMs gescheiden door <code>&amp;</code>.">lengte-modifiers</a> (<a href="/VSA-tooling/preview/terminologie/enkelvoudige-lengte-modifier" title="Enkelvoudige lengte-modifier: een Lengte-modifier die uit precies één geldige ELM bestaat en daarmee precies een duurpositie representeert.">ELM</a>) onder tekst;</li>
+<li><a href="/VSA-tooling/preview/terminologie/pitch-marker" title="Pitch-marker: een Bracket-directive / Bracket-token met de vorm <code>[&lt;EHM&gt;:]</code>, waarbij <code>&lt;EHM&gt;</code> leeg is of een geldige EHM bevat.">toonhoogte-markeringen</a> (<code>[:]</code>, <code>[//:]</code>, …);</li>
 <li>configureerbare typografie via dezelfde <code>typografie</code>-frontmatter.</li>
 </ul>
 <div class="highlight"><pre><span></span><code>.vsa + frontmatter
@@ -4132,7 +4132,7 @@ behoefte hebben aan de volledige VSA-visuele taal in de lyric-regel:</p>
        └── vsa score      →  HTML/PDF: notenbalk + VSA-lyrics   [gepland]
 </code></pre></div>
 <p>Dit pad volgt de layoutlogica van de SVG-renderer waar mogelijk, aangevuld met
-een notenbalkcomponent. EHMs/ELMs en pitch-markers horen <strong>niet</strong> in MusicXML
+een notenbalkcomponent. <a href="/VSA-tooling/preview/terminologie/enkelvoudige-hoogte-modifier" title="Enkelvoudige hoogte-modifier: een Hoogte-modifier die uit precies één geldige EHM bestaat: een basis-hoogtebeweging, eventueel voorafgegaan door een halftoon-prefix.">EHMs</a>/<a href="/VSA-tooling/preview/terminologie/enkelvoudige-lengte-modifier" title="Enkelvoudige lengte-modifier: een Lengte-modifier die uit precies één geldige ELM bestaat en daarmee precies een duurpositie representeert.">ELMs</a> en <a href="/VSA-tooling/preview/terminologie/pitch-marker" title="Pitch-marker: een Bracket-directive / Bracket-token met de vorm <code>[&lt;EHM&gt;:]</code>, waarbij <code>&lt;EHM&gt;</code> leeg is of een geldige EHM bevat.">pitch-markers</a> horen <strong>niet</strong> in MusicXML
 te worden gerepliceerd; daarvoor is deze export bedoeld.</p>
 <p>Open ontwerpbesluiten (voor implementatie):</p>
 <ul>
@@ -4143,9 +4143,9 @@ te worden gerepliceerd; daarvoor is deze export bedoeld.</p>
 <hr />
 <hr />
 <h2 id="bron-docsspecvsa-svg-rendering-specmd">Bron: <code>docs/spec/vsa-svg-rendering-spec.md</code><a class="headerlink" href="#bron-docsspecvsa-svg-rendering-specmd" title="Permanent link">&para;</a></h2>
-<h1 id="vsa-svg-rendering-specification-draft-2">VSA SVG Rendering Specification (Draft 2)<a class="headerlink" href="#vsa-svg-rendering-specification-draft-2" title="Permanent link">&para;</a></h1>
+<h1 id="vsa-svg-rendering-specification-draft-2"><a href="/VSA-tooling/preview/terminologie/vsa" title="Vereenvoudigde Slavische Accentnotatie: wordt gebruikt om te verwijzen naar een Formele Notatie voor het vastleggen van Zangstukken en ook naar de Toolset waarmee zulke vastleggingen kunnen worden gevalideerd en naar publiceerbare vormen worden omgezet.">VSA</a> SVG Rendering Specification (Draft 2)<a class="headerlink" href="#vsa-svg-rendering-specification-draft-2" title="Permanent link">&para;</a></h1>
 <h2 id="doel-en-scope">Doel en scope<a class="headerlink" href="#doel-en-scope" title="Permanent link">&para;</a></h2>
-<p>Dit document beschrijft de SVG-rendering van VSA-notatie.</p>
+<p>Dit document beschrijft de SVG-rendering van <a href="/bron/terms/vsa-notatie" title="VSA-notatie: Het tekstgebaseerde notatieformaat waarmee liturgische zangteksten worden vastgelegd: een formeel gespecificeerde taal met scopes, modifiers en bracket-directives, parseeerbaar en valideerbaar door Vsa-tooling.">VSA-notatie</a>.</p>
 <p>De VSA-taalspecificatie (deze map) definieert:</p>
 <ul>
 <li>syntax;</li>
@@ -4177,7 +4177,7 @@ te worden gerepliceerd; daarvoor is deze export bedoeld.</p>
 <ul>
 <li>links uitgelijnde regels;</li>
 <li>natuurlijke tekstspatiëring;</li>
-<li>compacte muzikale glyphs;</li>
+<li>compacte muzikale <a href="/VSA-tooling/preview/terminologie/glyph" title="Glyph: een zichtbaar grafisch teken dat de Renderer tekent voor een VSA-markering (bijvoorbeeld een streep van een Hoogte-modifier of een onderstreping van een Lengte-modifier), los van de zangtekst zelf.">glyphs</a>;</li>
 <li>consistente verticale uitlijning.</li>
 </ul>
 <p>Alle regeluitlijningen zijn toegestaan:</p>
@@ -4200,11 +4200,11 @@ te worden gerepliceerd; daarvoor is deze export bedoeld.</p>
 <tbody>
 <tr>
 <td>Render-run</td>
-<td>Een visueel opeenvolgend rendering-element zoals vrije tekst, een zangelement of een pitch-marker</td>
+<td>Een visueel opeenvolgend rendering-element zoals vrije tekst, een <a href="/VSA-tooling/preview/terminologie/zangelement" title="Zangelement: het verplichte tekstfragment binnen een VSA-scope waaraan optionele Hoogte-modifiers en Lengte-modifiers hangen; de gezongen lettergreep of tekst die bij de Muzikale Posities hoort.">zangelement</a> of een <a href="/VSA-tooling/preview/terminologie/pitch-marker" title="Pitch-marker: een Bracket-directive / Bracket-token met de vorm <code>[&lt;EHM&gt;:]</code>, waarbij <code>&lt;EHM&gt;</code> leeg is of een geldige EHM bevat.">pitch-marker</a></td>
 </tr>
 <tr>
 <td>Zangelement</td>
-<td>Een <code>{...}</code> constructie met gezongen tekst en eventuele modifiers</td>
+<td>Een <code>{...}</code> constructie met gezongen tekst en eventuele <a href="/VSA-tooling/preview/terminologie/modifier" title="Modifier: een tekenreeks die binnen een VSA-scope als Hoogte-modifier voor het zangelement of als Lengte-modifier na het zangelement wordt geparseerd.">modifiers</a></td>
 </tr>
 <tr>
 <td>Glyph</td>
@@ -4224,7 +4224,7 @@ te worden gerepliceerd; daarvoor is deze export bedoeld.</p>
 </tr>
 <tr>
 <td>Alignment-marker</td>
-<td>Het <code>&amp;</code>-teken dat modifiers visueel koppelt</td>
+<td>Het <code>&amp;</code>-teken dat <a href="/VSA-tooling/preview/terminologie/modifier" title="Modifier: een tekenreeks die binnen een VSA-scope als Hoogte-modifier voor het zangelement of als Lengte-modifier na het zangelement wordt geparseerd.">modifiers</a> visueel koppelt</td>
 </tr>
 <tr>
 <td>Wrapping</td>
@@ -4247,12 +4247,12 @@ te worden gerepliceerd; daarvoor is deze export bedoeld.</p>
 <p>Voorbeelden van render-runs:</p>
 <ul>
 <li>vrije tekst;</li>
-<li>zangelementen;</li>
-<li>pitch-markers;</li>
+<li><a href="/VSA-tooling/preview/terminologie/zangelement" title="Zangelement: het verplichte tekstfragment binnen een VSA-scope waaraan optionele Hoogte-modifiers en Lengte-modifiers hangen; de gezongen lettergreep of tekst die bij de Muzikale Posities hoort.">zangelementen</a>;</li>
+<li><a href="/VSA-tooling/preview/terminologie/pitch-marker" title="Pitch-marker: een Bracket-directive / Bracket-token met de vorm <code>[&lt;EHM&gt;:]</code>, waarbij <code>&lt;EHM&gt;</code> leeg is of een geldige EHM bevat.">pitch-markers</a>;</li>
 <li>whitespace.</li>
 </ul>
 <h2 id="regeluitlijning">Regeluitlijning<a class="headerlink" href="#regeluitlijning" title="Permanent link">&para;</a></h2>
-<p>De renderer ondersteunt:</p>
+<p>De <a href="/VSA-tooling/preview/terminologie/renderer" title="Renderer: een component die een gevalideerde AST / Syntactische Boom of daarvan afgeleid layoutmodel omzet naar concrete uitvoer, zoals SVG, JSON, Markdown, Hugo-output of MusicXML, zonder de AST semantisch te wijzigen.">renderer</a> ondersteunt:</p>
 <ul>
 <li>left;</li>
 <li>right;</li>
@@ -4264,11 +4264,11 @@ te worden gerepliceerd; daarvoor is deze export bedoeld.</p>
 <li>left.</li>
 </ul>
 <h2 id="regelbreedte">Regelbreedte<a class="headerlink" href="#regelbreedte" title="Permanent link">&para;</a></h2>
-<p>De renderer gebruikt een maximale regelbreedte.</p>
+<p>De <a href="/VSA-tooling/preview/terminologie/renderer" title="Renderer: een component die een gevalideerde AST / Syntactische Boom of daarvan afgeleid layoutmodel omzet naar concrete uitvoer, zoals SVG, JSON, Markdown, Hugo-output of MusicXML, zonder de AST semantisch te wijzigen.">renderer</a> gebruikt een maximale regelbreedte.</p>
 <p>Wanneer een regel te breed wordt:</p>
 <ul>
 <li>wordt afgebroken op natuurlijke grenzen;</li>
-<li>blijven zangelementen zoveel mogelijk intact.</li>
+<li>blijven <a href="/VSA-tooling/preview/terminologie/zangelement" title="Zangelement: het verplichte tekstfragment binnen een VSA-scope waaraan optionele Hoogte-modifiers en Lengte-modifiers hangen; de gezongen lettergreep of tekst die bij de Muzikale Posities hoort.">zangelementen</a> zoveel mogelijk intact.</li>
 </ul>
 <h2 id="natuurlijke-afbreekpunten">Natuurlijke afbreekpunten<a class="headerlink" href="#natuurlijke-afbreekpunten" title="Permanent link">&para;</a></h2>
 <p>Default wrapping gebruikt:</p>
@@ -4279,9 +4279,9 @@ te worden gerepliceerd; daarvoor is deze export bedoeld.</p>
 <li>grenzen tussen render-runs;</li>
 <li>optionele interne zangelement-grenzen.</li>
 </ol>
-<p>De renderer mag:</p>
+<p>De <a href="/VSA-tooling/preview/terminologie/renderer" title="Renderer: een component die een gevalideerde AST / Syntactische Boom of daarvan afgeleid layoutmodel omzet naar concrete uitvoer, zoals SVG, JSON, Markdown, Hugo-output of MusicXML, zonder de AST semantisch te wijzigen.">renderer</a> mag:</p>
 <ul>
-<li>geen modifiers scheiden van hun tekst;</li>
+<li>geen <a href="/VSA-tooling/preview/terminologie/modifier" title="Modifier: een tekenreeks die binnen een VSA-scope als Hoogte-modifier voor het zangelement of als Lengte-modifier na het zangelement wordt geparseerd.">modifiers</a> scheiden van hun tekst;</li>
 <li>geen glyphgroepen splitsen.</li>
 </ul>
 <h2 id="woordverbindingen-en-wrapping">Woordverbindingen en wrapping<a class="headerlink" href="#woordverbindingen-en-wrapping" title="Permanent link">&para;</a></h2>
@@ -4308,12 +4308,12 @@ te worden gerepliceerd; daarvoor is deze export bedoeld.</p>
 <p>Naast natuurlijke afbreekpunten kan de gebruiker wrapping expliciet beïnvloeden.</p>
 <p>Wrapcontrole moet configureerbaar zijn. Dat betekent:</p>
 <ul>
-<li>de standaardtokens zijn door de renderer gedefinieerd;</li>
+<li>de standaardtokens zijn door de <a href="/VSA-tooling/preview/terminologie/renderer" title="Renderer: een component die een gevalideerde AST / Syntactische Boom of daarvan afgeleid layoutmodel omzet naar concrete uitvoer, zoals SVG, JSON, Markdown, Hugo-output of MusicXML, zonder de AST semantisch te wijzigen.">renderer</a> gedefinieerd;</li>
 <li>een project mag andere tokens configureren;</li>
 <li>configuratie moet vóór gebruik gevalideerd worden;</li>
 <li>ongeldige configuratie mag niet leiden tot parserfouten of ambigu gedrag.</li>
 </ul>
-<p>De renderer moet wraptokens herkennen vóór reguliere VSA-parsing of via een aparte preprocessorlaag.</p>
+<p>De <a href="/VSA-tooling/preview/terminologie/renderer" title="Renderer: een component die een gevalideerde AST / Syntactische Boom of daarvan afgeleid layoutmodel omzet naar concrete uitvoer, zoals SVG, JSON, Markdown, Hugo-output of MusicXML, zonder de AST semantisch te wijzigen.">renderer</a> moet wraptokens herkennen vóór reguliere VSA-parsing of via een aparte preprocessorlaag.</p>
 <h2 id="forced-line-break">Forced line break<a class="headerlink" href="#forced-line-break" title="Permanent link">&para;</a></h2>
 <p>Een forced line break dwingt een nieuwe renderregel af.</p>
 <p>Standaard voorgestelde syntax:</p>
@@ -4341,7 +4341,7 @@ te worden gerepliceerd; daarvoor is deze export bedoeld.</p>
 <li>mapping naar maatstrepen of systeemindeling wordt later gespecificeerd.</li>
 </ul>
 <h2 id="preferred-breakpoint">Preferred breakpoint<a class="headerlink" href="#preferred-breakpoint" title="Permanent link">&para;</a></h2>
-<p>Een preferred breakpoint geeft aan waar de renderer bij voorkeur mag afbreken als wrapping nodig is.</p>
+<p>Een preferred breakpoint geeft aan waar de <a href="/VSA-tooling/preview/terminologie/renderer" title="Renderer: een component die een gevalideerde AST / Syntactische Boom of daarvan afgeleid layoutmodel omzet naar concrete uitvoer, zoals SVG, JSON, Markdown, Hugo-output of MusicXML, zonder de AST semantisch te wijzigen.">renderer</a> bij voorkeur mag afbreken als wrapping nodig is.</p>
 <p>Standaard voorgestelde syntax:</p>
 <div class="highlight"><pre><span></span><code>[/?]
 [*?]
@@ -4351,7 +4351,7 @@ te worden gerepliceerd; daarvoor is deze export bedoeld.</p>
 </code></pre></div>
 <p>Betekenis:</p>
 <ul>
-<li>renderer mag hier afbreken als dat nodig is;</li>
+<li><a href="/VSA-tooling/preview/terminologie/renderer" title="Renderer: een component die een gevalideerde AST / Syntactische Boom of daarvan afgeleid layoutmodel omzet naar concrete uitvoer, zoals SVG, JSON, Markdown, Hugo-output of MusicXML, zonder de AST semantisch te wijzigen.">renderer</a> mag hier afbreken als dat nodig is;</li>
 <li>als afbreken niet nodig is, blijft <code>[/?]</code> onzichtbaar.</li>
 </ul>
 <p><code>[*?]</code> kan worden gebruikt als sterker preferred breakpoint dan <code>[/?]</code>.</p>
@@ -4368,8 +4368,8 @@ te worden gerepliceerd; daarvoor is deze export bedoeld.</p>
 <p><code>[:]</code> wordt niet gebruikt als standaard wraptoken.</p>
 <p>Reden:</p>
 <ul>
-<li><code>[:]</code> is al een pitch-marker;</li>
-<li>toekomstige pitch-markers kunnen mogelijk ook midden in een muziekstuk voorkomen;</li>
+<li><code>[:]</code> is al een <a href="/VSA-tooling/preview/terminologie/pitch-marker" title="Pitch-marker: een Bracket-directive / Bracket-token met de vorm <code>[&lt;EHM&gt;:]</code>, waarbij <code>&lt;EHM&gt;</code> leeg is of een geldige EHM bevat.">pitch-marker</a>;</li>
+<li>toekomstige <a href="/VSA-tooling/preview/terminologie/pitch-marker" title="Pitch-marker: een Bracket-directive / Bracket-token met de vorm <code>[&lt;EHM&gt;:]</code>, waarbij <code>&lt;EHM&gt;</code> leeg is of een geldige EHM bevat.">pitch-markers</a> kunnen mogelijk ook midden in een muziekstuk voorkomen;</li>
 <li>hergebruik van dezelfde tokenvorm voor wrapping zou parserambiguïteit veroorzaken.</li>
 </ul>
 <p>Daarom gebruiken wraptokens expliciet herkenbare vormen zoals:</p>
@@ -4382,7 +4382,7 @@ te worden gerepliceerd; daarvoor is deze export bedoeld.</p>
 
 * visueel onderscheidbaar;
 * semantisch expliciet;
-* uitbreidbaar voor toekomstige renderers.
+* uitbreidbaar voor toekomstige &lt;a href=&quot;/VSA-tooling/preview/terminologie/renderer&quot; title=&quot;Renderer: een component die een gevalideerde AST / Syntactische Boom of daarvan afgeleid layoutmodel omzet naar concrete uitvoer, zoals SVG, JSON, Markdown, Hugo-output of MusicXML, zonder de AST semantisch te wijzigen.&quot;&gt;renderers&lt;/a&gt;.
 
 ---
 
@@ -4401,7 +4401,7 @@ Standaard voorgestelde syntax:
 <div class="highlight"><pre><span></span><code>Betekenis:
 
 * de inhoud binnen `[= ... =]` blijft op één renderregel;
-* als de groep te breed is, mag de renderer pas buiten de groep wrappen;
+* als de groep te breed is, mag de &lt;a href=&quot;/VSA-tooling/preview/terminologie/renderer&quot; title=&quot;Renderer: een component die een gevalideerde AST / Syntactische Boom of daarvan afgeleid layoutmodel omzet naar concrete uitvoer, zoals SVG, JSON, Markdown, Hugo-output of MusicXML, zonder de AST semantisch te wijzigen.&quot;&gt;renderer&lt;/a&gt; pas buiten de groep wrappen;
 * de markers `[=` en `=]` worden niet zichtbaar gerenderd.
 
 Non-breaking groups zijn bedoeld voor:
@@ -4460,7 +4460,7 @@ nonbreaking-end = "=]"
 * tokens mogen elkaar niet ambigu overlappen;
 * tokens mogen bestaande VSA-syntax niet breken;
 * tokens moeten vóór gebruik gevalideerd worden;
-* bij ongeldige configuratie stopt de renderer met een duidelijke configuratiefout.
+* bij ongeldige configuratie stopt de &lt;a href=&quot;/VSA-tooling/preview/terminologie/renderer&quot; title=&quot;Renderer: een component die een gevalideerde AST / Syntactische Boom of daarvan afgeleid layoutmodel omzet naar concrete uitvoer, zoals SVG, JSON, Markdown, Hugo-output of MusicXML, zonder de AST semantisch te wijzigen.&quot;&gt;renderer&lt;/a&gt; met een duidelijke configuratiefout.
 
 ---
 
@@ -4495,7 +4495,7 @@ Goede voorbeelden:
 [-]
 <div class="highlight"><pre><span></span><code>omdat deze:
 
-* lijken op bestaande of toekomstige pitch-markers;
+* lijken op bestaande of toekomstige &lt;a href=&quot;/VSA-tooling/preview/terminologie/pitch-marker&quot; title=&quot;Pitch-marker: een Bracket-directive / Bracket-token met de vorm `[&lt;EHM&gt;:]`, waarbij `&lt;EHM&gt;` leeg is of een geldige EHM bevat.&quot;&gt;pitch-markers&lt;/a&gt;;
 * semantisch onvoldoende onderscheidend zijn;
 * ambigu kunnen worden bij uitbreiding van de taal.
 
@@ -4534,7 +4534,7 @@ Tussen render-runs moet een minimale horizontale afstand bestaan.
 
 Doel:
 
-* voorkomen dat tekst en glyphs tegen elkaar aan staan;
+* voorkomen dat tekst en &lt;a href=&quot;/VSA-tooling/preview/terminologie/glyph&quot; title=&quot;Glyph: een zichtbaar grafisch teken dat de Renderer tekent voor een VSA-markering (bijvoorbeeld een streep van een Hoogte-modifier of een onderstreping van een Lengte-modifier), los van de zangtekst zelf.&quot;&gt;glyphs&lt;/a&gt; tegen elkaar aan staan;
 * visuele rust creëren.
 
 ## Whitespace
@@ -4545,7 +4545,7 @@ Extra renderer-spacing komt bovenop de tekstuele spacing.
 
 ## Zangelementen
 
-Een zangelement bestaat visueel uit:
+Een &lt;a href=&quot;/VSA-tooling/preview/terminologie/zangelement&quot; title=&quot;Zangelement: het verplichte tekstfragment binnen een VSA-scope waaraan optionele Hoogte-modifiers en Lengte-modifiers hangen; de gezongen lettergreep of tekst die bij de Muzikale Posities hoort.&quot;&gt;zangelement&lt;/a&gt; bestaat visueel uit:
 
 * gezongen tekst;
 * bovenglyphs;
@@ -4563,9 +4563,9 @@ TB &lt; Σ W[i]
 <p>waarbij:</p>
 <ul>
 <li><code>TB</code> = tekstbreedte;</li>
-<li><code>Σ W[i]</code> = totale breedte van de muzikale posities;</li>
+<li><code>Σ W[i]</code> = totale breedte van de <a href="/VSA-tooling/preview/terminologie/muzikale-positie" title="Muzikale positie: de kleinste muzikale eenheid binnen VSA-notatie: één relatieve toonhoogtebeweging (één EHM), één duur (één ELM) en een koppeling aan één zangelement in een VSA-scope.">muzikale posities</a>;</li>
 </ul>
-<p>dan behoudt het zangelement standaard zijn normale typografische breedte.</p>
+<p>dan behoudt het <a href="/VSA-tooling/preview/terminologie/zangelement" title="Zangelement: het verplichte tekstfragment binnen een VSA-scope waaraan optionele Hoogte-modifiers en Lengte-modifiers hangen; de gezongen lettergreep of tekst die bij de Muzikale Posities hoort.">zangelement</a> standaard zijn normale typografische breedte.</p>
 <p>Default gedrag:</p>
 <ul>
 <li>tekst wordt gecentreerd;</li>
@@ -4624,7 +4624,7 @@ TB &lt; Σ W[i]
 <li>kruisen geen letterstaarten.</li>
 </ul>
 <p>Onderglyphs hoeven niet de volledige positiebreedte te beslaan.</p>
-<h2 id="configureerbare-glyphs">Configureerbare glyphs<a class="headerlink" href="#configureerbare-glyphs" title="Permanent link">&para;</a></h2>
+<h2 id="configureerbare-glyphs">Configureerbare <a href="/VSA-tooling/preview/terminologie/glyph" title="Glyph: een zichtbaar grafisch teken dat de Renderer tekent voor een VSA-markering (bijvoorbeeld een streep van een Hoogte-modifier of een onderstreping van een Lengte-modifier), los van de zangtekst zelf.">glyphs</a><a class="headerlink" href="#configureerbare-glyphs" title="Permanent link">&para;</a></h2>
 <p>Gebruikers moeten glyph-rendering kunnen aanpassen.</p>
 <p>Voorbeelden:</p>
 <ul>
@@ -4636,14 +4636,14 @@ TB &lt; Σ W[i]
 <li>SVG-shapes;</li>
 <li>alternatieve glyphsymbolen.</li>
 </ul>
-<p>De renderer moet daarom werken met een abstract glyphmodel en niet met hardcoded vormen.</p>
+<p>De <a href="/VSA-tooling/preview/terminologie/renderer" title="Renderer: een component die een gevalideerde AST / Syntactische Boom of daarvan afgeleid layoutmodel omzet naar concrete uitvoer, zoals SVG, JSON, Markdown, Hugo-output of MusicXML, zonder de AST semantisch te wijzigen.">renderer</a> moet daarom werken met een abstract <a href="/VSA-tooling/preview/terminologie/glyph" title="Glyph: een zichtbaar grafisch teken dat de Renderer tekent voor een VSA-markering (bijvoorbeeld een streep van een Hoogte-modifier of een onderstreping van een Lengte-modifier), los van de zangtekst zelf.">glyphmodel</a> en niet met hardcoded vormen.</p>
 <h2 id="alignment-markers">Alignment-markers<a class="headerlink" href="#alignment-markers" title="Permanent link">&para;</a></h2>
 <p>Het <code>&amp;</code>-teken is een alignment-marker.</p>
-<p>Alignment-markers koppelen modifiers visueel aan elkaar zodat:</p>
+<p>Alignment-markers koppelen <a href="/VSA-tooling/preview/terminologie/modifier" title="Modifier: een tekenreeks die binnen een VSA-scope als Hoogte-modifier voor het zangelement of als Lengte-modifier na het zangelement wordt geparseerd.">modifiers</a> visueel aan elkaar zodat:</p>
 <ul>
 <li>muzikale continuïteit zichtbaar wordt;</li>
 <li>glyphgroepen als één geheel ogen;</li>
-<li>muzikale posities optisch uitgelijnd blijven.</li>
+<li><a href="/VSA-tooling/preview/terminologie/muzikale-positie" title="Muzikale positie: de kleinste muzikale eenheid binnen VSA-notatie: één relatieve toonhoogtebeweging (één EHM), één duur (één ELM) en een koppeling aan één zangelement in een VSA-scope.">muzikale posities</a> optisch uitgelijnd blijven.</li>
 </ul>
 <p>Voorbeelden:</p>
 <ul>
@@ -4659,14 +4659,14 @@ TB &lt; Σ W[i]
 <p>De regelafstand moet:</p>
 <ul>
 <li>voldoende ruimte geven voor bovenglyphs;</li>
-<li>voorkomen dat glyphs tussen regels botsen.</li>
+<li>voorkomen dat <a href="/VSA-tooling/preview/terminologie/glyph" title="Glyph: een zichtbaar grafisch teken dat de Renderer tekent voor een VSA-markering (bijvoorbeeld een streep van een Hoogte-modifier of een onderstreping van een Lengte-modifier), los van de zangtekst zelf.">glyphs</a> tussen regels botsen.</li>
 </ul>
 <h2 id="verticale-offsets">Verticale offsets<a class="headerlink" href="#verticale-offsets" title="Permanent link">&para;</a></h2>
 <p>Boven- en onderglyphs gebruiken configureerbare verticale offsets.</p>
 <hr />
 <h1 id="typografie_1">Typografie<a class="headerlink" href="#typografie_1" title="Permanent link">&para;</a></h1>
 <h2 id="fonts">Fonts<a class="headerlink" href="#fonts" title="Permanent link">&para;</a></h2>
-<p>De renderer ondersteunt configureerbare fonts.</p>
+<p>De <a href="/VSA-tooling/preview/terminologie/renderer" title="Renderer: een component die een gevalideerde AST / Syntactische Boom of daarvan afgeleid layoutmodel omzet naar concrete uitvoer, zoals SVG, JSON, Markdown, Hugo-output of MusicXML, zonder de AST semantisch te wijzigen.">renderer</a> ondersteunt configureerbare fonts.</p>
 <p>De default-font moet:</p>
 <ul>
 <li>goed leesbaar zijn;</li>
@@ -4692,7 +4692,7 @@ TB &lt; Σ W[i]
 <h2 id="configuratiebron">Configuratiebron<a class="headerlink" href="#configuratiebron" title="Permanent link">&para;</a></h2>
 <p>SVG-rendering-configuratie wordt opgenomen in <code>vsa.toml</code>.</p>
 <h2 id="default-configuratie">Default-configuratie<a class="headerlink" href="#default-configuratie" title="Permanent link">&para;</a></h2>
-<p>De renderer levert een ingebouwde default-configuratie.</p>
+<p>De <a href="/VSA-tooling/preview/terminologie/renderer" title="Renderer: een component die een gevalideerde AST / Syntactische Boom of daarvan afgeleid layoutmodel omzet naar concrete uitvoer, zoals SVG, JSON, Markdown, Hugo-output of MusicXML, zonder de AST semantisch te wijzigen.">renderer</a> levert een ingebouwde default-configuratie.</p>
 <h2 id="user-overrides">User overrides<a class="headerlink" href="#user-overrides" title="Permanent link">&para;</a></h2>
 <p>Gebruikers mogen:</p>
 <ul>
@@ -4762,23 +4762,23 @@ TB &lt; Σ W[i]
 <p>De volgende onderwerpen moeten relatief vroeg worden uitgewerkt:</p>
 <ul>
 <li>wrapping-strategieën;</li>
-<li>glyphmodel;</li>
+<li><a href="/VSA-tooling/preview/terminologie/glyph" title="Glyph: een zichtbaar grafisch teken dat de Renderer tekent voor een VSA-markering (bijvoorbeeld een streep van een Hoogte-modifier of een onderstreping van een Lengte-modifier), los van de zangtekst zelf.">glyphmodel</a>;</li>
 <li>configuratie-architectuur.</li>
 </ul>
 <p>De overige onderwerpen kunnen later worden uitgewerkt.</p>
 <hr />
 <h2 id="bron-docsspecvsa-glyph-modelmd">Bron: <code>docs/spec/vsa-glyph-model.md</code><a class="headerlink" href="#bron-docsspecvsa-glyph-modelmd" title="Permanent link">&para;</a></h2>
-<h1 id="vsa-glyph-model-specification-draft-1">VSA Glyph Model Specification (Draft 1)<a class="headerlink" href="#vsa-glyph-model-specification-draft-1" title="Permanent link">&para;</a></h1>
+<h1 id="vsa-glyph-model-specification-draft-1"><a href="/VSA-tooling/preview/terminologie/vsa" title="Vereenvoudigde Slavische Accentnotatie: wordt gebruikt om te verwijzen naar een Formele Notatie voor het vastleggen van Zangstukken en ook naar de Toolset waarmee zulke vastleggingen kunnen worden gevalideerd en naar publiceerbare vormen worden omgezet.">VSA</a> Glyph Model Specification (Draft 1)<a class="headerlink" href="#vsa-glyph-model-specification-draft-1" title="Permanent link">&para;</a></h1>
 <h2 id="doel_1">Doel<a class="headerlink" href="#doel_1" title="Permanent link">&para;</a></h2>
-<p>Dit document beschrijft het abstracte glyphmodel voor VSA-rendering.</p>
-<p>Het glyphmodel vormt de brug tussen:</p>
+<p>Dit document beschrijft het abstracte <a href="/VSA-tooling/preview/terminologie/glyph" title="Glyph: een zichtbaar grafisch teken dat de Renderer tekent voor een VSA-markering (bijvoorbeeld een streep van een Hoogte-modifier of een onderstreping van een Lengte-modifier), los van de zangtekst zelf.">glyphmodel</a> voor VSA-rendering.</p>
+<p>Het <a href="/VSA-tooling/preview/terminologie/glyph" title="Glyph: een zichtbaar grafisch teken dat de Renderer tekent voor een VSA-markering (bijvoorbeeld een streep van een Hoogte-modifier of een onderstreping van een Lengte-modifier), los van de zangtekst zelf.">glyphmodel</a> vormt de brug tussen:</p>
 <ul>
 <li>de VSA-semantiek;</li>
 <li>layoutberekening;</li>
 <li>concrete SVG-rendering;</li>
 <li>toekomstige exportformaten zoals MusicXML.</li>
 </ul>
-<p>Het glyphmodel definieert:</p>
+<p>Het <a href="/VSA-tooling/preview/terminologie/glyph" title="Glyph: een zichtbaar grafisch teken dat de Renderer tekent voor een VSA-markering (bijvoorbeeld een streep van een Hoogte-modifier of een onderstreping van een Lengte-modifier), los van de zangtekst zelf.">glyphmodel</a> definieert:</p>
 <ul>
 <li>glyph-typen;</li>
 <li>positionering;</li>
@@ -4789,7 +4789,7 @@ TB &lt; Σ W[i]
 <li>theming;</li>
 <li>configuratie.</li>
 </ul>
-<p>Het glyphmodel definieert niet:</p>
+<p>Het <a href="/VSA-tooling/preview/terminologie/glyph" title="Glyph: een zichtbaar grafisch teken dat de Renderer tekent voor een VSA-markering (bijvoorbeeld een streep van een Hoogte-modifier of een onderstreping van een Lengte-modifier), los van de zangtekst zelf.">glyphmodel</a> definieert niet:</p>
 <ul>
 <li>parsergedrag;</li>
 <li>syntax;</li>
@@ -4803,14 +4803,14 @@ TB &lt; Σ W[i]
 <hr />
 <h1 id="architectuur">Architectuur<a class="headerlink" href="#architectuur" title="Permanent link">&para;</a></h1>
 <h2 id="drie-renderlagen">Drie renderlagen<a class="headerlink" href="#drie-renderlagen" title="Permanent link">&para;</a></h2>
-<p>De renderer bestaat conceptueel uit drie lagen:</p>
+<p>De <a href="/VSA-tooling/preview/terminologie/renderer" title="Renderer: een component die een gevalideerde AST / Syntactische Boom of daarvan afgeleid layoutmodel omzet naar concrete uitvoer, zoals SVG, JSON, Markdown, Hugo-output of MusicXML, zonder de AST semantisch te wijzigen.">renderer</a> bestaat conceptueel uit drie lagen:</p>
 <p>```text id="a7zqfc"
 VSA AST
 → abstract glyph layout
 → concrete SVG primitives
 <div class="highlight"><pre><span></span><code>### Laag 1 — Semantische representatie
 
-De parser en AST kennen alleen muzikale intentie.
+De &lt;a href=&quot;/VSA-tooling/preview/terminologie/parser&quot; title=&quot;Parser: een component die VSA-brontekst of tokens volgens de grammatica omzet naar expliciete AST / Syntactische Boom-nodes, bronlocaties behoudt en geen semantische reparaties of renderlogica uitvoert.&quot;&gt;parser&lt;/a&gt; en &lt;a href=&quot;/VSA-tooling/preview/terminologie/ast&quot; title=&quot;Abstract Syntax Tree: een expliciete nodeboom die door de Parser uit VSA-invoer wordt geproduceerd en die Validator en Renderer zonder semantische herinterpretatie kunnen lezen.&quot;&gt;AST&lt;/a&gt; kennen alleen muzikale intentie.
 
 Voorbeelden:
 
@@ -4830,9 +4830,9 @@ Deze laag kent geen:
 
 ---
 
-### Laag 2 — Abstract glyphmodel
+### Laag 2 — Abstract &lt;a href=&quot;/VSA-tooling/preview/terminologie/glyph&quot; title=&quot;Glyph: een zichtbaar grafisch teken dat de Renderer tekent voor een VSA-markering (bijvoorbeeld een streep van een Hoogte-modifier of een onderstreping van een Lengte-modifier), los van de zangtekst zelf.&quot;&gt;glyphmodel&lt;/a&gt;
 
-De renderer vertaalt semantiek naar abstracte glyph-objecten.
+De &lt;a href=&quot;/VSA-tooling/preview/terminologie/renderer&quot; title=&quot;Renderer: een component die een gevalideerde AST / Syntactische Boom of daarvan afgeleid layoutmodel omzet naar concrete uitvoer, zoals SVG, JSON, Markdown, Hugo-output of MusicXML, zonder de AST semantisch te wijzigen.&quot;&gt;renderer&lt;/a&gt; vertaalt semantiek naar abstracte glyph-objecten.
 
 Voorbeelden:
 
@@ -4865,13 +4865,13 @@ Pas in deze laag ontstaan concrete SVG-elementen zoals:
 <hr />
 <h1 id="muzikale-posities">Muzikale posities<a class="headerlink" href="#muzikale-posities" title="Permanent link">&para;</a></h1>
 <h2 id="basisprincipe">Basisprincipe<a class="headerlink" href="#basisprincipe" title="Permanent link">&para;</a></h2>
-<p>De renderer werkt primair met muzikale posities en niet met letters.</p>
+<p>De <a href="/VSA-tooling/preview/terminologie/renderer" title="Renderer: een component die een gevalideerde AST / Syntactische Boom of daarvan afgeleid layoutmodel omzet naar concrete uitvoer, zoals SVG, JSON, Markdown, Hugo-output of MusicXML, zonder de AST semantisch te wijzigen.">renderer</a> werkt primair met <a href="/VSA-tooling/preview/terminologie/muzikale-positie" title="Muzikale positie: de kleinste muzikale eenheid binnen VSA-notatie: één relatieve toonhoogtebeweging (één EHM), één duur (één ELM) en een koppeling aan één zangelement in een VSA-scope.">muzikale posities</a> en niet met letters.</p>
 <p>Voorbeeld:</p>
 <p>```text id="f8x1n7"
 {/He_}
 <div class="highlight"><pre><span></span><code>heeft:
 
-* één muzikale positie;
+* één &lt;a href=&quot;/VSA-tooling/preview/terminologie/muzikale-positie&quot; title=&quot;Muzikale positie: de kleinste muzikale eenheid binnen VSA-notatie: één relatieve toonhoogtebeweging (één EHM), één duur (één ELM) en een koppeling aan één zangelement in een VSA-scope.&quot;&gt;muzikale positie&lt;/a&gt;;
 * een tekstbreedte;
 * een glyphstructuur.
 
@@ -4879,7 +4879,7 @@ Pas in deze laag ontstaan concrete SVG-elementen zoals:
 
 ## Positie-eenheden
 
-Elke muzikale positie heeft:
+Elke &lt;a href=&quot;/VSA-tooling/preview/terminologie/muzikale-positie&quot; title=&quot;Muzikale positie: de kleinste muzikale eenheid binnen VSA-notatie: één relatieve toonhoogtebeweging (één EHM), één duur (één ELM) en een koppeling aan één zangelement in een VSA-scope.&quot;&gt;muzikale positie&lt;/a&gt; heeft:
 
 * een horizontale breedte;
 * een center-anchor;
@@ -4891,7 +4891,7 @@ Positiebreedte hoeft niet gelijk te zijn aan tekstbreedte.
 
 ## Positiegroepen
 
-Verbonden glyphgroepen kunnen meerdere muzikale posities omvatten.
+Verbonden glyphgroepen kunnen meerdere &lt;a href=&quot;/VSA-tooling/preview/terminologie/muzikale-positie&quot; title=&quot;Muzikale positie: de kleinste muzikale eenheid binnen VSA-notatie: één relatieve toonhoogtebeweging (één EHM), één duur (één ELM) en een koppeling aan één zangelement in een VSA-scope.&quot;&gt;muzikale posities&lt;/a&gt; omvatten.
 
 Voorbeeld:
 
@@ -4901,8 +4901,8 @@ Voorbeeld:
 <p>vormt één verbonden glyphgroep.</p>
 <hr />
 <h1 id="glyphfamilies">Glyphfamilies<a class="headerlink" href="#glyphfamilies" title="Permanent link">&para;</a></h1>
-<h2 id="upper-glyphs">Upper glyphs<a class="headerlink" href="#upper-glyphs" title="Permanent link">&para;</a></h2>
-<p>Upper glyphs representeren:</p>
+<h2 id="upper-glyphs">Upper <a href="/VSA-tooling/preview/terminologie/glyph" title="Glyph: een zichtbaar grafisch teken dat de Renderer tekent voor een VSA-markering (bijvoorbeeld een streep van een Hoogte-modifier of een onderstreping van een Lengte-modifier), los van de zangtekst zelf.">glyphs</a><a class="headerlink" href="#upper-glyphs" title="Permanent link">&para;</a></h2>
+<p>Upper <a href="/VSA-tooling/preview/terminologie/glyph" title="Glyph: een zichtbaar grafisch teken dat de Renderer tekent voor een VSA-markering (bijvoorbeeld een streep van een Hoogte-modifier of een onderstreping van een Lengte-modifier), los van de zangtekst zelf.">glyphs</a> representeren:</p>
 <ul>
 <li>stijging;</li>
 <li>daling;</li>
@@ -4923,8 +4923,8 @@ Voorbeeld:
 <li>dicht boven de tekst.</li>
 </ul>
 <hr />
-<h2 id="lower-glyphs">Lower glyphs<a class="headerlink" href="#lower-glyphs" title="Permanent link">&para;</a></h2>
-<p>Lower glyphs representeren:</p>
+<h2 id="lower-glyphs">Lower <a href="/VSA-tooling/preview/terminologie/glyph" title="Glyph: een zichtbaar grafisch teken dat de Renderer tekent voor een VSA-markering (bijvoorbeeld een streep van een Hoogte-modifier of een onderstreping van een Lengte-modifier), los van de zangtekst zelf.">glyphs</a><a class="headerlink" href="#lower-glyphs" title="Permanent link">&para;</a></h2>
+<p>Lower <a href="/VSA-tooling/preview/terminologie/glyph" title="Glyph: een zichtbaar grafisch teken dat de Renderer tekent voor een VSA-markering (bijvoorbeeld een streep van een Hoogte-modifier of een onderstreping van een Lengte-modifier), los van de zangtekst zelf.">glyphs</a> representeren:</p>
 <ul>
 <li>lengte;</li>
 <li>duur;</li>
@@ -4936,38 +4936,38 @@ Voorbeeld:
 <li>compact;</li>
 <li>dicht onder de tekst.</li>
 </ul>
-<p>Lower glyphs mogen:</p>
+<p>Lower <a href="/VSA-tooling/preview/terminologie/glyph" title="Glyph: een zichtbaar grafisch teken dat de Renderer tekent voor een VSA-markering (bijvoorbeeld een streep van een Hoogte-modifier of een onderstreping van een Lengte-modifier), los van de zangtekst zelf.">glyphs</a> mogen:</p>
 <ul>
 <li>korter zijn dan de volledige positiebreedte;</li>
 <li>afgeronde uiteinden gebruiken;</li>
 <li>variabele diktes gebruiken.</li>
 </ul>
 <hr />
-<h2 id="connector-glyphs">Connector glyphs<a class="headerlink" href="#connector-glyphs" title="Permanent link">&para;</a></h2>
-<p>Connector glyphs ontstaan uit alignment-markers (<code>&amp;</code>).</p>
-<p>Connector glyphs:</p>
+<h2 id="connector-glyphs">Connector <a href="/VSA-tooling/preview/terminologie/glyph" title="Glyph: een zichtbaar grafisch teken dat de Renderer tekent voor een VSA-markering (bijvoorbeeld een streep van een Hoogte-modifier of een onderstreping van een Lengte-modifier), los van de zangtekst zelf.">glyphs</a><a class="headerlink" href="#connector-glyphs" title="Permanent link">&para;</a></h2>
+<p>Connector <a href="/VSA-tooling/preview/terminologie/glyph" title="Glyph: een zichtbaar grafisch teken dat de Renderer tekent voor een VSA-markering (bijvoorbeeld een streep van een Hoogte-modifier of een onderstreping van een Lengte-modifier), los van de zangtekst zelf.">glyphs</a> ontstaan uit alignment-markers (<code>&amp;</code>).</p>
+<p>Connector <a href="/VSA-tooling/preview/terminologie/glyph" title="Glyph: een zichtbaar grafisch teken dat de Renderer tekent voor een VSA-markering (bijvoorbeeld een streep van een Hoogte-modifier of een onderstreping van een Lengte-modifier), los van de zangtekst zelf.">glyphs</a>:</p>
 <ul>
-<li>verbinden omliggende glyphs;</li>
+<li>verbinden omliggende <a href="/VSA-tooling/preview/terminologie/glyph" title="Glyph: een zichtbaar grafisch teken dat de Renderer tekent voor een VSA-markering (bijvoorbeeld een streep van een Hoogte-modifier of een onderstreping van een Lengte-modifier), los van de zangtekst zelf.">glyphs</a>;</li>
 <li>creëren visuele continuïteit;</li>
 <li>beïnvloeden layout.</li>
 </ul>
-<p>Connector glyphs zijn geen zelfstandige muzikale posities.</p>
+<p>Connector <a href="/VSA-tooling/preview/terminologie/glyph" title="Glyph: een zichtbaar grafisch teken dat de Renderer tekent voor een VSA-markering (bijvoorbeeld een streep van een Hoogte-modifier of een onderstreping van een Lengte-modifier), los van de zangtekst zelf.">glyphs</a> zijn geen zelfstandige <a href="/VSA-tooling/preview/terminologie/muzikale-positie" title="Muzikale positie: de kleinste muzikale eenheid binnen VSA-notatie: één relatieve toonhoogtebeweging (één EHM), één duur (één ELM) en een koppeling aan één zangelement in een VSA-scope.">muzikale posities</a>.</p>
 <p>Voorbeeld:</p>
 <p>```text id="1o4h5l"
 {/&amp;/&amp;\He_&amp;<em>&amp;</em>}
 <div class="highlight"><pre><span></span><code>Hier ontstaan:
 
-* meerdere upper glyphs;
-* meerdere lower glyphs;
-* connectorlijnen tussen de glyphs.
+* meerdere upper &lt;a href=&quot;/VSA-tooling/preview/terminologie/glyph&quot; title=&quot;Glyph: een zichtbaar grafisch teken dat de Renderer tekent voor een VSA-markering (bijvoorbeeld een streep van een Hoogte-modifier of een onderstreping van een Lengte-modifier), los van de zangtekst zelf.&quot;&gt;glyphs&lt;/a&gt;;
+* meerdere lower &lt;a href=&quot;/VSA-tooling/preview/terminologie/glyph&quot; title=&quot;Glyph: een zichtbaar grafisch teken dat de Renderer tekent voor een VSA-markering (bijvoorbeeld een streep van een Hoogte-modifier of een onderstreping van een Lengte-modifier), los van de zangtekst zelf.&quot;&gt;glyphs&lt;/a&gt;;
+* connectorlijnen tussen de &lt;a href=&quot;/VSA-tooling/preview/terminologie/glyph&quot; title=&quot;Glyph: een zichtbaar grafisch teken dat de Renderer tekent voor een VSA-markering (bijvoorbeeld een streep van een Hoogte-modifier of een onderstreping van een Lengte-modifier), los van de zangtekst zelf.&quot;&gt;glyphs&lt;/a&gt;.
 
 ---
 
-## Structural glyphs
+## Structural &lt;a href=&quot;/VSA-tooling/preview/terminologie/glyph&quot; title=&quot;Glyph: een zichtbaar grafisch teken dat de Renderer tekent voor een VSA-markering (bijvoorbeeld een streep van een Hoogte-modifier of een onderstreping van een Lengte-modifier), los van de zangtekst zelf.&quot;&gt;glyphs&lt;/a&gt;
 
-Structural glyphs representeren:
+Structural &lt;a href=&quot;/VSA-tooling/preview/terminologie/glyph&quot; title=&quot;Glyph: een zichtbaar grafisch teken dat de Renderer tekent voor een VSA-markering (bijvoorbeeld een streep van een Hoogte-modifier of een onderstreping van een Lengte-modifier), los van de zangtekst zelf.&quot;&gt;glyphs&lt;/a&gt; representeren:
 
-* pitch-markers;
+* &lt;a href=&quot;/VSA-tooling/preview/terminologie/pitch-marker&quot; title=&quot;Pitch-marker: een Bracket-directive / Bracket-token met de vorm `[&lt;EHM&gt;:]`, waarbij `&lt;EHM&gt;` leeg is of een geldige EHM bevat.&quot;&gt;pitch-markers&lt;/a&gt;;
 * wraptokens;
 * layoutmarkeringen;
 * toekomstige exporthints.
@@ -4978,7 +4978,7 @@ Voorbeelden:
 * `[/]`
 * `[/?]`
 
-Niet alle structural glyphs hoeven zichtbaar te renderen.
+Niet alle structural &lt;a href=&quot;/VSA-tooling/preview/terminologie/glyph&quot; title=&quot;Glyph: een zichtbaar grafisch teken dat de Renderer tekent voor een VSA-markering (bijvoorbeeld een streep van een Hoogte-modifier of een onderstreping van een Lengte-modifier), los van de zangtekst zelf.&quot;&gt;glyphs&lt;/a&gt; hoeven zichtbaar te renderen.
 
 ---
 
@@ -4998,17 +4998,17 @@ Dit voorkomt:
 
 ## Standaard anchors
 
-De renderer ondersteunt minimaal:
+De &lt;a href=&quot;/VSA-tooling/preview/terminologie/renderer&quot; title=&quot;Renderer: een component die een gevalideerde AST / Syntactische Boom of daarvan afgeleid layoutmodel omzet naar concrete uitvoer, zoals SVG, JSON, Markdown, Hugo-output of MusicXML, zonder de AST semantisch te wijzigen.&quot;&gt;renderer&lt;/a&gt; ondersteunt minimaal:
 
-| Anchor          | Betekenis                       |
-| --------------- | ------------------------------- |
-| baseline        | tekstbaseline                   |
-| text-top        | bovenkant van tekst             |
-| text-bottom     | onderkant van tekst             |
-| position-center | centrum van muzikale positie    |
-| glyph-center    | centrum van glyph               |
-| upper-anchor    | default anchor voor bovenglyphs |
-| lower-anchor    | default anchor voor onderglyphs |
+| Anchor          | Betekenis                         |
+| --------------- | --------------------------------- |
+| baseline        | tekstbaseline                     |
+| text-top        | bovenkant van tekst               |
+| text-bottom     | onderkant van tekst               |
+| position-center | centrum van &lt;a href=&quot;/VSA-tooling/preview/terminologie/muzikale-positie&quot; title=&quot;Muzikale positie: de kleinste muzikale eenheid binnen VSA-notatie: één relatieve toonhoogtebeweging (één EHM), één duur (één ELM) en een koppeling aan één zangelement in een VSA-scope.&quot;&gt;muzikale positie&lt;/a&gt; |
+| glyph-center    | centrum van &lt;a href=&quot;/VSA-tooling/preview/terminologie/glyph&quot; title=&quot;Glyph: een zichtbaar grafisch teken dat de Renderer tekent voor een VSA-markering (bijvoorbeeld een streep van een Hoogte-modifier of een onderstreping van een Lengte-modifier), los van de zangtekst zelf.&quot;&gt;glyph&lt;/a&gt;            |
+| upper-anchor    | default anchor voor bovenglyphs   |
+| lower-anchor    | default anchor voor onderglyphs   |
 
 ---
 
@@ -5038,7 +5038,7 @@ upper-glyph.y = text-top + upper-offset
 </ul>
 <hr />
 <h2 id="glyph-properties">Glyph properties<a class="headerlink" href="#glyph-properties" title="Permanent link">&para;</a></h2>
-<p>Elke glyph kan eigenschappen hebben zoals:</p>
+<p>Elke <a href="/VSA-tooling/preview/terminologie/glyph" title="Glyph: een zichtbaar grafisch teken dat de Renderer tekent voor een VSA-markering (bijvoorbeeld een streep van een Hoogte-modifier of een onderstreping van een Lengte-modifier), los van de zangtekst zelf.">glyph</a> kan eigenschappen hebben zoals:</p>
 <p>```text id="jj8h6f"
 width
 height
@@ -5074,11 +5074,11 @@ AST
 
 ## Optische compensatie
 
-De renderer mag optische compensatie toepassen.
+De &lt;a href=&quot;/VSA-tooling/preview/terminologie/renderer&quot; title=&quot;Renderer: een component die een gevalideerde AST / Syntactische Boom of daarvan afgeleid layoutmodel omzet naar concrete uitvoer, zoals SVG, JSON, Markdown, Hugo-output of MusicXML, zonder de AST semantisch te wijzigen.&quot;&gt;renderer&lt;/a&gt; mag optische compensatie toepassen.
 
 Voorbeelden:
 
-* iets bredere glyphs bij kleine fonts;
+* iets bredere &lt;a href=&quot;/VSA-tooling/preview/terminologie/glyph&quot; title=&quot;Glyph: een zichtbaar grafisch teken dat de Renderer tekent voor een VSA-markering (bijvoorbeeld een streep van een Hoogte-modifier of een onderstreping van een Lengte-modifier), los van de zangtekst zelf.&quot;&gt;glyphs&lt;/a&gt; bij kleine fonts;
 * verticale correctie bij cursieve fonts;
 * smallere connectors bij dichte tekst.
 
@@ -5203,9 +5203,9 @@ Voorbeelden:
 * custom SVG paths;
 * alternatieve lijnvormen;
 * ornamentsets;
-* kalligrafische glyphs.
+* kalligrafische &lt;a href=&quot;/VSA-tooling/preview/terminologie/glyph&quot; title=&quot;Glyph: een zichtbaar grafisch teken dat de Renderer tekent voor een VSA-markering (bijvoorbeeld een streep van een Hoogte-modifier of een onderstreping van een Lengte-modifier), los van de zangtekst zelf.&quot;&gt;glyphs&lt;/a&gt;.
 
-Dit vereist een abstract glyphmodel en geen hardcoded SVG-primitives.
+Dit vereist een abstract &lt;a href=&quot;/VSA-tooling/preview/terminologie/glyph&quot; title=&quot;Glyph: een zichtbaar grafisch teken dat de Renderer tekent voor een VSA-markering (bijvoorbeeld een streep van een Hoogte-modifier of een onderstreping van een Lengte-modifier), los van de zangtekst zelf.&quot;&gt;glyphmodel&lt;/a&gt; en geen hardcoded SVG-primitives.
 
 ---
 
@@ -5213,24 +5213,24 @@ Dit vereist een abstract glyphmodel en geen hardcoded SVG-primitives.
 
 ## MusicXML
 
-Het glyphmodel moet later gekoppeld kunnen worden aan:
+Het &lt;a href=&quot;/VSA-tooling/preview/terminologie/glyph&quot; title=&quot;Glyph: een zichtbaar grafisch teken dat de Renderer tekent voor een VSA-markering (bijvoorbeeld een streep van een Hoogte-modifier of een onderstreping van een Lengte-modifier), los van de zangtekst zelf.&quot;&gt;glyphmodel&lt;/a&gt; moet later gekoppeld kunnen worden aan:
 
 * MusicXML;
 * maatstructuren;
 * frasegrenzen;
 * systeemindeling.
 
-Daarom moeten glyphs semantisch interpreteerbaar blijven.
+Daarom moeten &lt;a href=&quot;/VSA-tooling/preview/terminologie/glyph&quot; title=&quot;Glyph: een zichtbaar grafisch teken dat de Renderer tekent voor een VSA-markering (bijvoorbeeld een streep van een Hoogte-modifier of een onderstreping van een Lengte-modifier), los van de zangtekst zelf.&quot;&gt;glyphs&lt;/a&gt; semantisch interpreteerbaar blijven.
 
 ---
 
 ## Multi-voice rendering
 
-Toekomstige renderers kunnen:
+Toekomstige &lt;a href=&quot;/VSA-tooling/preview/terminologie/renderer&quot; title=&quot;Renderer: een component die een gevalideerde AST / Syntactische Boom of daarvan afgeleid layoutmodel omzet naar concrete uitvoer, zoals SVG, JSON, Markdown, Hugo-output of MusicXML, zonder de AST semantisch te wijzigen.&quot;&gt;renderers&lt;/a&gt; kunnen:
 
 * meerdere stemmen;
 * syncgroepen;
-* gedeelde muzikale posities;
+* gedeelde &lt;a href=&quot;/VSA-tooling/preview/terminologie/muzikale-positie&quot; title=&quot;Muzikale positie: de kleinste muzikale eenheid binnen VSA-notatie: één relatieve toonhoogtebeweging (één EHM), één duur (één ELM) en een koppeling aan één zangelement in een VSA-scope.&quot;&gt;muzikale posities&lt;/a&gt;;
 
 ondersteunen.
 
@@ -5242,12 +5242,12 @@ Toekomstige SVG-renderers kunnen:
 
 * hoverinformatie;
 * debugging overlays;
-* clickable glyphs;
+* clickable &lt;a href=&quot;/VSA-tooling/preview/terminologie/glyph&quot; title=&quot;Glyph: een zichtbaar grafisch teken dat de Renderer tekent voor een VSA-markering (bijvoorbeeld een streep van een Hoogte-modifier of een onderstreping van een Lengte-modifier), los van de zangtekst zelf.&quot;&gt;glyphs&lt;/a&gt;;
 * synchronized playback;
 
 ondersteunen.
 
-Het glyphmodel moet dit niet blokkeren.
+Het &lt;a href=&quot;/VSA-tooling/preview/terminologie/glyph&quot; title=&quot;Glyph: een zichtbaar grafisch teken dat de Renderer tekent voor een VSA-markering (bijvoorbeeld een streep van een Hoogte-modifier of een onderstreping van een Lengte-modifier), los van de zangtekst zelf.&quot;&gt;glyphmodel&lt;/a&gt; moet dit niet blokkeren.
 
 ---
 
@@ -5270,7 +5270,7 @@ Nog nader te bepalen:
 
 ## Bron: `docs/spec/vsa-glyph-layout-rules.md`
 
-# VSA Glyph Layout Rules (Draft 2)
+# &lt;a href=&quot;/VSA-tooling/preview/terminologie/vsa&quot; title=&quot;Vereenvoudigde Slavische Accentnotatie: wordt gebruikt om te verwijzen naar een Formele Notatie voor het vastleggen van Zangstukken en ook naar de Toolset waarmee zulke vastleggingen kunnen worden gevalideerd en naar publiceerbare vormen worden omgezet.&quot;&gt;VSA&lt;/a&gt; Glyph Layout Rules (Draft 2)
 
 ## Doel
 
@@ -5297,26 +5297,26 @@ Deze specificatie is niet bedoeld voor professionele drukwerktypografie.
 
 # Glossary
 
-| Term             | Betekenis                                                                 |
-| ---------------- | ------------------------------------------------------------------------- |
-| VSA              | De tekstuele notatie voor zangtekst, pitchmarkers en muzikale modifiers   |
-| Renderer         | Het onderdeel dat VSA omzet naar zichtbare output, bijvoorbeeld SVG       |
-| SVG              | Scalable Vector Graphics; het uitvoerformaat voor schaalbare tekeningen   |
-| Glyph            | Een zichtbaar teken of vormpje dat door de renderer wordt getekend        |
-| EHM              | Een elementaire hoogtemodifier, bijvoorbeeld `/`, `\` of `///`            |
-| ELM              | Een elementaire lengtemodifier, bijvoorbeeld `_`                          |
-| Bovenglyph       | Een glyph boven de gezongen tekst                                         |
-| Onderglyph       | Een glyph onder de gezongen tekst                                         |
-| Pitchmarker      | Een constructie zoals `[:]`, `[/:]` of `[\\:]`                            |
-| Zangelement      | Een VSA-constructie tussen `{` en `}`, bijvoorbeeld `{/Heer_}`            |
-| Render-unit      | Een ondeelbaar visueel element voor layout en wrapping                    |
-| Glyphgroep       | Een groep glyphs die samen bij één render-unit horen                      |
-| Alignment-marker | Het `&amp;`-teken dat glyphs binnen een zangelement visueel koppelt           |
-| Baseline         | De denkbeeldige lijn waarop tekst rust                                    |
-| Text box         | De visuele ruimte die de tekst inneemt                                    |
-| Collision        | Een botsing of overlap tussen tekst, glyphs of render-units               |
-| Wrapping         | Het afbreken van render-units naar een volgende regel                     |
-| Overflow         | Situatie waarin een render-unit breder is dan de beschikbare regelbreedte |
+| Term             | Betekenis                                                                    |
+| ---------------- | ---------------------------------------------------------------------------- |
+| &lt;a href=&quot;/VSA-tooling/preview/terminologie/vsa&quot; title=&quot;Vereenvoudigde Slavische Accentnotatie: wordt gebruikt om te verwijzen naar een Formele Notatie voor het vastleggen van Zangstukken en ook naar de Toolset waarmee zulke vastleggingen kunnen worden gevalideerd en naar publiceerbare vormen worden omgezet.&quot;&gt;VSA&lt;/a&gt;         | De tekstuele notatie voor zangtekst, pitchmarkers en muzikale &lt;a href=&quot;/VSA-tooling/preview/terminologie/modifier&quot; title=&quot;Modifier: een tekenreeks die binnen een VSA-scope als Hoogte-modifier voor het zangelement of als Lengte-modifier na het zangelement wordt geparseerd.&quot;&gt;modifiers&lt;/a&gt; |
+| Renderer         | Het onderdeel dat &lt;a href=&quot;/VSA-tooling/preview/terminologie/vsa&quot; title=&quot;Vereenvoudigde Slavische Accentnotatie: wordt gebruikt om te verwijzen naar een Formele Notatie voor het vastleggen van Zangstukken en ook naar de Toolset waarmee zulke vastleggingen kunnen worden gevalideerd en naar publiceerbare vormen worden omgezet.&quot;&gt;VSA&lt;/a&gt; omzet naar zichtbare output, bijvoorbeeld SVG     |
+| SVG              | Scalable Vector Graphics; het uitvoerformaat voor schaalbare tekeningen      |
+| Glyph            | Een zichtbaar teken of vormpje dat door de &lt;a href=&quot;/VSA-tooling/preview/terminologie/renderer&quot; title=&quot;Renderer: een component die een gevalideerde AST / Syntactische Boom of daarvan afgeleid layoutmodel omzet naar concrete uitvoer, zoals SVG, JSON, Markdown, Hugo-output of MusicXML, zonder de AST semantisch te wijzigen.&quot;&gt;renderer&lt;/a&gt; wordt getekend      |
+| &lt;a href=&quot;/VSA-tooling/preview/terminologie/enkelvoudige-hoogte-modifier&quot; title=&quot;Enkelvoudige hoogte-modifier: een Hoogte-modifier die uit precies één geldige EHM bestaat: een basis-hoogtebeweging, eventueel voorafgegaan door een halftoon-prefix.&quot;&gt;EHM&lt;/a&gt;         | Een elementaire hoogtemodifier, bijvoorbeeld `/`, `\` of `///`               |
+| &lt;a href=&quot;/VSA-tooling/preview/terminologie/enkelvoudige-lengte-modifier&quot; title=&quot;Enkelvoudige lengte-modifier: een Lengte-modifier die uit precies één geldige ELM bestaat en daarmee precies een duurpositie representeert.&quot;&gt;ELM&lt;/a&gt;         | Een elementaire lengtemodifier, bijvoorbeeld `_`                             |
+| Bovenglyph       | Een &lt;a href=&quot;/VSA-tooling/preview/terminologie/glyph&quot; title=&quot;Glyph: een zichtbaar grafisch teken dat de Renderer tekent voor een VSA-markering (bijvoorbeeld een streep van een Hoogte-modifier of een onderstreping van een Lengte-modifier), los van de zangtekst zelf.&quot;&gt;glyph&lt;/a&gt; boven de gezongen tekst                                       |
+| Onderglyph       | Een &lt;a href=&quot;/VSA-tooling/preview/terminologie/glyph&quot; title=&quot;Glyph: een zichtbaar grafisch teken dat de Renderer tekent voor een VSA-markering (bijvoorbeeld een streep van een Hoogte-modifier of een onderstreping van een Lengte-modifier), los van de zangtekst zelf.&quot;&gt;glyph&lt;/a&gt; onder de gezongen tekst                                       |
+| Pitchmarker      | Een constructie zoals `[:]`, `[/:]` of `[\\:]`                               |
+| Zangelement      | Een VSA-constructie tussen `{` en `}`, bijvoorbeeld `{/Heer_}`               |
+| Render-unit      | Een ondeelbaar visueel element voor layout en wrapping                       |
+| Glyphgroep       | Een groep &lt;a href=&quot;/VSA-tooling/preview/terminologie/glyph&quot; title=&quot;Glyph: een zichtbaar grafisch teken dat de Renderer tekent voor een VSA-markering (bijvoorbeeld een streep van een Hoogte-modifier of een onderstreping van een Lengte-modifier), los van de zangtekst zelf.&quot;&gt;glyphs&lt;/a&gt; die samen bij één render-unit horen                    |
+| Alignment-marker | Het `&amp;`-teken dat &lt;a href=&quot;/VSA-tooling/preview/terminologie/glyph&quot; title=&quot;Glyph: een zichtbaar grafisch teken dat de Renderer tekent voor een VSA-markering (bijvoorbeeld een streep van een Hoogte-modifier of een onderstreping van een Lengte-modifier), los van de zangtekst zelf.&quot;&gt;glyphs&lt;/a&gt; binnen een &lt;a href=&quot;/VSA-tooling/preview/terminologie/zangelement&quot; title=&quot;Zangelement: het verplichte tekstfragment binnen een VSA-scope waaraan optionele Hoogte-modifiers en Lengte-modifiers hangen; de gezongen lettergreep of tekst die bij de Muzikale Posities hoort.&quot;&gt;zangelement&lt;/a&gt; visueel koppelt    |
+| Baseline         | De denkbeeldige lijn waarop tekst rust                                       |
+| Text box         | De visuele ruimte die de tekst inneemt                                       |
+| Collision        | Een botsing of overlap tussen tekst, &lt;a href=&quot;/VSA-tooling/preview/terminologie/glyph&quot; title=&quot;Glyph: een zichtbaar grafisch teken dat de Renderer tekent voor een VSA-markering (bijvoorbeeld een streep van een Hoogte-modifier of een onderstreping van een Lengte-modifier), los van de zangtekst zelf.&quot;&gt;glyphs&lt;/a&gt; of render-units             |
+| Wrapping         | Het afbreken van render-units naar een volgende regel                        |
+| Overflow         | Situatie waarin een render-unit breder is dan de beschikbare regelbreedte    |
 
 ---
 
@@ -5334,9 +5334,9 @@ Glyphs moeten de tekst ondersteunen, niet domineren.
 
 De belangrijkste visuele prioriteiten zijn:
 1. tekst blijft goed leesbaar;
-2. glyphs zijn duidelijk herkenbaar;
-3. glyphs zitten dicht genoeg op de tekst om erbij te horen;
-4. glyphs overlappen niet;
+2. &lt;a href=&quot;/VSA-tooling/preview/terminologie/glyph&quot; title=&quot;Glyph: een zichtbaar grafisch teken dat de Renderer tekent voor een VSA-markering (bijvoorbeeld een streep van een Hoogte-modifier of een onderstreping van een Lengte-modifier), los van de zangtekst zelf.&quot;&gt;glyphs&lt;/a&gt; zijn duidelijk herkenbaar;
+3. &lt;a href=&quot;/VSA-tooling/preview/terminologie/glyph&quot; title=&quot;Glyph: een zichtbaar grafisch teken dat de Renderer tekent voor een VSA-markering (bijvoorbeeld een streep van een Hoogte-modifier of een onderstreping van een Lengte-modifier), los van de zangtekst zelf.&quot;&gt;glyphs&lt;/a&gt; zitten dicht genoeg op de tekst om erbij te horen;
+4. &lt;a href=&quot;/VSA-tooling/preview/terminologie/glyph&quot; title=&quot;Glyph: een zichtbaar grafisch teken dat de Renderer tekent voor een VSA-markering (bijvoorbeeld een streep van een Hoogte-modifier of een onderstreping van een Lengte-modifier), los van de zangtekst zelf.&quot;&gt;glyphs&lt;/a&gt; overlappen niet;
 5. de layout blijft compact.
 
 ---
@@ -5345,7 +5345,7 @@ De belangrijkste visuele prioriteiten zijn:
 
 ## Praktische keuze
 
-De renderer gebruikt een baseline-gebaseerd coordinate system.
+De &lt;a href=&quot;/VSA-tooling/preview/terminologie/renderer&quot; title=&quot;Renderer: een component die een gevalideerde AST / Syntactische Boom of daarvan afgeleid layoutmodel omzet naar concrete uitvoer, zoals SVG, JSON, Markdown, Hugo-output of MusicXML, zonder de AST semantisch te wijzigen.&quot;&gt;renderer&lt;/a&gt; gebruikt een baseline-gebaseerd coordinate system.
 
 Elke renderregel heeft:
 - een baseline;
@@ -5361,14 +5361,14 @@ Glyphs worden relatief aan tekst-anchors geplaatst.
 
 Minimale anchors:
 
-| Anchor          | Betekenis                                  |
-| --------------- | ------------------------------------------ |
-| baseline        | lijn waarop tekst rust                     |
-| text-top        | bovenkant van de tekst-box                 |
-| text-bottom     | onderkant van de tekst-box                 |
-| position-center | horizontaal midden van de muzikale positie |
-| unit-left       | linkerrand van de render-unit              |
-| unit-right      | rechterrand van de render-unit             |
+| Anchor          | Betekenis                                       |
+| --------------- | ----------------------------------------------- |
+| baseline        | lijn waarop tekst rust                          |
+| text-top        | bovenkant van de tekst-box                      |
+| text-bottom     | onderkant van de tekst-box                      |
+| position-center | horizontaal midden van de &lt;a href=&quot;/VSA-tooling/preview/terminologie/muzikale-positie&quot; title=&quot;Muzikale positie: de kleinste muzikale eenheid binnen VSA-notatie: één relatieve toonhoogtebeweging (één EHM), één duur (één ELM) en een koppeling aan één zangelement in een VSA-scope.&quot;&gt;muzikale positie&lt;/a&gt; |
+| unit-left       | linkerrand van de render-unit                   |
+| unit-right      | rechterrand van de render-unit                  |
 
 ## Bovenglyph-positionering
 
@@ -5394,10 +5394,10 @@ offset-y = -0.30
 <div class="highlight"><pre><span></span><code><span class="k">[rendering.svg.glyphs.lower]</span>
 <span class="n">offset-y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.18</span>
 </code></pre></div>
-<p>De renderer mag de onderglyph iets lager plaatsen als het font veel descenders heeft.</p>
+<p>De <a href="/VSA-tooling/preview/terminologie/renderer" title="Renderer: een component die een gevalideerde AST / Syntactische Boom of daarvan afgeleid layoutmodel omzet naar concrete uitvoer, zoals SVG, JSON, Markdown, Hugo-output of MusicXML, zonder de AST semantisch te wijzigen.">renderer</a> mag de onderglyph iets lager plaatsen als het font veel descenders heeft.</p>
 <hr />
 <h1 id="render-units">Render-units<a class="headerlink" href="#render-units" title="Permanent link">&para;</a></h1>
-<p>Voor layout gebruikt de renderer ondeelbare render-units.</p>
+<p>Voor layout gebruikt de <a href="/VSA-tooling/preview/terminologie/renderer" title="Renderer: een component die een gevalideerde AST / Syntactische Boom of daarvan afgeleid layoutmodel omzet naar concrete uitvoer, zoals SVG, JSON, Markdown, Hugo-output of MusicXML, zonder de AST semantisch te wijzigen.">renderer</a> ondeelbare render-units.</p>
 <p>Voorbeelden:</p>
 <div class="highlight"><pre><span></span><code>vrije tekst
 zangelement met glyphs
@@ -5405,12 +5405,12 @@ pitchmarker
 non-breaking group
 wraptoken
 </code></pre></div>
-<p>Een zangelement met glyphs is één render-unit.</p>
+<p>Een <a href="/VSA-tooling/preview/terminologie/zangelement" title="Zangelement: het verplichte tekstfragment binnen een VSA-scope waaraan optionele Hoogte-modifiers en Lengte-modifiers hangen; de gezongen lettergreep of tekst die bij de Muzikale Posities hoort.">zangelement</a> met <a href="/VSA-tooling/preview/terminologie/glyph" title="Glyph: een zichtbaar grafisch teken dat de Renderer tekent voor een VSA-markering (bijvoorbeeld een streep van een Hoogte-modifier of een onderstreping van een Lengte-modifier), los van de zangtekst zelf.">glyphs</a> is één render-unit.</p>
 <p>Voorbeeld:</p>
 <div class="highlight"><pre><span></span><code>{/ver}
 </code></pre></div>
 <p>mag niet over twee regels worden verdeeld.</p>
-<p>Ook een complex zangelement blijft ondeelbaar:</p>
+<p>Ook een complex <a href="/VSA-tooling/preview/terminologie/zangelement" title="Zangelement: het verplichte tekstfragment binnen een VSA-scope waaraan optionele Hoogte-modifiers en Lengte-modifiers hangen; de gezongen lettergreep of tekst die bij de Muzikale Posities hoort.">zangelement</a> blijft ondeelbaar:</p>
 <div class="highlight"><pre><span></span><code>{\&amp;/&amp;/trou-.&amp;.&amp;_}
 </code></pre></div>
 <p>Pitchmarkers zijn ook ondeelbare render-units.</p>
@@ -5421,41 +5421,41 @@ wraptoken
 <hr />
 <h1 id="muzikale-positie">Muzikale positie<a class="headerlink" href="#muzikale-positie" title="Permanent link">&para;</a></h1>
 <h2 id="renderingdefinitie">Renderingdefinitie<a class="headerlink" href="#renderingdefinitie" title="Permanent link">&para;</a></h2>
-<p>Voor SVG-rendering is een muzikale positie de horizontale plaats waarop één glyph of glyphgroep wordt gecentreerd ten opzichte van tekst.</p>
-<p>Een muzikale positie is dus een layoutbegrip.</p>
+<p>Voor SVG-rendering is een <a href="/VSA-tooling/preview/terminologie/muzikale-positie" title="Muzikale positie: de kleinste muzikale eenheid binnen VSA-notatie: één relatieve toonhoogtebeweging (één EHM), één duur (één ELM) en een koppeling aan één zangelement in een VSA-scope.">muzikale positie</a> de horizontale plaats waarop één <a href="/VSA-tooling/preview/terminologie/glyph" title="Glyph: een zichtbaar grafisch teken dat de Renderer tekent voor een VSA-markering (bijvoorbeeld een streep van een Hoogte-modifier of een onderstreping van een Lengte-modifier), los van de zangtekst zelf.">glyph</a> of glyphgroep wordt gecentreerd ten opzichte van tekst.</p>
+<p>Een <a href="/VSA-tooling/preview/terminologie/muzikale-positie" title="Muzikale positie: de kleinste muzikale eenheid binnen VSA-notatie: één relatieve toonhoogtebeweging (één EHM), één duur (één ELM) en een koppeling aan één zangelement in een VSA-scope.">muzikale positie</a> is dus een layoutbegrip.</p>
 <p>Het is niet noodzakelijk hetzelfde als:
 - een letter;
 - een lettergreep;
 - een MusicXML-noot;
 - een toekomstige SATB-syncpositie.</p>
-<h2 id="waarvoor-gebruikt-de-renderer-muzikale-posities">Waarvoor gebruikt de renderer muzikale posities?<a class="headerlink" href="#waarvoor-gebruikt-de-renderer-muzikale-posities" title="Permanent link">&para;</a></h2>
-<p>De renderer gebruikt muzikale posities om te beslissen:
+<h2 id="waarvoor-gebruikt-de-renderer-muzikale-posities">Waarvoor gebruikt de <a href="/VSA-tooling/preview/terminologie/renderer" title="Renderer: een component die een gevalideerde AST / Syntactische Boom of daarvan afgeleid layoutmodel omzet naar concrete uitvoer, zoals SVG, JSON, Markdown, Hugo-output of MusicXML, zonder de AST semantisch te wijzigen.">renderer</a> <a href="/VSA-tooling/preview/terminologie/muzikale-positie" title="Muzikale positie: de kleinste muzikale eenheid binnen VSA-notatie: één relatieve toonhoogtebeweging (één EHM), één duur (één ELM) en een koppeling aan één zangelement in een VSA-scope.">muzikale posities</a>?<a class="headerlink" href="#waarvoor-gebruikt-de-renderer-muzikale-posities" title="Permanent link">&para;</a></h2>
+<p>De <a href="/VSA-tooling/preview/terminologie/renderer" title="Renderer: een component die een gevalideerde AST / Syntactische Boom of daarvan afgeleid layoutmodel omzet naar concrete uitvoer, zoals SVG, JSON, Markdown, Hugo-output of MusicXML, zonder de AST semantisch te wijzigen.">renderer</a> gebruikt <a href="/VSA-tooling/preview/terminologie/muzikale-positie" title="Muzikale positie: de kleinste muzikale eenheid binnen VSA-notatie: één relatieve toonhoogtebeweging (één EHM), één duur (één ELM) en een koppeling aan één zangelement in een VSA-scope.">muzikale posities</a> om te beslissen:
 - waar bovenglyphs komen;
 - waar onderglyphs komen;
-- hoe breed een zangelement minimaal moet zijn;
+- hoe breed een <a href="/VSA-tooling/preview/terminologie/zangelement" title="Zangelement: het verplichte tekstfragment binnen een VSA-scope waaraan optionele Hoogte-modifiers en Lengte-modifiers hangen; de gezongen lettergreep of tekst die bij de Muzikale Posities hoort.">zangelement</a> minimaal moet zijn;
 - waar alignment-groepen optisch worden geplaatst;
-- of glyphs elkaar raken;
+- of <a href="/VSA-tooling/preview/terminologie/glyph" title="Glyph: een zichtbaar grafisch teken dat de Renderer tekent voor een VSA-markering (bijvoorbeeld een streep van een Hoogte-modifier of een onderstreping van een Lengte-modifier), los van de zangtekst zelf.">glyphs</a> elkaar raken;
 - of een render-unit te breed wordt voor de regel.</p>
-<h2 id="breedte-van-een-muzikale-positie">Breedte van een muzikale positie<a class="headerlink" href="#breedte-van-een-muzikale-positie" title="Permanent link">&para;</a></h2>
-<p>De breedte van een muzikale positie wordt bepaald door:</p>
+<h2 id="breedte-van-een-muzikale-positie">Breedte van een <a href="/VSA-tooling/preview/terminologie/muzikale-positie" title="Muzikale positie: de kleinste muzikale eenheid binnen VSA-notatie: één relatieve toonhoogtebeweging (één EHM), één duur (één ELM) en een koppeling aan één zangelement in een VSA-scope.">muzikale positie</a><a class="headerlink" href="#breedte-van-een-muzikale-positie" title="Permanent link">&para;</a></h2>
+<p>De breedte van een <a href="/VSA-tooling/preview/terminologie/muzikale-positie" title="Muzikale positie: de kleinste muzikale eenheid binnen VSA-notatie: één relatieve toonhoogtebeweging (één EHM), één duur (één ELM) en een koppeling aan één zangelement in een VSA-scope.">muzikale positie</a> wordt bepaald door:</p>
 <div class="highlight"><pre><span></span><code>max(tekstdeelbreedte, glyphbreedte + minimale marge)
 </code></pre></div>
 <p>Dus:
-- korte tekst met brede glyph krijgt extra ruimte;
-- lange tekst met smalle glyph wordt niet samengedrukt;
-- glyphs mogen niet overlappen.</p>
+- korte tekst met brede <a href="/VSA-tooling/preview/terminologie/glyph" title="Glyph: een zichtbaar grafisch teken dat de Renderer tekent voor een VSA-markering (bijvoorbeeld een streep van een Hoogte-modifier of een onderstreping van een Lengte-modifier), los van de zangtekst zelf.">glyph</a> krijgt extra ruimte;
+- lange tekst met smalle <a href="/VSA-tooling/preview/terminologie/glyph" title="Glyph: een zichtbaar grafisch teken dat de Renderer tekent voor een VSA-markering (bijvoorbeeld een streep van een Hoogte-modifier of een onderstreping van een Lengte-modifier), los van de zangtekst zelf.">glyph</a> wordt niet samengedrukt;
+- <a href="/VSA-tooling/preview/terminologie/glyph" title="Glyph: een zichtbaar grafisch teken dat de Renderer tekent voor een VSA-markering (bijvoorbeeld een streep van een Hoogte-modifier of een onderstreping van een Lengte-modifier), los van de zangtekst zelf.">glyphs</a> mogen niet overlappen.</p>
 <h2 id="breedte-van-een-render-unit">Breedte van een render-unit<a class="headerlink" href="#breedte-van-een-render-unit" title="Permanent link">&para;</a></h2>
-<p>De breedte van een zangelement is de som van de benodigde muzikale posities.</p>
+<p>De breedte van een <a href="/VSA-tooling/preview/terminologie/zangelement" title="Zangelement: het verplichte tekstfragment binnen een VSA-scope waaraan optionele Hoogte-modifiers en Lengte-modifiers hangen; de gezongen lettergreep of tekst die bij de Muzikale Posities hoort.">zangelement</a> is de som van de benodigde <a href="/VSA-tooling/preview/terminologie/muzikale-positie" title="Muzikale positie: de kleinste muzikale eenheid binnen VSA-notatie: één relatieve toonhoogtebeweging (één EHM), één duur (één ELM) en een koppeling aan één zangelement in een VSA-scope.">muzikale posities</a>.</p>
 <p>Als de glyphstructuur breder is dan de tekst:
 - wordt de render-unit breder;
 - blijft de tekst leesbaar;
 - wordt wrapping toegepast als de render-unit niet meer op de regel past.</p>
 <hr />
 <h1 id="wrapping">Wrapping<a class="headerlink" href="#wrapping" title="Permanent link">&para;</a></h1>
-<p>De renderer mag afbreken tussen render-units volgens de wrapping-regels uit de SVG-rendering-spec.</p>
+<p>De <a href="/VSA-tooling/preview/terminologie/renderer" title="Renderer: een component die een gevalideerde AST / Syntactische Boom of daarvan afgeleid layoutmodel omzet naar concrete uitvoer, zoals SVG, JSON, Markdown, Hugo-output of MusicXML, zonder de AST semantisch te wijzigen.">renderer</a> mag afbreken tussen render-units volgens de wrapping-regels uit de SVG-rendering-spec.</p>
 <p>Een render-unit wordt niet intern gesplitst.</p>
 <p>Als een render-unit te breed is voor de resterende regelruimte, wordt deze naar de volgende regel verplaatst.</p>
-<p>Als een render-unit op zichzelf breder is dan de maximale regelbreedte, gebruikt de renderer fallbackgedrag.</p>
+<p>Als een render-unit op zichzelf breder is dan de maximale regelbreedte, gebruikt de <a href="/VSA-tooling/preview/terminologie/renderer" title="Renderer: een component die een gevalideerde AST / Syntactische Boom of daarvan afgeleid layoutmodel omzet naar concrete uitvoer, zoals SVG, JSON, Markdown, Hugo-output of MusicXML, zonder de AST semantisch te wijzigen.">renderer</a> fallbackgedrag.</p>
 <p>Default fallback:</p>
 <div class="highlight"><pre><span></span><code>overflow toestaan + warning diagnostic
 </code></pre></div>
@@ -5473,36 +5473,36 @@ wraptoken
 - bovenglyphs en tekst;
 - onderglyphs en tekst;
 - pitchmarkers en tekst;
-- glyphs van aangrenzende render-units.</p>
-<p>Als overlap dreigt, probeert de renderer in deze volgorde:</p>
+- <a href="/VSA-tooling/preview/terminologie/glyph" title="Glyph: een zichtbaar grafisch teken dat de Renderer tekent voor een VSA-markering (bijvoorbeeld een streep van een Hoogte-modifier of een onderstreping van een Lengte-modifier), los van de zangtekst zelf.">glyphs</a> van aangrenzende render-units.</p>
+<p>Als overlap dreigt, probeert de <a href="/VSA-tooling/preview/terminologie/renderer" title="Renderer: een component die een gevalideerde AST / Syntactische Boom of daarvan afgeleid layoutmodel omzet naar concrete uitvoer, zoals SVG, JSON, Markdown, Hugo-output of MusicXML, zonder de AST semantisch te wijzigen.">renderer</a> in deze volgorde:</p>
 <ol>
 <li>compacte glyphmetriek toepassen;</li>
 <li>horizontale spacing binnen de render-unit vergroten;</li>
 <li>render-unit naar de volgende regel verplaatsen;</li>
 <li>fallbackgedrag toepassen.</li>
 </ol>
-<p>De renderer mag glyphs niet laten samenvallen om ruimte te besparen.</p>
+<p>De <a href="/VSA-tooling/preview/terminologie/renderer" title="Renderer: een component die een gevalideerde AST / Syntactische Boom of daarvan afgeleid layoutmodel omzet naar concrete uitvoer, zoals SVG, JSON, Markdown, Hugo-output of MusicXML, zonder de AST semantisch te wijzigen.">renderer</a> mag <a href="/VSA-tooling/preview/terminologie/glyph" title="Glyph: een zichtbaar grafisch teken dat de Renderer tekent voor een VSA-markering (bijvoorbeeld een streep van een Hoogte-modifier of een onderstreping van een Lengte-modifier), los van de zangtekst zelf.">glyphs</a> niet laten samenvallen om ruimte te besparen.</p>
 <hr />
 <h1 id="elementaire-hoogtemodifiers-en-stacking">Elementaire hoogtemodifiers en stacking<a class="headerlink" href="#elementaire-hoogtemodifiers-en-stacking" title="Permanent link">&para;</a></h1>
-<h2 id="een-ehm-is-een-glyph">Eén EHM is één glyph<a class="headerlink" href="#een-ehm-is-een-glyph" title="Permanent link">&para;</a></h2>
-<p>Een EHM wordt als één glyph gerenderd.</p>
+<h2 id="een-ehm-is-een-glyph">Eén <a href="/VSA-tooling/preview/terminologie/enkelvoudige-hoogte-modifier" title="Enkelvoudige hoogte-modifier: een Hoogte-modifier die uit precies één geldige EHM bestaat: een basis-hoogtebeweging, eventueel voorafgegaan door een halftoon-prefix.">EHM</a> is één <a href="/VSA-tooling/preview/terminologie/glyph" title="Glyph: een zichtbaar grafisch teken dat de Renderer tekent voor een VSA-markering (bijvoorbeeld een streep van een Hoogte-modifier of een onderstreping van een Lengte-modifier), los van de zangtekst zelf.">glyph</a><a class="headerlink" href="#een-ehm-is-een-glyph" title="Permanent link">&para;</a></h2>
+<p>Een <a href="/VSA-tooling/preview/terminologie/enkelvoudige-hoogte-modifier" title="Enkelvoudige hoogte-modifier: een Hoogte-modifier die uit precies één geldige EHM bestaat: een basis-hoogtebeweging, eventueel voorafgegaan door een halftoon-prefix.">EHM</a> wordt als één <a href="/VSA-tooling/preview/terminologie/glyph" title="Glyph: een zichtbaar grafisch teken dat de Renderer tekent voor een VSA-markering (bijvoorbeeld een streep van een Hoogte-modifier of een onderstreping van een Lengte-modifier), los van de zangtekst zelf.">glyph</a> gerenderd.</p>
 <p>Voorbeeld:</p>
 <div class="highlight"><pre><span></span><code>/
 </code></pre></div>
-<p>is één glyph.</p>
-<p>Ook dit is één EHM en dus één glyph:</p>
+<p>is één <a href="/VSA-tooling/preview/terminologie/glyph" title="Glyph: een zichtbaar grafisch teken dat de Renderer tekent voor een VSA-markering (bijvoorbeeld een streep van een Hoogte-modifier of een onderstreping van een Lengte-modifier), los van de zangtekst zelf.">glyph</a>.</p>
+<p>Ook dit is één <a href="/VSA-tooling/preview/terminologie/enkelvoudige-hoogte-modifier" title="Enkelvoudige hoogte-modifier: een Hoogte-modifier die uit precies één geldige EHM bestaat: een basis-hoogtebeweging, eventueel voorafgegaan door een halftoon-prefix.">EHM</a> en dus één <a href="/VSA-tooling/preview/terminologie/glyph" title="Glyph: een zichtbaar grafisch teken dat de Renderer tekent voor een VSA-markering (bijvoorbeeld een streep van een Hoogte-modifier of een onderstreping van een Lengte-modifier), los van de zangtekst zelf.">glyph</a>:</p>
 <div class="highlight"><pre><span></span><code>///
 </code></pre></div>
-<p>Het is dus niet een stack van drie losse glyphs.</p>
+<p>Het is dus niet een stack van drie losse <a href="/VSA-tooling/preview/terminologie/glyph" title="Glyph: een zichtbaar grafisch teken dat de Renderer tekent voor een VSA-markering (bijvoorbeeld een streep van een Hoogte-modifier of een onderstreping van een Lengte-modifier), los van de zangtekst zelf.">glyphs</a>.</p>
 <h2 id="leesbaarheid">Leesbaarheid<a class="headerlink" href="#leesbaarheid" title="Permanent link">&para;</a></h2>
-<p>Een glyph voor <code>///</code> moet duidelijk herkenbaar zijn, ook op enige afstand.</p>
+<p>Een <a href="/VSA-tooling/preview/terminologie/glyph" title="Glyph: een zichtbaar grafisch teken dat de Renderer tekent voor een VSA-markering (bijvoorbeeld een streep van een Hoogte-modifier of een onderstreping van een Lengte-modifier), los van de zangtekst zelf.">glyph</a> voor <code>///</code> moet duidelijk herkenbaar zijn, ook op enige afstand.</p>
 <p>Default rendering mag bestaan uit drie duidelijk onderscheidbare schuine streepjes.</p>
 <p>Toekomstige themes mogen alternatieve glyphvormen gebruiken.</p>
 <p>Voorbeeld van een mogelijk alternatief:</p>
 <div class="highlight"><pre><span></span><code>/3
 </code></pre></div>
 <p>of een compactere gestileerde vorm.</p>
-<p>Deze alternatieven zijn niet voor de eerste renderer vereist, maar het glyphmodel mag ze niet blokkeren.</p>
+<p>Deze alternatieven zijn niet voor de eerste <a href="/VSA-tooling/preview/terminologie/renderer" title="Renderer: een component die een gevalideerde AST / Syntactische Boom of daarvan afgeleid layoutmodel omzet naar concrete uitvoer, zoals SVG, JSON, Markdown, Hugo-output of MusicXML, zonder de AST semantisch te wijzigen.">renderer</a> vereist, maar het <a href="/VSA-tooling/preview/terminologie/glyph" title="Glyph: een zichtbaar grafisch teken dat de Renderer tekent voor een VSA-markering (bijvoorbeeld een streep van een Hoogte-modifier of een onderstreping van een Lengte-modifier), los van de zangtekst zelf.">glyphmodel</a> mag ze niet blokkeren.</p>
 <h2 id="geen-whitespace-stacking">Geen whitespace-stacking<a class="headerlink" href="#geen-whitespace-stacking" title="Permanent link">&para;</a></h2>
 <p>Een constructie zoals:</p>
 <div class="highlight"><pre><span></span><code>~~~
@@ -5513,9 +5513,9 @@ wraptoken
 - <code>///</code> kan één samengestelde EHM-glyph zijn;
 - <code>~~~</code> is geen stapel van whitespace-glyphs.</p>
 <hr />
-<h1 id="gekoppelde-glyphs-en-alignment-markers">Gekoppelde glyphs en alignment-markers<a class="headerlink" href="#gekoppelde-glyphs-en-alignment-markers" title="Permanent link">&para;</a></h1>
+<h1 id="gekoppelde-glyphs-en-alignment-markers">Gekoppelde <a href="/VSA-tooling/preview/terminologie/glyph" title="Glyph: een zichtbaar grafisch teken dat de Renderer tekent voor een VSA-markering (bijvoorbeeld een streep van een Hoogte-modifier of een onderstreping van een Lengte-modifier), los van de zangtekst zelf.">glyphs</a> en alignment-markers<a class="headerlink" href="#gekoppelde-glyphs-en-alignment-markers" title="Permanent link">&para;</a></h1>
 <h2 id="betekenis-van">Betekenis van <code>&amp;</code><a class="headerlink" href="#betekenis-van" title="Permanent link">&para;</a></h2>
-<p>Alignment-markers (<code>&amp;</code>) koppelen glyphs visueel.</p>
+<p>Alignment-markers (<code>&amp;</code>) koppelen <a href="/VSA-tooling/preview/terminologie/glyph" title="Glyph: een zichtbaar grafisch teken dat de Renderer tekent voor een VSA-markering (bijvoorbeeld een streep van een Hoogte-modifier of een onderstreping van een Lengte-modifier), los van de zangtekst zelf.">glyphs</a> visueel.</p>
 <p>Default betekent <code>&amp;</code>:</p>
 <div class="highlight"><pre><span></span><code>compacte gekoppelde glyphgroep
 </code></pre></div>
@@ -5523,13 +5523,13 @@ wraptoken
 <div class="highlight"><pre><span></span><code>teken altijd een expliciete connectorlijn
 </code></pre></div>
 <h2 id="visueel-gedrag">Visueel gedrag<a class="headerlink" href="#visueel-gedrag" title="Permanent link">&para;</a></h2>
-<p>Gekoppelde glyphs:
+<p>Gekoppelde <a href="/VSA-tooling/preview/terminologie/glyph" title="Glyph: een zichtbaar grafisch teken dat de Renderer tekent voor een VSA-markering (bijvoorbeeld een streep van een Hoogte-modifier of een onderstreping van een Lengte-modifier), los van de zangtekst zelf.">glyphs</a>:
 - blijven afzonderlijk herkenbaar;
 - staan compact bij elkaar;
 - vormen één optische groep;
 - worden samen gewrapped;
 - worden samen gecontroleerd op collisions.</p>
-<p>Gekoppelde glyphs mogen niet:
+<p>Gekoppelde <a href="/VSA-tooling/preview/terminologie/glyph" title="Glyph: een zichtbaar grafisch teken dat de Renderer tekent voor een VSA-markering (bijvoorbeeld een streep van een Hoogte-modifier of een onderstreping van een Lengte-modifier), los van de zangtekst zelf.">glyphs</a> mogen niet:
 - volledig samenvallen;
 - versmelten tot één onleesbare lijn;
 - visueel losraken van hun groep.</p>
@@ -5539,7 +5539,7 @@ wraptoken
 <p>bevat gekoppelde hoogte-informatie.</p>
 <div class="highlight"><pre><span></span><code>{\&amp;/&amp;/trou-.&amp;.&amp;_}
 </code></pre></div>
-<p>bevat meerdere gekoppelde glyphs die als groep moeten ogen, maar waarvan de afzonderlijke glyphposities zichtbaar blijven.</p>
+<p>bevat meerdere gekoppelde <a href="/VSA-tooling/preview/terminologie/glyph" title="Glyph: een zichtbaar grafisch teken dat de Renderer tekent voor een VSA-markering (bijvoorbeeld een streep van een Hoogte-modifier of een onderstreping van een Lengte-modifier), los van de zangtekst zelf.">glyphs</a> die als groep moeten ogen, maar waarvan de afzonderlijke glyphposities zichtbaar blijven.</p>
 <h2 id="connectorvorm">Connectorvorm<a class="headerlink" href="#connectorvorm" title="Permanent link">&para;</a></h2>
 <p>De default connectorvorm is impliciet.</p>
 <p>Dat wil zeggen:
@@ -5576,7 +5576,7 @@ wraptoken
 <span class="n">offset-y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.18</span>
 <span class="n">stroke-width-factor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.055</span>
 </code></pre></div>
-<p>De renderer mag onderglyphs iets lager plaatsen bij fonts met lange descenders.</p>
+<p>De <a href="/VSA-tooling/preview/terminologie/renderer" title="Renderer: een component die een gevalideerde AST / Syntactische Boom of daarvan afgeleid layoutmodel omzet naar concrete uitvoer, zoals SVG, JSON, Markdown, Hugo-output of MusicXML, zonder de AST semantisch te wijzigen.">renderer</a> mag onderglyphs iets lager plaatsen bij fonts met lange descenders.</p>
 <hr />
 <h1 id="pitchmarkers">Pitchmarkers<a class="headerlink" href="#pitchmarkers" title="Permanent link">&para;</a></h1>
 <h2 id="rendering">Rendering<a class="headerlink" href="#rendering" title="Permanent link">&para;</a></h2>
@@ -5619,7 +5619,7 @@ wraptoken
 <p>De horizontale markerlijn is compact.</p>
 <hr />
 <h1 id="spacing-tussen-render-units">Spacing tussen render-units<a class="headerlink" href="#spacing-tussen-render-units" title="Permanent link">&para;</a></h1>
-<p>De renderer gebruikt minimale horizontale spacing tussen render-units.</p>
+<p>De <a href="/VSA-tooling/preview/terminologie/renderer" title="Renderer: een component die een gevalideerde AST / Syntactische Boom of daarvan afgeleid layoutmodel omzet naar concrete uitvoer, zoals SVG, JSON, Markdown, Hugo-output of MusicXML, zonder de AST semantisch te wijzigen.">renderer</a> gebruikt minimale horizontale spacing tussen render-units.</p>
 <p>Default:</p>
 <div class="highlight"><pre><span></span><code><span class="k">[rendering.svg.spacing]</span>
 <span class="n">text-gap</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.20</span>
@@ -5634,7 +5634,7 @@ wraptoken
 <p>Regelafstand moet voldoende ruimte bieden voor:
 - bovenglyphs;
 - onderglyphs;
-- samengestelde glyphs;
+- samengestelde <a href="/VSA-tooling/preview/terminologie/glyph" title="Glyph: een zichtbaar grafisch teken dat de Renderer tekent voor een VSA-markering (bijvoorbeeld een streep van een Hoogte-modifier of een onderstreping van een Lengte-modifier), los van de zangtekst zelf.">glyphs</a>;
 - pitchmarkers.</p>
 <p>Default:</p>
 <div class="highlight"><pre><span></span><code><span class="k">[rendering.svg.lines]</span>
@@ -5644,26 +5644,26 @@ wraptoken
 <p>De regelafstand is configureerbaar.</p>
 <hr />
 <h1 id="layoutprioriteiten">Layoutprioriteiten<a class="headerlink" href="#layoutprioriteiten" title="Permanent link">&para;</a></h1>
-<p>Bij conflicten gebruikt de renderer deze prioriteit:</p>
+<p>Bij conflicten gebruikt de <a href="/VSA-tooling/preview/terminologie/renderer" title="Renderer: een component die een gevalideerde AST / Syntactische Boom of daarvan afgeleid layoutmodel omzet naar concrete uitvoer, zoals SVG, JSON, Markdown, Hugo-output of MusicXML, zonder de AST semantisch te wijzigen.">renderer</a> deze prioriteit:</p>
 <ol>
 <li>syntax correct renderen;</li>
 <li>tekst leesbaar houden;</li>
-<li>glyphs niet laten overlappen;</li>
+<li><a href="/VSA-tooling/preview/terminologie/glyph" title="Glyph: een zichtbaar grafisch teken dat de Renderer tekent voor een VSA-markering (bijvoorbeeld een streep van een Hoogte-modifier of een onderstreping van een Lengte-modifier), los van de zangtekst zelf.">glyphs</a> niet laten overlappen;</li>
 <li>render-units ondeelbaar houden;</li>
 <li>compacte layout behouden;</li>
 <li>regelbreedte respecteren.</li>
 </ol>
-<p>Dit betekent dat de renderer liever een regel eerder afbreekt dan glyphs laat overlappen.</p>
+<p>Dit betekent dat de <a href="/VSA-tooling/preview/terminologie/renderer" title="Renderer: een component die een gevalideerde AST / Syntactische Boom of daarvan afgeleid layoutmodel omzet naar concrete uitvoer, zoals SVG, JSON, Markdown, Hugo-output of MusicXML, zonder de AST semantisch te wijzigen.">renderer</a> liever een regel eerder afbreekt dan <a href="/VSA-tooling/preview/terminologie/glyph" title="Glyph: een zichtbaar grafisch teken dat de Renderer tekent voor een VSA-markering (bijvoorbeeld een streep van een Hoogte-modifier of een onderstreping van een Lengte-modifier), los van de zangtekst zelf.">glyphs</a> laat overlappen.</p>
 <hr />
 <h1 id="debug-rendering">Debug rendering<a class="headerlink" href="#debug-rendering" title="Permanent link">&para;</a></h1>
 <p>Een debug-theme mag tonen:
 - render-unit boundaries;
-- glyph bounding boxes;
+- <a href="/VSA-tooling/preview/terminologie/glyph" title="Glyph: een zichtbaar grafisch teken dat de Renderer tekent voor een VSA-markering (bijvoorbeeld een streep van een Hoogte-modifier of een onderstreping van een Lengte-modifier), los van de zangtekst zelf.">glyph</a> bounding boxes;
 - anchors;
 - collision boxes;
 - wrap candidates;
 - overflow;
-- muzikale posities.</p>
+- <a href="/VSA-tooling/preview/terminologie/muzikale-positie" title="Muzikale positie: de kleinste muzikale eenheid binnen VSA-notatie: één relatieve toonhoogtebeweging (één EHM), één duur (één ELM) en een koppeling aan één zangelement in een VSA-scope.">muzikale posities</a>.</p>
 <p>Dit is bedoeld voor ontwikkeling en correctie van praktijkvoorbeelden.</p>
 <hr />
 <h1 id="configuratie_1">Configuratie<a class="headerlink" href="#configuratie_1" title="Permanent link">&para;</a></h1>
@@ -5709,7 +5709,7 @@ wraptoken
 - onbekende alignment-waarden;
 - niet-numerieke offsets;
 - line-gap kleiner dan minimum;
-- glyphs met nulbreedte;
+- <a href="/VSA-tooling/preview/terminologie/glyph" title="Glyph: een zichtbaar grafisch teken dat de Renderer tekent voor een VSA-markering (bijvoorbeeld een streep van een Hoogte-modifier of een onderstreping van een Lengte-modifier), los van de zangtekst zelf.">glyphs</a> met nulbreedte;
 - tokens die VSA-syntax breken.</p>
 <p>Bij ongeldige configuratie stopt rendering met een duidelijke configuratiefout.</p>
 <hr />
@@ -5723,7 +5723,7 @@ wraptoken
 - alternatieve glyphvormen per theme.</p>
 <hr />
 <h2 id="bron-docsspecvsa-layout-algorithmmd">Bron: <code>docs/spec/vsa-layout-algorithm.md</code><a class="headerlink" href="#bron-docsspecvsa-layout-algorithmmd" title="Permanent link">&para;</a></h2>
-<h1 id="vsa-layout-algorithm-specification-draft-1">VSA Layout Algorithm Specification (Draft 1)<a class="headerlink" href="#vsa-layout-algorithm-specification-draft-1" title="Permanent link">&para;</a></h1>
+<h1 id="vsa-layout-algorithm-specification-draft-1"><a href="/VSA-tooling/preview/terminologie/vsa" title="Vereenvoudigde Slavische Accentnotatie: wordt gebruikt om te verwijzen naar een Formele Notatie voor het vastleggen van Zangstukken en ook naar de Toolset waarmee zulke vastleggingen kunnen worden gevalideerd en naar publiceerbare vormen worden omgezet.">VSA</a> Layout Algorithm Specification (Draft 1)<a class="headerlink" href="#vsa-layout-algorithm-specification-draft-1" title="Permanent link">&para;</a></h1>
 <h2 id="doel_2">Doel<a class="headerlink" href="#doel_2" title="Permanent link">&para;</a></h2>
 <p>Dit document beschrijft het formele layout-algoritme voor VSA-rendering.</p>
 <p>Het algoritme beschrijft de stap van:</p>
@@ -5742,23 +5742,23 @@ wraptoken
 <li><code>vsa-svg-dom-structure.md</code></li>
 <li><code>vsa-rendering-config-model.md</code></li>
 </ul>
-<p>De focus ligt op een praktische, goed leesbare renderer voor scherm en website.</p>
+<p>De focus ligt op een praktische, goed leesbare <a href="/VSA-tooling/preview/terminologie/renderer" title="Renderer: een component die een gevalideerde AST / Syntactische Boom of daarvan afgeleid layoutmodel omzet naar concrete uitvoer, zoals SVG, JSON, Markdown, Hugo-output of MusicXML, zonder de AST semantisch te wijzigen.">renderer</a> voor scherm en website.</p>
 <hr />
 <h1 id="hoofdprincipes">Hoofdprincipes<a class="headerlink" href="#hoofdprincipes" title="Permanent link">&para;</a></h1>
-<p>De renderer moet:</p>
+<p>De <a href="/VSA-tooling/preview/terminologie/renderer" title="Renderer: een component die een gevalideerde AST / Syntactische Boom of daarvan afgeleid layoutmodel omzet naar concrete uitvoer, zoals SVG, JSON, Markdown, Hugo-output of MusicXML, zonder de AST semantisch te wijzigen.">renderer</a> moet:</p>
 <ul>
 <li>tekst leesbaar houden;</li>
-<li>glyphs dicht bij de tekst plaatsen;</li>
-<li>glyphs niet laten overlappen;</li>
+<li><a href="/VSA-tooling/preview/terminologie/glyph" title="Glyph: een zichtbaar grafisch teken dat de Renderer tekent voor een VSA-markering (bijvoorbeeld een streep van een Hoogte-modifier of een onderstreping van een Lengte-modifier), los van de zangtekst zelf.">glyphs</a> dicht bij de tekst plaatsen;</li>
+<li><a href="/VSA-tooling/preview/terminologie/glyph" title="Glyph: een zichtbaar grafisch teken dat de Renderer tekent voor een VSA-markering (bijvoorbeeld een streep van een Hoogte-modifier of een onderstreping van een Lengte-modifier), los van de zangtekst zelf.">glyphs</a> niet laten overlappen;</li>
 <li>render-units ondeelbaar houden;</li>
 <li>links uitlijnen als default;</li>
 <li>deterministic output geven;</li>
 <li>configuratie vóór rendering valideren.</li>
 </ul>
-<p>De renderer is niet bedoeld als professionele drukwerk-engine.</p>
+<p>De <a href="/VSA-tooling/preview/terminologie/renderer" title="Renderer: een component die een gevalideerde AST / Syntactische Boom of daarvan afgeleid layoutmodel omzet naar concrete uitvoer, zoals SVG, JSON, Markdown, Hugo-output of MusicXML, zonder de AST semantisch te wijzigen.">renderer</a> is niet bedoeld als professionele drukwerk-engine.</p>
 <hr />
 <h1 id="renderpipeline">Renderpipeline<a class="headerlink" href="#renderpipeline" title="Permanent link">&para;</a></h1>
-<p>De renderer doorloopt conceptueel deze fasen:</p>
+<p>De <a href="/VSA-tooling/preview/terminologie/renderer" title="Renderer: een component die een gevalideerde AST / Syntactische Boom of daarvan afgeleid layoutmodel omzet naar concrete uitvoer, zoals SVG, JSON, Markdown, Hugo-output of MusicXML, zonder de AST semantisch te wijzigen.">renderer</a> doorloopt conceptueel deze fasen:</p>
 <div class="highlight"><pre><span></span><code>1. Config laden en valideren
 2. AST ontvangen
 3. Render-units bouwen
@@ -5792,21 +5792,21 @@ wraptoken
 <li>lege kleurwaarde;</li>
 <li>wraptoken dat bestaande VSA-syntax breekt;</li>
 <li>line-gap kleiner dan minimum;</li>
-<li>glyph met nulbreedte.</li>
+<li><a href="/VSA-tooling/preview/terminologie/glyph" title="Glyph: een zichtbaar grafisch teken dat de Renderer tekent voor een VSA-markering (bijvoorbeeld een streep van een Hoogte-modifier of een onderstreping van een Lengte-modifier), los van de zangtekst zelf.">glyph</a> met nulbreedte.</li>
 </ul>
 <hr />
-<h1 id="fase-2-ast-ontvangen">Fase 2: AST ontvangen<a class="headerlink" href="#fase-2-ast-ontvangen" title="Permanent link">&para;</a></h1>
-<p>De renderer werkt niet rechtstreeks op ruwe tekst, maar op de geparseerde VSA-structuur.</p>
-<p>De AST bevat betekenisvolle constructies zoals:</p>
+<h1 id="fase-2-ast-ontvangen">Fase 2: <a href="/VSA-tooling/preview/terminologie/ast" title="Abstract Syntax Tree: een expliciete nodeboom die door de Parser uit VSA-invoer wordt geproduceerd en die Validator en Renderer zonder semantische herinterpretatie kunnen lezen.">AST</a> ontvangen<a class="headerlink" href="#fase-2-ast-ontvangen" title="Permanent link">&para;</a></h1>
+<p>De <a href="/VSA-tooling/preview/terminologie/renderer" title="Renderer: een component die een gevalideerde AST / Syntactische Boom of daarvan afgeleid layoutmodel omzet naar concrete uitvoer, zoals SVG, JSON, Markdown, Hugo-output of MusicXML, zonder de AST semantisch te wijzigen.">renderer</a> werkt niet rechtstreeks op ruwe tekst, maar op de geparseerde VSA-structuur.</p>
+<p>De <a href="/VSA-tooling/preview/terminologie/ast" title="Abstract Syntax Tree: een expliciete nodeboom die door de Parser uit VSA-invoer wordt geproduceerd en die Validator en Renderer zonder semantische herinterpretatie kunnen lezen.">AST</a> bevat betekenisvolle constructies zoals:</p>
 <ul>
 <li>vrije tekst;</li>
-<li>zangelement;</li>
+<li><a href="/VSA-tooling/preview/terminologie/zangelement" title="Zangelement: het verplichte tekstfragment binnen een VSA-scope waaraan optionele Hoogte-modifiers en Lengte-modifiers hangen; de gezongen lettergreep of tekst die bij de Muzikale Posities hoort.">zangelement</a>;</li>
 <li>pitchmarker;</li>
-<li>modifiers;</li>
+<li><a href="/VSA-tooling/preview/terminologie/modifier" title="Modifier: een tekenreeks die binnen een VSA-scope als Hoogte-modifier voor het zangelement of als Lengte-modifier na het zangelement wordt geparseerd.">modifiers</a>;</li>
 <li>alignment-markers.</li>
 </ul>
-<p>De renderer mag geen syntax herstellen.</p>
-<p>Syntaxfouten horen vóór rendering te zijn afgehandeld door parser en validator.</p>
+<p>De <a href="/VSA-tooling/preview/terminologie/renderer" title="Renderer: een component die een gevalideerde AST / Syntactische Boom of daarvan afgeleid layoutmodel omzet naar concrete uitvoer, zoals SVG, JSON, Markdown, Hugo-output of MusicXML, zonder de AST semantisch te wijzigen.">renderer</a> mag geen syntax herstellen.</p>
+<p>Syntaxfouten horen vóór rendering te zijn afgehandeld door <a href="/VSA-tooling/preview/terminologie/parser" title="Parser: een component die VSA-brontekst of tokens volgens de grammatica omzet naar expliciete AST / Syntactische Boom-nodes, bronlocaties behoudt en geen semantische reparaties of renderlogica uitvoert.">parser</a> en <a href="/VSA-tooling/preview/terminologie/validator" title="Validator: een component die een geparseerde AST / Syntactische Boom of VSA-invoer toetst aan semantische en normatieve regels en overtredingen als Diagnostics / Diagnostische Meldingen rapporteert zonder ze stilzwijgend te repareren.">validator</a>.</p>
 <hr />
 <h1 id="fase-3-render-units-bouwen">Fase 3: render-units bouwen<a class="headerlink" href="#fase-3-render-units-bouwen" title="Permanent link">&para;</a></h1>
 <p>Een render-unit is een ondeelbaar visueel layout-element.</p>
@@ -5826,18 +5826,18 @@ wraptoken
 <div class="highlight"><pre><span></span><code>{\&amp;/&amp;/trou-.&amp;.&amp;_}
 </code></pre></div>
 <hr />
-<h1 id="fase-4-muzikale-posities-bepalen">Fase 4: muzikale posities bepalen<a class="headerlink" href="#fase-4-muzikale-posities-bepalen" title="Permanent link">&para;</a></h1>
-<p>Voor SVG-rendering is een muzikale positie een horizontale plaats waarop één glyph of glyphgroep wordt gecentreerd.</p>
-<p>De renderer gebruikt muzikale posities voor:</p>
+<h1 id="fase-4-muzikale-posities-bepalen">Fase 4: <a href="/VSA-tooling/preview/terminologie/muzikale-positie" title="Muzikale positie: de kleinste muzikale eenheid binnen VSA-notatie: één relatieve toonhoogtebeweging (één EHM), één duur (één ELM) en een koppeling aan één zangelement in een VSA-scope.">muzikale posities</a> bepalen<a class="headerlink" href="#fase-4-muzikale-posities-bepalen" title="Permanent link">&para;</a></h1>
+<p>Voor SVG-rendering is een <a href="/VSA-tooling/preview/terminologie/muzikale-positie" title="Muzikale positie: de kleinste muzikale eenheid binnen VSA-notatie: één relatieve toonhoogtebeweging (één EHM), één duur (één ELM) en een koppeling aan één zangelement in een VSA-scope.">muzikale positie</a> een horizontale plaats waarop één <a href="/VSA-tooling/preview/terminologie/glyph" title="Glyph: een zichtbaar grafisch teken dat de Renderer tekent voor een VSA-markering (bijvoorbeeld een streep van een Hoogte-modifier of een onderstreping van een Lengte-modifier), los van de zangtekst zelf.">glyph</a> of glyphgroep wordt gecentreerd.</p>
+<p>De <a href="/VSA-tooling/preview/terminologie/renderer" title="Renderer: een component die een gevalideerde AST / Syntactische Boom of daarvan afgeleid layoutmodel omzet naar concrete uitvoer, zoals SVG, JSON, Markdown, Hugo-output of MusicXML, zonder de AST semantisch te wijzigen.">renderer</a> gebruikt <a href="/VSA-tooling/preview/terminologie/muzikale-positie" title="Muzikale positie: de kleinste muzikale eenheid binnen VSA-notatie: één relatieve toonhoogtebeweging (één EHM), één duur (één ELM) en een koppeling aan één zangelement in een VSA-scope.">muzikale posities</a> voor:</p>
 <ul>
 <li>bovenglyphplaatsing;</li>
 <li>onderglyphplaatsing;</li>
 <li>collisiondetectie;</li>
-<li>minimale breedte van zangelementen;</li>
+<li>minimale breedte van <a href="/VSA-tooling/preview/terminologie/zangelement" title="Zangelement: het verplichte tekstfragment binnen een VSA-scope waaraan optionele Hoogte-modifiers en Lengte-modifiers hangen; de gezongen lettergreep of tekst die bij de Muzikale Posities hoort.">zangelementen</a>;</li>
 <li>alignment-groepen;</li>
 <li>toekomstige MusicXML- en polyfonievoorbereiding.</li>
 </ul>
-<p>Een muzikale positie is niet noodzakelijk hetzelfde als:</p>
+<p>Een <a href="/VSA-tooling/preview/terminologie/muzikale-positie" title="Muzikale positie: de kleinste muzikale eenheid binnen VSA-notatie: één relatieve toonhoogtebeweging (één EHM), één duur (één ELM) en een koppeling aan één zangelement in een VSA-scope.">muzikale positie</a> is niet noodzakelijk hetzelfde als:</p>
 <ul>
 <li>een letter;</li>
 <li>een lettergreep;</li>
@@ -5846,14 +5846,14 @@ wraptoken
 </ul>
 <hr />
 <h1 id="fase-5-tekst-meten">Fase 5: tekst meten<a class="headerlink" href="#fase-5-tekst-meten" title="Permanent link">&para;</a></h1>
-<p>De renderer meet tekst met:</p>
+<p>De <a href="/VSA-tooling/preview/terminologie/renderer" title="Renderer: een component die een gevalideerde AST / Syntactische Boom of daarvan afgeleid layoutmodel omzet naar concrete uitvoer, zoals SVG, JSON, Markdown, Hugo-output of MusicXML, zonder de AST semantisch te wijzigen.">renderer</a> meet tekst met:</p>
 <ul>
 <li>actief font;</li>
 <li>actieve font-size;</li>
 <li>actuele renderer-context.</li>
 </ul>
 <p>Tekstmeting moet deterministic zijn binnen dezelfde omgeving.</p>
-<p>De renderer mag ligatures standaard uitschakelen om voorspelbare meting te krijgen.</p>
+<p>De <a href="/VSA-tooling/preview/terminologie/renderer" title="Renderer: een component die een gevalideerde AST / Syntactische Boom of daarvan afgeleid layoutmodel omzet naar concrete uitvoer, zoals SVG, JSON, Markdown, Hugo-output of MusicXML, zonder de AST semantisch te wijzigen.">renderer</a> mag ligatures standaard uitschakelen om voorspelbare meting te krijgen.</p>
 <p>Fallbackfonts moeten expliciet in de configuratie kunnen worden opgenomen.</p>
 <hr />
 <h1 id="fase-6-glyphgroepen-bouwen">Fase 6: glyphgroepen bouwen<a class="headerlink" href="#fase-6-glyphgroepen-bouwen" title="Permanent link">&para;</a></h1>
@@ -5862,7 +5862,7 @@ wraptoken
 <table>
 <thead>
 <tr>
-<th>VSA</th>
+<th><a href="/VSA-tooling/preview/terminologie/vsa" title="Vereenvoudigde Slavische Accentnotatie: wordt gebruikt om te verwijzen naar een Formele Notatie voor het vastleggen van Zangstukken en ook naar de Toolset waarmee zulke vastleggingen kunnen worden gevalideerd en naar publiceerbare vormen worden omgezet.">VSA</a></th>
 <th>Renderbetekenis</th>
 </tr>
 </thead>
@@ -5893,18 +5893,18 @@ wraptoken
 <p>Defaultinterpretatie:</p>
 <div class="highlight"><pre><span></span><code>&amp; = compacte gekoppelde glyphgroep
 </code></pre></div>
-<p>Gekoppelde glyphs blijven afzonderlijk herkenbaar.</p>
+<p>Gekoppelde <a href="/VSA-tooling/preview/terminologie/glyph" title="Glyph: een zichtbaar grafisch teken dat de Renderer tekent voor een VSA-markering (bijvoorbeeld een streep van een Hoogte-modifier of een onderstreping van een Lengte-modifier), los van de zangtekst zelf.">glyphs</a> blijven afzonderlijk herkenbaar.</p>
 <hr />
 <h1 id="fase-7-minimale-breedtes-bepalen">Fase 7: minimale breedtes bepalen<a class="headerlink" href="#fase-7-minimale-breedtes-bepalen" title="Permanent link">&para;</a></h1>
-<p>De minimale breedte van een muzikale positie is:</p>
+<p>De minimale breedte van een <a href="/VSA-tooling/preview/terminologie/muzikale-positie" title="Muzikale positie: de kleinste muzikale eenheid binnen VSA-notatie: één relatieve toonhoogtebeweging (één EHM), één duur (één ELM) en een koppeling aan één zangelement in een VSA-scope.">muzikale positie</a> is:</p>
 <div class="highlight"><pre><span></span><code>max(tekstdeelbreedte, glyphbreedte + marge)
 </code></pre></div>
-<p>De minimale breedte van een zangelement is de som van de benodigde posities.</p>
+<p>De minimale breedte van een <a href="/VSA-tooling/preview/terminologie/zangelement" title="Zangelement: het verplichte tekstfragment binnen een VSA-scope waaraan optionele Hoogte-modifiers en Lengte-modifiers hangen; de gezongen lettergreep of tekst die bij de Muzikale Posities hoort.">zangelement</a> is de som van de benodigde posities.</p>
 <p>Gevolgen:</p>
 <ul>
 <li>tekst wordt niet samengedrukt;</li>
-<li>glyphs overlappen niet;</li>
-<li>brede glyphstructuren kunnen een zangelement breder maken dan de tekst;</li>
+<li><a href="/VSA-tooling/preview/terminologie/glyph" title="Glyph: een zichtbaar grafisch teken dat de Renderer tekent voor een VSA-markering (bijvoorbeeld een streep van een Hoogte-modifier of een onderstreping van een Lengte-modifier), los van de zangtekst zelf.">glyphs</a> overlappen niet;</li>
+<li>brede glyphstructuren kunnen een <a href="/VSA-tooling/preview/terminologie/zangelement" title="Zangelement: het verplichte tekstfragment binnen een VSA-scope waaraan optionele Hoogte-modifiers en Lengte-modifiers hangen; de gezongen lettergreep of tekst die bij de Muzikale Posities hoort.">zangelement</a> breder maken dan de tekst;</li>
 <li>wrapping gebeurt tussen render-units als de unit niet meer past.</li>
 </ul>
 <hr />
@@ -5940,7 +5940,7 @@ wraptoken
 </tr>
 <tr>
 <td>position-center</td>
-<td>horizontaal midden van muzikale positie</td>
+<td>horizontaal midden van <a href="/VSA-tooling/preview/terminologie/muzikale-positie" title="Muzikale positie: de kleinste muzikale eenheid binnen VSA-notatie: één relatieve toonhoogtebeweging (één EHM), één duur (één ELM) en een koppeling aan één zangelement in een VSA-scope.">muzikale positie</a></td>
 </tr>
 <tr>
 <td>unit-left</td>
@@ -5954,16 +5954,16 @@ wraptoken
 </table>
 <hr />
 <h1 id="fase-9-collisiondetectie">Fase 9: collisiondetectie<a class="headerlink" href="#fase-9-collisiondetectie" title="Permanent link">&para;</a></h1>
-<p>Collisiondetectie controleert dat tekst, glyphs en units elkaar niet visueel hinderen.</p>
+<p>Collisiondetectie controleert dat tekst, <a href="/VSA-tooling/preview/terminologie/glyph" title="Glyph: een zichtbaar grafisch teken dat de Renderer tekent voor een VSA-markering (bijvoorbeeld een streep van een Hoogte-modifier of een onderstreping van een Lengte-modifier), los van de zangtekst zelf.">glyphs</a> en units elkaar niet visueel hinderen.</p>
 <p>Verboden overlap:</p>
 <ul>
-<li>glyph met glyph;</li>
-<li>glyph met tekst;</li>
-<li>glyph met pitchmarker;</li>
+<li><a href="/VSA-tooling/preview/terminologie/glyph" title="Glyph: een zichtbaar grafisch teken dat de Renderer tekent voor een VSA-markering (bijvoorbeeld een streep van een Hoogte-modifier of een onderstreping van een Lengte-modifier), los van de zangtekst zelf.">glyph</a> met <a href="/VSA-tooling/preview/terminologie/glyph" title="Glyph: een zichtbaar grafisch teken dat de Renderer tekent voor een VSA-markering (bijvoorbeeld een streep van een Hoogte-modifier of een onderstreping van een Lengte-modifier), los van de zangtekst zelf.">glyph</a>;</li>
+<li><a href="/VSA-tooling/preview/terminologie/glyph" title="Glyph: een zichtbaar grafisch teken dat de Renderer tekent voor een VSA-markering (bijvoorbeeld een streep van een Hoogte-modifier of een onderstreping van een Lengte-modifier), los van de zangtekst zelf.">glyph</a> met tekst;</li>
+<li><a href="/VSA-tooling/preview/terminologie/glyph" title="Glyph: een zichtbaar grafisch teken dat de Renderer tekent voor een VSA-markering (bijvoorbeeld een streep van een Hoogte-modifier of een onderstreping van een Lengte-modifier), los van de zangtekst zelf.">glyph</a> met pitchmarker;</li>
 <li>aangrenzende render-units;</li>
-<li>glyphs tussen regels.</li>
+<li><a href="/VSA-tooling/preview/terminologie/glyph" title="Glyph: een zichtbaar grafisch teken dat de Renderer tekent voor een VSA-markering (bijvoorbeeld een streep van een Hoogte-modifier of een onderstreping van een Lengte-modifier), los van de zangtekst zelf.">glyphs</a> tussen regels.</li>
 </ul>
-<p>Als collision dreigt, gebruikt de renderer deze volgorde:</p>
+<p>Als collision dreigt, gebruikt de <a href="/VSA-tooling/preview/terminologie/renderer" title="Renderer: een component die een gevalideerde AST / Syntactische Boom of daarvan afgeleid layoutmodel omzet naar concrete uitvoer, zoals SVG, JSON, Markdown, Hugo-output of MusicXML, zonder de AST semantisch te wijzigen.">renderer</a> deze volgorde:</p>
 <div class="highlight"><pre><span></span><code>1. compacte glyphmetriek toepassen
 2. spacing binnen render-unit vergroten
 3. render-unit naar volgende regel verplaatsen
@@ -5981,7 +5981,7 @@ wraptoken
 </code></pre></div>
 <p>Forced breaks winnen altijd van automatische layout.</p>
 <p>Non-breaking groups worden niet intern gesplitst.</p>
-<p>Als een non-breaking group breder is dan de maximale regelbreedte, gebruikt de renderer overflow fallback.</p>
+<p>Als een non-breaking group breder is dan de maximale regelbreedte, gebruikt de <a href="/VSA-tooling/preview/terminologie/renderer" title="Renderer: een component die een gevalideerde AST / Syntactische Boom of daarvan afgeleid layoutmodel omzet naar concrete uitvoer, zoals SVG, JSON, Markdown, Hugo-output of MusicXML, zonder de AST semantisch te wijzigen.">renderer</a> overflow fallback.</p>
 <hr />
 <h1 id="fase-11-regels-positioneren">Fase 11: regels positioneren<a class="headerlink" href="#fase-11-regels-positioneren" title="Permanent link">&para;</a></h1>
 <p>Default regeluitlijning:</p>
@@ -5999,11 +5999,11 @@ wraptoken
 <li>glyphgroepen;</li>
 <li>pitchmarkers;</li>
 <li>interne glyphspacing;</li>
-<li>tekst binnen zangelementen.</li>
+<li>tekst binnen <a href="/VSA-tooling/preview/terminologie/zangelement" title="Zangelement: het verplichte tekstfragment binnen een VSA-scope waaraan optionele Hoogte-modifiers en Lengte-modifiers hangen; de gezongen lettergreep of tekst die bij de Muzikale Posities hoort.">zangelementen</a>.</li>
 </ul>
 <hr />
 <h1 id="fase-12-svg-dom-genereren">Fase 12: SVG-DOM genereren<a class="headerlink" href="#fase-12-svg-dom-genereren" title="Permanent link">&para;</a></h1>
-<p>De renderer genereert SVG volgens <code>vsa-svg-dom-structure.md</code>.</p>
+<p>De <a href="/VSA-tooling/preview/terminologie/renderer" title="Renderer: een component die een gevalideerde AST / Syntactische Boom of daarvan afgeleid layoutmodel omzet naar concrete uitvoer, zoals SVG, JSON, Markdown, Hugo-output of MusicXML, zonder de AST semantisch te wijzigen.">renderer</a> genereert SVG volgens <code>vsa-svg-dom-structure.md</code>.</p>
 <p>Minimaal:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">&lt;svg&gt;</span>
 <span class="w">  </span><span class="nt">&lt;g</span><span class="w"> </span><span class="na">class=</span><span class="s">&quot;vsa-score&quot;</span><span class="nt">&gt;</span>
@@ -6018,8 +6018,8 @@ wraptoken
 <p>Render-units krijgen eigen <code>&lt;g&gt;</code>-groepen.</p>
 <p>Glyphs krijgen semantische CSS-klassen.</p>
 <hr />
-<h1 id="renderer-diagnostics">Renderer diagnostics<a class="headerlink" href="#renderer-diagnostics" title="Permanent link">&para;</a></h1>
-<p>De renderer mag diagnostics produceren.</p>
+<h1 id="renderer-diagnostics">Renderer <a href="/VSA-tooling/preview/terminologie/diagnostic" title="Diagnostic: een melding die door Parser of Validator wordt geproduceerd en ten minste een foutcode, Severity / Ernstniveau, bronlocatie en uitleg of context bij een vastgestelde afwijking bevat.">diagnostics</a><a class="headerlink" href="#renderer-diagnostics" title="Permanent link">&para;</a></h1>
+<p>De <a href="/VSA-tooling/preview/terminologie/renderer" title="Renderer: een component die een gevalideerde AST / Syntactische Boom of daarvan afgeleid layoutmodel omzet naar concrete uitvoer, zoals SVG, JSON, Markdown, Hugo-output of MusicXML, zonder de AST semantisch te wijzigen.">renderer</a> mag <a href="/VSA-tooling/preview/terminologie/diagnostic" title="Diagnostic: een melding die door Parser of Validator wordt geproduceerd en ten minste een foutcode, Severity / Ernstniveau, bronlocatie en uitleg of context bij een vastgestelde afwijking bevat.">diagnostics</a> produceren.</p>
 <p>Voorbeelden:</p>
 <table>
 <thead>
@@ -6050,7 +6050,7 @@ wraptoken
 <p>Default:
 - overflow is warning;
 - configfouten zijn error;
-- unsupported glyph is error of warning afhankelijk van fallback.</p>
+- unsupported <a href="/VSA-tooling/preview/terminologie/glyph" title="Glyph: een zichtbaar grafisch teken dat de Renderer tekent voor een VSA-markering (bijvoorbeeld een streep van een Hoogte-modifier of een onderstreping van een Lengte-modifier), los van de zangtekst zelf.">glyph</a> is error of warning afhankelijk van fallback.</p>
 <hr />
 <h1 id="determinisme">Determinisme<a class="headerlink" href="#determinisme" title="Permanent link">&para;</a></h1>
 <p>Bij gelijke input, configuratie en fontomgeving moet de SVG-output gelijk zijn.</p>
@@ -6074,7 +6074,7 @@ wraptoken
 </ul>
 <hr />
 <h2 id="bron-docsspecvsa-svg-dom-structuremd">Bron: <code>docs/spec/vsa-svg-dom-structure.md</code><a class="headerlink" href="#bron-docsspecvsa-svg-dom-structuremd" title="Permanent link">&para;</a></h2>
-<h1 id="vsa-svg-dom-structure-specification-draft-1">VSA SVG DOM Structure Specification (Draft 1)<a class="headerlink" href="#vsa-svg-dom-structure-specification-draft-1" title="Permanent link">&para;</a></h1>
+<h1 id="vsa-svg-dom-structure-specification-draft-1"><a href="/VSA-tooling/preview/terminologie/vsa" title="Vereenvoudigde Slavische Accentnotatie: wordt gebruikt om te verwijzen naar een Formele Notatie voor het vastleggen van Zangstukken en ook naar de Toolset waarmee zulke vastleggingen kunnen worden gevalideerd en naar publiceerbare vormen worden omgezet.">VSA</a> SVG DOM Structure Specification (Draft 1)<a class="headerlink" href="#vsa-svg-dom-structure-specification-draft-1" title="Permanent link">&para;</a></h1>
 <h2 id="doel_3">Doel<a class="headerlink" href="#doel_3" title="Permanent link">&para;</a></h2>
 <p>Dit document beschrijft de SVG-DOM-structuur voor VSA-rendering.</p>
 <p>Doelen:</p>
@@ -6120,7 +6120,7 @@ wraptoken
 <p>Alle inhoud staat binnen:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">&lt;g</span><span class="w"> </span><span class="na">class=</span><span class="s">&quot;vsa-score&quot;</span><span class="nt">&gt;</span>
 </code></pre></div>
-<p>Deze groep vertegenwoordigt één gerenderd VSA-document of VSA-blok.</p>
+<p>Deze groep vertegenwoordigt één gerenderd VSA-document of <a href="/VSA-tooling/preview/terminologie/vsa-blokken" title="VSA-blok: een tekstfragment in een Markdownbestand dat begint met <code>::: vsa-notatie</code> en eindigt met <code>:::</code>, beide aan het begin van een regel, met daartussen VSA-notatie; typisch ontdekt en verwerkt door de Vsa-toolset (o.a. <code>vsa blocks</code>, <code>vsa validate</code>, <code>vsa process</code>).">VSA-blok</a>.</p>
 <hr />
 <h1 id="line-groups">Line groups<a class="headerlink" href="#line-groups" title="Permanent link">&para;</a></h1>
 <p>Elke renderregel krijgt:</p>
@@ -6153,7 +6153,7 @@ data-vsa-source-end=&quot;...&quot;
 </tr>
 <tr>
 <td><code>scope</code></td>
-<td>zangelement</td>
+<td><a href="/VSA-tooling/preview/terminologie/zangelement" title="Zangelement: het verplichte tekstfragment binnen een VSA-scope waaraan optionele Hoogte-modifiers en Lengte-modifiers hangen; de gezongen lettergreep of tekst die bij de Muzikale Posities hoort.">zangelement</a></td>
 </tr>
 <tr>
 <td><code>pitch-marker</code></td>
@@ -6174,7 +6174,7 @@ data-vsa-source-end=&quot;...&quot;
 <p>Tekst wordt gerenderd met:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">&lt;text</span><span class="w"> </span><span class="na">class=</span><span class="s">&quot;vsa-text&quot;</span><span class="nt">&gt;</span>...<span class="nt">&lt;/text&gt;</span>
 </code></pre></div>
-<p>Voor zangelementen kan de gezongen tekst apart worden geclassificeerd:</p>
+<p>Voor <a href="/VSA-tooling/preview/terminologie/zangelement" title="Zangelement: het verplichte tekstfragment binnen een VSA-scope waaraan optionele Hoogte-modifiers en Lengte-modifiers hangen; de gezongen lettergreep of tekst die bij de Muzikale Posities hoort.">zangelementen</a> kan de gezongen tekst apart worden geclassificeerd:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">&lt;text</span><span class="w"> </span><span class="na">class=</span><span class="s">&quot;vsa-sung-text&quot;</span><span class="nt">&gt;</span>...<span class="nt">&lt;/text&gt;</span>
 </code></pre></div>
 <p>Vrije tekst:</p>
@@ -6189,10 +6189,10 @@ data-vsa-source-end=&quot;...&quot;
 <div class="highlight"><pre><span></span><code><span class="nt">&lt;g</span><span class="w"> </span><span class="na">class=</span><span class="s">&quot;vsa-upper-glyphs&quot;</span><span class="nt">&gt;</span>
 <span class="nt">&lt;g</span><span class="w"> </span><span class="na">class=</span><span class="s">&quot;vsa-lower-glyphs&quot;</span><span class="nt">&gt;</span>
 </code></pre></div>
-<p>Gekoppelde glyphs via <code>&amp;</code> staan binnen één glyphgroep.</p>
+<p>Gekoppelde <a href="/VSA-tooling/preview/terminologie/glyph" title="Glyph: een zichtbaar grafisch teken dat de Renderer tekent voor een VSA-markering (bijvoorbeeld een streep van een Hoogte-modifier of een onderstreping van een Lengte-modifier), los van de zangtekst zelf.">glyphs</a> via <code>&amp;</code> staan binnen één glyphgroep.</p>
 <hr />
-<h1 id="individual-glyphs">Individual glyphs<a class="headerlink" href="#individual-glyphs" title="Permanent link">&para;</a></h1>
-<p>Elke glyph krijgt een semantische klasse.</p>
+<h1 id="individual-glyphs">Individual <a href="/VSA-tooling/preview/terminologie/glyph" title="Glyph: een zichtbaar grafisch teken dat de Renderer tekent voor een VSA-markering (bijvoorbeeld een streep van een Hoogte-modifier of een onderstreping van een Lengte-modifier), los van de zangtekst zelf.">glyphs</a><a class="headerlink" href="#individual-glyphs" title="Permanent link">&para;</a></h1>
+<p>Elke <a href="/VSA-tooling/preview/terminologie/glyph" title="Glyph: een zichtbaar grafisch teken dat de Renderer tekent voor een VSA-markering (bijvoorbeeld een streep van een Hoogte-modifier of een onderstreping van een Lengte-modifier), los van de zangtekst zelf.">glyph</a> krijgt een semantische klasse.</p>
 <p>Voorbeelden:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">&lt;path</span><span class="w"> </span><span class="na">class=</span><span class="s">&quot;vsa-glyph vsa-upper-glyph vsa-glyph-rise&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
 <span class="nt">&lt;path</span><span class="w"> </span><span class="na">class=</span><span class="s">&quot;vsa-glyph vsa-upper-glyph vsa-glyph-fall&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
@@ -6261,14 +6261,14 @@ vsa-glyph-1-3-2
 <h1 id="toekomstige-interactiviteit">Toekomstige interactiviteit<a class="headerlink" href="#toekomstige-interactiviteit" title="Permanent link">&para;</a></h1>
 <p>De structuur moet geschikt blijven voor:</p>
 <ul>
-<li>hover diagnostics;</li>
+<li>hover <a href="/VSA-tooling/preview/terminologie/diagnostic" title="Diagnostic: een melding die door Parser of Validator wordt geproduceerd en ten minste een foutcode, Severity / Ernstniveau, bronlocatie en uitleg of context bij een vastgestelde afwijking bevat.">diagnostics</a>;</li>
 <li>source mapping;</li>
 <li>editorselectie;</li>
 <li>synced playback;</li>
 <li>click-to-source;</li>
 <li>debug overlays.</li>
 </ul>
-<p>Daarom mogen renderers data-attributen toevoegen zolang ze geen bestaande output breken.</p>
+<p>Daarom mogen <a href="/VSA-tooling/preview/terminologie/renderer" title="Renderer: een component die een gevalideerde AST / Syntactische Boom of daarvan afgeleid layoutmodel omzet naar concrete uitvoer, zoals SVG, JSON, Markdown, Hugo-output of MusicXML, zonder de AST semantisch te wijzigen.">renderers</a> data-attributen toevoegen zolang ze geen bestaande output breken.</p>
 <hr />
 <h1 id="open-ontwerpvragen_3">Open ontwerpvragen<a class="headerlink" href="#open-ontwerpvragen_3" title="Permanent link">&para;</a></h1>
 <p>Nog nader uit te werken:</p>
@@ -6281,7 +6281,7 @@ vsa-glyph-1-3-2
 </ul>
 <hr />
 <h2 id="bron-docsspecvsa-rendering-config-modelmd">Bron: <code>docs/spec/vsa-rendering-config-model.md</code><a class="headerlink" href="#bron-docsspecvsa-rendering-config-modelmd" title="Permanent link">&para;</a></h2>
-<h1 id="vsa-rendering-configuration-model-draft-1">VSA Rendering Configuration Model (Draft 1)<a class="headerlink" href="#vsa-rendering-configuration-model-draft-1" title="Permanent link">&para;</a></h1>
+<h1 id="vsa-rendering-configuration-model-draft-1"><a href="/VSA-tooling/preview/terminologie/vsa" title="Vereenvoudigde Slavische Accentnotatie: wordt gebruikt om te verwijzen naar een Formele Notatie voor het vastleggen van Zangstukken en ook naar de Toolset waarmee zulke vastleggingen kunnen worden gevalideerd en naar publiceerbare vormen worden omgezet.">VSA</a> Rendering Configuration Model (Draft 1)<a class="headerlink" href="#vsa-rendering-configuration-model-draft-1" title="Permanent link">&para;</a></h1>
 <h2 id="doel_4">Doel<a class="headerlink" href="#doel_4" title="Permanent link">&para;</a></h2>
 <p>Dit document beschrijft het configuratiemodel voor VSA-rendering.</p>
 <p>Het document definieert:</p>
@@ -6306,7 +6306,7 @@ vsa-glyph-1-3-2
 <p>Latere lagen overschrijven eerdere lagen.</p>
 <hr />
 <h1 id="ingebouwde-defaults">Ingebouwde defaults<a class="headerlink" href="#ingebouwde-defaults" title="Permanent link">&para;</a></h1>
-<p>De renderer bevat ingebouwde defaults voor:</p>
+<p>De <a href="/VSA-tooling/preview/terminologie/renderer" title="Renderer: een component die een gevalideerde AST / Syntactische Boom of daarvan afgeleid layoutmodel omzet naar concrete uitvoer, zoals SVG, JSON, Markdown, Hugo-output of MusicXML, zonder de AST semantisch te wijzigen.">renderer</a> bevat ingebouwde defaults voor:</p>
 <ul>
 <li>font;</li>
 <li>font-size;</li>
@@ -6397,7 +6397,7 @@ vsa build-markdown content generated static\vsa --config vsa.toml
 <p>Ongeldig:</p>
 <ul>
 <li>negatieve afstanden;</li>
-<li>nulbreedte glyphs;</li>
+<li>nulbreedte <a href="/VSA-tooling/preview/terminologie/glyph" title="Glyph: een zichtbaar grafisch teken dat de Renderer tekent voor een VSA-markering (bijvoorbeeld een streep van een Hoogte-modifier of een onderstreping van een Lengte-modifier), los van de zangtekst zelf.">glyphs</a>;</li>
 <li>onbekende alignmentwaarden;</li>
 <li>lege fontnaam;</li>
 <li>lege kleurwaarde;</li>
@@ -6459,7 +6459,7 @@ vsa build-markdown content generated static\vsa --config vsa.toml
 <li>uniek zijn;</li>
 <li>niet ambigu overlappen;</li>
 <li>bestaande VSA-syntax niet breken;</li>
-<li>vóór parser/rendering gevalideerd worden.</li>
+<li>vóór <a href="/VSA-tooling/preview/terminologie/parser" title="Parser: een component die VSA-brontekst of tokens volgens de grammatica omzet naar expliciete AST / Syntactische Boom-nodes, bronlocaties behoudt en geen semantische reparaties of renderlogica uitvoert.">parser</a>/rendering gevalideerd worden.</li>
 </ul>
 <p>Ongeldig:</p>
 <div class="highlight"><pre><span></span><code><span class="k">[rendering.svg.wrapping.tokens]</span>
@@ -6468,7 +6468,7 @@ vsa build-markdown content generated static\vsa --config vsa.toml
 <p>Omdat <code>[:]</code> al een pitchmarker is.</p>
 <hr />
 <h1 id="rendererdiagnostics">Rendererdiagnostics<a class="headerlink" href="#rendererdiagnostics" title="Permanent link">&para;</a></h1>
-<p>Configvalidatie produceert diagnostics.</p>
+<p>Configvalidatie produceert <a href="/VSA-tooling/preview/terminologie/diagnostic" title="Diagnostic: een melding die door Parser of Validator wordt geproduceerd en ten minste een foutcode, Severity / Ernstniveau, bronlocatie en uitleg of context bij een vastgestelde afwijking bevat.">diagnostics</a>.</p>
 <p>Voorbeelden:</p>
 <table>
 <thead>
@@ -6531,10 +6531,10 @@ vsa build-markdown content generated static\vsa --config vsa.toml
 </ul>
 <hr />
 <h2 id="bron-docsspecvsa-height-markersmd">Bron: <code>docs/spec/vsa-height-markers.md</code><a class="headerlink" href="#bron-docsspecvsa-height-markersmd" title="Permanent link">&para;</a></h2>
-<h1 id="vsa-hoogte-markeringen">VSA hoogte-markeringen<a class="headerlink" href="#vsa-hoogte-markeringen" title="Permanent link">&para;</a></h1>
+<h1 id="vsa-ehm-waarbij-ehm-leeg-is-of-een-geldige-ehm-bevathoogte-markeringen"><a href="/VSA-tooling/preview/terminologie/vsa" title="Vereenvoudigde Slavische Accentnotatie: wordt gebruikt om te verwijzen naar een Formele Notatie voor het vastleggen van Zangstukken en ook naar de Toolset waarmee zulke vastleggingen kunnen worden gevalideerd en naar publiceerbare vormen worden omgezet.">VSA</a> <a href="/VSA-tooling/preview/terminologie/pitch-marker" title="Pitch-marker: een Bracket-directive / Bracket-token met de vorm <code>[&lt;EHM&gt;:]</code>, waarbij <code>&lt;EHM&gt;</code> leeg is of een geldige EHM bevat.">hoogte-markeringen</a><a class="headerlink" href="#vsa-ehm-waarbij-ehm-leeg-is-of-een-geldige-ehm-bevathoogte-markeringen" title="Permanent link">&para;</a></h1>
 <p>Status: ontwerpbesluit voor opname in de VSA-specificatie.</p>
 <h2 id="begrip">Begrip<a class="headerlink" href="#begrip" title="Permanent link">&para;</a></h2>
-<p>Een hoogte-markering is een positionele markering in een <code>vsa-notatie</code>blok.</p>
+<p>Een <a href="/VSA-tooling/preview/terminologie/pitch-marker" title="Pitch-marker: een Bracket-directive / Bracket-token met de vorm <code>[&lt;EHM&gt;:]</code>, waarbij <code>&lt;EHM&gt;</code> leeg is of een geldige EHM bevat.">hoogte-markering</a> is een positionele markering in een <code>vsa-notatie</code>blok.</p>
 <p>Voorbeelden:</p>
 <div class="highlight"><pre><span></span><code>[:]
 [/:]
@@ -6543,7 +6543,7 @@ vsa build-markdown content generated static\vsa --config vsa.toml
 </code></pre></div>
 <p>De exacte syntaxis van de markering wordt door de VSA-taalspecificatie bepaald.</p>
 <h2 id="aantal-markeringen">Aantal markeringen<a class="headerlink" href="#aantal-markeringen" title="Permanent link">&para;</a></h2>
-<p>Binnen één <code>vsa-notatie</code>blok mogen meerdere hoogte-markeringen voorkomen.</p>
+<p>Binnen één <code>vsa-notatie</code>blok mogen meerdere <a href="/VSA-tooling/preview/terminologie/pitch-marker" title="Pitch-marker: een Bracket-directive / Bracket-token met de vorm <code>[&lt;EHM&gt;:]</code>, waarbij <code>&lt;EHM&gt;</code> leeg is of een geldige EHM bevat.">hoogte-markeringen</a> voorkomen.</p>
 <p>Voorbeeld:</p>
 <div class="highlight"><pre><span></span><code>::: vsa-notatie
 [:] Heer, ontferm U [/:] over ons [\:]
@@ -6551,7 +6551,7 @@ vsa build-markdown content generated static\vsa --config vsa.toml
 </code></pre></div>
 <p>Dit is syntactisch geldig.</p>
 <h2 id="positie-ten-opzichte-van-tekst">Positie ten opzichte van tekst<a class="headerlink" href="#positie-ten-opzichte-van-tekst" title="Permanent link">&para;</a></h2>
-<p>Er is geen syntactisch voorschrift over de positie van hoogte-markeringen ten opzichte van gezongen tekst.</p>
+<p>Er is geen syntactisch voorschrift over de positie van <a href="/VSA-tooling/preview/terminologie/pitch-marker" title="Pitch-marker: een Bracket-directive / Bracket-token met de vorm <code>[&lt;EHM&gt;:]</code>, waarbij <code>&lt;EHM&gt;</code> leeg is of een geldige EHM bevat.">hoogte-markeringen</a> ten opzichte van gezongen tekst.</p>
 <p>Daarom zijn onder meer geldig:</p>
 <div class="highlight"><pre><span></span><code>::: vsa-notatie
 [:] Heer, ontferm U
@@ -6571,39 +6571,39 @@ Heer, [:] ontferm [/:] U [\:]
 </code></pre></div>
 <p>Tekst mag dus voorkomen:</p>
 <ul>
-<li>vóór de eerste hoogte-markering;</li>
-<li>tussen hoogte-markeringen;</li>
-<li>na de laatste hoogte-markering.</li>
+<li>vóór de eerste <a href="/VSA-tooling/preview/terminologie/pitch-marker" title="Pitch-marker: een Bracket-directive / Bracket-token met de vorm <code>[&lt;EHM&gt;:]</code>, waarbij <code>&lt;EHM&gt;</code> leeg is of een geldige EHM bevat.">hoogte-markering</a>;</li>
+<li>tussen <a href="/VSA-tooling/preview/terminologie/pitch-marker" title="Pitch-marker: een Bracket-directive / Bracket-token met de vorm <code>[&lt;EHM&gt;:]</code>, waarbij <code>&lt;EHM&gt;</code> leeg is of een geldige EHM bevat.">hoogte-markeringen</a>;</li>
+<li>na de laatste <a href="/VSA-tooling/preview/terminologie/pitch-marker" title="Pitch-marker: een Bracket-directive / Bracket-token met de vorm <code>[&lt;EHM&gt;:]</code>, waarbij <code>&lt;EHM&gt;</code> leeg is of een geldige EHM bevat.">hoogte-markering</a>.</li>
 </ul>
 <h2 id="semantiek">Semantiek<a class="headerlink" href="#semantiek" title="Permanent link">&para;</a></h2>
-<p>De eerste hoogte-markering in een <code>vsa-notatie</code>blok geeft de beginhoogte aan.</p>
-<p>Elke latere hoogte-markering geeft de zanghoogte aan waar de zang op die positie moet zitten.</p>
+<p>De eerste <a href="/VSA-tooling/preview/terminologie/pitch-marker" title="Pitch-marker: een Bracket-directive / Bracket-token met de vorm <code>[&lt;EHM&gt;:]</code>, waarbij <code>&lt;EHM&gt;</code> leeg is of een geldige EHM bevat.">hoogte-markering</a> in een <code>vsa-notatie</code>blok geeft de beginhoogte aan.</p>
+<p>Elke latere <a href="/VSA-tooling/preview/terminologie/pitch-marker" title="Pitch-marker: een Bracket-directive / Bracket-token met de vorm <code>[&lt;EHM&gt;:]</code>, waarbij <code>&lt;EHM&gt;</code> leeg is of een geldige EHM bevat.">hoogte-markering</a> geeft de zanghoogte aan waar de zang op die positie moet zitten.</p>
 <p>Hoogte-markeringen zijn daarmee gewone positionele semantische nodes in de documentstroom, met één aanvullende regel:</p>
 <div class="highlight"><pre><span></span><code>eerste hoogte-markering = beginhoogte
 latere hoogte-markering = lokale hoogte op die positie
 </code></pre></div>
 <h2 id="rendering_1">Rendering<a class="headerlink" href="#rendering_1" title="Permanent link">&para;</a></h2>
-<p>Voor SVG-rendering worden alle hoogte-markeringen op dezelfde manier behandeld.</p>
-<p>De renderer maakt dus geen visueel onderscheid tussen:</p>
+<p>Voor SVG-rendering worden alle <a href="/VSA-tooling/preview/terminologie/pitch-marker" title="Pitch-marker: een Bracket-directive / Bracket-token met de vorm <code>[&lt;EHM&gt;:]</code>, waarbij <code>&lt;EHM&gt;</code> leeg is of een geldige EHM bevat.">hoogte-markeringen</a> op dezelfde manier behandeld.</p>
+<p>De <a href="/VSA-tooling/preview/terminologie/renderer" title="Renderer: een component die een gevalideerde AST / Syntactische Boom of daarvan afgeleid layoutmodel omzet naar concrete uitvoer, zoals SVG, JSON, Markdown, Hugo-output of MusicXML, zonder de AST semantisch te wijzigen.">renderer</a> maakt dus geen visueel onderscheid tussen:</p>
 <ul>
-<li>eerste hoogte-markering;</li>
-<li>latere hoogte-markeringen;</li>
-<li>eventueel laatste hoogte-markering.</li>
+<li>eerste <a href="/VSA-tooling/preview/terminologie/pitch-marker" title="Pitch-marker: een Bracket-directive / Bracket-token met de vorm <code>[&lt;EHM&gt;:]</code>, waarbij <code>&lt;EHM&gt;</code> leeg is of een geldige EHM bevat.">hoogte-markering</a>;</li>
+<li>latere <a href="/VSA-tooling/preview/terminologie/pitch-marker" title="Pitch-marker: een Bracket-directive / Bracket-token met de vorm <code>[&lt;EHM&gt;:]</code>, waarbij <code>&lt;EHM&gt;</code> leeg is of een geldige EHM bevat.">hoogte-markeringen</a>;</li>
+<li>eventueel laatste <a href="/VSA-tooling/preview/terminologie/pitch-marker" title="Pitch-marker: een Bracket-directive / Bracket-token met de vorm <code>[&lt;EHM&gt;:]</code>, waarbij <code>&lt;EHM&gt;</code> leeg is of een geldige EHM bevat.">hoogte-markering</a>.</li>
 </ul>
 <p>Rendering is positioneel:</p>
 <div class="highlight"><pre><span></span><code>hoogte-markering in bron → hoogte-marker-glyph op die renderpositie
 </code></pre></div>
 <h2 id="validatie_1">Validatie<a class="headerlink" href="#validatie_1" title="Permanent link">&para;</a></h2>
-<p>De validator mag semantische controles uitvoeren op hoogte-markeringen, maar mag niet eisen dat:</p>
+<p>De <a href="/VSA-tooling/preview/terminologie/validator" title="Validator: een component die een geparseerde AST / Syntactische Boom of VSA-invoer toetst aan semantische en normatieve regels en overtredingen als Diagnostics / Diagnostische Meldingen rapporteert zonder ze stilzwijgend te repareren.">validator</a> mag semantische controles uitvoeren op <a href="/VSA-tooling/preview/terminologie/pitch-marker" title="Pitch-marker: een Bracket-directive / Bracket-token met de vorm <code>[&lt;EHM&gt;:]</code>, waarbij <code>&lt;EHM&gt;</code> leeg is of een geldige EHM bevat.">hoogte-markeringen</a>, maar mag niet eisen dat:</p>
 <ul>
-<li>de eerste hoogte-markering helemaal aan het begin staat;</li>
-<li>de laatste hoogte-markering helemaal aan het eind staat;</li>
-<li>er geen tekst vóór de eerste hoogte-markering staat;</li>
-<li>er geen tekst na de laatste hoogte-markering staat.</li>
+<li>de eerste <a href="/VSA-tooling/preview/terminologie/pitch-marker" title="Pitch-marker: een Bracket-directive / Bracket-token met de vorm <code>[&lt;EHM&gt;:]</code>, waarbij <code>&lt;EHM&gt;</code> leeg is of een geldige EHM bevat.">hoogte-markering</a> helemaal aan het begin staat;</li>
+<li>de laatste <a href="/VSA-tooling/preview/terminologie/pitch-marker" title="Pitch-marker: een Bracket-directive / Bracket-token met de vorm <code>[&lt;EHM&gt;:]</code>, waarbij <code>&lt;EHM&gt;</code> leeg is of een geldige EHM bevat.">hoogte-markering</a> helemaal aan het eind staat;</li>
+<li>er geen tekst vóór de eerste <a href="/VSA-tooling/preview/terminologie/pitch-marker" title="Pitch-marker: een Bracket-directive / Bracket-token met de vorm <code>[&lt;EHM&gt;:]</code>, waarbij <code>&lt;EHM&gt;</code> leeg is of een geldige EHM bevat.">hoogte-markering</a> staat;</li>
+<li>er geen tekst na de laatste <a href="/VSA-tooling/preview/terminologie/pitch-marker" title="Pitch-marker: een Bracket-directive / Bracket-token met de vorm <code>[&lt;EHM&gt;:]</code>, waarbij <code>&lt;EHM&gt;</code> leeg is of een geldige EHM bevat.">hoogte-markering</a> staat.</li>
 </ul>
-<p>Wel kan de validator controleren:</p>
+<p>Wel kan de <a href="/VSA-tooling/preview/terminologie/validator" title="Validator: een component die een geparseerde AST / Syntactische Boom of VSA-invoer toetst aan semantische en normatieve regels en overtredingen als Diagnostics / Diagnostische Meldingen rapporteert zonder ze stilzwijgend te repareren.">validator</a> controleren:</p>
 <ul>
-<li>of hoogte-markeringen syntactisch geldig zijn;</li>
+<li>of <a href="/VSA-tooling/preview/terminologie/pitch-marker" title="Pitch-marker: een Bracket-directive / Bracket-token met de vorm <code>[&lt;EHM&gt;:]</code>, waarbij <code>&lt;EHM&gt;</code> leeg is of een geldige EHM bevat.">hoogte-markeringen</a> syntactisch geldig zijn;</li>
 <li>of de eerste markering als beginhoogte geïnterpreteerd kan worden;</li>
 <li>of latere markeringen betekenisvol zijn binnen de gekozen toon/semantiek;</li>
 <li>of een expliciete eindmarkering overeenkomt met de berekende eindtoon, zodra eindtooncontrole is gespecificeerd.</li>
@@ -6612,7 +6612,7 @@ latere hoogte-markering = lokale hoogte op die positie
 <p>Een eindmarkering <code>[:]</code> is niet leeg in semantische zin: zij betekent neutrale hoogte en is equivalent aan <code>[-:]</code> c.q. <code>[~:]</code>.</p>
 <h2 id="implementatieconsequenties">Implementatieconsequenties<a class="headerlink" href="#implementatieconsequenties" title="Permanent link">&para;</a></h2>
 <h3 id="parser">Parser<a class="headerlink" href="#parser" title="Permanent link">&para;</a></h3>
-<p>De parser moet hoogte-markeringen representeren als gewone nodes in de documentstroom.</p>
+<p>De <a href="/VSA-tooling/preview/terminologie/parser" title="Parser: een component die VSA-brontekst of tokens volgens de grammatica omzet naar expliciete AST / Syntactische Boom-nodes, bronlocaties behoudt en geen semantische reparaties of renderlogica uitvoert.">parser</a> moet <a href="/VSA-tooling/preview/terminologie/pitch-marker" title="Pitch-marker: een Bracket-directive / Bracket-token met de vorm <code>[&lt;EHM&gt;:]</code>, waarbij <code>&lt;EHM&gt;</code> leeg is of een geldige EHM bevat.">hoogte-markeringen</a> representeren als gewone nodes in de documentstroom.</p>
 <p>Niet gewenst:</p>
 <div class="highlight"><pre><span></span><code>Document(begin_marker, body, end_marker)
 </code></pre></div>
@@ -6621,14 +6621,14 @@ latere hoogte-markering = lokale hoogte op die positie
 </code></pre></div>
 <p>of equivalent.</p>
 <h3 id="validator">Validator<a class="headerlink" href="#validator" title="Permanent link">&para;</a></h3>
-<p>De validator moet hoogte-markeringen verzamelen uit de documentstroom.</p>
+<p>De <a href="/VSA-tooling/preview/terminologie/validator" title="Validator: een component die een geparseerde AST / Syntactische Boom of VSA-invoer toetst aan semantische en normatieve regels en overtredingen als Diagnostics / Diagnostische Meldingen rapporteert zonder ze stilzwijgend te repareren.">validator</a> moet <a href="/VSA-tooling/preview/terminologie/pitch-marker" title="Pitch-marker: een Bracket-directive / Bracket-token met de vorm <code>[&lt;EHM&gt;:]</code>, waarbij <code>&lt;EHM&gt;</code> leeg is of een geldige EHM bevat.">hoogte-markeringen</a> verzamelen uit de documentstroom.</p>
 <p>Semantiek:</p>
 <div class="highlight"><pre><span></span><code>height_markers = alle HeightMarkerNode nodes in bronvolgorde
 start_height = height_markers[0] indien aanwezig
 local_heights = height_markers[1:]
 </code></pre></div>
 <h3 id="svg-renderer">SVG-renderer<a class="headerlink" href="#svg-renderer" title="Permanent link">&para;</a></h3>
-<p>De renderer behandelt elke hoogte-markering hetzelfde.</p>
+<p>De <a href="/VSA-tooling/preview/terminologie/renderer" title="Renderer: een component die een gevalideerde AST / Syntactische Boom of daarvan afgeleid layoutmodel omzet naar concrete uitvoer, zoals SVG, JSON, Markdown, Hugo-output of MusicXML, zonder de AST semantisch te wijzigen.">renderer</a> behandelt elke <a href="/VSA-tooling/preview/terminologie/pitch-marker" title="Pitch-marker: een Bracket-directive / Bracket-token met de vorm <code>[&lt;EHM&gt;:]</code>, waarbij <code>&lt;EHM&gt;</code> leeg is of een geldige EHM bevat.">hoogte-markering</a> hetzelfde.</p>
 <p>Daarom hoort rendering niet afhankelijk te zijn van:</p>
 <ul>
 <li><code>is_start_marker</code>;</li>
@@ -6636,8 +6636,8 @@ local_heights = height_markers[1:]
 <li>positie aan begin/eind.</li>
 </ul>
 <h3 id="musicxml">MusicXML<a class="headerlink" href="#musicxml" title="Permanent link">&para;</a></h3>
-<p>Voor toekomstige MusicXML-export is waarschijnlijk vooral de eerste hoogte-markering relevant als startinformatie.</p>
-<p>Latere hoogte-markeringen kunnen later worden gebruikt voor:</p>
+<p>Voor toekomstige MusicXML-export is waarschijnlijk vooral de eerste <a href="/VSA-tooling/preview/terminologie/pitch-marker" title="Pitch-marker: een Bracket-directive / Bracket-token met de vorm <code>[&lt;EHM&gt;:]</code>, waarbij <code>&lt;EHM&gt;</code> leeg is of een geldige EHM bevat.">hoogte-markering</a> relevant als startinformatie.</p>
+<p>Latere <a href="/VSA-tooling/preview/terminologie/pitch-marker" title="Pitch-marker: een Bracket-directive / Bracket-token met de vorm <code>[&lt;EHM&gt;:]</code>, waarbij <code>&lt;EHM&gt;</code> leeg is of een geldige EHM bevat.">hoogte-markeringen</a> kunnen later worden gebruikt voor:</p>
 <ul>
 <li>controlepunten;</li>
 <li>pitch hints;</li>

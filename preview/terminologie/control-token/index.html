@@ -94,7 +94,7 @@
   
   <strong>Preview</strong>
    — branch <code>docs/walkthrough-examples</code>
-  , gebouwd 2026-08-09 15:59 CEST.
+  , gebouwd 2026-08-09 16:17 CEST.
   <a href="https://orthodox-groningen.github.io/VSA-tooling/">Live documentatie (main)</a>.
   
 
@@ -2719,7 +2719,17 @@
 
 
 <h1 id="control-token">Control-token<a class="headerlink" href="#control-token" title="Permanent link">&para;</a></h1>
-<p>Een bracket-directive geldt als control-token wanneer bracket-dispatch de tokenwaarde herkent als ondersteunde structurele of renderergerichte aanwijzing en niet als pitch-marker. De abstracte betekenis wordt door de parser vastgelegd; de concrete visuele uitvoering kan per renderer verschillen.</p>
+<p>Een <a href="/VSA-tooling/preview/terminologie/bracket-directive" title="Bracket-directive: een tekstfragment dat als afzonderlijk VSA-token tussen <code>[</code> en <code>]</code> voorkomt en door bracket-dispatch wordt geclassificeerd voordat de inhoudelijke parsing verdergaat.">bracket-directive</a> geldt als control-token wanneer bracket-dispatch de
+tokenwaarde herkent als ondersteunde structurele of renderergerichte
+aanwijzing en niet als <a href="/VSA-tooling/preview/terminologie/pitch-marker" title="Pitch-marker: een Bracket-directive / Bracket-token met de vorm <code>[&lt;EHM&gt;:]</code>, waarbij <code>&lt;EHM&gt;</code> leeg is of een geldige EHM bevat.">pitch-marker</a>. De abstracte betekenis wordt door de
+<a href="/VSA-tooling/preview/terminologie/parser" title="Parser: een component die VSA-brontekst of tokens volgens de grammatica omzet naar expliciete AST / Syntactische Boom-nodes, bronlocaties behoudt en geen semantische reparaties of renderlogica uitvoert.">parser</a> vastgelegd; de concrete visuele uitvoering kan per <a href="/VSA-tooling/preview/terminologie/renderer" title="Renderer: een component die een gevalideerde AST / Syntactische Boom of daarvan afgeleid layoutmodel omzet naar concrete uitvoer, zoals SVG, JSON, Markdown, Hugo-output of MusicXML, zonder de AST semantisch te wijzigen.">renderer</a>
+verschillen.</p>
+<p>Goede/valide voorbeelden van Control-token zijn:
+- <code>[*]</code>, <code>[/]</code>, <code>[*?]</code>, <code>[/?]</code>
+- Structurele / renderergerichte aanwijzing</p>
+<p>Geen goede/niet valide voorbeelden van Control-token zijn:
+- <code>[/:]</code> of <code>[:]</code> (<a href="/VSA-tooling/preview/terminologie/pitch-marker" title="Pitch-marker: een Bracket-directive / Bracket-token met de vorm <code>[&lt;EHM&gt;:]</code>, waarbij <code>&lt;EHM&gt;</code> leeg is of een geldige EHM bevat.">pitch-marker</a>)
+- Ongeldige of onbekende bracket-inhoud</p>
 
 
 
@@ -2756,7 +2766,7 @@
       
       
       <p class="og-footer-stamps">
-        Bijgewerkt: 2026-07-08
+        Bijgewerkt: 2026-08-09
         
       </p>
       

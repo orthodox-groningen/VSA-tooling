@@ -97,8 +97,8 @@
             
   
   <strong>Preview</strong>
-   — branch <code>docs/termrefs-body</code>
-  , gebouwd 2026-08-09 20:37 CEST.
+   — branch <code>feat/vsa-templates-spec</code>
+  , gebouwd 2026-08-09 21:13 CEST.
   <a href="https://orthodox-groningen.github.io/VSA-tooling/">Live documentatie (main)</a>.
   
 
@@ -1650,34 +1650,6 @@
   
   
     <li class="md-nav__item">
-      <a href="../../voorbeelden/glyphs-overzicht/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Glyphs-overzicht
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../../voorbeelden/fouten/" class="md-nav__link">
         
   
@@ -2036,7 +2008,7 @@
   <span class="md-ellipsis">
     
   
-    vsa blocks — VSA-blokken in Markdown vinden
+    vsa blocks — ::: vsa-notatie en eindigt met :::, beide aan het begin van een regel, met daartussen VSA-notatie; typisch ontdekt en verwerkt door de Vsa-toolset (o.a. vsa blocks, vsa validate, vsa process).">VSA-blokken in Markdown vinden
   
 
     
@@ -2064,7 +2036,7 @@
   <span class="md-ellipsis">
     
   
-    vsa svg — één vsa-bestand naar SVG renderen
+    vsa svg — één .vsa waarvan de inhoud uitsluitend syntactisch geldige Vsa-notatie bevat — d.w.z. door de Vsa-tooling foutloos wordt geparseerd en gevalideerd.">vsa-bestand naar SVG renderen
   
 
     
@@ -2987,21 +2959,21 @@
 
 
 <h1 id="vsa-parse-parserstructuur-bekijken"><code>vsa parse</code> — parserstructuur bekijken<a class="headerlink" href="#vsa-parse-parserstructuur-bekijken" title="Permanent link">&para;</a></h1>
-<p>Toon de interne parserstructuur (<a class="og-termref" href="/VSA-tooling/preview/terminologie/ast" title="Abstract Syntax Tree: een expliciete nodeboom die door de Parser uit VSA-invoer wordt geproduceerd en die Validator en Renderer zonder semantische herinterpretatie kunnen lezen.">AST</a>) van één VSA-bestand, of controleer
-alleen of de <a class="og-termref" href="/VSA-tooling/preview/terminologie/parser" title="Parser: een component die VSA-brontekst of tokens volgens de grammatica omzet naar expliciete AST / Syntactische Boom-nodes, bronlocaties behoudt en geen semantische reparaties of renderlogica uitvoert.">parser</a> het bestand kan lezen.</p>
+<p>Toon de interne parserstructuur (AST) van één VSA-bestand, of controleer
+alleen of de parser het bestand kan lezen.</p>
 <h2 id="synopsis">Synopsis<a class="headerlink" href="#synopsis" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code>vsa parse [-h] [--ast] path
 </code></pre></div>
 <h2 id="beschrijving">Beschrijving<a class="headerlink" href="#beschrijving" title="Permanent link">&para;</a></h2>
 <p><code>vsa parse</code> leest één VSA-bestand (<code>.vsa</code>), lost <code>@include-vsa</code> op indien
-aanwezig, en voert het door de <a class="og-termref" href="/VSA-tooling/preview/terminologie/parser" title="Parser: een component die VSA-brontekst of tokens volgens de grammatica omzet naar expliciete AST / Syntactische Boom-nodes, bronlocaties behoudt en geen semantische reparaties of renderlogica uitvoert.">parser</a>. Dit commando is bedoeld voor
+aanwezig, en voert het door de parser. Dit commando is bedoeld voor
 parserdebugging en het maken van regressietests — niet voor dagelijkse
 controle (gebruik daarvoor <a href="../validate/"><code>vsa validate</code></a>).</p>
 <p>Zonder <code>--ast</code> toont het commando alleen <code>OK</code> als het bestand gelezen kan
 worden. Met <code>--ast</code> verschijnt de volledige interne structuur (Abstract
 Syntax Tree) als JSON.</p>
 <p><code>vsa parse</code> doet geen semantische controle (zoals de modifier-aantallen-check
-van <code>validate</code>); het toont alleen of de <a class="og-termref" href="/VSA-tooling/preview/terminologie/parser" title="Parser: een component die VSA-brontekst of tokens volgens de grammatica omzet naar expliciete AST / Syntactische Boom-nodes, bronlocaties behoudt en geen semantische reparaties of renderlogica uitvoert.">parser</a> het bestand structureel kan
+van <code>validate</code>); het toont alleen of de parser het bestand structureel kan
 verwerken.</p>
 <h2 id="argumenten-en-opties">Argumenten en opties<a class="headerlink" href="#argumenten-en-opties" title="Permanent link">&para;</a></h2>
 <table>
@@ -3129,7 +3101,7 @@ naar een niet-bestaand bestand), meldt het commando dit op stderr:</p>
 <h2 id="zie-ook">Zie ook<a class="headerlink" href="#zie-ook" title="Permanent link">&para;</a></h2>
 <ul>
 <li><a href="../validate/"><code>vsa validate</code></a> — volledige controle inclusief semantiek.</li>
-<li><a href="../blocks/"><code>vsa blocks</code></a> — <a class="og-termref" href="/VSA-tooling/preview/terminologie/ast" title="Abstract Syntax Tree: een expliciete nodeboom die door de Parser uit VSA-invoer wordt geproduceerd en die Validator en Renderer zonder semantische herinterpretatie kunnen lezen.">AST</a> per <a class="og-termref" href="/VSA-tooling/preview/terminologie/vsa-blokken" title="VSA-blok: een tekstfragment in een Markdownbestand dat begint met <code>::: vsa-notatie</code> en eindigt met <code>:::</code>, beide aan het begin van een regel, met daartussen VSA-notatie; typisch ontdekt en verwerkt door de Vsa-toolset (o.a. <code>vsa blocks</code>, <code>vsa validate</code>, <code>vsa process</code>).">VSA-blok</a> in een Markdownbestand (<code>--json</code>).</li>
+<li><a href="../blocks/"><code>vsa blocks</code></a> — AST per VSA-blok in een Markdownbestand (<code>--json</code>).</li>
 <li>Handleiding: <a href="../../../guides/user-guide/">Gebruikershandleiding</a> (tour), <a href="../../../guides/cli-taken/">CLI-taken</a></li>
 <li>Outputreferentie (AST-vorm): <a href="../../outputs/">outputs.md</a></li>
 </ul>
@@ -3169,7 +3141,7 @@ naar een niet-bestaand bestand), meldt het commando dit op stderr:</p>
       
       
       <p class="og-footer-stamps">
-        Bijgewerkt: 2026-08-09
+        Bijgewerkt: 2026-08-08
         
       </p>
       

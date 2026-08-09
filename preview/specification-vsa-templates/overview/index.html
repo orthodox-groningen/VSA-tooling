@@ -10,7 +10,7 @@
       
       
       
-        <link rel="canonical" href="https://orthodox-groningen.github.io/VSA-tooling/preview/terminologie/muzikale-positie/">
+        <link rel="canonical" href="https://orthodox-groningen.github.io/VSA-tooling/preview/specification-vsa-templates/overview/">
       
       
       
@@ -23,7 +23,7 @@
     
     
       
-        <title>Muzikale positie - VSA-tooling — documentatie</title>
+        <title>Doel en scope - VSA-tooling — documentatie</title>
       
     
     
@@ -80,7 +80,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#muzikale-positie" class="md-skip">
+        <a href="#doel-en-scope" class="md-skip">
           Ga naar inhoud
         </a>
       
@@ -93,8 +93,8 @@
             
   
   <strong>Preview</strong>
-   — branch <code>docs/termrefs-body</code>
-  , gebouwd 2026-08-09 20:37 CEST.
+   — branch <code>feat/vsa-templates-spec</code>
+  , gebouwd 2026-08-09 21:13 CEST.
   <a href="https://orthodox-groningen.github.io/VSA-tooling/">Live documentatie (main)</a>.
   
 
@@ -130,7 +130,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Muzikale positie
+              Doel en scope
             
           </span>
         </div>
@@ -1638,34 +1638,6 @@
   
   
     <li class="md-nav__item">
-      <a href="../../reference/voorbeelden/glyphs-overzicht/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Glyphs-overzicht
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../../reference/voorbeelden/fouten/" class="md-nav__link">
         
   
@@ -1875,7 +1847,7 @@
   <span class="md-ellipsis">
     
   
-    vsa blocks — VSA-blokken in Markdown vinden
+    vsa blocks — ::: vsa-notatie en eindigt met :::, beide aan het begin van een regel, met daartussen VSA-notatie; typisch ontdekt en verwerkt door de Vsa-toolset (o.a. vsa blocks, vsa validate, vsa process).">VSA-blokken in Markdown vinden
   
 
     
@@ -1903,7 +1875,7 @@
   <span class="md-ellipsis">
     
   
-    vsa svg — één vsa-bestand naar SVG renderen
+    vsa svg — één .vsa waarvan de inhoud uitsluitend syntactisch geldige Vsa-notatie bevat — d.w.z. door de Vsa-tooling foutloos wordt geparseerd en gevalideerd.">vsa-bestand naar SVG renderen
   
 
     
@@ -2702,10 +2674,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#motivatie" class="md-nav__link">
+  <a href="#doel" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Motivatie
+        Doel
       
     </span>
   </a>
@@ -2713,10 +2685,54 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#gerelateerd-verder-lezen" class="md-nav__link">
+  <a href="#niet-doelen-deze-draft" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Gerelateerd / verder lezen
+        Niet-doelen (deze draft)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bronregel-voor-pitches" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bronregel voor pitches
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#do-context" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Do-context
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#architectuurdefault" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Architectuurdefault
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#werknaam" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Werknaam
       
     </span>
   </a>
@@ -2740,7 +2756,7 @@
 
 
   
-    <a href="https://github.com/orthodox-groningen/VSA-tooling/edit/main/docs/terminologie/muzikale-positie.md" title="Wijzig deze pagina" class="md-content__button md-icon" rel="edit">
+    <a href="https://github.com/orthodox-groningen/VSA-tooling/edit/main/docs/specification-vsa-templates/overview.md" title="Wijzig deze pagina" class="md-content__button md-icon" rel="edit">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
     </a>
@@ -2748,24 +2764,64 @@
   
 
 
-<h1 id="muzikale-positie">Muzikale positie<a class="headerlink" href="#muzikale-positie" title="Permanent link">&para;</a></h1>
-<p>Een muzikale positie is de kleinste muzikale eenheid in <a class="og-termref" href="/bron/terms/vsa-notatie" title="VSA-notatie: Het tekstgebaseerde notatieformaat waarmee liturgische zangteksten worden vastgelegd: een formeel gespecificeerde taal met scopes, modifiers en bracket-directives, parseeerbaar en valideerbaar door Vsa-tooling.">VSA-notatie</a>:
-één hoogtebeweging, één duur en één zangelement.</p>
-<p>Goede/valide voorbeelden van Muzikale positie zijn:
-- Eén <a class="og-termref" href="/VSA-tooling/preview/terminologie/enkelvoudige-hoogte-modifier" title="Enkelvoudige hoogte-modifier: een Hoogte-modifier die uit precies één geldige EHM bestaat: een basis-hoogtebeweging, eventueel voorafgegaan door een halftoon-prefix.">EHM</a> + één <a class="og-termref" href="/VSA-tooling/preview/terminologie/enkelvoudige-lengte-modifier" title="Enkelvoudige lengte-modifier: een Lengte-modifier die uit precies één geldige ELM bestaat en daarmee precies een duurpositie representeert.">ELM</a> + zangelement in een <a class="og-termref" href="/VSA-tooling/preview/terminologie/vsa-scope" title="VSA-scope: een tekstfragment dat met <code>{</code> begint, met <code>}</code> eindigt, geen whitespace binnen de accolades bevat en door de Parser kan worden opgesplitst in optionele Hoogte-modifier, verplicht zangelement en optionele Lengte-modifier.">scope</a>
-- Elke <code>&amp;</code>-gescheiden stap in een samengestelde <a class="og-termref" href="/VSA-tooling/preview/terminologie/modifier" title="Modifier: een tekenreeks die binnen een VSA-scope als Hoogte-modifier voor het zangelement of als Lengte-modifier na het zangelement wordt geparseerd.">modifier</a></p>
-<p>Geen goede/niet valide voorbeelden van Muzikale positie zijn:
-- Losse tekst buiten <a class="og-termref" href="/VSA-tooling/preview/terminologie/vsa-scope" title="VSA-scope: een tekstfragment dat met <code>{</code> begint, met <code>}</code> eindigt, geen whitespace binnen de accolades bevat en door de Parser kan worden opgesplitst in optionele Hoogte-modifier, verplicht zangelement en optionele Lengte-modifier.">scopes</a>
-- Een hele melodie of <a class="og-termref" href="/bron/terms/zangstuk" title="Zangstuk: Een liturgisch-muzikaal geheel met een stabiele <code>zangstuk-id</code>, waaronder nul of meer Varianten bestaan.">zangstuk</a> als één eenheid</p>
-<h2 id="motivatie">Motivatie<a class="headerlink" href="#motivatie" title="Permanent link">&para;</a></h2>
-<p>Zonder dit begrip is er geen eenduidige eenheid om hoogte, duur en tekst aan
-elkaar te koppelen voor <a class="og-termref" href="/VSA-tooling/preview/terminologie/validator" title="Validator: een component die een geparseerde AST / Syntactische Boom of VSA-invoer toetst aan semantische en normatieve regels en overtredingen als Diagnostics / Diagnostische Meldingen rapporteert zonder ze stilzwijgend te repareren.">validator</a> en <a class="og-termref" href="/VSA-tooling/preview/terminologie/renderer" title="Renderer: een component die een gevalideerde AST / Syntactische Boom of daarvan afgeleid layoutmodel omzet naar concrete uitvoer, zoals SVG, JSON, Markdown, Hugo-output of MusicXML, zonder de AST semantisch te wijzigen.">renderer</a> (melisma, MusicXML,
-SVG-kolommen).</p>
-<h2 id="gerelateerd-verder-lezen">Gerelateerd / verder lezen<a class="headerlink" href="#gerelateerd-verder-lezen" title="Permanent link">&para;</a></h2>
+<h1 id="doel-en-scope">Doel en scope<a class="headerlink" href="#doel-en-scope" title="Permanent link">&para;</a></h1>
+<h2 id="doel">Doel<a class="headerlink" href="#doel" title="Permanent link">&para;</a></h2>
+<p>Een <strong>vsa-template</strong> legt een formulematige liturgische melodie machineleesbaar
+vast, zodat:</p>
+<ol>
+<li>frasen, herhalingsstructuur en muzikale rollen eenduidig zijn;</li>
+<li>latere tooling tekst (bijv. VSA) op die formule kan mappen;</li>
+<li>afgeleide uitvoer (bijv. MusicXML SATB) reproduceerbaar kan worden.</li>
+</ol>
+<h2 id="niet-doelen-deze-draft">Niet-doelen (deze draft)<a class="headerlink" href="#niet-doelen-deze-draft" title="Permanent link">&para;</a></h2>
 <ul>
-<li><a class="og-termref" href="/VSA-tooling/preview/terminologie/modifier" title="Modifier: een tekenreeks die binnen een VSA-scope als Hoogte-modifier voor het zangelement of als Lengte-modifier na het zangelement wordt geparseerd.">modifier</a>, <a class="og-termref" href="/VSA-tooling/preview/terminologie/hoogte-modifier" title="Hoogte-modifier: een Modifier die voor het zangelement in een VSA-scope staat en bestaat uit een geldige EHM of uit meerdere geldige EHMs gescheiden door <code>&amp;</code>.">hoogte-modifier</a>, <a class="og-termref" href="/VSA-tooling/preview/terminologie/lengte-modifier" title="Lengte-modifier: een Modifier die na het zangelement in een VSA-scope staat en bestaat uit een geldige ELM of uit meerdere geldige ELMs gescheiden door <code>&amp;</code>.">lengte-modifier</a>, <a class="og-termref" href="/VSA-tooling/preview/terminologie/vsa-scope" title="VSA-scope: een tekstfragment dat met <code>{</code> begint, met <code>}</code> eindigt, geen whitespace binnen de accolades bevat en door de Parser kan worden opgesplitst in optionele Hoogte-modifier, verplicht zangelement en optionele Lengte-modifier.">vsa-scope</a>, <a class="og-termref" href="/VSA-tooling/preview/terminologie/enkelvoudige-hoogte-modifier" title="Enkelvoudige hoogte-modifier: een Hoogte-modifier die uit precies één geldige EHM bestaat: een basis-hoogtebeweging, eventueel voorafgegaan door een halftoon-prefix.">EHM</a>, <a class="og-termref" href="/VSA-tooling/preview/terminologie/enkelvoudige-lengte-modifier" title="Enkelvoudige lengte-modifier: een Lengte-modifier die uit precies één geldige ELM bestaat en daarmee precies een duurpositie representeert.">ELM</a></li>
-<li>Specificatie: <a href="../../specification/semantics/#muzikale-positie">Semantiek — Muzikale positie</a></li>
+<li>Vervanging van VSA-tekstnotatie;</li>
+<li>volledige transcriptie van alle toonboekpagina’s;</li>
+<li>layout/engraving-regels voor drukwerk;</li>
+<li>canonieke pitches uit AI- of OMR-lezing van scans.</li>
 </ul>
+<h2 id="bronregel-voor-pitches">Bronregel voor pitches<a class="headerlink" href="#bronregel-voor-pitches" title="Permanent link">&para;</a></h2>
+<p>PDF’s en plaatjes leveren <strong>feature-eisen</strong> (wat de taal moet kunnen uitdrukken).
+Normatieve toonhoogtes in voorbeelden komen alleen uit <strong>menselijk gecontroleerde</strong>
+invoer. Onzekere octaven of akkoorden horen in <a href="../open-points/"><code>open-points.md</code></a>
+of als <code>pitches_status: provisional</code> in metadata.</p>
+<h2 id="do-context">Do-context<a class="headerlink" href="#do-context" title="Permanent link">&para;</a></h2>
+<p>Templates gebruiken dezelfde <strong>do-context</strong> als VSA (<code>do</code> + <code>mode</code>). Event-pitches
+zijn laddergraden, geen losse scientific pitches. Duur gebruikt VSA-ELMs.</p>
+<h2 id="architectuurdefault">Architectuurdefault<a class="headerlink" href="#architectuurdefault" title="Permanent link">&para;</a></h2>
+<p>Het template beschrijft de <strong>volledige SATB-formule</strong> (zoals op het blad).
+Koppeling met VSA-tekst is een aparte laag (<a href="../mapping-vsa/"><code>mapping-vsa.md</code></a>).
+Alternatief “VSA = S, template = alleen harmony” blijft een open punt.</p>
+<h2 id="werknaam">Werknaam<a class="headerlink" href="#werknaam" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Term</th>
+<th>Betekenis</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>vsa-template</strong></td>
+<td>YAML-document volgens deze specificatie</td>
+</tr>
+<tr>
+<td>frase</td>
+<td>Genoemde melodische eenheid met id (<code>1</code>, <code>2</code>, <code>laatste</code>, …)</td>
+</tr>
+<tr>
+<td>event</td>
+<td>Eén muzikale stap in een frase (recite, cadensnoot, …)</td>
+</tr>
+<tr>
+<td>anker</td>
+<td>Label zoals <code>e.st.</code>, <code>l.st.</code>, <code>vl.st.</code> op een event</td>
+</tr>
+</tbody>
+</table>
+<p>Org-brede termen (<code>zangstuk-id</code>, <code>variant-id</code>, …): zie
+<a href="https://github.com/orthodox-groningen/bron/blob/main/docs/specs/terminologie.md">bron terminologie</a>.
+Nieuwe glossarytermen alleen via PR op <strong>bron</strong> (zie open punten).</p>
 
 
 

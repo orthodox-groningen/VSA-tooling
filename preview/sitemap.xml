@@ -213,10 +213,6 @@
          <lastmod>2026-08-09</lastmod>
     </url>
     <url>
-         <loc>https://orthodox-groningen.github.io/VSA-tooling/preview/reference/voorbeelden/glyphs-overzicht/</loc>
-         <lastmod>2026-08-09</lastmod>
-    </url>
-    <url>
          <loc>https://orthodox-groningen.github.io/VSA-tooling/preview/reference/voorbeelden/multiline/</loc>
          <lastmod>2026-08-09</lastmod>
     </url>
@@ -277,6 +273,58 @@
          <lastmod>2026-08-09</lastmod>
     </url>
     <url>
+         <loc>https://orthodox-groningen.github.io/VSA-tooling/preview/specification-vsa-templates/</loc>
+         <lastmod>2026-08-09</lastmod>
+    </url>
+    <url>
+         <loc>https://orthodox-groningen.github.io/VSA-tooling/preview/specification-vsa-templates/conformance/</loc>
+         <lastmod>2026-08-09</lastmod>
+    </url>
+    <url>
+         <loc>https://orthodox-groningen.github.io/VSA-tooling/preview/specification-vsa-templates/examples/</loc>
+         <lastmod>2026-08-09</lastmod>
+    </url>
+    <url>
+         <loc>https://orthodox-groningen.github.io/VSA-tooling/preview/specification-vsa-templates/mapping-vsa/</loc>
+         <lastmod>2026-08-09</lastmod>
+    </url>
+    <url>
+         <loc>https://orthodox-groningen.github.io/VSA-tooling/preview/specification-vsa-templates/metamodel/</loc>
+         <lastmod>2026-08-09</lastmod>
+    </url>
+    <url>
+         <loc>https://orthodox-groningen.github.io/VSA-tooling/preview/specification-vsa-templates/open-points/</loc>
+         <lastmod>2026-08-09</lastmod>
+    </url>
+    <url>
+         <loc>https://orthodox-groningen.github.io/VSA-tooling/preview/specification-vsa-templates/overview/</loc>
+         <lastmod>2026-08-09</lastmod>
+    </url>
+    <url>
+         <loc>https://orthodox-groningen.github.io/VSA-tooling/preview/specification-vsa-templates/requirements-inventory/</loc>
+         <lastmod>2026-08-09</lastmod>
+    </url>
+    <url>
+         <loc>https://orthodox-groningen.github.io/VSA-tooling/preview/specification-vsa-templates/semantics/</loc>
+         <lastmod>2026-08-09</lastmod>
+    </url>
+    <url>
+         <loc>https://orthodox-groningen.github.io/VSA-tooling/preview/specification-vsa-templates/syntax/</loc>
+         <lastmod>2026-08-09</lastmod>
+    </url>
+    <url>
+         <loc>https://orthodox-groningen.github.io/VSA-tooling/preview/specification-vsa-templates/validation/</loc>
+         <lastmod>2026-08-09</lastmod>
+    </url>
+    <url>
+         <loc>https://orthodox-groningen.github.io/VSA-tooling/preview/specification-vsa-templates/versioning/</loc>
+         <lastmod>2026-08-09</lastmod>
+    </url>
+    <url>
+         <loc>https://orthodox-groningen.github.io/VSA-tooling/preview/specification-vsa-templates/examples/walkthroughs/elia-tropaar-toon-4/</loc>
+         <lastmod>2026-08-09</lastmod>
+    </url>
+    <url>
          <loc>https://orthodox-groningen.github.io/VSA-tooling/preview/terminologie/ast/</loc>
          <lastmod>2026-08-09</lastmod>
     </url>
@@ -293,10 +341,6 @@
          <lastmod>2026-08-09</lastmod>
     </url>
     <url>
-         <loc>https://orthodox-groningen.github.io/VSA-tooling/preview/terminologie/do-context/</loc>
-         <lastmod>2026-08-09</lastmod>
-    </url>
-    <url>
          <loc>https://orthodox-groningen.github.io/VSA-tooling/preview/terminologie/enkelvoudige-hoogte-modifier/</loc>
          <lastmod>2026-08-09</lastmod>
     </url>
@@ -305,15 +349,7 @@
          <lastmod>2026-08-09</lastmod>
     </url>
     <url>
-         <loc>https://orthodox-groningen.github.io/VSA-tooling/preview/terminologie/fixture/</loc>
-         <lastmod>2026-08-09</lastmod>
-    </url>
-    <url>
          <loc>https://orthodox-groningen.github.io/VSA-tooling/preview/terminologie/geldige-vsa-notatie/</loc>
-         <lastmod>2026-08-09</lastmod>
-    </url>
-    <url>
-         <loc>https://orthodox-groningen.github.io/VSA-tooling/preview/terminologie/glyph/</loc>
          <lastmod>2026-08-09</lastmod>
     </url>
     <url>
@@ -338,10 +374,6 @@
     </url>
     <url>
          <loc>https://orthodox-groningen.github.io/VSA-tooling/preview/terminologie/modifier/</loc>
-         <lastmod>2026-08-09</lastmod>
-    </url>
-    <url>
-         <loc>https://orthodox-groningen.github.io/VSA-tooling/preview/terminologie/muzikale-positie/</loc>
          <lastmod>2026-08-09</lastmod>
     </url>
     <url>
@@ -398,10 +430,6 @@
     </url>
     <url>
          <loc>https://orthodox-groningen.github.io/VSA-tooling/preview/terminologie/vsa/</loc>
-         <lastmod>2026-08-09</lastmod>
-    </url>
-    <url>
-         <loc>https://orthodox-groningen.github.io/VSA-tooling/preview/terminologie/zangelement/</loc>
          <lastmod>2026-08-09</lastmod>
     </url>
     <url>

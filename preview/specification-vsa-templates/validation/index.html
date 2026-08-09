@@ -10,7 +10,7 @@
       
       
       
-        <link rel="canonical" href="https://orthodox-groningen.github.io/VSA-tooling/preview/terminologie/glyph/">
+        <link rel="canonical" href="https://orthodox-groningen.github.io/VSA-tooling/preview/specification-vsa-templates/validation/">
       
       
       
@@ -23,7 +23,7 @@
     
     
       
-        <title>Glyph - VSA-tooling — documentatie</title>
+        <title>Validatie - VSA-tooling — documentatie</title>
       
     
     
@@ -80,7 +80,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#glyph" class="md-skip">
+        <a href="#validatie" class="md-skip">
           Ga naar inhoud
         </a>
       
@@ -93,8 +93,8 @@
             
   
   <strong>Preview</strong>
-   — branch <code>docs/termrefs-body</code>
-  , gebouwd 2026-08-09 20:37 CEST.
+   — branch <code>feat/vsa-templates-spec</code>
+  , gebouwd 2026-08-09 21:13 CEST.
   <a href="https://orthodox-groningen.github.io/VSA-tooling/">Live documentatie (main)</a>.
   
 
@@ -130,7 +130,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Glyph
+              Validatie
             
           </span>
         </div>
@@ -1638,34 +1638,6 @@
   
   
     <li class="md-nav__item">
-      <a href="../../reference/voorbeelden/glyphs-overzicht/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Glyphs-overzicht
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../../reference/voorbeelden/fouten/" class="md-nav__link">
         
   
@@ -1875,7 +1847,7 @@
   <span class="md-ellipsis">
     
   
-    vsa blocks — VSA-blokken in Markdown vinden
+    vsa blocks — ::: vsa-notatie en eindigt met :::, beide aan het begin van een regel, met daartussen VSA-notatie; typisch ontdekt en verwerkt door de Vsa-toolset (o.a. vsa blocks, vsa validate, vsa process).">VSA-blokken in Markdown vinden
   
 
     
@@ -1903,7 +1875,7 @@
   <span class="md-ellipsis">
     
   
-    vsa svg — één vsa-bestand naar SVG renderen
+    vsa svg — één .vsa waarvan de inhoud uitsluitend syntactisch geldige Vsa-notatie bevat — d.w.z. door de Vsa-tooling foutloos wordt geparseerd en gevalideerd.">vsa-bestand naar SVG renderen
   
 
     
@@ -2702,10 +2674,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#motivatie" class="md-nav__link">
+  <a href="#1-structureel-schema" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Motivatie
+        1. Structureel (schema)
       
     </span>
   </a>
@@ -2713,10 +2685,32 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#gerelateerd-verder-lezen" class="md-nav__link">
+  <a href="#2-semantisch-documentregels" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Gerelateerd / verder lezen
+        2. Semantisch (documentregels)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ernst" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ernst
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#toekomstige-cli" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Toekomstige CLI
       
     </span>
   </a>
@@ -2740,7 +2734,7 @@
 
 
   
-    <a href="https://github.com/orthodox-groningen/VSA-tooling/edit/main/docs/terminologie/glyph.md" title="Wijzig deze pagina" class="md-content__button md-icon" rel="edit">
+    <a href="https://github.com/orthodox-groningen/VSA-tooling/edit/main/docs/specification-vsa-templates/validation.md" title="Wijzig deze pagina" class="md-content__button md-icon" rel="edit">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
     </a>
@@ -2748,24 +2742,99 @@
   
 
 
-<h1 id="glyph">Glyph<a class="headerlink" href="#glyph" title="Permanent link">&para;</a></h1>
-<p>Een glyph is het zichtbare teken dat de <a class="og-termref" href="/VSA-tooling/preview/terminologie/renderer" title="Renderer: een component die een gevalideerde AST / Syntactische Boom of daarvan afgeleid layoutmodel omzet naar concrete uitvoer, zoals SVG, JSON, Markdown, Hugo-output of MusicXML, zonder de AST semantisch te wijzigen.">renderer</a> voor een <a class="og-termref" href="/VSA-tooling/preview/terminologie/vsa" title="Vereenvoudigde Slavische Accentnotatie: wordt gebruikt om te verwijzen naar een Formele Notatie voor het vastleggen van Zangstukken en ook naar de Toolset waarmee zulke vastleggingen kunnen worden gevalideerd en naar publiceerbare vormen worden omgezet.">VSA</a>-markering
-tekent (boven of onder de tekst), niet de lettertekens van het zangelement zelf.</p>
-<p>Goede/valide voorbeelden van Glyph zijn:
-- Strepen, punten, connectors van <a class="og-termref" href="/VSA-tooling/preview/terminologie/modifier" title="Modifier: een tekenreeks die binnen een VSA-scope als Hoogte-modifier voor het zangelement of als Lengte-modifier na het zangelement wordt geparseerd.">modifiers</a>
-- Visuele weergave van een <a class="og-termref" href="/VSA-tooling/preview/terminologie/pitch-marker" title="Pitch-marker: een Bracket-directive / Bracket-token met de vorm <code>[&lt;EHM&gt;:]</code>, waarbij <code>&lt;EHM&gt;</code> leeg is of een geldige EHM bevat.">pitch-marker</a> / <a class="og-termref" href="/VSA-tooling/preview/terminologie/pitch-marker" title="Pitch-marker: een Bracket-directive / Bracket-token met de vorm <code>[&lt;EHM&gt;:]</code>, waarbij <code>&lt;EHM&gt;</code> leeg is of een geldige EHM bevat.">hoogte-markering</a></p>
-<p>Geen goede/niet valide voorbeelden van Glyph zijn:
-- De letters in <code>Hei</code> binnen <code>{/Hei_}</code>
-- De brontekens <code>/</code> of <code>_</code> als platte ASCII in de <code>.vsa</code></p>
-<h2 id="motivatie">Motivatie<a class="headerlink" href="#motivatie" title="Permanent link">&para;</a></h2>
-<p><a class="og-termref" href="/VSA-tooling/preview/terminologie/parser" title="Parser: een component die VSA-brontekst of tokens volgens de grammatica omzet naar expliciete AST / Syntactische Boom-nodes, bronlocaties behoudt en geen semantische reparaties of renderlogica uitvoert.">Parser</a> en <a class="og-termref" href="/VSA-tooling/preview/terminologie/validator" title="Validator: een component die een geparseerde AST / Syntactische Boom of VSA-invoer toetst aan semantische en normatieve regels en overtredingen als Diagnostics / Diagnostische Meldingen rapporteert zonder ze stilzwijgend te repareren.">validator</a> werken op tokens; lezers zien strepen en punten.
-Het glyphbegrip scheidt die visuele laag van de syntactische tokens, zodat
-layout- en SVG-regels eenduidig te specificeren zijn.</p>
-<h2 id="gerelateerd-verder-lezen">Gerelateerd / verder lezen<a class="headerlink" href="#gerelateerd-verder-lezen" title="Permanent link">&para;</a></h2>
+<h1 id="validatie">Validatie<a class="headerlink" href="#validatie" title="Permanent link">&para;</a></h1>
+<p>Validatie van een vsa-template gebeurt in twee lagen.</p>
+<h2 id="1-structureel-schema">1. Structureel (schema)<a class="headerlink" href="#1-structureel-schema" title="Permanent link">&para;</a></h2>
+<p>Controleer tegen
+<a href="../schema/vsa-template.schema.json"><code>schema/vsa-template.schema.json</code></a>:</p>
 <ul>
-<li><a class="og-termref" href="/VSA-tooling/preview/terminologie/renderer" title="Renderer: een component die een gevalideerde AST / Syntactische Boom of daarvan afgeleid layoutmodel omzet naar concrete uitvoer, zoals SVG, JSON, Markdown, Hugo-output of MusicXML, zonder de AST semantisch te wijzigen.">renderer</a>, <a class="og-termref" href="/VSA-tooling/preview/terminologie/hoogte-modifier" title="Hoogte-modifier: een Modifier die voor het zangelement in een VSA-scope staat en bestaat uit een geldige EHM of uit meerdere geldige EHMs gescheiden door <code>&amp;</code>.">hoogte-modifier</a>, <a class="og-termref" href="/VSA-tooling/preview/terminologie/lengte-modifier" title="Lengte-modifier: een Modifier die na het zangelement in een VSA-scope staat en bestaat uit een geldige ELM of uit meerdere geldige ELMs gescheiden door <code>&amp;</code>.">lengte-modifier</a>, <a class="og-termref" href="/VSA-tooling/preview/terminologie/pitch-marker" title="Pitch-marker: een Bracket-directive / Bracket-token met de vorm <code>[&lt;EHM&gt;:]</code>, waarbij <code>&lt;EHM&gt;</code> leeg is of een geldige EHM bevat.">pitch-marker</a></li>
-<li>Specificatie: <a href="../../specification/rendering/">Rendering</a></li>
+<li>verplichte topvelden;</li>
+<li>enums (<code>genre</code>, <code>role</code>, <code>duration</code>, <code>anchor</code>, …);</li>
+<li>pitchpatroon;</li>
+<li><code>pitches</code> altijd S/A/T/B.</li>
 </ul>
+<p>Automatische toets: <code>tests/test_vsa_template_schema.py</code>.</p>
+<h2 id="2-semantisch-documentregels">2. Semantisch (documentregels)<a class="headerlink" href="#2-semantisch-documentregels" title="Permanent link">&para;</a></h2>
+<p>Naast het schema MUST een conforme validator:</p>
+<table>
+<thead>
+<tr>
+<th>Code</th>
+<th>Regel</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>TEMPLATE-FORM</code></td>
+<td>Precies cycle+final, sequence, of same_as</td>
+</tr>
+<tr>
+<td><code>TEMPLATE-PHRASE-ID-UNIQUE</code></td>
+<td>Frase-ids uniek</td>
+</tr>
+<tr>
+<td><code>TEMPLATE-CYCLE-REF</code></td>
+<td>Elke id in <code>cycle</code> bestaat in <code>phrases</code></td>
+</tr>
+<tr>
+<td><code>TEMPLATE-FINAL-REF</code></td>
+<td><code>final</code> bestaat in <code>phrases</code></td>
+</tr>
+<tr>
+<td><code>TEMPLATE-FINAL-NOT-IN-CYCLE</code></td>
+<td><code>final</code> komt niet voor in <code>cycle</code></td>
+</tr>
+<tr>
+<td><code>TEMPLATE-CYCLE-NONEMPTY</code></td>
+<td><code>cycle</code> heeft ≥1 element</td>
+</tr>
+<tr>
+<td><code>TEMPLATE-SEQUENCE-REF</code></td>
+<td>Elke id in <code>sequence</code> bestaat in <code>phrases</code></td>
+</tr>
+<tr>
+<td><code>TEMPLATE-SEQUENCE-NONEMPTY</code></td>
+<td><code>sequence</code> heeft ≥1 element</td>
+</tr>
+<tr>
+<td><code>TEMPLATE-SAME-AS</code> / <code>-REF</code></td>
+<td>Alias geldig; doel-id bestaat in de suite</td>
+</tr>
+<tr>
+<td><code>TEMPLATE-PHRASE-EVENTS</code></td>
+<td>Elke frase heeft ≥1 event</td>
+</tr>
+</tbody>
+</table>
+<p>Draft-v0 DOET NOG GEEN:</p>
+<ul>
+<li>toonladdervalidatie;</li>
+<li>controle dat ankers “muzikaal kloppen”;</li>
+<li>pitch-verificatie tegen PDF.</li>
+</ul>
+<h2 id="ernst">Ernst<a class="headerlink" href="#ernst" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Severity</th>
+<th>Gebruik</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>error</td>
+<td>Schema- of documentregelfout</td>
+</tr>
+<tr>
+<td>warning</td>
+<td>bijv. <code>pitches_status: provisional</code> (toekomstig)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="toekomstige-cli">Toekomstige CLI<a class="headerlink" href="#toekomstige-cli" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>vsa template validate pad\naar\template.yaml
+</code></pre></div>
+<p>Nog niet geïmplementeerd; de pytest-suite dekt de structurele + documentregels.</p>
 
 
 

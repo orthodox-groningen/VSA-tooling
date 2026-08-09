@@ -10,7 +10,7 @@
       
       
       
-        <link rel="canonical" href="https://orthodox-groningen.github.io/VSA-tooling/preview/terminologie/fixture/">
+        <link rel="canonical" href="https://orthodox-groningen.github.io/VSA-tooling/preview/specification-vsa-templates/semantics/">
       
       
       
@@ -23,7 +23,7 @@
     
     
       
-        <title>Fixture - VSA-tooling — documentatie</title>
+        <title>Semantiek - VSA-tooling — documentatie</title>
       
     
     
@@ -80,7 +80,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#fixture" class="md-skip">
+        <a href="#semantiek" class="md-skip">
           Ga naar inhoud
         </a>
       
@@ -93,8 +93,8 @@
             
   
   <strong>Preview</strong>
-   — branch <code>docs/termrefs-body</code>
-  , gebouwd 2026-08-09 20:37 CEST.
+   — branch <code>feat/vsa-templates-spec</code>
+  , gebouwd 2026-08-09 21:13 CEST.
   <a href="https://orthodox-groningen.github.io/VSA-tooling/">Live documentatie (main)</a>.
   
 
@@ -130,7 +130,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Fixture
+              Semantiek
             
           </span>
         </div>
@@ -1638,34 +1638,6 @@
   
   
     <li class="md-nav__item">
-      <a href="../../reference/voorbeelden/glyphs-overzicht/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Glyphs-overzicht
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../../reference/voorbeelden/fouten/" class="md-nav__link">
         
   
@@ -1875,7 +1847,7 @@
   <span class="md-ellipsis">
     
   
-    vsa blocks — VSA-blokken in Markdown vinden
+    vsa blocks — ::: vsa-notatie en eindigt met :::, beide aan het begin van een regel, met daartussen VSA-notatie; typisch ontdekt en verwerkt door de Vsa-toolset (o.a. vsa blocks, vsa validate, vsa process).">VSA-blokken in Markdown vinden
   
 
     
@@ -1903,7 +1875,7 @@
   <span class="md-ellipsis">
     
   
-    vsa svg — één vsa-bestand naar SVG renderen
+    vsa svg — één .vsa waarvan de inhoud uitsluitend syntactisch geldige Vsa-notatie bevat — d.w.z. door de Vsa-tooling foutloos wordt geparseerd en gevalideerd.">vsa-bestand naar SVG renderen
   
 
     
@@ -2695,6 +2667,141 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Inhoudsopgave
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#do-context-en-modus" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Do-context en modus
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#duration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Duration
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recite" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Recite
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vormen-cycle-sequence-alias" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Vormen (cycle / sequence / alias)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Vormen (cycle / sequence / alias)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cycle-form" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cycle-form
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sequence-form" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sequence-form
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#alias-form" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Alias-form
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#roles" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Roles
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#optional-anchors" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Optional / anchors
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chromatische-graden" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Chromatische graden
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#wat-semantiek-niet-claimt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Wat semantiek niet claimt
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -2710,7 +2817,7 @@
 
 
   
-    <a href="https://github.com/orthodox-groningen/VSA-tooling/edit/main/docs/terminologie/fixture.md" title="Wijzig deze pagina" class="md-content__button md-icon" rel="edit">
+    <a href="https://github.com/orthodox-groningen/VSA-tooling/edit/main/docs/specification-vsa-templates/semantics.md" title="Wijzig deze pagina" class="md-content__button md-icon" rel="edit">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
     </a>
@@ -2718,18 +2825,74 @@
   
 
 
-<h1 id="fixture">Fixture<a class="headerlink" href="#fixture" title="Permanent link">&para;</a></h1>
-<p>Een fixture is een gecontroleerde invoerset voor tests, regressie of
-docs-walkthroughs. De canonieke bestanden staan onder <code>examples/</code>; docs
-<strong>citeren</strong> die paden en vervangen golden files niet.</p>
-<p>Goede/valide voorbeelden van Fixture zijn:
-- <code>examples/regression/*/input.vsa</code> met verwachte AST/validatie/SVG
-- Walkthrough-<code>.vsa</code> onder <code>examples/docs-walkthroughs/</code>
-- Bewust ongeldige cases onder <code>examples/expected-fail/</code></p>
-<p>Geen goede/niet valide voorbeelden van Fixture zijn:
-- Productie-<a class="og-termref" href="/bron/terms/zangstuk" title="Zangstuk: Een liturgisch-muzikaal geheel met een stabiele <code>zangstuk-id</code>, waaronder nul of meer Varianten bestaan.">zangstukken</a> in de <a class="og-termref" href="/bron/terms/bron-repository" title="Bron-repository: De git-repository <code>orthodox-groningen/bron</code> (of een expliciet aangewezen opvolger); de centrale opslagplaats voor Representaties van Uitvoeringsvormen (van Varianten) van Zangstukken, alsmede voor de specificaties van de opslag, en van manieren om daarin te zoeken.">bron-repository</a>
-- Gegenereerde output onder <code>generated/</code>
-- Een losse notitie zonder reproduceerbare invoer</p>
+<h1 id="semantiek">Semantiek<a class="headerlink" href="#semantiek" title="Permanent link">&para;</a></h1>
+<h2 id="do-context-en-modus">Do-context en modus<a class="headerlink" href="#do-context-en-modus" title="Permanent link">&para;</a></h2>
+<p>Zoals in VSA:</p>
+<ul>
+<li><code>do</code> — absolute scientific pitch van de grondtoon;</li>
+<li><code>mode</code> — intervalstructuur van de ladder (<code>major</code>, <code>minor</code>, …).</li>
+</ul>
+<p>Alle <code>pitches</code> in events zijn <strong>laddergraden</strong> binnen die context, geen
+losse absolute noten. Export naar MusicXML (later) resolvet graad → pitch via
+dezelfde ladderlogica als VSA.</p>
+<p>Optionele <code>key_signature</code> op het blad is afleidbaar uit <code>do</code>+<code>mode</code> en is in
+templates geen primaire bron van waarheid.</p>
+<h2 id="duration">Duration<a class="headerlink" href="#duration" title="Permanent link">&para;</a></h2>
+<p>ELMs hebben dezelfde vermenigvuldiging t.o.v. standaardduur als VSA §5.10.
+<code>duration-model</code> (default <code>default</code>) bepaalt de MusicXML-mapping van die
+standaardduur (standaard = kwartnoot).</p>
+<h2 id="recite">Recite<a class="headerlink" href="#recite" title="Permanent link">&para;</a></h2>
+<p><code>role: recite</code> betekent: één akkoord (vaste graden) voor N≥1 syllaben.
+De duur-ELM is de duur <strong>per syllabe</strong> (meestal <code>~</code>), niet een “breve-ELM”.</p>
+<h2 id="vormen-cycle-sequence-alias">Vormen (cycle / sequence / alias)<a class="headerlink" href="#vormen-cycle-sequence-alias" title="Permanent link">&para;</a></h2>
+<p>Ongewijzigd t.o.v. eerdere draft: zie cycle-form, sequence-form, alias-form in
+<a href="../syntax/"><code>syntax.md</code></a>.</p>
+<h3 id="cycle-form">Cycle-form<a class="headerlink" href="#cycle-form" title="Permanent link">&para;</a></h3>
+<p>Tekstfrasen → herhaalde <code>cycle</code>, laatste tekstfrase → <code>final</code>.
+Bibliotheekfrasen (<code>1a</code>, …) alleen via mapping/variant.</p>
+<h3 id="sequence-form">Sequence-form<a class="headerlink" href="#sequence-form" title="Permanent link">&para;</a></h3>
+<p>Vaste lijst phrase-ids; lengte moet (na mapping) bij de tekst passen.</p>
+<h3 id="alias-form">Alias-form<a class="headerlink" href="#alias-form" title="Permanent link">&para;</a></h3>
+<p><code>same_as</code> erft melodische inhoud van een ander template-id.</p>
+<h2 id="roles">Roles<a class="headerlink" href="#roles" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Role</th>
+<th>Betekenis</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>open</code></td>
+<td>Vaste openingsstap (vaak zelfde graad als recite)</td>
+</tr>
+<tr>
+<td><code>recite</code></td>
+<td>Reciteertoon; N syllaben × <code>duration</code></td>
+</tr>
+<tr>
+<td><code>cadence</code></td>
+<td>Vaste cadens-/slotstap</td>
+</tr>
+<tr>
+<td><code>link</code></td>
+<td>Verbinding; vaak <code>optional: true</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="optional-anchors">Optional / anchors<a class="headerlink" href="#optional-anchors" title="Permanent link">&para;</a></h2>
+<p>Ongewijzigd: optional mag worden overgeslagen; ankers registreren bladlabels
+<code>e.st.</code> / <code>l.st.</code> / <code>vl.st.</code>.</p>
+<h2 id="chromatische-graden">Chromatische graden<a class="headerlink" href="#chromatische-graden" title="Permanent link">&para;</a></h2>
+<p>Prefix <code>#</code> / <code>b</code> op een graad = chromatische wijziging t.o.v. de laddertoon
+(vergelijkbaar met VSA halftoon-prefix op EHM, maar hier op een <strong>absolute
+graadpositie</strong> in het template).</p>
+<h2 id="wat-semantiek-niet-claimt">Wat semantiek niet claimt<a class="headerlink" href="#wat-semantiek-niet-claimt" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Automatische gelijkheid VSA-EHM-contour ↔ template-S.</li>
+<li>Stem-autonome ritmes.</li>
+</ul>
 
 
 

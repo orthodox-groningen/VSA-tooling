@@ -97,8 +97,8 @@
             
   
   <strong>Preview</strong>
-   — branch <code>docs/termrefs-body</code>
-  , gebouwd 2026-08-09 20:37 CEST.
+   — branch <code>feat/vsa-templates-spec</code>
+  , gebouwd 2026-08-09 21:13 CEST.
   <a href="https://orthodox-groningen.github.io/VSA-tooling/">Live documentatie (main)</a>.
   
 
@@ -1650,34 +1650,6 @@
   
   
     <li class="md-nav__item">
-      <a href="../../voorbeelden/glyphs-overzicht/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Glyphs-overzicht
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../../voorbeelden/fouten/" class="md-nav__link">
         
   
@@ -2042,7 +2014,7 @@
   <span class="md-ellipsis">
     
   
-    vsa blocks — VSA-blokken in Markdown vinden
+    vsa blocks — ::: vsa-notatie en eindigt met :::, beide aan het begin van een regel, met daartussen VSA-notatie; typisch ontdekt en verwerkt door de Vsa-toolset (o.a. vsa blocks, vsa validate, vsa process).">VSA-blokken in Markdown vinden
   
 
     
@@ -2070,7 +2042,7 @@
   <span class="md-ellipsis">
     
   
-    vsa svg — één vsa-bestand naar SVG renderen
+    vsa svg — één .vsa waarvan de inhoud uitsluitend syntactisch geldige Vsa-notatie bevat — d.w.z. door de Vsa-tooling foutloos wordt geparseerd en gevalideerd.">vsa-bestand naar SVG renderen
   
 
     
@@ -3001,18 +2973,18 @@
 <h1 id="vsa-validate-vsa-invoer-controleren"><code>vsa validate</code> — VSA-invoer controleren<a class="headerlink" href="#vsa-validate-vsa-invoer-controleren" title="Permanent link">&para;</a></h1>
 <div class="admonition note">
 <p class="admonition-title">Waartoe</p>
-<p>Controleren of <code>.vsa</code>- of Markdown-invoer <a class="og-termref" href="/VSA-tooling/preview/terminologie/geldige-vsa-notatie" title="geldige VSA-notatie: VSA-notatie die de Validator (<code>vsa validate</code>) accepteert: syntactisch en semantisch in orde volgens de actieve Severity / Ernstniveau-regels (syntaxfouten zijn altijd hard).">geldige VSA-notatie</a> bevat
+<p>Controleren of <code>.vsa</code>- of Markdown-invoer <a href="/VSA-tooling/preview/terminologie/geldige-vsa-notatie" title="geldige VSA-notatie: VSA-notatie die de Validator (<code>vsa validate</code>) accepteert: syntactisch en semantisch in orde volgens de actieve Severity-regels (syntaxfouten zijn altijd hard).">geldige VSA-notatie</a> bevat
 vóór verdere verwerking (SVG, Hugo-Markdown, MusicXML). Dit schrijft
 <strong>geen</strong> SVG — zie <a href="../svg/"><code>vsa svg</code></a>.</p>
 </div>
-<p>Controleer of <code>.vsa</code>- of Markdown-invoer <a class="og-termref" href="/VSA-tooling/preview/terminologie/geldige-vsa-notatie" title="geldige VSA-notatie: VSA-notatie die de Validator (<code>vsa validate</code>) accepteert: syntactisch en semantisch in orde volgens de actieve Severity / Ernstniveau-regels (syntaxfouten zijn altijd hard).">geldige VSA-notatie</a> bevat voor
+<p>Controleer of <code>.vsa</code>- of Markdown-invoer <a href="/VSA-tooling/preview/terminologie/geldige-vsa-notatie" title="geldige VSA-notatie: VSA-notatie die de Validator (<code>vsa validate</code>) accepteert: syntactisch en semantisch in orde volgens de actieve Severity-regels (syntaxfouten zijn altijd hard).">geldige VSA-notatie</a> bevat voor
 verdere verwerking (SVG, Hugo-Markdown, MusicXML).</p>
 <h2 id="synopsis">Synopsis<a class="headerlink" href="#synopsis" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code>vsa validate [-h] [--config CONFIG] [--summary] path
 </code></pre></div>
 <h2 id="beschrijving">Beschrijving<a class="headerlink" href="#beschrijving" title="Permanent link">&para;</a></h2>
 <p><code>vsa validate</code> voert drie controlefasen achtereenvolgens uit op elk gevonden
-<a class="og-termref" href="/VSA-tooling/preview/terminologie/vsa-blokken" title="VSA-blok: een tekstfragment in een Markdownbestand dat begint met <code>::: vsa-notatie</code> en eindigt met <code>:::</code>, beide aan het begin van een regel, met daartussen VSA-notatie; typisch ontdekt en verwerkt door de Vsa-toolset (o.a. <code>vsa blocks</code>, <code>vsa validate</code>, <code>vsa process</code>).">VSA-blok</a> of <a class="og-termref" href="/bron/terms/vsa-bestand" title="vsa-bestand: Een bestand met de extensie <code>.vsa</code> waarvan de inhoud uitsluitend syntactisch geldige Vsa-notatie bevat — d.w.z. door de Vsa-tooling foutloos wordt geparseerd en gevalideerd.">vsa-bestand</a>:</p>
+<a href="/VSA-tooling/preview/terminologie/vsa-blokken" title="VSA-blok: een tekstfragment in een Markdownbestand dat begint met <code>::: vsa-notatie</code> en eindigt met <code>:::</code>, beide aan het begin van een regel, met daartussen VSA-notatie; typisch ontdekt en verwerkt door de Vsa-toolset (o.a. <code>vsa blocks</code>, <code>vsa validate</code>, <code>vsa process</code>).">VSA-blok</a> of <a href="/bron/terms/vsa-bestand" title="vsa-bestand: Een bestand met de extensie <code>.vsa</code> waarvan de inhoud uitsluitend syntactisch geldige Vsa-notatie bevat — d.w.z. door de Vsa-tooling foutloos wordt geparseerd en gevalideerd.">vsa-bestand</a>:</p>
 <table>
 <thead>
 <tr>
@@ -3023,15 +2995,15 @@ verdere verwerking (SVG, Hugo-Markdown, MusicXML).</p>
 <tbody>
 <tr>
 <td>syntaxscan</td>
-<td>accolades, lege <a class="og-termref" href="/VSA-tooling/preview/terminologie/vsa-scope" title="VSA-scope: een tekstfragment dat met <code>{</code> begint, met <code>}</code> eindigt, geen whitespace binnen de accolades bevat en door de Parser kan worden opgesplitst in optionele Hoogte-modifier, verplicht zangelement en optionele Lengte-modifier.">scopes</a>, whitespace in <a class="og-termref" href="/VSA-tooling/preview/terminologie/vsa-scope" title="VSA-scope: een tekstfragment dat met <code>{</code> begint, met <code>}</code> eindigt, geen whitespace binnen de accolades bevat en door de Parser kan worden opgesplitst in optionele Hoogte-modifier, verplicht zangelement en optionele Lengte-modifier.">scopes</a>, <a class="og-termref" href="/VSA-tooling/preview/terminologie/pitch-marker" title="Pitch-marker: een Bracket-directive / Bracket-token met de vorm <code>[&lt;EHM&gt;:]</code>, waarbij <code>&lt;EHM&gt;</code> leeg is of een geldige EHM bevat.">pitch-markers</a></td>
+<td>accolades, lege scopes, whitespace in scopes, pitch-markers</td>
 </tr>
 <tr>
-<td><a class="og-termref" href="/VSA-tooling/preview/terminologie/parser" title="Parser: een component die VSA-brontekst of tokens volgens de grammatica omzet naar expliciete AST / Syntactische Boom-nodes, bronlocaties behoudt en geen semantische reparaties of renderlogica uitvoert.">parser</a></td>
-<td>of de <a class="og-termref" href="/VSA-tooling/preview/terminologie/vsa" title="Vereenvoudigde Slavische Accentnotatie: wordt gebruikt om te verwijzen naar een Formele Notatie voor het vastleggen van Zangstukken en ook naar de Toolset waarmee zulke vastleggingen kunnen worden gevalideerd en naar publiceerbare vormen worden omgezet.">VSA</a> naar interne structuur kan worden omgezet</td>
+<td>parser</td>
+<td>of de VSA naar interne structuur kan worden omgezet</td>
 </tr>
 <tr>
 <td>semantiek</td>
-<td>of hoogte- en <a class="og-termref" href="/VSA-tooling/preview/terminologie/lengte-modifier" title="Lengte-modifier: een Modifier die na het zangelement in een VSA-scope staat en bestaat uit een geldige ELM of uit meerdere geldige ELMs gescheiden door <code>&amp;</code>.">lengte-modifiers</a> logisch (in aantal) bij elkaar passen</td>
+<td>of hoogte- en lengte-modifiers logisch (in aantal) bij elkaar passen</td>
 </tr>
 </tbody>
 </table>
@@ -3053,7 +3025,7 @@ verdere verwerking (SVG, Hugo-Markdown, MusicXML).</p>
 <tr>
 <td><code>.md</code>-bestand</td>
 <td><code>pagina.md</code></td>
-<td>Controleert alle <a class="og-termref" href="/VSA-tooling/preview/terminologie/vsa-blokken" title="VSA-blok: een tekstfragment in een Markdownbestand dat begint met <code>::: vsa-notatie</code> en eindigt met <code>:::</code>, beide aan het begin van een regel, met daartussen VSA-notatie; typisch ontdekt en verwerkt door de Vsa-toolset (o.a. <code>vsa blocks</code>, <code>vsa validate</code>, <code>vsa process</code>).">VSA-blokken</a> in dat bestand.</td>
+<td>Controleert alle <a href="/VSA-tooling/preview/terminologie/vsa-blokken" title="VSA-blok: een tekstfragment in een Markdownbestand dat begint met <code>::: vsa-notatie</code> en eindigt met <code>:::</code>, beide aan het begin van een regel, met daartussen VSA-notatie; typisch ontdekt en verwerkt door de Vsa-toolset (o.a. <code>vsa blocks</code>, <code>vsa validate</code>, <code>vsa process</code>).">VSA-blokken</a> in dat bestand.</td>
 </tr>
 <tr>
 <td>Map</td>
@@ -3147,7 +3119,7 @@ keer — je hoeft niet telkens één fout te herstellen en opnieuw te draaien.</
 <div class="admonition note">
 <p class="admonition-title">Let op bij <code>050_svg_demo.vsa</code></p>
 <p><code>examples\minimal\050_svg_demo.vsa</code> is bewust een SVG-renderdemo en
-bevat een <a class="og-termref" href="/VSA-tooling/preview/terminologie/pitch-marker" title="Pitch-marker: een Bracket-directive / Bracket-token met de vorm <code>[&lt;EHM&gt;:]</code>, waarbij <code>&lt;EHM&gt;</code> leeg is of een geldige EHM bevat.">hoogte-markering</a> die niet overeenkomt met het aantal
+bevat een hoogte-markering die niet overeenkomt met het aantal
 scope-modifiers. <code>vsa validate</code> op dat bestand faalt daarom met
 <code>VSA-SEMANTIC-HEIGHT-MARKER-MISMATCH</code> (zie hieronder). Gebruik voor een
 schone validatie-demo bijvoorbeeld <code>001_plain_text.vsa</code> of
@@ -3168,9 +3140,9 @@ ERROR: VSA-SYNTAX-UNCLOSED-SCOPE: Scope zonder afsluitende accolade.
 ^
 </code></pre></div>
 <p>Exitcode: <code>1</code>.</p>
-<p>Fix: sluit de <a class="og-termref" href="/VSA-tooling/preview/terminologie/vsa-scope" title="VSA-scope: een tekstfragment dat met <code>{</code> begint, met <code>}</code> eindigt, geen whitespace binnen de accolades bevat en door de Parser kan worden opgesplitst in optionele Hoogte-modifier, verplicht zangelement en optionele Lengte-modifier.">scope</a> af, bijvoorbeeld <code>{tekst}</code>.</p>
+<p>Fix: sluit de scope af, bijvoorbeeld <code>{tekst}</code>.</p>
 <p>Een ander typisch geval — semantische mismatch tussen hoogte- en
-<a class="og-termref" href="/VSA-tooling/preview/terminologie/lengte-modifier" title="Lengte-modifier: een Modifier die na het zangelement in een VSA-scope staat en bestaat uit een geldige ELM of uit meerdere geldige ELMs gescheiden door <code>&amp;</code>.">lengte-modifiers</a>:</p>
+lengte-modifiers:</p>
 <div class="highlight"><pre><span></span><code>vsa validate examples\minimal\050_svg_demo.vsa
 </code></pre></div>
 <p>Verwachte output:</p>
@@ -3179,7 +3151,7 @@ ERROR: VSA-SEMANTIC-HEIGHT-MARKER-MISMATCH: computed = marker + 2
 [:] {/Hei_}{/lig_} is de Heer. [:]
                                ^
 </code></pre></div>
-<p>Fix: pas de eindmarkering of het aantal <a class="og-termref" href="/VSA-tooling/preview/terminologie/hoogte-modifier" title="Hoogte-modifier: een Modifier die voor het zangelement in een VSA-scope staat en bestaat uit een geldige EHM of uit meerdere geldige EHMs gescheiden door <code>&amp;</code>.">hoogte-modifiers</a> aan, of draai
+<p>Fix: pas de eindmarkering of het aantal hoogte-modifiers aan, of draai
 <code>vsa validate --summary</code> voor een compacte lijst als je meerdere van dit
 soort fouten tegelijk wilt zien.</p>
 <h3 id="veelvoorkomende-foutcodes">Veelvoorkomende foutcodes<a class="headerlink" href="#veelvoorkomende-foutcodes" title="Permanent link">&para;</a></h3>
@@ -3195,17 +3167,17 @@ soort fouten tegelijk wilt zien.</p>
 <tr>
 <td><code>VSA-SYNTAX-EMPTY-SCOPE</code></td>
 <td><code>{}</code> gevonden</td>
-<td>Zet tekst of een <a class="og-termref" href="/VSA-tooling/preview/terminologie/zangelement" title="Zangelement: het verplichte tekstfragment binnen een VSA-scope waaraan optionele Hoogte-modifiers en Lengte-modifiers hangen; de gezongen lettergreep of tekst die bij de Muzikale Posities hoort.">zangelement</a> in de <a class="og-termref" href="/VSA-tooling/preview/terminologie/vsa-scope" title="VSA-scope: een tekstfragment dat met <code>{</code> begint, met <code>}</code> eindigt, geen whitespace binnen de accolades bevat en door de Parser kan worden opgesplitst in optionele Hoogte-modifier, verplicht zangelement en optionele Lengte-modifier.">scope</a>.</td>
+<td>Zet tekst of een zangelement in de scope.</td>
 </tr>
 <tr>
 <td><code>VSA-SYNTAX-UNCLOSED-SCOPE</code></td>
 <td><code>{tekst</code> zonder <code>}</code></td>
-<td>Sluit de <a class="og-termref" href="/VSA-tooling/preview/terminologie/vsa-scope" title="VSA-scope: een tekstfragment dat met <code>{</code> begint, met <code>}</code> eindigt, geen whitespace binnen de accolades bevat en door de Parser kan worden opgesplitst in optionele Hoogte-modifier, verplicht zangelement en optionele Lengte-modifier.">scope</a> af.</td>
+<td>Sluit de scope af.</td>
 </tr>
 <tr>
 <td><code>VSA-SYNTAX-UNEXPECTED-CLOSE-BRACE</code></td>
 <td>Losse <code>}</code></td>
-<td>Verwijder of herstel de <a class="og-termref" href="/VSA-tooling/preview/terminologie/vsa-scope" title="VSA-scope: een tekstfragment dat met <code>{</code> begint, met <code>}</code> eindigt, geen whitespace binnen de accolades bevat en door de Parser kan worden opgesplitst in optionele Hoogte-modifier, verplicht zangelement en optionele Lengte-modifier.">scope</a>.</td>
+<td>Verwijder of herstel de scope.</td>
 </tr>
 <tr>
 <td><code>VSA-SYNTAX-WHITESPACE-IN-SCOPE</code></td>
@@ -3215,7 +3187,7 @@ soort fouten tegelijk wilt zien.</p>
 <tr>
 <td><code>VSA-SYNTAX-UNCLOSED-PITCH-MARKER</code></td>
 <td><code>[</code> zonder <code>]</code></td>
-<td>Sluit de <a class="og-termref" href="/VSA-tooling/preview/terminologie/pitch-marker" title="Pitch-marker: een Bracket-directive / Bracket-token met de vorm <code>[&lt;EHM&gt;:]</code>, waarbij <code>&lt;EHM&gt;</code> leeg is of een geldige EHM bevat.">pitch-marker</a> af.</td>
+<td>Sluit de pitch-marker af.</td>
 </tr>
 <tr>
 <td><code>VSA-SYNTAX-PITCH-MARKER-MISSING-COLON</code></td>
@@ -3225,7 +3197,7 @@ soort fouten tegelijk wilt zien.</p>
 <tr>
 <td><code>VSA-SEMANTIC-MODIFIER-COUNT-MISMATCH</code></td>
 <td>Aantallen hoogte-/lengteposities passen niet</td>
-<td>Controleer samengestelde <a class="og-termref" href="/VSA-tooling/preview/terminologie/modifier" title="Modifier: een tekenreeks die binnen een VSA-scope als Hoogte-modifier voor het zangelement of als Lengte-modifier na het zangelement wordt geparseerd.">modifiers</a>.</td>
+<td>Controleer samengestelde modifiers.</td>
 </tr>
 <tr>
 <td><code>VSA-SEMANTIC-HEIGHT-MARKER-MISMATCH</code></td>
@@ -3240,7 +3212,7 @@ soort fouten tegelijk wilt zien.</p>
 <li><a href="../parse/"><code>vsa parse</code></a> — parserdebugging op één bestand.</li>
 <li><a href="../svg/"><code>vsa svg</code></a>, <a href="../process/"><code>vsa process</code></a>, <a href="../build-markdown/"><code>vsa build-markdown</code></a> — draaien impliciet validatie (behalve met <code>--no-validate</code>).</li>
 <li>Handleiding: <a href="../../../guides/validation/">Validatie</a>, <a href="../../../guides/cli-taken/">CLI-taken</a></li>
-<li>Foutcodes en <a class="og-termref" href="/VSA-tooling/preview/terminologie/severity" title="Severity: een waarde die aan een Diagnostic / Diagnostische Melding is gekoppeld en aangeeft of de vastgestelde afwijking als blokkerende fout of als waarschuwing moet worden behandeld.">severity</a>: <a href="../../config/">config.md</a>, <a href="../../diagnostics/">diagnostics.md</a></li>
+<li>Foutcodes en severity: <a href="../../config/">config.md</a>, <a href="../../diagnostics/">diagnostics.md</a></li>
 </ul>
 
 
@@ -3278,7 +3250,7 @@ soort fouten tegelijk wilt zien.</p>
       
       
       <p class="og-footer-stamps">
-        Bijgewerkt: 2026-08-09
+        Bijgewerkt: 2026-08-08
         
       </p>
       

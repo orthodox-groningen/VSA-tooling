@@ -97,8 +97,8 @@
             
   
   <strong>Preview</strong>
-   — branch <code>docs/termrefs-body</code>
-  , gebouwd 2026-08-09 20:37 CEST.
+   — branch <code>feat/vsa-templates-spec</code>
+  , gebouwd 2026-08-09 21:13 CEST.
   <a href="https://orthodox-groningen.github.io/VSA-tooling/">Live documentatie (main)</a>.
   
 
@@ -1127,10 +1127,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#inleiding" class="md-nav__link">
+  <a href="#1-inleiding" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Inleiding
+        1. Inleiding
       
     </span>
   </a>
@@ -1138,10 +1138,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#terminologie" class="md-nav__link">
+  <a href="#2-terminologie" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Terminologie
+        2. Terminologie
       
     </span>
   </a>
@@ -1727,34 +1727,6 @@
   
   
     <li class="md-nav__item">
-      <a href="../../reference/voorbeelden/glyphs-overzicht/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Glyphs-overzicht
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../../reference/voorbeelden/fouten/" class="md-nav__link">
         
   
@@ -1964,7 +1936,7 @@
   <span class="md-ellipsis">
     
   
-    vsa blocks — VSA-blokken in Markdown vinden
+    vsa blocks — ::: vsa-notatie en eindigt met :::, beide aan het begin van een regel, met daartussen VSA-notatie; typisch ontdekt en verwerkt door de Vsa-toolset (o.a. vsa blocks, vsa validate, vsa process).">VSA-blokken in Markdown vinden
   
 
     
@@ -1992,7 +1964,7 @@
   <span class="md-ellipsis">
     
   
-    vsa svg — één vsa-bestand naar SVG renderen
+    vsa svg — één .vsa waarvan de inhoud uitsluitend syntactisch geldige Vsa-notatie bevat — d.w.z. door de Vsa-tooling foutloos wordt geparseerd en gevalideerd.">vsa-bestand naar SVG renderen
   
 
     
@@ -2802,10 +2774,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#inleiding" class="md-nav__link">
+  <a href="#1-inleiding" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Inleiding
+        1. Inleiding
       
     </span>
   </a>
@@ -2813,10 +2785,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#terminologie" class="md-nav__link">
+  <a href="#2-terminologie" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Terminologie
+        2. Terminologie
       
     </span>
   </a>
@@ -2849,22 +2821,22 @@
 
 
 <h1 id="doel-en-scope">Doel en scope<a class="headerlink" href="#doel-en-scope" title="Permanent link">&para;</a></h1>
-<p><a class="og-termref" href="/VSA-tooling/preview/terminologie/vsa" title="Vereenvoudigde Slavische Accentnotatie: wordt gebruikt om te verwijzen naar een Formele Notatie voor het vastleggen van Zangstukken en ook naar de Toolset waarmee zulke vastleggingen kunnen worden gevalideerd en naar publiceerbare vormen worden omgezet.">VSA</a> (<a class="og-termref" href="/VSA-tooling/preview/terminologie/vsa" title="Vereenvoudigde Slavische Accentnotatie: wordt gebruikt om te verwijzen naar een Formele Notatie voor het vastleggen van Zangstukken en ook naar de Toolset waarmee zulke vastleggingen kunnen worden gevalideerd en naar publiceerbare vormen worden omgezet.">Vereenvoudigde Slavische Accentnotatie</a>) is een tekstgebaseerde
+<p>VSA (Vereenvoudigde Slavische Accentnotatie) is een tekstgebaseerde
 domeinspecifieke taal (DSL) voor Slavische accentnotatie. De taal definieert
 een eenduidige, machineleesbare en menselijk leesbare notatie waarmee
-<a class="og-termref" href="/bron/terms/zangstuk" title="Zangstuk: Een liturgisch-muzikaal geheel met een stabiele <code>zangstuk-id</code>, waaronder nul of meer Varianten bestaan.">zangstukken</a> kunnen worden vastgelegd, gevalideerd en verder verwerkt
-(<a class="og-termref" href="/bron/terms/conversiemechanisme" title="Conversiemechanisme: Een gedefinieerde, geautomatiseerde en herhaalbare tool CM die een Bronbestand B omzet naar een Afgeleide AB = CM(B).">conversiemechanisme</a>
-naar o.a. SVG/MusicXML; <a class="og-termref" href="/bron/terms/exportmechanisme" title="Exportmechanisme: De manier waarop een Samenstelling een Bronbestand of Afgeleide ontsluit voor een lezersdoel, via een <code>:::include</code>-directive met een Exporttype.">exportmechanisme</a>
-in een <a class="og-termref" href="/bron/terms/samenstelling" title="Samenstelling: Een markdown-document (met VSA-directives) dat Representaties ordent voor een lezersdoel, zonder zelf Representatie te zijn.">samenstelling</a> via <code>:::include</code>).</p>
+<a href="/bron/terms/zangstuk" title="Zangstuk: Een liturgisch-muzikaal geheel met een stabiele <code>zangstuk-id</code>, waaronder nul of meer Varianten bestaan.">zangstukken</a> kunnen worden vastgelegd, gevalideerd en verder verwerkt
+(<a href="/bron/terms/conversiemechanisme" title="Conversiemechanisme: Een gedefinieerde, geautomatiseerde en herhaalbare tool CM die een Bronbestand B omzet naar een Afgeleide AB = CM(B).">conversiemechanisme</a>
+naar o.a. SVG/MusicXML; <a href="/bron/terms/exportmechanisme" title="Exportmechanisme: De manier waarop een Samenstelling een Bronbestand of Afgeleide ontsluit voor een lezersdoel, via een <code>:::include</code>-directive met een Exporttype.">exportmechanisme</a>
+in een <a href="/bron/terms/samenstelling" title="Samenstelling: Een markdown-document (met VSA-directives) dat Representaties ordent voor een lezersdoel, zonder zelf Representatie te zijn.">samenstelling</a> via <code>:::include</code>).</p>
 <p>Deze specificatie beschrijft de <strong>taal en haar semantiek</strong> (plus toolcontracts
 in de overige specificatiepagina’s). Org-brede begrippen zoals
-<a class="og-termref" href="/bron/terms/zangstuk" title="Zangstuk: Een liturgisch-muzikaal geheel met een stabiele <code>zangstuk-id</code>, waaronder nul of meer Varianten bestaan.">zangstuk</a> en <a class="og-termref" href="/bron/terms/afgeleide" title="Afgeleide: Een bestand dat volledig en herhaalbaar door een Conversiemechanisme uit een Bronbestand wordt gegenereerd, en dat (dus) niet als Bronbestand in de Bron-repository staat.">afgeleide</a> staan in de
+<a href="/bron/terms/zangstuk" title="Zangstuk: Een liturgisch-muzikaal geheel met een stabiele <code>zangstuk-id</code>, waaronder nul of meer Varianten bestaan.">zangstuk</a> en <a href="/bron/terms/afgeleide" title="Afgeleide: Een bestand dat volledig en herhaalbaar door een Conversiemechanisme uit een Bronbestand wordt gegenereerd, en dat (dus) niet als Bronbestand in de Bron-repository staat.">afgeleide</a> staan in de
 <a href="https://orthodox-groningen.github.io/bron/specs/terminologie/">bron-terminologie</a>;
 tool-termen in de <a href="../../glossary/">glossary</a>.</p>
 <h2 id="status">Status<a class="headerlink" href="#status" title="Permanent link">&para;</a></h2>
 <p>Dit document consolideert algemene specificatie-informatie uit de bestaande
 VSA-documentatie (betekenis behouden, structuur opgeschoond).</p>
-<h2 id="inleiding">Inleiding<a class="headerlink" href="#inleiding" title="Permanent link">&para;</a></h2>
+<h2 id="1-inleiding">1. Inleiding<a class="headerlink" href="#1-inleiding" title="Permanent link">&para;</a></h2>
 <!-- ter herinnering: http://www.ivanmoody.co.uk/orthodoxliturgylinks.htm bevat allerlei links over orthodoxe liturgie -->
 
 <p>De Slavisch‑orthodoxe zangtraditie kent een lange geschiedenis van
@@ -2884,7 +2856,7 @@ horizontale lijnen onder syllaben — dienden als praktische hulpmiddelen om
 per regio, koorleider of lokale traditie. Historische uitleg uit het
 Nederlandse Liturgikon: <a href="../../guides/liturgikon-notatie/">Liturgikon-notatie</a>.</p>
 <p>Dit document introduceert een formele codificatie van deze praktijkgerichte
-notatie: de <strong><a class="og-termref" href="/VSA-tooling/preview/terminologie/vsa" title="Vereenvoudigde Slavische Accentnotatie: wordt gebruikt om te verwijzen naar een Formele Notatie voor het vastleggen van Zangstukken en ook naar de Toolset waarmee zulke vastleggingen kunnen worden gevalideerd en naar publiceerbare vormen worden omgezet.">Vereenvoudigde Slavische Accentnotatie</a> (<a class="og-termref" href="/bron/terms/vsa-notatie" title="VSA-notatie: Het tekstgebaseerde notatieformaat waarmee liturgische zangteksten worden vastgelegd: een formeel gespecificeerde taal met scopes, modifiers en bracket-directives, parseeerbaar en valideerbaar door Vsa-tooling.">VSA-notatie</a>)</strong>. <a class="og-termref" href="/VSA-tooling/preview/terminologie/vsa" title="Vereenvoudigde Slavische Accentnotatie: wordt gebruikt om te verwijzen naar een Formele Notatie voor het vastleggen van Zangstukken en ook naar de Toolset waarmee zulke vastleggingen kunnen worden gevalideerd en naar publiceerbare vormen worden omgezet.">VSA</a> is
+notatie: de <strong>Vereenvoudigde Slavische Accentnotatie (VSA‑notatie)</strong>. VSA is
 geen vervanging van historische kriuki- of znamenny-notatie, maar een lichte,
 consistente en reproduceerbare manier om Slavisch‑orthodoxe congregatiezang
 digitaal te noteren.</p>
@@ -2895,14 +2867,14 @@ digitaal te noteren.</p>
 <li>formeel definieerbaar is in een grammatica;</li>
 <li>betrouwbaar te parseren, valideren en renderen is;</li>
 <li>bruikbaar is in tekstgebaseerde workflows, statische websites en
-  automatische <a class="og-termref" href="/VSA-tooling/preview/terminologie/renderer" title="Renderer: een component die een gevalideerde AST / Syntactische Boom of daarvan afgeleid layoutmodel omzet naar concrete uitvoer, zoals SVG, JSON, Markdown, Hugo-output of MusicXML, zonder de AST semantisch te wijzigen.">renderers</a> of weergavecomponenten;</li>
+  automatische renderers of weergavecomponenten;</li>
 <li>voldoende semantische informatie bevat voor conversie naar symbolische
   muziekformaten zoals MusicXML.</li>
 </ul>
-<p><a class="og-termref" href="/VSA-tooling/preview/terminologie/vsa" title="Vereenvoudigde Slavische Accentnotatie: wordt gebruikt om te verwijzen naar een Formele Notatie voor het vastleggen van Zangstukken en ook naar de Toolset waarmee zulke vastleggingen kunnen worden gevalideerd en naar publiceerbare vormen worden omgezet.">VSA</a> beschrijft melodische beweging binnen een modaal toonstelsel waarin
+<p>VSA beschrijft melodische beweging binnen een modaal toonstelsel waarin
 stapgrootten niet uniform zijn en afhankelijk zijn van de gekozen grondtoon:
 de <code>do</code> van de toonladder.</p>
-<h2 id="terminologie">Terminologie<a class="headerlink" href="#terminologie" title="Permanent link">&para;</a></h2>
+<h2 id="2-terminologie">2. Terminologie<a class="headerlink" href="#2-terminologie" title="Permanent link">&para;</a></h2>
 <p><strong>Geen parallelle glossary hier.</strong> Definities:</p>
 <table>
 <thead>
@@ -2964,7 +2936,7 @@ in plaats van een tweede termtabel bij te houden.</p>
       
       
       <p class="og-footer-stamps">
-        Bijgewerkt: 2026-08-09
+        Bijgewerkt: 2026-08-08
         
       </p>
       

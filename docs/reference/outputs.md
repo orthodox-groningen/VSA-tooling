@@ -26,8 +26,8 @@ vsa build-markdown <input-dir> <output-dir> <assets-dir>
 
 | Output     | Voorbeeld                                        |
 | ---------- | ------------------------------------------------ |
-| Markdown   | `generated\content\zondag\toon-1.md`             |
-| SVG        | `generated\static\vsa\zondag-toon-1-block-1.svg` |
+| Markdown   | `generated\content\toon-1.md`                    |
+| SVG        | `generated\static\vsa\toon-1-block-1.svg`        |
 
 ## Markdown-output modes
 

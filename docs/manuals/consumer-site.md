@@ -35,6 +35,14 @@ vsa validate examples\consumer-minimal\content-source
 vsa build-markdown examples\consumer-minimal\content-source generated\ci\content generated\ci\static\vsa
 ```
 
+Voor een rijkere Markdown + Coria-oefenlink (lokale kopie tropaar toon 3):
+
+```cmd
+vsa build-markdown examples\docs-walkthroughs\coria-oefenlink generated\docs-walkthrough-coria\content generated\docs-walkthrough-coria\static\vsa
+```
+
+Zie [MusicXML-export — Coria-walkthrough](../guides/musicxml-export.md#walkthrough-lokale-fixture).
+
 ## Lokaal (voorbeeldconsumer)
 
 ```cmd

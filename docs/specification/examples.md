@@ -30,6 +30,20 @@ bidt tot de barm{\har_}{\ti}{\ge} {\God_}, *
 :::
 ```
 
+### 9.3 Brug naar tooling (niet-normatief)
+
+Zelfde soort notatie kun je lokaal als SVG bekijken. Korte demofrase:
+
+```text
+[:] {/Hei_}{/lig_} is de Heer. [//:]
+```
+
+![Korte VSA-frase als SVG](../guides/assets/walkthroughs/svg-phrase-kort.svg)
+
+Werkstroom en CLI: [SVG exporteren](../guides/svg-export.md),
+[Starten](../getting-started/README.md). Repertoire-achtig voorbeeld
+(tropaar zondag toon 3): [MusicXML-export](../guides/musicxml-export.md).
+
 ---
 
 
@@ -217,15 +231,15 @@ VSA moet worden gezien als een geformaliseerde afleiding van deze historische pr
 
 ### Natuurlijke mineur
 
-| do-context | do | re  | mi  | fa  | sol | la  | ti  | do |
+| do-context | do  | re  | mi  | fa  | sol | la  | ti  | do  |
 | ---------- | --- | --- | --- | --- | --- | --- | --- | --- |
-| `C4`       | C4 | D4  | Eb4 | F4  | G4  | Ab4 | Bb4 | C5 |
-| `D4`       | D4 | E4  | F4  | G4  | A4  | Bb4 | C5  | D5 |
-| `E4`       | E4 | F#4 | G4  | A4  | B4  | C5  | D5  | E5 |
-| `F4`       | F4 | G4  | Ab4 | Bb4 | C5  | Db5 | Eb5 | F5 |
-| `G4`       | G4 | A4  | Bb4 | C5  | D5  | Eb5 | F5  | G5 |
-| `A4`       | A4 | B4  | C5  | D5  | E5  | F5  | G5  | A5 |
-| `B4`       | B4 | C#5 | D5  | E5  | F#5 | G5  | A5  | B5 |
+| `C4`       | C4  | D4  | Eb4 | F4  | G4  | Ab4 | Bb4 | C5  |
+| `D4`       | D4  | E4  | F4  | G4  | A4  | Bb4 | C5  | D5  |
+| `E4`       | E4  | F#4 | G4  | A4  | B4  | C5  | D5  | E5  |
+| `F4`       | F4  | G4  | Ab4 | Bb4 | C5  | Db5 | Eb5 | F5  |
+| `G4`       | G4  | A4  | Bb4 | C5  | D5  | Eb5 | F5  | G5  |
+| `A4`       | A4  | B4  | C5  | D5  | E5  | F5  | G5  | A5  |
+| `B4`       | B4  | C#5 | D5  | E5  | F#5 | G5  | A5  | B5  |
 
 
 ---

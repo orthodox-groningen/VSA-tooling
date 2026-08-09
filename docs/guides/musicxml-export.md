@@ -10,26 +10,29 @@ volledige CLI-syntax, alle argumenten en foutgevallen: zie de man-pagina
 
 ## Snel starten
 
+Eén bestand (docs-fixture: tropaar zondag toon 3):
+
 ```cmd
-vsa musicxml mijn-lied.vsa mijn-lied.mxl
+cd /d C:\Git\orthodox-groningen\VSA-tooling
+vsa musicxml examples\docs-walkthroughs\coria-oefenlink\oefenmelodie.vsa generated\mxl\oefenmelodie.mxl
 ```
 
 Zonder extensie krijg je ook `.mxl`:
 
 ```cmd
-vsa musicxml mijn-lied.vsa output\mijn-lied
+vsa musicxml examples\docs-walkthroughs\coria-oefenlink\oefenmelodie.vsa generated\mxl\oefenmelodie
 ```
 
 Platte MusicXML (bijv. voor MuseScore-bewerking):
 
 ```cmd
-vsa musicxml mijn-lied.vsa mijn-lied.musicxml
+vsa musicxml examples\docs-walkthroughs\coria-oefenlink\oefenmelodie.vsa generated\mxl\oefenmelodie.musicxml
 ```
 
 Of expliciet:
 
 ```cmd
-vsa musicxml mijn-lied.vsa mijn-lied --format musicxml
+vsa musicxml examples\docs-walkthroughs\coria-oefenlink\oefenmelodie.vsa generated\mxl\oefenmelodie --format musicxml
 ```
 
 Bij map-export (standaard `.mxl` per `.vsa`-bestand):
@@ -40,13 +43,50 @@ vsa musicxml content-source\praktijk output\mxl
 
 ## Oefenen in Coria
 
+### Walkthrough (lokale fixture)
+
+Bronmap: `examples\docs-walkthroughs\coria-oefenlink\`
+(onderwerp: tropaar zondag toon 3 / koormap Groningen).
+
+`oefenlink.md`:
+
+```markdown
+:::include svg "oefenmelodie.vsa" alt="Tropaar zondag toon 3 (docs-voorbeeld)" scale="85%":::
+
+:::coria "oefenmelodie.vsa" label="Oefenen in Coria":::
+```
+
+Naast de `.vsa` ligt `oefenmelodie.coria.html` (docs-placeholder), zodat
+`mode="auto"` de HTML-variant kiest.
+
+```cmd
+cd /d C:\Git\orthodox-groningen\VSA-tooling
+vsa build-markdown examples\docs-walkthroughs\coria-oefenlink generated\docs-walkthrough-coria\content generated\docs-walkthrough-coria\static\vsa
+```
+
+Uitgevoerde Markdown bevat o.a.:
+
+```html
+<img class="vsa-notation" src="/vsa/oefenlink-block-1.svg" alt="Tropaar zondag toon 3 (docs-voorbeeld)" …>
+```
+
+```go-html-template
+{{< coria-html src="/coria/oefenmelodie.html" label="Oefenen in Coria" >}}
+```
+
+De build kopieert `oefenmelodie.coria.html` naar
+`generated\…\static\coria\oefenmelodie.html`. Preview van dezelfde melodie
+als SVG:
+
+![Tropaar zondag toon 3 (docs-voorbeeld)](assets/walkthroughs/coria-oefenmelodie.svg)
+
 ### In content-source: `:::coria` (aanbevolen)
 
 Zelfde padregels als `:::include` — alleen de `.vsa`-naam naast je `.md`:
 
 ```markdown
-:::include "tropaar-zondag-toon-3.vsa" alt="Tropaar" scale="85%":::
-:::coria "tropaar-zondag-toon-3.vsa" label="Oefenen in Coria":::
+:::include svg "oefenmelodie.vsa" alt="Tropaar" scale="85%":::
+:::coria "oefenmelodie.vsa" label="Oefenen in Coria":::
 ```
 
 Bij [`vsa build-markdown`](../reference/cli/build-markdown.md):
@@ -58,11 +98,11 @@ Bij [`vsa build-markdown`](../reference/cli/build-markdown.md):
 Optioneel Coria-HTML naast de bron (handmatig uit Coria):
 
 ```text
-praktijk/zondagen/tropaar-zondag-toon-3.vsa
-praktijk/zondagen/tropaar-zondag-toon-3.coria.html
+coria-oefenlink/oefenmelodie.vsa
+coria-oefenlink/oefenmelodie.coria.html
 ```
 
-Build kopieert `.coria.html` naar `static/coria/…/tropaar-zondag-toon-3.html`.
+Build kopieert `.coria.html` naar `static/coria/…/oefenmelodie.html`.
 
 Parameters:
 

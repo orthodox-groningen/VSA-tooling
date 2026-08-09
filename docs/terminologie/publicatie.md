@@ -11,4 +11,14 @@ formPhrases:
 
 # Publicatie
 
-Publicatie omvat het bouwen, controleren en beschikbaar maken van gegenereerde VSA-output. Alleen lokaal renderen zonder publiceerbare output of publicatiecontrole valt hier niet onder.
+Publicatie omvat het bouwen, controleren en beschikbaar maken van gegenereerde
+[VSA](@)-output (bijvoorbeeld [hugo-output](@)). Alleen lokaal renderen zonder
+publiceerbare output of publicatiecontrole valt hier niet onder.
+
+Goede/valide voorbeelden van Publicatie zijn:
+- Build + checks + beschikbaar stellen (Pages/…)
+- Preview- of productie-output
+
+Geen goede/niet valide voorbeelden van Publicatie zijn:
+- Alleen lokale `vsa svg` zonder publicatie
+- Ongecontroleerde handmatige upload

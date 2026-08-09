@@ -19,3 +19,11 @@ constructies; de [renderer](@) kan er een afbeelding (SVG) van maken.
 
 Een [vsa-bestand](@bron) bevat uitsluitend VSA-tekst. In Markdown staat VSA-tekst
 typisch in een [VSA-blok](@).
+
+Goede/valide voorbeelden van VSA-tekst zijn:
+- Lopende tekst + [VSA-notatie](@bron)-constructies
+- Invoer voor [parser](@) / [validator](@) / [renderer](@)
+
+Geen goede/niet valide voorbeelden van VSA-tekst zijn:
+- Alleen platte tekst zonder VSA-tokens
+- Gegenereerde SVG als bron

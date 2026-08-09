@@ -341,11 +341,19 @@
          <lastmod>2026-08-09</lastmod>
     </url>
     <url>
+         <loc>https://orthodox-groningen.github.io/VSA-tooling/preview/terminologie/do-context/</loc>
+         <lastmod>2026-08-09</lastmod>
+    </url>
+    <url>
          <loc>https://orthodox-groningen.github.io/VSA-tooling/preview/terminologie/enkelvoudige-hoogte-modifier/</loc>
          <lastmod>2026-08-09</lastmod>
     </url>
     <url>
          <loc>https://orthodox-groningen.github.io/VSA-tooling/preview/terminologie/enkelvoudige-lengte-modifier/</loc>
+         <lastmod>2026-08-09</lastmod>
+    </url>
+    <url>
+         <loc>https://orthodox-groningen.github.io/VSA-tooling/preview/terminologie/frase-anker/</loc>
          <lastmod>2026-08-09</lastmod>
     </url>
     <url>
@@ -362,6 +370,10 @@
     </url>
     <url>
          <loc>https://orthodox-groningen.github.io/VSA-tooling/preview/terminologie/include-vsa/</loc>
+         <lastmod>2026-08-09</lastmod>
+    </url>
+    <url>
+         <loc>https://orthodox-groningen.github.io/VSA-tooling/preview/terminologie/laddergraad/</loc>
          <lastmod>2026-08-09</lastmod>
     </url>
     <url>
@@ -389,6 +401,10 @@
          <lastmod>2026-08-09</lastmod>
     </url>
     <url>
+         <loc>https://orthodox-groningen.github.io/VSA-tooling/preview/terminologie/reciteertoon/</loc>
+         <lastmod>2026-08-09</lastmod>
+    </url>
+    <url>
          <loc>https://orthodox-groningen.github.io/VSA-tooling/preview/terminologie/renderer/</loc>
          <lastmod>2026-08-09</lastmod>
     </url>
@@ -405,6 +421,14 @@
          <lastmod>2026-08-09</lastmod>
     </url>
     <url>
+         <loc>https://orthodox-groningen.github.io/VSA-tooling/preview/terminologie/template-event/</loc>
+         <lastmod>2026-08-09</lastmod>
+    </url>
+    <url>
+         <loc>https://orthodox-groningen.github.io/VSA-tooling/preview/terminologie/template-frase/</loc>
+         <lastmod>2026-08-09</lastmod>
+    </url>
+    <url>
          <loc>https://orthodox-groningen.github.io/VSA-tooling/preview/terminologie/validator/</loc>
          <lastmod>2026-08-09</lastmod>
     </url>
@@ -418,6 +442,10 @@
     </url>
     <url>
          <loc>https://orthodox-groningen.github.io/VSA-tooling/preview/terminologie/vsa-tekst/</loc>
+         <lastmod>2026-08-09</lastmod>
+    </url>
+    <url>
+         <loc>https://orthodox-groningen.github.io/VSA-tooling/preview/terminologie/vsa-template/</loc>
          <lastmod>2026-08-09</lastmod>
     </url>
     <url>

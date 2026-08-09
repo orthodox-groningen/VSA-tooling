@@ -13,6 +13,10 @@
         <link rel="canonical" href="https://orthodox-groningen.github.io/VSA-tooling/preview/specification-vsa-templates/metamodel/">
       
       
+        <link rel="prev" href="../requirements-inventory/">
+      
+      
+        <link rel="next" href="../syntax/">
       
       
         
@@ -94,7 +98,7 @@
   
   <strong>Preview</strong>
    — branch <code>feat/vsa-templates-spec</code>
-  , gebouwd 2026-08-09 21:13 CEST.
+  , gebouwd 2026-08-09 21:16 CEST.
   <a href="https://orthodox-groningen.github.io/VSA-tooling/">Live documentatie (main)</a>.
   
 
@@ -308,6 +312,28 @@
   
   
   Specificaties
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../" class="md-tabs__link">
+          
+  
+  
+  VSA-templates
 
         </a>
       </li>
@@ -1415,6 +1441,558 @@
       
   
   
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    VSA-templates
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    VSA-templates
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overzicht
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Doel en scope
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../requirements-inventory/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Requirements-inventory
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Metamodel
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Metamodel
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Inhoudsopgave">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Inhoudsopgave
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overzicht" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Overzicht
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#concepten" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Concepten
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Concepten">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vsatemplate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        VsaTemplate
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#template-frase" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Template-frase
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cycle-final-sequence-same_as" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cycle, final, sequence, same_as
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#template-event" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Template-event
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#role-reciteertoon-frase-anker" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Role / reciteertoon / frase-anker
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#laddergraad" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Laddergraad
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#relatie-tot-org-terminologie" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Relatie tot org-terminologie
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../syntax/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Syntax
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../semantics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Semantiek
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../validation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Validatie
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mapping-vsa/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Mapping VSA
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../examples/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Voorbeelden
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../conformance/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Conformiteit
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../open-points/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Open punten
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../versioning/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Versionering
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
   
   
     
@@ -1433,10 +2011,10 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
         
           
-          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
             
   
   
@@ -1454,8 +2032,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_5">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -1515,10 +2093,10 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_2" >
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6_2" >
         
           
-          <label class="md-nav__link" for="__nav_5_2" id="__nav_5_2_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_6_2" id="__nav_6_2_label" tabindex="0">
             
   
   
@@ -1536,8 +2114,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_2_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_5_2">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_2">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -1717,10 +2295,10 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_4" >
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6_4" >
         
           
-          <label class="md-nav__link" for="__nav_5_4" id="__nav_5_4_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_6_4" id="__nav_6_4_label" tabindex="0">
             
   
   
@@ -1738,8 +2316,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_4_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_5_4">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_4">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -2262,10 +2840,10 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7" >
         
           
-          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
             
   
   
@@ -2283,8 +2861,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_6">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -2407,10 +2985,10 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7" >
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8" >
         
           
-          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
             
   
   
@@ -2428,8 +3006,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_7">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -2496,10 +3074,10 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8" >
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_9" >
         
           
-          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="0">
             
   
   
@@ -2517,8 +3095,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_8">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -2708,10 +3286,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#phrase" class="md-nav__link">
+  <a href="#template-frase" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Phrase
+        Template-frase
       
     </span>
   </a>
@@ -2730,10 +3308,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#event" class="md-nav__link">
+  <a href="#template-event" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Event
+        Template-event
       
     </span>
   </a>
@@ -2741,10 +3319,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#role" class="md-nav__link">
+  <a href="#role-reciteertoon-frase-anker" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Role
+        Role / reciteertoon / frase-anker
       
     </span>
   </a>
@@ -2752,21 +3330,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#anchor" class="md-nav__link">
+  <a href="#laddergraad" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Anchor
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pitch" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Pitch
+        Laddergraad
       
     </span>
   </a>
@@ -2836,57 +3403,24 @@ Event
 </code></pre></div>
 <h2 id="concepten">Concepten<a class="headerlink" href="#concepten" title="Permanent link">&para;</a></h2>
 <h3 id="vsatemplate">VsaTemplate<a class="headerlink" href="#vsatemplate" title="Permanent link">&para;</a></h3>
-<p>Eén document dat één formulevariant beschrijft (bijv. tropaarmelodie toon 4).
-Komt overeen met één herbruikbaar melodisch type, niet met één concreet
-zangstuk-met-tekst.</p>
-<h3 id="phrase">Phrase<a class="headerlink" href="#phrase" title="Permanent link">&para;</a></h3>
-<p>Genaamde melodische eenheid. Ids: <code>"1"</code>, <code>"2"</code>, <code>"1a"</code>, <code>"2a"</code>, <code>"laatste"</code>, …</p>
-<p>Frasen mogen in de bibliotheek staan zonder in <code>cycle</code>/<code>final</code>/<code>sequence</code> te
-horen (alternatieven voor mapping).</p>
+<p>Zie <a href="/VSA-tooling/preview/terminologie/vsa-template" title="VSA-template: een machineleesbaar YAML-document dat een formulematige liturgische melodie vastlegt (frasen, herhaling of vaste volgorde, Reciteertoon, ankers, SATB-Laddergraden) binnen een Do-context, bedoeld om later tekst uit VSA erop te mappen.">vsa-template</a>: één document = één formulevariant (bijv. tropaarmelodie
+toon 4), geen concreet <a href="/bron/terms/zangstuk" title="Zangstuk: Een liturgisch-muzikaal geheel met een stabiele <code>zangstuk-id</code>, waaronder nul of meer Varianten bestaan.">zangstuk</a>.</p>
+<h3 id="template-frase">Template-frase<a class="headerlink" href="#template-frase" title="Permanent link">&para;</a></h3>
+<p>Zie <a href="/VSA-tooling/preview/terminologie/template-frase" title="Template-frase: een genaamde melodische eenheid binnen een Vsa-template (bijv. id <code>1</code>, <code>2</code>, <code>1a</code> of <code>laatste</code>), opgebouwd uit geordende Template-events.">template-frase</a>. Ids: <code>"1"</code>, <code>"2"</code>, <code>"1a"</code>, <code>"laatste"</code>, …
+Bibliotheekfrasen mogen buiten <code>cycle</code>/<code>final</code>/<code>sequence</code> staan.</p>
 <h3 id="cycle-final-sequence-same_as">Cycle, final, sequence, same_as<a class="headerlink" href="#cycle-final-sequence-same_as" title="Permanent link">&para;</a></h3>
 <ul>
-<li><strong>cycle-form:</strong> <code>cycle</code> + <code>final</code> (herhaling tot slotfrase).</li>
-<li><strong>sequence-form:</strong> <code>sequence</code> (vaste volgorde, bijv. toon 3).</li>
-<li><strong>alias-form:</strong> <code>same_as</code> (andere template is de melodische bron).</li>
+<li><strong>cycle-form:</strong> herhaling tot slotfrase.</li>
+<li><strong>sequence-form:</strong> vaste volgorde.</li>
+<li><strong>alias-form:</strong> <code>same_as</code> naar ander template-id.</li>
 </ul>
-<p>Semantiek: zie <a href="../semantics/"><code>semantics.md</code></a>.</p>
-<h3 id="event">Event<a class="headerlink" href="#event" title="Permanent link">&para;</a></h3>
-<p>Kleinste muzikale stap binnen een frase. Alle stemmen delen dezelfde
-ritmische/role-structuur (homofone formule); afwijkende stemritmes
-(slurs op alleen A/B) zijn een <strong>open punt</strong>.</p>
-<h3 id="role">Role<a class="headerlink" href="#role" title="Permanent link">&para;</a></h3>
-<table>
-<thead>
-<tr>
-<th>Role</th>
-<th>Betekenis</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>open</code></td>
-<td>Openingsaanhef (vaak zelfde pitch als recite)</td>
-</tr>
-<tr>
-<td><code>recite</code></td>
-<td>Reciteertoon: duur dekt een variabel aantal syllaben</td>
-</tr>
-<tr>
-<td><code>cadence</code></td>
-<td>Vaste cadens- of slotstap</td>
-</tr>
-<tr>
-<td><code>link</code></td>
-<td>Verbinding / overgangsnoot (vaak tevens <code>optional</code>)</td>
-</tr>
-</tbody>
-</table>
-<h3 id="anchor">Anchor<a class="headerlink" href="#anchor" title="Permanent link">&para;</a></h3>
-<p>Optioneel label dat op het blad als tekstanker fungeert (<code>e. st.</code>, <code>l. st.</code>,
-<code>vl. st.</code>). In YAML genormaliseerd zonder spaties: <code>e.st.</code>, <code>l.st.</code>, <code>vl.st.</code>.</p>
-<h3 id="pitch">Pitch<a class="headerlink" href="#pitch" title="Permanent link">&para;</a></h3>
-<p>Laddergraad t.o.v. <code>do</code> (<code>mi</code>, <code>sol-1</code>, <code>#re</code>, …), niet scientific pitch per stem.
-Absolute toonhoogte volgt uit <code>do</code> + <code>mode</code> + graad (zoals VSA).</p>
+<p>Semantiek: <a href="../semantics/">semantics.md</a>.</p>
+<h3 id="template-event">Template-event<a class="headerlink" href="#template-event" title="Permanent link">&para;</a></h3>
+<p>Zie <a href="/VSA-tooling/preview/terminologie/template-event" title="Template-event: de kleinste muzikale stap in een Template-frase: een rol (open, Reciteertoon, cadens, link), een duur als Enkelvoudige Lengte-modifier, en SATB-Laddergraden.">template-event</a>. Homofone tijdlijn; stem-autonome ritmes zijn open.</p>
+<h3 id="role-reciteertoon-frase-anker">Role / reciteertoon / frase-anker<a class="headerlink" href="#role-reciteertoon-frase-anker" title="Permanent link">&para;</a></h3>
+<p>Zie <a href="/VSA-tooling/preview/terminologie/reciteertoon" title="Reciteertoon: een Template-event (of bladnotatie) waarop een variabel aantal syllaben op hetzelfde SATB-akkoord wordt gezongen; in een Vsa-template gemarkeerd als <code>role: recite</code>.">reciteertoon</a> en <a href="/VSA-tooling/preview/terminologie/frase-anker" title="Frase-anker: een label op een Template-event (<code>e.st.</code>, <code>l.st.</code>, <code>vl.st.</code>) dat op het toonboekblad aangeeft welke tekstklemtoon (eerste / laatste / voorlaatste streek) op die noot hoort te vallen.">frase-anker</a>.</p>
+<h3 id="laddergraad">Laddergraad<a class="headerlink" href="#laddergraad" title="Permanent link">&para;</a></h3>
+<p>Zie <a href="/VSA-tooling/preview/terminologie/laddergraad" title="Laddergraad: een toonpositie op de ladder binnen een Do-context (<code>do</code>, <code>re</code>, <code>mi</code>, …), optioneel chromatisch (<code>#</code>/<code>b</code>) en met octaafverschuiving (<code>do-1</code>); in een Vsa-template de canonieke vorm van SATB-pitches.">laddergraad</a>. Absolute toonhoogte = <a href="/VSA-tooling/preview/terminologie/do-context" title="Do-context: de grondtooncontext waarbinnen relatieve toonhoogtebewegingen in VSA en in een Vsa-template worden geïnterpreteerd; voor export of afspelen vastgelegd via <code>do</code> en <code>mode</code>, niet via de zangtekst zelf.">do-context</a> + graad.</p>
 <h2 id="relatie-tot-org-terminologie">Relatie tot org-terminologie<a class="headerlink" href="#relatie-tot-org-terminologie" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
@@ -2898,18 +3432,18 @@ Absolute toonhoogte volgt uit <code>do</code> + <code>mode</code> + graad (zoals
 </thead>
 <tbody>
 <tr>
-<td>VsaTemplate</td>
-<td>(nieuw)</td>
-<td>glossary-PR nodig</td>
+<td><a href="/VSA-tooling/preview/terminologie/vsa-template" title="VSA-template: een machineleesbaar YAML-document dat een formulematige liturgische melodie vastlegt (frasen, herhaling of vaste volgorde, Reciteertoon, ankers, SATB-Laddergraden) binnen een Do-context, bedoeld om later tekst uit VSA erop te mappen.">vsa-template</a></td>
+<td>(tool-term)</td>
+<td>lokaal in <code>docs/terminologie/</code></td>
 </tr>
 <tr>
 <td>—</td>
-<td>zangstuk / variant / uitvoeringsvorm / representatie</td>
-<td>template is géén van deze niveaus; het is een herbruikbare formulebeschrijving</td>
+<td><a href="/bron/terms/zangstuk" title="Zangstuk: Een liturgisch-muzikaal geheel met een stabiele <code>zangstuk-id</code>, waaronder nul of meer Varianten bestaan.">zangstuk</a> / variant / uitvoeringsvorm / representatie</td>
+<td>template is géén van deze niveaus</td>
 </tr>
 </tbody>
 </table>
-<p>Zie <a href="../open-points/"><code>open-points.md</code></a> voor glossary-acties.</p>
+<p>Zie <a href="../open-points/">open-points.md</a> voor eventuele latere glossary-PR op bron.</p>
 
 
 

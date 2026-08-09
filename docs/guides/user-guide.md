@@ -12,7 +12,7 @@ flags alleen in de man-page.
 ## Wat doet de tool?
 
 De VSA-tool helpt bij [VSA-notatie](@bron): controleren, als SVG tonen, en
-Markdown/Hugo-sites bouwen.
+Markdown/Hugo-sites bouwen ([hugo-output](@)).
 
 ```text
 VSA-notatie  →  validate  →  SVG / MusicXML / Hugo-Markdown

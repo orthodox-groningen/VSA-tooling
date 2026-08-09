@@ -8,6 +8,7 @@ glossaryText: "wordt gebruikt om te verwijzen naar een [formele notatie](vsa-not
 formPhrases:
   - vsa
   - vsa's
+  - VSA
 ---
 
 # VSA

@@ -252,6 +252,28 @@ entries:
       - "diagnostic"
     termid: "concept:diagnostic"
     vsntag: "vsa-tooling"
+  - git_date: 2026-08-09T00:00:00.000Z
+    slug: "do-context"
+    term: "do-context"
+    termType: "concept"
+    glossaryTerm: "Do-context"
+    glossaryText: "de grondtooncontext waarbinnen relatieve toonhoogtebewegingen in [VSA](@) en in een [vsa-template](@) worden geïnterpreteerd; voor export of afspelen vastgelegd via `do` en `mode`, niet via de zangtekst zelf."
+    formPhrases:
+      - "do-context"
+      - "do-contexts"
+      - "tooncontext"
+      - "tooncontexten"
+    glossaryNotes:
+      - "Voorbeeld: blokmetadata `do=\"F4\"` en `mode=\"major\"`; begin-[pitch-marker](@) `[:]` betekent start op de do-context."
+    scopetag: "vsa-tooling"
+    locator: "do-context.md"
+    navurl: "https://orthodox-groningen.github.io/VSA-tooling/preview/terminologie/do-context"
+    headingids:
+      - "do-context"
+      - "motivatie"
+      - "gerelateerd-/-verder-lezen"
+    termid: "concept:do-context"
+    vsntag: "vsa-tooling"
   - git_date: 2026-08-06T00:00:00.000Z
     slug: "enkelvoudige-hoogte-modifier"
     term: "enkelvoudige-hoogte-modifier"
@@ -331,6 +353,27 @@ entries:
     termType: "concept"
     termid: "concept:exporttype"
     vsntag: "bron"
+  - git_date: 2026-08-09T00:00:00.000Z
+    slug: "frase-anker"
+    term: "frase-anker"
+    termType: "concept"
+    glossaryTerm: "Frase-anker"
+    glossaryText: "een label op een [template-event](@) (`e.st.`, `l.st.`, `vl.st.`) dat op het toonboekblad aangeeft welke tekstklemtoon (eerste / laatste / voorlaatste streek) op die noot hoort te vallen."
+    formPhrases:
+      - "frase-anker"
+      - "frase-ankers"
+    glossaryNotes:
+      - "Op het blad vaak met pijl en afkorting `e. st.`, `l. st.`, `vl. st.`."
+      - "Schrijf in docs ‘frase-anker’ (TermRef), niet los ‘anker’."
+    scopetag: "vsa-tooling"
+    locator: "frase-anker.md"
+    navurl: "https://orthodox-groningen.github.io/VSA-tooling/preview/terminologie/frase-anker"
+    headingids:
+      - "frase-anker"
+      - "motivatie"
+      - "gerelateerd-/-verder-lezen"
+    termid: "concept:frase-anker"
+    vsntag: "vsa-tooling"
   - git_date: 2026-08-08T00:00:00.000Z
     slug: "geldige-vsa-notatie"
     term: "geldige-vsa-notatie"
@@ -446,6 +489,28 @@ entries:
       - "motivatie"
       - "gerelateerd-/-verder-lezen"
     termid: "concept:include-vsa"
+    vsntag: "vsa-tooling"
+  - git_date: 2026-08-09T00:00:00.000Z
+    slug: "laddergraad"
+    term: "laddergraad"
+    termType: "concept"
+    glossaryTerm: "Laddergraad"
+    glossaryText: "een toonpositie op de ladder binnen een [do-context](@) (`do`, `re`, `mi`, …), optioneel chromatisch (`#`/`b`) en met octaafverschuiving (`do-1`); in een [vsa-template](@) de canonieke vorm van SATB-pitches."
+    formPhrases:
+      - "laddergraad"
+      - "laddergraden"
+      - "toonladdergraad"
+      - "toonladdergraden"
+    glossaryNotes:
+      - "Voorbeeld bij `do: F4`, `mode: major`: `mi` = A4, `sol-1` = C4."
+    scopetag: "vsa-tooling"
+    locator: "laddergraad.md"
+    navurl: "https://orthodox-groningen.github.io/VSA-tooling/preview/terminologie/laddergraad"
+    headingids:
+      - "laddergraad"
+      - "motivatie"
+      - "gerelateerd-/-verder-lezen"
+    termid: "concept:laddergraad"
     vsntag: "vsa-tooling"
   - git_date: 2026-07-08T00:00:00.000Z
     slug: "lengte-modifier"
@@ -617,6 +682,27 @@ entries:
       - "publicatie"
     termid: "concept:publicatie"
     vsntag: "vsa-tooling"
+  - git_date: 2026-08-09T00:00:00.000Z
+    slug: "reciteertoon"
+    term: "reciteertoon"
+    termType: "concept"
+    glossaryTerm: "Reciteertoon"
+    glossaryText: "een [template-event](@) (of bladnotatie) waarop een variabel aantal syllaben op hetzelfde SATB-akkoord wordt gezongen; in een [vsa-template](@) gemarkeerd als `role: recite`."
+    formPhrases:
+      - "reciteertoon"
+      - "reciteertonnen"
+    glossaryNotes:
+      - "Op het blad vaak als breve of ‘box’-nootkop; dat is geen aparte VSA-[ELM](enkelvoudige-lengte-modifier@), maar de recite-rol."
+      - "In YAML: `role: recite`."
+    scopetag: "vsa-tooling"
+    locator: "reciteertoon.md"
+    navurl: "https://orthodox-groningen.github.io/VSA-tooling/preview/terminologie/reciteertoon"
+    headingids:
+      - "reciteertoon"
+      - "motivatie"
+      - "gerelateerd-/-verder-lezen"
+    termid: "concept:reciteertoon"
+    vsntag: "vsa-tooling"
   - git_date: 2026-07-08T00:00:00.000Z
     slug: "renderer"
     term: "renderer"
@@ -747,6 +833,48 @@ entries:
     termType: "concept"
     termid: "concept:source-entry"
     vsntag: "bron"
+  - git_date: 2026-08-09T00:00:00.000Z
+    slug: "template-event"
+    term: "template-event"
+    termType: "concept"
+    glossaryTerm: "Template-event"
+    glossaryText: "de kleinste muzikale stap in een [template-frase](@): een rol (open, [reciteertoon](@), cadens, link), een duur als [enkelvoudige lengte-modifier](enkelvoudige-lengte-modifier@), en SATB-[laddergraden](laddergraad@)."
+    formPhrases:
+      - "template-event"
+      - "template-events"
+    glossaryNotes:
+      - "Optioneel: `optional: true` (haakjesnoot) of een [frase-anker](@)."
+      - "Schrijf in docs ‘template-event’, niet los ‘event’."
+    scopetag: "vsa-tooling"
+    locator: "template-event.md"
+    navurl: "https://orthodox-groningen.github.io/VSA-tooling/preview/terminologie/template-event"
+    headingids:
+      - "template-event"
+      - "motivatie"
+      - "gerelateerd-/-verder-lezen"
+    termid: "concept:template-event"
+    vsntag: "vsa-tooling"
+  - git_date: 2026-08-09T00:00:00.000Z
+    slug: "template-frase"
+    term: "template-frase"
+    termType: "concept"
+    glossaryTerm: "Template-frase"
+    glossaryText: "een genaamde melodische eenheid binnen een [vsa-template](@) (bijv. id `1`, `2`, `1a` of `laatste`), opgebouwd uit geordende [template-events](template-event@)."
+    formPhrases:
+      - "template-frase"
+      - "template-frasen"
+    glossaryNotes:
+      - "Op toonboekbladen vaak als omcirkeld cijfer of label `laatste`."
+      - "Schrijf in docs bij voorkeur ‘template-frase’ (TermRef), niet los ‘frase’."
+    scopetag: "vsa-tooling"
+    locator: "template-frase.md"
+    navurl: "https://orthodox-groningen.github.io/VSA-tooling/preview/terminologie/template-frase"
+    headingids:
+      - "template-frase"
+      - "motivatie"
+      - "gerelateerd-/-verder-lezen"
+    termid: "concept:template-frase"
+    vsntag: "vsa-tooling"
   - git_date: 2026-08-08T00:00:00.000Z
     term: "uitvoeringsvorm"
     formPhrases:
@@ -928,6 +1056,29 @@ entries:
     headingids:
       - "vsa-tekst"
     termid: "concept:vsa-tekst"
+    vsntag: "vsa-tooling"
+  - git_date: 2026-08-09T00:00:00.000Z
+    slug: "vsa-template"
+    term: "vsa-template"
+    termType: "concept"
+    glossaryTerm: "VSA-template"
+    glossaryText: "een machineleesbaar YAML-document dat een formulematige liturgische melodie vastlegt (frasen, herhaling of vaste volgorde, [reciteertoon](@), ankers, SATB-[laddergraden](laddergraad@)) binnen een [do-context](@), bedoeld om later tekst uit [VSA](@) erop te mappen."
+    formPhrases:
+      - "vsa-template"
+      - "vsa-templates"
+      - "melodietemplate"
+      - "melodietemplates"
+    glossaryNotes:
+      - "Voorbeeld: tropaarmelodie toon 4 als YAML met cycle 1,2 en slotfrase laatste."
+      - "Een vsa-template is geen [zangstuk](@bron); het is een herbruikbare formulebeschrijving."
+    scopetag: "vsa-tooling"
+    locator: "vsa-template.md"
+    navurl: "https://orthodox-groningen.github.io/VSA-tooling/preview/terminologie/vsa-template"
+    headingids:
+      - "vsa-template"
+      - "motivatie"
+      - "gerelateerd-/-verder-lezen"
+    termid: "concept:vsa-template"
     vsntag: "vsa-tooling"
   - git_date: 2026-07-08T00:00:00.000Z
     slug: "vsa-toml"

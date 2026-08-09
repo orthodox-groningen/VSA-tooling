@@ -97,8 +97,8 @@
             
   
   <strong>Preview</strong>
-   — branch <code>docs/hrg-termrefs-en-contentplan</code>
-  , gebouwd 2026-08-08 22:07 CEST.
+   — branch <code>docs/walkthrough-examples</code>
+  , gebouwd 2026-08-09 15:21 CEST.
   <a href="https://orthodox-groningen.github.io/VSA-tooling/">Live documentatie (main)</a>.
   
 
@@ -860,6 +860,23 @@
       
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="Snel starten">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#langere-frase-regelbreedte" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Langere frase + regelbreedte
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -2848,6 +2865,23 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Snel starten">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#langere-frase-regelbreedte" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Langere frase + regelbreedte
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -2932,7 +2966,7 @@
 
 <h1 id="svg-exporteren">SVG exporteren<a class="headerlink" href="#svg-exporteren" title="Permanent link">&para;</a></h1>
 <p><a href="../../reference/cli/svg/"><code>vsa svg</code></a>, <a href="../../reference/cli/process/"><code>vsa process</code></a>
-en <a href="../../reference/cli/build-markdown/"><code>vsa build-markdown</code></a> renderen <a href="/bron/preview/terms/vsa-notatie" title="VSA-notatie: Het tekstgebaseerde notatieformaat waarmee liturgische zangteksten worden vastgelegd: een formeel gespecificeerde taal met scopes, modifiers en bracket-directives, parseeerbaar en valideerbaar door Vsa-tooling.">VSA-notatie</a> naar
+en <a href="../../reference/cli/build-markdown/"><code>vsa build-markdown</code></a> renderen <a href="/bron/terms/vsa-notatie" title="VSA-notatie: Het tekstgebaseerde notatieformaat waarmee liturgische zangteksten worden vastgelegd: een formeel gespecificeerde taal met scopes, modifiers en bracket-directives, parseeerbaar en valideerbaar door Vsa-tooling.">VSA-notatie</a> naar
 <strong>SVG</strong> — een schaalbare vectorafbeelding die je inline toont naast gewone
 tekst, op scherm of afdruk. Dit is de meest gebruikte workflow: geen
 externe player nodig, werkt zonder JavaScript, en schaalt scherp op elk
@@ -3001,11 +3035,24 @@ verwijzing naar de gegenereerde SVG (zie
 <a href="#inline-rendering-via-build-markdown">"Inline rendering via <code>build-markdown</code>"</a>
 hieronder).</p>
 <h2 id="snel-starten">Snel starten<a class="headerlink" href="#snel-starten" title="Permanent link">&para;</a></h2>
-<p>Eén bestand bekijken:</p>
-<div class="highlight"><pre><span></span><code>vsa svg examples\minimal\050_svg_demo.vsa tmp\demo.svg
-start tmp\demo.svg
+<p>Eén geldige frase bekijken (<code>examples\docs-walkthroughs\svg-phrase-kort.vsa</code>):</p>
+<div class="highlight"><pre><span></span><code>[:] {/Hei_}{/lig_} is de Heer. [//:]
 </code></pre></div>
-<p>SVG's uit een map met Markdown, zonder Hugo-Markdown te genereren:</p>
+<div class="highlight"><pre><span></span><code>cd /d C:\Git\orthodox-groningen\VSA-tooling
+vsa svg examples\docs-walkthroughs\svg-phrase-kort.vsa generated\vsa\svg-phrase-kort.svg
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>SVG geschreven naar: generated\vsa\svg-phrase-kort.svg
+</code></pre></div>
+<p><img alt="Korte VSA-frase als SVG" src="../assets/walkthroughs/svg-phrase-kort.svg" /></p>
+<h3 id="langere-frase-regelbreedte">Langere frase + regelbreedte<a class="headerlink" href="#langere-frase-regelbreedte" title="Permanent link">&para;</a></h3>
+<p>Zelfde start, langere tekst
+(<code>examples\docs-walkthroughs\svg-phrase-lang.vsa</code>), met smallere
+<code>--max-line-width</code> zodat de renderer afbreekt:</p>
+<div class="highlight"><pre><span></span><code>vsa svg examples\docs-walkthroughs\svg-phrase-lang.vsa generated\vsa\svg-phrase-lang.svg --max-line-width 400
+</code></pre></div>
+<p><img alt="Langere VSA-frase, afgebroken SVG" src="../assets/walkthroughs/svg-phrase-lang.svg" /></p>
+<p>SVG's uit een map met Markdown, zonder Hugo-Markdown te genereren
+(levert o.a. <code>toon-1-block-1.svg</code> en <code>toon-2-block-1.svg</code>):</p>
 <div class="highlight"><pre><span></span><code>vsa process examples\site-demo generated\vsa
 </code></pre></div>
 <p>Volledige Hugo-publicatie (Markdown + SVG-assets):</p>
@@ -3015,6 +3062,9 @@ start tmp\demo.svg
 foutgevallen: <a href="../../reference/cli/svg/"><code>cli/svg.md</code></a>,
 <a href="../../reference/cli/process/"><code>cli/process.md</code></a>,
 <a href="../../reference/cli/build-markdown/"><code>cli/build-markdown.md</code></a>.</p>
+<p>Preview-SVG's in deze docs regenereren (na wijziging van de bron-<code>.vsa</code>):</p>
+<div class="highlight"><pre><span></span><code>python scripts\sync-docs-walkthrough-svgs.py
+</code></pre></div>
 <h2 id="inline-rendering-via-build-markdown">Inline rendering via <code>build-markdown</code><a class="headerlink" href="#inline-rendering-via-build-markdown" title="Permanent link">&para;</a></h2>
 <p><a href="../../reference/cli/build-markdown/"><code>vsa build-markdown</code></a> vervangt in de gegenereerde Markdown elk VSA-blok door
 een verwijzing naar de gegenereerde SVG. Bron-Markdown:</p>
@@ -3079,7 +3129,7 @@ wijst naar de verkeerde plek.</p>
 <p>SVG's die je met <a href="../../reference/cli/svg/"><code>vsa svg</code></a>,
 <a href="../../reference/cli/process/"><code>vsa process</code></a> of
 <a href="../../reference/cli/build-markdown/"><code>vsa build-markdown</code></a> genereert,
-zijn <strong><a href="/bron/preview/terms/afgeleide" title="Afgeleide: Een bestand dat volledig en herhaalbaar door een Conversiemechanisme uit een Bronbestand wordt gegenereerd, en dat (dus) niet als Bronbestand in de Bron-repository staat.">afgeleide</a></strong> bestanden uit de <code>.vsa</code>-bron en horen niet gecommit
+zijn <strong><a href="/bron/terms/afgeleide" title="Afgeleide: Een bestand dat volledig en herhaalbaar door een Conversiemechanisme uit een Bronbestand wordt gegenereerd, en dat (dus) niet als Bronbestand in de Bron-repository staat.">afgeleide</a></strong> bestanden uit de <code>.vsa</code>-bron en horen niet gecommit
 te worden naast de bron. Gebruik
 lokaal een map als <code>generated\</code> (of <code>tmp\</code>) die in <code>.gitignore</code> staat:</p>
 <div class="highlight"><pre><span></span><code>mijn-repo/
@@ -3092,7 +3142,7 @@ lokaal een map als <code>generated\</code> (of <code>tmp\</code>) die in <code>.
 <p>In een Hugo-consumer-site komt de <code>assets_dir</code> overeen met de <code>static\vsa</code>-map
 van die site (zie <a href="../../manuals/consumer-site/">consumer-site.md</a> en
 <a href="../reuse-vsa-tooling/">reuse-vsa-tooling.md</a> voor het volledige
-build-in-CI-voorbeeld). In de <a href="/bron/preview/terms/bron-repository" title="Bron-repository: De git-repository <code>orthodox-groningen/bron</code> (of een expliciet aangewezen opvolger); de centrale opslagplaats voor Representaties van Uitvoeringsvormen (van Varianten) van Zangstukken, alsmede voor de specificaties van de opslag, en van manieren om daarin te zoeken.">bron-repository</a> zelf worden geen <a href="/bron/preview/terms/afgeleide" title="Afgeleide: Een bestand dat volledig en herhaalbaar door een Conversiemechanisme uit een Bronbestand wordt gegenereerd, en dat (dus) niet als Bronbestand in de Bron-repository staat.">afgeleide</a>
+build-in-CI-voorbeeld). In de <a href="/bron/terms/bron-repository" title="Bron-repository: De git-repository <code>orthodox-groningen/bron</code> (of een expliciet aangewezen opvolger); de centrale opslagplaats voor Representaties van Uitvoeringsvormen (van Varianten) van Zangstukken, alsmede voor de specificaties van de opslag, en van manieren om daarin te zoeken.">bron-repository</a> zelf worden geen <a href="/bron/terms/afgeleide" title="Afgeleide: Een bestand dat volledig en herhaalbaar door een Conversiemechanisme uit een Bronbestand wordt gegenereerd, en dat (dus) niet als Bronbestand in de Bron-repository staat.">afgeleide</a>
 SVG's opgeslagen — daar staat alleen de <code>.vsa</code>-bron (zie
 <a href="https://github.com/orthodox-groningen/bron/blob/main/docs/specs/repo-structuur.md">repo-structuur</a>
 en het <code>derived/</code>-concept daar voor build-output dat nooit in git komt).</p>
@@ -3135,7 +3185,7 @@ en het <code>derived/</code>-concept daar voor build-output dat nooit in git kom
 <li><code>vsa.toml</code>-defaults en voorrang: <a href="../../reference/config/">config.md</a></li>
 <li>Consumer-site-structuur: <a href="../../manuals/consumer-site/">consumer-site.md</a></li>
 <li>Integratie in andere repo's/CI: <a href="../reuse-vsa-tooling/">reuse-vsa-tooling.md</a></li>
-<li>Bron-contracten (normatief): <a href="https://orthodox-groningen.github.io/bron/reference/conversie-vsa-svg/">conversie-vsa-svg</a>, <a href="https://orthodox-groningen.github.io/bron/reference/exporttype-svg/">exporttype-svg</a> (<a href="/bron/preview/terms/exporttype" title="Exporttype: De naam die in een <code>:::include &lt;exporttype&gt;</code>-directive aangeeft welk Exportmechanisme wordt gebruikt, zoals <code>svg</code>, <code>coria</code> of <code>mxl</code>.">exporttype</a> <code>svg</code>)</li>
+<li>Bron-contracten (normatief): <a href="https://orthodox-groningen.github.io/bron/reference/conversie-vsa-svg/">conversie-vsa-svg</a>, <a href="https://orthodox-groningen.github.io/bron/reference/exporttype-svg/">exporttype-svg</a> (<a href="/bron/terms/exporttype" title="Exporttype: De naam die in een <code>:::include &lt;exporttype&gt;</code>-directive aangeeft welk Exportmechanisme wordt gebruikt, zoals <code>svg</code>, <code>coria</code> of <code>mxl</code>.">exporttype</a> <code>svg</code>)</li>
 </ul>
 
 
@@ -3173,7 +3223,7 @@ en het <code>derived/</code>-concept daar voor build-output dat nooit in git kom
       
       
       <p class="og-footer-stamps">
-        Bijgewerkt: 2026-08-08
+        Bijgewerkt: 2026-08-09
         
       </p>
       

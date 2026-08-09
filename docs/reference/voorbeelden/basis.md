@@ -32,6 +32,6 @@ vsa svg examples\docs-walkthroughs\svg-phrase-kort.vsa generated\docs-demo-basis
 SVG geschreven naar: generated\docs-demo-basis.svg
 ```
 
-![Korte VSA-frase als SVG](../guides/assets/walkthroughs/svg-phrase-kort.svg)
+![Korte VSA-frase als SVG](../../guides/assets/walkthroughs/svg-phrase-kort.svg)
 
 Gerelateerde fixture: `examples/regression/svg-basic/input.vsa`.

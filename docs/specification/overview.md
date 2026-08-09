@@ -19,7 +19,7 @@ tool-termen in de [glossary](../glossary.md).
 Dit document consolideert algemene specificatie-informatie uit de bestaande
 VSA-documentatie (betekenis behouden, structuur opgeschoond).
 
-## 1. Inleiding
+## Inleiding
 
 <!-- ter herinnering: http://www.ivanmoody.co.uk/orthodoxliturgylinks.htm bevat allerlei links over orthodoxe liturgie -->
 
@@ -62,7 +62,7 @@ VSA beschrijft melodische beweging binnen een modaal toonstelsel waarin
 stapgrootten niet uniform zijn en afhankelijk zijn van de gekozen grondtoon:
 de `do` van de toonladder.
 
-## 2. Terminologie
+## Terminologie
 
 **Geen parallelle glossary hier.** Definities:
 

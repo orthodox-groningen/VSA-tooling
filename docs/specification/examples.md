@@ -2,9 +2,9 @@
 
 Dit document bewaart de voorbeelden en niet-normatieve toelichting uit de hoofdspecificatie.
 
-## 9. Voorbeelden
+## Voorbeelden
 
-### 9.1 Korte voorbeelden
+### Korte voorbeelden
 
 | Voorbeeld           | Betekenis                                                             |
 | ------------------- | --------------------------------------------------------------------- |
@@ -17,7 +17,7 @@ Dit document bewaart de voorbeelden en niet-normatieve toelichting uit de hoofds
 | `[:]`               | horizontale lijn op baseline                                          |
 | `[//:]`             | toonhoogte-markering met initiële beweging `//`                       |
 
-### 9.2 Voorbeeld in Hugo Markdown
+### Voorbeeld in Hugo Markdown
 
 ```markdown
 ## TROPARION Toon 3 - Donderdag (H. Apostelen)
@@ -30,7 +30,7 @@ bidt tot de barm{\har_}{\ti}{\ge} {\God_}, *
 :::
 ```
 
-### 9.3 Brug naar tooling (niet-normatief)
+### Brug naar tooling (niet-normatief)
 
 Zelfde soort notatie kun je lokaal als SVG bekijken. Korte demofrase:
 
@@ -47,7 +47,7 @@ Werkstroom en CLI: [SVG exporteren](../guides/svg-export.md),
 ---
 
 
-## 10. Niet-normatieve opmerkingen
+## Niet-normatieve opmerkingen
 
 Deze specificatie bevat bewust ruimte voor implementatiekeuzes.
 
@@ -68,7 +68,7 @@ De historische en liturgische praktijk blijft leidend. De formele specificatie i
 
 ---
 
-## Appendix 1 - Uitleg van notatie volgens Nederlands Liturgikon
+## Appendix: Uitleg van notatie volgens Nederlands Liturgikon
 
 De volgende tekst komt uit het Liturgikon, pp 27-30 (een uitgave van
 de Nederlands Orthodoxe Kerk, dr. Kuyperstraat 2, den Haag, maart 1968):
@@ -214,7 +214,7 @@ Bij omzetting van historische notaties naar VSA kunnen de volgende situaties opt
 
 VSA moet worden gezien als een geformaliseerde afleiding van deze historische praktijknotatie, niet als een exacte reproductie ervan.
 
-## Appendix 2. Voorbeeldmapping van toonladdergraden
+## Appendix: Voorbeeldmapping van toonladdergraden
 
 ### Majeur
 
@@ -244,7 +244,7 @@ VSA moet worden gezien als een geformaliseerde afleiding van deze historische pr
 
 ---
 
-## Appendix 3. Voorbeelden van aanvullende blokparameters
+## Appendix: Voorbeelden van aanvullende blokparameters
 
 | Parameter  | Voorbeeld                   | Betekenis         |
 | ---------- | --------------------------- | ----------------- |

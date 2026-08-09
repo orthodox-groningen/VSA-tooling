@@ -132,7 +132,7 @@ from vsa.content_assets import resolve_asset
 ## Wat kun je instellen?
 
 De meeste instellingen staan in YAML-frontmatter bovenaan je `.vsa`-bestand
-(zie ook [specificatie §4.1.2](../specification/rendering.md)).
+(zie ook [YAML frontmatter in `.vsa`-bestanden](../specification/syntax.md#yaml-frontmatter-in-vsa-bestanden)).
 
 ### Muziek
 
@@ -227,5 +227,5 @@ vsa musicxml lied.vsa lied.mxl --musicxml-profile engraving
   wordt geen tempo-markering geëxporteerd.
 - **Lettergrepen in reciteertoon:** gebruik een koppelteken in het woord
   (`mel-se` → twee kwartnoten met syllabic begin/eind).
-- **Meer detail?** Zie [specificatie §8.2](../specification/rendering.md)
-  en [§8.2.11 profielen](../specification/rendering.md).
+- **Meer detail?** Zie [MusicXML-export](../specification/rendering.md#musicxml-export)
+  en [MusicXML-exportprofielen](../specification/rendering.md#musicxml-exportprofielen).

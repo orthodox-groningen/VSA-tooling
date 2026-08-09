@@ -4,11 +4,12 @@ Korte, leesbare voorbeelden van VSA-invoer en wat de tool ermee doet. Geen
 Hugo-shortcodes: kopieer de CLI-commando’s lokaal. Fixtures staan onder
 `examples/docs-walkthroughs/`.
 
-| Pagina                    | Inhoud                                              |
-| ------------------------- | --------------------------------------------------- |
-| [Basis](basis.md)         | Geldige korte frase → SVG (met preview)             |
-| [Multiline](multiline.md) | Langere frase + `--max-line-width` (met preview)    |
-| [Fouten](fouten.md)       | Ongeldige invoer → `vsa validate`-output            |
+| Pagina                                  | Inhoud                                              |
+| --------------------------------------- | --------------------------------------------------- |
+| [Basis](basis.md)                       | Geldige korte frase → SVG (met preview)             |
+| [Multiline](multiline.md)               | Langere frase + `--max-line-width` (met preview)    |
+| [Glyphs-overzicht](glyphs-overzicht.md) | Breed syntax-/glyphoverzicht + SVG-rendering        |
+| [Fouten](fouten.md)                     | Ongeldige invoer → `vsa validate`-output            |
 
 Coria / MusicXML-walkthrough: [MusicXML-export](../../guides/musicxml-export.md).
 

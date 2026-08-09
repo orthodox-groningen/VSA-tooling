@@ -16,6 +16,9 @@ bronnaam. Herkomst staat in deze README.
 | ----------------------------- | --------------------------------------------- | --------------------------------------------------------------------- |
 | `svg-phrase-kort.vsa`         | Korte geldige frase → SVG / validate-OK       | Zelfde inhoud als `minimal/valid-demo.vsa` (“Heilig is de Heer”)      |
 | `svg-phrase-lang.vsa`         | Langere regel + `--max-line-width`            | Uitbreiding van de Heilig-frase (`minimal/100_multiline_demo.vsa`)    |
+| `svg-glyphs-overzicht.vsa`    | Breed glyph-/syntaxoverzicht → SVG            | Oude Hugo-demo `voorbeelden/rendering/glyphs-basis`                   |
+| `svg-glyphs-hoogte.vsa`       | Compacte hoogtemarkers                        | Zelfde herkomst (sectie hoogtemarkers)                                |
+| `svg-glyphs-lengte.vsa`       | Compacte lengtemarkers                        | Zelfde herkomst (sectie lengtemarkers)                                |
 | `validate-unclosed-scope.vsa` | Bewuste syntaxfout voor `vsa validate`        | Zelfde patroon als `expected-fail/unclosed-scope.vsa`                 |
 | `coria-oefenlink/`            | Markdown + VSA + Coria-sibling voor oefenlink | Lokale kopie van tropaar zondag toon 3 (koormap Groningen / VSA-demo) |
 

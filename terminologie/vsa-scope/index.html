@@ -1633,6 +1633,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../reference/voorbeelden/glyphs-overzicht/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Glyphs-overzicht
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../reference/voorbeelden/fouten/" class="md-nav__link">
         
   
@@ -2716,18 +2744,25 @@
 
 
 <h1 id="vsa-scope">VSA-scope<a class="headerlink" href="#vsa-scope" title="Permanent link">&para;</a></h1>
-<p>Een VSA-scope koppelt gezongen tekst aan modifiers, bijvoorbeeld <code>{/Hei_}</code>.</p>
-<p>De parser gebruikt scopes om tekst en muzikale markeringen structureel te
+<p>Een VSA-scope / <a href="/VSA-tooling/terminologie/vsa-scope" title="VSA-scope: een tekstfragment dat met <code>{</code> begint, met <code>}</code> eindigt, geen whitespace binnen de accolades bevat en door de Parser kan worden opgesplitst in optionele Hoogte-modifier, verplicht zangelement en optionele Lengte-modifier.">scope</a> koppelt gezongen tekst aan <a href="/VSA-tooling/terminologie/modifier" title="Modifier: een tekenreeks die binnen een VSA-scope als Hoogte-modifier voor het zangelement of als Lengte-modifier na het zangelement wordt geparseerd.">modifiers</a>,
+bijvoorbeeld <code>{/Hei_}</code>.</p>
+<p>De <a href="/VSA-tooling/terminologie/parser" title="Parser: een component die VSA-brontekst of tokens volgens de grammatica omzet naar expliciete AST / Syntactische Boom-nodes, bronlocaties behoudt en geen semantische reparaties of renderlogica uitvoert.">parser</a> gebruikt scopes om tekst en muzikale markeringen structureel te
 herkennen; een lege scope of een scope met whitespace binnen de accolades
 voldoet niet.</p>
+<p>Goede/valide voorbeelden van VSA-scope zijn:
+- <code>{/Hei_}</code> zonder whitespace binnen de accolades
+- Optionele <a href="/VSA-tooling/terminologie/enkelvoudige-hoogte-modifier" title="Enkelvoudige hoogte-modifier: een Hoogte-modifier die uit precies één geldige EHM bestaat: een basis-hoogtebeweging, eventueel voorafgegaan door een halftoon-prefix.">EHM</a>/<a href="/VSA-tooling/terminologie/enkelvoudige-lengte-modifier" title="Enkelvoudige lengte-modifier: een Lengte-modifier die uit precies één geldige ELM bestaat en daarmee precies een duurpositie representeert.">ELM</a>-modifiers + zangelement</p>
+<p>Geen goede/niet valide voorbeelden van VSA-scope zijn:
+- <code>{}</code> of <code>{te kst}</code>
+- Losse tekst buiten accolades</p>
 <h2 id="motivatie">Motivatie<a class="headerlink" href="#motivatie" title="Permanent link">&para;</a></h2>
 <p>Zonder scopes is er geen eenduidige eenheid “zangtekst + hoogte/lengte” voor
-parser, validator en renderer. Het begrip is de kernbouwsteen van
-<a href="/VSA-tooling/terminologie/geldige-vsa-notatie" title="geldige VSA-notatie: VSA-notatie die de Validator (<code>vsa validate</code>) accepteert: syntactisch en semantisch in orde volgens de actieve Severity-regels (syntaxfouten zijn altijd hard).">geldige VSA-notatie</a>.</p>
+<a href="/VSA-tooling/terminologie/parser" title="Parser: een component die VSA-brontekst of tokens volgens de grammatica omzet naar expliciete AST / Syntactische Boom-nodes, bronlocaties behoudt en geen semantische reparaties of renderlogica uitvoert.">parser</a>, <a href="/VSA-tooling/terminologie/validator" title="Validator: een component die een geparseerde AST / Syntactische Boom of VSA-invoer toetst aan semantische en normatieve regels en overtredingen als Diagnostics / Diagnostische Meldingen rapporteert zonder ze stilzwijgend te repareren.">validator</a> en <a href="/VSA-tooling/terminologie/renderer" title="Renderer: een component die een gevalideerde AST / Syntactische Boom of daarvan afgeleid layoutmodel omzet naar concrete uitvoer, zoals SVG, JSON, Markdown, Hugo-output of MusicXML, zonder de AST semantisch te wijzigen.">renderer</a>. Het begrip is de kernbouwsteen van
+<a href="/VSA-tooling/terminologie/geldige-vsa-notatie" title="geldige VSA-notatie: VSA-notatie die de Validator (<code>vsa validate</code>) accepteert: syntactisch en semantisch in orde volgens de actieve Severity / Ernstniveau-regels (syntaxfouten zijn altijd hard).">geldige VSA-notatie</a>.</p>
 <h2 id="gerelateerd-verder-lezen">Gerelateerd / verder lezen<a class="headerlink" href="#gerelateerd-verder-lezen" title="Permanent link">&para;</a></h2>
 <ul>
-<li><a href="/VSA-tooling/terminologie/hoogte-modifier" title="Hoogte-modifier: een modifier die voor het zangelement in een VSA-scope staat en bestaat uit een geldige EHM of uit meerdere geldige EHM's gescheiden door <code>&amp;</code>.">hoogte-modifier</a>, <a href="/VSA-tooling/terminologie/lengte-modifier" title="Lengte-modifier: een modifier die na het zangelement in een VSA-scope staat en bestaat uit een geldige ELM of uit meerdere geldige ELM's gescheiden door <code>&amp;</code>.">lengte-modifier</a>, <a href="/VSA-tooling/terminologie/pitch-marker" title="Pitch-marker: een bracket-directive met de vorm <code>[&lt;EHM&gt;:]</code>, waarbij <code>&lt;EHM&gt;</code> leeg is of een geldige enkelvoudige hoogte-modifier bevat.">pitch-marker</a></li>
-<li>Org-begrip notatie vs tooling: <a href="/bron/preview/terms/vsa-notatie" title="VSA-notatie: Het tekstgebaseerde notatieformaat waarmee liturgische zangteksten worden vastgelegd: een formeel gespecificeerde taal met scopes, modifiers en bracket-directives, parseeerbaar en valideerbaar door Vsa-tooling.">vsa-notatie</a>, <a href="/bron/preview/terms/vsa-tooling" title="VSA-tooling: De Python-toolchain (<code>vsa</code> CLI) waarmee Vsa-notatie-bestanden worden geparseerd, gevalideerd en omgezet naar Afgeleiden zoals SVG en MusicXML.">vsa-tooling</a></li>
+<li><a href="/VSA-tooling/terminologie/hoogte-modifier" title="Hoogte-modifier: een Modifier die voor het zangelement in een VSA-scope staat en bestaat uit een geldige EHM of uit meerdere geldige EHMs gescheiden door <code>&amp;</code>.">hoogte-modifier</a>, <a href="/VSA-tooling/terminologie/lengte-modifier" title="Lengte-modifier: een Modifier die na het zangelement in een VSA-scope staat en bestaat uit een geldige ELM of uit meerdere geldige ELMs gescheiden door <code>&amp;</code>.">lengte-modifier</a>, <a href="/VSA-tooling/terminologie/pitch-marker" title="Pitch-marker: een Bracket-directive / Bracket-token met de vorm <code>[&lt;EHM&gt;:]</code>, waarbij <code>&lt;EHM&gt;</code> leeg is of een geldige EHM bevat.">pitch-marker</a>, <a href="/VSA-tooling/terminologie/enkelvoudige-hoogte-modifier" title="Enkelvoudige hoogte-modifier: een Hoogte-modifier die uit precies één geldige EHM bestaat: een basis-hoogtebeweging, eventueel voorafgegaan door een halftoon-prefix.">EHM</a>, <a href="/VSA-tooling/terminologie/enkelvoudige-lengte-modifier" title="Enkelvoudige lengte-modifier: een Lengte-modifier die uit precies één geldige ELM bestaat en daarmee precies een duurpositie representeert.">ELM</a></li>
+<li>Org-begrip notatie vs tooling: <a href="/bron/terms/vsa-notatie" title="VSA-notatie: Het tekstgebaseerde notatieformaat waarmee liturgische zangteksten worden vastgelegd: een formeel gespecificeerde taal met scopes, modifiers en bracket-directives, parseeerbaar en valideerbaar door Vsa-tooling.">vsa-notatie</a>, <a href="/bron/terms/vsa-tooling" title="VSA-tooling: De Python-toolchain (<code>vsa</code> CLI) waarmee Vsa-notatie-bestanden worden geparseerd, gevalideerd en omgezet naar Afgeleiden zoals SVG en MusicXML.">vsa-tooling</a></li>
 <li>Specificatie: <a href="../../specification/syntax/">syntax</a></li>
 </ul>
 
@@ -2766,7 +2801,7 @@ parser, validator en renderer. Het begrip is de kernbouwsteen van
       
       
       <p class="og-footer-stamps">
-        Bijgewerkt: 2026-08-08
+        Bijgewerkt: 2026-08-09
         
       </p>
       

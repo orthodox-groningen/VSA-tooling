@@ -16,7 +16,7 @@
         <link rel="prev" href="../basis/">
       
       
-        <link rel="next" href="../fouten/">
+        <link rel="next" href="../glyphs-overzicht/">
       
       
         
@@ -1725,6 +1725,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../glyphs-overzicht/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Glyphs-overzicht
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../fouten/" class="md-nav__link">
         
   
@@ -2824,15 +2852,17 @@
 <h1 id="multiline">Multiline<a class="headerlink" href="#multiline" title="Permanent link">&para;</a></h1>
 <p>Langere VSA-regel die de renderer over meerdere regels kan zetten.</p>
 <h2 id="invoer">Invoer<a class="headerlink" href="#invoer" title="Permanent link">&para;</a></h2>
+<p>Fixture: <code>examples/docs-walkthroughs/svg-phrase-lang.vsa</code></p>
 <div class="highlight"><pre><span></span><code>[:] {/Hei_}{/lig_} is de Heer en Hij is heilig en wonderbaar in al Zijn werken. [//:]
 </code></pre></div>
 <h2 id="commando">Commando<a class="headerlink" href="#commando" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code>cd /d C:\Git\orthodox-groningen\VSA-tooling
-vsa svg examples\minimal\100_multiline_demo.vsa generated\docs-demo-multiline.svg --max-line-width 400
+vsa svg examples\docs-walkthroughs\svg-phrase-lang.vsa generated\docs-demo-multiline.svg --max-line-width 400
 </code></pre></div>
 <h2 id="uitleg">Uitleg<a class="headerlink" href="#uitleg" title="Permanent link">&para;</a></h2>
 <p>Met <code>--max-line-width</code> breekt de renderer af als een regel te breed wordt voor
 de gekozen breedte (pixels).</p>
+<p><img alt="Langere VSA-frase, afgebroken SVG" src="../../../guides/assets/walkthroughs/svg-phrase-lang.svg" /></p>
 
 
 
@@ -2869,7 +2899,7 @@ de gekozen breedte (pixels).</p>
       
       
       <p class="og-footer-stamps">
-        Bijgewerkt: 2026-08-01
+        Bijgewerkt: 2026-08-09
         
       </p>
       

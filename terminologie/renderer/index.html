@@ -1633,6 +1633,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../reference/voorbeelden/glyphs-overzicht/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Glyphs-overzicht
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../reference/voorbeelden/fouten/" class="md-nav__link">
         
   
@@ -2686,7 +2714,15 @@
 
 
 <h1 id="renderer">Renderer<a class="headerlink" href="#renderer" title="Permanent link">&para;</a></h1>
-<p>Een renderer maakt uitvoer uit de gevalideerde VSA-structuur. De renderer verandert de AST niet en beslist niet alsnog of syntactische of semantische invoer geldig is.</p>
+<p>Een renderer maakt uitvoer uit de gevalideerde <a href="/VSA-tooling/terminologie/vsa" title="Vereenvoudigde Slavische Accentnotatie: wordt gebruikt om te verwijzen naar een Formele Notatie voor het vastleggen van Zangstukken en ook naar de Toolset waarmee zulke vastleggingen kunnen worden gevalideerd en naar publiceerbare vormen worden omgezet.">VSA</a>-structuur. De renderer
+verandert de <a href="/VSA-tooling/terminologie/ast" title="Abstract Syntax Tree: een expliciete nodeboom die door de Parser uit VSA-invoer wordt geproduceerd en die Validator en Renderer zonder semantische herinterpretatie kunnen lezen.">AST</a> niet en beslist niet alsnog of syntactische of
+semantische invoer geldig is.</p>
+<p>Goede/valide voorbeelden van Renderer zijn:
+- SVG, JSON, Markdown, <a href="/VSA-tooling/terminologie/hugo-output" title="Hugo-output: een artifactset die door een VSA-buildstap gegenereerde Hugo-compatibele Markdown en de daarbij verwezen assets bevat.">hugo-output</a>, MusicXML
+- Lees gevalideerde <a href="/VSA-tooling/terminologie/ast" title="Abstract Syntax Tree: een expliciete nodeboom die door de Parser uit VSA-invoer wordt geproduceerd en die Validator en Renderer zonder semantische herinterpretatie kunnen lezen.">AST</a> / <a href="/VSA-tooling/terminologie/ast" title="Abstract Syntax Tree: een expliciete nodeboom die door de Parser uit VSA-invoer wordt geproduceerd en die Validator en Renderer zonder semantische herinterpretatie kunnen lezen.">syntactische boom</a></p>
+<p>Geen goede/niet valide voorbeelden van Renderer zijn:
+- Semantische reparatie van de <a href="/VSA-tooling/terminologie/ast" title="Abstract Syntax Tree: een expliciete nodeboom die door de Parser uit VSA-invoer wordt geproduceerd en die Validator en Renderer zonder semantische herinterpretatie kunnen lezen.">AST</a>
+- Vervangt <a href="/VSA-tooling/terminologie/parser" title="Parser: een component die VSA-brontekst of tokens volgens de grammatica omzet naar expliciete AST / Syntactische Boom-nodes, bronlocaties behoudt en geen semantische reparaties of renderlogica uitvoert.">parser</a> of <a href="/VSA-tooling/terminologie/validator" title="Validator: een component die een geparseerde AST / Syntactische Boom of VSA-invoer toetst aan semantische en normatieve regels en overtredingen als Diagnostics / Diagnostische Meldingen rapporteert zonder ze stilzwijgend te repareren.">validator</a></p>
 
 
 
@@ -2723,7 +2759,7 @@
       
       
       <p class="og-footer-stamps">
-        Bijgewerkt: 2026-07-08
+        Bijgewerkt: 2026-08-09
         
       </p>
       

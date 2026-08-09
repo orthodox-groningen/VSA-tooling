@@ -1633,6 +1633,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../reference/voorbeelden/glyphs-overzicht/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Glyphs-overzicht
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../reference/voorbeelden/fouten/" class="md-nav__link">
         
   
@@ -2686,7 +2714,15 @@
 
 
 <h1 id="diagnostic">Diagnostic<a class="headerlink" href="#diagnostic" title="Permanent link">&para;</a></h1>
-<p>Een diagnostic beschrijft wat de tooling in de invoer heeft gevonden en hoe ernstig dat is. Een losse logregel zonder code, locatie of severity is in deze terminologie geen diagnostic.</p>
+<p>Een diagnostic / <a href="/VSA-tooling/terminologie/diagnostic" title="Diagnostic: een melding die door Parser of Validator wordt geproduceerd en ten minste een foutcode, Severity / Ernstniveau, bronlocatie en uitleg of context bij een vastgestelde afwijking bevat.">diagnostische melding</a> beschrijft wat de tooling in de
+invoer heeft gevonden en hoe ernstig dat is. Een losse logregel zonder code,
+locatie of <a href="/VSA-tooling/terminologie/severity" title="Severity: een waarde die aan een Diagnostic / Diagnostische Melding is gekoppeld en aangeeft of de vastgestelde afwijking als blokkerende fout of als waarschuwing moet worden behandeld.">severity</a> is in deze terminologie geen diagnostic.</p>
+<p>Goede/valide voorbeelden van Diagnostic zijn:
+- Foutcode + <a href="/VSA-tooling/terminologie/severity" title="Severity: een waarde die aan een Diagnostic / Diagnostische Melding is gekoppeld en aangeeft of de vastgestelde afwijking als blokkerende fout of als waarschuwing moet worden behandeld.">severity</a> / <a href="/VSA-tooling/terminologie/severity" title="Severity: een waarde die aan een Diagnostic / Diagnostische Melding is gekoppeld en aangeeft of de vastgestelde afwijking als blokkerende fout of als waarschuwing moet worden behandeld.">ernstniveau</a> + bronlocatie
+- Output van <a href="/VSA-tooling/terminologie/parser" title="Parser: een component die VSA-brontekst of tokens volgens de grammatica omzet naar expliciete AST / Syntactische Boom-nodes, bronlocaties behoudt en geen semantische reparaties of renderlogica uitvoert.">parser</a> of <a href="/VSA-tooling/terminologie/validator" title="Validator: een component die een geparseerde AST / Syntactische Boom of VSA-invoer toetst aan semantische en normatieve regels en overtredingen als Diagnostics / Diagnostische Meldingen rapporteert zonder ze stilzwijgend te repareren.">validator</a></p>
+<p>Geen goede/niet valide voorbeelden van Diagnostic zijn:
+- Losse logregel zonder code
+- Stilzwijgende reparatie</p>
 
 
 
@@ -2723,7 +2759,7 @@
       
       
       <p class="og-footer-stamps">
-        Bijgewerkt: 2026-07-08
+        Bijgewerkt: 2026-08-09
         
       </p>
       

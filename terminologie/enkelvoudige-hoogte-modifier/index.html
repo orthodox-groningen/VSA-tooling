@@ -1633,6 +1633,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../reference/voorbeelden/glyphs-overzicht/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Glyphs-overzicht
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../reference/voorbeelden/fouten/" class="md-nav__link">
         
   
@@ -2686,7 +2714,15 @@
 
 
 <h1 id="enkelvoudige-hoogte-modifier">Enkelvoudige hoogte-modifier<a class="headerlink" href="#enkelvoudige-hoogte-modifier" title="Permanent link">&para;</a></h1>
-<p>Een enkelvoudige hoogte-modifier is de kleinste hoogte-eenheid binnen een VSA-scope. Zodra twee of meer EHM's met <code>&amp;</code> worden gecombineerd, is sprake van een samengestelde hoogte-modifier.</p>
+<p>Een enkelvoudige hoogte-modifier (EHM) is de kleinste hoogte-eenheid binnen
+een <a href="/VSA-tooling/terminologie/vsa-scope" title="VSA-scope: een tekstfragment dat met <code>{</code> begint, met <code>}</code> eindigt, geen whitespace binnen de accolades bevat en door de Parser kan worden opgesplitst in optionele Hoogte-modifier, verplicht zangelement en optionele Lengte-modifier.">VSA-scope</a>. Zodra twee of meer EHM's met <code>&amp;</code> worden gecombineerd, is
+sprake van een <a href="/VSA-tooling/terminologie/samengestelde-hoogte-modifier" title="Samengestelde hoogte-modifier: een Hoogte-modifier die uit twee of meer geldige EHMs bestaat die onderling door <code>&amp;</code> zijn gescheiden.">samengestelde hoogte-modifier</a>.</p>
+<p>Goede/valide voorbeelden van Enkelvoudige hoogte-modifier zijn:
+- Eén basisbeweging, eventueel met halftoon-prefix
+- Onderdeel van een <a href="/VSA-tooling/terminologie/hoogte-modifier" title="Hoogte-modifier: een Modifier die voor het zangelement in een VSA-scope staat en bestaat uit een geldige EHM of uit meerdere geldige EHMs gescheiden door <code>&amp;</code>.">hoogte-modifier</a></p>
+<p>Geen goede/niet valide voorbeelden van Enkelvoudige hoogte-modifier zijn:
+- Twee of meer EHM's gescheiden door <code>&amp;</code>
+- Een <a href="/VSA-tooling/terminologie/lengte-modifier" title="Lengte-modifier: een Modifier die na het zangelement in een VSA-scope staat en bestaat uit een geldige ELM of uit meerdere geldige ELMs gescheiden door <code>&amp;</code>.">lengte-modifier</a> of <a href="/VSA-tooling/terminologie/enkelvoudige-lengte-modifier" title="Enkelvoudige lengte-modifier: een Lengte-modifier die uit precies één geldige ELM bestaat en daarmee precies een duurpositie representeert.">ELM</a></p>
 
 
 
@@ -2723,7 +2759,7 @@
       
       
       <p class="og-footer-stamps">
-        Bijgewerkt: 2026-08-06
+        Bijgewerkt: 2026-08-09
         
       </p>
       

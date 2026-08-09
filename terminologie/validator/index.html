@@ -1633,6 +1633,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../reference/voorbeelden/glyphs-overzicht/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Glyphs-overzicht
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../reference/voorbeelden/fouten/" class="md-nav__link">
         
   
@@ -2686,7 +2714,15 @@
 
 
 <h1 id="validator">Validator<a class="headerlink" href="#validator" title="Permanent link">&para;</a></h1>
-<p>De validator controleert of VSA-invoer inhoudelijk voldoet aan de regels die na parsing gelden. Waar mogelijk verzamelt de validator meerdere onafhankelijke diagnostics in een run.</p>
+<p>De validator controleert of <a href="/VSA-tooling/terminologie/vsa" title="Vereenvoudigde Slavische Accentnotatie: wordt gebruikt om te verwijzen naar een Formele Notatie voor het vastleggen van Zangstukken en ook naar de Toolset waarmee zulke vastleggingen kunnen worden gevalideerd en naar publiceerbare vormen worden omgezet.">VSA</a>-invoer inhoudelijk voldoet aan de regels
+die na parsing gelden. Waar mogelijk verzamelt de validator meerdere
+onafhankelijke <a href="/VSA-tooling/terminologie/diagnostic" title="Diagnostic: een melding die door Parser of Validator wordt geproduceerd en ten minste een foutcode, Severity / Ernstniveau, bronlocatie en uitleg of context bij een vastgestelde afwijking bevat.">diagnostics</a> in een run.</p>
+<p>Goede/valide voorbeelden van Validator zijn:
+- <a href="/VSA-tooling/terminologie/diagnostic" title="Diagnostic: een melding die door Parser of Validator wordt geproduceerd en ten minste een foutcode, Severity / Ernstniveau, bronlocatie en uitleg of context bij een vastgestelde afwijking bevat.">Diagnostics</a> / <a href="/VSA-tooling/terminologie/diagnostic" title="Diagnostic: een melding die door Parser of Validator wordt geproduceerd en ten minste een foutcode, Severity / Ernstniveau, bronlocatie en uitleg of context bij een vastgestelde afwijking bevat.">diagnostische meldingen</a> rapporteren
+- Semantische toets na de <a href="/VSA-tooling/terminologie/parser" title="Parser: een component die VSA-brontekst of tokens volgens de grammatica omzet naar expliciete AST / Syntactische Boom-nodes, bronlocaties behoudt en geen semantische reparaties of renderlogica uitvoert.">parser</a></p>
+<p>Geen goede/niet valide voorbeelden van Validator zijn:
+- Stilzwijgend repareren van de <a href="/VSA-tooling/terminologie/ast" title="Abstract Syntax Tree: een expliciete nodeboom die door de Parser uit VSA-invoer wordt geproduceerd en die Validator en Renderer zonder semantische herinterpretatie kunnen lezen.">AST</a>
+- Tokens omzetten naar <a href="/VSA-tooling/terminologie/ast" title="Abstract Syntax Tree: een expliciete nodeboom die door de Parser uit VSA-invoer wordt geproduceerd en die Validator en Renderer zonder semantische herinterpretatie kunnen lezen.">AST</a></p>
 
 
 
@@ -2723,7 +2759,7 @@
       
       
       <p class="og-footer-stamps">
-        Bijgewerkt: 2026-07-08
+        Bijgewerkt: 2026-08-09
         
       </p>
       

@@ -1633,6 +1633,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../reference/voorbeelden/glyphs-overzicht/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Glyphs-overzicht
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../reference/voorbeelden/fouten/" class="md-nav__link">
         
   
@@ -2686,7 +2714,15 @@
 
 
 <h1 id="severity">Severity<a class="headerlink" href="#severity" title="Permanent link">&para;</a></h1>
-<p>Severity maakt onderscheid tussen blokkerende fouten en waarschuwingen. De gekozen severity bepaalt de publicatie- of validatie-uitkomst, maar verandert de onderliggende invoer niet.</p>
+<p>Severity / <a href="/VSA-tooling/terminologie/severity" title="Severity: een waarde die aan een Diagnostic / Diagnostische Melding is gekoppeld en aangeeft of de vastgestelde afwijking als blokkerende fout of als waarschuwing moet worden behandeld.">ernstniveau</a> maakt onderscheid tussen blokkerende fouten en
+waarschuwingen. De gekozen severity bepaalt de <a href="/VSA-tooling/terminologie/publicatie" title="Publicatie: een proces dat gegenereerde demo-, preview- of productie-output bouwt, controleert en beschikbaar maakt voor GitHub Pages of hergebruik.">publicatie</a>- of
+validatie-uitkomst, maar verandert de onderliggende invoer niet.</p>
+<p>Goede/valide voorbeelden van Severity zijn:
+- <code>error</code> / <code>warning</code> op een <a href="/VSA-tooling/terminologie/diagnostic" title="Diagnostic: een melding die door Parser of Validator wordt geproduceerd en ten minste een foutcode, Severity / Ernstniveau, bronlocatie en uitleg of context bij een vastgestelde afwijking bevat.">diagnostic</a>
+- Stuurt exitcode / publicatiebeslissing</p>
+<p>Geen goede/niet valide voorbeelden van Severity zijn:
+- Een losse tekstlabel zonder diagnostic
+- Wijzigt de <a href="/VSA-tooling/terminologie/vsa" title="Vereenvoudigde Slavische Accentnotatie: wordt gebruikt om te verwijzen naar een Formele Notatie voor het vastleggen van Zangstukken en ook naar de Toolset waarmee zulke vastleggingen kunnen worden gevalideerd en naar publiceerbare vormen worden omgezet.">VSA</a>-bron of <a href="/VSA-tooling/terminologie/ast" title="Abstract Syntax Tree: een expliciete nodeboom die door de Parser uit VSA-invoer wordt geproduceerd en die Validator en Renderer zonder semantische herinterpretatie kunnen lezen.">AST</a></p>
 
 
 
@@ -2723,7 +2759,7 @@
       
       
       <p class="og-footer-stamps">
-        Bijgewerkt: 2026-07-08
+        Bijgewerkt: 2026-08-09
         
       </p>
       

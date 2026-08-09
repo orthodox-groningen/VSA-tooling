@@ -1655,6 +1655,34 @@
   
   
     <li class="md-nav__item">
+      <a href="glyphs-overzicht/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Glyphs-overzicht
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="fouten/" class="md-nav__link">
         
   
@@ -2712,7 +2740,8 @@
 
 <h1 id="overzicht">Overzicht<a class="headerlink" href="#overzicht" title="Permanent link">&para;</a></h1>
 <p>Korte, leesbare voorbeelden van VSA-invoer en wat de tool ermee doet. Geen
-Hugo-shortcodes: kopieer de CLI-commando’s lokaal.</p>
+Hugo-shortcodes: kopieer de CLI-commando’s lokaal. Fixtures staan onder
+<code>examples/docs-walkthroughs/</code>.</p>
 <table>
 <thead>
 <tr>
@@ -2723,18 +2752,23 @@ Hugo-shortcodes: kopieer de CLI-commando’s lokaal.</p>
 <tbody>
 <tr>
 <td><a href="basis/">Basis</a></td>
-<td>Geldige invoer → SVG</td>
+<td>Geldige korte frase → SVG (met preview)</td>
 </tr>
 <tr>
 <td><a href="multiline/">Multiline</a></td>
-<td>Regelafbraak bij lange regels</td>
+<td>Langere frase + <code>--max-line-width</code> (met preview)</td>
+</tr>
+<tr>
+<td><a href="glyphs-overzicht/">Glyphs-overzicht</a></td>
+<td>Breed syntax-/glyphoverzicht + SVG-rendering</td>
 </tr>
 <tr>
 <td><a href="fouten/">Fouten</a></td>
-<td>Ongeldige invoer → foutcode</td>
+<td>Ongeldige invoer → <code>vsa validate</code>-output</td>
 </tr>
 </tbody>
 </table>
+<p>Coria / MusicXML-walkthrough: <a href="../../guides/musicxml-export/">MusicXML-export</a>.</p>
 <p>Uitgebreide fixture-catalogus (correct / incorrect, met paden naar
 <code>examples/</code>): <a href="../fixtures-catalogus/">Fixtures-catalogus</a>.</p>
 
@@ -2773,7 +2807,7 @@ Hugo-shortcodes: kopieer de CLI-commando’s lokaal.</p>
       
       
       <p class="og-footer-stamps">
-        Bijgewerkt: 2026-08-05
+        Bijgewerkt: 2026-08-09
         
       </p>
       

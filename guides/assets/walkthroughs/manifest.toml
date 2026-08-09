@@ -1,0 +1,34 @@
+# Manifest voor docs walkthrough-SVG's.
+# Bronnen onder examples/docs-walkthroughs/; outputs onder docs/guides/assets/walkthroughs/.
+# Regenereren: python scripts/sync-docs-walkthrough-svgs.py
+# CI-check:     python scripts/sync-docs-walkthrough-svgs.py --check
+
+[[svg]]
+source = "examples/docs-walkthroughs/svg-phrase-kort.vsa"
+output = "docs/guides/assets/walkthroughs/svg-phrase-kort.svg"
+max_line_width = 800.0
+
+[[svg]]
+source = "examples/docs-walkthroughs/svg-phrase-lang.vsa"
+output = "docs/guides/assets/walkthroughs/svg-phrase-lang.svg"
+max_line_width = 400.0
+
+[[svg]]
+source = "examples/docs-walkthroughs/coria-oefenlink/oefenmelodie.vsa"
+output = "docs/guides/assets/walkthroughs/coria-oefenmelodie.svg"
+max_line_width = 800.0
+
+[[svg]]
+source = "examples/docs-walkthroughs/svg-glyphs-overzicht.vsa"
+output = "docs/guides/assets/walkthroughs/svg-glyphs-overzicht.svg"
+max_line_width = 800.0
+
+[[svg]]
+source = "examples/docs-walkthroughs/svg-glyphs-hoogte.vsa"
+output = "docs/guides/assets/walkthroughs/svg-glyphs-hoogte.svg"
+max_line_width = 800.0
+
+[[svg]]
+source = "examples/docs-walkthroughs/svg-glyphs-lengte.vsa"
+output = "docs/guides/assets/walkthroughs/svg-glyphs-lengte.svg"
+max_line_width = 800.0

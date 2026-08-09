@@ -1788,6 +1788,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../reference/voorbeelden/glyphs-overzicht/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Glyphs-overzicht
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../reference/voorbeelden/fouten/" class="md-nav__link">
         
   
@@ -2955,7 +2983,7 @@
 <strong>Niet:</strong> SVG maken — dat is <a href="../svg-export/">SVG exporteren</a> /
 <a href="../../reference/cli/svg/"><code>vsa svg</code></a>.</p>
 </div>
-<p><strong>Antwoord in het kort:</strong> <code>vsa validate</code> controleert of <a href="/bron/preview/terms/vsa-notatie" title="VSA-notatie: Het tekstgebaseerde notatieformaat waarmee liturgische zangteksten worden vastgelegd: een formeel gespecificeerde taal met scopes, modifiers en bracket-directives, parseeerbaar en valideerbaar door Vsa-tooling.">VSA-notatie</a>
+<p><strong>Antwoord in het kort:</strong> <code>vsa validate</code> controleert of <a href="/bron/terms/vsa-notatie" title="VSA-notatie: Het tekstgebaseerde notatieformaat waarmee liturgische zangteksten worden vastgelegd: een formeel gespecificeerde taal met scopes, modifiers en bracket-directives, parseeerbaar en valideerbaar door Vsa-tooling.">VSA-notatie</a>
 bruikbaar is. Lees de foutregel (bestand → blok → regel → code), herstel, opnieuw.</p>
 <h2 id="wanneer-valideren">Wanneer valideren?<a class="headerlink" href="#wanneer-valideren" title="Permanent link">&para;</a></h2>
 <table>
@@ -3008,10 +3036,10 @@ bruikbaar is. Lees de foutregel (bestand → blok → regel → code), herstel, 
 </table>
 <p>Voorbeeld: <code>examples\minimal\050_svg_demo.vsa</code> kan op <code>validate</code> falen
 (semantische mismatch) en toch met <code>vsa svg</code> renderen. Wil je
-<a href="/VSA-tooling/terminologie/geldige-vsa-notatie" title="geldige VSA-notatie: VSA-notatie die de Validator (<code>vsa validate</code>) accepteert: syntactisch en semantisch in orde volgens de actieve Severity-regels (syntaxfouten zijn altijd hard).">geldige VSA-notatie</a>, draai eerst <code>validate</code>.</p>
+<a href="/VSA-tooling/terminologie/geldige-vsa-notatie" title="geldige VSA-notatie: VSA-notatie die de Validator (<code>vsa validate</code>) accepteert: syntactisch en semantisch in orde volgens de actieve Severity / Ernstniveau-regels (syntaxfouten zijn altijd hard).">geldige VSA-notatie</a>, draai eerst <code>validate</code>.</p>
 <h2 id="snel-starten">Snel starten<a class="headerlink" href="#snel-starten" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code>cd /d C:\Git\orthodox-groningen\VSA-tooling
-vsa validate examples\minimal\001_plain_text.vsa
+vsa validate examples\docs-walkthroughs\svg-phrase-kort.vsa
 </code></pre></div>
 <p>Bij succes: <code>OK</code>. Map valideren:</p>
 <div class="highlight"><pre><span></span><code>vsa validate examples\consumer-minimal\content-source
@@ -3042,7 +3070,7 @@ vsa validate examples\minimal\001_plain_text.vsa
 <td><code>tekst}</code></td>
 </tr>
 <tr>
-<td><a href="/VSA-tooling/terminologie/pitch-marker" title="Pitch-marker: een bracket-directive met de vorm <code>[&lt;EHM&gt;:]</code>, waarbij <code>&lt;EHM&gt;</code> leeg is of een geldige enkelvoudige hoogte-modifier bevat.">pitch-marker</a> is goed afgesloten</td>
+<td><a href="/VSA-tooling/terminologie/pitch-marker" title="Pitch-marker: een Bracket-directive / Bracket-token met de vorm <code>[&lt;EHM&gt;:]</code>, waarbij <code>&lt;EHM&gt;</code> leeg is of een geldige EHM bevat.">pitch-marker</a> is goed afgesloten</td>
 <td><code>[//:</code></td>
 </tr>
 <tr>
@@ -3050,7 +3078,7 @@ vsa validate examples\minimal\001_plain_text.vsa
 <td><code>[//]</code></td>
 </tr>
 <tr>
-<td><a href="/VSA-tooling/terminologie/hoogte-modifier" title="Hoogte-modifier: een modifier die voor het zangelement in een VSA-scope staat en bestaat uit een geldige EHM of uit meerdere geldige EHM's gescheiden door <code>&amp;</code>.">hoogte-modifier</a>- en <a href="/VSA-tooling/terminologie/lengte-modifier" title="Lengte-modifier: een modifier die na het zangelement in een VSA-scope staat en bestaat uit een geldige ELM of uit meerdere geldige ELM's gescheiden door <code>&amp;</code>.">lengte-modifier</a>-posities passen bij elkaar</td>
+<td><a href="/VSA-tooling/terminologie/hoogte-modifier" title="Hoogte-modifier: een Modifier die voor het zangelement in een VSA-scope staat en bestaat uit een geldige EHM of uit meerdere geldige EHMs gescheiden door <code>&amp;</code>.">hoogte-modifier</a>- en <a href="/VSA-tooling/terminologie/lengte-modifier" title="Lengte-modifier: een Modifier die na het zangelement in een VSA-scope staat en bestaat uit een geldige ELM of uit meerdere geldige ELMs gescheiden door <code>&amp;</code>.">lengte-modifier</a>-posities passen bij elkaar</td>
 <td><code>{/&amp;\tekst_}</code></td>
 </tr>
 </tbody>
@@ -3061,7 +3089,46 @@ vsa validate examples\minimal\001_plain_text.vsa
 </code></pre></div>
 <p>Exitcode: <code>0</code>. Details: <a href="../../reference/cli/validate/"><code>vsa validate</code></a>.</p>
 <h2 id="foutoutput-lezen">Foutoutput lezen<a class="headerlink" href="#foutoutput-lezen" title="Permanent link">&para;</a></h2>
-<p>Voorbeeld:</p>
+<p>Concrete fail-fixture
+(<code>examples\docs-walkthroughs\validate-unclosed-scope.vsa</code>):</p>
+<div class="highlight"><pre><span></span><code>{tekst
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>cd /d C:\Git\orthodox-groningen\VSA-tooling
+vsa validate examples\docs-walkthroughs\validate-unclosed-scope.vsa
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>validate-unclosed-scope.vsa:1:1
+ERROR: VSA-SYNTAX-UNCLOSED-SCOPE: Scope zonder afsluitende accolade.
+{tekst
+^
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Deel</th>
+<th>Betekenis</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>validate-unclosed-scope.vsa</code></td>
+<td>bestand waarin de fout zit</td>
+</tr>
+<tr>
+<td><code>1:1</code></td>
+<td>regel en kolom</td>
+</tr>
+<tr>
+<td><code>VSA-SYNTAX-UNCLOSED-SCOPE</code></td>
+<td>foutcode (<a href="/VSA-tooling/terminologie/diagnostic" title="Diagnostic: een melding die door Parser of Validator wordt geproduceerd en ten minste een foutcode, Severity / Ernstniveau, bronlocatie en uitleg of context bij een vastgestelde afwijking bevat.">diagnostic</a>)</td>
+</tr>
+<tr>
+<td>tekst erna + <code>^</code></td>
+<td>uitleg en positie-indicator</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Fix:</strong> sluit de scope af, bijvoorbeeld <code>{tekst}</code>.</p>
+<p>In Markdown met VSA-blokken ziet de locatie er zo uit:</p>
 <div class="highlight"><pre><span></span><code>examples\demo.md:blok-1:1:1: VSA-SYNTAX-EMPTY-SCOPE: Scope zonder zangelement.
 </code></pre></div>
 <table>
@@ -3074,7 +3141,7 @@ vsa validate examples\minimal\001_plain_text.vsa
 <tbody>
 <tr>
 <td><code>examples\demo.md</code></td>
-<td>bestand waarin de fout zit</td>
+<td>Markdown-bestand</td>
 </tr>
 <tr>
 <td><code>blok-1</code></td>
@@ -3086,7 +3153,7 @@ vsa validate examples\minimal\001_plain_text.vsa
 </tr>
 <tr>
 <td><code>VSA-SYNTAX-EMPTY-SCOPE</code></td>
-<td>foutcode (<a href="/VSA-tooling/terminologie/diagnostic" title="Diagnostic: een melding die door parser of validator wordt geproduceerd en ten minste een foutcode, severity, bronlocatie en uitleg of context bij een vastgestelde afwijking bevat.">diagnostic</a>)</td>
+<td>foutcode (<a href="/VSA-tooling/terminologie/diagnostic" title="Diagnostic: een melding die door Parser of Validator wordt geproduceerd en ten minste een foutcode, Severity / Ernstniveau, bronlocatie en uitleg of context bij een vastgestelde afwijking bevat.">diagnostic</a>)</td>
 </tr>
 <tr>
 <td>tekst erna</td>
@@ -3134,7 +3201,7 @@ vsa validate examples\minimal\001_plain_text.vsa
 <p>Concrete fail + Fix: man-page <a href="../../reference/cli/validate/"><code>vsa validate</code></a>.</p>
 <h2 id="severity-overrides">Severity-overrides<a class="headerlink" href="#severity-overrides" title="Permanent link">&para;</a></h2>
 <p>In <a href="/VSA-tooling/terminologie/vsa-toml" title="vsa.toml: een projectconfiguratiebestand met de naam <code>vsa.toml</code> dat herkende VSA-toolinginstellingen bevat voor rendering, output of validatie.">vsa.toml</a> kun je sommige <strong>semantische</strong> meldingen tijdelijk als
-<a href="/VSA-tooling/terminologie/severity" title="Severity: een waarde die aan een diagnostic is gekoppeld en aangeeft of de vastgestelde afwijking als blokkerende fout of als waarschuwing moet worden behandeld.">severity</a> <code>warning</code> zetten. Syntaxfouten blijven altijd hard.</p>
+<a href="/VSA-tooling/terminologie/severity" title="Severity: een waarde die aan een Diagnostic / Diagnostische Melding is gekoppeld en aangeeft of de vastgestelde afwijking als blokkerende fout of als waarschuwing moet worden behandeld.">severity</a> <code>warning</code> zetten. Syntaxfouten blijven altijd hard.</p>
 <div class="highlight"><pre><span></span><code><span class="k">[validation.severity]</span>
 <span class="n">VSA-SEMANTIC-MODIFIER-COUNT-MISMATCH</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;warning&quot;</span>
 </code></pre></div>
@@ -3183,7 +3250,7 @@ vsa validate examples\minimal\001_plain_text.vsa
       
       
       <p class="og-footer-stamps">
-        Bijgewerkt: 2026-08-08
+        Bijgewerkt: 2026-08-09
         
       </p>
       

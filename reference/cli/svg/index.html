@@ -1645,6 +1645,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../voorbeelden/glyphs-overzicht/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Glyphs-overzicht
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../voorbeelden/fouten/" class="md-nav__link">
         
   
@@ -2931,20 +2959,20 @@
   
 
 
-<h1 id="vsa-svg-een-vsa-waarvan-de-inhoud-uitsluitend-syntactisch-geldige-vsa-notatie-bevat-dwz-door-de-vsa-tooling-foutloos-wordt-geparseerd-en-gevalideerdvsa-bestand-naar-svg-renderen"><code>vsa svg</code> — één <a href="/bron/preview/terms/vsa-bestand" title="vsa-bestand: Een bestand met de extensie <code>.vsa</code> waarvan de inhoud uitsluitend syntactisch geldige Vsa-notatie bevat — d.w.z. door de Vsa-tooling foutloos wordt geparseerd en gevalideerd.">vsa-bestand</a> naar SVG renderen<a class="headerlink" href="#vsa-svg-een-vsa-waarvan-de-inhoud-uitsluitend-syntactisch-geldige-vsa-notatie-bevat-dwz-door-de-vsa-tooling-foutloos-wordt-geparseerd-en-gevalideerdvsa-bestand-naar-svg-renderen" title="Permanent link">&para;</a></h1>
+<h1 id="vsa-svg-een-vsa-waarvan-de-inhoud-uitsluitend-syntactisch-geldige-vsa-notatie-bevat-dwz-door-de-vsa-tooling-foutloos-wordt-geparseerd-en-gevalideerdvsa-bestand-naar-svg-renderen"><code>vsa svg</code> — één <a href="/bron/terms/vsa-bestand" title="vsa-bestand: Een bestand met de extensie <code>.vsa</code> waarvan de inhoud uitsluitend syntactisch geldige Vsa-notatie bevat — d.w.z. door de Vsa-tooling foutloos wordt geparseerd en gevalideerd.">vsa-bestand</a> naar SVG renderen<a class="headerlink" href="#vsa-svg-een-vsa-waarvan-de-inhoud-uitsluitend-syntactisch-geldige-vsa-notatie-bevat-dwz-door-de-vsa-tooling-foutloos-wordt-geparseerd-en-gevalideerdvsa-bestand-naar-svg-renderen" title="Permanent link">&para;</a></h1>
 <div class="admonition note">
 <p class="admonition-title">Waartoe</p>
 <p>Eén <code>.vsa</code>-bestand snel als SVG-afbeelding bekijken (scherm of afdruk).
 Geen Markdown-pipeline — daarvoor <a href="../process/"><code>vsa process</code></a> of
 <a href="../build-markdown/"><code>vsa build-markdown</code></a>.</p>
 </div>
-<p>Render één <a href="/bron/preview/terms/vsa-bestand" title="vsa-bestand: Een bestand met de extensie <code>.vsa</code> waarvan de inhoud uitsluitend syntactisch geldige Vsa-notatie bevat — d.w.z. door de Vsa-tooling foutloos wordt geparseerd en gevalideerd.">vsa-bestand</a> naar één SVG-afbeelding.</p>
+<p>Render één <a href="/bron/terms/vsa-bestand" title="vsa-bestand: Een bestand met de extensie <code>.vsa</code> waarvan de inhoud uitsluitend syntactisch geldige Vsa-notatie bevat — d.w.z. door de Vsa-tooling foutloos wordt geparseerd en gevalideerd.">vsa-bestand</a> naar één SVG-afbeelding.</p>
 <h2 id="synopsis">Synopsis<a class="headerlink" href="#synopsis" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code>vsa svg [-h] [--config CONFIG] [--max-line-width MAX_LINE_WIDTH] input output
 </code></pre></div>
 <h2 id="beschrijving">Beschrijving<a class="headerlink" href="#beschrijving" title="Permanent link">&para;</a></h2>
 <p><code>vsa svg</code> leest één <code>.vsa</code>-bestand, lost <code>@include-vsa</code> op indien aanwezig,
-parset de <a href="/bron/preview/terms/vsa-notatie" title="VSA-notatie: Het tekstgebaseerde notatieformaat waarmee liturgische zangteksten worden vastgelegd: een formeel gespecificeerde taal met scopes, modifiers en bracket-directives, parseeerbaar en valideerbaar door Vsa-tooling.">VSA-notatie</a> en rendert het resultaat naar een SVG-bestand. Dit
+parset de <a href="/bron/terms/vsa-notatie" title="VSA-notatie: Het tekstgebaseerde notatieformaat waarmee liturgische zangteksten worden vastgelegd: een formeel gespecificeerde taal met scopes, modifiers en bracket-directives, parseeerbaar en valideerbaar door Vsa-tooling.">VSA-notatie</a> en rendert het resultaat naar een SVG-bestand. Dit
 commando verwerkt <strong>geen</strong> Markdownblokken — voor Markdown met VSA-blokken
 gebruik je <a href="../process/"><code>vsa process</code></a> of <a href="../build-markdown/"><code>vsa build-markdown</code></a>.</p>
 <p><code>vsa svg</code> valideert de invoer niet expliciet vooraf; een parsefout leidt tot
@@ -3044,7 +3072,7 @@ Bekijk het resultaat direct:</p>
 <p><code>examples\minimal\050_svg_demo.vsa</code> faalt op <code>vsa validate</code> (semantische
 hoogte-mismatch), maar rendert wel gewoon met <code>vsa svg</code> — dit commando
 voert geen semantische controle uit. Draai <code>vsa validate</code> eerst als je
-zeker wilt zijn van <a href="/VSA-tooling/terminologie/geldige-vsa-notatie" title="geldige VSA-notatie: VSA-notatie die de Validator (<code>vsa validate</code>) accepteert: syntactisch en semantisch in orde volgens de actieve Severity-regels (syntaxfouten zijn altijd hard).">geldige VSA-notatie</a>.</p>
+zeker wilt zijn van <a href="/VSA-tooling/terminologie/geldige-vsa-notatie" title="geldige VSA-notatie: VSA-notatie die de Validator (<code>vsa validate</code>) accepteert: syntactisch en semantisch in orde volgens de actieve Severity / Ernstniveau-regels (syntaxfouten zijn altijd hard).">geldige VSA-notatie</a>.</p>
 </div>
 <h2 id="voorbeelden-falen">Voorbeelden — falen<a class="headerlink" href="#voorbeelden-falen" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code>vsa svg pad\dat\niet\bestaat.vsa tmp\demo.svg
@@ -3059,7 +3087,7 @@ zeker wilt zijn van <a href="/VSA-tooling/terminologie/geldige-vsa-notatie" titl
 </code></pre></div>
 <p>Verwachte richting: foutmelding op stderr, exitcode <code>1</code>.</p>
 <p>Fix: draai eerst <code>vsa validate kapot.vsa</code> voor exacte foutcode en
-regel/kolom; herstel de <a href="/bron/preview/terms/vsa-notatie" title="VSA-notatie: Het tekstgebaseerde notatieformaat waarmee liturgische zangteksten worden vastgelegd: een formeel gespecificeerde taal met scopes, modifiers en bracket-directives, parseeerbaar en valideerbaar door Vsa-tooling.">VSA-notatie</a>; daarna opnieuw <code>vsa svg</code>.</p>
+regel/kolom; herstel de <a href="/bron/terms/vsa-notatie" title="VSA-notatie: Het tekstgebaseerde notatieformaat waarmee liturgische zangteksten worden vastgelegd: een formeel gespecificeerde taal met scopes, modifiers en bracket-directives, parseeerbaar en valideerbaar door Vsa-tooling.">VSA-notatie</a>; daarna opnieuw <code>vsa svg</code>.</p>
 <h2 id="zie-ook">Zie ook<a class="headerlink" href="#zie-ook" title="Permanent link">&para;</a></h2>
 <ul>
 <li><a href="../validate/"><code>vsa validate</code></a> — controleer VSA-notatie vóór het renderen.</li>

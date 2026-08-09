@@ -174,7 +174,7 @@ en zijn vooral bruikbaar voor eenvoudige melodieën,
 zoals die juist in de kerkmuziek het meeste voorkomen. 
 Ze kunnen ook gemakkelijk aan bestaande boeken worden toegevoegd.
 
-### Relatie tussen de Liturgikon-notatie en [VSA](@)
+### Relatie tussen de Liturgikon-notatie en VSA
 
 De [VSA-notatie](@bron) is sterk geïnspireerd door de vereenvoudigde neumennotatie zoals beschreven in het Nederlands Liturgikon (1968), maar is daar niet volledig identiek aan. [VSA](@) formaliseert en generaliseert verschillende aspecten van deze praktijknotatie om parsing, validatie, rendering en export naar formaten zoals MusicXML mogelijk te maken.
 
@@ -244,7 +244,7 @@ Bij omzetting van historische notaties naar [VSA](@) kunnen de volgende situatie
 
 ---
 
-## Appendix: Voorbeelden van aanvullende [blokparameters](@)
+## Appendix: Voorbeelden van aanvullende blokparameters
 
 | Parameter  | Voorbeeld                   | Betekenis         |
 | ---------- | --------------------------- | ----------------- |

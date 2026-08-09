@@ -1,4 +1,4 @@
-# Parochie-lokaal — [VSA-tooling](@bron)
+# Parochie-lokaal — VSA-tooling
 
 **Algemene handleiding (canoniek):** [bron/docs/manuals/parochie-lokaal-zangstukken.md](https://github.com/orthodox-groningen/bron/blob/main/docs/manuals/parochie-lokaal-zangstukken.md)
 
@@ -21,7 +21,7 @@ zie VSA-demo en
 
 ---
 
-## VSA-includes in [samenstellingen](@bron)
+## VSA-includes in samenstellingen
 
 ### Opgelost catalogus-pad (fase 3)
 
@@ -184,7 +184,7 @@ Inline (kort fragment):
 
 ---
 
-## Build-pipeline ([VSA-tooling](@bron))
+## Build-pipeline (VSA-tooling)
 
 | Stap                                                             | [Parochie-lokaal](@bron)                                                                |
 | ---------------------------------------------------------------- | --------------------------------------------------------------------------------------- |

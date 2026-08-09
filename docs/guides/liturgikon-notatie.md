@@ -103,7 +103,7 @@ en zijn vooral bruikbaar voor eenvoudige melodieën,
 zoals die juist in de kerkmuziek het meeste voorkomen. 
 Ze kunnen ook gemakkelijk aan bestaande boeken worden toegevoegd.
 
-### Relatie tussen de Liturgikon-notatie en [VSA](@)
+### Relatie tussen de Liturgikon-notatie en VSA
 
 Onderstaande tekst is mogelijk niet geheel correct en moet wellicht worden gereviseerd.
 

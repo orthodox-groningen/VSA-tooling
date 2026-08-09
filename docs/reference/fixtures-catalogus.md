@@ -29,7 +29,7 @@ Leesvoorbeeld: [Basis](voorbeelden/basis.md).
 | `examples/regression/invalid-unbalanced-modifiers/` | `{/&\tekst_}` | `VSA-SEMANTIC-MODIFIER-COUNT-MISMATCH` |
 | `examples/regression/semantic-mismatch/`            | `{/&\tekst_}` | `VSA-SEMANTIC-MODIFIER-COUNT-MISMATCH` |
 
-### Expected-fail ([validator](@) moet afkeuren)
+### Expected-fail (validator moet afkeuren)
 
 | Bestand                                                 | Doel (kort)                  |
 | ------------------------------------------------------- | ---------------------------- |

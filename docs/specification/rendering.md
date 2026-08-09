@@ -87,7 +87,7 @@ Alle glyph-afmetingen worden uitgedrukt in een basiseenheid `U`.
 | verticale afstand tussen gestapelde elementen | `U`    |
 | diameter van een punt                         | `U/4`  |
 
-#### Rendering van [EHMs](@)
+#### Rendering van EHMs
 
 Een schuine streep omhoog wordt gerenderd als een lijnsegment met:
 
@@ -107,7 +107,7 @@ Een schuine streep omlaag wordt gerenderd als een lijnsegment met:
 
 Gestapelde strepen worden verticaal boven elkaar geplaatst. De verticale afstand tussen twee gestapelde strepen is gelijk aan `U`.
 
-#### Rendering van [ELMs](@)
+#### Rendering van ELMs
 
 Een underscore (`_`) wordt gerenderd als een horizontale lijn.
 
@@ -258,7 +258,7 @@ voorafgaande noot geplakt.
 Barline-markeringen `*`, `/` en `//` in platte tekst sluiten de huidige maat
 af.
 
-#### Conversieregel per [muzikale positie](@)
+#### Conversieregel per muzikale positie
 
 Voor elke [muzikale positie](@) geldt:
 
@@ -477,7 +477,7 @@ Open ontwerpbesluiten (voor implementatie):
 
 ## Bron: `docs/spec/vsa-svg-rendering-spec.md`
 
-# [VSA](@) SVG Rendering Specification (Draft 2)
+# VSA SVG Rendering Specification (Draft 2)
 
 ## Doel en scope
 
@@ -1018,7 +1018,7 @@ Onderglyphs:
 
 Onderglyphs hoeven niet de volledige positiebreedte te beslaan.
 
-## Configureerbare [glyphs](@)
+## Configureerbare glyphs
 
 Gebruikers moeten glyph-rendering kunnen aanpassen.
 
@@ -1206,7 +1206,7 @@ De overige onderwerpen kunnen later worden uitgewerkt.
 
 ## Bron: `docs/spec/vsa-glyph-model.md`
 
-# [VSA](@) Glyph Model Specification (Draft 1)
+# VSA Glyph Model Specification (Draft 1)
 
 ## Doel
 
@@ -1277,7 +1277,7 @@ Deze laag kent geen:
 
 ---
 
-### Laag 2 — Abstract [glyphmodel](@)
+### Laag 2 — Abstract glyphmodel
 
 De [renderer](@) vertaalt semantiek naar abstracte glyph-objecten.
 
@@ -1361,7 +1361,7 @@ vormt één verbonden glyphgroep.
 
 # Glyphfamilies
 
-## Upper [glyphs](@)
+## Upper glyphs
 
 Upper [glyphs](@) representeren:
 
@@ -1385,7 +1385,7 @@ Visuele eigenschappen:
 
 ---
 
-## Lower [glyphs](@)
+## Lower glyphs
 
 Lower [glyphs](@) representeren:
 
@@ -1407,7 +1407,7 @@ Lower [glyphs](@) mogen:
 
 ---
 
-## Connector [glyphs](@)
+## Connector glyphs
 
 Connector [glyphs](@) ontstaan uit alignment-markers (`&`).
 
@@ -1433,7 +1433,7 @@ Hier ontstaan:
 
 ---
 
-## Structural [glyphs](@)
+## Structural glyphs
 
 Structural [glyphs](@) representeren:
 
@@ -1757,7 +1757,7 @@ Nog nader te bepalen:
 
 ## Bron: `docs/spec/vsa-glyph-layout-rules.md`
 
-# [VSA](@) Glyph Layout Rules (Draft 2)
+# VSA Glyph Layout Rules (Draft 2)
 
 ## Doel
 
@@ -1949,7 +1949,7 @@ Het is niet noodzakelijk hetzelfde als:
 - een MusicXML-noot;
 - een toekomstige SATB-syncpositie.
 
-## Waarvoor gebruikt de [renderer](@) [muzikale posities](@)?
+## Waarvoor gebruikt de renderer muzikale posities?
 
 De [renderer](@) gebruikt [muzikale posities](@) om te beslissen:
 - waar bovenglyphs komen;
@@ -1959,7 +1959,7 @@ De [renderer](@) gebruikt [muzikale posities](@) om te beslissen:
 - of [glyphs](@) elkaar raken;
 - of een render-unit te breed wordt voor de regel.
 
-## Breedte van een [muzikale positie](@)
+## Breedte van een muzikale positie
 
 De breedte van een [muzikale positie](@) wordt bepaald door:
 
@@ -2032,7 +2032,7 @@ De [renderer](@) mag [glyphs](@) niet laten samenvallen om ruimte te besparen.
 
 # Elementaire hoogtemodifiers en stacking
 
-## Eén [EHM](@) is één [glyph](@)
+## Eén EHM is één glyph
 
 Een [EHM](@) wordt als één [glyph](@) gerenderd.
 
@@ -2088,7 +2088,7 @@ Voor nu geldt:
 
 ---
 
-# Gekoppelde [glyphs](@) en alignment-markers
+# Gekoppelde glyphs en alignment-markers
 
 ## Betekenis van `&`
 
@@ -2404,7 +2404,7 @@ Nog nader uit te werken:
 
 ## Bron: `docs/spec/vsa-layout-algorithm.md`
 
-# [VSA](@) Layout Algorithm Specification (Draft 1)
+# VSA Layout Algorithm Specification (Draft 1)
 
 ## Doel
 
@@ -2501,7 +2501,7 @@ Voorbeelden van ongeldige configuratie:
 
 ---
 
-# Fase 2: [AST](@) ontvangen
+# Fase 2: AST ontvangen
 
 De [renderer](@) werkt niet rechtstreeks op ruwe tekst, maar op de geparseerde VSA-structuur.
 
@@ -2551,7 +2551,7 @@ Ook dit blijft één render-unit:
 
 ---
 
-# Fase 4: [muzikale posities](@) bepalen
+# Fase 4: muzikale posities bepalen
 
 Voor SVG-rendering is een [muzikale positie](@) een horizontale plaats waarop één [glyph](@) of glyphgroep wordt gecentreerd.
 
@@ -2752,7 +2752,7 @@ Glyphs krijgen semantische CSS-klassen.
 
 ---
 
-# Renderer [diagnostics](@)
+# Renderer diagnostics
 
 De [renderer](@) mag [diagnostics](@) produceren.
 
@@ -2802,7 +2802,7 @@ Nog nader uit te werken:
 
 ## Bron: `docs/spec/vsa-svg-dom-structure.md`
 
-# [VSA](@) SVG DOM Structure Specification (Draft 1)
+# VSA SVG DOM Structure Specification (Draft 1)
 
 ## Doel
 
@@ -2954,7 +2954,7 @@ Gekoppelde [glyphs](@) via `&` staan binnen één glyphgroep.
 
 ---
 
-# Individual [glyphs](@)
+# Individual glyphs
 
 Elke [glyph](@) krijgt een semantische klasse.
 
@@ -3093,7 +3093,7 @@ Nog nader uit te werken:
 
 ## Bron: `docs/spec/vsa-rendering-config-model.md`
 
-# [VSA](@) Rendering Configuration Model (Draft 1)
+# VSA Rendering Configuration Model (Draft 1)
 
 ## Doel
 
@@ -3411,7 +3411,7 @@ Nog nader uit te werken:
 
 ## Bron: `docs/spec/vsa-height-markers.md`
 
-# [VSA](@) [hoogte-markeringen](@)
+# VSA hoogte-markeringen
 
 Status: ontwerpbesluit voor opname in de VSA-specificatie.
 

@@ -1,4 +1,4 @@
-# Voorstel voor toekomstige meerstemmige uitbreiding van [VSA](@)
+# Voorstel voor toekomstige meerstemmige uitbreiding van VSA
 
 {{ Maak de volgende wijzigingen (gooi geen dingen weg die niet veranderd/aangepast zijn, omdat die allemaal ooit een doel hadden en er dus niet voor niets staan. Je moet zeker weten dat als je iets niet meer opneemt, dat een doublure is, of dat je hetzelfde op een betere/duidelijk manier verwoordt voor het lezerspubliek! Laat het weten als je tegen grenzen aanloopt die het je onmogelijk maken deze taak te volbrengen, en wat ik daar aan kan doen.):
 1. 

@@ -168,7 +168,7 @@ In ongescopte tekst mag `-` lettergrepen scheiden (bijv. `mel-se`). De
 SVG-renderer toont dit als gewone tekst; bij MusicXML-export wordt elk deel een
 eigen reciteernoot (zie [Ongescopte tekst (reciteertoon)](rendering.md#ongescopte-tekst-reciteertoon)).
 
-### Enkelvoudige Hoogte-Modifiers ([EHMs](@))
+### Enkelvoudige Hoogte-Modifiers (EHMs)
 
 Een [EHM](@) beschrijft één relatieve toonhoogtebeweging of een lege grafische positie. Een [EHM](@) is ofwel een enkelvoudige basisbeweging, ofwel een halftoon-prefix gevolgd door een basisbeweging.
 
@@ -213,7 +213,7 @@ Voorbeelden van gecombineerde [EHMs](@):
 
 Alle combinaties van een halftoon-prefix met een basisbeweging zijn syntactisch geldig. De semantische geldigheid hangt af van de [do-context](@) en modus (zie [Geldigheid van halftoon-prefix combinaties](semantics.md#geldigheid-van-halftoon-prefix-combinaties)).
 
-### Enkelvoudige Lengte-Modifiers ([ELMs](@))
+### Enkelvoudige Lengte-Modifiers (ELMs)
 
 Een [ELM](@) beschrijft de duur van één [muzikale positie](@) ten opzichte van de standaardduur.
 
@@ -227,7 +227,7 @@ Een [ELM](@) beschrijft de duur van één [muzikale positie](@) ten opzichte van
 | `-`      | `{tekst-}`  | standaardduur       | implementatie-afhankelijke standaardduur-glyph              |
 | `~`      | `{tekst~}`  | standaardduur       | geen zichtbare [glyph](@)                                   |
 
-### Samengestelde [modifiers](@)
+### Samengestelde modifiers
 
 Een samengestelde [modifier](@) bestaat uit twee of meer [EHMs](@) of twee of meer [ELMs](@), gescheiden door `&`.
 
@@ -274,7 +274,7 @@ als een enkel [zangstuk](@bron) met tussenliggende [toonhoogte-markeringen](@).
 
 De tekst `:]` is de syntactische afsluiter van een [toonhoogte-markering](@). Hij wordt visueel gerenderd als een horizontale lijn rond het verticale midden van de tekstregel, met daarboven de rendering van de [EHM](@).
 
-### Absolute toonhoogte binnen Hugo [blokmetadata](@)
+### Absolute toonhoogte binnen Hugo blokmetadata
 
 Een absolute toonhoogte bestaat uit:
 

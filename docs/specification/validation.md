@@ -60,7 +60,7 @@ met parameters `do="C4"` en `mode="major"`.
 
 Onderstaande regels komen uit de bestaande configuratiedocumentatie en horen bij het validatiecontract.
 
-# [VSA](@) configuratie: severity-overrides
+# VSA configuratie: severity-overrides
 
 Deze pagina vult de gebruikershandleiding aan.
 

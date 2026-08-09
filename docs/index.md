@@ -1,4 +1,4 @@
-# [VSA-tooling](@bron) — documentatie
+# VSA-tooling — documentatie
 
 Welkom bij de documentatie van de **VSA-toolchain**: [parser](@), validatie,
 SVG- en MusicXML-export, Markdown-build en hergebruik in andere repositories.

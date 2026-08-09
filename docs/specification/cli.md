@@ -4,7 +4,7 @@ Dit document beschrijft het functionele contract van de VSA-CLI.
 
 De taakgerichte uitleg hoort in `docs/guides/`; dit document legt vast welke commando's, exitcodes en hoofdgedragingen onderdeel zijn van de toolinginterface.
 
-# [VSA](@) CLI referentie
+# VSA CLI referentie
 
 Deze referentie beschrijft elk commando afzonderlijk.
 

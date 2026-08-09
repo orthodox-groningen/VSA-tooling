@@ -6,7 +6,7 @@ Dit document beschrijft hoe VSA-implementaties fouten, waarschuwingen en [diagno
 
 ---
 
-## [Severity](@) levels
+## Severity levels
 
 [VSA](@) onderscheidt drie soorten [diagnostische meldingen](@):
 

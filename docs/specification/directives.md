@@ -108,7 +108,7 @@ Renderers bepalen zelf hoe de abstracte betekenis wordt uitgewerkt.
 
 ## Bron: `docs/spec/include-vsa.md`
 
-# `@include-vsa` — [VSA](@) inline includes
+# `@include-vsa` — VSA inline includes
 
 Status: **geïmplementeerd** (`id=` / `lokaal=` / **`zoek=`**).
 
@@ -207,7 +207,7 @@ Binnen een `::: vsa-notatie` blok mag HTML-commentaar voorkomen:
 
 ## Bron: `docs/spec-vsa-document-samenstellen.md`
 
-# [VSA](@) Document Samenstellen — specificatie
+# VSA Document Samenstellen — specificatie
 
 ## Doel
 
@@ -225,7 +225,7 @@ Er is geen aparte print-pipeline; één HTML-bestand dient beide doelen.
 
 Basis: Markdown met GFM-extensies (tabellen, doorhalen), en uitgebreid met de volgende directives.
 
-### [VSA-blok](@) (bestaand)
+### VSA-blok (bestaand)
 
     ::: vsa-notatie
     [VSA-inhoud]
@@ -440,7 +440,7 @@ Hugo verwerkt daarna het gegenereerde Markdown-bestand tot HTML.
 
 ---
 
-## [Exporttypen](@bron) (normatief contract)
+## Exporttypen (normatief contract)
 
 Authoring-syntax voor **export** (niet conversie) is contractueel vastgelegd in de
 **[bron-repository](@bron)**:
@@ -454,7 +454,7 @@ Conversie ([`vsa svg`](../reference/cli/svg.md), [`vsa musicxml`](../reference/c
 [Conversiemechanismen](https://orthodox-groningen.github.io/bron/reference/conversiemechanismen/)
 ([conversiemechanisme](@bron)).
 
-### Implementatiestatus ([VSA-tooling](@bron))
+### Implementatiestatus (VSA-tooling)
 
 | Syntax                                        | Status                                                                                                 |
 | --------------------------------------------- | ------------------------------------------------------------------------------------------------------ |

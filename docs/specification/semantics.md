@@ -50,7 +50,7 @@ Dit betekent:
 - toonhoogtebeweging: `/`;
 - duur: `_`.
 
-### Impliciete [modifiers](@)
+### Impliciete modifiers
 
 Als in een [scope](@) geen [hoogte-modifier](@) aanwezig is, wordt impliciet één `~` gebruikt.
 
@@ -82,7 +82,7 @@ is semantisch gelijk aan:
 {/&\tekst~&~}
 ```
 
-### Samengestelde [modifiers](@) en melisma
+### Samengestelde modifiers en melisma
 
 Wanneer een [zangelement](@) meerdere [muzikale posities](@) bevat, wordt hetzelfde [zangelement](@) over meerdere opeenvolgende tonen gezongen. Dit heet een **melisma**.
 
@@ -196,7 +196,7 @@ Lydisch:   G G G K G G K
 
 De [do-context](@) bepaalt dus het startpunt. De modus bepaalt de interne structuur van de toonladder.
 
-### Interpretatie van [EHMs](@)
+### Interpretatie van EHMs
 
 Een [EHM](@) is een operator op de actuele toonladderpositie. Een [EHM](@) bestaat uit een optionele halftoon-prefix en een basisbeweging. Het semantische effect is:
 
@@ -268,7 +268,7 @@ Als de actuele positie op `mi` staat en de overgang `mi → fa` al een kleine st
 
 De onderscheiding tussen een halftoon-prefix op een basisbeweging en een zelfstandige chromatische aanpassing (`#-`, `b-`) heeft ook semantisch gevolgen voor MusicXML-export: `b-` beschrijft een chromatische verschuiving op de huidige positie, terwijl `b/` een combinatie is van een ladderstap en een halvering.
 
-### Interpretatie van [ELMs](@)
+### Interpretatie van ELMs
 
 Een [ELM](@) bepaalt de duur van één [muzikale positie](@) ten opzichte van de standaardduur.
 
@@ -331,7 +331,7 @@ gezien worden als een enkel [zangstuk](@bron) met tussenliggende [hoogte-markeri
 
 Een eindmarkering kan worden gebruikt als visuele afsluiting en als semantische eindcontrole. Een ontbrekende eindmarkering is toegestaan en betekent dat er geen expliciete eindtooncontrole is genoteerd. Een eindmarkering `[:]` is niet leeg in semantische zin: zij betekent dat de zang op de [do-context](@) eindigt en is equivalent aan `[-:]` c.q. `[~:]`. Een markering `[//:]` betekent dat de zang twee ladderstappen boven de [do-context](@) eindigt. Een implementatie mag een aanwezige eindmarkering controleren tegen de berekende eindtoon van het [zangstuk](@bron).
 
-### Tekstmarkeringen buiten [scopes](@)
+### Tekstmarkeringen buiten scopes
 
 Bepaalde tekstfragmenten buiten [scopes](@) kunnen door implementaties semantisch worden geïnterpreteerd.
 

@@ -1,6 +1,6 @@
 # Tokenreferentie
 
-## [Hoogte-markeringen](@)
+## Hoogte-markeringen
 
 Een [hoogte-markering](@) heeft de vorm:
 
@@ -15,7 +15,7 @@ Een [hoogte-markering](@) heeft de vorm:
 | `[//:]` | [Hoogte-markering](@)    | Samengestelde hoogtebeweging |
 | `[\:]`  | [Hoogte-markering](@)    | Dalende hoogtebeweging       |
 
-## [Control tokens](@)
+## Control tokens
 
 [Control tokens](@) zijn geen [hoogte-markeringen](@).
 

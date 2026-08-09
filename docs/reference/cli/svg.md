@@ -1,4 +1,4 @@
-# `vsa svg` — één [vsa-bestand](@bron) naar SVG renderen
+# `vsa svg` — één vsa-bestand naar SVG renderen
 
 !!! note "Waartoe"
     Eén `.vsa`-bestand snel als SVG-afbeelding bekijken (scherm of afdruk).

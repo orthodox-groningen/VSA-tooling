@@ -1,4 +1,4 @@
-# `vsa blocks` — [VSA-blokken](@) in Markdown vinden
+# `vsa blocks` — VSA-blokken in Markdown vinden
 
 Vind [VSA-blokken](@) in een Markdownbestand en toon optioneel hun [metadata](@),
 body en [AST](@).

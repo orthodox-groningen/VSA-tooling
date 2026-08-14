@@ -369,16 +369,17 @@ STAFF_FONT_PT = "12"
 # wraps onto an extra system.
 LYRIC_FONT = STAFF_FONT
 LYRIC_FONT_PT = "12"
-# Pad B (zangstuk): layout-maten binnen een strofe (onzichtbare maatstrepen);
-# zichtbare maatstreep alleen aan strofe-eind. MuseScore vult systemen zelf.
+# Pad B (zangstuk): één maat per strofe (geen binnen-strofe-maatstrepen).
 # Template-layout blijft strakker (formuleblad).
 PAD_B_MAX_QUARTERS_PER_MEASURE = 8
 PAD_B_MIN_LAST_CHUNK_QUARTERS = 3.0
-# Instance spacing: genoeg voor noot + lettergreep, verder zo dicht mogelijk.
-PAD_B_MIN_NOTE_DISTANCE = "0.35"
-PAD_B_LYRICS_MIN_DISTANCE = "0.2"
-PAD_B_MEASURE_SPACING = "1.0"
-PAD_B_MIN_MEASURE_WIDTH = "4"
+# Instance spacing: leesbare lyrics (niet tegen elkaar / overlappend).
+PAD_B_MIN_NOTE_DISTANCE = "0.55"
+PAD_B_LYRICS_MIN_DISTANCE = "0.45"
+PAD_B_MEASURE_SPACING = "1.2"
+PAD_B_MIN_MEASURE_WIDTH = "5"
+# Recite-collapse alleen vanaf zoveel syllaben (anders aparte noten).
+RECITE_COLLAPSE_MIN_SYLLABLES = 3
 # MuseScore Division=480 → quarter = 480 ticks (lyric melisma extender).
 MSCX_DIVISION = 480
 DUR_TICKS = {
@@ -387,6 +388,8 @@ DUR_TICKS = {
     "quarter": MSCX_DIVISION,
     "half": MSCX_DIVISION * 2,
     "whole": MSCX_DIVISION * 4,
+    "breve": MSCX_DIVISION * 8,
+    "longa": MSCX_DIVISION * 16,
 }
 DUR_FRAC = {
     "16th": (1, 16),
@@ -394,6 +397,8 @@ DUR_FRAC = {
     "quarter": (1, 4),
     "half": (1, 2),
     "whole": (1, 1),
+    "breve": (2, 1),
+    "longa": (4, 1),
 }
 FRAME_FONT_PT = "14"
 TITLE_FONT_PT = "18"
@@ -709,6 +714,8 @@ DUR_QUARTERS = {
     "quarter": 1.0,
     "half": 2.0,
     "whole": 4.0,
+    "breve": 8.0,
+    "longa": 16.0,
     "eighth": 0.5,
     "16th": 0.25,
 }
@@ -739,9 +746,9 @@ def events_quarters(events: list[dict]) -> float:
     q = 0.0
     for ev in events:
         unit = DUR_QUARTERS[ev["ntype"]]
-        if ev["dots"] == 1:
+        if ev.get("dots") == 1:
             unit *= 1.5
-        elif ev["dots"] == 2:
+        elif ev.get("dots") == 2:
             unit *= 1.75
         q += unit
     return q
@@ -860,6 +867,9 @@ def prepare_pad_b_events(events: list[dict]) -> list[dict]:
     out = [dict(ev) for ev in events]
     i = 0
     while i < len(out):
+        if out[i].get("rest"):
+            i += 1
+            continue
         lyric = out[i].get("lyric")
         syllabic = out[i].get("syllabic") or "single"
         if lyric:
@@ -867,6 +877,11 @@ def prepare_pad_b_events(events: list[dict]) -> list[dict]:
             while j < len(out) and not out[j].get("lyric"):
                 j += 1
             if j > i + 1:
+                # Recite + spacer-rusten: geen slur/streepje; ticks blijven staan.
+                gap = out[i + 1 : j]
+                if out[i].get("recite") or any(e.get("rest") for e in gap):
+                    i = j
+                    continue
                 # Melisma: streepje op de lettergreep + extender + slur.
                 out[i]["lyric"] = str(lyric).rstrip("-") + "-"
                 span = (0, 1)
@@ -914,6 +929,7 @@ def split_events_for_layout(
             and quarters + eq > max_quarters
             and not in_melisma_tail(ev)
             and not current[-1].get("slur_next")
+            and not current[-1].get("keep_with_next")
         ):
             chunks.append(current)
             current = []
@@ -957,13 +973,14 @@ def _mscx_chord(
     lyric: str | None = None,
     syllabic: str = "single",
     lyric_ticks: int = 0,
+    lyric_align: str | None = None,
     slur_next: str | None = None,
     slur_prev: str | None = None,
 ) -> list[str]:
     pitch_list = [pitches] if isinstance(pitches, tuple) else list(pitches)
     lines: list[str] = []
     dots_xml = ""
-    if dots:
+    if dots and not recite:
         dots_xml = f"<dots>{dots}</dots>"
     stem_xml = ""
     if recite:
@@ -990,9 +1007,19 @@ def _mscx_chord(
         ticks_xml = ""
         if lyric_ticks:
             ticks_xml = f"<ticks>{lyric_ticks}</ticks><ticks_f>0</ticks_f>"
+        # MuseScore 4.7+: horizontale plaatsing = <position>, niet <align>
+        # (align is text-interne uitlijning; position knoopt aan de nootkop).
+        pos_xml = ""
+        align_xml = ""
+        if lyric_align:
+            horiz = lyric_align.split(",", 1)[0].strip()
+            pos_xml = f"<position>{escape(horiz)}</position>"
+            align_xml = f"<align>{escape(lyric_align)}</align>"
         lyrics_xml = (
             f"<Lyrics><syllabic>{syl}</syllabic>"
             f"{ticks_xml}"
+            f"{pos_xml}"
+            f"{align_xml}"
             f"<family>{LYRIC_FONT}</family>"
             f"<size>{LYRIC_FONT_PT}</size>"
             f"<text>{escape(lyric)}</text></Lyrics>"
@@ -1045,6 +1072,16 @@ def _mscx_voice(
     for ev in events:
         if anchors and ev.get("anchor"):
             lines.extend(_mscx_anchor_staff_texts(str(ev["anchor"])))
+        if ev.get("rest"):
+            vis = ""
+            if ev.get("visible") is False:
+                vis = "<visible>0</visible>"
+            dots_xml = f"<dots>{ev['dots']}</dots>" if ev.get("dots") else ""
+            lines.append(
+                f"<Rest>{vis}{dots_xml}"
+                f"<durationType>{ev['ntype']}</durationType></Rest>"
+            )
+            continue
         pitch_list = [ev["pitches"][k] for k in keys]
         lines.extend(
             _mscx_chord(
@@ -1056,6 +1093,7 @@ def _mscx_voice(
                 lyric=ev.get("lyric") if with_lyrics else None,
                 syllabic=ev.get("syllabic") or "single",
                 lyric_ticks=int(ev.get("lyric_ticks") or 0) if with_lyrics else 0,
+                lyric_align=ev.get("lyric_align") if with_lyrics else None,
                 slur_next=ev.get("slur_next"),
                 slur_prev=ev.get("slur_prev"),
             )
@@ -1267,11 +1305,9 @@ def render_mscx(
             is_last_phrase = pi == n_phr - 1
             if is_last_phrase:
                 last_quarters = int(round(events_quarters(events)))
-            chunks = (
-                split_events_for_layout(events)
-                if layout == "instance"
-                else [events]
-            )
+            # Instance: één maat per strofe — geen binnen-strofe-maatstrepen
+            # (recite-tekst + slotnoot + cadens horen visueel bij elkaar).
+            chunks = [events]
             for ci, chunk in enumerate(chunks):
                 measure_jobs.append(
                     (
@@ -1430,6 +1466,7 @@ def mapped_notes_to_events(notes: list, do: str, mode: str) -> list[dict]:
     for note in notes:
         template_event = note.template_event
         s_pitch = note.s_pitch
+        role = template_event.get("role")
         events.append(
             {
                 "pitches": {
@@ -1442,7 +1479,9 @@ def mapped_notes_to_events(notes: list, do: str, mode: str) -> list[dict]:
                 "ntype": note.duration.note_type,
                 "dots": note.duration.dots,
                 "optional": False,
-                "recite": False,
+                # Voor print-collapse; Coria-pad zet dit later uit of negeert het.
+                "recite": role == "recite",
+                "role": role,
                 "anchor": template_event.get("anchor") if note.show_anchor else None,
                 "lyric": note.lyric or None,
                 "syllabic": note.syllabic,
@@ -1451,22 +1490,146 @@ def mapped_notes_to_events(notes: list, do: str, mode: str) -> list[dict]:
     return events
 
 
+def _join_recite_lyrics(notes: list[dict]) -> str:
+    """Lettergrepen → leesbare tekst: streepjes binnen woorden, spaties ertussen."""
+    parts: list[str] = []
+    for e in notes:
+        raw = e.get("lyric")
+        if not raw:
+            continue
+        text = str(raw).rstrip("-")
+        syl = e.get("syllabic") or "single"
+        if parts and not parts[-1].endswith("-"):
+            parts.append(" ")
+        parts.append(text)
+        if syl in ("begin", "middle"):
+            parts.append("-")
+    return "".join(parts)
+
+
+def _invisible_rest(dur: int, ntype: str) -> dict:
+    return {
+        "pitches": {"S": ("C", 0, 4), "A": ("C", 0, 4), "T": ("C", 0, 3), "B": ("C", 0, 3)},
+        "dur": dur,
+        "ntype": ntype,
+        "dots": 0,
+        "optional": False,
+        "recite": False,
+        "rest": True,
+        "visible": False,
+    }
+
+
+def _recite_spacer_rests(text: str) -> list[dict]:
+    """Onzichtbare rusten na de ||O||: horizontale ruimte voor links-uitgelijnde tekst.
+
+    De ||O|| zelf blijft altijd half (geen punt); MuseScore left-alignt lyrics
+    met melisma-ticks over deze rusten, zodat de eerste lettergreep onder de
+    noot blijft en de maat niet tot longa opblaast (geen lege rust-rijen).
+    """
+    # ~0.4 tel per teken, min. 1 tel naast de half-||O||.
+    need_q = max(1, int(round(len(text) * 0.38)))
+    rests: list[dict] = []
+    remaining = need_q
+    while remaining >= 4:
+        rests.append(_invisible_rest(16, "whole"))
+        remaining -= 4
+    while remaining >= 2:
+        rests.append(_invisible_rest(8, "half"))
+        remaining -= 2
+    while remaining >= 1:
+        rests.append(_invisible_rest(4, "quarter"))
+        remaining -= 1
+    return rests
+
+
+def collapse_recite_for_print(events: list[dict]) -> list[dict]:
+    """Ongemarkeerde recite (≥3) → ||O|| + laatste lettergreep als kwart.
+
+    Alleen ``role=recite`` (ongemarkeerde VSA-syllaben). Elke VSA-scope
+    (``{/en}``, ``{moe__}``, ``{Ni__}``, …) blijft een eigen noot met VSA-duur —
+    nooit breve, nooit opgeslokt. Body-tekst onder de eerste noot (||O||);
+    laatste recite-syllabe = kwart; daarna template-cadens ongewijzigd.
+    Alleen MSCZ/print (niet Coria-MXL).
+    """
+    if not events:
+        return []
+    out: list[dict] = []
+    i = 0
+    q_dur, q_type, q_dots = ELM_DIV["~"]
+    while i < len(events):
+        if not events[i].get("recite"):
+            ev = dict(events[i])
+            ev["recite"] = False
+            out.append(ev)
+            i += 1
+            continue
+        j = i
+        while j < len(events) and events[j].get("recite"):
+            j += 1
+        run = [dict(e) for e in events[i:j]]
+        if len(run) < RECITE_COLLAPSE_MIN_SYLLABLES:
+            for note in run:
+                ev = dict(note)
+                ev["recite"] = False
+                out.append(ev)
+            i = j
+            continue
+        body, last = run[:-1], run[-1]
+        lyric = _join_recite_lyrics(body)
+        breve = dict(body[0])
+        dur, ntype, _dots = RECITE_PLAY_DIV  # altijd half, geen punt
+        spacers = _recite_spacer_rests(lyric or "")
+        lyric_ticks = sum(_event_ticks(r) for r in spacers)
+        breve["dur"] = dur
+        breve["ntype"] = ntype
+        breve["dots"] = 0
+        breve["recite"] = True
+        breve["lyric"] = lyric or None
+        breve["syllabic"] = "single"
+        breve["lyric_align"] = "left,baseline"
+        breve["lyric_ticks"] = lyric_ticks
+        breve["keep_with_next"] = True
+        for key in ("lyric_extend", "slur_next", "slur_prev"):
+            breve.pop(key, None)
+        last_ev = dict(last)
+        last_ev["recite"] = False
+        last_ev["dur"] = q_dur
+        last_ev["ntype"] = q_type
+        last_ev["dots"] = q_dots
+        for key in (
+            "lyric_ticks",
+            "lyric_extend",
+            "slur_next",
+            "slur_prev",
+            "lyric_align",
+        ):
+            last_ev.pop(key, None)
+        out.append(breve)
+        out.extend(spacers)
+        out.append(last_ev)
+        i = j
+    return out
+
+
 def render_pad_b_mscx(
     doc: dict,
     mapped: list[tuple[str, list]],
     *,
     title: str,
 ) -> str:
-    """Uitgeschreven tropaar: VSA-S + template A/T/B; instance-layout (dicht).
+    """Uitgeschreven tropaar: VSA-S + template A/T/B; instance-layout.
 
-    Layout mag een strofe in meerdere maten knippen; maatstrepen zijn alleen
-    zichtbaar aan strofe-eind (en final bar aan het slot).
+    Één maat per strofe. Recite (≥3 ongemarkeerd): ||O|| + slotlettergreep
+    als kwart; VSA-scopes blijven eigen noten met hun duur.
     """
     do = doc["do"]
     mode = doc.get("mode", "major")
     resolved: list[tuple[str | None, list[dict]]] = []
     for pid, notes in mapped:
-        events = prepare_pad_b_events(mapped_notes_to_events(notes, do, mode))
+        events = prepare_pad_b_events(
+            collapse_recite_for_print(mapped_notes_to_events(notes, do, mode))
+        )
         resolved.append((pid, events))
     return render_mscx(
         doc,
@@ -1562,14 +1725,20 @@ def render_pad_b_musicxml(
     *,
     title: str,
 ) -> str:
-    """Coria/playback MusicXML: vier parts; één maat per strofe; slurs/lyrics."""
+    """Coria/playback MusicXML: vier parts; één maat per strofe; slurs/lyrics.
+
+    Geen recite-collapse: elke syllabe blijft een noot (solo-oefenen).
+    """
     do = doc["do"]
     mode = doc.get("mode", "major")
     fifths = fifths_for(do, mode)
-    # Coria: maatstrepen alleen tussen strofes — geen split binnen een frase.
     measures: list[list[dict]] = []
     for _pid, notes in mapped:
-        events = prepare_pad_b_events(mapped_notes_to_events(notes, do, mode))
+        # Coria: alle syllaben als quarters; geen breve-printmodel.
+        raw = mapped_notes_to_events(notes, do, mode)
+        for ev in raw:
+            ev["recite"] = False
+        events = prepare_pad_b_events(raw)
         measures.append(events)
 
     out: list[str] = _pad_b_score_header(title)

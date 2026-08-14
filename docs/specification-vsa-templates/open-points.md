@@ -41,13 +41,11 @@
 
 ## Layout / print (MSCZ)
 
-- [ ] **Reciteertoon in uitgewerkte MSCZ (print):** nu krijgt elke recite-syllabe
-      een gewone noot; beter zoals op het formuleblad (`template.mscz`): één
-      [reciteertoon](@) (breve/`||O||`) met daaronder de te reciteren tekst.
-      De **laatste lettergreep** van dat recitatief moet wél een **eigen noot**
-      krijgen, zodat zangers duidelijk zien waar het recitatief eindigt en
-      cadens (andere lengte/hoogte) begint. Doel: leesbaardere PDF/afdruk van
-      uitgewerkte zangstukken.
+- [x] **Reciteertoon in uitgewerkte MSCZ (print):** recite-reeks → één breve
+      (`||O||`) met daaronder de tekst; **laatste lettergreep** van het
+      recitatief krijgt een eigen gewone noot (overgang naar cadens). Coria-MXL
+      blijft per-syllabe-noten. Zie `collapse_recite_for_print()` in
+      `scripts/render_vsa_template_musicxml.py`.
 
 ## Publicatie / UX (later)
 

@@ -106,24 +106,25 @@ def test_elia_r3_voorloper_is_three_quarters() -> None:
     assert all(n.duration.note_type == "quarter" for n in mapped[2][1][4:7])
 
 
-def test_elia_pad_b_mscx_has_lyrics_no_repeats_no_breve() -> None:
+def test_elia_pad_b_mscx_has_lyrics_no_repeats_with_recite_breve() -> None:
     doc = _template()
     mapped = map_vsa_to_template(doc, _elia_text())
     mscx = render.render_pad_b_mscx(doc, mapped, title="T4-06 — Profeet Elia (pad B)")
     staff1 = re.search(r'<Staff id="1">(.*?)</Staff>', mscx, re.DOTALL)
     assert staff1
     body = staff1.group(1)
-    # Layout mag splitsen; onzichtbare binnen-strofe-maten via <BarLine visible=0>.
+    # Één maat per strofe; geen verborgen binnen-strofe-maatstrepen.
     n_meas = body.count("<Measure len=")
-    n_hidden = body.count("<subtype>normal</subtype><visible>0</visible>")
-    assert n_meas >= 7
-    assert n_meas - n_hidden == 7
+    assert n_meas == 7
+    assert "<subtype>normal</subtype><visible>0</visible>" not in body
     assert "<startRepeat/>" not in mscx
-    assert "<headType>breve</headType>" not in mscx
+    # Recite-print: body onder ||O||, laatste recite-lettergreep eigen noot.
+    assert "<headType>breve</headType>" in mscx
+    assert "<text>Gij waart</text>" in mscx
+    assert "<position>left</position>" in mscx
+    assert "<align>left,baseline</align>" in mscx
+    assert "<text>een</text>" in mscx
     assert "<Lyrics>" in mscx
-    assert "<text>Gij</text>" in mscx
-    assert "<text>vlees</text>" in mscx
-    assert "<text>grond-</text>" in mscx or "<text>Voor-</text>" in mscx
     assert f"<lyricsOddFontFace>{render.LYRIC_FONT}</lyricsOddFontFace>" in mscx
     assert f"<family>{render.LYRIC_FONT}</family>" in mscx
     assert f"<minNoteDistance>{render.PAD_B_MIN_NOTE_DISTANCE}</minNoteDistance>" in mscx
@@ -151,19 +152,154 @@ def test_elia_pad_b_mscx_has_lyrics_no_repeats_no_breve() -> None:
     assert body.count('Spanner type="Slur"') >= 2
 
 
+def test_collapse_recite_for_print_elia_r1() -> None:
+    doc = _template()
+    mapped = map_vsa_to_template(doc, _elia_text())
+    events = render.collapse_recite_for_print(
+        render.mapped_notes_to_events(mapped[0][1], doc["do"], doc["mode"])
+    )
+    assert events[0]["recite"] is True
+    assert events[0]["ntype"] == "half"
+    assert events[0]["dots"] == 0
+    assert events[0]["lyric"] == "Gij waart"
+    assert events[0].get("lyric_align") == "left,baseline"
+    assert events[0].get("lyric_ticks", 0) > 0
+    assert any(e.get("rest") for e in events[1:])
+    slot = next(e for e in events[1:] if not e.get("rest"))
+    assert slot["lyric"] == "een"
+    assert slot["ntype"] == "quarter"
+    assert slot["recite"] is False
+
+
+def test_collapse_recite_keeps_ni_whole_and_ter_quarter() -> None:
+    """``…pries-ter {Ni__}ko{\\laas_}`` → ter kwart, Ni hele noot, niet onder ||O||."""
+    doc = _template()
+    text = (
+        Path("docs/specification-vsa-templates/library/tropaar-toon-4")
+        / "examples/corpus/T4-11-nicolaas-van-myra.vsa"
+    ).read_text(encoding="utf-8")
+    mapped = map_vsa_to_template(doc, text)
+    pid, notes = next(
+        (p, n) for p, n in mapped if any(x.lyric == "Ni" for x in n)
+    )
+    assert pid == "2"
+    events = render.collapse_recite_for_print(
+        render.mapped_notes_to_events(notes, doc["do"], doc["mode"])
+    )
+    lyrics = [
+        (e.get("lyric"), e.get("recite"), e.get("ntype"))
+        for e in events
+        if not e.get("rest")
+    ]
+    assert lyrics[0][0] == "Va"
+    assert lyrics[0][1] is False  # scope {/Va} — eigen noot, geen breve
+    assert ("ter", False, "quarter") in lyrics
+    assert ("Ni", False, "whole") in lyrics
+    assert ("ko", False, "quarter") in lyrics
+
+
+def test_collapse_recite_for_print_single_syllable() -> None:
+    events = [
+        {
+            "pitches": {"S": ("A", 0, 4)},
+            "dur": 4,
+            "ntype": "quarter",
+            "dots": 0,
+            "optional": False,
+            "recite": True,
+            "lyric": "de",
+            "syllabic": "single",
+        }
+    ]
+    out = render.collapse_recite_for_print(events)
+    assert len(out) == 1
+    assert out[0]["recite"] is False
+    assert out[0]["lyric"] == "de"
+
+
+def test_collapse_recite_for_print_two_syllables_stay_separate() -> None:
+    """Nicolaas: „Als de …“ — te kort voor ||O||; aparte noten."""
+    events = [
+        {
+            "pitches": {"S": ("A", 0, 4)},
+            "dur": 4,
+            "ntype": "quarter",
+            "dots": 0,
+            "optional": False,
+            "recite": True,
+            "lyric": "Als",
+            "syllabic": "single",
+        },
+        {
+            "pitches": {"S": ("A", 0, 4)},
+            "dur": 4,
+            "ntype": "quarter",
+            "dots": 0,
+            "optional": False,
+            "recite": True,
+            "lyric": "de",
+            "syllabic": "single",
+        },
+    ]
+    out = render.collapse_recite_for_print(events)
+    assert len(out) == 2
+    assert all(e["recite"] is False for e in out)
+    assert [e["lyric"] for e in out] == ["Als", "de"]
+
+
+def test_collapse_recite_scopes_stay_own_notes() -> None:
+    """``{/en} het … zacht{moe__}dig{\\heid_}`` — scopes eigen noten; zacht = slotkwart."""
+    doc = _template()
+    text = (
+        Path("docs/specification-vsa-templates/library/tropaar-toon-4")
+        / "examples/corpus/T4-11-nicolaas-van-myra.vsa"
+    ).read_text(encoding="utf-8")
+    mapped = map_vsa_to_template(doc, text)
+    notes = next(
+        n for p, n in mapped if any(x.lyric == "moe" for x in n)
+    )
+    events = render.collapse_recite_for_print(
+        render.mapped_notes_to_events(notes, doc["do"], doc["mode"])
+    )
+    lyrics = [
+        (e.get("lyric"), e.get("recite"), e.get("ntype"))
+        for e in events
+        if not e.get("rest")
+    ]
+    assert lyrics[0] == ("en", False, "quarter")
+    assert lyrics[1][1] is True  # breve
+    assert "het" in (lyrics[1][0] or "") and "zacht" not in (lyrics[1][0] or "")
+    assert ("zacht", False, "quarter") in lyrics
+    assert ("moe", False, "whole") in lyrics
+    assert ("dig", False, "quarter") in lyrics
+    assert ("heid", False, "half") in lyrics
+
+
+def test_pad_b_recite_mscx_no_dots_has_hidden_spacers() -> None:
+    doc = _template()
+    mapped = map_vsa_to_template(doc, _elia_text())
+    mscx = render.render_pad_b_mscx(doc, mapped, title="Elia")
+    # Recite-chord: breve-kop, geen <dots> vóór durationType van die chord.
+    for m in re.finditer(
+        r"<Chord>(.*?)<headType>breve</headType>.*?</Chord>",
+        mscx,
+        re.DOTALL,
+    ):
+        chunk = m.group(1)
+        assert "<dots>" not in chunk
+        assert "<durationType>half</durationType>" in chunk
+    assert "<Rest><visible>0</visible>" in mscx
+    assert "<position>left</position>" in mscx
+    assert "<align>left,baseline</align>" in mscx
+    assert "durationType>longa</durationType>" not in mscx
+
+
 def test_elia_pad_b_hyphens_and_melisma_slurs() -> None:
     doc = _template()
     mapped = map_vsa_to_template(doc, _elia_text())
     mscx = render.render_pad_b_mscx(doc, mapped, title="Elia pad B")
-    assert "<text>Voor-</text>" in mscx
-    assert "<text>lo-</text>" in mscx
-    assert "<text>per</text>" in mscx
-    assert "<text>ge-</text>" in mscx
-    assert "<text>ne-</text>" in mscx
-    assert "<text>zing</text>" in mscx
-    # Geplakte VSA-woorden: {En_}gel, pro{fe_}{\ten_}
-    assert "<text>En-</text>" in mscx
-    assert "<text>gel</text>" in mscx
+    # Recite-collapse: „grond-slag der“ onder ||O||; „pro-fe-ten“ cadens.
+    assert "grond-slag der" in mscx or "grond slag der" in mscx
     assert "<text>pro-</text>" in mscx
     assert "<text>fe-</text>" in mscx
     assert "<text>ten</text>" in mscx
@@ -171,7 +307,10 @@ def test_elia_pad_b_hyphens_and_melisma_slurs() -> None:
     assert "<text>li-</text>" in mscx or "<text>e-</text>" in mscx
     assert 'Spanner type="Slur"' in mscx
     assert "<ticks>" in mscx
-
+    assert "<headType>breve</headType>" in mscx
+    assert "<align>left,baseline</align>" in mscx
+    assert "<text>En-</text>" in mscx
+    assert "<text>gel</text>" in mscx
 
 def test_elia_glued_words_get_syllabic() -> None:
     stanzas = extract_stanza_notes(_elia_text())
@@ -196,10 +335,9 @@ def test_elia_pad_b_instance_layout_packs_systems() -> None:
     assert staff1
     body = staff1.group(1)
     n_meas = body.count("<Measure len=")
-    n_hidden = body.count("<subtype>normal</subtype><visible>0</visible>")
     n_breaks = body.count("<LayoutBreak>")
-    assert n_meas >= 7
-    assert n_meas - n_hidden == 7
+    assert n_meas == 7
+    assert "<subtype>normal</subtype><visible>0</visible>" not in body
     assert n_breaks == 0
 
 
@@ -287,8 +425,8 @@ def test_elia_pad_b_visible_barline_per_stanza() -> None:
     assert staff1
     body = staff1.group(1)
     n_meas = body.count("<Measure len=")
-    n_hidden = body.count("<subtype>normal</subtype><visible>0</visible>")
-    assert n_meas - n_hidden == 7
+    assert n_meas == 7
+    assert "<subtype>normal</subtype><visible>0</visible>" not in body
     lens = re.findall(r'<Measure len="([^"]+)">', body)
     assert all("/" in x for x in lens)
 

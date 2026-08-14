@@ -116,12 +116,10 @@ def test_corpus_instances_vsa_mscz_mxl() -> None:
             pid = "T4-07a"
         else:
             pid = stem[:5]
-        assert _staff1_block(mscx).count("<Measure len=") >= EXPECTED_STANZAS[pid]
-        # Zichtbare strofe-einden: maten zonder verborgen BarLine.
         body = _staff1_block(mscx)
-        n_meas = body.count("<Measure len=")
-        n_hidden = body.count("<subtype>normal</subtype><visible>0</visible>")
-        assert n_meas - n_hidden == EXPECTED_STANZAS[pid]
+        # Één maat per strofe; geen verborgen binnen-strofe-maatstrepen.
+        assert body.count("<Measure len=") == EXPECTED_STANZAS[pid]
+        assert "<subtype>normal</subtype><visible>0</visible>" not in body
     # Geen oude pad-b-namen meer.
     leftovers = list(CORPUS_DIR.glob("*.pad-b.*"))
     assert not leftovers, leftovers

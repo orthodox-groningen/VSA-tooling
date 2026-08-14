@@ -6,7 +6,7 @@ import re
 from dataclasses import dataclass
 from pathlib import Path
 
-# Volgorde = sectie Toon 4 in onderzoeks-troparen-en-kondaken.md (12 stukken).
+# Volgorde = sectie Toon 4 in onderzoeks-troparen-en-kondaken.md.
 CORPUS_ENTRIES: tuple[tuple[str, str, str], ...] = (
     ("T4-01", "johannes-voorloper", "Geboorte Johannes Voorloper"),
     ("T4-02", "johannes-shanghai", "Johannes Shanghai / San Francisco"),
@@ -15,6 +15,7 @@ CORPUS_ENTRIES: tuple[tuple[str, str, str], ...] = (
     ("T4-05", "h-marina", "H. Marina"),
     ("T4-06", "profeet-elia", "Profeet Elia"),
     ("T4-07", "geboorte-moeder-gods", "Geboorte Moeder Gods"),
+    ("T4-07a", "geboorte-moeder-gods-liturgikon", "Geboorte Moeder Gods (Liturgikon)"),
     ("T4-08", "tempelgang-welbehagen", "Tempelgang (begin welbehagen)"),
     ("T4-09", "tempelgang-alreine-tempel", "Tempelgang (alreine Tempel)"),
     ("T4-10", "apostel-andreas", "Apostel Andreas"),
@@ -73,8 +74,8 @@ def extract_toon4_vsa_blocks(markdown_path: Path) -> list[str]:
     blocks: list[str] = []
     for match in re.finditer(r"::: vsa-notatie\n(.*?):::", section, re.DOTALL):
         raw = match.group(1).strip()
-        lines = [ln for ln in raw.splitlines() if not ln.strip().startswith("<!--")]
-        blocks.append("\n".join(lines).strip())
+        # HTML-commentaar blijft in de bron (parser negeert het bij zingen).
+        blocks.append(raw)
     return blocks
 
 

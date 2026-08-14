@@ -90,14 +90,14 @@ aandoet.
    **interpretatie** (welk moment B beweegt); PDF-audit kan dat bijstellen.
 3. Alle template-graden blijven `provisional`.
 
-### MusicXML-bewijs (handmatig)
+### MusicXML-bewijs
 
-Bestand:
-[`../examples/elia-r1-pad-b.musicxml`](../examples/elia-r1-pad-b.musicxml)
+Automatische pipeline (alle 7 regels):
+[`../examples/elia.mscz`](../examples/elia.mscz) /
+[`../examples/elia.mxl`](../examples/elia.mxl).
 
-- Vier partijen S/A/T/B, één frase, lyrics op S.
-- Historisch handproof; de automatische pipeline staat in
-  [`../examples/elia.pad-b.mscz`](../examples/elia.pad-b.mscz) (alle 7 regels).
+- Vier partijen S/A/T/B (MXL); MuseScore-MSCZ: SA/TB-chords.
+- Lyrics op alle stemmen; pitches `provisional`.
 
 ---
 
@@ -110,7 +110,7 @@ Bestand:
 | grondslag der pro | recite     | —              | H1                                                                |
 | fe / ten          | cadence    | `l.st.` + slot | VSA 2 scopes vs template-cadens → H5 split/merge (parallel A/T/B) |
 
-Regel 2 zit in de automatische pad-B-MSCZ (optional link overgeslagen, `{/de}` = `e.st.`).
+Regel 2 zit in de automatische MSCZ (optional link overgeslagen, `{/de}` = `e.st.`).
 
 ## Bevinding
 
@@ -124,4 +124,4 @@ Regel 2 zit in de automatische pad-B-MSCZ (optional link overgeslagen, `{/de}` =
 
 1. Menselijke pitch-audit van frase `1` tegen PDF (vooral B op pre-cadens en
    of `#re` ooit verplicht is).
-2. Stap 3: dezelfde pad-B-pipeline op de overige 11 corpusstukken.
+2. Event-niveau op overige corpusstukken (zie [`corpus.md`](corpus.md)).

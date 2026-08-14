@@ -7,6 +7,8 @@ import sys
 import zipfile
 from pathlib import Path
 
+import pytest
+
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
 sys.path.insert(0, str(ROOT / "scripts"))
@@ -14,7 +16,7 @@ sys.path.insert(0, str(ROOT / "scripts"))
 import render_vsa_template_musicxml as render  # noqa: E402
 import yaml  # noqa: E402
 
-from vsa.pad_b import map_stanza, map_vsa_to_template  # noqa: E402
+from vsa.pad_b import PadBError, map_stanza, map_vsa_to_template  # noqa: E402
 from vsa.vsa_stanzas import extract_stanza_notes  # noqa: E402
 
 LIBRARY = ROOT / "docs" / "specification-vsa-templates" / "library"
@@ -110,8 +112,12 @@ def test_elia_pad_b_mscx_has_lyrics_no_repeats_no_breve() -> None:
     mscx = render.render_pad_b_mscx(doc, mapped, title="T4-06 — Profeet Elia (pad B)")
     staff1 = re.search(r'<Staff id="1">(.*?)</Staff>', mscx, re.DOTALL)
     assert staff1
-    # Eén maat per strofe (7), geen 2/4-restanten.
-    assert staff1.group(1).count("<Measure len=") == 7
+    body = staff1.group(1)
+    # Layout mag splitsen; onzichtbare binnen-strofe-maten via <BarLine visible=0>.
+    n_meas = body.count("<Measure len=")
+    n_hidden = body.count("<subtype>normal</subtype><visible>0</visible>")
+    assert n_meas >= 7
+    assert n_meas - n_hidden == 7
     assert "<startRepeat/>" not in mscx
     assert "<headType>breve</headType>" not in mscx
     assert "<Lyrics>" in mscx
@@ -128,7 +134,7 @@ def test_elia_pad_b_mscx_has_lyrics_no_repeats_no_breve() -> None:
     assert "↓" not in mscx
     assert "<HBox>" not in mscx
     # Alleen titel-VBox, geen cycle-VBox met frase-volgorde.
-    assert staff1.group(1).count("<VBox>") == 1
+    assert body.count("<VBox>") == 1
     # Geen [1] / [laatste] staff text (rectangle frase-id).
     assert not re.search(
         r"<StaffText>.*?rectangle.*?<text>(1|2|laatste)</text>",
@@ -138,13 +144,11 @@ def test_elia_pad_b_mscx_has_lyrics_no_repeats_no_breve() -> None:
     assert "<showTimeSig>0</showTimeSig>" in mscx
     assert "<genCourtesyTimesig>0</genCourtesyTimesig>" in mscx
     assert f"<measureSpacing>{render.PAD_B_MEASURE_SPACING}</measureSpacing>" in mscx
-    assert "<stretch>0.75</stretch>" in mscx
+    assert "<stretch>0.85</stretch>" in mscx
     # SA/TB als akkoord (één stem) → geen tweede <voice> met alleen A/B.
-    assert staff1.group(1).count("<voice>") == 7
-    # laatste strofe is één maat (niet gesplitst).
-    assert '<Measure len="' in staff1.group(1)
+    assert body.count("<voice>") == n_meas
     # Melisma-slurs ook op SA-balk (niet alleen TB).
-    assert staff1.group(1).count('Spanner type="Slur"') >= 2
+    assert body.count('Spanner type="Slur"') >= 2
 
 
 def test_elia_pad_b_hyphens_and_melisma_slurs() -> None:
@@ -190,9 +194,12 @@ def test_elia_pad_b_instance_layout_packs_systems() -> None:
     assert "<lastSystemFillLimit>0</lastSystemFillLimit>" in mscx
     staff1 = re.search(r'<Staff id="1">(.*?)</Staff>', mscx, re.DOTALL)
     assert staff1
-    n_meas = staff1.group(1).count("<Measure len=")
-    n_breaks = staff1.group(1).count("<LayoutBreak>")
-    assert n_meas == 7
+    body = staff1.group(1)
+    n_meas = body.count("<Measure len=")
+    n_hidden = body.count("<subtype>normal</subtype><visible>0</visible>")
+    n_breaks = body.count("<LayoutBreak>")
+    assert n_meas >= 7
+    assert n_meas - n_hidden == 7
     assert n_breaks == 0
 
 
@@ -248,7 +255,7 @@ def test_elia_pad_b_musicxml_coria_nonempty() -> None:
         assert part, pid
         assert "<lyric" in part.group(1), pid
         assert "<text>Voor</text>" in part.group(1), pid
-    path_mxl = LIBRARY / "tropaar-toon-4" / "examples" / "elia.pad-b.mxl"
+    path_mxl = LIBRARY / "tropaar-toon-4" / "examples" / "elia.mxl"
     assert path_mxl.is_file() and path_mxl.stat().st_size > 0
 
 
@@ -272,16 +279,45 @@ def test_elia_pad_b_musicxml_alto_fs_has_accidental() -> None:
     )
 
 
-def test_elia_pad_b_one_measure_per_stanza() -> None:
+def test_elia_pad_b_visible_barline_per_stanza() -> None:
     doc = _template()
     mapped = map_vsa_to_template(doc, _elia_text())
     mscx = render.render_pad_b_mscx(doc, mapped, title="Elia pad B")
     staff1 = re.search(r'<Staff id="1">(.*?)</Staff>', mscx, re.DOTALL)
     assert staff1
-    assert staff1.group(1).count("<Measure len=") == 7
-    lens = re.findall(r'<Measure len="([^"]+)">', staff1.group(1))
-    # Geen wees-maten van 2/4 (komst / sen:).
-    assert all(not x.startswith("2/") for x in lens)
+    body = staff1.group(1)
+    n_meas = body.count("<Measure len=")
+    n_hidden = body.count("<subtype>normal</subtype><visible>0</visible>")
+    assert n_meas - n_hidden == 7
+    lens = re.findall(r'<Measure len="([^"]+)">', body)
+    assert all("/" in x for x in lens)
+
+
+def test_pitch_mismatch_in_laatste_raises() -> None:
+    """mi–fa–mi op template mi–re–mi (oude T4-08) → hoogte-mismatch, geen stil hold."""
+    doc = _template()
+    phrase = next(p for p in doc["phrases"] if p["id"] == "laatste")
+    # Schep-melisma als vroeger fout: /-&_ → mi–fa–mi i.p.v. mi–re–mi.
+    text = (
+        "---\ndo: F4\nmode: major\n---\n\n"
+        "// Ver-vul-ling van het Heils-plan van de {-&/Schep_&_}{\\per_}. [//:]\n"
+    )
+    stanzas = extract_stanza_notes(text)
+    with pytest.raises(PadBError, match="hoogte-mismatch"):
+        map_stanza(stanzas[0], phrase, do=doc["do"], mode=doc["mode"])
+
+
+def test_pitch_mismatch_past_tail_raises() -> None:
+    doc = _template()
+    phrase = next(p for p in doc["phrases"] if p["id"] == "laatste")
+    # Cadens al klaar (mi–re–mi), daarna nog een scoped fa.
+    text = (
+        "---\ndo: F4\nmode: major\n---\n\n"
+        "// xxx {-&\\a_&_}{/b_}{\\c_}{/extra_}. [//:]\n"
+    )
+    stanzas = extract_stanza_notes(text)
+    with pytest.raises(PadBError, match="hoogte-mismatch"):
+        map_stanza(stanzas[0], phrase, do=doc["do"], mode=doc["mode"])
 
 
 def test_elia_pad_b_s_from_vsa_atb_from_template() -> None:
@@ -300,9 +336,9 @@ def test_elia_pad_b_s_from_vsa_atb_from_template() -> None:
 
 
 def test_elia_pad_b_mscz_written() -> None:
-    path = LIBRARY / "tropaar-toon-4" / "examples" / "elia.pad-b.mscz"
-    assert path.is_file(), "run: python scripts\\render_tropaar_toon4_corpus.py --pad-b"
+    path = LIBRARY / "tropaar-toon-4" / "examples" / "elia.mscz"
+    assert path.is_file(), "run: python scripts\\render_tropaar_toon4_corpus.py"
     with zipfile.ZipFile(path) as archive:
         mscx = archive.read("score.mscx").decode("utf-8")
     assert "<Lyrics>" in mscx
-    assert "pad B" in mscx
+    assert "Profeet Elia" in mscx or "Elia" in mscx

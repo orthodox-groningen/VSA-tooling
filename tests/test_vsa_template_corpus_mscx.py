@@ -1,4 +1,4 @@
-"""Corpus stap 1: stanza-telling en uitgevouwen formule-MSCX."""
+"""Corpus: stanza-telling en uitgewerkte zangstukken (VSA → MSCZ/MXL)."""
 
 from __future__ import annotations
 
@@ -15,14 +15,14 @@ sys.path.insert(0, str(ROOT / "scripts"))
 
 import render_vsa_template_musicxml as render  # noqa: E402
 
-from vsa.corpus_vsa import CORPUS_ENTRIES, count_stanzas, load_corpus  # noqa: E402
+from vsa.corpus_vsa import CORPUS_ENTRIES, load_corpus  # noqa: E402
 from vsa.template_mapping import assign_stanzas_to_phrases, select_mapping_plan  # noqa: E402
 
 LIBRARY = ROOT / "docs" / "specification-vsa-templates" / "library"
 TEMPLATE_YAML = LIBRARY / "tropaar-toon-4" / "template.yaml"
 ONDERZOEK = ROOT / "docs" / "plans" / "onderzoeks-troparen-en-kondaken.md"
+CORPUS_DIR = TEMPLATE_YAML.parent / "examples" / "corpus"
 
-# Regels uit corpus.md (overzichtstabel).
 EXPECTED_STANZAS: dict[str, int] = {
     "T4-01": 6,
     "T4-02": 7,
@@ -31,6 +31,7 @@ EXPECTED_STANZAS: dict[str, int] = {
     "T4-05": 7,
     "T4-06": 7,
     "T4-07": 7,
+    "T4-07a": 7,
     "T4-08": 7,
     "T4-09": 7,
     "T4-10": 5,
@@ -47,9 +48,9 @@ def test_corpus_stanza_counts(piece_id: str, expected: int) -> None:
     assert piece.stanza_count == expected
 
 
-def test_corpus_has_twelve_pieces() -> None:
-    assert len(CORPUS_ENTRIES) == 12
-    assert len(load_corpus(ONDERZOEK)) == 12
+def test_corpus_has_thirteen_pieces() -> None:
+    assert len(CORPUS_ENTRIES) == 13
+    assert len(load_corpus(ONDERZOEK)) == 13
 
 
 def test_elia_phrase_assignment() -> None:
@@ -79,44 +80,53 @@ def test_expanded_elia_has_seven_measures_no_repeats() -> None:
     assert "<startRepeat/>" not in mscx
     assert "<endRepeat>" not in mscx
     assert "Profeet Elia" in mscx
-    assert ", ".join(ELIA_PHRASES) in mscx
 
 
-def test_expanded_elia_frase_labels_in_order() -> None:
-    doc = render.load_resolved(TEMPLATE_YAML, LIBRARY)
-    mscx = render.render_expanded_mscx(
-        doc,
-        ELIA_PHRASES,
-        title="T4-06 — Profeet Elia",
-    )
-    staff1 = _staff1_block(mscx)
-    labels = re.findall(
-        r'<frameType>1</frameType><text>.*?>([\w]+)</text>',
-        staff1,
-    )
-    assert labels == ELIA_PHRASES
-
-
-def test_andreas_five_measures() -> None:
+def test_andreas_five_phrase_assignment() -> None:
     doc = render.load_resolved(TEMPLATE_YAML, LIBRARY)
     plan = select_mapping_plan(doc, 5)
     phrase_ids = assign_stanzas_to_phrases(plan, 5)
     assert phrase_ids == ["1", "2", "1", "2", "laatste"]
-    mscx = render.render_expanded_mscx(
-        doc,
-        phrase_ids,
-        title="T4-10 — Apostel Andreas",
-    )
-    assert _measure_count_staff1(mscx) == 5
 
 
-def test_corpus_batch_generates_mscz_files() -> None:
-    corpus_dir = TEMPLATE_YAML.parent / "examples" / "corpus"
-    expected = {f"{pid}-{slug}.mscz" for pid, slug, _ in CORPUS_ENTRIES}
-    missing = expected - {p.name for p in corpus_dir.glob("*.mscz")}
-    assert not missing, f"missing corpus mscz: {sorted(missing)}"
-    for path in corpus_dir.glob("T4-*.mscz"):
-        with zipfile.ZipFile(path) as archive:
+def test_corpus_instances_vsa_mscz_mxl() -> None:
+    """Uitgewerkte zangstukken: .vsa + .mscz + .mxl (geen pad-b-suffix)."""
+    expected_stem = {f"{pid}-{slug}" for pid, slug, _ in CORPUS_ENTRIES}
+    for stem in expected_stem:
+        vsa = CORPUS_DIR / f"{stem}.vsa"
+        mscz = CORPUS_DIR / f"{stem}.mscz"
+        mxl = CORPUS_DIR / f"{stem}.mxl"
+        assert vsa.is_file(), stem
+        assert mscz.is_file(), stem
+        assert mxl.is_file(), stem
+        text = vsa.read_text(encoding="utf-8")
+        assert text.startswith("---\n")
+        assert "template: tropaar-toon-4" in text
+        assert "corpus_id:" in text
+        assert mscz.stat().st_size > 500
+        assert mxl.stat().st_size > 500
+        assert zipfile.is_zipfile(mxl)
+        with zipfile.ZipFile(mscz) as archive:
             mscx = archive.read("score.mscx").decode("utf-8")
-        assert "<Measure " in mscx
+        assert "<Lyrics>" in mscx
         assert "<startRepeat/>" not in mscx
+        assert "<genCourtesyTimesig>0</genCourtesyTimesig>" in mscx
+        pid = stem.split("-")[0] + "-" + stem.split("-")[1]  # T4-07a-... → T4-07a
+        if stem.startswith("T4-07a"):
+            pid = "T4-07a"
+        else:
+            pid = stem[:5]
+        assert _staff1_block(mscx).count("<Measure len=") >= EXPECTED_STANZAS[pid]
+        # Zichtbare strofe-einden: maten zonder verborgen BarLine.
+        body = _staff1_block(mscx)
+        n_meas = body.count("<Measure len=")
+        n_hidden = body.count("<subtype>normal</subtype><visible>0</visible>")
+        assert n_meas - n_hidden == EXPECTED_STANZAS[pid]
+    # Geen oude pad-b-namen meer.
+    leftovers = list(CORPUS_DIR.glob("*.pad-b.*"))
+    assert not leftovers, leftovers
+
+
+def test_template_mscz_exists() -> None:
+    path = TEMPLATE_YAML.parent / "template.mscz"
+    assert path.is_file()

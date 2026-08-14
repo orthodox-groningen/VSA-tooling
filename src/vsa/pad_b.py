@@ -79,6 +79,7 @@ def map_stanza(
     prefix, recite, tail = split_phrase_events(events)
     index = 0
     out: list[MappedNote] = []
+    phrase_id = str(phrase.get("id", "?"))
 
     for event in prefix:
         index = _take_prefix_event(notes, index, event, out, do, mode)
@@ -91,7 +92,9 @@ def map_stanza(
             # Geen ongemarkeerde recite-syllaben: skip recite (H7).
             pass
 
-    _map_tail(notes, index, tail, out, do, mode)
+    _map_tail(
+        notes, index, tail, out, do, mode, phrase_id=phrase_id
+    )
     return out
 
 
@@ -110,7 +113,9 @@ def map_vsa_to_template(
     for pid, notes in zip(phrase_ids, stanzas, strict=True):
         if pid not in by_id:
             raise PadBError(f"unknown phrase id {pid!r}")
-        mapped.append((pid, map_stanza(notes, by_id[pid], do=do, mode=mode)))
+        mapped.append(
+            (pid, map_stanza(notes, by_id[pid], do=do, mode=mode))
+        )
     return mapped
 
 
@@ -141,27 +146,47 @@ def _map_tail(
     out: list[MappedNote],
     do: str,
     mode: str,
+    *,
+    phrase_id: str | None = None,
 ) -> None:
     event_i = 0
     llgr_from: int | None = next(
         (i for i, ev in enumerate(tail) if ev.get("anchor") == "l.lgr."),
         None,
     )
+    where = f"frase {phrase_id!r}" if phrase_id is not None else "frase"
+
+    def _pitch_mismatch(note: VsaNote, *, remaining: list[dict[str, Any]]) -> PadBError:
+        got = f"{note.pitch}"
+        expected = [
+            str(ev.get("pitches", {}).get("S"))
+            for ev in remaining
+            if not ev.get("optional")
+        ]
+        lyric = note.lyric or "(melisma)"
+        return PadBError(
+            f"hoogte-mismatch in {where}: VSA {lyric!r} = {got}, "
+            f"geen passend template-S-slot meer "
+            f"(verwacht o.a. {expected or '—'})"
+        )
+
     while index < len(notes):
         note = notes[index]
         if event_i >= len(tail):
             if not out:
-                raise PadBError("cadence notes but no template tail")
-            out.append(_assign(note, out[-1].template_event, show_anchor=False))
-            index += 1
-            continue
-        matched = _next_matching_event(note, tail, event_i, do, mode)
-        if matched is None:
-            if out:
-                out.append(_assign(note, out[-1].template_event, show_anchor=False))
+                raise PadBError(f"cadensnoten zonder template-tail in {where}")
+            last = out[-1].template_event
+            if pitches_match(note.pitch, last["pitches"]["S"], do, mode):
+                # H6: extra syllabe opzelfde slot-akkoord.
+                out.append(_assign(note, last, show_anchor=False))
                 index += 1
                 continue
-            raise PadBError(f"no template slot for {note.lyric!r}")
+            raise _pitch_mismatch(note, remaining=[])
+        matched = _next_matching_event(note, tail, event_i, do, mode)
+        if matched is None:
+            # Geen stil hold meer op het vorige akkoord bij verkeerde hoogte
+            # (was: T4-08 mi–fa–mi op template mi–re–mi).
+            raise _pitch_mismatch(note, remaining=tail[event_i:])
         event_i = matched
         event = tail[event_i]
         out.append(_assign(note, event, show_anchor=not any(

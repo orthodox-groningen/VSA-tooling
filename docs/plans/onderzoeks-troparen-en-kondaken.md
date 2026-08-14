@@ -17,7 +17,7 @@
 
 ::: vsa-notatie
 <!-- Tropaar van de Woensdag Toon 1 -->
-T.1 [:] Heer red Uw {/&/volk_&_} {\\en} ze{/gen} {/Uw} {/erf_}{deel_}, *
+[:] Heer red Uw {/&/volk_&_} {\\en} ze{/gen} {/Uw} {/erf_}{deel_}, *
 {\schenk} schenk aan de orthodoxe christenen de over{\win_}{\ning_}, **
 {//en} bescherm uw Gemeente {/door_} {Uw_} {\Kruis_}. [//:]
 :::
@@ -38,7 +38,7 @@ op{/dat_} {/wij_} {\\de} verge{/ving} {/der} {/zon_}{den_} *
 
 ::: vsa-notatie
 <!-- Tropaar - Vrijdag - H. Kruis - (Toon 1 - Hemelum, V. Jewsewy) -->
-T.1 [:] Heer red Uw {/&/volk_&_} {\\en} ze{/gen} {/Uw} {/erf_}{deel_}, *
+[:] Heer red Uw {/&/volk_&_} {\\en} ze{/gen} {/Uw} {/erf_}{deel_}, *
 {\schenk} schenk aan de orthodoxe christenen de over{\win_}{\ning_}, **
 {//en} bescherm uw Gemeente {/door_} {Uw_} {\Kruis_}. [//:]
 :::
@@ -262,7 +262,7 @@ en door ar-moe-de rijk ge{-&/wor_&_}{\den_}, *
 
 ::: vsa-notatie
 <!-- Tropaar HH. Martelaren, Toon 4 (melodie: tonenboek; tekst: Hemelum) -->
-T.4 [//:] Uw marte{la_}{/ren}, o {\Heer_}, *
+[//:] Uw marte{la_}{/ren}, o {\Heer_}, *
 {/heb}ben door hun lijden van U een onbederfelijke kroon ont{van_}{\gen_}. *
 Zij hebben, God, zich in Uw {kracht_} {/ver_}{\heugd_}, *
 {/zo}dat zij hun beulen over{won_}{\nen_}, *
@@ -274,7 +274,7 @@ Verlos door hun gebeden onze {-&\zie_&_}{/len_}. [//:]
 
 ::: vsa-notatie
 <!-- Bron: feesteigen\07-jul\07-15-neerleggen-mantel-moeder-gods-blachernakerk.md | type: chapter -->
-T.4 [//:] Laat ons die vernederd zijn om onze {-&/zon_&_}{\den_} *
+[//:] Laat ons die vernederd zijn om onze {-&/zon_&_}{\den_} *
 {/nu} onze toevlucht nemen en nedervallen voor de {Moe_.}der {\Gods_}, *
 en tot haar roepen uit het {diepst_} {/van} ons {\hart_}: *
 {/o} Koningin, heb medelijden en {help_} {\ons_}. *
@@ -289,7 +289,7 @@ want gij zijt onze {e_}{\ni}ge {/hoop_}. [//:]
 
 ::: vsa-notatie
 <!-- Tropaar H. Marina, Toon 4 -->
-T.4 [//:] Uw heilige Marina, o Jesus, roept als een {lam_} {/tot_} {\U_}: *
+[//:] Uw heilige Marina, o Jesus, roept als een {lam_} {/tot_} {\U_}: *
 {/Mijn} Bruidegom, U be{min_} {\ik_}, *
 en om U te zoeken laat ik mij medekruisigen en medebegraven {in_} {/uw_} {\Doop_}. *
 {/Ik} lijd omwille van U opdat ik {heer_}sen mag met {\U_}, *
@@ -321,10 +321,24 @@ Want uit U is opgegaan de Zon der Gerechtigheid: Christus {on_}{/ze} {\God_}; *
 {/Hij} heeft ons van de vervloeking be{\vrijd_} *
 en schenkt ons Zijn {-&/ze_&_}{\gen_}. *
 {/Hij} heeft de dood te{niet_.} ge{\daan_} *
-en Hij verleent ons het eeuwige {-&/Le_&_}{\ven_}. [//:]
+en Hij verleent ons het eeuwige {-&\Le_&_}{/ven_}. [//:]
 :::
 
 ---
+
+::: vsa-notatie
+<!-- Bron: Liturgikon, p.274-275 - Toon 4 -->
+[//:] Uw Geboorte, o {Moe_.}{/der} {\Gods_}, *
+{/heeft} de Vreugde geopenbaard aan heel de {we__}{\reld_}. *
+Want uit U is opgegaan de Zon der Gerechtigheid: Christus {on_}{/ze} {\God_}; *
+{/Hij} heeft ons van de vervloeking be{\vrijd_} *
+en schenkt ons Zijn {-&/ze_&_}{\gen_}. *
+{/Hij} heeft de dood te{niet_.} ge{\daan_} *
+en Hij verleent ons het eeuwige {-&\Le_&_}{/ven_}. [//:]
+:::
+
+---
+
 
 ::: vsa-notatie
 <!-- Bron: feesteigen\11-nov\11-21-tempelgang-moeder-gods.md | type: chapter -->
@@ -332,9 +346,9 @@ en Hij verleent ons het eeuwige {-&/Le_&_}{\ven_}. [//:]
 {/de} voor-be-rei-den-de Ver-kon-di-ging van de Ver-los-sing der {men__}{\sen_}. *
 De Maagd komt in de {Tem_}{/pel_} {\Gods_} *
 {/en} ver-kon-digt reeds aan al-len de {Chris__}{\tus_}. *
-Tot haar wil-len ook wij met de En-gel {-&/roe_&_}{\pen}: *
+Tot haar wil-len ook wij met de En-gel {-&/roe_&_}{\pen_}: *
 {/Ver}{heug__} {\U_}, *
-// Ver-vul-ling van het Heils-plan van de {-&/Schep_&_}{\per_}. [//:]
+// Ver-vul-ling van het Heils-plan van de {-&\Schep_&_}{/per_}. [//:]
 :::
 
 ---
@@ -347,7 +361,7 @@ de ge-hei-lig-de Schat-ka-mer van Gods {heer_}{/lijk_}{\heid_} *
 {/wordt} he-den bin-nen-ge-leid in het Huis des {He__}{\ren_}. *
 Zij brengt daar de ge-na-de van Gods {Hei_}{/li}ge {\Geest_}, *
 {/ter}wijl Zijn En-ge-len {zin__}{\gen_}: *
-// Zie, daar is de he-mel-se {-&/woon_&_}{\tent_}. [//:]
+// Zie, daar is de he-mel-se {-&\woon_&_}{/tent_}. [//:]
 :::
 
 ---
@@ -358,20 +372,20 @@ Zij brengt daar de ge-na-de van Gods {Hei_}{/li}ge {\Geest_}, *
 {/en} de broe-der van {Pe_}{\tros_}. *
 Bid daar-om, hei-li-ge An-dre-as, tot de {Mees_}ter {/van} het heel{\al_}, *
 {/om} aan de we-reld vre-de te {schen__}{\ken_}, *
-// en aan onze zie-len de gro-te ge{-&/na_&_}{\de_}. [//:]
+// en aan onze zie-len de gro-te ge{-&\na_&_}{/de_}. [//:]
 :::
 
 ---
 
 ::: vsa-notatie
 <!-- Bron: feesteigen\12-dec\12-06-nicolaas-van-myra.md | type: chapter -->
-T.4 [//:] Als de {Re_}gel {/des} ge{\loofs_} *
+[//:] Als de {Re_}gel {/des} ge{\loofs_} *
 {/en} het voor-beeld der zacht{moe__}dig{\heid_} *
 heeft de waar-heid u-wer da-den U aan uw {kud_}{/de} ge{\toond_}. *
 {/Daar}om zijt gij door {ne_}derigheid {\groot_}, *
 en door ar-moe-de rijk ge{-&/wor_&_}{\den_}, *
 {/Va}der en Ho-ge-pries-ter {Ni__}ko{\laas_}, *
-// bid Chris-tus {God_}, on-ze zie-len te {-&/red_&_}{\den_}. [//:]
+// bid Chris-tus {God_}, on-ze zie-len te {-&\red_&_}{/den_}. [//:]
 :::
 
 ---
@@ -384,7 +398,7 @@ dat gij ons beschermt door uw ge{-&/be_&_}{\den_}, *
 {/en} ons beschut met de dekking van uw {vleu_}ge{\len}. *
 Behoed ons door uw bovenzinnelijke {heer_}{/lijk_}{\heid_}, *
 {/nu} wij nedervallen en tot u {roe__}{\pen_}: *
-// redt ons uit de gevaren, Aanvoerders der Krachten uit den {-&/ho_&_}{\ge_}. [//:]
+// redt ons uit de gevaren, Aanvoerders der Krachten uit den {-&\ho_&_}{/ge_}. [//:]
 :::
 
 ---

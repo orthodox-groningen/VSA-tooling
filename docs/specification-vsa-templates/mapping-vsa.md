@@ -75,11 +75,11 @@ Stop met herhalen wanneer nog **N** regels over zijn; die vallen op de tail
 
 ### Voorbeelden (bladnotatie → `text_mapping`)
 
-| Blad / gewoonte                         | `text_mapping` |
-| --------------------------------------- | -------------- |
-| `\|\|: 1, 2 :\|\| laatste`              | `repeat [1,2] until final` + `phrase laatste` |
-| `1 \|\|: 2, 3 :\|\| laatste`          | `phrase 1` + `repeat [2,3] until final` + `phrase laatste` |
-| `1, 3, 1, 2, 3, 1, 2a, 4`               | `sequence: [1, 3, 1, 2, 3, 1, 2a, 4]` |
+| Blad / gewoonte                         | `text_mapping`                                                        |
+| --------------------------------------- | --------------------------------------------------------------------- |
+| `\|\|: 1, 2 :\|\| laatste`              | `repeat [1,2] until final` + `phrase laatste`                         |
+| `1 \|\|: 2, 3 :\|\| laatste`            | `phrase 1` + `repeat [2,3] until final` + `phrase laatste`            |
+| `1, 3, 1, 2, 3, 1, 2a, 4`               | `sequence: [1, 3, 1, 2, 3, 1, 2a, 4]`                                 |
 | `1, 2, 3, \|\|: 4, 5, 3a :\|\| laatste` | `sequence [1,2,3]` + `repeat [4,5,3a] until final` + `phrase laatste` |
 
 ## `mapping_plans` (meerdere plannen)
@@ -111,13 +111,13 @@ mapping_plans:
 Selectie: `select_mapping_plan(doc, stanza_count)` — eerste plan waarvan
 `when` matcht; anders plan met `when.default: true`.
 
-| `when`-sleutel       | Match                                    |
-| -------------------- | ---------------------------------------- |
-| `default: true`      | fallback                                 |
-| `stanza_count`       | exact aantal regels                      |
+| `when`-sleutel       | Match                                     |
+| -------------------- | ----------------------------------------- |
+| `default: true`      | fallback                                  |
+| `stanza_count`       | exact aantal regels                       |
 | `stanza_count_mod`   | `{ mod: 3, remainder: 0 }` → `n % 3 == 0` |
-| `stanza_count_min`   | minimaal n regels                        |
-| `stanza_count_max`   | maximaal n regels                        |
+| `stanza_count_min`   | minimaal n regels                         |
+| `stanza_count_max`   | maximaal n regels                         |
 
 Voorbeeld **3n regels** met prefix + cycle + afwijkende slot:
 
@@ -137,11 +137,11 @@ Voorbeeld **3n regels** met prefix + cycle + afwijkende slot:
 
 ## Frase-ankers (inclusief melisma)
 
-| Anchor (YAML) | Bladlabel | Bedoeling                                      |
-| ------------- | --------- | ---------------------------------------------- |
-| `e.st.`       | `e. st.`  | eerste streek / inzet                            |
-| `l.st.`       | `l. st.`  | laatste streek op cadensnoot                    |
-| `vl.st.`      | `vl. st.` | voorlaatste streek                             |
+| Anchor (YAML) | Bladlabel | Bedoeling                                           |
+| ------------- | --------- | --------------------------------------------------- |
+| `e.st.`       | `e. st.`  | eerste streek / inzet                               |
+| `l.st.`       | `l. st.`  | laatste streek op cadensnoot                        |
+| `vl.st.`      | `vl. st.` | voorlaatste streek                                  |
 | `l.lgr.`      | `l. lgr.` | start van het **slotmelisma** (laatste lettergreep) |
 
 `l.lgr.` wijst naar een noot **waar nog noten achteraan komen**. Vanaf dat
@@ -152,16 +152,33 @@ met meerdere [muzikale posities](@) (`&` in de modifiers).
 
 ## Hypotheses (event-niveau)
 
-| #   | Hypothese                                                                                         |
-| --- | ------------------------------------------------------------------------------------------------- |
-| H1  | Ongemarkeerde VSA-syllaben vóór cadens-scopes vallen op recite.                                   |
-| H2  | Cadens-scopes corresponderen met `cadence`-events, vaak bij `l.st.` of erna.                      |
-| H3  | `{/…}` aan het begin van een regel kan `e.st.` van frase `2` (of vergelijkbaar) zijn.             |
-| H4  | `optional: true` events: mee als VSA-S dat slot gebruikt, anders weg — voor **alle** stemmen.     |
-| H5  | Split/merge van duren wordt gestuurd door VSA-S en parallel op A/T/B gezet.                       |
-| H6  | Blijft VSA-S op dezelfde graad voor extra syllaben, dan **houden** A/T/B hetzelfde slot-akkoord.  |
-| H7  | Trailing template-slots die VSA-S niet aandoet, worden voor alle stemmen **overgeslagen**.        |
-| H8  | `l.lgr.`: start van een slotmelisma — geankerd event **plus alle volgende** events in de frase op de laatste VSA-syllabe. |
+| #   | Hypothese                                                                                                                            |
+| --- | ------------------------------------------------------------------------------------------------------------------------------------ |
+| H1  | Ongemarkeerde VSA-syllaben vóór cadens-scopes vallen op recite.                                                                      |
+| H2  | Cadens-scopes corresponderen met `cadence`-events, vaak bij `l.st.` of erna.                                                         |
+| H3  | `{/…}` aan het begin van een regel kan `e.st.` van frase `2` (of vergelijkbaar) zijn.                                                |
+| H4  | `optional: true` events: mee als VSA-S dat slot gebruikt, anders weg — voor **alle** stemmen.                                        |
+| H5  | Split/merge van duren wordt gestuurd door VSA-S en parallel op A/T/B gezet.                                                          |
+| H6  | Blijft VSA-S op dezelfde graad voor extra syllaben, dan **houden** A/T/B hetzelfde slot-akkoord.                                     |
+| H7  | Trailing template-slots die VSA-S niet aandoet, worden voor alle stemmen **overgeslagen**.                                           |
+| H8  | `l.lgr.`: start van een slotmelisma — geankerd event **plus alle volgende** events in de frase op de laatste VSA-syllabe.            |
+| H9  | **Hoogte-mismatch** (VSA-S past op geen resterend template-S-slot) → harde fout (`PadBError`), geen stil hold op het vorige akkoord. |
+
+## Hoogte-mismatch (pad B)
+
+Vergelijking: absolute toonhoogte van de VSA-noot ↔ laddergraad `pitches.S`
+van template-events in de cadens-tail (zelfde `do`/`mode`).
+
+| Situatie                                          | Gedrag                                      |
+| ------------------------------------------------- | ------------------------------------------- |
+| VSA-pitch = huidig/later slot in de tail          | koppelen; tussenslots overslaan (H7)        |
+| VSA-pitch = zelfde slot opnieuw                   | hold (H6)                                   |
+| VSA-pitch past nergens meer in de resterende tail | **`PadBError`** (hoogte-mismatch)           |
+| Extra noot ná de tail, andere hoogte              | **`PadBError`**                             |
+| Extra noot ná de tail,zelfde hoogte als slot      | hold (H6)                                   |
+
+Zo wordt bijv. `{-&/Schep_&_}{\per_}` (mi–fa–mi) op template-`laatste`
+(mi–re–mi) afgewezen i.p.v. A/T/B stil op mi te laten hangen.
 
 ## Corpus en detail
 

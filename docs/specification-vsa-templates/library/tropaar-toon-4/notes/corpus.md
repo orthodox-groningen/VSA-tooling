@@ -26,15 +26,14 @@ Dus: als VSA voor S een optionele noot meeneemt, of een halve noot splitst /
 twee gelijke noten tot één duur merget, dan gebeurt **hetzelfde ritmische
 besluit** voor A, T en B via de corresponderende template-events.
 
-**Wat dit corpus toetst (nu):** alleen de *eerste* mappingstap — horen
-tekstregels bij de juiste template-frasen (`1` / `2` / `laatste`)?  
-Nog niet: event-voor-event (recite/cadens/optional), nog niet: juiste
-laddergraden in de YAML.
+**Wat dit corpus oplevert:** voor elk van de 13 stukken
+[`../examples/corpus/`](../examples/corpus/) — `.vsa` (bron) + `.mscz` /
+`.mxl` (uitgewerkt SATB, pad B). PDF is lokale MuseScore-export (niet in git).
 
-**Wat het corpus laat zien:** op 12 Toon-4-troparen werkt
-“één regel = één frase” + cycle `1,2,1,2,…` + slot `laatste` zonder conflict.
-Dat is nodig voordat pad B überhaupt A/T/B kan bijzetten; het bewijst nog
-niet dat optionals/splits al kloppen.
+**Wat het corpus al toont:** op 13 Toon-4-troparen werkt
+“één regel = één frase” + cycle `1,2,1,2,…` + slot `laatste` zonder conflict;
+de render-pipeline zet A/T/B synchroon mee. Laddergraden in de YAML blijven
+`provisional` (pitch-audit open).
 
 ## Toewijzingsregel (cycle)
 
@@ -68,20 +67,21 @@ staan bij het stuk.
 
 ## Overzicht corpus
 
-| Id    | Stuk (kort)                   | Regels | Toewijzing                | `**` | Opmerking                           |
-| ----- | ----------------------------- | ------ | ------------------------- | ---- | ----------------------------------- |
-| T4-01 | Geboorte Johannes Voorloper   | 6      | `1 2 1 2 1` + `laatste`   | nee  | `*` toegevoegd; regels samengevoegd |
-| T4-02 | Johannes Shanghai/SF          | 7      | `1 2 1 2 1 2` + `laatste` | nee  |                                     |
-| T4-03 | HH. Martelaren                | 6      | `1 2 1 2 1` + `laatste`   | ja   | `.*` → ` *`                         |
-| T4-04 | Mantel Moeder Gods            | 9      | `1 2 … 1 2` + `laatste`   | ja   | langste cycle                       |
-| T4-05 | H. Marina                     | 7      | `1 2 1 2 1 2` + `laatste` | ja   |                                     |
-| T4-06 | Profeet Elia                  | 7      | `1 2 1 2 1 2` + `laatste` | nee  | baseline walkthrough                |
-| T4-07 | Geboorte Moeder Gods          | 7      | `1 2 1 2 1 2` + `laatste` | nee  |                                     |
-| T4-08 | Tempelgang (begin welbehagen) | 7      | `1 2 1 2 1 2` + `laatste` | nee  | korte regel 6                       |
-| T4-09 | Tempelgang (alreine Tempel)   | 7      | `1 2 1 2 1 2` + `laatste` | nee  |                                     |
-| T4-10 | Apostel Andreas               | 5      | `1 2 1 2` + `laatste`     | nee  | kortste                             |
-| T4-11 | Nicolaas van Myra             | 7      | `1 2 1 2 1 2` + `laatste` | nee  | parallel met T4-02                  |
-| T4-12 | Engelen (Maandag)             | 7      | `1 2 1 2 1 2` + `laatste` | nee  | Liturgikon                          |
+| Id     | Stuk (kort)                       | Regels | Toewijzing                | `**` | Opmerking                           |
+| ------ | --------------------------------- | ------ | ------------------------- | ---- | ----------------------------------- |
+| T4-01  | Geboorte Johannes Voorloper       | 6      | `1 2 1 2 1` + `laatste`   | nee  | `*` toegevoegd; regels samengevoegd |
+| T4-02  | Johannes Shanghai/SF              | 7      | `1 2 1 2 1 2` + `laatste` | nee  |                                     |
+| T4-03  | HH. Martelaren                    | 6      | `1 2 1 2 1` + `laatste`   | ja   | `.*` → ` *`                         |
+| T4-04  | Mantel Moeder Gods                | 9      | `1 2 … 1 2` + `laatste`   | ja   | langste cycle                       |
+| T4-05  | H. Marina                         | 7      | `1 2 1 2 1 2` + `laatste` | ja   |                                     |
+| T4-06  | Profeet Elia                      | 7      | `1 2 1 2 1 2` + `laatste` | nee  | baseline walkthrough                |
+| T4-07  | Geboorte Moeder Gods              | 7      | `1 2 1 2 1 2` + `laatste` | nee  | feesteigen                          |
+| T4-07a | Geboorte Moeder Gods (Liturgikon) | 7      | `1 2 1 2 1 2` + `laatste` | nee  | Liturgikon-variant                  |
+| T4-08  | Tempelgang (begin welbehagen)     | 7      | `1 2 1 2 1 2` + `laatste` | nee  | korte regel 6                       |
+| T4-09  | Tempelgang (alreine Tempel)       | 7      | `1 2 1 2 1 2` + `laatste` | nee  |                                     |
+| T4-10  | Apostel Andreas                   | 5      | `1 2 1 2` + `laatste`     | nee  | kortste                             |
+| T4-11  | Nicolaas van Myra                 | 7      | `1 2 1 2 1 2` + `laatste` | nee  | parallel met T4-02                  |
+| T4-12  | Engelen (Maandag)                 | 7      | `1 2 1 2 1 2` + `laatste` | nee  | Liturgikon                          |
 
 Alle stukken: genre **tropaar**, toon **4**, mapping naar
 `tropaar-toon-4` (`pitches_status: provisional`).
@@ -137,7 +137,7 @@ en door ar-moe-de … {\den_}, *
 ## T4-03 — HH. Martelaren
 
 ```text
-T.4 [//:] Uw marte{la_}{/ren}, o {\Heer_}, *
+[//:] Uw marte{la_}{/ren}, o {\Heer_}, *
 {/heb}ben … ont{van_}{\gen_}. *
 Zij hebben … {\heugd_}, *
 {/zo}dat … over{won_}{\nen_}, *
@@ -303,17 +303,17 @@ Structureel parallel aan T4-02 (zelfde tropaarformule, andere heilige).
 
 | Bevinding                        | Status     | Toelichting                                                   |
 | -------------------------------- | ---------- | ------------------------------------------------------------- |
-| Cycle-toewijzing 1-regel-1-frase | houdbaar   | Op alle 12 stukken toepasbaar zonder conflict                 |
+| Cycle-toewijzing 1-regel-1-frase | houdbaar   | Op alle 13 stukken toepasbaar zonder conflict                 |
 | H3 (`{/` ≈ start frase `2`)      | sterk      | Geen tegenvoorbeeld op regelstart in dit corpus               |
 | `**` ≈ overgang naar `laatste`   | consistent | T4-03/04/05; slotregel blijft `laatste`                       |
 | Korte frase `2` (T4-08 r6)       | open       | H5 / optional events nog te toetsen                           |
 | Mid-regel scopes ≠ H3            | feit       | T4-03 r1; H3 alleen op frase-start                            |
-| Pad B (S uit VSA)                | besloten   | Zie mapping; corpus toetst alleen frase-laag, niet A/T/B-MXL  |
+| Pad B (S uit VSA)                | besloten   | Pipeline in `examples/corpus/` (`.vsa`/`.mscz`/`.mxl`)        |
 
 ## Volgende toetsstappen
 
-1. Event-niveau op 2–3 stukken (Martelaren, Engelen, Mantel) zoals Elia —
-   inclusief H4/H5 onder pad B (optional + split parallel op A/T/B).
+1. Event-niveau dieper op 2–3 stukken (Martelaren, Engelen, Mantel) —
+   H4/H5 (optional + split parallel op A/T/B).
 2. T4-08 regel 6 als edge-case voor korte frase `2`.
-3. Pitch-audit `tropaar-toon-4.yaml` → `verified` (template-inhoud, los van
+3. Pitch-audit `template.yaml` → `verified` (template-inhoud, los van
    runtime-S).

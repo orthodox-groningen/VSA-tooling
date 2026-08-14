@@ -369,9 +369,11 @@ STAFF_FONT_PT = "12"
 # wraps onto an extra system.
 LYRIC_FONT = STAFF_FONT
 LYRIC_FONT_PT = "12"
-# Pad B (zangstuk): maten voor maatstrepen; MuseScore vult systemen zelf.
+# Pad B (zangstuk): layout-maten binnen een strofe (onzichtbare maatstrepen);
+# zichtbare maatstreep alleen aan strofe-eind. MuseScore vult systemen zelf.
 # Template-layout blijft strakker (formuleblad).
-PAD_B_MAX_QUARTERS_PER_MEASURE = 12
+PAD_B_MAX_QUARTERS_PER_MEASURE = 8
+PAD_B_MIN_LAST_CHUNK_QUARTERS = 3.0
 # Instance spacing: genoeg voor noot + lettergreep, verder zo dicht mogelijk.
 PAD_B_MIN_NOTE_DISTANCE = "0.35"
 PAD_B_LYRICS_MIN_DISTANCE = "0.2"
@@ -887,8 +889,13 @@ def split_events_for_layout(
     events: list[dict],
     *,
     max_quarters: float = PAD_B_MAX_QUARTERS_PER_MEASURE,
+    min_last_quarters: float = PAD_B_MIN_LAST_CHUNK_QUARTERS,
 ) -> list[list[dict]]:
-    """Splits een lange frase in leesbare maten (geen knip in een melisma)."""
+    """Splits een lange frase in layout-maten (geen knip in een melisma).
+
+    Kleine rest-chunk aan het eind wordt bij de vorige gevoegd zodat er geen
+    wees-maat van 1–2 tellen ontstaat.
+    """
     if not events:
         return []
     chunks: list[list[dict]] = []
@@ -915,6 +922,12 @@ def split_events_for_layout(
         quarters += eq
     if current:
         chunks.append(current)
+    if (
+        len(chunks) >= 2
+        and events_quarters(chunks[-1]) < min_last_quarters
+    ):
+        chunks[-2].extend(chunks[-1])
+        chunks.pop()
     return chunks
 
 
@@ -991,6 +1004,14 @@ def _mscx_chord(
     return lines
 
 
+def _mscx_end_barline(*, subtype: str = "normal", visible: bool = True) -> str:
+    """Eind-maatstreep in de voice (MuseScore 4 leest géén Measure/endBarLineVisible)."""
+    bits = [f"<subtype>{subtype}</subtype>"]
+    if not visible:
+        bits.append("<visible>0</visible>")
+    return "<BarLine>" + "".join(bits) + "</BarLine>"
+
+
 def _mscx_voice(
     events: list[dict],
     voice_keys: str | tuple[str, ...],
@@ -1001,6 +1022,8 @@ def _mscx_voice(
     fifths: int = 0,
     time_sig: tuple[int, int] | None = None,
     with_lyrics: bool = False,
+    end_barline: str | None = None,
+    end_barline_visible: bool = True,
 ) -> list[str]:
     keys = (voice_keys,) if isinstance(voice_keys, str) else voice_keys
     lines = ["<voice>"]
@@ -1035,6 +1058,12 @@ def _mscx_voice(
                 lyric_ticks=int(ev.get("lyric_ticks") or 0) if with_lyrics else 0,
                 slur_next=ev.get("slur_next"),
                 slur_prev=ev.get("slur_prev"),
+            )
+        )
+    if end_barline is not None:
+        lines.append(
+            _mscx_end_barline(
+                subtype=end_barline, visible=end_barline_visible
             )
         )
     lines.append("</voice>")
@@ -1229,35 +1258,66 @@ def render_mscx(
         alone_on_system = system_break_each or (
             layout == "template" and n_phr > 1
         )
-        for mi, (pid, events) in enumerate(resolved, start=1):
-            is_first = mi == 1
-            is_last = mi == n_phr
-            is_penultimate = n_phr > 1 and mi == n_phr - 1
-            if is_last:
+        # Instance: layout-maten binnen strofe; zichtbare maatstreep alleen
+        # aan strofe-eind. Template: een maat per frase.
+        measure_jobs: list[
+            tuple[str | None, list[dict], bool, bool, bool, bool]
+        ] = []
+        for pi, (pid, events) in enumerate(resolved):
+            is_last_phrase = pi == n_phr - 1
+            if is_last_phrase:
                 last_quarters = int(round(events_quarters(events)))
-            if cycle_repeats:
-                start_rep, end_rep = cycle_repeat_flags(doc, pid or "")
-            else:
-                start_rep, end_rep = False, None
+            chunks = (
+                split_events_for_layout(events)
+                if layout == "instance"
+                else [events]
+            )
+            for ci, chunk in enumerate(chunks):
+                measure_jobs.append(
+                    (
+                        pid,
+                        chunk,
+                        pi == 0 and ci == 0,
+                        ci == 0,
+                        ci == len(chunks) - 1,
+                        is_last_phrase and ci == len(chunks) - 1,
+                    )
+                )
+
+        for mi, job in enumerate(measure_jobs, start=1):
+            pid, events, is_first, phrase_start, stanza_end, piece_end = job
+            start_rep, end_rep = False, None
+            if cycle_repeats and phrase_start:
+                start_rep, _ = cycle_repeat_flags(doc, pid or "")
+            if cycle_repeats and stanza_end:
+                _, end_rep = cycle_repeat_flags(doc, pid or "")
+
+            is_penultimate = False
+            if layout == "template" and n_phr > 1 and stanza_end and not piece_end:
+                remaining_ends = sum(1 for j in measure_jobs[mi:] if j[4])
+                is_penultimate = remaining_ends == 1
+
             len_attr = events_len_attr(events)
             out.append(f'<Measure len="{len_attr}">')
             if layout == "instance":
-                # Minder horizontale stretch (MuseScore vult anders de systeembreedte).
-                out.append("<stretch>0.75</stretch>")
+                out.append("<stretch>0.85</stretch>")
             if start_rep:
                 out.append("<startRepeat/>")
-            if staff_i == 1 and not is_last:
-                if system_break_each or (layout == "template" and is_penultimate):
-                    out.append("<LayoutBreak><subtype>line</subtype></LayoutBreak>")
+            if staff_i == 1 and not piece_end:
+                if system_break_each or is_penultimate:
+                    out.append(
+                        "<LayoutBreak><subtype>line</subtype></LayoutBreak>"
+                    )
             if end_rep is not None:
                 out.append(f"<endRepeat>{end_rep}</endRepeat>")
-            if is_last:
-                out.append("<endBarLineType>5</endBarLineType>")
+            # MuseScore 4: maatstreep-zichtbaarheid via <BarLine> in de voice,
+            # niet via Measure/endBarLineVisible (wordt genegeerd).
+            if piece_end:
+                bar_subtype, bar_visible = "end", True
+            elif layout == "instance" and not stanza_end:
+                bar_subtype, bar_visible = "normal", False
             else:
-                out.append("<endBarLineType>1</endBarLineType>")
-            # Instance: TimeSig = werkelijke maatlengte → geen MuseScore +/-.
-            # Template: één verborgen 4/4 (formuleblad).
-            # showTimeSig=0 op Staff verbergt de getallen in instance.
+                bar_subtype, bar_visible = "normal", True
             if layout == "instance":
                 sig_n, sig_d = (int(x) for x in len_attr.split("/"))
                 measure_time_sig: tuple[int, int] | None = (sig_n, sig_d)
@@ -1265,8 +1325,8 @@ def render_mscx(
                 measure_time_sig = (4, 4)
             else:
                 measure_time_sig = None
-            # Instance: SA/TB als akkoord in één stem → stokken naar midden.
-            # Template: twee stemmen (formule-weergave).
+            # Bij cycle-endRepeat laat MuseScore de herhaal-maatstreep tekenen.
+            emit_bar = end_rep is None
             if layout == "instance":
                 chord_keys = ("S", "A") if staff_i == 1 else ("T", "B")
                 out.extend(
@@ -1275,7 +1335,10 @@ def render_mscx(
                         chord_keys,
                         frase_id=(
                             pid
-                            if mapping_labels and staff_i == 1 and pid is not None
+                            if mapping_labels
+                            and staff_i == 1
+                            and phrase_start
+                            and pid is not None
                             else None
                         ),
                         anchors=mapping_labels and staff_i == 1,
@@ -1283,6 +1346,8 @@ def render_mscx(
                         fifths=fifths,
                         time_sig=measure_time_sig,
                         with_lyrics=staff_i == 1,
+                        end_barline=bar_subtype if emit_bar else None,
+                        end_barline_visible=bar_visible,
                     )
                 )
             else:
@@ -1292,7 +1357,9 @@ def render_mscx(
                         part["v1"],
                         frase_id=(
                             pid
-                            if mapping_labels and staff_i == 1 and pid is not None
+                            if mapping_labels
+                            and staff_i == 1
+                            and pid is not None
                             else None
                         ),
                         anchors=mapping_labels and staff_i == 1,
@@ -1300,6 +1367,8 @@ def render_mscx(
                         fifths=fifths,
                         time_sig=measure_time_sig,
                         with_lyrics=staff_i == 1,
+                        end_barline=bar_subtype if emit_bar else None,
+                        end_barline_visible=bar_visible,
                     )
                 )
                 out.extend(
@@ -1390,7 +1459,8 @@ def render_pad_b_mscx(
 ) -> str:
     """Uitgeschreven tropaar: VSA-S + template A/T/B; instance-layout (dicht).
 
-    Eén maat per strofe (maatstrepen alleen tussen strofes); geen 2/4-restanten.
+    Layout mag een strofe in meerdere maten knippen; maatstrepen zijn alleen
+    zichtbaar aan strofe-eind (en final bar aan het slot).
     """
     do = doc["do"]
     mode = doc.get("mode", "major")

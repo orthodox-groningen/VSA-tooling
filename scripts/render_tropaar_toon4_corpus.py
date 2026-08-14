@@ -1,8 +1,10 @@
-"""Genereer uitgevouwen formule-MSCX voor het tropaar-toon-4-corpus (stap 1)."""
+"""Genereer tropaar-toon-4-corpus: VSA → MSCZ/MXL/(PDF); of alleen template-formule."""
 
 from __future__ import annotations
 
 import argparse
+import shutil
+import subprocess
 import sys
 from pathlib import Path
 
@@ -13,6 +15,11 @@ TEMPLATE_YAML = TEMPLATE_DIR / "template.yaml"
 ONDERZOEK = REPO / "docs" / "plans" / "onderzoeks-troparen-en-kondaken.md"
 CORPUS_DIR = TEMPLATE_DIR / "examples" / "corpus"
 
+MUSESCORE_CANDIDATES = (
+    Path(r"C:\Program Files\MuseScore 4\bin\MuseScore4.exe"),
+    Path(r"C:\Program Files\MuseScore 3\bin\MuseScore3.exe"),
+)
+
 sys.path.insert(0, str(REPO / "src"))
 sys.path.insert(0, str(REPO / "scripts"))
 
@@ -20,71 +27,95 @@ import render_vsa_template_musicxml as render  # noqa: E402
 
 from vsa.corpus_vsa import load_corpus, write_vsa_file  # noqa: E402
 from vsa.pad_b import map_vsa_to_template  # noqa: E402
-from vsa.template_mapping import assign_stanzas_to_phrases, select_mapping_plan  # noqa: E402
+
+
+def find_musescore() -> Path | None:
+    which = shutil.which("MuseScore4") or shutil.which("mscore")
+    if which:
+        return Path(which)
+    for path in MUSESCORE_CANDIDATES:
+        if path.is_file():
+            return path
+    return None
+
+
+def export_pdf(mscz: Path, *, musescore: Path) -> Path:
+    """MuseScore CLI: mscz → pdf naast het bronbestand."""
+    pdf = mscz.with_suffix(".pdf")
+    subprocess.run(
+        [str(musescore), "-f", "-o", str(pdf), str(mscz)],
+        check=True,
+    )
+    if not pdf.is_file():
+        raise RuntimeError(f"MuseScore did not write {pdf}")
+    return pdf
 
 
 def expanded_title(piece_id: str, title: str) -> str:
     return f"{piece_id} — {title}"
 
 
-def render_pad_b_piece(doc: dict, piece, *, output_dir: Path, write_vsa: bool) -> Path:
+def render_instance(
+    doc: dict,
+    piece,
+    *,
+    output_dir: Path,
+    write_vsa: bool,
+    musescore: Path | None = None,
+) -> Path:
+    """Uitgewerkt zangstuk: S=VSA, A/T/B=template → .vsa/.mscz/.mxl/[.pdf]."""
     stem = piece.filename_stem()
     vsa_path = output_dir / f"{stem}.vsa"
-    if write_vsa:
+    if write_vsa or not vsa_path.exists():
         write_vsa_file(piece, vsa_path)
-    vsa_text = (
-        vsa_path.read_text(encoding="utf-8")
-        if vsa_path.exists()
-        else (
-            "---\n"
-            f"title: {piece.title}\n"
-            "do: F4\n"
-            "mode: major\n"
-            "---\n\n"
-            f"{piece.body}\n"
-        )
-    )
-    mapped = map_vsa_to_template(doc, vsa_text)
-    title = expanded_title(piece.piece_id, piece.title) + " (pad B)"
-    mscx = render.render_pad_b_mscx(doc, mapped, title=title)
-    out = output_dir / f"{stem}.pad-b.mscz"
-    render.write_mscx_output(out, mscx)
-    if piece.piece_id == "T4-06":
-        from vsa.musicxml_package import write_musicxml_output
+    vsa_text = vsa_path.read_text(encoding="utf-8")
 
+    mapped = map_vsa_to_template(doc, vsa_text)
+    title = expanded_title(piece.piece_id, piece.title)
+    mscx = render.render_pad_b_mscx(doc, mapped, title=title)
+    out = output_dir / f"{stem}.mscz"
+    render.write_mscx_output(out, mscx)
+
+    from vsa.musicxml_package import write_musicxml_output
+
+    xml = render.render_pad_b_musicxml(doc, mapped, title=title)
+    write_musicxml_output(output_dir / f"{stem}.mxl", xml)
+
+    if musescore is not None:
+        pdf = export_pdf(out, musescore=musescore)
+        print(f"wrote {pdf.relative_to(REPO)}")
+
+    if piece.piece_id == "T4-06":
         examples = TEMPLATE_DIR / "examples"
-        render.write_mscx_output(examples / "elia.pad-b.mscz", mscx)
-        # .mxl = gecomprimeerde MusicXML voor Coria; geen aparte .musicxml
-        # (zelfde inhoud, alleen ongezipt).
-        xml = render.render_pad_b_musicxml(doc, mapped, title=title)
-        write_musicxml_output(examples / "elia.pad-b.mxl", xml)
-        print(f"wrote {(examples / 'elia.pad-b.mscz').relative_to(REPO)}")
-        print(f"wrote {(examples / 'elia.pad-b.mxl').relative_to(REPO)}")
+        render.write_mscx_output(examples / "elia.mscz", mscx)
+        write_musicxml_output(examples / "elia.mxl", xml)
+        print(f"wrote {(examples / 'elia.mscz').relative_to(REPO)}")
+        print(f"wrote {(examples / 'elia.mxl').relative_to(REPO)}")
+        if musescore is not None:
+            elia_pdf = export_pdf(examples / "elia.mscz", musescore=musescore)
+            print(f"wrote {elia_pdf.relative_to(REPO)}")
     return out
 
 
-def render_piece(
-    doc: dict, piece, *, output_dir: Path, write_vsa: bool
-) -> Path:
-    plan = select_mapping_plan(doc, piece.stanza_count)
-    phrase_ids = assign_stanzas_to_phrases(plan, piece.stanza_count)
-    stem = piece.filename_stem()
-    if write_vsa:
-        write_vsa_file(piece, output_dir / f"{stem}.vsa")
-    mscx = render.render_expanded_mscx(
-        doc,
-        phrase_ids,
-        title=expanded_title(piece.piece_id, piece.title),
-        cycle_label_text=", ".join(phrase_ids),
-    )
-    out = output_dir / f"{stem}.mscz"
+def render_template_mscz(doc: dict, *, musescore: Path | None = None) -> Path:
+    """Formuleblad → template.mscz (+ optioneel PDF)."""
+    mscx = render.render_template_mscx(doc)
+    out = TEMPLATE_DIR / "template.mscz"
     render.write_mscx_output(out, mscx)
+    # Historische alias (oude naam).
+    render.write_mscx_output(TEMPLATE_DIR / "template-from-yaml.mscz", mscx)
+    if musescore is not None:
+        pdf = export_pdf(out, musescore=musescore)
+        print(f"wrote {pdf.relative_to(REPO)}")
     return out
 
 
 def main() -> int:
     parser = argparse.ArgumentParser(
-        description="Uitgevouwen formule-MSCX voor tropaar-toon-4-corpus (stap 1)."
+        description=(
+            "Tropaar-toon-4: uitgewerkte corpusstukken (.vsa/.mscz/.mxl) "
+            "of template-formule (.mscz)."
+        )
     )
     parser.add_argument(
         "--onderzoek",
@@ -96,7 +127,7 @@ def main() -> int:
         "--output-dir",
         type=Path,
         default=CORPUS_DIR,
-        help="Uitvoermap voor .vsa en .mscz",
+        help="Uitvoermap voor corpus (.vsa/.mscz/.mxl)",
     )
     parser.add_argument(
         "--id",
@@ -106,38 +137,83 @@ def main() -> int:
     parser.add_argument(
         "--no-vsa",
         action="store_true",
-        help="Schrijf geen .vsa-bestanden",
+        help="Schrijf geen .vsa (gebruik bestaande)",
     )
     parser.add_argument(
-        "--pad-b",
+        "--template",
         action="store_true",
-        help="Pad B: VSA-S + template A/T/B + lyrics (stap 2; default T4-06)",
+        help="Alleen formuleblad: template.mscz (geen corpus)",
+    )
+    parser.add_argument(
+        "--pdf",
+        action="store_true",
+        help="Exporteer .mscz → .pdf via MuseScore CLI",
+    )
+    parser.add_argument(
+        "--pdf-only",
+        action="store_true",
+        help="Alleen bestaande corpus-.mscz naar .pdf (geen re-render)",
     )
     args = parser.parse_args()
     output_dir = args.output_dir
 
+    musescore: Path | None = None
+    if args.pdf or args.pdf_only:
+        musescore = find_musescore()
+        if musescore is None:
+            raise SystemExit(
+                "MuseScore niet gevonden (verwacht o.a. "
+                r"C:\Program Files\MuseScore 4\bin\MuseScore4.exe)"
+            )
+        print(f"using {musescore}")
+
+    if args.pdf_only:
+        paths = sorted(output_dir.glob("T4-*.mscz"))
+        elia = TEMPLATE_DIR / "examples" / "elia.mscz"
+        if elia.is_file() and elia not in paths:
+            paths.append(elia)
+        if not paths:
+            raise SystemExit(f"geen T4-*.mscz in {output_dir}")
+        assert musescore is not None
+        for mscz in paths:
+            pdf = export_pdf(mscz, musescore=musescore)
+            print(f"wrote {pdf.relative_to(REPO)}")
+        return 0
+
     doc = render.load_resolved(TEMPLATE_YAML, LIBRARY)
+
+    if args.template:
+        out = render_template_mscz(doc, musescore=musescore)
+        print(f"wrote {out.relative_to(REPO)} (template)")
+        return 0
+
     pieces = load_corpus(args.onderzoek)
     if args.piece_id:
         pieces = [p for p in pieces if p.piece_id == args.piece_id]
         if not pieces:
             raise SystemExit(f"unknown corpus id: {args.piece_id!r}")
-    elif args.pad_b:
-        pieces = [p for p in pieces if p.piece_id == "T4-06"]
 
+    failures: list[str] = []
     for piece in pieces:
-        if args.pad_b:
-            out = render_pad_b_piece(
-                doc, piece, output_dir=output_dir, write_vsa=not args.no_vsa
+        try:
+            out = render_instance(
+                doc,
+                piece,
+                output_dir=output_dir,
+                write_vsa=not args.no_vsa,
+                musescore=musescore,
             )
-            n_notes = "pad B"
-        else:
-            out = render_piece(
-                doc, piece, output_dir=output_dir, write_vsa=not args.no_vsa
-            )
-            n_notes = f"{piece.stanza_count} maten"
-        rel = out.relative_to(REPO)
-        print(f"wrote {rel} ({n_notes})")
+            print(f"wrote {out.relative_to(REPO)}")
+        except Exception as exc:  # noqa: BLE001
+            msg = f"{piece.piece_id}: {exc}"
+            failures.append(msg)
+            print(f"FAILED {msg}", file=sys.stderr)
+
+    if failures:
+        print(f"{len(failures)} failed:", file=sys.stderr)
+        for msg in failures:
+            print(f"  {msg}", file=sys.stderr)
+        return 1
     return 0
 
 

@@ -32,17 +32,40 @@ geen aparte ELM, maar die rol.
 
 ### Cycle-form (`cycle` + `final`)
 
-Gegeven `cycle: ["1", "2"]` en `final: laatste`:
+Legacy shorthand voor het standaardpatroon `||: … :|| final`. Equivalent:
 
-1. Wijs tekstdelen in volgorde toe aan [template-frasen](template-frase@) `1`,
-   `2`, `1`, `2`, … totdat de **laatste** tekstfrase resteert.
-2. Die laatste gebruikt altijd `final`.
-3. Bibliotheekfrasen (in `phrases` maar niet in `cycle`/`final`), zoals `"1a"`,
-   alleen via mapping of expliciete variant.
+```yaml
+text_mapping:
+  - repeat: ["1", "2"]   # ids uit cycle
+    until: final
+  - phrase: laatste      # id uit final
+```
+
+Semantiek:
+
+1. Tekstregels worden **cyclisch** over de ids in `cycle` gezet.
+2. De **laatste** regel gebruikt altijd `final`.
+3. Er is **geen** eis dat het aantal regels vóór `final` een veelvoud van
+   `len(cycle)` is.
+4. Bibliotheekfrasen (in `phrases` maar niet in `cycle`/`final`), zoals `"1a"`,
+   via `text_mapping`, `mapping_plans`, of expliciete variant.
+
+Zie [Mapping — text_mapping](mapping-vsa.md) voor prefix, embedded cycle en
+meerdere plannen.
 
 ### Sequence-form (`sequence`)
 
-Vaste toewijzing van tekstdelen 1..N aan phrase-ids. Geen impliciete herhaling.
+Vaste toewijzing: één tekstregel per id in volgorde. Equivalent:
+
+```yaml
+text_mapping:
+  - sequence: ["1", "3", "1", "2"]
+```
+
+### `text_mapping` / `mapping_plans`
+
+Algemene vorm voor bladen met prefix, embedded `||: … :||`, of meerdere
+cycle-varianten. Zie [mapping-vsa.md](mapping-vsa.md).
 
 ### Alias-form (`same_as`)
 
@@ -65,11 +88,12 @@ voor is.
 
 ## Frase-ankers
 
-| Anchor   | Bedoeling (werkhypothese)         |
-| -------- | --------------------------------- |
-| `e.st.`  | Eerste streek / inzet             |
-| `l.st.`  | Laatste streek op deze cadensnoot |
-| `vl.st.` | Voorlaatste streek                |
+| Anchor   | Bedoeling (werkhypothese)                              |
+| -------- | ------------------------------------------------------ |
+| `e.st.`  | Eerste streek / inzet                                  |
+| `l.st.`  | Laatste streek op deze cadensnoot                      |
+| `vl.st.` | Voorlaatste streek                                     |
+| `l.lgr.` | Start van het slotmelisma: deze noot **en alle noten erna** in de frase op de laatste lettergreep |
 
 Zie [frase-anker](@). Mapping naar syllaben: [mapping-vsa.md](mapping-vsa.md)
 (experimenteel).

@@ -50,29 +50,31 @@ Normatieve graden in voorbeelden komen alleen uit **menselijk gecontroleerde**
 invoer. Onzekerheden: [`open-points.md`](open-points.md) of
 `pitches_status: provisional`.
 
-## Architectuurdefault
+## Architectuur (pad B)
 
-Het [vsa-template](@) beschrijft de **volledige SATB-formule** (zoals op het
-blad). Koppeling met VSA-tekst is een aparte laag
-([Mapping VSA](mapping-vsa.md)). Alternatief “VSA = sopraan, template = alleen
-harmony” blijft een open punt.
+Het [vsa-template](@) beschrijft de **volledige SATB-formule** zoals op het
+blad (inclusief optionele noten). Runtime-melodie voor **S** komt uit [VSA](@);
+**A/T/B** komen uit de template en volgen dezelfde optional-/split-beslissingen
+als S. Zie [Mapping VSA](mapping-vsa.md).
 
 ## Begrippen (TermRefs)
 
 Geen parallelle termtabel bijhouden: definities staan in curated texts /
 [glossary](../glossary.md). In deze specificatie:
 
-| Begrip                   | TermRef                                                             |
-| ------------------------ | ------------------------------------------------------------------- |
-| Document / formule       | [vsa-template](@)                                                   |
-| Melodisch blok           | [template-frase](@)                                                 |
-| Één stap/akkoord         | [template-event](@)                                                 |
-| Klemtoonlabel op noot    | [frase-anker](@)                                                    |
-| Variabel syllabe-akkoord | [reciteertoon](@)                                                   |
-| Graad t.o.v. do          | [laddergraad](@)                                                    |
-| Grondtoon + modus        | [do-context](@)                                                     |
-| Duursymbool              | [enkelvoudige lengte-modifier](enkelvoudige-lengte-modifier@) (ELM) |
-| Org: werk                | [zangstuk](@bron)                                                   |
+| Begrip                    | TermRef                                                             |
+| ------------------------- | ------------------------------------------------------------------- |
+| Document / formule        | [vsa-template](@)                                                   |
+| Melodisch blok            | [template-frase](@)                                                 |
+| Één stap/akkoord          | [template-event](@)                                                 |
+| Klemtoonlabel op noot     | [frase-anker](@)                                                    |
+| Id van een template-frase | [frase-id](@)                                                       |
+| Staff-text op de formule  | [formulelabel](@) ([frase-id](@) of [frase-anker](@))               |
+| Variabel syllabe-akkoord  | [reciteertoon](@)                                                   |
+| Graad t.o.v. do           | [laddergraad](@)                                                    |
+| Grondtoon + modus         | [do-context](@)                                                     |
+| Duursymbool               | [enkelvoudige lengte-modifier](enkelvoudige-lengte-modifier@) (ELM) |
+| Org: werk                 | [zangstuk](@bron)                                                   |
 
 Genre-labels op het blad (`tropaar`, `stichier`, `vers`) en toonnummers (1–8)
 zijn metadata in het YAML; nog geen aparte glossarytermen.

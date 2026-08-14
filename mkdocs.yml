@@ -29,6 +29,7 @@ not_in_nav: |
   reference/cli.md
   terminologie/**
   specification-vsa-templates/examples/**
+  specification-vsa-templates/library/**
   specification-vsa-templates/schema/**
 
 validation:
@@ -125,6 +126,7 @@ nav:
     - Validatie: specification-vsa-templates/validation.md
     - Mapping VSA: specification-vsa-templates/mapping-vsa.md
     - Voorbeelden: specification-vsa-templates/examples.md
+    - Library: specification-vsa-templates/library/README.md
     - Conformiteit: specification-vsa-templates/conformance.md
     - Open punten: specification-vsa-templates/open-points.md
     - Versionering: specification-vsa-templates/versioning.md

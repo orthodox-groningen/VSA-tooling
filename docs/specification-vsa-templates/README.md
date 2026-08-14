@@ -30,7 +30,8 @@ zijn. Tool-termen staan al in `docs/terminologie/` (zie [glossary](../glossary.m
 | [Semantiek](semantics.md)                           | Betekenis cycle/sequence/recite/ankers        |
 | [Validatie](validation.md)                          | Geldigheidsregels                             |
 | [Mapping VSA](mapping-vsa.md)                       | Contract VSA-tekst ↔ template (experimenteel) |
-| [Voorbeelden](examples.md)                          | Valid/invalid + walkthroughs                  |
+| [Voorbeelden](examples.md)                          | Library + invalid cases                       |
+| [Library](library/README.md)                        | Werkmappen per genre × toon                   |
 | [Conformiteit](conformance.md)                      | Wanneer template/tool conform is              |
 | [Open punten](open-points.md)                       | Open vragen                                   |
 | [Versionering](versioning.md)                       | Versiebeleid van deze draft                   |

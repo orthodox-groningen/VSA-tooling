@@ -15,7 +15,7 @@ Normatieve [laddergraad](@)-claims vereisen `verified` én menselijke audit.
 
 Een tool is een conforme draft-v0-validator indien zij:
 
-- elk bestand onder `examples/valid/` accepteert;
+- elk `library/*/template.yaml` accepteert;
 - elk bestand onder `examples/invalid/` weigert;
 - fouten rapporteert met stabiele codes uit `validation.md` (waar van toepassing).
 

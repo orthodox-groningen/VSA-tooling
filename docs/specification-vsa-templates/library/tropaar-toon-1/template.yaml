@@ -14,6 +14,25 @@ cycle:
   - "2"
 final: laatste
 
+mapping_plans:
+  - id: standard
+    label: "||: 1, 2 :|| laatste"
+    when:
+      default: true
+    steps:
+      - repeat: ["1", "2"]
+        until: final
+      - phrase: laatste
+  - id: extended-close
+    label: "||: 1, 2 :|| 1, 1a, 1a, 2"
+    when:
+      stanza_count: 5
+    steps:
+      - repeat: ["1", "2"]
+        until:
+          remaining: 4
+      - sequence: ["1", "1a", "1a", "2"]
+
 phrases:
   - id: "1"
     events:

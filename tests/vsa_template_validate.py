@@ -14,7 +14,7 @@ ID_RE = re.compile(r"^[a-z0-9_-]+$")
 VOICES = ("S", "A", "T", "B")
 ROLES = frozenset({"open", "recite", "cadence", "link"})
 DURATIONS = frozenset({"~", "-", "_", "_.", "__", ".", ".."})
-ANCHORS = frozenset({"e.st.", "l.st.", "vl.st."})
+ANCHORS = frozenset({"e.st.", "l.st.", "vl.st.", "l.lgr."})
 GENRES = frozenset({"tropaar", "stichier", "vers", "other"})
 
 SPEC_ROOT = (
@@ -22,7 +22,8 @@ SPEC_ROOT = (
     / "docs"
     / "specification-vsa-templates"
 )
-EXAMPLES_VALID = SPEC_ROOT / "examples" / "valid"
+LIBRARY = SPEC_ROOT / "library"
+EXAMPLES_VALID = LIBRARY  # */template.yaml
 EXAMPLES_INVALID = SPEC_ROOT / "examples" / "invalid"
 
 
@@ -168,6 +169,7 @@ def validate_template(doc: Any, *, known_ids: set[str] | None = None) -> None:
                     "TEMPLATE-SEQUENCE-REF",
                     f"sequence id {sid!r} not in phrases",
                 )
+        _validate_mapping_extensions(doc, id_set)
     elif has_cycle or has_final:
         if has_seq:
             raise TemplateValidationError(
@@ -208,6 +210,7 @@ def validate_template(doc: Any, *, known_ids: set[str] | None = None) -> None:
                 "TEMPLATE-FINAL-NOT-IN-CYCLE",
                 f"final {final!r} must not appear in cycle",
             )
+        _validate_mapping_extensions(doc, id_set)
     else:
         raise TemplateValidationError(
             "TEMPLATE-FORM",
@@ -230,6 +233,9 @@ def validate_template(doc: Any, *, known_ids: set[str] | None = None) -> None:
         "cycle",
         "final",
         "sequence",
+        "text_mapping",
+        "mapping_plans",
+        "default_mapping_plan",
         "phrases",
     }
     extra = set(doc) - allowed
@@ -263,6 +269,50 @@ def _validate_phrases(phrases: Any) -> set[str]:
         for event in events:
             _validate_event(event)
     return set(phrase_ids)
+
+
+def _validate_mapping_extensions(doc: dict, id_set: set[str]) -> None:
+    if "text_mapping" not in doc and "mapping_plans" not in doc:
+        return
+    from vsa.template_mapping import TemplateMappingError, list_mapping_plans
+
+    try:
+        list_mapping_plans(doc)
+    except TemplateMappingError as exc:
+        raise TemplateValidationError("TEMPLATE-MAPPING", str(exc)) from exc
+    if "mapping_plans" in doc:
+        plans = doc["mapping_plans"]
+        if not isinstance(plans, list) or not plans:
+            raise TemplateValidationError(
+                "TEMPLATE-MAPPING",
+                "mapping_plans must be a non-empty list",
+            )
+        seen: set[str] = set()
+        for raw in plans:
+            if not isinstance(raw, dict):
+                raise TemplateValidationError(
+                    "TEMPLATE-MAPPING",
+                    "mapping_plans items must be mappings",
+                )
+            pid = raw.get("id")
+            if not isinstance(pid, str) or not pid:
+                raise TemplateValidationError(
+                    "TEMPLATE-MAPPING",
+                    "mapping_plans item needs non-empty id",
+                )
+            if pid in seen:
+                raise TemplateValidationError(
+                    "TEMPLATE-MAPPING",
+                    f"duplicate mapping_plans id {pid!r}",
+                )
+            seen.add(pid)
+    if "default_mapping_plan" in doc:
+        dmp = doc["default_mapping_plan"]
+        if not isinstance(dmp, str) or not dmp:
+            raise TemplateValidationError(
+                "TEMPLATE-MAPPING",
+                "default_mapping_plan must be non-empty string",
+            )
 
 
 def _validate_event(event: Any) -> None:

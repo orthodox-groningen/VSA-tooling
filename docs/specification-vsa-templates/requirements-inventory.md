@@ -36,6 +36,7 @@ Kolommen:
 | Anker `e. st.`                  | pijl + label                        | `anchor: e.st.`                                | required   |
 | Anker `l. st.`                  | pijl + label                        | `anchor: l.st.`                                | required   |
 | Anker `vl. st.`                 | pijl + label (vers/stichier)        | `anchor: vl.st.`                               | required   |
+| Anker `l. lgr.`                 | pijl + label (melisma)              | `anchor: l.lgr.`                               | required   |
 | Pre-cadens / cadensnoten        | reeks na recite                     | `role: cadence` (+ volgorde)                   | required   |
 | Stemmen SATB                    | twee notenbalken                    | `pitches` als laddergraden                     | required   |
 | Voortekening                    | mol/kruis op blad                   | afleidbaar uit `do`+`mode`; optioneel hintveld | optional   |

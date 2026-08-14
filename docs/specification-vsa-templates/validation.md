@@ -27,7 +27,7 @@ Naast het schema MUST een conforme validator:
 | `TEMPLATE-FINAL-NOT-IN-CYCLE` | `final` komt niet voor in `cycle`                  |
 | `TEMPLATE-CYCLE-NONEMPTY`     | `cycle` heeft ≥1 element                           |
 | `TEMPLATE-SEQUENCE-REF`       | Elke id in `sequence` bestaat in `phrases`         |
-| `TEMPLATE-SEQUENCE-NONEMPTY`  | `sequence` heeft ≥1 element                        |
+| `TEMPLATE-MAPPING`            | `text_mapping` / `mapping_plans` semantisch geldig |
 | `TEMPLATE-SAME-AS` / `-REF`   | Alias geldig; doel-id bestaat in de suite          |
 | `TEMPLATE-PHRASE-EVENTS`      | Elke frase heeft ≥1 event                          |
 

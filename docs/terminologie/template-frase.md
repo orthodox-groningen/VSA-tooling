@@ -8,7 +8,7 @@ formPhrases:
   - template-frase
   - template-frasen
 glossaryNotes:
-  - "Op toonboekbladen vaak als omcirkeld cijfer of label `laatste`."
+  - "Op toonboekbladen vaak als omcirkeld cijfer of label `laatste` ([frase-id](@))."
   - "Schrijf in docs bij voorkeur ‘template-frase’ (TermRef), niet los ‘frase’."
 ---
 
@@ -28,5 +28,5 @@ Formulezang wisselt vaste blokken af (`||: 1, 2 :|| laatste` of een vaste
 
 ## Gerelateerd / verder lezen
 
-- [vsa-template](@), [template-event](@), [frase-anker](@)
+- [vsa-template](@), [template-event](@), [frase-id](@), [frase-anker](@), [formulelabel](@)
 - Spec: [Metamodel](../specification-vsa-templates/metamodel.md)

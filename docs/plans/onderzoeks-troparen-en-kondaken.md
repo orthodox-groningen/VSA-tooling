@@ -228,30 +228,33 @@ Daar-in hebt gij de hei-lig-heid {/ge}{/&\von_&_}{\den_},
 
 ## Toon 4
 
+Conventie voor mapping-toets: **één template-frase per regel**; `*` markeert
+frasegrens (toegevoegd waar die ontbrak). Ingesprongen doorloopregels zijn
+samengevoegd. `**` blijft waar al aanwezig (overgang naar slotfrase). Corpus:
+[`../specification-vsa-templates/library/tropaar-toon-4/notes/corpus.md`](../specification-vsa-templates/library/tropaar-toon-4/notes/corpus.md).
+
 ---
 
 ::: vsa-notatie
 <!-- Bron: feesteigen\06-jun\06-25-geboorte-johannes-de-voorloper.md | type: chapter -->
-[//:] Profeet en Voorloper van {Chris_}{/tus_} {\komst_},
-{/wij} zijn niet in staat u naar waarde te {lo_.}{\ven_}
-die wij met liefde ver{-&/e_&_}{\ren_}.
-{/Want} de onvruchtbaarheid van uw moeder en de stomheid
-    van uw vader werd opge{he_.}{\ven_}
-door uw roemrijke en eerbiedwaardige Ge{-&/boor_&_}{\te_}.
-// Toen werd de Vleeswording van Gods Zoon aan de wereld
-    ver{-&\kon_&_}{/digd_}. [//:]
+[//:] Profeet en Voorloper van {Chris_}{/tus_} {\komst_}, *
+{/wij} zijn niet in staat u naar waarde te {lo_.}{\ven_} *
+die wij met liefde ver{-&/e_&_}{\ren_}. *
+{/Want} de onvruchtbaarheid van uw moeder en de stomheid van uw vader werd opge{he_.}{\ven_} *
+door uw roemrijke en eerbiedwaardige Ge{-&/boor_&_}{\te_}. *
+// Toen werd de Vleeswording van Gods Zoon aan de wereld ver{-&\kon_&_}{/digd_}. [//:]
 :::
 
 ---
 
 ::: vsa-notatie
 <!-- Bron: feesteigen\07-jul\07-02-johannes-aartsbisschop-van-shanghai-en-san-francisco.md | type: chapter -->
-[//:] Als een {Re_}gel {/van} ge{\loof}
-{/en} een voor-beeld van zacht{moe__}dig{\heid_}
-heeft de waar-heid u-wer da-den aan uw {kud_}{/de} ge{\toond_}.
-{/Daar}om zijt gij door {ne_}derigheid {\groot_},
-en door ar-moe-de rijk ge{-&/wor_&_}{\den_},
-{/Va}der en Ho-ge-pries-ter Jo{han_.}{\nes_},
+[//:] Als een {Re_}gel {/van} ge{\loof} *
+{/en} een voor-beeld van zacht{moe__}dig{\heid_} *
+heeft de waar-heid u-wer da-den aan uw {kud_}{/de} ge{\toond_}. *
+{/Daar}om zijt gij door {ne_}derigheid {\groot_}, *
+en door ar-moe-de rijk ge{-&/wor_&_}{\den_}, *
+{/Va}der en Ho-ge-pries-ter Jo{han_.}{\nes_}, *
 // bid Chris-tus God on-ze zie-len te {-&\red_&_}{/den_}. [//:]
 :::
 
@@ -260,7 +263,7 @@ en door ar-moe-de rijk ge{-&/wor_&_}{\den_},
 ::: vsa-notatie
 <!-- Tropaar HH. Martelaren, Toon 4 (melodie: tonenboek; tekst: Hemelum) -->
 T.4 [//:] Uw marte{la_}{/ren}, o {\Heer_}, *
-{/heb}ben door hun lijden van U een onbederfelijke kroon ont{van_}{\gen_}.*
+{/heb}ben door hun lijden van U een onbederfelijke kroon ont{van_}{\gen_}. *
 Zij hebben, God, zich in Uw {kracht_} {/ver_}{\heugd_}, *
 {/zo}dat zij hun beulen over{won_}{\nen_}, *
 en de machteloze aanslagen van de demonen hebben {af_}{/ge_}{\schud_}. **
@@ -302,7 +305,7 @@ Door haar gebeden, Barmhartige, verlos onze {-&\zie_&_}{/len}. [//:]
 [//:] Gij waart een {En_}gel {/in} het {\vlees_} *
 {/de} grondslag der pro{fe_}{\ten_} *
 en de tweede Voorloper van {Chris_}{/tus_} {\komst_}, *
-{/roem}rijke E{li_}{\a} *
+{/roem}rijke E{li_}{\a_} *
 Gij hebt uit den hoge uw geest gezonden op E{-&/li_&_}{\sa_} *
 {/gij} verjaagt ziekten en reinigt me{laat_}{\sen_}: *
 en doet zo ook genezing opwellen voor allen die u ver{-&\e_&_}{/ren_} [//:]
@@ -312,12 +315,12 @@ en doet zo ook genezing opwellen voor allen die u ver{-&\e_&_}{/ren_} [//:]
 
 ::: vsa-notatie
 <!-- Bron: feesteigen\09-sep\09-08-geboorte-van-de-moeder-gods.md | type: chapter -->
-[//:] Uw Geboorte, o {Moe_.}{/der} {\Gods_},
-{/heeft} de Vreugde geopenbaard aan heel de {\we__}{reld_}.
-Want uit U is opgegaan de Zon der Gerechtigheid: Christus {on_}{/ze} {\God_};
-{/Hij} heeft ons van de vervloeking be{\vrijd_}
-en schenkt ons Zijn {-&/ze_&_}{\gen_}.
-{/Hij} heeft de dood te{niet_.} ge{\daan_}
+[//:] Uw Geboorte, o {Moe_.}{/der} {\Gods_}, *
+{/heeft} de Vreugde geopenbaard aan heel de {\we__}{reld_}. *
+Want uit U is opgegaan de Zon der Gerechtigheid: Christus {on_}{/ze} {\God_}; *
+{/Hij} heeft ons van de vervloeking be{\vrijd_} *
+en schenkt ons Zijn {-&/ze_&_}{\gen_}. *
+{/Hij} heeft de dood te{niet_.} ge{\daan_} *
 en Hij verleent ons het eeuwige {-&/Le_&_}{\ven_}. [//:]
 :::
 
@@ -325,12 +328,12 @@ en Hij verleent ons het eeuwige {-&/Le_&_}{\ven_}. [//:]
 
 ::: vsa-notatie
 <!-- Bron: feesteigen\11-nov\11-21-tempelgang-moeder-gods.md | type: chapter -->
-[//:] He-den is het be-gin van Gods we-lbe{-&/ha_&_}{\gen_}:
-{/de} voor-be-rei-den-de Ver-kon-di-ging van de Ver-los-sing der {men__}{\sen_}.
-De Maagd komt in de {Tem_}{/pel_} {\Gods_}
-{/en} ver-kon-digt reeds aan al-len de {Chris__}{\tus_}.
-Tot haar wil-len ook wij met de En-gel {-&/roe_&_}{\pen}:
-{/Ver}{heug__} {\U_},
+[//:] He-den is het be-gin van Gods we-lbe{-&/ha_&_}{\gen_}: *
+{/de} voor-be-rei-den-de Ver-kon-di-ging van de Ver-los-sing der {men__}{\sen_}. *
+De Maagd komt in de {Tem_}{/pel_} {\Gods_} *
+{/en} ver-kon-digt reeds aan al-len de {Chris__}{\tus_}. *
+Tot haar wil-len ook wij met de En-gel {-&/roe_&_}{\pen}: *
+{/Ver}{heug__} {\U_}, *
 // Ver-vul-ling van het Heils-plan van de {-&/Schep_&_}{\per_}. [//:]
 :::
 
@@ -338,12 +341,12 @@ Tot haar wil-len ook wij met de En-gel {-&/roe_&_}{\pen}:
 
 ::: vsa-notatie
 <!-- Bron: feesteigen\11-nov\11-21-tempelgang-moeder-gods.md | type: chapter -->
-[//:] De al-rei-ne Tem-pel van de Ver{-&/los_&_}{\ser_},
-{/het} kos-te-lijk maag-de-lijk {Bruids__}ver{\trek_},
-de ge-hei-lig-de Schat-ka-mer van Gods {heer_}{/lijk_}{\heid_}
-{/wordt} he-den bin-nen-ge-leid in het Huis des {He__}{\ren_}.
-Zij brengt daar de ge-na-de van Gods {Hei_}{/li}ge {\Geest_},
-{/ter}wijl Zijn En-ge-len {zin__}{\gen_}:
+[//:] De al-rei-ne Tem-pel van de Ver{-&/los_&_}{\ser_}, *
+{/het} kos-te-lijk maag-de-lijk {Bruids__}ver{\trek_}, *
+de ge-hei-lig-de Schat-ka-mer van Gods {heer_}{/lijk_}{\heid_} *
+{/wordt} he-den bin-nen-ge-leid in het Huis des {He__}{\ren_}. *
+Zij brengt daar de ge-na-de van Gods {Hei_}{/li}ge {\Geest_}, *
+{/ter}wijl Zijn En-ge-len {zin__}{\gen_}: *
 // Zie, daar is de he-mel-se {-&/woon_&_}{\tent_}. [//:]
 :::
 
@@ -351,10 +354,10 @@ Zij brengt daar de ge-na-de van Gods {Hei_}{/li}ge {\Geest_},
 
 ::: vsa-notatie
 <!-- Bron: feesteigen\11-nov\11-30-apostel-andreas.md | type: chapter -->
-[//:] Gij zijt de Eerst-ge-roe-pe-ne der A{pos_}{/te_}{\len_},
-{/en} de broe-der van {Pe_}{\tros_}.
-Bid daar-om, hei-li-ge An-dre-as, tot de {Mees_}ter {/van} het heel{\al_},
-{/om} aan de we-reld vre-de te {schen__}{\ken_},
+[//:] Gij zijt de Eerst-ge-roe-pe-ne der A{pos_}{/te_}{\len_}, *
+{/en} de broe-der van {Pe_}{\tros_}. *
+Bid daar-om, hei-li-ge An-dre-as, tot de {Mees_}ter {/van} het heel{\al_}, *
+{/om} aan de we-reld vre-de te {schen__}{\ken_}, *
 // en aan onze zie-len de gro-te ge{-&/na_&_}{\de_}. [//:]
 :::
 
@@ -362,12 +365,12 @@ Bid daar-om, hei-li-ge An-dre-as, tot de {Mees_}ter {/van} het heel{\al_},
 
 ::: vsa-notatie
 <!-- Bron: feesteigen\12-dec\12-06-nicolaas-van-myra.md | type: chapter -->
-T.4 [//:] Als de {Re_}gel {/des} ge{\loofs_}
-{/en} het voor-beeld der zacht{moe__}dig{\heid_}
-heeft de waar-heid u-wer da-den U aan uw {kud_}{/de} ge{\toond_}.
-{/Daar}om zijt gij door {ne_}derigheid {\groot_},
-en door ar-moe-de rijk ge{-&/wor_&_}{\den_},
-{/Va}der en Ho-ge-pries-ter {Ni__}ko{\laas_},
+T.4 [//:] Als de {Re_}gel {/des} ge{\loofs_} *
+{/en} het voor-beeld der zacht{moe__}dig{\heid_} *
+heeft de waar-heid u-wer da-den U aan uw {kud_}{/de} ge{\toond_}. *
+{/Daar}om zijt gij door {ne_}derigheid {\groot_}, *
+en door ar-moe-de rijk ge{-&/wor_&_}{\den_}, *
+{/Va}der en Ho-ge-pries-ter {Ni__}ko{\laas_}, *
 // bid Chris-tus {God_}, on-ze zie-len te {-&/red_&_}{\den_}. [//:]
 :::
 

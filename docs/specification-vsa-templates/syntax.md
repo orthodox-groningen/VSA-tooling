@@ -89,7 +89,7 @@ Voorbeelden bij `do: F4`, `mode: major`: `do`→F4, `mi`→A4, `sol-1`→C4.
 2. Cycle- / sequence- / alias-form zoals hierboven.
 3. Elk [template-event](@): `role`, `duration` (ELM), `pitches` met S/A/T/B.
 4. `do` matcht scientific pitch; `mode` niet-lege identifier.
-5. `anchor` ∈ {`e.st.`, `l.st.`, `vl.st.`} indien aanwezig ([frase-anker](@)).
+5. `anchor` ∈ {`e.st.`, `l.st.`, `vl.st.`, `l.lgr.`} indien aanwezig ([frase-anker](@)).
 
 ## Wat syntax niet uitdrukt
 

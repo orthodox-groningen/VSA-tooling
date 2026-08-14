@@ -8,8 +8,8 @@ formPhrases:
   - reciteertoon
   - reciteertonen
 glossaryNotes:
-  - "Op het blad vaak als breve of ‘box’-nootkop; dat is geen aparte VSA-[ELM](enkelvoudige-lengte-modifier@), maar de recite-rol."
-  - "In YAML: `role: recite`."
+  - "Op het blad als brevis-kop (`||O||`), zonder teken erboven; dat is geen aparte VSA-[ELM](enkelvoudige-lengte-modifier@), maar de recite-rol."
+  - "In YAML: `role: recite`. In MuseScore-MSCX: halfnoot (2 tellen), stemloos, `<headType>breve</headType>`."
 ---
 
 # Reciteertoon

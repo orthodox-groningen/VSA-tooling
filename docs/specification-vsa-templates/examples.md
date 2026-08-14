@@ -1,19 +1,28 @@
 # Voorbeelden
 
-## Geldig (`examples/valid/`)
+## Library (geldige formules)
 
-| Bestand                                                       | Vorm     | Doel                                 |
-| ------------------------------------------------------------- | -------- | ------------------------------------ |
-| [`tropaar-toon-1.yaml`](examples/valid/tropaar-toon-1.yaml)   | cycle    | `1,2` + `laatste`; bibliotheek `1a`  |
-| [`tropaar-toon-3.yaml`](examples/valid/tropaar-toon-3.yaml)   | sequence | vaste volgorde + `2a` + ELM `.`      |
-| [`tropaar-toon-4.yaml`](examples/valid/tropaar-toon-4.yaml)   | cycle    | `1,2` + `laatste`; optional link     |
-| [`stichier-toon-5.yaml`](examples/valid/stichier-toon-5.yaml) | cycle    | `1,2,3` + `laatste`; `also_used_as`  |
-| [`tropaar-toon-5.yaml`](examples/valid/tropaar-toon-5.yaml)   | alias    | `same_as: stichier-toon-5`           |
-| [`vers-toon-1.yaml`](examples/valid/vers-toon-1.yaml)         | cycle    | vers toon 1; `vl.st.`; ELMs `-`/`..` |
-| [`vers-toon-5.yaml`](examples/valid/vers-toon-5.yaml)         | cycle    | vers toon 5; ELM `_.`                |
+Canonieke werkmappen: [`library/`](library/README.md).
+Per formule: `template.yaml`, `template.musicxml` (SA/TB, zonder maatsoort,
+optionals tussen haakjes), optioneel `examples/` en `notes/`.
 
-Alle voorbeelden: [vsa-templates](vsa-template@) met `pitches_status: provisional`
-([laddergraden](laddergraad@) + [do-context](@) nog te auditen tegen PDF).
+| Map                                                   | Vorm     | Doel                                |
+| ----------------------------------------------------- | -------- | ----------------------------------- |
+| [`tropaar-toon-1`](library/tropaar-toon-1/)           | cycle    | `1,2` + `laatste`; bibliotheek `1a` |
+| [`tropaar-toon-3`](library/tropaar-toon-3/)           | sequence | vaste volgorde + `2a` + ELM `.`     |
+| [`tropaar-toon-4`](library/tropaar-toon-4/)           | cycle    | Elia-mapping + corpus               |
+| [`stichier-toon-5`](library/stichier-toon-5/)         | cycle    | `1,2,3` + `laatste`; `also_used_as` |
+| [`tropaar-toon-5`](library/tropaar-toon-5/)           | alias    | `same_as: stichier-toon-5`          |
+| [`vers-toon-1`](library/vers-toon-1/)                 | cycle    | vers toon 1; `vl.st.`               |
+| [`vers-toon-5`](library/vers-toon-5/)                 | cycle    | vers toon 5; ELM `_.`               |
+
+Alle formules: [vsa-templates](vsa-template@) met `pitches_status: provisional`
+tot PDF-audit. MusicXML regenereren:
+
+```cmd
+cd /d C:\Git\orthodox-groningen\VSA-tooling
+python scripts\render_vsa_template_musicxml.py --all
+```
 
 ## Ongeldig (`examples/invalid/`)
 
@@ -26,15 +35,9 @@ Alle voorbeelden: [vsa-templates](vsa-template@) met `pitches_status: provisiona
 | [`same-as-missing-target.yaml`](examples/invalid/same-as-missing-target.yaml)   | `TEMPLATE-SAME-AS-REF`        |
 | [`bad-duration-elm.yaml`](examples/invalid/bad-duration-elm.yaml)               | `TEMPLATE-DURATION`           |
 
-## Walkthroughs (niet normatief)
-
-| Bestand                                                                               | Doel                                 |
-| ------------------------------------------------------------------------------------- | ------------------------------------ |
-| [`walkthroughs/elia-tropaar-toon-4.md`](examples/walkthroughs/elia-tropaar-toon-4.md) | Mapping [VSA](@) ↔ [vsa-template](@) |
-
-## Checklist “voorbeeld mag in valid/”
+## Checklist “mag in library/”
 
 - [ ] Schema + documentregels groen
-- [ ] Geen velden buiten de syntax
-- [ ] `source` of commentaar verklaart herkomst
+- [ ] `template.musicxml` gegenereerd (SA/TB, `senza-misura`)
+- [ ] `source` of README verklaart herkomst
 - [ ] Onzekere pitches: `pitches_status: provisional`

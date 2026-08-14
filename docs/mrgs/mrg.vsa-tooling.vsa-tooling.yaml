@@ -386,17 +386,44 @@ entries:
       - "fixture"
     termid: "concept:fixture"
     vsntag: "vsa-tooling"
-  - git_date: 2026-08-09T00:00:00.000Z
+  - git_date: 2026-08-14T00:00:00.000Z
+    slug: "formulelabel"
+    term: "formulelabel"
+    termType: "concept"
+    glossaryTerm: "Formulelabel"
+    glossaryText: "een [frase-id](@) (bijv. `1`, `2`, `laatste`) of [frase-anker](@) (bijv. `e. st.`, `l. st.`) die wordt gebruikt door onze tooling; ze staan boven de notenbalk van een formulepartituur."
+    formPhrases:
+      - "formulelabel"
+      - "formulelabels"
+      - "formule-label"
+      - "formule-labels"
+    glossaryNotes:
+      - "Alle formulelabels staan op dezelfde hoogte, boven de noten, zonder autoplace."
+      - "Een [frase-anker](@) heeft daaronder nog een pijl die strak naar de betreffende noot wijst; die pijl is geen tweede label."
+      - "Schrijf in docs ‘formulelabel’ (TermRef) als je het bladmerk als geheel bedoelt; gebruik [frase-id](@) of [frase-anker](@) als je het type bedoelt."
+    scopetag: "vsa-tooling"
+    locator: "formulelabel.md"
+    navurl: "https://orthodox-groningen.github.io/VSA-tooling/preview/terminologie/formulelabel"
+    headingids:
+      - "formulelabel"
+      - "status"
+      - "motivatie"
+      - "gerelateerd-/-verder-lezen"
+    termid: "concept:formulelabel"
+    vsntag: "vsa-tooling"
+  - git_date: 2026-08-14T00:00:00.000Z
     slug: "frase-anker"
     term: "frase-anker"
     termType: "concept"
     glossaryTerm: "Frase-anker"
-    glossaryText: "een label op een [template-event](@) (`e.st.`, `l.st.`, `vl.st.`) dat op het toonboekblad aangeeft welke tekstklemtoon (eerste / laatste / voorlaatste streek) op die noot hoort te vallen."
+    glossaryText: "een label op een [template-event](@) (`e.st.`, `l.st.`, `vl.st.`, `l.lgr.`) dat op het toonboekblad aangeeft welke tekstklemtoon (eerste / laatste / voorlaatste streek, of start van het slotmelisma op de laatste lettergreep) op die noot hoort te vallen."
     formPhrases:
       - "frase-anker"
       - "frase-ankers"
     glossaryNotes:
-      - "Op het blad vaak met pijl en afkorting `e. st.`, `l. st.`, `vl. st.`."
+      - "Op het blad: afkorting `e. st.`, `l. st.`, `vl. st.`, `l. lgr.` als [formulelabel](@), met een pijl **onder** de afkorting die naar de noot wijst."
+      - "`l.lgr.` wijst naar het begin van een slotmelisma: die noot en alle noten erna in de frase horen bij de laatste lettergreep."
+      - "De YAML-waarde is zonder spaties (`l.st.`); op het blad mét spaties (`l. st.`)."
       - "Schrijf in docs ‘frase-anker’ (TermRef), niet los ‘anker’."
     scopetag: "vsa-tooling"
     locator: "frase-anker.md"
@@ -406,6 +433,29 @@ entries:
       - "motivatie"
       - "gerelateerd-/-verder-lezen"
     termid: "concept:frase-anker"
+    vsntag: "vsa-tooling"
+  - git_date: 2026-08-14T00:00:00.000Z
+    slug: "frase-id"
+    term: "frase-id"
+    termType: "concept"
+    glossaryTerm: "Frase-id"
+    glossaryText: "de machineleesbare id van een [template-frase](@) in een [vsa-template](@) (`1`, `2`, `laatste`, …); op het toonboekblad het cijfer of woord in een cirkel of vierkant boven de eerste noot van die frase."
+    formPhrases:
+      - "frase-id"
+      - "frase-ids"
+    glossaryNotes:
+      - "De id is `1`, `2`, `laatste`, enzovoort — ongeacht of het blad een cirkel of een vierkant toont."
+      - "Op het blad is de frase-id een [formulelabel](@); in YAML is het de sleutel van `phrases:`."
+      - "Schrijf in docs ‘frase-id’ (TermRef), niet los ‘id’ of ‘frase-nummer’."
+    scopetag: "vsa-tooling"
+    locator: "frase-id.md"
+    navurl: "https://orthodox-groningen.github.io/VSA-tooling/preview/terminologie/frase-id"
+    headingids:
+      - "frase-id"
+      - "status"
+      - "motivatie"
+      - "gerelateerd-/-verder-lezen"
+    termid: "concept:frase-id"
     vsntag: "vsa-tooling"
   - git_date: 2026-08-09T00:00:00.000Z
     slug: "geldige-vsa-notatie"
@@ -761,7 +811,7 @@ entries:
       - "publicatie"
     termid: "concept:publicatie"
     vsntag: "vsa-tooling"
-  - git_date: 2026-08-09T00:00:00.000Z
+  - git_date: 2026-08-14T00:00:00.000Z
     slug: "reciteertoon"
     term: "reciteertoon"
     termType: "concept"
@@ -771,8 +821,8 @@ entries:
       - "reciteertoon"
       - "reciteertonen"
     glossaryNotes:
-      - "Op het blad vaak als breve of ‘box’-nootkop; dat is geen aparte VSA-[ELM](enkelvoudige-lengte-modifier@), maar de recite-rol."
-      - "In YAML: `role: recite`."
+      - "Op het blad als brevis-kop (`||O||`), zonder teken erboven; dat is geen aparte VSA-[ELM](enkelvoudige-lengte-modifier@), maar de recite-rol."
+      - "In YAML: `role: recite`. In MuseScore-MSCX: halfnoot (2 tellen), stemloos, `<headType>breve</headType>`."
     scopetag: "vsa-tooling"
     locator: "reciteertoon.md"
     navurl: "https://orthodox-groningen.github.io/VSA-tooling/preview/terminologie/reciteertoon"
@@ -935,7 +985,7 @@ entries:
       - "gerelateerd-/-verder-lezen"
     termid: "concept:template-event"
     vsntag: "vsa-tooling"
-  - git_date: 2026-08-09T00:00:00.000Z
+  - git_date: 2026-08-14T00:00:00.000Z
     slug: "template-frase"
     term: "template-frase"
     termType: "concept"
@@ -945,7 +995,7 @@ entries:
       - "template-frase"
       - "template-frasen"
     glossaryNotes:
-      - "Op toonboekbladen vaak als omcirkeld cijfer of label `laatste`."
+      - "Op toonboekbladen vaak als omcirkeld cijfer of label `laatste` ([frase-id](@))."
       - "Schrijf in docs bij voorkeur ‘template-frase’ (TermRef), niet los ‘frase’."
     scopetag: "vsa-tooling"
     locator: "template-frase.md"

@@ -8,6 +8,9 @@ public/
 resources/
 node_modules/
 
+# MuseScore/lokale PDF-export — niet committen (scans horen in bron)
+*.pdf
+
 # Lokale docs-checks (scripts/check-docs.py) — niet committen
 docs/reports/
 

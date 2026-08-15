@@ -98,7 +98,7 @@
   
   <strong>Preview</strong>
    — branch <code>feat/vsa-templates-spec</code>
-  , gebouwd 2026-08-15 12:27 CEST.
+  , gebouwd 2026-08-15 20:39 CEST.
   <a href="https://orthodox-groningen.github.io/VSA-tooling/">Live documentatie (main)</a>.
   
 
@@ -1776,6 +1776,23 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Architectuur: VSA→template-instance (besloten)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#elm-vs-ehm-bindend" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ELM vs EHM (bindend)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -1901,21 +1918,32 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#h5-duur-elm-uit-vsa" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        H5 (duur — ELM uit VSA)
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#hoogte-mismatch-instance" class="md-nav__link">
+  <a href="#hoogte-ehm-exact" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Hoogte-mismatch (instance)
+        Hoogte (EHM — exact)
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Hoogte-mismatch (instance)">
+    <nav class="md-nav" aria-label="Hoogte (EHM — exact)">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -3450,6 +3478,23 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Architectuur: VSA→template-instance (besloten)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#elm-vs-ehm-bindend" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ELM vs EHM (bindend)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -3575,21 +3620,32 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#h5-duur-elm-uit-vsa" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        H5 (duur — ELM uit VSA)
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#hoogte-mismatch-instance" class="md-nav__link">
+  <a href="#hoogte-ehm-exact" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Hoogte-mismatch (instance)
+        Hoogte (EHM — exact)
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Hoogte-mismatch (instance)">
+    <nav class="md-nav" aria-label="Hoogte (EHM — exact)">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -3688,6 +3744,26 @@
 </tr>
 </tbody>
 </table>
+<h3 id="elm-vs-ehm-bindend">ELM vs EHM (bindend)<a class="headerlink" href="#elm-vs-ehm-bindend" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Modifier</th>
+<th>Rol in de instance</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>ELM</strong> (<code>_</code>, <code>__</code>, <code>~</code>, …)</td>
+<td><strong>VSA bepaalt de werkelijke duur.</strong> Template-<code>duration</code> is alleen een formule-indicatie op het blad; in de uitgewerkte partituur wint de VSA-ELM. A/T/B krijgen <strong>dezelfde</strong> duur als S op dat event (H5).</td>
+</tr>
+<tr>
+<td><strong>EHM</strong> (<code>/</code>, <code>\</code>, <code>~</code>, …) / resulterende laddergraad</td>
+<td><strong>Moet precies matchen</strong> op template-<code>pitches.S</code> (zelfde klinkende toon t.o.v. <code>do</code>/<code>mode</code>). Geen “ongeveer”; mismatch → harde fout (H9), geen stil hold.</td>
+</tr>
+</tbody>
+</table>
+<p>Kort: duur mag afwijken van de formule; <strong>toonhoogte niet</strong>.</p>
 <h2 id="tekstregels-template-frasen">Tekstregels → template-frasen<a class="headerlink" href="#tekstregels-template-frasen" title="Permanent link">&para;</a></h2>
 <p>Elke VSA-regel (gescheiden door <code>*</code>) is één <strong>tekstfrase</strong>. De mapper wijst
 regels in volgorde toe aan <a class="og-termref" href="/VSA-tooling/preview/terminologie/template-frase" title="Template-frase: een genaamde melodische eenheid binnen een Vsa-template (bijv. id <code>1</code>, <code>2</code>, <code>1a</code> of <code>laatste</code>), opgebouwd uit geordende Template-events.">template-frase</a>-ids.</p>
@@ -3920,7 +3996,7 @@ met meerdere <a class="og-termref" href="/VSA-tooling/preview/terminologie/muzik
 </tr>
 <tr>
 <td>H5</td>
-<td>Split/merge van duren wordt gestuurd door VSA-S en parallel op A/T/B gezet.</td>
+<td><strong>ELM:</strong> VSA bepaalt de werkelijke nootlengte; template-<code>duration</code> is alleen formuleblad. Die VSA-duur geldt parallel voor A/T/B.</td>
 </tr>
 <tr>
 <td>H6</td>
@@ -3936,7 +4012,7 @@ met meerdere <a class="og-termref" href="/VSA-tooling/preview/terminologie/muzik
 </tr>
 <tr>
 <td>H9</td>
-<td><strong>Hoogte-mismatch</strong> (VSA-S past op geen resterend template-S-slot) → harde fout (<code>TemplateInstanceError</code>), geen stil hold op het vorige akkoord.</td>
+<td><strong>EHM/hoogte:</strong> VSA-S moet <strong>exact</strong> op een resterend template-S-slot landen (klinkende toon). Mismatch → <code>TemplateInstanceError</code>; geen stil hold, geen “ongeveer”.</td>
 </tr>
 </tbody>
 </table>
@@ -3968,7 +4044,7 @@ met meerdere <a class="og-termref" href="/VSA-tooling/preview/terminologie/muzik
 <tr>
 <td>rest van een <strong>zelfde-S-run</strong> na de laatste gebruikte syllabe op die graad</td>
 <td>VSA gaat door naar een latere andere toon</td>
-<td>mag stil weg (ondergevulde run; geen andere toon overgeslagen)</td>
+<td>mag stil weg (ondergevulde run; “laatst gebruikt” telt ook de <strong>recite</strong>-graad)</td>
 </tr>
 <tr>
 <td>optional tussenslots bij sprong naar latere toon</td>
@@ -3980,9 +4056,9 @@ met meerdere <a class="og-termref" href="/VSA-tooling/preview/terminologie/muzik
 <p><strong>H6-aanscherping:</strong> blijven er VSA-syllaben op dezelfde graad én is het <strong>volgende</strong>
 template-slot ook die graad, dan vult de volgende syllabe dat slot (bijv. <code>l.st.</code>),
 in plaats van alles op het eerste slot te houden.</p>
-<h2 id="hoogte-mismatch-instance">Hoogte-mismatch (instance)<a class="headerlink" href="#hoogte-mismatch-instance" title="Permanent link">&para;</a></h2>
-<p>Vergelijking: absolute toonhoogte van de VSA-noot ↔ laddergraad <code>pitches.S</code>
-van template-events in de cadens-tail (zelfde <code>do</code>/<code>mode</code>).</p>
+<h3 id="h5-duur-elm-uit-vsa">H5 (duur — ELM uit VSA)<a class="headerlink" href="#h5-duur-elm-uit-vsa" title="Permanent link">&para;</a></h3>
+<p>De template geeft <strong>ongeveer</strong> aan hoe lang formuleslots zijn. In de instance
+bepalen de <strong>VSA-ELMs</strong> de lengte.</p>
 <table>
 <thead>
 <tr>
@@ -3992,43 +4068,42 @@ van template-events in de cadens-tail (zelfde <code>do</code>/<code>mode</code>)
 </thead>
 <tbody>
 <tr>
-<td>VSA-pitch = huidig slot</td>
-<td>koppelen</td>
+<td>VSA-scope met <code>_</code> / <code>__</code> / <code>~</code> / …</td>
+<td>die MusicXML-duur op het mapped event (alle stemmen)</td>
 </tr>
 <tr>
-<td>VSA-pitch = later slot; overgeslagen tussenslots alleen <code>optional</code> of rest van dezelfde S-run</td>
-<td>tussenslots weg; daarna koppelen</td>
+<td>Template-event had andere <code>duration</code> (bijv. <code>~</code> vs VSA <code>_</code>)</td>
+<td>template genegeerd in de <strong>instance</strong>; wel zichtbaar op het formuleblad</td>
 </tr>
 <tr>
-<td>VSA-pitch = later slot; ≥1 overgeslagen tussenslot is verplicht <strong>én</strong> andere S-graad</td>
-<td><strong><code>TemplateInstanceError</code></strong> (verplicht slot overgeslagen)</td>
+<td>Twee syllaben op dezelfde graad (split)</td>
+<td>twee events; elk met eigen VSA-duur; A/T/B-akkoord herhaald (H6)</td>
 </tr>
 <tr>
-<td>VSA-pitch = zelfde slot opnieuw</td>
-<td>hold (H6); bij volgend zelfde-S-slot: dat slot vullen</td>
+<td>Eén VSA-duur i.p.v. langere formule-indicatie (merge)</td>
+<td>één event met VSA-duur; geen aparte A/T/B-ritmes</td>
 </tr>
 <tr>
-<td>VSA-pitch past nergens meer in de resterende tail</td>
-<td><strong><code>TemplateInstanceError</code></strong> (hoogte-mismatch)</td>
-</tr>
-<tr>
-<td>Extra noot ná de tail, andere hoogte</td>
-<td><strong><code>TemplateInstanceError</code></strong></td>
-</tr>
-<tr>
-<td>Extra noot ná de tail,zelfde hoogte als slot</td>
-<td>hold (H6)</td>
-</tr>
-<tr>
-<td>Einde VSA terwijl er nog <strong>verplichte</strong> template-slots resten</td>
-<td><strong><code>TemplateInstanceError</code></strong> (verplicht slot niet aangedaan)</td>
-</tr>
-<tr>
-<td>Einde VSA; resten alleen <code>optional: true</code></td>
-<td>optional resten weglaten (H4)</td>
+<td>Recite (ongemarkeerd) in instance vóór print-collapse</td>
+<td>kwart per syllabe; MSCZ-collapse naar <code>\|\|O\|\|</code> is een print-stap</td>
 </tr>
 </tbody>
 </table>
+<h2 id="hoogte-ehm-exact">Hoogte (EHM — exact)<a class="headerlink" href="#hoogte-ehm-exact" title="Permanent link">&para;</a></h2>
+<p>Vergelijking: absolute toonhoogte van de VSA-noot (uit EHM + do-context) ↔
+laddergraad <code>pitches.S</code> van template-events (zelfde <code>do</code>/<code>mode</code>). <strong>Geen
+tolerantie:</strong> verkeerde graad is fout, ook als de ELM “ongeveer” past.
+| Situatie                                                                                      | Gedrag                                                          |
+| --------------------------------------------------------------------------------------------- | --------------------------------------------------------------- |
+| VSA-pitch = huidig slot                                                                       | koppelen                                                        |
+| VSA-pitch = later slot; overgeslagen tussenslots alleen <code>optional</code> of rest van dezelfde S-run | tussenslots weg; daarna koppelen                                |
+| VSA-pitch = later slot; ≥1 overgeslagen tussenslot is verplicht <strong>én</strong> andere S-graad         | <strong><code>TemplateInstanceError</code></strong> (verplicht slot overgeslagen)       |
+| VSA-pitch = zelfde slot opnieuw                                                               | hold (H6); bij volgend zelfde-S-slot: dat slot vullen           |
+| VSA-pitch past nergens meer in de resterende tail                                             | <strong><code>TemplateInstanceError</code></strong> (hoogte-mismatch)                   |
+| Extra noot ná de tail, andere hoogte                                                          | <strong><code>TemplateInstanceError</code></strong>                                     |
+| Extra noot ná de tail,zelfde hoogte als slot                                                  | hold (H6)                                                       |
+| Einde VSA terwijl er nog <strong>verplichte</strong> template-slots resten                                 | <strong><code>TemplateInstanceError</code></strong> (verplicht slot niet aangedaan)     |
+| Einde VSA; resten alleen <code>optional: true</code>                                                     | optional resten weglaten (H4)                                   |</p>
 <p>Zo wordt bijv. <code>{-&amp;/Schep_&amp;_}{\per_}</code> (mi–fa–mi) op template-<code>laatste</code>
 (mi–re–mi) afgewezen i.p.v. A/T/B stil op mi te laten hangen.</p>
 <h3 id="foutmeldingen-instance-mapping">Foutmeldingen (instance-mapping)<a class="headerlink" href="#foutmeldingen-instance-mapping" title="Permanent link">&para;</a></h3>
@@ -4052,8 +4127,9 @@ van template-events in de cadens-tail (zelfde <code>do</code>/<code>mode</code>)
 </tr>
 </tbody>
 </table>
-<p>Minimaal in elke melding: bronpad, positie in de VSA-tekst (regel/kolom waar
-mogelijk), frase-id, betrokken lyric/syllabe, verwachte vs gevonden laddergraden.</p>
+<p>Minimaal in elke melding: bronpad, <strong>regel/kolom</strong> in de VSA-bron (via
+<code>VsaNote.line</code>/<code>column</code>), frase-id, betrokken lyric/syllabe, verwachte vs
+gevonden laddergraden. Compact: <code>bestand:regel:kolom: CODE</code>.</p>
 <h2 id="corpus-en-detail">Corpus en detail<a class="headerlink" href="#corpus-en-detail" title="Permanent link">&para;</a></h2>
 <p>Library-werkmappen: <a href="../library/"><code>library/</code></a>.</p>
 <p>Corpus Toon 4:

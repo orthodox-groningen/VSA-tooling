@@ -98,7 +98,7 @@
   
   <strong>Preview</strong>
    — branch <code>feat/vsa-templates-spec</code>
-  , gebouwd 2026-08-15 12:27 CEST.
+  , gebouwd 2026-08-15 20:39 CEST.
   <a href="https://orthodox-groningen.github.io/VSA-tooling/">Live documentatie (main)</a>.
   
 
@@ -3473,6 +3473,11 @@ Mappingcontract: <a href="../mapping-vsa/">mapping-vsa.md</a>.</p>
 <li>[x] PDF-export uit git geweerd (afgeleide); lokaal via <code>--pdf-only</code>.</li>
 <li>[x] Spot-check PDF’s tropaar-toon-4 corpus: recite/scopes/layout kloppen
       (menselijke audit).</li>
+<li>[x] <strong>Instance-foutmeldingen zoals <code>vsa validate</code>:</strong> compacte + uitgebreide
+      vorm; <strong>bestand:regel:kolom</strong>; foutcode; <code>Hint:</code> (H7/H9 e.d.).</li>
+<li>[x] <strong>Mapping H4–H7</strong> in de instance-mapper (optional; VSA-duur H5;
+      hold/zelfde-S H6; H7 andere toon alleen via optional / zelfde-S-run
+      incl. na recite). Details: <a href="../mapping-vsa/">mapping-vsa.md</a>.</li>
 </ul>
 <hr />
 <h2 id="werklijst-volgende-chat-ongeordend">Werklijst (volgende chat — ongeordend)<a class="headerlink" href="#werklijst-volgende-chat-ongeordend" title="Permanent link">&para;</a></h2>
@@ -3517,21 +3522,6 @@ Mappingcontract: <a href="../mapping-vsa/">mapping-vsa.md</a>.</p>
       dubbele noot in de partituur.</li>
 <li>[ ] Normalisatie anker-labels (<code>e. st.</code> vs <code>e.st.</code>). Canoniek overal
       <code>e.st.</code> (en dezelfde vorm voor <code>l.st.</code>, <code>vl.st.</code>, <code>l.lgr.</code>).</li>
-<li>[x] <strong>Instance-foutmeldingen zoals <code>vsa validate</code>:</strong> compacte + uitgebreide
-      vorm (<code>format_compact</code> / <code>format_lines</code>); frase + syllabe + lyric;
-      foutcode; wat er mis is; <code>Hint:</code>-herstel. Bronpad/regel/kolom zodra
-      de VSA-noten posities krijgen. Geldt voor H7/H9 e.d.</li>
-<li>[ ] <strong>Mapping-hypotheses H4–H7 echt in de instance-mapper</strong> (zie
-      <a href="../mapping-vsa/">mapping-vsa.md</a>):<ul>
-<li><strong>H4</strong> optional-events: mee als VSA dat slot gebruikt, anders weg
-    (prefix-link + optional tussenslots) — deels gedaan;</li>
-<li><strong>H5</strong> duur split/merge: VSA-S stuurt; A/T/B parallel — nog open;</li>
-<li><strong>H6</strong> hold + vullen van opeenvolgende zelfde-S-slots — gedaan;</li>
-<li><strong>H7</strong> andere toon overslaan alleen via <code>optional</code>; verplicht ongebruikt
-    aan het eind → fout; rest van ondergevulde zelfde-S-run mag weg —
-    gedaan.</li>
-</ul>
-</li>
 </ul>
 <h3 id="tooling-export">Tooling / export<a class="headerlink" href="#tooling-export" title="Permanent link">&para;</a></h3>
 <ul>

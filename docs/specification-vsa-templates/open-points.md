@@ -14,7 +14,7 @@
 - [ ] Alle templates: graden/`do`/`mode` provisional tot PDF-audit.
 - [ ] Sequence-form: tekstlengte vs `len(sequence)` — handmatig bij `text_mapping`.
 - [x] Frase-toewijzing: `text_mapping` + `mapping_plans` + mapper
-      ([`template_mapping.py`](../../src/vsa/template_mapping.py)).
+      ([`template_mapping.py`](https://github.com/orthodox-groningen/VSA-tooling/blob/main/src/vsa/template_mapping.py)).
 - [ ] `l.lgr.`-anker in stichier-template + event-mapping (H8).
 - [ ] Welke `mode`-identifiers exact — gelijk trekken met VSA-implementatie.
 

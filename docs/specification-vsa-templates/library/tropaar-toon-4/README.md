@@ -4,7 +4,7 @@
 | -------------- | -------------------------------------------------------------------------------------- |
 | Template       | [`template.yaml`](template.yaml)                                                       |
 | Formule-MSCZ   | [`template.mscz`](template.mscz)                                                       |
-| MuseScore-bron | [`Template - Tropaar (Toon 4).musicxml`](Template%20-%20Tropaar%20(Toon%204).musicxml) |
+| MuseScore-bron | `Template - Tropaar (Toon 4).musicxml` (niet in git)                                   |
 | Status pitches | `provisional`                                                                          |
 | Mapping        | S=VSA, A/T/B=template ([mapping-vsa.md](../../mapping-vsa.md))                         |
 

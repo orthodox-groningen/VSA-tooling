@@ -2,8 +2,8 @@
 
 Status: **hypotheses + architectuurkeuze pad B**; geen normatieve VSA 1.0-wijziging.
 
-Implementatie: [`src/vsa/template_mapping.py`](../../src/vsa/template_mapping.py)
-(frase-toewijzing) en [`src/vsa/pad_b.py`](../../src/vsa/pad_b.py) (event-niveau,
+Implementatie: [`src/vsa/template_mapping.py`](https://github.com/orthodox-groningen/VSA-tooling/blob/main/src/vsa/template_mapping.py)
+(frase-toewijzing) en [`src/vsa/pad_b.py`](https://github.com/orthodox-groningen/VSA-tooling/blob/main/src/vsa/pad_b.py) (event-niveau,
 pad B).
 
 ## Doel

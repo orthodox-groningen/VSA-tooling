@@ -98,7 +98,7 @@
   
   <strong>Preview</strong>
    — branch <code>feat/vsa-templates-spec</code>
-  , gebouwd 2026-08-15 20:39 CEST.
+  , gebouwd 2026-08-15 22:35 CEST.
   <a href="https://orthodox-groningen.github.io/VSA-tooling/">Live documentatie (main)</a>.
   
 
@@ -1851,6 +1851,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#formuleblad-vs-instance-wat-in-git" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Formuleblad vs instance (wat in git)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#regenereren" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3374,6 +3385,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#formuleblad-vs-instance-wat-in-git" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Formuleblad vs instance (wat in git)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#regenereren" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3465,24 +3487,34 @@ Coria-export via <code>render_instance_musicxml</code> houdt per-syllabe-noten.<
 <tr>
 <td>Onduidelijk wat onder de breve hoort</td>
 <td>Te veel speciale gevallen</td>
-<td>Simpel: body (alles behalve laatste) onder eerste noot als <code>\|\|O\|\|</code>; <strong>laatste</strong> recite-syllabe = kwart; daarna template/cadens ongewijzigd.</td>
+<td>Simpel: <strong>eerste</strong> body-lettergreep gecentreerd op de <code>\|\|O\|\|</code>; overige body-lettergrepen elk op een onzichtbare spacer-noot (naar rechts); <strong>laatste</strong> recite-syllabe = kwart; daarna template/cadens ongewijzigd.</td>
 </tr>
 <tr>
 <td>Punt achter de <code>\|\|O\|\|</code> (gestippelde whole/breve)</td>
 <td>Duur opgeblazen met <code>dots=1</code> voor tekstbreedte</td>
-<td>Recite-printnoot: altijd <strong>half + <code>headType</code> breve + <code>noStem</code></strong>, <strong><code>dots=0</code></strong>. Nooit dotted whole/longa als “</td>
+<td>Recite-printnoot: altijd <strong>half + <code>headType</code> breve + <code>noStem</code></strong>, <strong><code>dots=0</code></strong>. Nooit dotted whole/longa als “ <code>\|\|O\|\|</code> ”.</td>
 </tr>
 <tr>
 <td>Lege systemen / “rij rusten”</td>
 <td>Maatduur opgeblazen (<code>longa</code>, 22/4) zodat MuseScore rare layout maakt</td>
-<td>Tekstruimte via <strong>onzichtbare spacer-rusten</strong> + <code>lyric_ticks</code> ná de <code>\|\|O\|\|</code>, niet via langere notehead-duur.</td>
+<td>Tekstruimte via <strong>onzichtbare spacer-noten</strong> (één per body-lettergreep) ná de <code>\|\|O\|\|</code>, niet via langere notehead-duur of één joined lyric + ticks.</td>
+</tr>
+<tr>
+<td>Grote gap tussen einde recitaltekst en cadens-lettergreep</td>
+<td>Eén joined lyric + te veel spacer-rusten</td>
+<td>Rest-ruimte verdeelt MuseScore over de spacer-noten <strong>tussen</strong> de lettergrepen.</td>
+</tr>
+<tr>
+<td>Melisma-extender onder recite-tekst</td>
+<td><code>lyric_ticks</code> op de <code>\|\|O\|\|</code></td>
+<td>Geen extender op de recite-printnoot; ticks/slur alleen op echte VSA-melisma’s.</td>
 </tr>
 </tbody>
 </table>
 <p>Canonieke voorbeelden (T4-11):</p>
 <ul>
-<li><code>{/en} het voor-beeld der zacht{moe__}dig{\heid_}</code> → <code>en</code> | <code>het voor-beeld der</code> (<code>\|\|O\|\|</code>) | <code>zacht</code> | <code>moe</code> (heel) | <code>dig</code> | <code>heid</code></li>
-<li><code>{/Va}der … pries-ter {Ni__}ko{\laas_}</code> → <code>Va</code> | <code>der … pries-</code> (<code>\|\|O\|\|</code>) | <code>ter</code> | <code>Ni</code> (heel) | <code>ko</code> | <code>laas</code></li>
+<li><code>{/en} het voor-beeld der zacht{moe__}dig{\heid_}</code> → <code>en</code> | <code>het</code> (gecentreerd op <code>\|\|O\|\|</code>) | <code>voor-</code> <code>beeld</code> <code>der</code> (spacers) | <code>zacht</code> | <code>moe</code> (heel) | <code>dig</code> | <code>heid</code></li>
+<li><code>{/Va}der … pries-ter {Ni__}ko{\laas_}</code> → <code>Va</code> | <code>der … pries-</code> (eerste op <code>\|\|O\|\|</code>, rest spacers) | <code>ter</code> | <code>Ni</code> (heel) | <code>ko</code> | <code>laas</code></li>
 </ul>
 <hr />
 <h2 id="musescore-4-mscz">MuseScore 4 (MSCZ)<a class="headerlink" href="#musescore-4-mscz" title="Permanent link">&para;</a></h2>
@@ -3508,7 +3540,7 @@ Coria-export via <code>render_instance_musicxml</code> houdt per-syllabe-noten.<
 <tr>
 <td>Recite-lyrics blijven gecentreerd ondanks <code>&lt;align&gt;left</code></td>
 <td>MS 4.7: horizontale plaatsing = <strong><code>position</code></strong>, niet (alleen) <code>align</code></td>
-<td>Op recite-lyrics: <code>&lt;position&gt;left&lt;/position&gt;</code> (+ desgewenst <code>&lt;align&gt;left,baseline&lt;/align&gt;</code>). <code>align</code> alleen = tekstinterne uitlijning.</td>
+<td>Eerste recite-lettergreep: <strong>geen</strong> <code>position=left</code> (default = gecentreerd op de nootkop). Overige body-lettergrepen op spacer-noten. <code>align</code> alleen = tekstinterne uitlijning.</td>
 </tr>
 <tr>
 <td>Maatsoort-getallen zichtbaar</td>
@@ -3546,12 +3578,12 @@ Coria-export via <code>render_instance_musicxml</code> houdt per-syllabe-noten.<
 <tr>
 <td>Slotcadens <code>laatste</code> vs frase <code>1</code></td>
 <td>Template: <code>laatste</code> is mi–re–mi; frase 1 anders</td>
-<td>VSA voor <code>laatste</code> moet template pitches volgen; parallelle <code>of</code>-sporen = open punt.</td>
+<td>VSA voor <code>laatste</code> moet template pitches volgen; parallelle cadenspaden via YAML <code>of</code> (eerste passende pad).</td>
 </tr>
 <tr>
 <td><code>T.4</code> / <code>T.N</code> als zingbare syllabe</td>
 <td>Toon-aanduiding in VSA-regel</td>
-<td>Geen <code>T.N</code> vóór hoogtemarkeringen in corpus; inline-VSA in proza = open punt.</td>
+<td>Geen <code>T.N</code> in de zingbare VSA-regel; inline-fragment in proza is geen lyric-pipeline.</td>
 </tr>
 </tbody>
 </table>
@@ -3569,17 +3601,27 @@ Coria-export via <code>render_instance_musicxml</code> houdt per-syllabe-noten.<
 <tr>
 <td>Verwarring legacy <code>*.pad-b.*</code>-namen</td>
 <td>Legacy <code>*.pad-b.*</code></td>
-<td>Corpus: <code>T4-XX-….vsa/.mscz/.mxl</code>; Elia: <code>examples/elia.*</code>; formule: <code>template.mscz</code>.</td>
+<td>Corpus: <code>T4-XX-….vsa/.mscz/.mxl</code>; formule: <code>template.mscz</code> + <code>template.mxl</code>.</td>
 </tr>
 <tr>
 <td>PDF in git vs lokaal</td>
 <td>PDF is afgeleide MuseScore-export</td>
-<td>PDF lokaal regenereren (<code>render_tropaar_toon4_corpus.py --pdf-only</code>); niet als bron behandelen.</td>
+<td>PDF lokaal regenereren (<code>--pdf</code> / <code>--pdf-only</code>); niet als bron behandelen.</td>
 </tr>
 <tr>
 <td>Tests groen, PDF “fout”</td>
 <td>Tests toetsen MSCX-strings, niet visuele MuseScore-layout</td>
 <td>Na layout-wijzigingen: PDF/MSCZ <strong>openen in MuseScore</strong> of screenshot; niet alleen pytest.</td>
+</tr>
+<tr>
+<td>Grote verticale witruimte</td>
+<td>MuseScore vult tot <code>maxSystemDistance</code>; MS4 leest Style vooral uit <code>score_style.mss</code></td>
+<td>Doel 1,5× stafafruimte op scherm: titel = VBox+<code>frameSystemDistance</code>; systemDistance ×9/7 t.o.v. naïeve 1,5× (gemeten 7/6).</td>
+</tr>
+<tr>
+<td>Eerste systeem springt in</td>
+<td>MuseScore default <code>enableIndentationOnFirstSystem</code></td>
+<td>Zet die op <code>0</code> (gelijke linker marge).</td>
 </tr>
 </tbody>
 </table>
@@ -3589,14 +3631,70 @@ Coria-export via <code>render_instance_musicxml</code> houdt per-syllabe-noten.<
 <li>Leading/trailing “zelfde pitch” of “woord-hold” in <code>collapse_recite_for_print</code> om scopes onder de breve te trekken.</li>
 <li><code>endBarLineVisible</code> op <code>Measure</code> voor verborgen maatstrepen in MS4.</li>
 <li><code>longa</code> / gestippelde whole als recite-duur om lyric-breedte te forceren.</li>
+<li>Alle body-lettergrepen tot één left-aligned lyric + <code>lyric_ticks</code> (extender onder de tekst; gap ná de recitaltekst).</li>
 <li>Alleen <code>&lt;align&gt;left,…&gt;</code> verwachten voor left-attach aan de nootkop in MS 4.7+.</li>
 <li>Recite-collapse in de Coria-MXL-pipeline.</li>
 </ol>
 <hr />
+<h2 id="formuleblad-vs-instance-wat-in-git">Formuleblad vs instance (wat in git)<a class="headerlink" href="#formuleblad-vs-instance-wat-in-git" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Bestand</th>
+<th>In git?</th>
+<th>Regenereren</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>template.yaml</code></td>
+<td>ja (bron)</td>
+<td>handmatig</td>
+</tr>
+<tr>
+<td><code>template.mscz</code></td>
+<td>ja (afgeleid, formuleblad)</td>
+<td><code>scripts\render_tropaar_toon4_corpus.py --template</code></td>
+</tr>
+<tr>
+<td><code>template.mxl</code></td>
+<td>ja (afgeleid)</td>
+<td>idem</td>
+</tr>
+<tr>
+<td><code>template.pdf</code></td>
+<td><strong>nee</strong></td>
+<td><code>--template --pdf</code></td>
+</tr>
+<tr>
+<td>corpus <code>.vsa</code></td>
+<td>ja (bron)</td>
+<td>curated</td>
+</tr>
+<tr>
+<td>corpus <code>.mscz</code> / <code>.mxl</code></td>
+<td>ja (afgeleid instance)</td>
+<td><code>scripts\render_tropaar_toon4_corpus.py</code></td>
+</tr>
+<tr>
+<td><code>*.pdf</code></td>
+<td><strong>nee</strong> (<code>.gitignore</code>)</td>
+<td><code>--pdf</code> / <code>--pdf-only</code> (MuseScore CLI)</td>
+</tr>
+</tbody>
+</table>
+<p>CI draait pytest (o.a. MSCX-strings); visuele PDF-check is lokaal. Formuleblad
+heeft ankers/frase-ids/cycle-frames; instance niet. Instance-titel =
+frontmatter-<code>title</code> (anders bestandsstem). Coria-MXL is instance zonder
+recite-collapse.</p>
+<p>Andere genres/tonen gebruiken dezelfde mapper (<code>map_vsa_to_template</code>) en
+renderers; de corpus-CLI is tropaar-toon-4 totdat hun <code>pitches_status</code> geen
+<code>provisional</code> meer is.</p>
 <h2 id="regenereren">Regenereren<a class="headerlink" href="#regenereren" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code>cd /d C:\Git\orthodox-groningen\VSA-tooling
 .\.venv\Scripts\python.exe -m pytest tests\test_vsa_template_instance.py tests\test_vsa_template_corpus_mscx.py -q
 .\.venv\Scripts\python.exe scripts\render_tropaar_toon4_corpus.py
+.\.venv\Scripts\python.exe scripts\render_tropaar_toon4_corpus.py --template
 .\.venv\Scripts\python.exe scripts\render_tropaar_toon4_corpus.py --pdf-only
 </code></pre></div>
 

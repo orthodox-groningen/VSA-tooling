@@ -98,7 +98,7 @@
   
   <strong>Preview</strong>
    — branch <code>feat/vsa-templates-spec</code>
-  , gebouwd 2026-08-15 20:39 CEST.
+  , gebouwd 2026-08-15 22:35 CEST.
   <a href="https://orthodox-groningen.github.io/VSA-tooling/">Live documentatie (main)</a>.
   
 
@@ -1908,27 +1908,16 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#werklijst-volgende-chat-ongeordend" class="md-nav__link">
+  <a href="#werklijst-vervolg" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Werklijst (volgende chat — ongeordend)
+        Werklijst (vervolg)
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Werklijst (volgende chat — ongeordend)">
+    <nav class="md-nav" aria-label="Werklijst (vervolg)">
       <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#terminologie-org" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Terminologie / org
-      
-    </span>
-  </a>
-  
-</li>
         
           <li class="md-nav__item">
   <a href="#templates-pitches" class="md-nav__link">
@@ -1942,43 +1931,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#semantiek-mapping" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Semantiek / mapping
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#tooling-export" class="md-nav__link">
     <span class="md-ellipsis">
       
         Tooling / export
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#layout-print-polish" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Layout / print (polish)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#publicatie-ux" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Publicatie / UX
       
     </span>
   </a>
@@ -3336,27 +3292,16 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#werklijst-volgende-chat-ongeordend" class="md-nav__link">
+  <a href="#werklijst-vervolg" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Werklijst (volgende chat — ongeordend)
+        Werklijst (vervolg)
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Werklijst (volgende chat — ongeordend)">
+    <nav class="md-nav" aria-label="Werklijst (vervolg)">
       <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#terminologie-org" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Terminologie / org
-      
-    </span>
-  </a>
-  
-</li>
         
           <li class="md-nav__item">
   <a href="#templates-pitches" class="md-nav__link">
@@ -3370,43 +3315,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#semantiek-mapping" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Semantiek / mapping
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#tooling-export" class="md-nav__link">
     <span class="md-ellipsis">
       
         Tooling / export
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#layout-print-polish" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Layout / print (polish)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#publicatie-ux" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Publicatie / UX
       
     </span>
   </a>
@@ -3445,7 +3357,7 @@
 
 <h1 id="open-punten-vsa-templates">Open punten — vsa-templates<a class="headerlink" href="#open-punten-vsa-templates" title="Permanent link">&para;</a></h1>
 <p>Checklist voor verdere chats. Afgevinkt = gedaan in deze branch/sessies.
-Onder <strong>Werklijst</strong> staan de open items (nog ongeordend).</p>
+Onder <strong>Werklijst</strong> staan alleen nog echte vervolgstappen.</p>
 <p>Valkuilen bij MSCZ/MXL: <a href="../rendering-pitfalls/">rendering-pitfalls.md</a>.
 Mappingcontract: <a href="../mapping-vsa/">mapping-vsa.md</a>.</p>
 <hr />
@@ -3463,11 +3375,13 @@ Mappingcontract: <a href="../mapping-vsa/">mapping-vsa.md</a>.</p>
 <li>[x] Hoogte-mismatch → harde <code>TemplateInstanceError</code> (H9); geen stil hold.</li>
 <li>[x] Tropaar-toon-4 corpus-pipeline: <code>.vsa</code> / <code>.mscz</code> / <code>.mxl</code> + lokale PDF;
       CLI <code>scripts/render_tropaar_toon4_corpus.py</code>.</li>
-<li>[x] Recite-print (MSCZ): ≥3 ongemarkeerde recite → <code>||O||</code> + laatste als
-      kwart; <strong>VSA-scopes</strong> eigen noten; Coria-MXL zonder collapse.</li>
+<li>[x] Recite-print (MSCZ): ≥3 ongemarkeerd recite → <code>||O||</code>; eerste
+      lettergreep <strong>gecentreerd</strong> op de nootkop; rest op spacer-noten naar
+      rechts; laatste als kwart; <strong>geen</strong> melisma-extender onder recite;
+      VSA-scopes eigen noten; Coria-MXL zonder collapse.</li>
 <li>[x] Instance-layout: één maat per strofe; MS4-maatstrepen via voice-
-      <code>&lt;BarLine visible=0&gt;</code>; geen dots op <code>||O||</code>; MuseScore
-      <code>&lt;position&gt;left&lt;/position&gt;</code> voor recite-lyrics.</li>
+      <code>&lt;BarLine visible=0&gt;</code>; geen dots op <code>||O||</code>; lyric-dichtheid via
+      <code>lyricsMinDistance</code> / <code>minNoteDistance</code> / maat-eind-spacer.</li>
 <li>[x] Valkuilen-doc + links in README / AGENTS / MkDocs:
       <a href="../rendering-pitfalls/">rendering-pitfalls.md</a>.</li>
 <li>[x] PDF-export uit git geweerd (afgeleide); lokaal via <code>--pdf-only</code>.</li>
@@ -3478,82 +3392,52 @@ Mappingcontract: <a href="../mapping-vsa/">mapping-vsa.md</a>.</p>
 <li>[x] <strong>Mapping H4–H7</strong> in de instance-mapper (optional; VSA-duur H5;
       hold/zelfde-S H6; H7 andere toon alleen via optional / zelfde-S-run
       incl. na recite). Details: <a href="../mapping-vsa/">mapping-vsa.md</a>.</li>
+<li>[x] <strong>H1 <code>open</code> vs eerste recite:</strong> YAML houdt twee events (formuleblad);
+      instance slaat <code>open</code> over als VSA meteen reciteert — geen dubbele noot.</li>
+<li>[x] <strong><code>mode</code> / <code>do</code>:</strong> template én VSA-parser alleen <code>major</code>/<code>minor</code>;
+      mismatch → <code>VSA-TEMPLATE-MODE-MISMATCH</code> / <code>VSA-TEMPLATE-DO-MISMATCH</code>.</li>
+<li>[x] <strong>Sequence / text_mapping-lengte:</strong> aantal VSA-regels moet bij het plan
+      passen → <code>VSA-TEMPLATE-TEXT-MAPPING</code>.</li>
+<li>[x] <strong><code>l.lgr.</code> (H8):</strong> mapper koppelt geankerd event + rest van de frase aan
+      de laatste VSA-syllabe; stichier-toon-5 <code>laatste</code> heeft het anker.</li>
+<li>[x] <strong>Anker-normalisatie:</strong> <code>e. st.</code> → <code>e.st.</code> (zelfde voor <code>l.st.</code>,
+      <code>vl.st.</code>, <code>l.lgr.</code>).</li>
+<li>[x] <strong>Parallelle cadenspaden (<code>of</code>):</strong> YAML + mapper; VSA kiest impliciet;
+      geen pad → mismatch. <strong>Geen</strong> <a class="og-termref" href="/bron/terms/uitvoeringsvorm" title="Uitvoeringsvorm: Een concrete realisatie van een bepaalde Variant van een Zangstuk, waarbij de muzikale identiteit van die variant behouden blijft.">uitvoeringsvorm</a> (dat is
+      zangstuk-niveau). Formuleblad toont pad 0. Tropaar-toon-4 <code>laatste</code>
+      blijft voorlopig alleen mi–re–mi (fa-tak kan later bij).</li>
+<li>[x] <strong>Tenor-octaaf tropaar-toon-4:</strong> <code>sol-1</code> t.o.v. <code>do: F4</code> = <strong>C4</strong>
+      (niet C3). Vastgelegd in YAML + test.</li>
+<li>[x] CLI <code>vsa template validate</code>.</li>
+<li>[x] Formule-MusicXML: <code>scripts/render_vsa_template_musicxml.py</code>
+      (<code>--all</code> of <code>template.yaml</code> → <code>.musicxml</code>/<code>.mscz</code>).</li>
+<li>[x] Formuleblad vs instance: wat in git / hoe regenereren — zie
+      <a href="../rendering-pitfalls/#formuleblad-vs-instance-wat-in-git">rendering-pitfalls.md</a>
+      en <a href="../library/">library/README.md</a>.</li>
+<li>[x] <strong>Inline VSA in proza:</strong> <code>T.N</code> is geen zingbare syllabe; corpus zonder
+      <code>T.N</code> in de VSA-regel. Markdown-inline renderer is geen
+      instance-pipeline (zie mapping-vsa).</li>
+<li>[x] <strong>Geen org glossary-PR</strong> tot termen repo-overschrijdend moeten
+      (template-termen blijven lokaal).</li>
+<li>[x] <strong>Stemmen met onderling verschillende ritmes:</strong> niet doen tot de
+      noodzaak blijkt (homofone eventkeuzes blijven).</li>
 </ul>
 <hr />
-<h2 id="werklijst-volgende-chat-ongeordend">Werklijst (volgende chat — ongeordend)<a class="headerlink" href="#werklijst-volgende-chat-ongeordend" title="Permanent link">&para;</a></h2>
-<h3 id="terminologie-org">Terminologie / org<a class="headerlink" href="#terminologie-org" title="Permanent link">&para;</a></h3>
-<ul>
-<li>[ ] Eventueel org-brede namen via glossary-PR op <strong>bron</strong> (als termen
-      repo-overschrijdend moeten zijn).</li>
-</ul>
+<h2 id="werklijst-vervolg">Werklijst (vervolg)<a class="headerlink" href="#werklijst-vervolg" title="Permanent link">&para;</a></h2>
 <h3 id="templates-pitches">Templates / pitches<a class="headerlink" href="#templates-pitches" title="Permanent link">&para;</a></h3>
 <ul>
-<li>[ ] <strong>Tenor-octaaf openingsakkoord (tropaar toon 4):</strong> in <code>template.yaml</code>
-      staat tenor vaak als <code>sol-1</code>. Controleren tegen het bronblad/PDF of dat
-      het juiste oktaaf is t.o.v. <code>do: F4</code> (historisch twijfelpunt was
-      klinkend C3 vs C4). Zo nodig YAML + corpus-export bijwerken.</li>
-<li>[ ] Overige templates (niet alleen tropaar-toon-4): graden/<code>do</code>/<code>mode</code>
-      provisional tot PDF-/partituur-audit.</li>
-<li>[ ] <strong><code>mode</code> in template-YAML vs VSA:</strong> vastleggen welke waarden mogen
-      (<code>major</code> / <code>minor</code> / …) en die laten matchen met wat de VSA-parser/
-      pitch-resolver accepteert — geen stille afwijking tussen template en
-      <code>.vsa</code>-frontmatter.</li>
-<li>[ ] <strong>Sequence-form en aantal tekstregels:</strong> bij
-      <code>sequence: ["1", "2", "3"]</code> horen precies drie VSA-regels (<code>*</code>-frasen).
-      Nu handmatig; later valideren of duidelijke fout als het aantal niet
-      klopt. (Bij <code>text_mapping</code> / <code>mapping_plans</code> hetzelfde idee:
-      lengte tekst ↔ gevraagde frase-reeks.)</li>
-<li>[ ] <code>l.lgr.</code>-anker in stichier-template + event-mapping (H8): anker markeert
-      start van een slotmelisma; dat event <strong>plus alle volgende</strong> events in
-      de frase vallen op de laatste VSA-syllabe.</li>
-</ul>
-<h3 id="semantiek-mapping">Semantiek / mapping<a class="headerlink" href="#semantiek-mapping" title="Permanent link">&para;</a></h3>
-<ul>
-<li>[ ] Stemmen met onderling verschillende ritmes (buiten parallel
-      split/merge); dat doen we pas als de noodzaak hiervoor is gebleken.</li>
-<li>[ ] <strong>Parallelle template-sporen (<code>of</code>):</strong> één frase mag 2+ cadens-/slot-
-      paden (bijv. <code>mi–re–mi</code> <strong>of</strong> <code>mi–fa–mi</code>). VSA kiest impliciet;
-      onbekend pad → hoogte-mismatch. Meerdere <a class="og-termref" href="/bron/terms/uitvoeringsvorm" title="Uitvoeringsvorm: Een concrete realisatie van een bepaalde Variant van een Zangstuk, waarbij de muzikale identiteit van die variant behouden blijft.">uitvoeringsvorm</a>-en in
-      één template zonder aparte YAML’s.</li>
-<li>[ ] <strong><code>open</code> vs eerste recite:</strong> template heeft vaak twee events (open +
-      recite) op dezelfde toon. Beslissen/documenteren: blijven het twee
-      events (mapper slaat open over als VSA meteen reciteert — huidig
-      gedrag H1), of mag YAML één samengevoegd event zijn? Geen stille
-      dubbele noot in de partituur.</li>
-<li>[ ] Normalisatie anker-labels (<code>e. st.</code> vs <code>e.st.</code>). Canoniek overal
-      <code>e.st.</code> (en dezelfde vorm voor <code>l.st.</code>, <code>vl.st.</code>, <code>l.lgr.</code>).</li>
+<li>[ ] Overige templates (niet tropaar-toon-4): graden/<code>do</code>/<code>mode</code>
+      <code>provisional</code> tot PDF-/partituur-audit.</li>
+<li>[ ] Tropaar-toon-4 <code>laatste</code>: fa-cadenspad als tweede <code>of</code>-tak encoderen
+      zodra SATB van dat pad tegen het bronblad is gezet.</li>
 </ul>
 <h3 id="tooling-export">Tooling / export<a class="headerlink" href="#tooling-export" title="Permanent link">&para;</a></h3>
 <ul>
-<li>[ ] CLI <code>vsa template validate</code>.</li>
-<li>[ ] MusicXML-export vanuit <strong>formule</strong>-template (+ optioneel VSA-lyrics),
-      naast bestaande instance-export.</li>
-<li>[ ] Andere genres/tonen: zelfde instance-pipeline als tropaar-toon-4
-      (corpus + render-script of generiek maken).</li>
-</ul>
-<h3 id="layout-print-polish">Layout / print (polish)<a class="headerlink" href="#layout-print-polish" title="Permanent link">&para;</a></h3>
-<ul>
-<li>[ ] Lyric-dichtheid: krappe overgangen cadens ↔ volgende recite (soms
-      bijna plakken); spacer-/<code>lyricsMinDistance</code>-fijnregeling.</li>
-<li>[ ] Visuele check of melisma-extender onder recite-tekst storend is;
-      eventueel ticks/spacers bijstellen.</li>
-<li>[ ] <strong>Recite-tekst t.o.v. <code>||O||</code>:</strong> de <strong>eerste</strong> lettergreep van de
-      tekst onder de reciteertoon uitlijnen op de nootkop (gecentreerd op
-      die noot); de rest van de recitaltekst volgt naar rechts.</li>
-<li>[ ] <strong>Spatiering binnen recite-tekst:</strong> geen grote lege gap tussen het
-      einde van de recitaltekst en de volgende (cadens)lettergreep.
-      Die “rest-ruimte” verdelen over de spaties <em>tussen</em> de lettergrepen
-      van de recitaltekst, zodat de tekst visueel gelijkmatig doorloopt.</li>
-<li>[ ] Formuleblad (<code>template.mscz</code>) vs instance: documenteren wat wel/niet
-      in git hoort en hoe CI/lokaal regenereert.</li>
-</ul>
-<h3 id="publicatie-ux">Publicatie / UX<a class="headerlink" href="#publicatie-ux" title="Permanent link">&para;</a></h3>
-<ul>
-<li>[ ] <strong>Inline gerenderde VSA in proza:</strong> toon-aanduiding e.d. (<code>T.4</code>) hoort
-      niet als zingbare tekst in de VSA-regel. Klein VSA-fragment (alleen
-      hoogtemarkering + eventueel <code>Amen</code>) in markdown/proza — tablet/pc/
-      telefoon én print — zonder SVG/lyric-pipeline die letters als
-      syllaben meeneemt.</li>
+<li>[ ] Andere genres/tonen: eigen corpus + render zodra pitches geverifieerd
+      zijn (mapper/renderer zijn al generiek).</li>
+<li>[ ] Markdown-inline VSA-fragment (hoogtemarkering / <code>Amen</code> in proza) als
+      aparte presentatielaag — tablet/pc/telefoon én print — wanneer die UX
+      nodig is.</li>
 </ul>
 
 

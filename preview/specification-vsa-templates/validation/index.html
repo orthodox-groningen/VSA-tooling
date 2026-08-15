@@ -98,7 +98,7 @@
   
   <strong>Preview</strong>
    — branch <code>feat/vsa-templates-spec</code>
-  , gebouwd 2026-08-15 20:39 CEST.
+  , gebouwd 2026-08-15 22:35 CEST.
   <a href="https://orthodox-groningen.github.io/VSA-tooling/">Live documentatie (main)</a>.
   
 
@@ -1762,10 +1762,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#toekomstige-cli" class="md-nav__link">
+  <a href="#cli" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Toekomstige CLI
+        CLI
       
     </span>
   </a>
@@ -3308,10 +3308,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#toekomstige-cli" class="md-nav__link">
+  <a href="#cli" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Toekomstige CLI
+        CLI
       
     </span>
   </a>
@@ -3432,10 +3432,15 @@
 </tr>
 </tbody>
 </table>
-<h2 id="toekomstige-cli">Toekomstige CLI<a class="headerlink" href="#toekomstige-cli" title="Permanent link">&para;</a></h2>
+<h2 id="cli">CLI<a class="headerlink" href="#cli" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code>vsa template validate pad\naar\template.yaml
+vsa template validate docs\specification-vsa-templates\library
 </code></pre></div>
-<p>Nog niet geïmplementeerd; de pytest-suite dekt de structurele + documentregels.</p>
+<p>Exitcode <code>0</code> = alle gevonden <code>template.yaml</code> geldig; <code>1</code> = minstens één fout
+(<code>bestand: ERROR: CODE: …</code>, zelfde geest als <code>vsa validate</code>).</p>
+<p>Toets: schema-enums (<code>mode</code> ∈ {<code>major</code>, <code>minor</code>}), documentregels, <code>of</code>-groepen,
+anker-normalisatie, <code>text_mapping</code> / <code>mapping_plans</code>. pytest dekt dezelfde
+regels (<code>tests/test_vsa_template_schema.py</code>).</p>
 
 
 
@@ -3472,7 +3477,7 @@
       
       
       <p class="og-footer-stamps">
-        Bijgewerkt: 2026-08-14
+        Bijgewerkt: 2026-08-15
         
       </p>
       

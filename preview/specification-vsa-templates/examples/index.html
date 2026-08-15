@@ -98,7 +98,7 @@
   
   <strong>Preview</strong>
    — branch <code>feat/vsa-templates-spec</code>
-  , gebouwd 2026-08-15 20:39 CEST.
+  , gebouwd 2026-08-15 22:35 CEST.
   <a href="https://orthodox-groningen.github.io/VSA-tooling/">Live documentatie (main)</a>.
   
 
@@ -3324,8 +3324,9 @@
 <h1 id="voorbeelden">Voorbeelden<a class="headerlink" href="#voorbeelden" title="Permanent link">&para;</a></h1>
 <h2 id="library-geldige-formules">Library (geldige formules)<a class="headerlink" href="#library-geldige-formules" title="Permanent link">&para;</a></h2>
 <p>Canonieke werkmappen: <a href="../library/"><code>library/</code></a>.
-Per formule: <code>template.yaml</code>, <code>template.musicxml</code> (SA/TB, zonder maatsoort,
-optionals tussen haakjes), optioneel <code>examples/</code> en <code>notes/</code>.</p>
+Per formule: <code>template.yaml</code>, plus afgeleide <code>template.mscz</code> (MuseScore) en
+<code>template.mxl</code> (MusicXML) waar de pijplijn dat al doet; optioneel
+<code>examples/corpus/</code> en <code>notes/</code>.</p>
 <table>
 <thead>
 <tr>
@@ -3415,7 +3416,7 @@ python scripts\render_vsa_template_musicxml.py --all
 <h2 id="checklist-mag-in-library">Checklist “mag in library/”<a class="headerlink" href="#checklist-mag-in-library" title="Permanent link">&para;</a></h2>
 <ul>
 <li>[ ] Schema + documentregels groen</li>
-<li>[ ] <code>template.musicxml</code> gegenereerd (SA/TB, <code>senza-misura</code>)</li>
+<li>[ ] <code>template.mxl</code> gegenereerd (SA/TB, <code>senza-misura</code>)</li>
 <li>[ ] <code>source</code> of README verklaart herkomst</li>
 <li>[ ] Onzekere pitches: <code>pitches_status: provisional</code></li>
 </ul>

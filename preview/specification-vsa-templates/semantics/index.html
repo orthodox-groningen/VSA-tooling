@@ -98,7 +98,7 @@
   
   <strong>Preview</strong>
    — branch <code>feat/vsa-templates-spec</code>
-  , gebouwd 2026-08-15 20:39 CEST.
+  , gebouwd 2026-08-15 22:35 CEST.
   <a href="https://orthodox-groningen.github.io/VSA-tooling/">Live documentatie (main)</a>.
   
 
@@ -1761,6 +1761,17 @@
     <span class="md-ellipsis">
       
         Sequence-form (sequence)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parallelle-cadenspaden-of" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Parallelle cadenspaden (of)
       
     </span>
   </a>
@@ -3447,6 +3458,17 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#parallelle-cadenspaden-of" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Parallelle cadenspaden (of)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#text_mapping-mapping_plans" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3558,7 +3580,8 @@
 <p>Zoals in <a class="og-termref" href="/VSA-tooling/preview/terminologie/vsa" title="Vereenvoudigde Slavische Accentnotatie: wordt gebruikt om te verwijzen naar een Formele Notatie voor het vastleggen van Zangstukken en ook naar de Toolset waarmee zulke vastleggingen kunnen worden gevalideerd en naar publiceerbare vormen worden omgezet.">VSA</a>:</p>
 <ul>
 <li><code>do</code> — absolute scientific pitch van de grondtoon;</li>
-<li><code>mode</code> — intervalstructuur van de ladder (<code>major</code>, <code>minor</code>, …).</li>
+<li><code>mode</code> — intervalstructuur van de ladder. <strong>Alleen</strong> <code>major</code> of <code>minor</code>
+  (zelfde enum als de VSA-parser / <code>PitchResolver</code>). Geen stille synoniemen.</li>
 </ul>
 <p>Samen vormen zij de <a class="og-termref" href="/VSA-tooling/preview/terminologie/do-context" title="Do-context: de grondtooncontext waarbinnen relatieve toonhoogtebewegingen in VSA-notatie en in een Vsa-template worden geïnterpreteerd; voor MusicXML-export of afspelen vastgelegd via blok-Metadata (<code>do</code>, <code>mode</code>), niet via de zangtekst zelf.">do-context</a>. Alle <code>pitches</code> in
 <a class="og-termref" href="/VSA-tooling/preview/terminologie/template-event" title="Template-event: de kleinste muzikale stap in een Template-frase: een rol (open, Reciteertoon, cadens, link), een duur als Enkelvoudige Lengte-modifier, en SATB-Laddergraden.">template-events</a> zijn <a class="og-termref" href="/VSA-tooling/preview/terminologie/laddergraad" title="Laddergraad: een toonpositie op de ladder binnen een Do-context (<code>do</code>, <code>re</code>, <code>mi</code>, …), optioneel chromatisch (<code>#</code>/<code>b</code>) en met octaafverschuiving (<code>do-1</code>); in een Vsa-template de canonieke vorm van SATB-pitches.">laddergraden</a> binnen die
@@ -3599,6 +3622,13 @@ meerdere plannen.</p>
 <div class="highlight"><pre><span></span><code><span class="nt">text_mapping</span><span class="p">:</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">sequence</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;1&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;3&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;1&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;2&quot;</span><span class="p p-Indicator">]</span>
 </code></pre></div>
+<p>Het aantal VSA-regels (<code>*</code>-frasen) <strong>moet</strong> gelijk zijn aan de lengte van die
+reeks; anders <code>VSA-TEMPLATE-TEXT-MAPPING</code>.</p>
+<h3 id="parallelle-cadenspaden-of">Parallelle cadenspaden (<code>of</code>)<a class="headerlink" href="#parallelle-cadenspaden-of" title="Permanent link">&para;</a></h3>
+<p>Eén frase mag 2+ alternatieve eventreeksen hebben (bijv. slot <code>mi–re–mi</code>
+<strong>of</strong> <code>mi–fa–mi</code>). De VSA kiest impliciet via toonhoogte; geen pad →
+hoogte-mismatch. Dit zijn formule-alternatieven in <strong>één</strong> template, geen
+aparte <a class="og-termref" href="/bron/terms/uitvoeringsvorm" title="Uitvoeringsvorm: Een concrete realisatie van een bepaalde Variant van een Zangstuk, waarbij de muzikale identiteit van die variant behouden blijft.">uitvoeringsvorm</a>-en.</p>
 <h3 id="text_mapping-mapping_plans"><code>text_mapping</code> / <code>mapping_plans</code><a class="headerlink" href="#text_mapping-mapping_plans" title="Permanent link">&para;</a></h3>
 <p>Algemene vorm voor bladen met prefix, embedded <code>||: … :||</code>, of meerdere
 cycle-varianten. Zie <a href="../mapping-vsa/">mapping-vsa.md</a>.</p>
@@ -3632,6 +3662,9 @@ tropaar = stichier op het blad).</p>
 </tr>
 </tbody>
 </table>
+<p><strong>H1 / <code>open</code> vs eerste recite:</strong> YAML houdt twee events (formuleblad toont
+beide). In de instance slaat de mapper <code>open</code> over als de VSA meteen
+ongemarkeerd reciteert — geen stille dubbele noot.</p>
 <h2 id="optional">Optional<a class="headerlink" href="#optional" title="Permanent link">&para;</a></h2>
 <p>Als <code>optional: true</code>: mag bij mapping worden overgeslagen als er geen syllabe
 voor is.</p>
@@ -3640,7 +3673,7 @@ voor is.</p>
 <thead>
 <tr>
 <th>Anchor</th>
-<th>Bedoeling (werkhypothese)</th>
+<th>Bedoeling</th>
 </tr>
 </thead>
 <tbody>
@@ -3662,6 +3695,8 @@ voor is.</p>
 </tr>
 </tbody>
 </table>
+<p>Canonieke YAML-vorm <strong>zonder</strong> spaties (<code>e.st.</code>); het blad toont <code>e. st.</code>.
+Invoer met spaties wordt genormaliseerd.</p>
 <p>Zie <a class="og-termref" href="/VSA-tooling/preview/terminologie/frase-anker" title="Frase-anker: een label op een Template-event (<code>e.st.</code>, <code>l.st.</code>, <code>vl.st.</code>, <code>l.lgr.</code>) dat op het toonboekblad aangeeft welke tekstklemtoon (eerste / laatste / voorlaatste streek, of start van het slotmelisma op de laatste lettergreep) op die noot hoort te vallen.">frase-anker</a>. Mapping naar syllaben: <a href="../mapping-vsa/">mapping-vsa.md</a>
 (experimenteel).</p>
 <h2 id="chromatische-laddergraden">Chromatische laddergraden<a class="headerlink" href="#chromatische-laddergraden" title="Permanent link">&para;</a></h2>
@@ -3708,7 +3743,7 @@ laddertoon.</p>
       
       
       <p class="og-footer-stamps">
-        Bijgewerkt: 2026-08-14
+        Bijgewerkt: 2026-08-15
         
       </p>
       

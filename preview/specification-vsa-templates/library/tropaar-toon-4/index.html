@@ -94,7 +94,7 @@
   
   <strong>Preview</strong>
    — branch <code>feat/vsa-templates-spec</code>
-  , gebouwd 2026-08-15 20:39 CEST.
+  , gebouwd 2026-08-15 22:35 CEST.
   <a href="https://orthodox-groningen.github.io/VSA-tooling/">Live documentatie (main)</a>.
   
 
@@ -3175,6 +3175,28 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#wat-hoort-in-deze-map" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Wat hoort in deze map
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#corpus-pijplijn" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Corpus-pijplijn
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#voorbeelden" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3197,21 +3219,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#status-tov-pdf" class="md-nav__link">
+  <a href="#status" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Status t.o.v. PDF
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#geleerd-kort" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Geleerd (kort)
+        Status
       
     </span>
   </a>
@@ -3253,16 +3264,20 @@
 </thead>
 <tbody>
 <tr>
-<td>Template</td>
+<td>Formule-bron</td>
 <td><a href="template.yaml"><code>template.yaml</code></a></td>
 </tr>
 <tr>
 <td>Formule-MSCZ</td>
-<td><a href="template.mscz"><code>template.mscz</code></a></td>
+<td><a href="template.mscz"><code>template.mscz</code></a> (MuseScore-controle)</td>
 </tr>
 <tr>
-<td>MuseScore-bron</td>
-<td><code>Template - Tropaar (Toon 4).musicxml</code> (niet in git)</td>
+<td>Formule-MXL</td>
+<td><a href="template.mxl"><code>template.mxl</code></a> (delen / Coria-achtig)</td>
+</tr>
+<tr>
+<td>Formule-PDF</td>
+<td><code>template.pdf</code> (lokaal; niet in git)</td>
 </tr>
 <tr>
 <td>Status pitches</td>
@@ -3274,42 +3289,60 @@
 </tr>
 </tbody>
 </table>
+<h2 id="wat-hoort-in-deze-map">Wat hoort in deze map<a class="headerlink" href="#wat-hoort-in-deze-map" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>tropaar-toon-4/
+  template.yaml          ← canonieke formule (bewerk hier)
+  template.mscz          ← afgeleid: formuleblad MuseScore
+  template.mxl           ← afgeleid: formule MusicXML
+  template.pdf           ← lokaal afgeleid (print; .gitignore)
+  README.md
+  notes/                 ← corpus-notities, mappinglessen
+  examples/corpus/       ← .vsa + afgeleide .mscz/.mxl (+ lokale .pdf)
+</code></pre></div>
+<p><strong>Niet</strong> committen / niet bewaren: MuseScore-rommel (<code>.mscbackup/</code>,
+<code>Thumbnails/</code>, losse <code>META-INF/</code>, <code>audiosettings.json</code>, <code>viewsettings.json</code>,
+<code>score_style.mss</code>, …), dubbele <code>template-from-yaml.*</code>, of <code>*.pdf</code>.</p>
+<h2 id="corpus-pijplijn">Corpus-pijplijn<a class="headerlink" href="#corpus-pijplijn" title="Permanent link">&para;</a></h2>
+<p>Elke <code>examples/corpus/*.vsa</code> + <code>template.yaml</code> → <code>.mscz</code> (MuseScore) +
+<code>.mxl</code> (Coria) + optioneel <code>.pdf</code> (print).</p>
+<p>Titel in MSCZ/PDF = frontmatter-<code>title</code>; ontbreekt die → bestandsnaam zonder
+extensie.</p>
+<div class="highlight"><pre><span></span><code>cd /d C:\Git\orthodox-groningen\VSA-tooling
+call .venv\Scripts\activate
+python scripts\render_tropaar_toon4_corpus.py
+python scripts\render_tropaar_toon4_corpus.py --pdf
+</code></pre></div>
+<p>Alleen formuleblad:</p>
+<div class="highlight"><pre><span></span><code>cd /d C:\Git\orthodox-groningen\VSA-tooling
+python scripts\render_tropaar_toon4_corpus.py --template
+python scripts\render_tropaar_toon4_corpus.py --template --pdf
+</code></pre></div>
+<p>Alleen PDF’s opnieuw uit bestaande <code>.mscz</code>:</p>
+<div class="highlight"><pre><span></span><code>cd /d C:\Git\orthodox-groningen\VSA-tooling
+python scripts\render_tropaar_toon4_corpus.py --pdf-only
+</code></pre></div>
+<p>Default gebruikt bestaande <code>examples/corpus/*.vsa</code>. Alleen met
+<code>--from-onderzoek</code> opnieuw extracten uit het onderzoeks-markdown (dat
+bestand heeft niet alle 13 blokken, o.a. T4-07a).</p>
 <h2 id="voorbeelden">Voorbeelden<a class="headerlink" href="#voorbeelden" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
-<th>Bestand</th>
+<th>Pad</th>
 <th>Inhoud</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><a href="examples/elia.vsa"><code>examples/elia.vsa</code></a></td>
-<td>Tropaar Profeet Elia (bron)</td>
+<td><a href="notes/corpus/"><code>notes/corpus.md</code></a></td>
+<td>overzicht 13 stukken + mapping</td>
 </tr>
 <tr>
-<td><a href="examples/elia.mscz"><code>examples/elia.mscz</code></a></td>
-<td>Uitgewerkt (MuseScore)</td>
-</tr>
-<tr>
-<td><a href="examples/elia.mxl"><code>examples/elia.mxl</code></a></td>
-<td>Uitgewerkt (Coria)</td>
-</tr>
-<tr>
-<td><code>examples/corpus/</code></td>
-<td>13 Toon-4-stukken: <code>.vsa</code> / <code>.mscz</code> / <code>.mxl</code></td>
+<td><a href="examples/corpus/T4-06-profeet-elia.vsa"><code>examples/corpus/T4-06-profeet-elia.vsa</code></a></td>
+<td>canonieke Elia-bron</td>
 </tr>
 </tbody>
 </table>
-<p>Corpus regenereren (PDF blijft lokaal, staat in <code>.gitignore</code>):</p>
-<div class="highlight"><pre><span></span><code>cd /d C:\Git\orthodox-groningen\VSA-tooling
-python scripts\render_tropaar_toon4_corpus.py
-python scripts\render_tropaar_toon4_corpus.py --pdf-only
-</code></pre></div>
-<p>Template-formule:</p>
-<div class="highlight"><pre><span></span><code>cd /d C:\Git\orthodox-groningen\VSA-tooling
-python scripts\render_tropaar_toon4_corpus.py --template
-</code></pre></div>
 <h2 id="notes">Notes<a class="headerlink" href="#notes" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
@@ -3321,7 +3354,7 @@ python scripts\render_tropaar_toon4_corpus.py --template
 <tbody>
 <tr>
 <td><a href="notes/corpus/"><code>notes/corpus.md</code></a></td>
-<td>12 Toon-4-teksten ↔ frase-cycle</td>
+<td>Toon-4-teksten ↔ frase-cycle</td>
 </tr>
 <tr>
 <td><a href="notes/elia-mapping/"><code>notes/elia-mapping.md</code></a></td>
@@ -3329,22 +3362,17 @@ python scripts\render_tropaar_toon4_corpus.py --template
 </tr>
 </tbody>
 </table>
-<h2 id="status-tov-pdf">Status t.o.v. PDF<a class="headerlink" href="#status-tov-pdf" title="Permanent link">&para;</a></h2>
+<h2 id="status">Status<a class="headerlink" href="#status" title="Permanent link">&para;</a></h2>
 <ul>
-<li>Frase-ids, <code>||O||</code>-recite, haakjes-optional, <code>e.st.</code>/<code>l.st.</code> zitten in de
-  YAML; de renderer zet ze om naar MSCX.</li>
-<li>Cycle-regel staat in <a href="template.mscz"><code>template.mscz</code></a> /
-  <a href="template-from-yaml.mscx"><code>template-from-yaml.mscx</code></a>.</li>
-<li>Overschrijf niet <code>Template - Tropaar (Toon 4).*</code> (menselijke MuseScore-edit).</li>
-<li>Lyrics: DejaVu Sans Condensed 12pt (<code>LYRIC_FONT_PT</code> in
-  <code>scripts/render_vsa_template_musicxml.py</code>).</li>
-</ul>
-<h2 id="geleerd-kort">Geleerd (kort)<a class="headerlink" href="#geleerd-kort" title="Permanent link">&para;</a></h2>
-<ul>
-<li>Één VSA-regel ≈ één template-frase; cycle <code>1,2,…</code> + <code>laatste</code> houdt.</li>
-<li>Optionals/hold/skip: hypotheses H4–H7 in
-  <a href="../../mapping-vsa/"><code>../../mapping-vsa.md</code></a>.</li>
-<li>Frase 2-recite in deze MuseScore-edit ligt op <strong>fa</strong> (Bb), niet op mi.</li>
+<li>Frase-ids, <code>||O||</code>-recite, haakjes-optional, <code>e.st.</code>/<code>l.st.</code> in YAML;
+  renderer → MSCZ.</li>
+<li>Tenor openingsakkoord: <code>sol-1</code> = <strong>C4</strong> t.o.v. <code>do: F4</code> (niet C3).</li>
+<li>Lyrics: DejaVu Sans Condensed 12pt (<code>LYRIC_FONT_PT</code>).</li>
+<li>Verticale witruimte: stafafruimte 5 spatium; systeemmafruimte en
+  titel→systeem mikken op <strong>1,5×</strong> daarvan op het scherm. Titelgat =
+  VBox + <code>frameSystemDistance</code> (VBox 3.5 + frame 4.0). Systeemmafruimte
+  gecorrigeerd (gemeten 7/6 → setting ×9/7). Geen page-fill, geen
+  eerste-systeem-inspringing. MSCZ bevat <code>score_style.mss</code>.</li>
 </ul>
 
 

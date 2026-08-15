@@ -98,7 +98,7 @@
   
   <strong>Preview</strong>
    — branch <code>feat/vsa-templates-spec</code>
-  , gebouwd 2026-08-15 20:39 CEST.
+  , gebouwd 2026-08-15 22:35 CEST.
   <a href="https://orthodox-groningen.github.io/VSA-tooling/">Live documentatie (main)</a>.
   
 
@@ -1963,6 +1963,61 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#parallelle-cadenspaden-of" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Parallelle cadenspaden (of)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mode-do-template-vs-vsa" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        mode / do (template vs VSA)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sequence-form-text_mapping-lengte" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sequence-form / text_mapping-lengte
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tenor-octaaf-tropaar-toon-4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tenor-octaaf (tropaar toon 4)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#inline-vsa-in-proza" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Inline VSA in proza
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#corpus-en-detail" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3665,6 +3720,61 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#parallelle-cadenspaden-of" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Parallelle cadenspaden (of)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mode-do-template-vs-vsa" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        mode / do (template vs VSA)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sequence-form-text_mapping-lengte" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sequence-form / text_mapping-lengte
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tenor-octaaf-tropaar-toon-4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tenor-octaaf (tropaar toon 4)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#inline-vsa-in-proza" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Inline VSA in proza
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#corpus-en-detail" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3980,7 +4090,7 @@ met meerdere <a class="og-termref" href="/VSA-tooling/preview/terminologie/muzik
 <tbody>
 <tr>
 <td>H1</td>
-<td>Ongemarkeerde VSA-syllaben vóór cadens-scopes vallen op recite.</td>
+<td>Ongemarkeerde VSA-syllaben vóór cadens-scopes vallen op recite. <code>open</code> (zelfde graad, eigen event op het formuleblad) wordt in de instance <strong>overgeslagen</strong> als de VSA meteen reciteert — geen dubbele noot. YAML blijft twee events.</td>
 </tr>
 <tr>
 <td>H2</td>
@@ -4130,6 +4240,37 @@ tolerantie:</strong> verkeerde graad is fout, ook als de ELM “ongeveer” past
 <p>Minimaal in elke melding: bronpad, <strong>regel/kolom</strong> in de VSA-bron (via
 <code>VsaNote.line</code>/<code>column</code>), frase-id, betrokken lyric/syllabe, verwachte vs
 gevonden laddergraden. Compact: <code>bestand:regel:kolom: CODE</code>.</p>
+<h2 id="parallelle-cadenspaden-of">Parallelle cadenspaden (<code>of</code>)<a class="headerlink" href="#parallelle-cadenspaden-of" title="Permanent link">&para;</a></h2>
+<p>Eén <a class="og-termref" href="/VSA-tooling/preview/terminologie/template-frase" title="Template-frase: een genaamde melodische eenheid binnen een Vsa-template (bijv. id <code>1</code>, <code>2</code>, <code>1a</code> of <code>laatste</code>), opgebouwd uit geordende Template-events.">template-frase</a> mag 2+ slot-/cadensreeksen hebben, in
+YAML als <code>of:</code> met minstens twee <code>events:</code>-lijsten. De VSA kiest <strong>impliciet</strong>
+welk pad klinkt: de mapper probeert de paden in volgorde en neemt het eerste
+waarvan de hoogten (EHM) kloppen. Geen pad → <code>TemplateInstanceError</code>
+(<code>VSA-TEMPLATE-CADENCE-PATH</code> / hoogte-mismatch).</p>
+<p>Dit zijn <strong>formule-alternatieven in één template</strong>, geen aparte
+<a class="og-termref" href="/bron/terms/uitvoeringsvorm" title="Uitvoeringsvorm: Een concrete realisatie van een bepaalde Variant van een Zangstuk, waarbij de muzikale identiteit van die variant behouden blijft.">uitvoeringsvorm</a>-en (die horen bij zangstuk → variant →
+uitvoeringsvorm). Tropaar-toon-4 <code>laatste</code> is nu alleen mi–re–mi; een fa-pad
+kan later als tweede <code>of</code>-tak zonder extra YAML-bestand.</p>
+<p>Formuleblad (<code>template.mscz</code>): toont <strong>pad 0</strong> (eerste tak).</p>
+<h2 id="mode-do-template-vs-vsa"><code>mode</code> / <code>do</code> (template vs VSA)<a class="headerlink" href="#mode-do-template-vs-vsa" title="Permanent link">&para;</a></h2>
+<p>Template-<code>mode</code> is <code>major</code> of <code>minor</code> — dezelfde waarden als de VSA-parser.
+Bij <code>map_vsa_to_template</code> moeten VSA-frontmatter <code>mode</code> en <code>do</code> (indien
+aanwezig) <strong>exact</strong> gelijk zijn aan de template; anders
+<code>VSA-TEMPLATE-MODE-MISMATCH</code> / <code>VSA-TEMPLATE-DO-MISMATCH</code>. Geen stille
+afwijking.</p>
+<h2 id="sequence-form-text_mapping-lengte">Sequence-form / <code>text_mapping</code>-lengte<a class="headerlink" href="#sequence-form-text_mapping-lengte" title="Permanent link">&para;</a></h2>
+<p><code>sequence: ["1", "2", "3"]</code> eist precies drie VSA-regels. Cycle+final is
+variabel (herhaling tot de slotfrase past). Past het aantal regels niet bij
+het plan → <code>VSA-TEMPLATE-TEXT-MAPPING</code> (zelfde geest als <code>vsa validate</code>).</p>
+<h2 id="tenor-octaaf-tropaar-toon-4">Tenor-octaaf (tropaar toon 4)<a class="headerlink" href="#tenor-octaaf-tropaar-toon-4" title="Permanent link">&para;</a></h2>
+<p>Openingsakkoord tenor <code>sol-1</code> t.o.v. <code>do: F4</code> = <strong>C4</strong> (niet C3). Bass
+<code>do-1</code> = F3. Dat is de gekozen spelling in <code>template.yaml</code>;
+<code>pitches_status</code> blijft <code>provisional</code> tot een volledige PDF-audit van andere
+tonen.</p>
+<h2 id="inline-vsa-in-proza">Inline VSA in proza<a class="headerlink" href="#inline-vsa-in-proza" title="Permanent link">&para;</a></h2>
+<p>Toon-aanduiding (<code>T.4</code>, <code>T.N</code>) hoort <strong>niet</strong> in de zingbare VSA-regel (geen
+lyric-syllabe). Klein fragment in markdown/proza (alleen hoogtemarkering,
+eventueel <code>Amen</code>) is een aparte presentatielaag — niet de
+instance-lyric-pipeline. Corpus-<code>.vsa</code> heeft geen <code>T.N</code> vóór EHM’s.</p>
 <h2 id="corpus-en-detail">Corpus en detail<a class="headerlink" href="#corpus-en-detail" title="Permanent link">&para;</a></h2>
 <p>Library-werkmappen: <a href="../library/"><code>library/</code></a>.</p>
 <p>Corpus Toon 4:

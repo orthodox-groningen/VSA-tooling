@@ -21,6 +21,15 @@ Beschrijven hoe een [VSA](@)-tekstblok (melodie **S**) op
 | **S**     | uit [VSA](@) + [do-context](@)               | uit VSA (scopes, ELMs, syllaben)      |
 | **A/T/B** | uit template-[laddergraden](laddergraad@)    | **zelfde** eventkeuzes als voor S     |
 
+### ELM vs EHM (bindend)
+
+| Modifier                                              | Rol in de instance                                                                                                                                                                                         |
+| ----------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **ELM** (`_`, `__`, `~`, …)                           | **VSA bepaalt de werkelijke duur.** Template-`duration` is alleen een formule-indicatie op het blad; in de uitgewerkte partituur wint de VSA-ELM. A/T/B krijgen **dezelfde** duur als S op dat event (H5). |
+| **EHM** (`/`, `\`, `~`, …) / resulterende laddergraad | **Moet precies matchen** op template-`pitches.S` (zelfde klinkende toon t.o.v. `do`/`mode`). Geen “ongeveer”; mismatch → harde fout (H9), geen stil hold.                                                  |
+
+Kort: duur mag afwijken van de formule; **toonhoogte niet**.
+
 ## Tekstregels → template-frasen
 
 Elke VSA-regel (gescheiden door `*`) is één **tekstfrase**. De mapper wijst
@@ -159,11 +168,11 @@ met meerdere [muzikale posities](@) (`&` in de modifiers).
 | H2  | Cadens-scopes corresponderen met `cadence`-events, vaak bij `l.st.` of erna.                                                                                                                                                                                                         |
 | H3  | `{/…}` aan het begin van een regel kan `e.st.` van frase `2` (of vergelijkbaar) zijn.                                                                                                                                                                                                |
 | H4  | `optional: true` events: mee als VSA-S dat slot gebruikt, anders weg — voor **alle** stemmen.                                                                                                                                                                                        |
-| H5  | Split/merge van duren wordt gestuurd door VSA-S en parallel op A/T/B gezet.                                                                                                                                                                                                          |
+| H5  | **ELM:** VSA bepaalt de werkelijke nootlengte; template-`duration` is alleen formuleblad. Die VSA-duur geldt parallel voor A/T/B.                                                                                                                                                    |
 | H6  | Blijft VSA-S op dezelfde graad voor extra syllaben, dan **houden** A/T/B hetzelfde slot-akkoord.                                                                                                                                                                                     |
 | H7  | **Verplichte** template-slots moet VSA aandoen (eigen syllabe, hold H6, of melisma H8). Ongebruikt verplicht slot aan het eind → **fout**. Een **andere** toon in de cadens overslaan mag alleen via `optional: true` (H4). Rest van een ondergevulde **zelfde-S-run** mag stil weg. |
 | H8  | `l.lgr.`: start van een slotmelisma — geankerd event **plus alle volgende** events in de frase op de laatste VSA-syllabe.                                                                                                                                                            |
-| H9  | **Hoogte-mismatch** (VSA-S past op geen resterend template-S-slot) → harde fout (`TemplateInstanceError`), geen stil hold op het vorige akkoord.                                                                                                                                     |
+| H9  | **EHM/hoogte:** VSA-S moet **exact** op een resterend template-S-slot landen (klinkende toon). Mismatch → `TemplateInstanceError`; geen stil hold, geen “ongeveer”.                                                                                                                  |
 
 ### H4 vs H7 (optional vs verplicht)
 
@@ -172,18 +181,31 @@ met meerdere [muzikale posities](@) (`&` in de modifiers).
 | `optional: true` (haakjes op het blad)                                     | —                                                  | stil weglaten voor alle stemmen (**H4**)                                               |
 | verplicht (geen `optional`)                                                | —                                                  | **`TemplateInstanceError`** — VSA moet het slot meenemen of de template/VSA corrigeren |
 | verplicht, maar VSA “springt” naar **andere** toon                         | tussenslot(s) met **andere** S-graad               | **fout** tenzij die tussenslots `optional: true` zijn                                  |
-| rest van een **zelfde-S-run** na de laatste gebruikte syllabe op die graad | VSA gaat door naar een latere andere toon          | mag stil weg (ondergevulde run; geen andere toon overgeslagen)                         |
+| rest van een **zelfde-S-run** na de laatste gebruikte syllabe op die graad | VSA gaat door naar een latere andere toon          | mag stil weg (ondergevulde run; “laatst gebruikt” telt ook de **recite**-graad)        |
 | optional tussenslots bij sprong naar latere toon                           | VSA-pitch matcht een later slot                    | optional tussenslots weglaten (**H4**); daarna koppelen                                |
 
 **H6-aanscherping:** blijven er VSA-syllaben op dezelfde graad én is het **volgende**
 template-slot ook die graad, dan vult de volgende syllabe dat slot (bijv. `l.st.`),
 in plaats van alles op het eerste slot te houden.
 
-## Hoogte-mismatch (instance)
+### H5 (duur — ELM uit VSA)
 
-Vergelijking: absolute toonhoogte van de VSA-noot ↔ laddergraad `pitches.S`
-van template-events in de cadens-tail (zelfde `do`/`mode`).
+De template geeft **ongeveer** aan hoe lang formuleslots zijn. In de instance
+bepalen de **VSA-ELMs** de lengte.
 
+| Situatie                                                         | Gedrag                                                                  |
+| ---------------------------------------------------------------- | ----------------------------------------------------------------------- |
+| VSA-scope met `_` / `__` / `~` / …                               | die MusicXML-duur op het mapped event (alle stemmen)                    |
+| Template-event had andere `duration` (bijv. `~` vs VSA `_`)      | template genegeerd in de **instance**; wel zichtbaar op het formuleblad |
+| Twee syllaben op dezelfde graad (split)                          | twee events; elk met eigen VSA-duur; A/T/B-akkoord herhaald (H6)        |
+| Eén VSA-duur i.p.v. langere formule-indicatie (merge)            | één event met VSA-duur; geen aparte A/T/B-ritmes                        |
+| Recite (ongemarkeerd) in instance vóór print-collapse            | kwart per syllabe; MSCZ-collapse naar `\|\|O\|\|` is een print-stap     |
+
+## Hoogte (EHM — exact)
+
+Vergelijking: absolute toonhoogte van de VSA-noot (uit EHM + do-context) ↔
+laddergraad `pitches.S` van template-events (zelfde `do`/`mode`). **Geen
+tolerantie:** verkeerde graad is fout, ook als de ELM “ongeveer” past.
 | Situatie                                                                                      | Gedrag                                                          |
 | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------- |
 | VSA-pitch = huidig slot                                                                       | koppelen                                                        |
@@ -209,8 +231,9 @@ Mappingfouten (H7/H9 e.d.) moeten **bruikbaar** zijn, in dezelfde geest als
 | **Compact**    | korte regel: bestand, regel/kolom (of frase-id + syllabe), foutcode                                                                      |
 | **Uitgebreid** | wat er mis is (VSA-pitch vs verwachte template-S-slots); **hint** hoe te herstellen (VSA aanpassen, optional zetten, of ander cadenspad) |
 
-Minimaal in elke melding: bronpad, positie in de VSA-tekst (regel/kolom waar
-mogelijk), frase-id, betrokken lyric/syllabe, verwachte vs gevonden laddergraden.
+Minimaal in elke melding: bronpad, **regel/kolom** in de VSA-bron (via
+`VsaNote.line`/`column`), frase-id, betrokken lyric/syllabe, verwachte vs
+gevonden laddergraden. Compact: `bestand:regel:kolom: CODE`.
 
 ## Corpus en detail
 

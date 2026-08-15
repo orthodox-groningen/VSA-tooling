@@ -5,6 +5,8 @@ from typing import List, Optional, Union, Dict, Any
 @dataclass
 class TextNode:
     text: str
+    start: Optional[int] = None
+    end: Optional[int] = None
 
     def to_dict(self) -> Dict[str, Any]:
         return {
@@ -18,6 +20,8 @@ class ScopeNode:
     height_modifier: List[str]
     text: str
     length_modifier: List[str]
+    start: Optional[int] = None
+    end: Optional[int] = None
 
     def to_dict(self) -> Dict[str, Any]:
         return {

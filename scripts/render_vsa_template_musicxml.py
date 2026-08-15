@@ -1461,7 +1461,11 @@ def render_expanded_mscx(
 
 
 def mapped_notes_to_events(notes: list, do: str, mode: str) -> list[dict]:
-    """Pad-B mapped notes → MSCX event dicts (S uit VSA, A/T/B uit template)."""
+    """Mapped notes → MSCX/MXL event dicts (S uit VSA, A/T/B uit template).
+
+    H5: één ``dur``/``ntype``/``dots`` per event uit de VSA-noot — A/T/B
+    krijgen hetzelfde ritme (geen aparte template-ELM op instance).
+    """
     events: list[dict] = []
     for note in notes:
         template_event = note.template_event

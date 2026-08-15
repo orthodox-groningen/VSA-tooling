@@ -1,6 +1,6 @@
 from .ast import Document, TextNode, ScopeNode, PitchMarkerNode, HeightMarkerNode
 from .errors import VSASyntaxError
-from .vsa_comments import strip_vsa_html_comments
+from .vsa_comments import semantic_offset_to_source, strip_vsa_html_comments_with_offset_map
 
 
 BRACKET_DIRECTIVE_END = ":]"
@@ -54,8 +54,13 @@ class Parser:
     def __init__(self, text: str):
         # HTML comments inside VSA notation are source-only annotations.
         # They are ignored for parsing and all derived artifacts.
-        self.text = strip_vsa_html_comments(text)
+        stripped, offset_map = strip_vsa_html_comments_with_offset_map(text)
+        self.text = stripped
+        self._offset_map = offset_map
         self.pos = 0
+
+    def _source_offset(self, stripped_pos: int) -> int:
+        return semantic_offset_to_source(self._offset_map, stripped_pos)
 
     def parse(self) -> Document:
         nodes = []
@@ -82,7 +87,11 @@ class Parser:
                 raise VSASyntaxError("Losse sluitaccolade", self.pos)
             self.pos += 1
 
-        return TextNode(self.text[start:self.pos])
+        return TextNode(
+            self.text[start:self.pos],
+            start=self._source_offset(start),
+            end=self._source_offset(self.pos),
+        )
 
     def _parse_pitch_marker(self) -> PitchMarkerNode:
         start = self.pos
@@ -98,8 +107,8 @@ class Parser:
 
         return HeightMarkerNode(
             height_modifier=height_modifier,
-            start=start,
-            end=self.pos,
+            start=self._source_offset(start),
+            end=self._source_offset(self.pos),
         )
 
     def _parse_pitch_marker_modifier(self, raw_modifier: str, start: int) -> list[str]:
@@ -134,6 +143,8 @@ class Parser:
             height_modifier=height_modifier,
             text=element,
             length_modifier=length_modifier,
+            start=self._source_offset(start),
+            end=self._source_offset(self.pos),
         )
 
     def _split_scope_content(self, content: str, start: int):

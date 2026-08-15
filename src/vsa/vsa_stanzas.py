@@ -11,7 +11,7 @@ from .music import Duration, Pitch
 from .musicxml_renderer import _PUNCT_ONLY_RE
 from .parser import Parser
 from .pitch_resolver import PitchResolver
-from .yaml_frontmatter import parse_vsa_frontmatter
+from .yaml_frontmatter import parse_vsa_frontmatter_with_body_offset
 
 _STANZA_MARKERS = frozenset({"*", "**"})
 
@@ -25,11 +25,22 @@ class VsaNote:
     syllabic: str = "single"
     ehm: str = "~"
     elm: str = "~"
+    line: int = 0
+    column: int = 0
+
+
+def _line_column(text: str, offset: int) -> tuple[int, int]:
+    offset = max(0, min(offset, len(text)))
+    before = text[:offset]
+    line = before.count("\n") + 1
+    last_nl = before.rfind("\n")
+    column = offset + 1 if last_nl < 0 else offset - last_nl
+    return line, column
 
 
 def parse_vsa_source(text: str) -> tuple[dict, Document]:
     """Frontmatter + AST. Frontmatter-sleutels (do/mode) worden strings."""
-    meta, body = parse_vsa_frontmatter(text)
+    meta, body, _offset = parse_vsa_frontmatter_with_body_offset(text)
     flat = {str(k): str(v) for k, v in meta.items()}
     return flat, Parser(body).parse()
 
@@ -45,10 +56,11 @@ def extract_stanza_notes(
     ``pro{fe_}{\\ten_}``) vormen één woord → begin/middle/end voor streepjes.
     Spaties (en strofe-markers) breken het woord.
     """
-    file_meta, document = parse_vsa_source(text)
-    meta = dict(file_meta)
+    file_meta, body, body_offset = parse_vsa_frontmatter_with_body_offset(text)
+    meta = {str(k): str(v) for k, v in file_meta.items()}
     if metadata:
         meta.update(metadata)
+    document = Parser(body).parse()
     resolver = PitchResolver.from_metadata(meta)
     duration_model = meta.get("duration-model", "default")
     for node in document.nodes:
@@ -58,6 +70,11 @@ def extract_stanza_notes(
     stanzas: list[list[VsaNote]] = []
     current: list[VsaNote] = []
     word: list[VsaNote] = []
+
+    def loc(body_pos: int | None) -> tuple[int, int]:
+        if body_pos is None:
+            return 0, 0
+        return _line_column(text, body_offset + body_pos)
 
     def flush_word() -> None:
         if not word:
@@ -91,6 +108,8 @@ def extract_stanza_notes(
                 flush_word=flush_word,
                 close_stanza=close_stanza,
                 append_punct=append_punct,
+                text_start=node.start,
+                loc=loc,
             )
             continue
         if isinstance(node, ScopeNode):
@@ -101,6 +120,7 @@ def extract_stanza_notes(
             if len(lm) > 1 and len(hm) == 1:
                 hm = hm * len(lm)
             n_pos = len(hm)
+            line, column = loc(node.start)
             for i, (ehm, elm) in enumerate(zip(hm, lm)):
                 pitch = resolver.resolve_ehm(ehm)
                 dur = elm_to_duration(elm, model=duration_model)
@@ -122,6 +142,8 @@ def extract_stanza_notes(
                         syllabic=syllabic,
                         ehm=ehm,
                         elm=elm,
+                        line=line,
+                        column=column,
                     )
                 )
             continue
@@ -138,6 +160,8 @@ def _consume_text(
     flush_word,
     close_stanza,
     append_punct,
+    text_start: int | None,
+    loc,
 ) -> None:
     """Spaties breken woorden; tokens zonder voorafgaande spatie plakken aan het woord."""
     i = 0
@@ -151,6 +175,7 @@ def _consume_text(
         while j < n and not text[j].isspace():
             j += 1
         token = text[i:j]
+        token_start = None if text_start is None else text_start + i
         i = j
         if token in _STANZA_MARKERS:
             flush_word()
@@ -161,6 +186,7 @@ def _consume_text(
             continue
         pitch = resolver.current_pitch
         dur = elm_to_duration("~", model=duration_model)
+        line, column = loc(token_start)
         for lyric, _syllabic in recite_syllables(token):
             word.append(
                 VsaNote(
@@ -168,6 +194,8 @@ def _consume_text(
                     pitch=pitch,
                     duration=dur,
                     scoped=False,
+                    line=line,
+                    column=column,
                 )
             )
 

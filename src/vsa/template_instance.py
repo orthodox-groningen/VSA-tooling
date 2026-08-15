@@ -173,6 +173,10 @@ def map_stanza(
             # Geen ongemarkeerde recite-syllaben: recite-slot overslaan.
             pass
 
+    last_degree: str | None = None
+    if out:
+        last_degree = str(out[-1].template_event["pitches"]["S"])
+
     _map_tail(
         notes,
         index,
@@ -182,6 +186,7 @@ def map_stanza(
         mode,
         phrase_id=phrase_id,
         source=source,
+        last_consumed_degree=last_degree,
     )
     return out
 
@@ -255,6 +260,7 @@ def _map_tail(
     *,
     phrase_id: str,
     source: str = "",
+    last_consumed_degree: str | None = None,
 ) -> None:
     event_i = 0
     llgr_from: int | None = next(
@@ -280,6 +286,8 @@ def _map_tail(
                 "van de template volgen, of kies een andere frase/cadenspad."
             ),
             source=source,
+            line=note.line,
+            column=note.column,
             phrase_id=phrase_id,
             lyric=lyric,
             note_index=note_i,
@@ -305,12 +313,14 @@ def _map_tail(
                 "tussen haakjes staan."
             ),
             source=source,
+            line=note.line,
+            column=note.column,
             phrase_id=phrase_id,
             lyric=lyric,
             note_index=note_i,
         )
 
-    last_consumed_degree: str | None = None
+    # last_consumed_degree: doorgegeven (bijv. recite-S) of bijgewerkt in de loop.
 
     while index < len(notes):
         note = notes[index]
@@ -321,6 +331,8 @@ def _map_tail(
                     code="VSA-TEMPLATE-NO-TAIL",
                     hint_nl="Controleer of de frase cadence-events na recite heeft.",
                     source=source,
+                    line=note.line,
+                    column=note.column,
                     phrase_id=phrase_id,
                     lyric=note.lyric or "",
                     note_index=index,
@@ -401,6 +413,8 @@ def _map_tail(
                 "optional: true in de template."
             ),
             source=source,
+            line=notes[-1].line if notes else 0,
+            column=notes[-1].column if notes else 0,
             phrase_id=phrase_id,
             lyric=notes[-1].lyric if notes else "",
             note_index=len(notes) - 1 if notes else None,
@@ -454,6 +468,9 @@ def _next_matching_event(
 
 
 def _assign(note: VsaNote, event: dict[str, Any], *, show_anchor: bool) -> MappedNote:
+    # H5: VSA-ELM bepaalt de werkelijke duur (template-duration ≈ formuleblad).
+    # EHM/toonhoogte moet wél exact matchen (H9) — dat gebeurt vóór _assign.
+    # Recite-instance: kwart per ongemarkeerde syllabe (print-collapse elders).
     duration = note.duration
     if event.get("role") == "recite":
         duration = Duration(note_type="quarter")

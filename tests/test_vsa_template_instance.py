@@ -442,15 +442,65 @@ def test_pitch_mismatch_in_laatste_raises() -> None:
     )
     stanzas = extract_stanza_notes(text)
     with pytest.raises(TemplateInstanceError, match="hoogte-mismatch") as caught:
-        map_stanza(stanzas[0], phrase, do=doc["do"], mode=doc["mode"], source="demo.vsa")
+        map_stanza(
+            stanzas[0],
+            phrase,
+            do=doc["do"],
+            mode=doc["mode"],
+            source="demo.vsa",
+        )
     err = caught.value
     assert err.code == "VSA-TEMPLATE-PITCH-MISMATCH"
     assert err.hint_nl
-    assert "demo.vsa" in err.format_compact() or "frase" in err.format_compact()
+    assert err.line >= 6  # na frontmatter
+    assert err.column >= 1
+    assert "demo.vsa" in err.format_compact()
+    assert f"demo.vsa:{err.line}:{err.column}" == err.location_label()
     lines = err.format_lines()
-    assert lines[0]
+    assert lines[0] == err.location_label()
     assert lines[1].startswith("ERROR: VSA-TEMPLATE-PITCH-MISMATCH:")
     assert any(line.startswith("Hint:") for line in lines)
+
+
+def test_vsa_note_line_column_elia_en() -> None:
+    """Scoped `{En_}` in elia.vsa heeft bronregel/kolom in het volledige bestand."""
+    text = _elia_text()
+    stanzas = extract_stanza_notes(text)
+    en = next(n for n in stanzas[0] if n.lyric == "En")
+    assert en.line == 10
+    assert en.column >= 1
+    # Kolom wijst naar de `{` van `{En_}`.
+    line = text.splitlines()[en.line - 1]
+    assert line[en.column - 1] == "{"
+    assert "En_" in line[en.column - 1 :]
+
+
+def test_h5_vsa_duration_overrides_template_elm() -> None:
+    """H5: VSA `_` (half) wint van template-cadens `~`; A/T/B delen die duur."""
+    doc = _template()
+    mapped = map_vsa_to_template(doc, _elia_text())
+    en = next(n for n in mapped[0][1] if n.lyric == "En")
+    assert en.duration.note_type == "half"
+    assert en.template_event.get("duration") == "~"
+    events = render.mapped_notes_to_events(mapped[0][1], doc["do"], doc["mode"])
+    en_ev = next(ev for ev in events if ev.get("lyric") == "En")
+    assert en_ev["ntype"] == "half"
+    assert en_ev["dur"] == 8
+    # Zelfde event = één ritme voor S/A/T/B (parallel).
+    assert set(en_ev["pitches"]) == {"S", "A", "T", "B"}
+
+
+def test_h5_split_same_slot_keeps_per_syllable_duration() -> None:
+    """H5 split: twee VSA-syllaben op zelfde graad → twee events, elk eigen VSA-duur."""
+    doc = _template()
+    mapped = map_vsa_to_template(doc, _elia_text())
+    # {En_}gel: En half, gel quarter (ongemarkerd, zelfde mi).
+    notes = [n for n in mapped[0][1] if n.lyric in ("En", "gel")]
+    assert [n.lyric for n in notes] == ["En", "gel"]
+    assert notes[0].duration.note_type == "half"
+    assert notes[1].duration.note_type == "quarter"
+    events = render.mapped_notes_to_events(notes, doc["do"], doc["mode"])
+    assert [e["ntype"] for e in events] == ["half", "quarter"]
 
 
 def test_pitch_mismatch_past_tail_raises() -> None:
@@ -514,7 +564,33 @@ def test_optional_other_pitch_skip_ok() -> None:
     assert degrees == ["fa", "mi"]
     assert not any(n.template_event.get("optional") for n in mapped)
 
-def test_unused_required_trailing_raises() -> None:
+def test_h7_skips_same_pitch_cadence_after_recite() -> None:
+    """Na recite-fa mag cadens-fa-run weg als VSA meteen naar slot-mi gaat."""
+    phrase = {
+        "id": "2",
+        "events": [
+            {
+                "role": "cadence",
+                "anchor": "e.st.",
+                "pitches": {"S": "fa", "A": "re", "T": "la-1", "B": "re-1"},
+            },
+            {"role": "recite", "pitches": {"S": "fa", "A": "re", "T": "la-1", "B": "re-1"}},
+            {"role": "cadence", "pitches": {"S": "fa", "A": "re", "T": "la-1", "B": "re-1"}},
+            {
+                "role": "cadence",
+                "anchor": "l.st.",
+                "pitches": {"S": "fa", "A": "re", "T": "sol-1", "B": "sol-2"},
+            },
+            {"role": "cadence", "pitches": {"S": "mi", "A": "do", "T": "sol-1", "B": "do-1"}},
+        ],
+    }
+    # {/de} = e.st. fa; recite; {\\we_} = mi (slaat fa-cadens over).
+    text = "---\ndo: F4\nmode: major\n---\n\n{/de} grond {\\we_}. [//:]\n"
+    stanzas = extract_stanza_notes(text)
+    mapped = map_stanza(stanzas[0], phrase, do="F4", mode="major")
+    assert [n.lyric for n in mapped] == ["de", "grond", "we."]
+    assert mapped[-1].template_event["pitches"]["S"] == "mi"
+
     phrase = {
         "id": "cad",
         "events": [

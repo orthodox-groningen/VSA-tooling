@@ -32,6 +32,11 @@ Mappingcontract: [mapping-vsa.md](mapping-vsa.md).
 - [x] PDF-export uit git geweerd (afgeleide); lokaal via `--pdf-only`.
 - [x] Spot-check PDF’s tropaar-toon-4 corpus: recite/scopes/layout kloppen
       (menselijke audit).
+- [x] **Instance-foutmeldingen zoals `vsa validate`:** compacte + uitgebreide
+      vorm; **bestand:regel:kolom**; foutcode; `Hint:` (H7/H9 e.d.).
+- [x] **Mapping H4–H7** in de instance-mapper (optional; VSA-duur H5;
+      hold/zelfde-S H6; H7 andere toon alleen via optional / zelfde-S-run
+      incl. na recite). Details: [mapping-vsa.md](mapping-vsa.md).
 
 ---
 
@@ -78,19 +83,6 @@ Mappingcontract: [mapping-vsa.md](mapping-vsa.md).
       dubbele noot in de partituur.
 - [ ] Normalisatie anker-labels (`e. st.` vs `e.st.`). Canoniek overal
       `e.st.` (en dezelfde vorm voor `l.st.`, `vl.st.`, `l.lgr.`).
-- [x] **Instance-foutmeldingen zoals `vsa validate`:** compacte + uitgebreide
-      vorm (`format_compact` / `format_lines`); frase + syllabe + lyric;
-      foutcode; wat er mis is; `Hint:`-herstel. Bronpad/regel/kolom zodra
-      de VSA-noten posities krijgen. Geldt voor H7/H9 e.d.
-- [ ] **Mapping-hypotheses H4–H7 echt in de instance-mapper** (zie
-      [mapping-vsa.md](mapping-vsa.md)):
-      - **H4** optional-events: mee als VSA dat slot gebruikt, anders weg
-        (prefix-link + optional tussenslots) — deels gedaan;
-      - **H5** duur split/merge: VSA-S stuurt; A/T/B parallel — nog open;
-      - **H6** hold + vullen van opeenvolgende zelfde-S-slots — gedaan;
-      - **H7** andere toon overslaan alleen via `optional`; verplicht ongebruikt
-        aan het eind → fout; rest van ondergevulde zelfde-S-run mag weg —
-        gedaan.
 
 ### Tooling / export
 

@@ -35,28 +35,40 @@ def parse_vsa_frontmatter(text: str) -> tuple[dict, str]:
     Returns ``(metadata_dict, vsa_body)`` where ``metadata_dict`` is empty
     when no valid frontmatter is present.
     """
+    meta, body, _offset = parse_vsa_frontmatter_with_body_offset(text)
+    return meta, body
+
+
+def parse_vsa_frontmatter_with_body_offset(text: str) -> tuple[dict, str, int]:
+    """Zoals ``parse_vsa_frontmatter``, plus start-offset van de body in ``text``."""
     if not text.startswith(_DELIMITER):
-        return {}, text
+        return {}, text, 0
 
     # Find the closing delimiter on its own line
-    after_open = text[len(_DELIMITER):]
+    after_open = text[len(_DELIMITER) :]
     close_idx = after_open.find("\n" + _DELIMITER)
     if close_idx == -1:
-        return {}, text
+        return {}, text, 0
 
     yaml_text = after_open[:close_idx].strip()
-    body = after_open[close_idx + len(_DELIMITER) + 1:].lstrip("\n")
+    # ``close_idx`` wijst naar de ``\\n`` vóór de sluitende ``---``.
+    close_at = len(_DELIMITER) + close_idx
+    body_from = close_at + 1 + len(_DELIMITER)
+    rest = text[body_from:]
+    body = rest.lstrip("\n")
+    body_offset = body_from + (len(rest) - len(body))
 
     try:
         import yaml  # optional; only needed for .vsa frontmatter
+
         data = yaml.safe_load(yaml_text) or {}
     except Exception:
-        return {}, text
+        return {}, text, 0
 
     if not isinstance(data, dict):
-        return {}, text
+        return {}, text, 0
 
-    return data, body
+    return data, body, body_offset
 
 
 def frontmatter_to_block_metadata(frontmatter: dict) -> dict[str, str]:

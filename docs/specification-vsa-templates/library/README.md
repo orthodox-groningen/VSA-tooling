@@ -18,7 +18,7 @@ library/
 ```
 
 Invalid schema-cases blijven in
-[`../examples/invalid/`](../examples/invalid/) (geen formule-werkmap).
+`examples/invalid/` (geen formule-werkmap).
 
 ## Gedeelde afspraken
 
@@ -38,11 +38,11 @@ Deze symbolen zijn **onze** semantiek; MuseScore zelf kent geen “recite”.
 | In MuseScore                                                                        | Betekenis in template                                              |
 | ----------------------------------------------------------------------------------- | ------------------------------------------------------------------ |
 | Tekst `1`, `2`, `3`, … of `laatste` (cirkel, rechthoek, of zonder)                  | [frase-id](frase-id@) ([formulelabel](formulelabel@))              |
-| Brevis-kop (`||O||`), stemloos, halfnoot (2 tellen)                                 | [reciteertoon](reciteertoon@) (`role: recite`)                     |
-| Notehead met haakjes                                                                | `optional: true`                                                   |
-| Staff text `e. st.` / `l. st.` / `vl. st.` + pijl **eronder** naar de noot          | [frase-anker](frase-anker@) ([formulelabel](formulelabel@))        |
-| Staff text `\|\|: 1, 2 :\|\| laatste` of VBox onderaan                              | cycle-notatie (YAML `cycle`/`final`)                               |
-| Duur quarter / half / whole                                                         | ELM `~` / `_` / `__`                                               |
+| Brevis-kop (` |     | O   |     | `), stemloos, halfnoot (2 tellen) | [reciteertoon](reciteertoon@) (`role: recite`) |
+| Notehead met haakjes                                                       | `optional: true`                                            |
+| Staff text `e. st.` / `l. st.` / `vl. st.` + pijl **eronder** naar de noot | [frase-anker](frase-anker@) ([formulelabel](formulelabel@)) |
+| Staff text `\|\|: 1, 2 :\|\| laatste` of VBox onderaan                     | cycle-notatie (YAML `cycle`/`final`)                        |
+| Duur quarter / half / whole                                                | ELM `~` / `_` / `__`                                        |
 
 YAML-ankers zijn **zonder** spaties (`l.st.`); op het blad **mét** spaties
 (`l. st.`). De pijl is hulpgrafiek, geen tweede [formulelabel](formulelabel@).
@@ -169,15 +169,15 @@ S/A-partij volstaat.
 
 ## Formules aanwezig
 
-| Map                                   | Vorm      | Opmerking             |
-| ------------------------------------- | --------- | --------------------- |
-| [`tropaar-toon-1`](tropaar-toon-1/)   | cycle     |                       |
-| [`tropaar-toon-3`](tropaar-toon-3/)   | sequence  |                       |
-| [`tropaar-toon-4`](tropaar-toon-4/)   | cycle     | Elia-mapping + corpus |
-| [`tropaar-toon-5`](tropaar-toon-5/)   | `same_as` | → stichier-toon-5     |
-| [`stichier-toon-5`](stichier-toon-5/) | cycle     | ook als tropaar       |
-| [`vers-toon-1`](vers-toon-1/)         | cycle     |                       |
-| [`vers-toon-5`](vers-toon-5/)         | cycle     |                       |
+| Map                                            | Vorm      | Opmerking             |
+| ---------------------------------------------- | --------- | --------------------- |
+| [`tropaar-toon-1`](tropaar-toon-1/README.md)   | cycle     |                       |
+| [`tropaar-toon-3`](tropaar-toon-3/README.md)   | sequence  |                       |
+| [`tropaar-toon-4`](tropaar-toon-4/README.md)   | cycle     | Elia-mapping + corpus |
+| [`tropaar-toon-5`](tropaar-toon-5/README.md)   | `same_as` | → stichier-toon-5     |
+| [`stichier-toon-5`](stichier-toon-5/README.md) | cycle     | ook als tropaar       |
+| [`vers-toon-1`](vers-toon-1/README.md)         | cycle     |                       |
+| [`vers-toon-5`](vers-toon-5/README.md)         | cycle     |                       |
 
 Normatieve syntax/semantiek: map erboven
 ([`../README.md`](../README.md)).

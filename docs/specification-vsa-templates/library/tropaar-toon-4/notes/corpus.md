@@ -27,7 +27,7 @@ twee gelijke noten tot één duur merget, dan gebeurt **hetzelfde ritmische
 besluit** voor A, T en B via de corresponderende template-events.
 
 **Wat dit corpus oplevert:** voor elk van de 13 stukken
-[`../examples/corpus/`](../examples/corpus/) — `.vsa` (bron) + `.mscz` /
+`examples/corpus/` — `.vsa` (bron) + `.mscz` /
 `.mxl` (uitgewerkt SATB, pad B). PDF is lokale MuseScore-export (niet in git).
 
 **Wat het corpus al toont:** op 13 Toon-4-troparen werkt

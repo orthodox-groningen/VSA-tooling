@@ -6,15 +6,15 @@ Canonieke werkmappen: [`library/`](library/README.md).
 Per formule: `template.yaml`, `template.musicxml` (SA/TB, zonder maatsoort,
 optionals tussen haakjes), optioneel `examples/` en `notes/`.
 
-| Map                                                   | Vorm     | Doel                                |
-| ----------------------------------------------------- | -------- | ----------------------------------- |
-| [`tropaar-toon-1`](library/tropaar-toon-1/)           | cycle    | `1,2` + `laatste`; bibliotheek `1a` |
-| [`tropaar-toon-3`](library/tropaar-toon-3/)           | sequence | vaste volgorde + `2a` + ELM `.`     |
-| [`tropaar-toon-4`](library/tropaar-toon-4/)           | cycle    | Elia-mapping + corpus               |
-| [`stichier-toon-5`](library/stichier-toon-5/)         | cycle    | `1,2,3` + `laatste`; `also_used_as` |
-| [`tropaar-toon-5`](library/tropaar-toon-5/)           | alias    | `same_as: stichier-toon-5`          |
-| [`vers-toon-1`](library/vers-toon-1/)                 | cycle    | vers toon 1; `vl.st.`               |
-| [`vers-toon-5`](library/vers-toon-5/)                 | cycle    | vers toon 5; ELM `_.`               |
+| Map                                                    | Vorm     | Doel                                |
+| ------------------------------------------------------ | -------- | ----------------------------------- |
+| [`tropaar-toon-1`](library/tropaar-toon-1/README.md)   | cycle    | `1,2` + `laatste`; bibliotheek `1a` |
+| [`tropaar-toon-3`](library/tropaar-toon-3/README.md)   | sequence | vaste volgorde + `2a` + ELM `.`     |
+| [`tropaar-toon-4`](library/tropaar-toon-4/README.md)   | cycle    | Elia-mapping + corpus               |
+| [`stichier-toon-5`](library/stichier-toon-5/README.md) | cycle    | `1,2,3` + `laatste`; `also_used_as` |
+| [`tropaar-toon-5`](library/tropaar-toon-5/README.md)   | alias    | `same_as: stichier-toon-5`          |
+| [`vers-toon-1`](library/vers-toon-1/README.md)         | cycle    | vers toon 1; `vl.st.`               |
+| [`vers-toon-5`](library/vers-toon-5/README.md)         | cycle    | vers toon 5; ELM `_.`               |
 
 Alle formules: [vsa-templates](vsa-template@) met `pitches_status: provisional`
 tot PDF-audit. MusicXML regenereren:

@@ -15,7 +15,7 @@
 | [`examples/elia.vsa`](examples/elia.vsa)               | Tropaar Profeet Elia (bron)                           |
 | [`examples/elia.mscz`](examples/elia.mscz)             | Uitgewerkt (MuseScore)                                |
 | [`examples/elia.mxl`](examples/elia.mxl)               | Uitgewerkt (Coria)                                    |
-| [`examples/corpus/`](examples/corpus/)                 | 13 Toon-4-stukken: `.vsa` / `.mscz` / `.mxl`          |
+| `examples/corpus/`                                     | 13 Toon-4-stukken: `.vsa` / `.mscz` / `.mxl`          |
 
 Corpus regenereren (PDF blijft lokaal, staat in `.gitignore`):
 

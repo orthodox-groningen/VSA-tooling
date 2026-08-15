@@ -26,7 +26,7 @@ sys.path.insert(0, str(REPO / "scripts"))
 import render_vsa_template_musicxml as render  # noqa: E402
 
 from vsa.corpus_vsa import load_corpus, write_vsa_file  # noqa: E402
-from vsa.template_instance import map_vsa_to_template  # noqa: E402
+from vsa.template_instance import TemplateInstanceError, map_vsa_to_template  # noqa: E402
 
 
 def find_musescore() -> Path | None:
@@ -70,7 +70,7 @@ def render_instance(
         write_vsa_file(piece, vsa_path)
     vsa_text = vsa_path.read_text(encoding="utf-8")
 
-    mapped = map_vsa_to_template(doc, vsa_text)
+    mapped = map_vsa_to_template(doc, vsa_text, source=str(vsa_path))
     title = expanded_title(piece.piece_id, piece.title)
     mscx = render.render_instance_mscx(doc, mapped, title=title)
     out = output_dir / f"{stem}.mscz"
@@ -204,6 +204,12 @@ def main() -> int:
                 musescore=musescore,
             )
             print(f"wrote {out.relative_to(REPO)}")
+        except TemplateInstanceError as exc:
+            for line in exc.format_lines():
+                print(line, file=sys.stderr)
+            msg = f"{piece.piece_id}: {exc.code}"
+            failures.append(msg)
+            print(f"FAILED {msg}", file=sys.stderr)
         except Exception as exc:  # noqa: BLE001
             msg = f"{piece.piece_id}: {exc}"
             failures.append(msg)

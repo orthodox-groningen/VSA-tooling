@@ -153,33 +153,64 @@ met meerdere [muzikale posities](@) (`&` in de modifiers).
 
 ## Hypotheses (event-niveau)
 
-| #   | Hypothese                                                                                                                                        |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
-| H1  | Ongemarkeerde VSA-syllaben vóór cadens-scopes vallen op recite.                                                                                  |
-| H2  | Cadens-scopes corresponderen met `cadence`-events, vaak bij `l.st.` of erna.                                                                     |
-| H3  | `{/…}` aan het begin van een regel kan `e.st.` van frase `2` (of vergelijkbaar) zijn.                                                            |
-| H4  | `optional: true` events: mee als VSA-S dat slot gebruikt, anders weg — voor **alle** stemmen.                                                    |
-| H5  | Split/merge van duren wordt gestuurd door VSA-S en parallel op A/T/B gezet.                                                                      |
-| H6  | Blijft VSA-S op dezelfde graad voor extra syllaben, dan **houden** A/T/B hetzelfde slot-akkoord.                                                 |
-| H7  | Trailing template-slots die VSA-S niet aandoet, worden voor alle stemmen **overgeslagen**.                                                       |
-| H8  | `l.lgr.`: start van een slotmelisma — geankerd event **plus alle volgende** events in de frase op de laatste VSA-syllabe.                        |
-| H9  | **Hoogte-mismatch** (VSA-S past op geen resterend template-S-slot) → harde fout (`TemplateInstanceError`), geen stil hold op het vorige akkoord. |
+| #   | Hypothese                                                                                                                                                                                                                                                                            |
+| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| H1  | Ongemarkeerde VSA-syllaben vóór cadens-scopes vallen op recite.                                                                                                                                                                                                                      |
+| H2  | Cadens-scopes corresponderen met `cadence`-events, vaak bij `l.st.` of erna.                                                                                                                                                                                                         |
+| H3  | `{/…}` aan het begin van een regel kan `e.st.` van frase `2` (of vergelijkbaar) zijn.                                                                                                                                                                                                |
+| H4  | `optional: true` events: mee als VSA-S dat slot gebruikt, anders weg — voor **alle** stemmen.                                                                                                                                                                                        |
+| H5  | Split/merge van duren wordt gestuurd door VSA-S en parallel op A/T/B gezet.                                                                                                                                                                                                          |
+| H6  | Blijft VSA-S op dezelfde graad voor extra syllaben, dan **houden** A/T/B hetzelfde slot-akkoord.                                                                                                                                                                                     |
+| H7  | **Verplichte** template-slots moet VSA aandoen (eigen syllabe, hold H6, of melisma H8). Ongebruikt verplicht slot aan het eind → **fout**. Een **andere** toon in de cadens overslaan mag alleen via `optional: true` (H4). Rest van een ondergevulde **zelfde-S-run** mag stil weg. |
+| H8  | `l.lgr.`: start van een slotmelisma — geankerd event **plus alle volgende** events in de frase op de laatste VSA-syllabe.                                                                                                                                                            |
+| H9  | **Hoogte-mismatch** (VSA-S past op geen resterend template-S-slot) → harde fout (`TemplateInstanceError`), geen stil hold op het vorige akkoord.                                                                                                                                     |
+
+### H4 vs H7 (optional vs verplicht)
+
+| Soort template-slot                                                        | VSA doet het slot niet aan                         | Gedrag                                                                                 |
+| -------------------------------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------------------------------------------- |
+| `optional: true` (haakjes op het blad)                                     | —                                                  | stil weglaten voor alle stemmen (**H4**)                                               |
+| verplicht (geen `optional`)                                                | —                                                  | **`TemplateInstanceError`** — VSA moet het slot meenemen of de template/VSA corrigeren |
+| verplicht, maar VSA “springt” naar **andere** toon                         | tussenslot(s) met **andere** S-graad               | **fout** tenzij die tussenslots `optional: true` zijn                                  |
+| rest van een **zelfde-S-run** na de laatste gebruikte syllabe op die graad | VSA gaat door naar een latere andere toon          | mag stil weg (ondergevulde run; geen andere toon overgeslagen)                         |
+| optional tussenslots bij sprong naar latere toon                           | VSA-pitch matcht een later slot                    | optional tussenslots weglaten (**H4**); daarna koppelen                                |
+
+**H6-aanscherping:** blijven er VSA-syllaben op dezelfde graad én is het **volgende**
+template-slot ook die graad, dan vult de volgende syllabe dat slot (bijv. `l.st.`),
+in plaats van alles op het eerste slot te houden.
 
 ## Hoogte-mismatch (instance)
 
 Vergelijking: absolute toonhoogte van de VSA-noot ↔ laddergraad `pitches.S`
 van template-events in de cadens-tail (zelfde `do`/`mode`).
 
-| Situatie                                          | Gedrag                                        |
-| ------------------------------------------------- | --------------------------------------------- |
-| VSA-pitch = huidig/later slot in de tail          | koppelen; tussenslots overslaan (H7)          |
-| VSA-pitch = zelfde slot opnieuw                   | hold (H6)                                     |
-| VSA-pitch past nergens meer in de resterende tail | **`TemplateInstanceError`** (hoogte-mismatch) |
-| Extra noot ná de tail, andere hoogte              | **`TemplateInstanceError`**                   |
-| Extra noot ná de tail,zelfde hoogte als slot      | hold (H6)                                     |
+| Situatie                                                                                      | Gedrag                                                          |
+| --------------------------------------------------------------------------------------------- | --------------------------------------------------------------- |
+| VSA-pitch = huidig slot                                                                       | koppelen                                                        |
+| VSA-pitch = later slot; overgeslagen tussenslots alleen `optional` of rest van dezelfde S-run | tussenslots weg; daarna koppelen                                |
+| VSA-pitch = later slot; ≥1 overgeslagen tussenslot is verplicht **én** andere S-graad         | **`TemplateInstanceError`** (verplicht slot overgeslagen)       |
+| VSA-pitch = zelfde slot opnieuw                                                               | hold (H6); bij volgend zelfde-S-slot: dat slot vullen           |
+| VSA-pitch past nergens meer in de resterende tail                                             | **`TemplateInstanceError`** (hoogte-mismatch)                   |
+| Extra noot ná de tail, andere hoogte                                                          | **`TemplateInstanceError`**                                     |
+| Extra noot ná de tail,zelfde hoogte als slot                                                  | hold (H6)                                                       |
+| Einde VSA terwijl er nog **verplichte** template-slots resten                                 | **`TemplateInstanceError`** (verplicht slot niet aangedaan)     |
+| Einde VSA; resten alleen `optional: true`                                                     | optional resten weglaten (H4)                                   |
 
 Zo wordt bijv. `{-&/Schep_&_}{\per_}` (mi–fa–mi) op template-`laatste`
 (mi–re–mi) afgewezen i.p.v. A/T/B stil op mi te laten hangen.
+
+### Foutmeldingen (instance-mapping)
+
+Mappingfouten (H7/H9 e.d.) moeten **bruikbaar** zijn, in dezelfde geest als
+`vsa validate`:
+
+| Laag           | Inhoud                                                                                                                                   |
+| -------------- | ---------------------------------------------------------------------------------------------------------------------------------------- |
+| **Compact**    | korte regel: bestand, regel/kolom (of frase-id + syllabe), foutcode                                                                      |
+| **Uitgebreid** | wat er mis is (VSA-pitch vs verwachte template-S-slots); **hint** hoe te herstellen (VSA aanpassen, optional zetten, of ander cadenspad) |
+
+Minimaal in elke melding: bronpad, positie in de VSA-tekst (regel/kolom waar
+mogelijk), frase-id, betrokken lyric/syllabe, verwachte vs gevonden laddergraden.
 
 ## Corpus en detail
 

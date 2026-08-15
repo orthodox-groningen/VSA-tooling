@@ -441,8 +441,16 @@ def test_pitch_mismatch_in_laatste_raises() -> None:
         "// Ver-vul-ling van het Heils-plan van de {-&/Schep_&_}{\\per_}. [//:]\n"
     )
     stanzas = extract_stanza_notes(text)
-    with pytest.raises(TemplateInstanceError, match="hoogte-mismatch"):
-        map_stanza(stanzas[0], phrase, do=doc["do"], mode=doc["mode"])
+    with pytest.raises(TemplateInstanceError, match="hoogte-mismatch") as caught:
+        map_stanza(stanzas[0], phrase, do=doc["do"], mode=doc["mode"], source="demo.vsa")
+    err = caught.value
+    assert err.code == "VSA-TEMPLATE-PITCH-MISMATCH"
+    assert err.hint_nl
+    assert "demo.vsa" in err.format_compact() or "frase" in err.format_compact()
+    lines = err.format_lines()
+    assert lines[0]
+    assert lines[1].startswith("ERROR: VSA-TEMPLATE-PITCH-MISMATCH:")
+    assert any(line.startswith("Hint:") for line in lines)
 
 
 def test_pitch_mismatch_past_tail_raises() -> None:
@@ -456,6 +464,72 @@ def test_pitch_mismatch_past_tail_raises() -> None:
     stanzas = extract_stanza_notes(text)
     with pytest.raises(TemplateInstanceError, match="hoogte-mismatch"):
         map_stanza(stanzas[0], phrase, do=doc["do"], mode=doc["mode"])
+
+
+def test_required_other_pitch_skip_raises() -> None:
+    """Sprong over verplichte andere toon (fa→…→mi met re ertussen) → fout."""
+    phrase = {
+        "id": "cad",
+        "events": [
+            {"role": "recite", "pitches": {"S": "mi", "A": "do", "T": "sol-1", "B": "do-1"}},
+            {"role": "cadence", "pitches": {"S": "fa", "A": "re", "T": "la-1", "B": "re-1"}},
+            {"role": "cadence", "pitches": {"S": "re", "A": "ti-1", "T": "sol-1", "B": "sol-2"}},
+            {"role": "cadence", "pitches": {"S": "mi", "A": "do", "T": "sol-1", "B": "do-1"}},
+        ],
+    }
+    # {/a}=fa, then {\b}=mi: slaat verplicht re over.
+    text = "---\ndo: F4\nmode: major\n---\n\n// x {/a_}{\\b_}. [//:]\n"
+    stanzas = extract_stanza_notes(text)
+    with pytest.raises(TemplateInstanceError) as caught:
+        map_stanza(stanzas[0], phrase, do="F4", mode="major", source="x.vsa")
+    err = caught.value
+    assert err.code == "VSA-TEMPLATE-REQUIRED-SLOT-SKIPPED"
+    assert "re" in err.message_nl
+    assert "optional: true" in err.hint_nl
+    assert err.format_compact().endswith("VSA-TEMPLATE-REQUIRED-SLOT-SKIPPED")
+
+
+def test_optional_other_pitch_skip_ok() -> None:
+    phrase = {
+        "id": "cad",
+        "events": [
+            {"role": "recite", "pitches": {"S": "mi", "A": "do", "T": "sol-1", "B": "do-1"}},
+            {"role": "cadence", "pitches": {"S": "fa", "A": "re", "T": "la-1", "B": "re-1"}},
+            {
+                "role": "cadence",
+                "optional": True,
+                "pitches": {"S": "re", "A": "ti-1", "T": "sol-1", "B": "sol-2"},
+            },
+            {"role": "cadence", "pitches": {"S": "mi", "A": "do", "T": "sol-1", "B": "do-1"}},
+        ],
+    }
+    text = "---\ndo: F4\nmode: major\n---\n\n// x {/a_}{\\b_}. [//:]\n"
+    stanzas = extract_stanza_notes(text)
+    mapped = map_stanza(stanzas[0], phrase, do="F4", mode="major")
+    degrees = [
+        n.template_event["pitches"]["S"]
+        for n in mapped
+        if n.template_event.get("role") == "cadence"
+    ]
+    assert degrees == ["fa", "mi"]
+    assert not any(n.template_event.get("optional") for n in mapped)
+
+def test_unused_required_trailing_raises() -> None:
+    phrase = {
+        "id": "cad",
+        "events": [
+            {"role": "recite", "pitches": {"S": "mi", "A": "do", "T": "sol-1", "B": "do-1"}},
+            {"role": "cadence", "pitches": {"S": "mi", "A": "do", "T": "sol-1", "B": "do-1"}},
+            {"role": "cadence", "pitches": {"S": "fa", "A": "re", "T": "la-1", "B": "re-1"}},
+        ],
+    }
+    # Alleen recite + één cadens-mi; verplicht fa blijft liggen.
+    text = "---\ndo: F4\nmode: major\n---\n\n// a b {~c_}. [//:]\n"
+    stanzas = extract_stanza_notes(text)
+    with pytest.raises(TemplateInstanceError) as caught:
+        map_stanza(stanzas[0], phrase, do="F4", mode="major")
+    assert caught.value.code == "VSA-TEMPLATE-REQUIRED-SLOT-UNUSED"
+    assert "fa" in caught.value.message_nl
 
 
 def test_elia_instance_s_from_vsa_atb_from_template() -> None:

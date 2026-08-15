@@ -64,7 +64,7 @@ bestand heeft niet alle 13 blokken, o.a. T4-07a).
 
 | Pad                                                                                | Inhoud                                      |
 | ---------------------------------------------------------------------------------- | ------------------------------------------- |
-| [`examples/corpus/`](examples/corpus/)                                             | 13 stukken: `.vsa` / `.mscz` / `.mxl`       |
+| [`notes/corpus.md`](notes/corpus.md)                                               | overzicht 13 stukken + mapping              |
 | [`examples/corpus/T4-06-profeet-elia.vsa`](examples/corpus/T4-06-profeet-elia.vsa) | canonieke Elia-bron                         |
 
 ## Notes

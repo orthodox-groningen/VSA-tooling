@@ -50,7 +50,7 @@ Normatieve graden in voorbeelden komen alleen uit **menselijk gecontroleerde**
 invoer. Onzekerheden: [`open-points.md`](open-points.md) of
 `pitches_status: provisional`.
 
-## Architectuur (pad B)
+## Architectuur (VSA→template-instance)
 
 Het [vsa-template](@) beschrijft de **volledige SATB-formule** zoals op het
 blad (inclusief optionele noten). Runtime-melodie voor **S** komt uit [VSA](@);

@@ -26,7 +26,7 @@ sys.path.insert(0, str(REPO / "scripts"))
 import render_vsa_template_musicxml as render  # noqa: E402
 
 from vsa.corpus_vsa import load_corpus, write_vsa_file  # noqa: E402
-from vsa.pad_b import map_vsa_to_template  # noqa: E402
+from vsa.template_instance import map_vsa_to_template  # noqa: E402
 
 
 def find_musescore() -> Path | None:
@@ -72,13 +72,13 @@ def render_instance(
 
     mapped = map_vsa_to_template(doc, vsa_text)
     title = expanded_title(piece.piece_id, piece.title)
-    mscx = render.render_pad_b_mscx(doc, mapped, title=title)
+    mscx = render.render_instance_mscx(doc, mapped, title=title)
     out = output_dir / f"{stem}.mscz"
     render.write_mscx_output(out, mscx)
 
     from vsa.musicxml_package import write_musicxml_output
 
-    xml = render.render_pad_b_musicxml(doc, mapped, title=title)
+    xml = render.render_instance_musicxml(doc, mapped, title=title)
     write_musicxml_output(output_dir / f"{stem}.mxl", xml)
 
     if musescore is not None:

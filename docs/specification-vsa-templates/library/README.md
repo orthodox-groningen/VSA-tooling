@@ -24,7 +24,7 @@ Invalid schema-cases blijven in
 
 | Onderwerp       | Afspraak                                                                                  |
 | --------------- | ----------------------------------------------------------------------------------------- |
-| Architectuur    | **Pad B**: S uit VSA, A/T/B uit template (synchroon)                                      |
+| Architectuur    | **VSA→template-instance**: S uit VSA, A/T/B uit template (synchroon)                                      |
 | MusicXML-balken | 2 partijen: P1 `S/A` (G), P2 `T/B` (F); per partij voice1=S of T, voice2=A of B; `backup` |
 | Maatsoort       | bij voorkeur `senza-misura`; 4/4 tolereren in MuseScore-exports                           |
 | Optionele noten | YAML `optional: true` ↔ MusicXML notehead parentheses                                     |
@@ -164,7 +164,7 @@ S/A-partij volstaat.
 - Insert-modus bij ritmewijzigingen. Geen extra maatlengte of verborgen
   rusten: de MSCX is ook koorprint.
 - Split/merge van formuleslots alleen als het blad dat zo heeft; VSA-tekst
-  splitst later (pad B).
+  splitst later (instance).
 - Eerst S, dan A (voice 2), dan TB.
 
 ## Formules aanwezig

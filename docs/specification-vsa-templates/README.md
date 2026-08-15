@@ -21,21 +21,22 @@ zijn. Tool-termen staan al in `docs/terminologie/` (zie [glossary](../glossary.m
 
 ## Documenten
 
-| Document                                            | Inhoud                                        |
-| --------------------------------------------------- | --------------------------------------------- |
-| [Doel en scope](overview.md)                        | Idee, niet-doelen, TermRefs                   |
-| [Requirements-inventory](requirements-inventory.md) | Feature-eisen uit toonboekbladen              |
-| [Metamodel](metamodel.md)                           | Concepten en relaties                         |
-| [Syntax](syntax.md)                                 | Canonieke YAML-vorm                           |
-| [Semantiek](semantics.md)                           | Betekenis cycle/sequence/recite/ankers        |
-| [Validatie](validation.md)                          | Geldigheidsregels                             |
-| [Mapping VSA](mapping-vsa.md)                       | Contract VSA-tekst ↔ template (experimenteel) |
-| [Voorbeelden](examples.md)                          | Library + invalid cases                       |
-| [Library](library/README.md)                        | Werkmappen per genre × toon                   |
-| [Conformiteit](conformance.md)                      | Wanneer template/tool conform is              |
-| [Open punten](open-points.md)                       | Open vragen                                   |
-| [Versionering](versioning.md)                       | Versiebeleid van deze draft                   |
-| [JSON Schema](schema/vsa-template.schema.json)      | Structurele toetsing                          |
+| Document                                            | Inhoud                                         |
+| --------------------------------------------------- | ---------------------------------------------- |
+| [Doel en scope](overview.md)                        | Idee, niet-doelen, TermRefs                    |
+| [Requirements-inventory](requirements-inventory.md) | Feature-eisen uit toonboekbladen               |
+| [Metamodel](metamodel.md)                           | Concepten en relaties                          |
+| [Syntax](syntax.md)                                 | Canonieke YAML-vorm                            |
+| [Semantiek](semantics.md)                           | Betekenis cycle/sequence/recite/ankers         |
+| [Validatie](validation.md)                          | Geldigheidsregels                              |
+| [Mapping VSA](mapping-vsa.md)                       | Contract VSA-tekst ↔ template (experimenteel)  |
+| [Rendering-valkuilen](rendering-pitfalls.md)        | Probleem → oorzaak → regel (MSCZ/MXL/instance) |
+| [Voorbeelden](examples.md)                          | Library + invalid cases                        |
+| [Library](library/README.md)                        | Werkmappen per genre × toon                    |
+| [Conformiteit](conformance.md)                      | Wanneer template/tool conform is               |
+| [Open punten](open-points.md)                       | Open vragen                                    |
+| [Versionering](versioning.md)                       | Versiebeleid van deze draft                    |
+| [JSON Schema](schema/vsa-template.schema.json)      | Structurele toetsing                           |
 
 ## Criteria draft v0 (getoetst)
 

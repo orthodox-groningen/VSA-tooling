@@ -1,4 +1,4 @@
-"""Pad B: VSA-S-noten → template-events; A/T/B lopen synchroon mee."""
+"""VSA→template-instance: VSA-S-noten → template-events; A/T/B lopen synchroon mee."""
 
 from __future__ import annotations
 
@@ -16,7 +16,7 @@ _DEGREE_ORDER = ("do", "re", "mi", "fa", "sol", "la", "ti")
 _STEP_SEMI = {"C": 0, "D": 2, "E": 4, "F": 5, "G": 7, "A": 9, "B": 11}
 
 
-class PadBError(Exception):
+class TemplateInstanceError(Exception):
     """VSA-regel past niet op de template-frase."""
 
 
@@ -37,7 +37,7 @@ def midi_of(pitch: Pitch) -> int:
 def degree_pitch(degree: str, do: str, mode: str) -> Pitch:
     match = _DEGREE_RE.match(degree)
     if not match:
-        raise PadBError(f"bad ladder degree: {degree!r}")
+        raise TemplateInstanceError(f"bad ladder degree: {degree!r}")
     chrom, name, oct_off = match.group(1), match.group(2), match.group(3)
     resolver = PitchResolver.from_metadata({"do": do, "mode": mode})
     idx = _DEGREE_ORDER.index(name)
@@ -72,10 +72,10 @@ def map_stanza(
 ) -> list[MappedNote]:
     """Koppel één VSA-regel aan de events van één template-frase (H1, H4–H8)."""
     if not notes:
-        raise PadBError("empty stanza")
+        raise TemplateInstanceError("empty stanza")
     events = list(phrase.get("events") or [])
     if not events:
-        raise PadBError(f"phrase {phrase.get('id')!r} has no events")
+        raise TemplateInstanceError(f"phrase {phrase.get('id')!r} has no events")
     prefix, recite, tail = split_phrase_events(events)
     index = 0
     out: list[MappedNote] = []
@@ -102,7 +102,7 @@ def map_vsa_to_template(
     template: dict[str, Any],
     vsa_text: str,
 ) -> list[tuple[str, list[MappedNote]]]:
-    """Volledige pad-B-mapping: tekstregels → (frase-id, mapped notes)."""
+    """Volledige instance-mapping: tekstregels → (frase-id, mapped notes)."""
     do = str(template["do"])
     mode = str(template.get("mode", "major"))
     stanzas = extract_stanza_notes(vsa_text, metadata={"do": do, "mode": mode})
@@ -112,7 +112,7 @@ def map_vsa_to_template(
     mapped: list[tuple[str, list[MappedNote]]] = []
     for pid, notes in zip(phrase_ids, stanzas, strict=True):
         if pid not in by_id:
-            raise PadBError(f"unknown phrase id {pid!r}")
+            raise TemplateInstanceError(f"unknown phrase id {pid!r}")
         mapped.append(
             (pid, map_stanza(notes, by_id[pid], do=do, mode=mode))
         )
@@ -156,7 +156,7 @@ def _map_tail(
     )
     where = f"frase {phrase_id!r}" if phrase_id is not None else "frase"
 
-    def _pitch_mismatch(note: VsaNote, *, remaining: list[dict[str, Any]]) -> PadBError:
+    def _pitch_mismatch(note: VsaNote, *, remaining: list[dict[str, Any]]) -> TemplateInstanceError:
         got = f"{note.pitch}"
         expected = [
             str(ev.get("pitches", {}).get("S"))
@@ -164,7 +164,7 @@ def _map_tail(
             if not ev.get("optional")
         ]
         lyric = note.lyric or "(melisma)"
-        return PadBError(
+        return TemplateInstanceError(
             f"hoogte-mismatch in {where}: VSA {lyric!r} = {got}, "
             f"geen passend template-S-slot meer "
             f"(verwacht o.a. {expected or '—'})"
@@ -174,7 +174,7 @@ def _map_tail(
         note = notes[index]
         if event_i >= len(tail):
             if not out:
-                raise PadBError(f"cadensnoten zonder template-tail in {where}")
+                raise TemplateInstanceError(f"cadensnoten zonder template-tail in {where}")
             last = out[-1].template_event
             if pitches_match(note.pitch, last["pitches"]["S"], do, mode):
                 # H6: extra syllabe opzelfde slot-akkoord.

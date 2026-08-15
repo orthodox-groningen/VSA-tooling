@@ -21,9 +21,9 @@
 ## Semantiek / model
 
 - [ ] Stemmen met onderling verschillende ritmes (buiten parallel split/merge).
-- [x] Mapping-architectuur: **pad B** (S uit VSA, A/T/B uit template) —
+- [x] Mapping-architectuur: **VSA→template-instance** (S uit VSA, A/T/B uit template) —
       zie [mapping-vsa.md](mapping-vsa.md).
-- [x] Hoogte-mismatch in cadens → `PadBError` (geen stil hold); zie H9 in
+- [x] Hoogte-mismatch in cadens → `TemplateInstanceError` (geen stil hold); zie H9 in
       [mapping-vsa.md](mapping-vsa.md).
 - [ ] **Parallelle template-sporen (`of`):** één frase mag 2+ cadens-/slot-
       paden declareren (bijv. `mi–re–mi` **of** `mi–mi–fa`). De VSA kiest
@@ -41,11 +41,11 @@
 
 ## Layout / print (MSCZ)
 
-- [x] **Reciteertoon in uitgewerkte MSCZ (print):** recite-reeks → één breve
-      (`||O||`) met daaronder de tekst; **laatste lettergreep** van het
-      recitatief krijgt een eigen gewone noot (overgang naar cadens). Coria-MXL
-      blijft per-syllabe-noten. Zie `collapse_recite_for_print()` in
-      `scripts/render_vsa_template_musicxml.py`.
+- [x] **Reciteertoon in uitgewerkte MSCZ (print):** ≥3 ongemarkeerde
+      recite-syllaben → `||O||` + **laatste** als kwart; **VSA-scopes** blijven
+      eigen noten. Coria-MXL: geen collapse. Details en valkuilen:
+      [rendering-pitfalls.md](rendering-pitfalls.md)
+      (`collapse_recite_for_print` in `scripts/render_vsa_template_musicxml.py`).
 
 ## Publicatie / UX (later)
 

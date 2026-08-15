@@ -1,10 +1,11 @@
 # Mapping VSA ↔ vsa-template (experimenteel)
 
-Status: **hypotheses + architectuurkeuze pad B**; geen normatieve VSA 1.0-wijziging.
+Status: **hypotheses + architectuurkeuze VSA→template-instance**; geen normatieve VSA 1.0-wijziging.
 
 Implementatie: [`src/vsa/template_mapping.py`](https://github.com/orthodox-groningen/VSA-tooling/blob/main/src/vsa/template_mapping.py)
-(frase-toewijzing) en [`src/vsa/pad_b.py`](https://github.com/orthodox-groningen/VSA-tooling/blob/main/src/vsa/pad_b.py) (event-niveau,
-pad B).
+(frase-toewijzing) en
+[`src/vsa/template_instance.py`](https://github.com/orthodox-groningen/VSA-tooling/blob/main/src/vsa/template_instance.py)
+(event-niveau, S uit VSA + A/T/B uit template).
 
 ## Doel
 
@@ -13,7 +14,7 @@ Beschrijven hoe een [VSA](@)-tekstblok (melodie **S**) op
 **A, T en B** uit de template meegenomen kunnen worden naar een afgeleide
 (bijv. MusicXML) — zonder lyrics in de template-syntax te stoppen.
 
-## Architectuur: pad B (besloten)
+## Architectuur: VSA→template-instance (besloten)
 
 | Stem      | Toonhoogte / contour                         | Ritme / optional / split-merge        |
 | --------- | -------------------------------------------- | ------------------------------------- |
@@ -152,30 +153,30 @@ met meerdere [muzikale posities](@) (`&` in de modifiers).
 
 ## Hypotheses (event-niveau)
 
-| #   | Hypothese                                                                                                                            |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------ |
-| H1  | Ongemarkeerde VSA-syllaben vóór cadens-scopes vallen op recite.                                                                      |
-| H2  | Cadens-scopes corresponderen met `cadence`-events, vaak bij `l.st.` of erna.                                                         |
-| H3  | `{/…}` aan het begin van een regel kan `e.st.` van frase `2` (of vergelijkbaar) zijn.                                                |
-| H4  | `optional: true` events: mee als VSA-S dat slot gebruikt, anders weg — voor **alle** stemmen.                                        |
-| H5  | Split/merge van duren wordt gestuurd door VSA-S en parallel op A/T/B gezet.                                                          |
-| H6  | Blijft VSA-S op dezelfde graad voor extra syllaben, dan **houden** A/T/B hetzelfde slot-akkoord.                                     |
-| H7  | Trailing template-slots die VSA-S niet aandoet, worden voor alle stemmen **overgeslagen**.                                           |
-| H8  | `l.lgr.`: start van een slotmelisma — geankerd event **plus alle volgende** events in de frase op de laatste VSA-syllabe.            |
-| H9  | **Hoogte-mismatch** (VSA-S past op geen resterend template-S-slot) → harde fout (`PadBError`), geen stil hold op het vorige akkoord. |
+| #   | Hypothese                                                                                                                                        |
+| --- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
+| H1  | Ongemarkeerde VSA-syllaben vóór cadens-scopes vallen op recite.                                                                                  |
+| H2  | Cadens-scopes corresponderen met `cadence`-events, vaak bij `l.st.` of erna.                                                                     |
+| H3  | `{/…}` aan het begin van een regel kan `e.st.` van frase `2` (of vergelijkbaar) zijn.                                                            |
+| H4  | `optional: true` events: mee als VSA-S dat slot gebruikt, anders weg — voor **alle** stemmen.                                                    |
+| H5  | Split/merge van duren wordt gestuurd door VSA-S en parallel op A/T/B gezet.                                                                      |
+| H6  | Blijft VSA-S op dezelfde graad voor extra syllaben, dan **houden** A/T/B hetzelfde slot-akkoord.                                                 |
+| H7  | Trailing template-slots die VSA-S niet aandoet, worden voor alle stemmen **overgeslagen**.                                                       |
+| H8  | `l.lgr.`: start van een slotmelisma — geankerd event **plus alle volgende** events in de frase op de laatste VSA-syllabe.                        |
+| H9  | **Hoogte-mismatch** (VSA-S past op geen resterend template-S-slot) → harde fout (`TemplateInstanceError`), geen stil hold op het vorige akkoord. |
 
-## Hoogte-mismatch (pad B)
+## Hoogte-mismatch (instance)
 
 Vergelijking: absolute toonhoogte van de VSA-noot ↔ laddergraad `pitches.S`
 van template-events in de cadens-tail (zelfde `do`/`mode`).
 
-| Situatie                                          | Gedrag                                      |
-| ------------------------------------------------- | ------------------------------------------- |
-| VSA-pitch = huidig/later slot in de tail          | koppelen; tussenslots overslaan (H7)        |
-| VSA-pitch = zelfde slot opnieuw                   | hold (H6)                                   |
-| VSA-pitch past nergens meer in de resterende tail | **`PadBError`** (hoogte-mismatch)           |
-| Extra noot ná de tail, andere hoogte              | **`PadBError`**                             |
-| Extra noot ná de tail,zelfde hoogte als slot      | hold (H6)                                   |
+| Situatie                                          | Gedrag                                        |
+| ------------------------------------------------- | --------------------------------------------- |
+| VSA-pitch = huidig/later slot in de tail          | koppelen; tussenslots overslaan (H7)          |
+| VSA-pitch = zelfde slot opnieuw                   | hold (H6)                                     |
+| VSA-pitch past nergens meer in de resterende tail | **`TemplateInstanceError`** (hoogte-mismatch) |
+| Extra noot ná de tail, andere hoogte              | **`TemplateInstanceError`**                   |
+| Extra noot ná de tail,zelfde hoogte als slot      | hold (H6)                                     |
 
 Zo wordt bijv. `{-&/Schep_&_}{\per_}` (mi–fa–mi) op template-`laatste`
 (mi–re–mi) afgewezen i.p.v. A/T/B stil op mi te laten hangen.
@@ -187,7 +188,7 @@ Library-werkmappen: [`library/`](library/README.md).
 Corpus Toon 4:
 [`library/tropaar-toon-4/notes/corpus.md`](library/tropaar-toon-4/notes/corpus.md).
 
-Elia regel 1 (pad B + MusicXML):
+Elia regel 1 (instance + MusicXML):
 [`library/tropaar-toon-4/notes/elia-mapping.md`](library/tropaar-toon-4/notes/elia-mapping.md).
 
 ## Wat deze laag niet doet

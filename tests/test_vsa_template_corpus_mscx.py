@@ -90,7 +90,7 @@ def test_andreas_five_phrase_assignment() -> None:
 
 
 def test_corpus_instances_vsa_mscz_mxl() -> None:
-    """Uitgewerkte zangstukken: .vsa + .mscz + .mxl (geen pad-b-suffix)."""
+    """Uitgewerkte zangstukken: .vsa + .mscz + .mxl (geen legacy `*.pad-b.*`-suffix)."""
     expected_stem = {f"{pid}-{slug}" for pid, slug, _ in CORPUS_ENTRIES}
     for stem in expected_stem:
         vsa = CORPUS_DIR / f"{stem}.vsa"
@@ -120,7 +120,7 @@ def test_corpus_instances_vsa_mscz_mxl() -> None:
         # Één maat per strofe; geen verborgen binnen-strofe-maatstrepen.
         assert body.count("<Measure len=") == EXPECTED_STANZAS[pid]
         assert "<subtype>normal</subtype><visible>0</visible>" not in body
-    # Geen oude pad-b-namen meer.
+    # Geen oude `*.pad-b.*`-namen meer.
     leftovers = list(CORPUS_DIR.glob("*.pad-b.*"))
     assert not leftovers, leftovers
 

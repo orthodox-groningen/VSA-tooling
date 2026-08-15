@@ -125,6 +125,7 @@ nav:
     - Semantiek: specification-vsa-templates/semantics.md
     - Validatie: specification-vsa-templates/validation.md
     - Mapping VSA: specification-vsa-templates/mapping-vsa.md
+    - Rendering-valkuilen: specification-vsa-templates/rendering-pitfalls.md
     - Voorbeelden: specification-vsa-templates/examples.md
     - Library: specification-vsa-templates/library/README.md
     - Conformiteit: specification-vsa-templates/conformance.md

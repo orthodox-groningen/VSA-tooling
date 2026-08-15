@@ -5,7 +5,7 @@ Niet-normatief onderzoeksdossier.
 - Bronteksten: [`docs/plans/onderzoeks-troparen-en-kondaken.md`](../../../../plans/onderzoeks-troparen-en-kondaken.md)
   (sectie Toon 4; `*` = één [template-frase](@) per regel).
 - Template: [`../template.yaml`](../template.yaml).
-- Mappingcontract: [`../../../mapping-vsa.md`](../../../mapping-vsa.md) (**pad B**).
+- Mappingcontract: [`../../../mapping-vsa.md`](../../../mapping-vsa.md) (**VSA→template-instance**).
 - Detail Elia: [`elia-mapping.md`](elia-mapping.md).
 
 ## Wat we hier aan het doen zijn
@@ -15,7 +15,7 @@ toonformule-template SATB MusicXML maken. De PDF/PNG van het toonboek is alleen
 nodig om die **template** te schrijven (alle mogelijke formule-slots voor
 tropaar in toon X), niet om pitches uit een scan te “raden”.
 
-**Pad B (besloten):**
+**VSA→template-instance (besloten):**
 
 | Stem  | Bron van de melodie                          |
 | ----- | -------------------------------------------- |
@@ -28,7 +28,7 @@ besluit** voor A, T en B via de corresponderende template-events.
 
 **Wat dit corpus oplevert:** voor elk van de 13 stukken
 `examples/corpus/` — `.vsa` (bron) + `.mscz` /
-`.mxl` (uitgewerkt SATB, pad B). PDF is lokale MuseScore-export (niet in git).
+`.mxl` (uitgewerkt SATB, instance). PDF is lokale MuseScore-export (niet in git).
 
 **Wat het corpus al toont:** op 13 Toon-4-troparen werkt
 “één regel = één frase” + cycle `1,2,1,2,…` + slot `laatste` zonder conflict;
@@ -308,7 +308,7 @@ Structureel parallel aan T4-02 (zelfde tropaarformule, andere heilige).
 | `**` ≈ overgang naar `laatste`   | consistent | T4-03/04/05; slotregel blijft `laatste`                       |
 | Korte frase `2` (T4-08 r6)       | open       | H5 / optional events nog te toetsen                           |
 | Mid-regel scopes ≠ H3            | feit       | T4-03 r1; H3 alleen op frase-start                            |
-| Pad B (S uit VSA)                | besloten   | Pipeline in `examples/corpus/` (`.vsa`/`.mscz`/`.mxl`)        |
+| Instance (S uit VSA)                | besloten   | Pipeline in `examples/corpus/` (`.vsa`/`.mscz`/`.mxl`)        |
 
 ## Volgende toetsstappen
 

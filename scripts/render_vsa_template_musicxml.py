@@ -231,7 +231,7 @@ PARTS = (
 # Coria/playback: one part per stem so T (etc.) can be soloed.
 # Lyrics on every part: Coria shows text per muted/solo voice.
 # Geen geforceerde stem-richting: speler kiest naar midden van de balk.
-PAD_B_PARTS = (
+INSTANCE_PARTS = (
     {
         "id": "P1",
         "name": "Soprano",
@@ -369,15 +369,15 @@ STAFF_FONT_PT = "12"
 # wraps onto an extra system.
 LYRIC_FONT = STAFF_FONT
 LYRIC_FONT_PT = "12"
-# Pad B (zangstuk): één maat per strofe (geen binnen-strofe-maatstrepen).
+# Uitgewerkt zangstuk (instance): één maat per strofe (geen binnen-strofe-maatstrepen).
 # Template-layout blijft strakker (formuleblad).
-PAD_B_MAX_QUARTERS_PER_MEASURE = 8
-PAD_B_MIN_LAST_CHUNK_QUARTERS = 3.0
+INSTANCE_MAX_QUARTERS_PER_MEASURE = 8
+INSTANCE_MIN_LAST_CHUNK_QUARTERS = 3.0
 # Instance spacing: leesbare lyrics (niet tegen elkaar / overlappend).
-PAD_B_MIN_NOTE_DISTANCE = "0.55"
-PAD_B_LYRICS_MIN_DISTANCE = "0.45"
-PAD_B_MEASURE_SPACING = "1.2"
-PAD_B_MIN_MEASURE_WIDTH = "5"
+INSTANCE_MIN_NOTE_DISTANCE = "0.55"
+INSTANCE_LYRICS_MIN_DISTANCE = "0.45"
+INSTANCE_MEASURE_SPACING = "1.2"
+INSTANCE_MIN_MEASURE_WIDTH = "5"
 # Recite-collapse alleen vanaf zoveel syllaben (anders aparte noten).
 RECITE_COLLAPSE_MIN_SYLLABLES = 3
 # MuseScore Division=480 → quarter = 480 ticks (lyric melisma extender).
@@ -677,7 +677,7 @@ def render_elia_r1_musicxml() -> str:
         for lyric, dur, s, a, t, b in notes
     ]
 
-    out: list[str] = _score_header("Elia regel 1 — pad B (provisional)")
+    out: list[str] = _score_header("Elia regel 1 — instance (provisional)")
     for part in PARTS:
         out.append(f'<part id="{part["id"]}">')
         out.append('<measure number="1">')
@@ -862,7 +862,7 @@ def _frac_str(frac: tuple[int, int]) -> str:
     return f"{frac[0]}/{frac[1]}"
 
 
-def prepare_pad_b_events(events: list[dict]) -> list[dict]:
+def prepare_instance_events(events: list[dict]) -> list[dict]:
     """Hyphens tussen lettergrepen; melisma ticks + slur-span op VSA-&-noten."""
     out = [dict(ev) for ev in events]
     i = 0
@@ -903,8 +903,8 @@ def prepare_pad_b_events(events: list[dict]) -> list[dict]:
 def split_events_for_layout(
     events: list[dict],
     *,
-    max_quarters: float = PAD_B_MAX_QUARTERS_PER_MEASURE,
-    min_last_quarters: float = PAD_B_MIN_LAST_CHUNK_QUARTERS,
+    max_quarters: float = INSTANCE_MAX_QUARTERS_PER_MEASURE,
+    min_last_quarters: float = INSTANCE_MIN_LAST_CHUNK_QUARTERS,
 ) -> list[list[dict]]:
     """Splits een lange frase in layout-maten (geen knip in een melisma).
 
@@ -1115,14 +1115,14 @@ def _mscx_style_block(*, layout: str = "template") -> str:
     ``layout="instance"``: zangstuk uit VSA+template (dichter, systemen vullen zelf).
     """
     if layout == "instance":
-        min_note = PAD_B_MIN_NOTE_DISTANCE
-        lyrics_min = PAD_B_LYRICS_MIN_DISTANCE
+        min_note = INSTANCE_MIN_NOTE_DISTANCE
+        lyrics_min = INSTANCE_LYRICS_MIN_DISTANCE
         fill_limit = "0"
         courtesy = (
             "<genCourtesyTimesig>0</genCourtesyTimesig>"
             "<genCourtesyKeysig>0</genCourtesyKeysig>"
-            f"<measureSpacing>{PAD_B_MEASURE_SPACING}</measureSpacing>"
-            f"<minMeasureWidth>{PAD_B_MIN_MEASURE_WIDTH}</minMeasureWidth>"
+            f"<measureSpacing>{INSTANCE_MEASURE_SPACING}</measureSpacing>"
+            f"<minMeasureWidth>{INSTANCE_MIN_MEASURE_WIDTH}</minMeasureWidth>"
         )
     else:
         min_note = "0.5"
@@ -1225,7 +1225,7 @@ def render_mscx(
     """MuseScore 4 native score: Style + trailing HBox/VBox + SATB parts.
 
     ``mapping_labels``: frase-ids, ankers, cycle-frames. Default: aan voor
-    template, uit voor instance (pad B).
+    template, uit voor instance (VSA+template).
     """
     if mapping_labels is None:
         mapping_labels = layout != "instance"
@@ -1612,7 +1612,7 @@ def collapse_recite_for_print(events: list[dict]) -> list[dict]:
     return out
 
 
-def render_pad_b_mscx(
+def render_instance_mscx(
     doc: dict,
     mapped: list[tuple[str, list]],
     *,
@@ -1627,7 +1627,7 @@ def render_pad_b_mscx(
     mode = doc.get("mode", "major")
     resolved: list[tuple[str | None, list[dict]]] = []
     for pid, notes in mapped:
-        events = prepare_pad_b_events(
+        events = prepare_instance_events(
             collapse_recite_for_print(mapped_notes_to_events(notes, do, mode))
         )
         resolved.append((pid, events))
@@ -1643,7 +1643,7 @@ def render_pad_b_mscx(
     )
 
 
-def _pad_b_score_header(title: str) -> list[str]:
+def _instance_score_header(title: str) -> list[str]:
     """Vier aparte score-parts (S/A/T/B) voor Coria-solo per stem.
 
     Geen DOCTYPE: sommige players (o.a. Coria) falen op DTD-fetch/validatie.
@@ -1659,7 +1659,7 @@ def _pad_b_score_header(title: str) -> list[str]:
         '<part-group type="start" number="1">'
         "<group-symbol>bracket</group-symbol></part-group>",
     ]
-    for part in PAD_B_PARTS:
+    for part in INSTANCE_PARTS:
         out.append(
             f'<score-part id="{part["id"]}">'
             f"<part-name>{escape(part['name'])}</part-name>"
@@ -1671,7 +1671,7 @@ def _pad_b_score_header(title: str) -> list[str]:
     return out
 
 
-def emit_pad_b_voice(
+def emit_instance_voice(
     out: list[str],
     events: list[dict],
     *,
@@ -1719,7 +1719,7 @@ def emit_pad_b_voice(
         )
 
 
-def render_pad_b_musicxml(
+def render_instance_musicxml(
     doc: dict,
     mapped: list[tuple[str, list]],
     *,
@@ -1738,11 +1738,11 @@ def render_pad_b_musicxml(
         raw = mapped_notes_to_events(notes, do, mode)
         for ev in raw:
             ev["recite"] = False
-        events = prepare_pad_b_events(raw)
+        events = prepare_instance_events(raw)
         measures.append(events)
 
-    out: list[str] = _pad_b_score_header(title)
-    for part in PAD_B_PARTS:
+    out: list[str] = _instance_score_header(title)
+    for part in INSTANCE_PARTS:
         out.append(f'<part id="{part["id"]}">')
         for mi, events in enumerate(measures, start=1):
             is_first = mi == 1
@@ -1758,7 +1758,7 @@ def render_pad_b_musicxml(
                     f'<line>{part["clef_line"]}</line></clef>'
                 )
                 out.append("</attributes>")
-            emit_pad_b_voice(
+            emit_instance_voice(
                 out,
                 events,
                 voice_key=part["voice"],
@@ -1797,7 +1797,7 @@ def main() -> int:
     parser.add_argument("template", nargs="?", type=Path)
     parser.add_argument("output", nargs="?", type=Path)
     parser.add_argument("--all", action="store_true")
-    parser.add_argument("--elia-r1", type=Path, help="Write Elia R1 pad-B MusicXML")
+    parser.add_argument("--elia-r1", type=Path, help="Write Elia R1 instance MusicXML")
     args = parser.parse_args()
 
     sys.path.insert(0, str(REPO / "src"))

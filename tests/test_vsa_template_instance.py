@@ -1,4 +1,4 @@
-"""Pad B: VSA-S + template A/T/B voor tropaar-toon-4 (Elia)."""
+"""VSA→template-instance: VSA-S + template A/T/B (tropaar-toon-4 / Elia)."""
 
 from __future__ import annotations
 
@@ -16,7 +16,7 @@ sys.path.insert(0, str(ROOT / "scripts"))
 import render_vsa_template_musicxml as render  # noqa: E402
 import yaml  # noqa: E402
 
-from vsa.pad_b import PadBError, map_stanza, map_vsa_to_template  # noqa: E402
+from vsa.template_instance import TemplateInstanceError, map_stanza, map_vsa_to_template  # noqa: E402
 from vsa.vsa_stanzas import extract_stanza_notes  # noqa: E402
 
 LIBRARY = ROOT / "docs" / "specification-vsa-templates" / "library"
@@ -106,10 +106,10 @@ def test_elia_r3_voorloper_is_three_quarters() -> None:
     assert all(n.duration.note_type == "quarter" for n in mapped[2][1][4:7])
 
 
-def test_elia_pad_b_mscx_has_lyrics_no_repeats_with_recite_breve() -> None:
+def test_elia_instance_mscx_has_lyrics_no_repeats_with_recite_breve() -> None:
     doc = _template()
     mapped = map_vsa_to_template(doc, _elia_text())
-    mscx = render.render_pad_b_mscx(doc, mapped, title="T4-06 — Profeet Elia (pad B)")
+    mscx = render.render_instance_mscx(doc, mapped, title="T4-06 — Profeet Elia")
     staff1 = re.search(r'<Staff id="1">(.*?)</Staff>', mscx, re.DOTALL)
     assert staff1
     body = staff1.group(1)
@@ -127,9 +127,9 @@ def test_elia_pad_b_mscx_has_lyrics_no_repeats_with_recite_breve() -> None:
     assert "<Lyrics>" in mscx
     assert f"<lyricsOddFontFace>{render.LYRIC_FONT}</lyricsOddFontFace>" in mscx
     assert f"<family>{render.LYRIC_FONT}</family>" in mscx
-    assert f"<minNoteDistance>{render.PAD_B_MIN_NOTE_DISTANCE}</minNoteDistance>" in mscx
+    assert f"<minNoteDistance>{render.INSTANCE_MIN_NOTE_DISTANCE}</minNoteDistance>" in mscx
     assert "<LayoutBreak>" not in mscx  # instance: MuseScore pakt systemen zelf
-    # Geen formule-labels / ankers / cycle-frames in pad-B instance.
+    # Geen formule-labels / ankers / cycle-frames in instance-MSCZ.
     assert "l. st" not in mscx
     assert "l.st." not in mscx
     assert "↓" not in mscx
@@ -144,7 +144,7 @@ def test_elia_pad_b_mscx_has_lyrics_no_repeats_with_recite_breve() -> None:
     )
     assert "<showTimeSig>0</showTimeSig>" in mscx
     assert "<genCourtesyTimesig>0</genCourtesyTimesig>" in mscx
-    assert f"<measureSpacing>{render.PAD_B_MEASURE_SPACING}</measureSpacing>" in mscx
+    assert f"<measureSpacing>{render.INSTANCE_MEASURE_SPACING}</measureSpacing>" in mscx
     assert "<stretch>0.85</stretch>" in mscx
     # SA/TB als akkoord (één stem) → geen tweede <voice> met alleen A/B.
     assert body.count("<voice>") == n_meas
@@ -275,10 +275,10 @@ def test_collapse_recite_scopes_stay_own_notes() -> None:
     assert ("heid", False, "half") in lyrics
 
 
-def test_pad_b_recite_mscx_no_dots_has_hidden_spacers() -> None:
+def test_instance_recite_mscx_no_dots_has_hidden_spacers() -> None:
     doc = _template()
     mapped = map_vsa_to_template(doc, _elia_text())
-    mscx = render.render_pad_b_mscx(doc, mapped, title="Elia")
+    mscx = render.render_instance_mscx(doc, mapped, title="Elia")
     # Recite-chord: breve-kop, geen <dots> vóór durationType van die chord.
     for m in re.finditer(
         r"<Chord>(.*?)<headType>breve</headType>.*?</Chord>",
@@ -294,10 +294,10 @@ def test_pad_b_recite_mscx_no_dots_has_hidden_spacers() -> None:
     assert "durationType>longa</durationType>" not in mscx
 
 
-def test_elia_pad_b_hyphens_and_melisma_slurs() -> None:
+def test_elia_instance_hyphens_and_melisma_slurs() -> None:
     doc = _template()
     mapped = map_vsa_to_template(doc, _elia_text())
-    mscx = render.render_pad_b_mscx(doc, mapped, title="Elia pad B")
+    mscx = render.render_instance_mscx(doc, mapped, title="Elia instance")
     # Recite-collapse: „grond-slag der“ onder ||O||; „pro-fe-ten“ cadens.
     assert "grond-slag der" in mscx or "grond slag der" in mscx
     assert "<text>pro-</text>" in mscx
@@ -325,11 +325,11 @@ def test_elia_glued_words_get_syllabic() -> None:
     ]
 
 
-def test_elia_pad_b_instance_layout_packs_systems() -> None:
+def test_elia_instance_instance_layout_packs_systems() -> None:
     doc = _template()
     mapped = map_vsa_to_template(doc, _elia_text())
-    mscx = render.render_pad_b_mscx(doc, mapped, title="Elia pad B")
-    assert f"<minNoteDistance>{render.PAD_B_MIN_NOTE_DISTANCE}</minNoteDistance>" in mscx
+    mscx = render.render_instance_mscx(doc, mapped, title="Elia instance")
+    assert f"<minNoteDistance>{render.INSTANCE_MIN_NOTE_DISTANCE}</minNoteDistance>" in mscx
     assert "<lastSystemFillLimit>0</lastSystemFillLimit>" in mscx
     staff1 = re.search(r'<Staff id="1">(.*?)</Staff>', mscx, re.DOTALL)
     assert staff1
@@ -341,17 +341,17 @@ def test_elia_pad_b_instance_layout_packs_systems() -> None:
     assert n_breaks == 0
 
 
-def test_elia_pad_b_elia_a_is_half() -> None:
+def test_elia_instance_elia_a_is_half() -> None:
     """VSA ``{\\a_}`` → half op laatste cadens van frase 2."""
     mapped = map_vsa_to_template(_template(), _elia_text())
     lyrics = [(n.lyric, n.duration.note_type) for n in mapped[3][1]]
     assert ("a", "half") in lyrics
 
 
-def test_elia_pad_b_musicxml_coria_nonempty() -> None:
+def test_elia_instance_musicxml_coria_nonempty() -> None:
     doc = _template()
     mapped = map_vsa_to_template(doc, _elia_text())
-    xml = render.render_pad_b_musicxml(doc, mapped, title="Elia pad B")
+    xml = render.render_instance_musicxml(doc, mapped, title="Elia instance")
     assert len(xml) > 1000
     assert "<score-partwise" in xml
     assert "<lyric" in xml
@@ -397,16 +397,16 @@ def test_elia_pad_b_musicxml_coria_nonempty() -> None:
     assert path_mxl.is_file() and path_mxl.stat().st_size > 0
 
 
-def test_elia_pad_b_musicxml_alto_fs_has_accidental() -> None:
+def test_elia_instance_musicxml_alto_fs_has_accidental() -> None:
     """Laatste A van [1] is #do → F#; zonder accidental speelt Coria F."""
     doc = _template()
     mapped = map_vsa_to_template(doc, _elia_text())
-    events = render.prepare_pad_b_events(
+    events = render.prepare_instance_events(
         render.mapped_notes_to_events(mapped[0][1], doc["do"], doc["mode"])
     )
     last_a = events[-1]["pitches"]["A"]
     assert last_a == ("F", 1, 4)
-    xml = render.render_pad_b_musicxml(doc, mapped, title="Elia pad B")
+    xml = render.render_instance_musicxml(doc, mapped, title="Elia instance")
     # Alto-part (P2) moet F# met accidental bevatten.
     alto = re.search(r'<part id="P2">(.*?)</part>', xml, re.DOTALL)
     assert alto
@@ -417,10 +417,10 @@ def test_elia_pad_b_musicxml_alto_fs_has_accidental() -> None:
     )
 
 
-def test_elia_pad_b_visible_barline_per_stanza() -> None:
+def test_elia_instance_visible_barline_per_stanza() -> None:
     doc = _template()
     mapped = map_vsa_to_template(doc, _elia_text())
-    mscx = render.render_pad_b_mscx(doc, mapped, title="Elia pad B")
+    mscx = render.render_instance_mscx(doc, mapped, title="Elia instance")
     staff1 = re.search(r'<Staff id="1">(.*?)</Staff>', mscx, re.DOTALL)
     assert staff1
     body = staff1.group(1)
@@ -441,7 +441,7 @@ def test_pitch_mismatch_in_laatste_raises() -> None:
         "// Ver-vul-ling van het Heils-plan van de {-&/Schep_&_}{\\per_}. [//:]\n"
     )
     stanzas = extract_stanza_notes(text)
-    with pytest.raises(PadBError, match="hoogte-mismatch"):
+    with pytest.raises(TemplateInstanceError, match="hoogte-mismatch"):
         map_stanza(stanzas[0], phrase, do=doc["do"], mode=doc["mode"])
 
 
@@ -454,11 +454,11 @@ def test_pitch_mismatch_past_tail_raises() -> None:
         "// xxx {-&\\a_&_}{/b_}{\\c_}{/extra_}. [//:]\n"
     )
     stanzas = extract_stanza_notes(text)
-    with pytest.raises(PadBError, match="hoogte-mismatch"):
+    with pytest.raises(TemplateInstanceError, match="hoogte-mismatch"):
         map_stanza(stanzas[0], phrase, do=doc["do"], mode=doc["mode"])
 
 
-def test_elia_pad_b_s_from_vsa_atb_from_template() -> None:
+def test_elia_instance_s_from_vsa_atb_from_template() -> None:
     doc = _template()
     mapped = map_vsa_to_template(doc, _elia_text())
     events = render.mapped_notes_to_events(mapped[0][1], doc["do"], doc["mode"])
@@ -473,7 +473,7 @@ def test_elia_pad_b_s_from_vsa_atb_from_template() -> None:
     assert in_ev["pitches"]["A"] == ("G", 0, 4)
 
 
-def test_elia_pad_b_mscz_written() -> None:
+def test_elia_instance_mscz_written() -> None:
     path = LIBRARY / "tropaar-toon-4" / "examples" / "elia.mscz"
     assert path.is_file(), "run: python scripts\\render_tropaar_toon4_corpus.py"
     with zipfile.ZipFile(path) as archive:

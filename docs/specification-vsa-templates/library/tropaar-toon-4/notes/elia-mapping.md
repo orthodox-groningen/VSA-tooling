@@ -1,7 +1,7 @@
 # Walkthrough: Tropaar Profeet Elia (toon 4) ↔ template `tropaar-toon-4`
 
 Niet-normatief onderzoeksdossier. Hypotheses: H1–H7 in
-[`../../../mapping-vsa.md`](../../../mapping-vsa.md) (**pad B**). Corpus:
+[`../../../mapping-vsa.md`](../../../mapping-vsa.md) (**VSA→template-instance**). Corpus:
 [`corpus.md`](corpus.md). VSA: [`../examples/elia.vsa`](../examples/elia.vsa).
 
 **In één zin (deze toets):** gegeven template + Elia-VSA voor S, kunnen A/T/B
@@ -37,7 +37,7 @@ Template: `cycle: [1, 2]`, `final: laatste` → 7 regels:
 
 ---
 
-## Regel 1 ↔ frase `1` (pad B-toets)
+## Regel 1 ↔ frase `1` (instance-toets)
 
 ### S uit VSA (feit, parser)
 
@@ -85,7 +85,7 @@ aandoet.
 ### Spanningen (eerlijk)
 
 1. Template-S na `l.st.` wil `fa → mi → #re`; VSA-S doet `fa → fa → mi`. Onder
-   pad B wint VSA; slot `#re` blijft ongebruikt in dit voorbeeld.
+   instance: VSA wint; slot `#re` blijft ongebruikt in dit voorbeeld.
 2. Basswisseling recite (`do-1`) → pre-cadens (`la-2`) op `En` is een
    **interpretatie** (welk moment B beweegt); PDF-audit kan dat bijstellen.
 3. Alle template-graden blijven `provisional`.

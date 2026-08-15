@@ -98,7 +98,7 @@
   
   <strong>Preview</strong>
    — branch <code>feat/vsa-templates-spec</code>
-  , gebouwd 2026-08-15 07:00 CEST.
+  , gebouwd 2026-08-15 11:37 CEST.
   <a href="https://orthodox-groningen.github.io/VSA-tooling/">Live documentatie (main)</a>.
   
 
@@ -1705,6 +1705,34 @@
     
   
     Mapping VSA
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../rendering-pitfalls/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Rendering-valkuilen
   
 
     
@@ -3381,9 +3409,9 @@
 <h2 id="semantiek-model">Semantiek / model<a class="headerlink" href="#semantiek-model" title="Permanent link">&para;</a></h2>
 <ul>
 <li>[ ] Stemmen met onderling verschillende ritmes (buiten parallel split/merge).</li>
-<li>[x] Mapping-architectuur: <strong>pad B</strong> (S uit VSA, A/T/B uit template) —
+<li>[x] Mapping-architectuur: <strong>VSA→template-instance</strong> (S uit VSA, A/T/B uit template) —
       zie <a href="../mapping-vsa/">mapping-vsa.md</a>.</li>
-<li>[x] Hoogte-mismatch in cadens → <code>PadBError</code> (geen stil hold); zie H9 in
+<li>[x] Hoogte-mismatch in cadens → <code>TemplateInstanceError</code> (geen stil hold); zie H9 in
       <a href="../mapping-vsa/">mapping-vsa.md</a>.</li>
 <li>[ ] <strong>Parallelle template-sporen (<code>of</code>):</strong> één frase mag 2+ cadens-/slot-
       paden declareren (bijv. <code>mi–re–mi</code> <strong>of</strong> <code>mi–mi–fa</code>). De VSA kiest
@@ -3401,11 +3429,11 @@
 </ul>
 <h2 id="layout-print-mscz">Layout / print (MSCZ)<a class="headerlink" href="#layout-print-mscz" title="Permanent link">&para;</a></h2>
 <ul>
-<li>[x] <strong>Reciteertoon in uitgewerkte MSCZ (print):</strong> recite-reeks → één breve
-      (<code>||O||</code>) met daaronder de tekst; <strong>laatste lettergreep</strong> van het
-      recitatief krijgt een eigen gewone noot (overgang naar cadens). Coria-MXL
-      blijft per-syllabe-noten. Zie <code>collapse_recite_for_print()</code> in
-      <code>scripts/render_vsa_template_musicxml.py</code>.</li>
+<li>[x] <strong>Reciteertoon in uitgewerkte MSCZ (print):</strong> ≥3 ongemarkeerde
+      recite-syllaben → <code>||O||</code> + <strong>laatste</strong> als kwart; <strong>VSA-scopes</strong> blijven
+      eigen noten. Coria-MXL: geen collapse. Details en valkuilen:
+      <a href="../rendering-pitfalls/">rendering-pitfalls.md</a>
+      (<code>collapse_recite_for_print</code> in <code>scripts/render_vsa_template_musicxml.py</code>).</li>
 </ul>
 <h2 id="publicatie-ux-later">Publicatie / UX (later)<a class="headerlink" href="#publicatie-ux-later" title="Permanent link">&para;</a></h2>
 <ul>

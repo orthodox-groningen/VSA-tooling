@@ -94,7 +94,7 @@
   
   <strong>Preview</strong>
    — branch <code>feat/vsa-templates-spec</code>
-  , gebouwd 2026-08-15 07:00 CEST.
+  , gebouwd 2026-08-15 11:37 CEST.
   <a href="https://orthodox-groningen.github.io/VSA-tooling/">Live documentatie (main)</a>.
   
 
@@ -1696,6 +1696,34 @@
     
   
     Mapping VSA
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../rendering-pitfalls/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Rendering-valkuilen
   
 
     
@@ -3364,7 +3392,7 @@
 <li>Bronteksten: <a href="../../../../../plans/onderzoeks-troparen-en-kondaken/"><code>docs/plans/onderzoeks-troparen-en-kondaken.md</code></a>
   (sectie Toon 4; <code>*</code> = één <a class="og-termref" href="/VSA-tooling/preview/terminologie/template-frase" title="Template-frase: een genaamde melodische eenheid binnen een Vsa-template (bijv. id <code>1</code>, <code>2</code>, <code>1a</code> of <code>laatste</code>), opgebouwd uit geordende Template-events.">template-frase</a> per regel).</li>
 <li>Template: <a href="../../template.yaml"><code>../template.yaml</code></a>.</li>
-<li>Mappingcontract: <a href="../../../../mapping-vsa/"><code>../../../mapping-vsa.md</code></a> (<strong>pad B</strong>).</li>
+<li>Mappingcontract: <a href="../../../../mapping-vsa/"><code>../../../mapping-vsa.md</code></a> (<strong>VSA→template-instance</strong>).</li>
 <li>Detail Elia: <a href="../elia-mapping/"><code>elia-mapping.md</code></a>.</li>
 </ul>
 <h2 id="wat-we-hier-aan-het-doen-zijn">Wat we hier aan het doen zijn<a class="headerlink" href="#wat-we-hier-aan-het-doen-zijn" title="Permanent link">&para;</a></h2>
@@ -3372,7 +3400,7 @@
 toonformule-template SATB MusicXML maken. De PDF/PNG van het toonboek is alleen
 nodig om die <strong>template</strong> te schrijven (alle mogelijke formule-slots voor
 tropaar in toon X), niet om pitches uit een scan te “raden”.</p>
-<p><strong>Pad B (besloten):</strong></p>
+<p><strong>VSA→template-instance (besloten):</strong></p>
 <table>
 <thead>
 <tr>
@@ -3396,7 +3424,7 @@ twee gelijke noten tot één duur merget, dan gebeurt <strong>hetzelfde ritmisch
 besluit</strong> voor A, T en B via de corresponderende template-events.</p>
 <p><strong>Wat dit corpus oplevert:</strong> voor elk van de 13 stukken
 <code>examples/corpus/</code> — <code>.vsa</code> (bron) + <code>.mscz</code> /
-<code>.mxl</code> (uitgewerkt SATB, pad B). PDF is lokale MuseScore-export (niet in git).</p>
+<code>.mxl</code> (uitgewerkt SATB, instance). PDF is lokale MuseScore-export (niet in git).</p>
 <p><strong>Wat het corpus al toont:</strong> op 13 Toon-4-troparen werkt
 “één regel = één frase” + cycle <code>1,2,1,2,…</code> + slot <code>laatste</code> zonder conflict;
 de render-pipeline zet A/T/B synchroon mee. Laddergraden in de YAML blijven
@@ -4307,7 +4335,7 @@ split/merge / optionals).</p>
 <td>T4-03 r1; H3 alleen op frase-start</td>
 </tr>
 <tr>
-<td>Pad B (S uit VSA)</td>
+<td>Instance (S uit VSA)</td>
 <td>besloten</td>
 <td>Pipeline in <code>examples/corpus/</code> (<code>.vsa</code>/<code>.mscz</code>/<code>.mxl</code>)</td>
 </tr>

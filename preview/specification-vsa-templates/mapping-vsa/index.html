@@ -16,7 +16,7 @@
         <link rel="prev" href="../validation/">
       
       
-        <link rel="next" href="../examples/">
+        <link rel="next" href="../rendering-pitfalls/">
       
       
         
@@ -98,7 +98,7 @@
   
   <strong>Preview</strong>
    — branch <code>feat/vsa-templates-spec</code>
-  , gebouwd 2026-08-15 07:00 CEST.
+  , gebouwd 2026-08-15 11:37 CEST.
   <a href="https://orthodox-groningen.github.io/VSA-tooling/">Live documentatie (main)</a>.
   
 
@@ -1768,10 +1768,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#architectuur-pad-b-besloten" class="md-nav__link">
+  <a href="#architectuur-vsatemplate-instance-besloten" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Architectuur: pad B (besloten)
+        Architectuur: VSA→template-instance (besloten)
       
     </span>
   </a>
@@ -1890,10 +1890,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#hoogte-mismatch-pad-b" class="md-nav__link">
+  <a href="#hoogte-mismatch-instance" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Hoogte-mismatch (pad B)
+        Hoogte-mismatch (instance)
       
     </span>
   </a>
@@ -1926,6 +1926,34 @@
   
 </nav>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../rendering-pitfalls/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Rendering-valkuilen
+  
+
+    
+  </span>
+  
+  
+
+      </a>
     </li>
   
 
@@ -3380,10 +3408,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#architectuur-pad-b-besloten" class="md-nav__link">
+  <a href="#architectuur-vsatemplate-instance-besloten" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Architectuur: pad B (besloten)
+        Architectuur: VSA→template-instance (besloten)
       
     </span>
   </a>
@@ -3502,10 +3530,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#hoogte-mismatch-pad-b" class="md-nav__link">
+  <a href="#hoogte-mismatch-instance" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Hoogte-mismatch (pad B)
+        Hoogte-mismatch (instance)
       
     </span>
   </a>
@@ -3560,16 +3588,17 @@
 
 
 <h1 id="mapping-vsa-vsa-template-experimenteel">Mapping VSA ↔ vsa-template (experimenteel)<a class="headerlink" href="#mapping-vsa-vsa-template-experimenteel" title="Permanent link">&para;</a></h1>
-<p>Status: <strong>hypotheses + architectuurkeuze pad B</strong>; geen normatieve VSA 1.0-wijziging.</p>
+<p>Status: <strong>hypotheses + architectuurkeuze VSA→template-instance</strong>; geen normatieve VSA 1.0-wijziging.</p>
 <p>Implementatie: <a href="https://github.com/orthodox-groningen/VSA-tooling/blob/main/src/vsa/template_mapping.py"><code>src/vsa/template_mapping.py</code></a>
-(frase-toewijzing) en <a href="https://github.com/orthodox-groningen/VSA-tooling/blob/main/src/vsa/pad_b.py"><code>src/vsa/pad_b.py</code></a> (event-niveau,
-pad B).</p>
+(frase-toewijzing) en
+<a href="https://github.com/orthodox-groningen/VSA-tooling/blob/main/src/vsa/template_instance.py"><code>src/vsa/template_instance.py</code></a>
+(event-niveau, S uit VSA + A/T/B uit template).</p>
 <h2 id="doel">Doel<a class="headerlink" href="#doel" title="Permanent link">&para;</a></h2>
 <p>Beschrijven hoe een <a class="og-termref" href="/VSA-tooling/preview/terminologie/vsa" title="Vereenvoudigde Slavische Accentnotatie: wordt gebruikt om te verwijzen naar een Formele Notatie voor het vastleggen van Zangstukken en ook naar de Toolset waarmee zulke vastleggingen kunnen worden gevalideerd en naar publiceerbare vormen worden omgezet.">VSA</a>-tekstblok (melodie <strong>S</strong>) op
 <a class="og-termref" href="/VSA-tooling/preview/terminologie/template-event" title="Template-event: de kleinste muzikale stap in een Template-frase: een rol (open, Reciteertoon, cadens, link), een duur als Enkelvoudige Lengte-modifier, en SATB-Laddergraden.">template-events</a> van een <a class="og-termref" href="/VSA-tooling/preview/terminologie/vsa-template" title="VSA-template: een machineleesbaar YAML-document dat een formulematige liturgische melodie vastlegt (frasen, herhaling of vaste volgorde, Reciteertoon, ankers, SATB-Laddergraden) binnen een Do-context, bedoeld om later tekst uit VSA erop te mappen.">vsa-template</a> landt, zodat
 <strong>A, T en B</strong> uit de template meegenomen kunnen worden naar een afgeleide
 (bijv. MusicXML) — zonder lyrics in de template-syntax te stoppen.</p>
-<h2 id="architectuur-pad-b-besloten">Architectuur: pad B (besloten)<a class="headerlink" href="#architectuur-pad-b-besloten" title="Permanent link">&para;</a></h2>
+<h2 id="architectuur-vsatemplate-instance-besloten">Architectuur: VSA→template-instance (besloten)<a class="headerlink" href="#architectuur-vsatemplate-instance-besloten" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
@@ -3839,11 +3868,11 @@ met meerdere <a class="og-termref" href="/VSA-tooling/preview/terminologie/muzik
 </tr>
 <tr>
 <td>H9</td>
-<td><strong>Hoogte-mismatch</strong> (VSA-S past op geen resterend template-S-slot) → harde fout (<code>PadBError</code>), geen stil hold op het vorige akkoord.</td>
+<td><strong>Hoogte-mismatch</strong> (VSA-S past op geen resterend template-S-slot) → harde fout (<code>TemplateInstanceError</code>), geen stil hold op het vorige akkoord.</td>
 </tr>
 </tbody>
 </table>
-<h2 id="hoogte-mismatch-pad-b">Hoogte-mismatch (pad B)<a class="headerlink" href="#hoogte-mismatch-pad-b" title="Permanent link">&para;</a></h2>
+<h2 id="hoogte-mismatch-instance">Hoogte-mismatch (instance)<a class="headerlink" href="#hoogte-mismatch-instance" title="Permanent link">&para;</a></h2>
 <p>Vergelijking: absolute toonhoogte van de VSA-noot ↔ laddergraad <code>pitches.S</code>
 van template-events in de cadens-tail (zelfde <code>do</code>/<code>mode</code>).</p>
 <table>
@@ -3864,11 +3893,11 @@ van template-events in de cadens-tail (zelfde <code>do</code>/<code>mode</code>)
 </tr>
 <tr>
 <td>VSA-pitch past nergens meer in de resterende tail</td>
-<td><strong><code>PadBError</code></strong> (hoogte-mismatch)</td>
+<td><strong><code>TemplateInstanceError</code></strong> (hoogte-mismatch)</td>
 </tr>
 <tr>
 <td>Extra noot ná de tail, andere hoogte</td>
-<td><strong><code>PadBError</code></strong></td>
+<td><strong><code>TemplateInstanceError</code></strong></td>
 </tr>
 <tr>
 <td>Extra noot ná de tail,zelfde hoogte als slot</td>
@@ -3882,7 +3911,7 @@ van template-events in de cadens-tail (zelfde <code>do</code>/<code>mode</code>)
 <p>Library-werkmappen: <a href="../library/"><code>library/</code></a>.</p>
 <p>Corpus Toon 4:
 <a href="../library/tropaar-toon-4/notes/corpus/"><code>library/tropaar-toon-4/notes/corpus.md</code></a>.</p>
-<p>Elia regel 1 (pad B + MusicXML):
+<p>Elia regel 1 (instance + MusicXML):
 <a href="../library/tropaar-toon-4/notes/elia-mapping/"><code>library/tropaar-toon-4/notes/elia-mapping.md</code></a>.</p>
 <h2 id="wat-deze-laag-niet-doet">Wat deze laag niet doet<a class="headerlink" href="#wat-deze-laag-niet-doet" title="Permanent link">&para;</a></h2>
 <ul>

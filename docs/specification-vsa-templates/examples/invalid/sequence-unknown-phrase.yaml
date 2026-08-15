@@ -1,0 +1,15 @@
+spec_version: draft-v0
+id: invalid-sequence-unknown
+genre: tropaar
+tone: 3
+do: G4
+mode: major
+sequence:
+  - "1"
+  - "99"
+phrases:
+  - id: "1"
+    events:
+      - role: recite
+        duration: "~"
+        pitches: { S: do, A: sol-1, T: mi-1, B: do-1 }

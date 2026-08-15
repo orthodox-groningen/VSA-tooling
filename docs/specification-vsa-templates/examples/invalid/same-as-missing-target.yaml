@@ -1,0 +1,7 @@
+spec_version: draft-v0
+id: invalid-same-as-missing
+genre: tropaar
+tone: 5
+do: F4
+mode: major
+same_as: does-not-exist-template

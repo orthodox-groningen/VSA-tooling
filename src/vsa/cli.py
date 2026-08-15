@@ -166,6 +166,20 @@ def _build_parser():
         ),
     )
 
+    template = subparsers.add_parser(
+        "template",
+        help="vsa-template: valideren van formule-YAML.",
+    )
+    template_sub = template.add_subparsers(dest="template_command")
+    t_validate = template_sub.add_parser(
+        "validate",
+        help="Valideer template.yaml (schema + documentregels).",
+    )
+    t_validate.add_argument(
+        "path",
+        help="template.yaml of map met template.yaml-bestanden.",
+    )
+
     return parser
 
 
@@ -203,6 +217,9 @@ def _run(args):
 
     if args.command == "musicxml":
         return _cmd_musicxml(args, config)
+
+    if args.command == "template":
+        return _cmd_template(args)
 
     print(f"Onbekend commando: {args.command}", file=sys.stderr)
     return 1
@@ -553,6 +570,53 @@ def _export_md_to_musicxml(
         written += 1
 
     return 0, written
+
+
+def _cmd_template(args) -> int:
+    if getattr(args, "template_command", None) == "validate":
+        return _cmd_template_validate(args)
+    print("Gebruik: vsa template validate <pad>", file=sys.stderr)
+    return 1
+
+
+def _cmd_template_validate(args) -> int:
+    from .template_validate import (
+        TemplateValidationError,
+        collect_template_ids,
+        load_template,
+        validate_template,
+    )
+
+    path = Path(args.path)
+    if not path.exists():
+        print(f"Pad niet gevonden: {path}", file=sys.stderr)
+        return 1
+    files: list[Path]
+    if path.is_dir():
+        files = sorted(path.rglob("template.yaml"))
+        known_ids = collect_template_ids(path)
+    else:
+        files = [path]
+        known_ids = collect_template_ids(path.parent)
+        parent2 = path.parent.parent
+        if parent2.is_dir():
+            known_ids |= collect_template_ids(parent2)
+    if not files:
+        print(f"Geen template.yaml gevonden onder {path}", file=sys.stderr)
+        return 1
+    errors = 0
+    for yaml_path in files:
+        try:
+            validate_template(load_template(yaml_path), known_ids=known_ids)
+        except TemplateValidationError as exc:
+            print(f"{yaml_path}: ERROR: {exc.code}: {exc}", file=sys.stderr)
+            errors += 1
+            continue
+        print(f"{yaml_path}: OK")
+    if errors:
+        print(f"{errors} template(s) ongeldig", file=sys.stderr)
+        return 1
+    return 0
 
 
 def _print_validation_messages(messages, *, summary=False):

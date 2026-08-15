@@ -496,3 +496,22 @@ En als rendering vreemd is:
 vsa svg <bestand.vsa> output.svg
 start output.svg
 ```
+
+## `vsa template validate <pad>`
+
+### Doel
+
+Valideer een `template.yaml` (of een map met zulke bestanden) tegen schema en
+documentregels.
+
+### Gebruik
+
+```cmd
+vsa template validate docs\specification-vsa-templates\library
+vsa template validate docs\specification-vsa-templates\library\tropaar-toon-4\template.yaml
+```
+
+### Output
+
+Bij succes: één `OK`-regel per bestand. Bij fout: `pad: ERROR: CODE: …` en
+exitcode `1`.

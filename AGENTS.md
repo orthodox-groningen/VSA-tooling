@@ -184,6 +184,10 @@ vendor/bron/                   # bron-checkout (CI)
 Specificatie: `docs/specification/`. Consumer-integratie: `docs/manuals/consumer-site.md`.
 Hergebruik: `docs/guides/reuse-vsa-tooling.md`.
 
+**VSA-templates / instance (MSCZ·MXL):** bij layout- of recite-wijzigingen eerst
+[`docs/specification-vsa-templates/rendering-pitfalls.md`](docs/specification-vsa-templates/rendering-pitfalls.md)
+lezen (maatstrepen, collapse-regels, MuseScore `position`, Coria vs print).
+
 ### Belangrijke grenzen
 
 - Scripts mogen redactionele `content-source` niet herschrijven.

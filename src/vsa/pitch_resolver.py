@@ -35,6 +35,9 @@ _SCALE_INTERVALS: dict[str, list[int]] = {
     "minor":  [0, 2, 3, 5, 7, 8, 10],   # natural minor
 }
 
+# Canonieke `mode`-waarden in VSA-frontmatter én template-YAML (geen synoniemen).
+ALLOWED_MODES = frozenset(_SCALE_INTERVALS)
+
 
 class UnknownMode(ValueError):
     pass

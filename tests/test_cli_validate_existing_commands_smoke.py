@@ -53,3 +53,17 @@ def test_cli_musicxml_batch_smoke(capsys, tmp_path: Path):
     assert exit_code == 0
     assert "MXL-bestand(en) geschreven" in output
     assert list(output_dir.rglob("*.mxl"))
+
+
+def test_cli_template_validate_library_smoke(capsys):
+    library = (
+        Path(__file__).resolve().parents[1]
+        / "docs"
+        / "specification-vsa-templates"
+        / "library"
+    )
+    exit_code = main(["template", "validate", str(library)])
+    output = capsys.readouterr()
+    assert exit_code == 0
+    assert "OK" in output.out
+    assert "tropaar-toon-4" in output.out

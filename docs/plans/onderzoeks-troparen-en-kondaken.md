@@ -314,19 +314,6 @@ en doet zo ook genezing opwellen voor allen die u ver{-&\e_&_}{/ren_} [//:]
 ---
 
 ::: vsa-notatie
-<!-- Bron: feesteigen\09-sep\09-08-geboorte-van-de-moeder-gods.md | type: chapter -->
-[//:] Uw Geboorte, o {Moe_.}{/der} {\Gods_}, *
-{/heeft} de Vreugde geopenbaard aan heel de {\we__}{reld_}. *
-Want uit U is opgegaan de Zon der Gerechtigheid: Christus {on_}{/ze} {\God_}; *
-{/Hij} heeft ons van de vervloeking be{\vrijd_} *
-en schenkt ons Zijn {-&/ze_&_}{\gen_}. *
-{/Hij} heeft de dood te{niet_.} ge{\daan_} *
-en Hij verleent ons het eeuwige {-&\Le_&_}{/ven_}. [//:]
-:::
-
----
-
-::: vsa-notatie
 <!-- Bron: Liturgikon, p.274-275 - Toon 4 -->
 [//:] Uw Geboorte, o {Moe_.}{/der} {\Gods_}, *
 {/heeft} de Vreugde geopenbaard aan heel de {we__}{\reld_}. *

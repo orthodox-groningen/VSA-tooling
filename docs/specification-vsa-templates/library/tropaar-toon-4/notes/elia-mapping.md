@@ -2,7 +2,8 @@
 
 Niet-normatief onderzoeksdossier. Hypotheses: H1–H7 in
 [`../../../mapping-vsa.md`](../../../mapping-vsa.md) (**VSA→template-instance**). Corpus:
-[`corpus.md`](corpus.md). VSA: [`../examples/elia.vsa`](../examples/elia.vsa).
+[`corpus.md`](corpus.md). VSA:
+[`../examples/corpus/T4-06-profeet-elia.vsa`](../examples/corpus/T4-06-profeet-elia.vsa).
 
 **In één zin (deze toets):** gegeven template + Elia-VSA voor S, kunnen A/T/B
 synchroon meelopen — en levert dat een geloofwaardige SATB-MusicXML op?
@@ -93,8 +94,9 @@ aandoet.
 ### MusicXML-bewijs
 
 Automatische pipeline (alle 7 regels):
-[`../examples/elia.mscz`](../examples/elia.mscz) /
-[`../examples/elia.mxl`](../examples/elia.mxl).
+[`../examples/corpus/T4-06-profeet-elia.mscz`](../examples/corpus/T4-06-profeet-elia.mscz)
+/
+[`../examples/corpus/T4-06-profeet-elia.mxl`](../examples/corpus/T4-06-profeet-elia.mxl).
 
 - Vier partijen S/A/T/B (MXL); MuseScore-MSCZ: SA/TB-chords.
 - Lyrics op alle stemmen; pitches `provisional`.

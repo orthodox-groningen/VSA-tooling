@@ -91,6 +91,34 @@ def load_corpus(markdown_path: Path) -> list[CorpusPiece]:
     ]
 
 
+def load_corpus_from_vsa_dir(output_dir: Path) -> list[CorpusPiece]:
+    """Bestaande corpus-`.vsa` (frontmatter + body), volgorde ``CORPUS_ENTRIES``."""
+    from .yaml_frontmatter import parse_vsa_frontmatter
+
+    pieces: list[CorpusPiece] = []
+    missing: list[str] = []
+    for piece_id, slug, title in CORPUS_ENTRIES:
+        path = output_dir / f"{piece_id}-{slug}.vsa"
+        if not path.is_file():
+            missing.append(str(path))
+            continue
+        text = path.read_text(encoding="utf-8")
+        frontmatter, body = parse_vsa_frontmatter(text)
+        pieces.append(
+            CorpusPiece(
+                piece_id=piece_id,
+                slug=slug,
+                title=str(frontmatter.get("title", title)),
+                body=body.strip(),
+            )
+        )
+    if missing:
+        raise FileNotFoundError(
+            "ontbrekende corpus-.vsa: " + "; ".join(missing)
+        )
+    return pieces
+
+
 def write_vsa_file(piece: CorpusPiece, path: Path) -> None:
     """Schrijf .vsa met YAML-frontmatter (geen lyrics-mapping; alleen brontekst)."""
     path.parent.mkdir(parents=True, exist_ok=True)

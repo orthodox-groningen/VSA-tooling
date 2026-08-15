@@ -87,3 +87,20 @@ def test_invalid_pitches_code() -> None:
     with pytest.raises(TemplateValidationError) as exc:
         validate_template(load_template(path), known_ids=KNOWN_IDS)
     assert exc.value.code == "TEMPLATE-PITCHES"
+
+
+def test_invalid_mode_rejected() -> None:
+    doc = load_template(EXAMPLES_VALID / "tropaar-toon-4" / "template.yaml")
+    doc["mode"] = "dorian"
+    with pytest.raises(TemplateValidationError) as exc:
+        validate_template(doc, known_ids=KNOWN_IDS)
+    assert exc.value.code == "TEMPLATE-MODE"
+
+
+def test_anchor_with_spaces_is_canonicalized() -> None:
+    doc = load_template(EXAMPLES_VALID / "tropaar-toon-4" / "template.yaml")
+    event = doc["phrases"][1]["events"][1]
+    assert event.get("anchor") == "e.st."
+    event["anchor"] = "e. st."
+    validate_template(doc, known_ids=KNOWN_IDS)
+    assert event["anchor"] == "e.st."

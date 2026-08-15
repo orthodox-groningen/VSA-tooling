@@ -5,7 +5,8 @@
 Zoals in [VSA](@):
 
 - `do` — absolute scientific pitch van de grondtoon;
-- `mode` — intervalstructuur van de ladder (`major`, `minor`, …).
+- `mode` — intervalstructuur van de ladder. **Alleen** `major` of `minor`
+  (zelfde enum als de VSA-parser / `PitchResolver`). Geen stille synoniemen.
 
 Samen vormen zij de [do-context](@). Alle `pitches` in
 [template-events](template-event@) zijn [laddergraden](laddergraad@) binnen die
@@ -62,6 +63,16 @@ text_mapping:
   - sequence: ["1", "3", "1", "2"]
 ```
 
+Het aantal VSA-regels (`*`-frasen) **moet** gelijk zijn aan de lengte van die
+reeks; anders `VSA-TEMPLATE-TEXT-MAPPING`.
+
+### Parallelle cadenspaden (`of`)
+
+Eén frase mag 2+ alternatieve eventreeksen hebben (bijv. slot `mi–re–mi`
+**of** `mi–fa–mi`). De VSA kiest impliciet via toonhoogte; geen pad →
+hoogte-mismatch. Dit zijn formule-alternatieven in **één** template, geen
+aparte [uitvoeringsvorm](@bron)-en.
+
 ### `text_mapping` / `mapping_plans`
 
 Algemene vorm voor bladen met prefix, embedded `||: … :||`, of meerdere
@@ -74,12 +85,16 @@ tropaar = stichier op het blad).
 
 ## Roles
 
-| Role       | Betekenis                                         |
-| ---------- | ------------------------------------------------- |
-| `open`     | Vaste openingsstap (vaak zelfde graad als recite) |
-| `recite`   | [Reciteertoon](@); N syllaben × `duration`        |
-| `cadence`  | Vaste cadens-/slotstap                            |
-| `link`     | Verbinding; vaak `optional: true`                 |
+| Role      | Betekenis                                         |
+| --------- | ------------------------------------------------- |
+| `open`    | Vaste openingsstap (vaak zelfde graad als recite) |
+| `recite`  | [Reciteertoon](@); N syllaben × `duration`        |
+| `cadence` | Vaste cadens-/slotstap                            |
+| `link`    | Verbinding; vaak `optional: true`                 |
+
+**H1 / `open` vs eerste recite:** YAML houdt twee events (formuleblad toont
+beide). In de instance slaat de mapper `open` over als de VSA meteen
+ongemarkeerd reciteert — geen stille dubbele noot.
 
 ## Optional
 
@@ -88,12 +103,15 @@ voor is.
 
 ## Frase-ankers
 
-| Anchor   | Bedoeling (werkhypothese)                              |
-| -------- | ------------------------------------------------------ |
-| `e.st.`  | Eerste streek / inzet                                  |
-| `l.st.`  | Laatste streek op deze cadensnoot                      |
-| `vl.st.` | Voorlaatste streek                                     |
+| Anchor   | Bedoeling                                                                                         |
+| -------- | ------------------------------------------------------------------------------------------------- |
+| `e.st.`  | Eerste streek / inzet                                                                             |
+| `l.st.`  | Laatste streek op deze cadensnoot                                                                 |
+| `vl.st.` | Voorlaatste streek                                                                                |
 | `l.lgr.` | Start van het slotmelisma: deze noot **en alle noten erna** in de frase op de laatste lettergreep |
+
+Canonieke YAML-vorm **zonder** spaties (`e.st.`); het blad toont `e. st.`.
+Invoer met spaties wordt genormaliseerd.
 
 Zie [frase-anker](@). Mapping naar syllaben: [mapping-vsa.md](mapping-vsa.md)
 (experimenteel).

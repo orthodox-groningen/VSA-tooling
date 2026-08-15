@@ -374,10 +374,12 @@ LYRIC_FONT_PT = "12"
 INSTANCE_MAX_QUARTERS_PER_MEASURE = 8
 INSTANCE_MIN_LAST_CHUNK_QUARTERS = 3.0
 # Instance spacing: leesbare lyrics (niet tegen elkaar / overlappend).
-INSTANCE_MIN_NOTE_DISTANCE = "0.55"
-INSTANCE_LYRICS_MIN_DISTANCE = "0.45"
-INSTANCE_MEASURE_SPACING = "1.2"
+INSTANCE_MIN_NOTE_DISTANCE = "0.60"
+INSTANCE_LYRICS_MIN_DISTANCE = "0.60"
+INSTANCE_MEASURE_SPACING = "1.35"
 INSTANCE_MIN_MEASURE_WIDTH = "5"
+# Ruimte cadens → volgende recite (ná de maatstreep van de vorige strofe).
+INSTANCE_PHRASE_GAP = (2, "eighth")
 # Recite-collapse alleen vanaf zoveel syllaben (anders aparte noten).
 RECITE_COLLAPSE_MIN_SYLLABLES = 3
 # MuseScore Division=480 → quarter = 480 ticks (lyric melisma extender).
@@ -402,6 +404,13 @@ DUR_FRAC = {
 }
 FRAME_FONT_PT = "14"
 TITLE_FONT_PT = "18"
+# Titel-VBox (spatium). Visuele titel→systeem ≈ VBox + frameSystemDistance.
+TITLE_VBOX_HEIGHT_SP = 3.5
+# Stafafruimte SA↔TB; systeemmafruimte en titel→systeem mikken op 1,5× hiervan.
+STAFF_DISTANCE_SP = 5.0
+VERTICAL_GAP_RATIO = 1.5
+# Met setting 1,5×staff maten we ~7/6 i.p.v. 9/6; schaal systemDistance bij.
+SYSTEM_DISTANCE_CALIBRATION = 9 / 7
 # Cycle after last measure: empty spacer HBox + text HBox (approx. centered).
 # If the last frase leaves too little room, fall back to a VBox below.
 CYCLE_SPACER_HBOX_WIDTH = "14"
@@ -456,9 +465,11 @@ def last_system_print() -> str:
 
 
 def resolve_phrase_events(phrase: dict, do: str, mode: str) -> tuple[list[dict], int]:
+    from vsa.template_instance import flatten_phrase_events
+
     events: list[dict] = []
     total = 0
-    for event in phrase["events"]:
+    for event in flatten_phrase_events(phrase["events"]):
         is_recite = event.get("role") == "recite"
         if is_recite:
             # Blad: breve (||O||). MuseScore: half + headType breve → 2 tellen.
@@ -735,6 +746,20 @@ _MSCZ_CONTAINER = """\
 </container>
 """
 
+# A4 in inches (MuseScore Style page* units).
+_PAGE_STYLE = (
+    "<pageWidth>8.27</pageWidth>"
+    "<pageHeight>11.69</pageHeight>"
+    "<pagePrintableWidth>7.0889</pagePrintableWidth>"
+    "<pageEvenLeftMargin>0.590551</pageEvenLeftMargin>"
+    "<pageOddLeftMargin>0.590551</pageOddLeftMargin>"
+    "<pageEvenTopMargin>0.590551</pageEvenTopMargin>"
+    "<pageEvenBottomMargin>0.590551</pageEvenBottomMargin>"
+    "<pageOddTopMargin>0.590551</pageOddTopMargin>"
+    "<pageOddBottomMargin>0.590551</pageOddBottomMargin>"
+    "<pageTwosided>1</pageTwosided>"
+)
+
 
 def midi_and_tpc(step: str, alter: int, octave: int) -> tuple[int, int]:
     midi = (octave + 1) * 12 + STEP_MIDI[step] + alter
@@ -813,13 +838,17 @@ def _mscx_note(
     *,
     optional: bool = False,
     recite: bool = False,
+    spacer: bool = False,
 ) -> str:
     step, alter, octv = pitch
     midi, tpc = midi_and_tpc(step, alter, octv)
     bits: list[str] = []
     if optional:
         bits.append("<parentheses>both</parentheses>")
-    if alter in ALTER_ACCIDENTAL:
+    if spacer:
+        bits.append("<visible>0</visible>")
+        bits.append("<play>0</play>")
+    if alter in ALTER_ACCIDENTAL and not spacer:
         bits.append(
             f"<Accidental><subtype>{ALTER_ACCIDENTAL[alter]}</subtype></Accidental>"
         )
@@ -877,9 +906,11 @@ def prepare_instance_events(events: list[dict]) -> list[dict]:
             while j < len(out) and not out[j].get("lyric"):
                 j += 1
             if j > i + 1:
-                # Recite + spacer-rusten: geen slur/streepje; ticks blijven staan.
+                # Recite/spacer-gap: geen slur/extender; ticks blijven staan.
                 gap = out[i + 1 : j]
-                if out[i].get("recite") or any(e.get("rest") for e in gap):
+                if out[i].get("recite") or any(
+                    e.get("rest") or e.get("spacer") for e in gap
+                ):
                     i = j
                     continue
                 # Melisma: streepje op de lettergreep + extender + slur.
@@ -976,17 +1007,19 @@ def _mscx_chord(
     lyric_align: str | None = None,
     slur_next: str | None = None,
     slur_prev: str | None = None,
+    spacer: bool = False,
 ) -> list[str]:
     pitch_list = [pitches] if isinstance(pitches, tuple) else list(pitches)
     lines: list[str] = []
     dots_xml = ""
-    if dots and not recite:
+    if dots and not recite and not spacer:
         dots_xml = f"<dots>{dots}</dots>"
     stem_xml = ""
-    if recite:
+    if recite or spacer:
         stem_xml = "<noStem>1</noStem>"
     notes_xml = "".join(
-        _mscx_note(p, optional=optional, recite=recite) for p in pitch_list
+        _mscx_note(p, optional=optional, recite=recite, spacer=spacer)
+        for p in pitch_list
     )
     paren = ""
     if optional:
@@ -1096,6 +1129,7 @@ def _mscx_voice(
                 lyric_align=ev.get("lyric_align") if with_lyrics else None,
                 slur_next=ev.get("slur_next"),
                 slur_prev=ev.get("slur_prev"),
+                spacer=bool(ev.get("spacer")),
             )
         )
     if end_barline is not None:
@@ -1108,16 +1142,46 @@ def _mscx_voice(
     return lines
 
 
+def _vertical_layout_gaps() -> tuple[str, str, str]:
+    """staffDistance, systemDistance, frameSystemDistance (spatium strings).
+
+    Doel: systeemmafruimte en titel→systeem = ``VERTICAL_GAP_RATIO`` × stafafruimte
+    op het scherm. Titelgat ≈ ``TITLE_VBOX_HEIGHT_SP`` + ``frameSystemDistance``.
+    ``systemDistance`` wordt gecorrigeerd met ``SYSTEM_DISTANCE_CALIBRATION``
+    (gemeten 7/6 i.p.v. 9/6 bij naïeve 1,5×-setting).
+    """
+    staff = STAFF_DISTANCE_SP
+    target = staff * VERTICAL_GAP_RATIO
+    system = round(target * SYSTEM_DISTANCE_CALIBRATION, 2)
+    frame = round(target - TITLE_VBOX_HEIGHT_SP, 2)
+    if frame < 0:
+        raise ValueError(
+            f"TITLE_VBOX_HEIGHT_SP ({TITLE_VBOX_HEIGHT_SP}) ≥ "
+            f"target gap ({target}); verklein de VBox of verhoog de ratio"
+        )
+    return f"{staff:g}", f"{system:g}", f"{frame:g}"
+
+
 def _mscx_style_block(*, layout: str = "template") -> str:
     """MuseScore layout/fonts — always emitted; MuseScore save may strip it.
 
     ``layout="template"``: formuleblad.
-    ``layout="instance"``: zangstuk uit VSA+template (dichter, systemen vullen zelf).
+    ``layout="instance"``: zangstuk uit VSA+template.
+
+    Verticaal: geen page-fill (`enableVerticalSpread=0`, `maxPageFillSpread=0`).
+    Systeemmafruimte en titel→eerste-systeem mikken op 1,5× stafafruimte
+    (zie ``_vertical_layout_gaps``); min=max zodat de pagina niet wordt
+    uitgevuld.
     """
+    staff_dist, min_sys, frame_sys = _vertical_layout_gaps()
+    max_sys = min_sys
+    akk_dist = staff_dist
     if layout == "instance":
         min_note = INSTANCE_MIN_NOTE_DISTANCE
         lyrics_min = INSTANCE_LYRICS_MIN_DISTANCE
         fill_limit = "0"
+        border = "2.0"
+        lyrics_bottom = "1.0"
         courtesy = (
             "<genCourtesyTimesig>0</genCourtesyTimesig>"
             "<genCourtesyKeysig>0</genCourtesyKeysig>"
@@ -1128,10 +1192,31 @@ def _mscx_style_block(*, layout: str = "template") -> str:
         min_note = "0.5"
         lyrics_min = "0.25"
         fill_limit = "1"
+        border = "2.5"
+        lyrics_bottom = "1.0"
         courtesy = ""
     return (
         "<Style>"
+        f"{_PAGE_STYLE}"
         "<enableVerticalSpread>0</enableVerticalSpread>"
+        "<maxPageFillSpread>0</maxPageFillSpread>"
+        f"<minSystemSpread>{min_sys}</minSystemSpread>"
+        f"<maxSystemSpread>{max_sys}</maxSystemSpread>"
+        f"<minStaffSpread>{staff_dist}</minStaffSpread>"
+        f"<maxStaffSpread>{staff_dist}</maxStaffSpread>"
+        f"<staffDistance>{staff_dist}</staffDistance>"
+        f"<akkoladeDistance>{akk_dist}</akkoladeDistance>"
+        f"<maxAkkoladeDistance>{akk_dist}</maxAkkoladeDistance>"
+        f"<minSystemDistance>{min_sys}</minSystemDistance>"
+        f"<maxSystemDistance>{max_sys}</maxSystemDistance>"
+        f"<staffUpperBorder>{border}</staffUpperBorder>"
+        f"<staffLowerBorder>{border}</staffLowerBorder>"
+        f"<frameSystemDistance>{frame_sys}</frameSystemDistance>"
+        f"<systemFrameDistance>{frame_sys}</systemFrameDistance>"
+        f"<lyricsMinBottomDistance>{lyrics_bottom}</lyricsMinBottomDistance>"
+        "<lyricsMinTopDistance>0.5</lyricsMinTopDistance>"
+        "<enableIndentationOnFirstSystem>0</enableIndentationOnFirstSystem>"
+        "<firstSystemIndentationValue>0</firstSystemIndentationValue>"
         f"<lastSystemFillLimit>{fill_limit}</lastSystemFillLimit>"
         f"{courtesy}"
         f'<staffTextPosAbove x="0" y="{MAPPING_TEXT_Y}"/>'
@@ -1190,7 +1275,7 @@ def _mscx_append_cycle_frames(
     else:
         out.append(
             "<VBox>"
-            "<height>6</height>"
+            "<height>4</height>"
             f"{_mscx_cycle_text(label)}"
             "</VBox>"
         )
@@ -1283,7 +1368,7 @@ def render_mscx(
             )
             out.append(
                 "<VBox>"
-                "<height>10</height>"
+                f"<height>{TITLE_VBOX_HEIGHT_SP:g}</height>"
                 "<Text>"
                 "<style>title</style>"
                 f"<family>{STAFF_FONT}</family>"
@@ -1524,27 +1609,30 @@ def _invisible_rest(dur: int, ntype: str) -> dict:
     }
 
 
-def _recite_spacer_rests(text: str) -> list[dict]:
-    """Onzichtbare rusten na de ||O||: horizontale ruimte voor links-uitgelijnde tekst.
+def _recite_body_spacer(note: dict, *, ntype: str, dur: int, dots: int) -> dict:
+    """Onzichtbare stille noot met lyric: ruimte tussen recite-lettergrepen.
 
-    De ||O|| zelf blijft altijd half (geen punt); MuseScore left-alignt lyrics
-    met melisma-ticks over deze rusten, zodat de eerste lettergreep onder de
-    noot blijft en de maat niet tot longa opblaast (geen lege rust-rijen).
+    Geen rust: MuseScore toont lyrics op verborgen rusten niet betrouwbaar.
+    Extra systeemruimte valt tussen deze lettergrepen, niet als gap ná de tekst.
     """
-    # ~0.4 tel per teken, min. 1 tel naast de half-||O||.
-    need_q = max(1, int(round(len(text) * 0.38)))
-    rests: list[dict] = []
-    remaining = need_q
-    while remaining >= 4:
-        rests.append(_invisible_rest(16, "whole"))
-        remaining -= 4
-    while remaining >= 2:
-        rests.append(_invisible_rest(8, "half"))
-        remaining -= 2
-    while remaining >= 1:
-        rests.append(_invisible_rest(4, "quarter"))
-        remaining -= 1
-    return rests
+    spacer = dict(note)
+    spacer["dur"] = dur
+    spacer["ntype"] = ntype
+    spacer["dots"] = dots
+    spacer["recite"] = False
+    spacer["spacer"] = True
+    spacer["keep_with_next"] = True
+    for key in (
+        "lyric_ticks",
+        "lyric_extend",
+        "slur_next",
+        "slur_prev",
+        "lyric_align",
+        "rest",
+        "visible",
+    ):
+        spacer.pop(key, None)
+    return spacer
 
 
 def collapse_recite_for_print(events: list[dict]) -> list[dict]:
@@ -1552,8 +1640,15 @@ def collapse_recite_for_print(events: list[dict]) -> list[dict]:
 
     Alleen ``role=recite`` (ongemarkeerde VSA-syllaben). Elke VSA-scope
     (``{/en}``, ``{moe__}``, ``{Ni__}``, …) blijft een eigen noot met VSA-duur —
-    nooit breve, nooit opgeslokt. Body-tekst onder de eerste noot (||O||);
-    laatste recite-syllabe = kwart; daarna template-cadens ongewijzigd.
+    nooit breve, nooit opgeslokt.
+
+    Printmodel:
+
+    - eerste body-lettergreep op de ``||O||``, **gecentreerd** op de nootkop;
+    - overige body-lettergrepen elk op een onzichtbare spacer-noot (naar rechts);
+    - laatste recite-syllabe = kwart; daarna template-cadens ongewijzigd.
+    - geen melisma-extender onder de recitaltekst.
+
     Alleen MSCZ/print (niet Coria-MXL).
     """
     if not events:
@@ -1580,21 +1675,22 @@ def collapse_recite_for_print(events: list[dict]) -> list[dict]:
             i = j
             continue
         body, last = run[:-1], run[-1]
-        lyric = _join_recite_lyrics(body)
-        breve = dict(body[0])
+        first, rest = body[0], body[1:]
+        breve = dict(first)
         dur, ntype, _dots = RECITE_PLAY_DIV  # altijd half, geen punt
-        spacers = _recite_spacer_rests(lyric or "")
-        lyric_ticks = sum(_event_ticks(r) for r in spacers)
         breve["dur"] = dur
         breve["ntype"] = ntype
         breve["dots"] = 0
         breve["recite"] = True
-        breve["lyric"] = lyric or None
-        breve["syllabic"] = "single"
-        breve["lyric_align"] = "left,baseline"
-        breve["lyric_ticks"] = lyric_ticks
         breve["keep_with_next"] = True
-        for key in ("lyric_extend", "slur_next", "slur_prev"):
+        # Eerste lettergreep gecentreerd op de nootkop (MuseScore-default).
+        for key in (
+            "lyric_align",
+            "lyric_ticks",
+            "lyric_extend",
+            "slur_next",
+            "slur_prev",
+        ):
             breve.pop(key, None)
         last_ev = dict(last)
         last_ev["recite"] = False
@@ -1610,7 +1706,10 @@ def collapse_recite_for_print(events: list[dict]) -> list[dict]:
         ):
             last_ev.pop(key, None)
         out.append(breve)
-        out.extend(spacers)
+        out.extend(
+            _recite_body_spacer(note, ntype=q_type, dur=q_dur, dots=q_dots)
+            for note in rest
+        )
         out.append(last_ev)
         i = j
     return out
@@ -1624,16 +1723,21 @@ def render_instance_mscx(
 ) -> str:
     """Uitgeschreven tropaar: VSA-S + template A/T/B; instance-layout.
 
-    Één maat per strofe. Recite (≥3 ongemarkeerd): ||O|| + slotlettergreep
-    als kwart; VSA-scopes blijven eigen noten met hun duur.
+    Één maat per strofe. Recite (≥3 ongemarkeerd): ||O|| met eerste
+    lettergreep gecentreerd; overige body-lettergrepen op spacer-noten;
+    slotlettergreep als kwart; VSA-scopes blijven eigen noten met hun duur.
     """
     do = doc["do"]
     mode = doc.get("mode", "major")
     resolved: list[tuple[str | None, list[dict]]] = []
-    for pid, notes in mapped:
+    last_i = len(mapped) - 1
+    gap_dur, gap_type = INSTANCE_PHRASE_GAP
+    for i, (pid, notes) in enumerate(mapped):
         events = prepare_instance_events(
             collapse_recite_for_print(mapped_notes_to_events(notes, do, mode))
         )
+        if i < last_i:
+            events.append(_invisible_rest(gap_dur, gap_type))
         resolved.append((pid, events))
     return render_mscx(
         doc,
@@ -1786,12 +1890,29 @@ def render_instance_musicxml(
     return "\n".join(out)
 
 
+def _score_style_mss(mscx: str) -> str:
+    """MuseScore 4 leest layout bij voorkeur uit ``score_style.mss`` in de MSCZ."""
+    start = mscx.find("<Style>")
+    end = mscx.find("</Style>")
+    if start < 0 or end < 0:
+        raise ValueError("MSCZ zonder <Style>-blok")
+    style = mscx[start : end + len("</Style>")]
+    return (
+        '<?xml version="1.0" encoding="UTF-8"?>\n'
+        '<museScore version="4.70">\n'
+        f"{style}\n"
+        "</museScore>\n"
+    )
+
+
 def write_mscx_output(path: Path, mscx: str) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     if path.suffix.lower() == ".mscz":
         with zipfile.ZipFile(path, "w", compression=zipfile.ZIP_DEFLATED) as archive:
             archive.writestr("META-INF/container.xml", _MSCZ_CONTAINER)
             archive.writestr("score.mscx", mscx)
+            # MS4: Style in MSCX alleen is niet genoeg; score_style.mss is leidend.
+            archive.writestr("score_style.mss", _score_style_mss(mscx))
     else:
         path.write_text(mscx, encoding="utf-8")
 
@@ -1816,15 +1937,15 @@ def main() -> int:
         for yaml_path in sorted(LIBRARY.glob("*/template.yaml")):
             doc = load_resolved(yaml_path, LIBRARY)
             xml = render_template_musicxml(doc)
-            out_xml = yaml_path.with_name("template.musicxml")
-            write_musicxml_output(out_xml, xml)
-            print(f"wrote {out_xml.relative_to(REPO)}")
+            out_mxl = yaml_path.with_name("template.mxl")
+            write_musicxml_output(out_mxl, xml)
+            print(f"wrote {out_mxl.relative_to(REPO)}")
         return 0
 
     if not args.template:
         parser.error("template path or --all required")
     doc = load_resolved(args.template, LIBRARY)
-    out = args.output or args.template.with_name("template.musicxml")
+    out = args.output or args.template.with_name("template.mxl")
     suffix = out.suffix.lower()
     if suffix in {".mscx", ".mscz"}:
         write_mscx_output(out, render_template_mscx(doc))

@@ -122,6 +122,7 @@ phrases:
         pitches: { S: mi, A: "#re", T: mi-1, B: ti-2 }
       - role: cadence
         duration: "~"
+        anchor: l.lgr.
         pitches: { S: re, A: fa, T: re-1, B: sol-2 }
       - role: cadence
         duration: "__"

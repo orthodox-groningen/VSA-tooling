@@ -1,57 +1,87 @@
 # Tropaar toon 4
 
-| Veld           | Waarde                                                                                 |
-| -------------- | -------------------------------------------------------------------------------------- |
-| Template       | [`template.yaml`](template.yaml)                                                       |
-| Formule-MSCZ   | [`template.mscz`](template.mscz)                                                       |
-| MuseScore-bron | `Template - Tropaar (Toon 4).musicxml` (niet in git)                                   |
-| Status pitches | `provisional`                                                                          |
-| Mapping        | S=VSA, A/T/B=template ([mapping-vsa.md](../../mapping-vsa.md))                         |
+| Veld           | Waarde                                                         |
+| -------------- | -------------------------------------------------------------- |
+| Formule-bron   | [`template.yaml`](template.yaml)                               |
+| Formule-MSCZ   | [`template.mscz`](template.mscz) (MuseScore-controle)          |
+| Formule-MXL    | [`template.mxl`](template.mxl) (delen / Coria-achtig)          |
+| Formule-PDF    | `template.pdf` (lokaal; niet in git)                           |
+| Status pitches | `provisional`                                                  |
+| Mapping        | S=VSA, A/T/B=template ([mapping-vsa.md](../../mapping-vsa.md)) |
 
-## Voorbeelden
+## Wat hoort in deze map
 
-| Bestand                                                | Inhoud                                                |
-| ------------------------------------------------------ | ----------------------------------------------------- |
-| [`examples/elia.vsa`](examples/elia.vsa)               | Tropaar Profeet Elia (bron)                           |
-| [`examples/elia.mscz`](examples/elia.mscz)             | Uitgewerkt (MuseScore)                                |
-| [`examples/elia.mxl`](examples/elia.mxl)               | Uitgewerkt (Coria)                                    |
-| `examples/corpus/`                                     | 13 Toon-4-stukken: `.vsa` / `.mscz` / `.mxl`          |
+```text
+tropaar-toon-4/
+  template.yaml          ← canonieke formule (bewerk hier)
+  template.mscz          ← afgeleid: formuleblad MuseScore
+  template.mxl           ← afgeleid: formule MusicXML
+  template.pdf           ← lokaal afgeleid (print; .gitignore)
+  README.md
+  notes/                 ← corpus-notities, mappinglessen
+  examples/corpus/       ← .vsa + afgeleide .mscz/.mxl (+ lokale .pdf)
+```
 
-Corpus regenereren (PDF blijft lokaal, staat in `.gitignore`):
+**Niet** committen / niet bewaren: MuseScore-rommel (`.mscbackup/`,
+`Thumbnails/`, losse `META-INF/`, `audiosettings.json`, `viewsettings.json`,
+`score_style.mss`, …), dubbele `template-from-yaml.*`, of `*.pdf`.
+
+## Corpus-pijplijn
+
+Elke `examples/corpus/*.vsa` + `template.yaml` → `.mscz` (MuseScore) +
+`.mxl` (Coria) + optioneel `.pdf` (print).
+
+Titel in MSCZ/PDF = frontmatter-`title`; ontbreekt die → bestandsnaam zonder
+extensie.
 
 ```cmd
 cd /d C:\Git\orthodox-groningen\VSA-tooling
+call .venv\Scripts\activate
 python scripts\render_tropaar_toon4_corpus.py
-python scripts\render_tropaar_toon4_corpus.py --pdf-only
+python scripts\render_tropaar_toon4_corpus.py --pdf
 ```
 
-Template-formule:
+Alleen formuleblad:
 
 ```cmd
 cd /d C:\Git\orthodox-groningen\VSA-tooling
 python scripts\render_tropaar_toon4_corpus.py --template
+python scripts\render_tropaar_toon4_corpus.py --template --pdf
 ```
+
+Alleen PDF’s opnieuw uit bestaande `.mscz`:
+
+```cmd
+cd /d C:\Git\orthodox-groningen\VSA-tooling
+python scripts\render_tropaar_toon4_corpus.py --pdf-only
+```
+
+Default gebruikt bestaande `examples/corpus/*.vsa`. Alleen met
+`--from-onderzoek` opnieuw extracten uit het onderzoeks-markdown (dat
+bestand heeft niet alle 13 blokken, o.a. T4-07a).
+
+## Voorbeelden
+
+| Pad                                                                                | Inhoud                                      |
+| ---------------------------------------------------------------------------------- | ------------------------------------------- |
+| [`examples/corpus/`](examples/corpus/)                                             | 13 stukken: `.vsa` / `.mscz` / `.mxl`       |
+| [`examples/corpus/T4-06-profeet-elia.vsa`](examples/corpus/T4-06-profeet-elia.vsa) | canonieke Elia-bron                         |
 
 ## Notes
 
 | Bestand                                          | Inhoud                          |
 | ------------------------------------------------ | ------------------------------- |
-| [`notes/corpus.md`](notes/corpus.md)             | 12 Toon-4-teksten ↔ frase-cycle |
+| [`notes/corpus.md`](notes/corpus.md)             | Toon-4-teksten ↔ frase-cycle    |
 | [`notes/elia-mapping.md`](notes/elia-mapping.md) | Slot-toets Elia regel 1         |
 
-## Status t.o.v. PDF
+## Status
 
-- Frase-ids, `||O||`-recite, haakjes-optional, `e.st.`/`l.st.` zitten in de
-  YAML; de renderer zet ze om naar MSCX.
-- Cycle-regel staat in [`template.mscz`](template.mscz) /
-  [`template-from-yaml.mscx`](template-from-yaml.mscx).
-- Overschrijf niet `Template - Tropaar (Toon 4).*` (menselijke MuseScore-edit).
-- Lyrics: DejaVu Sans Condensed 12pt (`LYRIC_FONT_PT` in
-  `scripts/render_vsa_template_musicxml.py`).
-
-## Geleerd (kort)
-
-- Één VSA-regel ≈ één template-frase; cycle `1,2,…` + `laatste` houdt.
-- Optionals/hold/skip: hypotheses H4–H7 in
-  [`../../mapping-vsa.md`](../../mapping-vsa.md).
-- Frase 2-recite in deze MuseScore-edit ligt op **fa** (Bb), niet op mi.
+- Frase-ids, `||O||`-recite, haakjes-optional, `e.st.`/`l.st.` in YAML;
+  renderer → MSCZ.
+- Tenor openingsakkoord: `sol-1` = **C4** t.o.v. `do: F4` (niet C3).
+- Lyrics: DejaVu Sans Condensed 12pt (`LYRIC_FONT_PT`).
+- Verticale witruimte: stafafruimte 5 spatium; systeemmafruimte en
+  titel→systeem mikken op **1,5×** daarvan op het scherm. Titelgat =
+  VBox + `frameSystemDistance` (VBox 3.5 + frame 4.0). Systeemmafruimte
+  gecorrigeerd (gemeten 7/6 → setting ×9/7). Geen page-fill, geen
+  eerste-systeem-inspringing. MSCZ bevat `score_style.mss`.

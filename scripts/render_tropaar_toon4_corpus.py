@@ -1,4 +1,15 @@
-"""Genereer tropaar-toon-4-corpus: VSA → MSCZ/MXL/(PDF); of alleen template-formule."""
+"""Genereer tropaar-toon-4: formuleblad en/of corpus VSA → MSCZ/MXL/(PDF).
+
+Canonieke artefacten onder ``library/tropaar-toon-4/``:
+
+- ``template.yaml`` — formule-bron (git)
+- ``template.mscz`` — formuleblad voor MuseScore-controle (git)
+- ``template.mxl`` — formule MusicXML om te delen (git)
+- ``template.pdf`` — print (lokaal; ``*.pdf`` in .gitignore)
+- ``examples/corpus/*.vsa`` — bronteksten (git)
+- ``examples/corpus/*.mscz`` / ``*.mxl`` — instance (git)
+- ``examples/corpus/*.pdf`` — print (lokaal)
+"""
 
 from __future__ import annotations
 
@@ -25,8 +36,9 @@ sys.path.insert(0, str(REPO / "scripts"))
 
 import render_vsa_template_musicxml as render  # noqa: E402
 
-from vsa.corpus_vsa import load_corpus, write_vsa_file  # noqa: E402
+from vsa.corpus_vsa import load_corpus, load_corpus_from_vsa_dir, write_vsa_file  # noqa: E402
 from vsa.template_instance import TemplateInstanceError, map_vsa_to_template  # noqa: E402
+from vsa.yaml_frontmatter import parse_vsa_frontmatter  # noqa: E402
 
 
 def find_musescore() -> Path | None:
@@ -51,8 +63,13 @@ def export_pdf(mscz: Path, *, musescore: Path) -> Path:
     return pdf
 
 
-def expanded_title(piece_id: str, title: str) -> str:
-    return f"{piece_id} — {title}"
+def instance_title(vsa_path: Path, vsa_text: str) -> str:
+    """Titel = frontmatter ``title``, anders bestandsstem (zonder extensie)."""
+    frontmatter, _ = parse_vsa_frontmatter(vsa_text)
+    raw = frontmatter.get("title")
+    if isinstance(raw, str) and raw.strip():
+        return raw.strip()
+    return vsa_path.stem
 
 
 def render_instance(
@@ -71,7 +88,7 @@ def render_instance(
     vsa_text = vsa_path.read_text(encoding="utf-8")
 
     mapped = map_vsa_to_template(doc, vsa_text, source=str(vsa_path))
-    title = expanded_title(piece.piece_id, piece.title)
+    title = instance_title(vsa_path, vsa_text)
     mscx = render.render_instance_mscx(doc, mapped, title=title)
     out = output_dir / f"{stem}.mscz"
     render.write_mscx_output(out, mscx)
@@ -84,26 +101,18 @@ def render_instance(
     if musescore is not None:
         pdf = export_pdf(out, musescore=musescore)
         print(f"wrote {pdf.relative_to(REPO)}")
-
-    if piece.piece_id == "T4-06":
-        examples = TEMPLATE_DIR / "examples"
-        render.write_mscx_output(examples / "elia.mscz", mscx)
-        write_musicxml_output(examples / "elia.mxl", xml)
-        print(f"wrote {(examples / 'elia.mscz').relative_to(REPO)}")
-        print(f"wrote {(examples / 'elia.mxl').relative_to(REPO)}")
-        if musescore is not None:
-            elia_pdf = export_pdf(examples / "elia.mscz", musescore=musescore)
-            print(f"wrote {elia_pdf.relative_to(REPO)}")
     return out
 
 
-def render_template_mscz(doc: dict, *, musescore: Path | None = None) -> Path:
-    """Formuleblad → template.mscz (+ optioneel PDF)."""
+def render_template_artefacts(doc: dict, *, musescore: Path | None = None) -> Path:
+    """Formuleblad → template.mscz + template.mxl (+ optioneel PDF)."""
+    from vsa.musicxml_package import write_musicxml_output
+
     mscx = render.render_template_mscx(doc)
     out = TEMPLATE_DIR / "template.mscz"
     render.write_mscx_output(out, mscx)
-    # Historische alias (oude naam).
-    render.write_mscx_output(TEMPLATE_DIR / "template-from-yaml.mscz", mscx)
+    write_musicxml_output(TEMPLATE_DIR / "template.mxl", render.render_template_musicxml(doc))
+    print(f"wrote {(TEMPLATE_DIR / 'template.mxl').relative_to(REPO)}")
     if musescore is not None:
         pdf = export_pdf(out, musescore=musescore)
         print(f"wrote {pdf.relative_to(REPO)}")
@@ -113,15 +122,15 @@ def render_template_mscz(doc: dict, *, musescore: Path | None = None) -> Path:
 def main() -> int:
     parser = argparse.ArgumentParser(
         description=(
-            "Tropaar-toon-4: uitgewerkte corpusstukken (.vsa/.mscz/.mxl) "
-            "of template-formule (.mscz)."
+            "Tropaar-toon-4: corpus (.vsa → .mscz/.mxl/[.pdf]) "
+            "en/of formuleblad (template.mscz + template.mxl)."
         )
     )
     parser.add_argument(
         "--onderzoek",
         type=Path,
         default=ONDERZOEK,
-        help="Bron: onderzoeks-troparen-en-kondaken.md",
+        help="Bron: onderzoeks-troparen-en-kondaken.md (alleen zonder --no-vsa)",
     )
     parser.add_argument(
         "--output-dir",
@@ -135,14 +144,22 @@ def main() -> int:
         help="Alleen dit corpus-id (bijv. T4-06)",
     )
     parser.add_argument(
+        "--from-onderzoek",
+        action="store_true",
+        help=(
+            "Extraheer .vsa opnieuw uit onderzoeks-md (overschrijft corpus-.vsa). "
+            "Default: bestaande examples/corpus/*.vsa gebruiken."
+        ),
+    )
+    parser.add_argument(
         "--no-vsa",
         action="store_true",
-        help="Schrijf geen .vsa (gebruik bestaande)",
+        help=argparse.SUPPRESS,  # legacy alias: zelfde als default
     )
     parser.add_argument(
         "--template",
         action="store_true",
-        help="Alleen formuleblad: template.mscz (geen corpus)",
+        help="Alleen formuleblad: template.mscz + template.mxl (geen corpus)",
     )
     parser.add_argument(
         "--pdf",
@@ -152,7 +169,7 @@ def main() -> int:
     parser.add_argument(
         "--pdf-only",
         action="store_true",
-        help="Alleen bestaande corpus-.mscz naar .pdf (geen re-render)",
+        help="Alleen bestaande .mscz naar .pdf (geen re-render)",
     )
     args = parser.parse_args()
     output_dir = args.output_dir
@@ -169,9 +186,9 @@ def main() -> int:
 
     if args.pdf_only:
         paths = sorted(output_dir.glob("T4-*.mscz"))
-        elia = TEMPLATE_DIR / "examples" / "elia.mscz"
-        if elia.is_file() and elia not in paths:
-            paths.append(elia)
+        template_mscz = TEMPLATE_DIR / "template.mscz"
+        if template_mscz.is_file() and template_mscz not in paths:
+            paths.append(template_mscz)
         if not paths:
             raise SystemExit(f"geen T4-*.mscz in {output_dir}")
         assert musescore is not None
@@ -183,11 +200,16 @@ def main() -> int:
     doc = render.load_resolved(TEMPLATE_YAML, LIBRARY)
 
     if args.template:
-        out = render_template_mscz(doc, musescore=musescore)
+        out = render_template_artefacts(doc, musescore=musescore)
         print(f"wrote {out.relative_to(REPO)} (template)")
         return 0
 
-    pieces = load_corpus(args.onderzoek)
+    if args.from_onderzoek:
+        pieces = load_corpus(args.onderzoek)
+        write_vsa = True
+    else:
+        pieces = load_corpus_from_vsa_dir(output_dir)
+        write_vsa = False
     if args.piece_id:
         pieces = [p for p in pieces if p.piece_id == args.piece_id]
         if not pieces:
@@ -200,7 +222,7 @@ def main() -> int:
                 doc,
                 piece,
                 output_dir=output_dir,
-                write_vsa=not args.no_vsa,
+                write_vsa=write_vsa,
                 musescore=musescore,
             )
             print(f"wrote {out.relative_to(REPO)}")

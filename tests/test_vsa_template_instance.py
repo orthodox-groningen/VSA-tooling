@@ -21,7 +21,13 @@ from vsa.vsa_stanzas import extract_stanza_notes  # noqa: E402
 
 LIBRARY = ROOT / "docs" / "specification-vsa-templates" / "library"
 TEMPLATE_YAML = LIBRARY / "tropaar-toon-4" / "template.yaml"
-ELIA_VSA = LIBRARY / "tropaar-toon-4" / "examples" / "elia.vsa"
+ELIA_VSA = (
+    LIBRARY
+    / "tropaar-toon-4"
+    / "examples"
+    / "corpus"
+    / "T4-06-profeet-elia.vsa"
+)
 
 
 def _template() -> dict:
@@ -109,7 +115,7 @@ def test_elia_r3_voorloper_is_three_quarters() -> None:
 def test_elia_instance_mscx_has_lyrics_no_repeats_with_recite_breve() -> None:
     doc = _template()
     mapped = map_vsa_to_template(doc, _elia_text())
-    mscx = render.render_instance_mscx(doc, mapped, title="T4-06 — Profeet Elia")
+    mscx = render.render_instance_mscx(doc, mapped, title="Profeet Elia")
     staff1 = re.search(r'<Staff id="1">(.*?)</Staff>', mscx, re.DOTALL)
     assert staff1
     body = staff1.group(1)
@@ -120,9 +126,10 @@ def test_elia_instance_mscx_has_lyrics_no_repeats_with_recite_breve() -> None:
     assert "<startRepeat/>" not in mscx
     # Recite-print: body onder ||O||, laatste recite-lettergreep eigen noot.
     assert "<headType>breve</headType>" in mscx
-    assert "<text>Gij waart</text>" in mscx
-    assert "<position>left</position>" in mscx
-    assert "<align>left,baseline</align>" in mscx
+    assert "<text>Gij</text>" in mscx
+    assert "<text>waart</text>" in mscx
+    assert "<position>left</position>" not in mscx
+    assert "<align>left,baseline</align>" not in mscx
     assert "<text>een</text>" in mscx
     assert "<Lyrics>" in mscx
     assert f"<lyricsOddFontFace>{render.LYRIC_FONT}</lyricsOddFontFace>" in mscx
@@ -161,18 +168,19 @@ def test_collapse_recite_for_print_elia_r1() -> None:
     assert events[0]["recite"] is True
     assert events[0]["ntype"] == "half"
     assert events[0]["dots"] == 0
-    assert events[0]["lyric"] == "Gij waart"
-    assert events[0].get("lyric_align") == "left,baseline"
-    assert events[0].get("lyric_ticks", 0) > 0
-    assert any(e.get("rest") for e in events[1:])
-    slot = next(e for e in events[1:] if not e.get("rest"))
+    assert events[0]["lyric"] == "Gij"
+    assert events[0].get("lyric_align") is None
+    assert events[0].get("lyric_ticks", 0) == 0
+    assert events[1].get("spacer") is True
+    assert events[1]["lyric"] == "waart"
+    slot = next(e for e in events[1:] if not e.get("rest") and not e.get("spacer"))
     assert slot["lyric"] == "een"
     assert slot["ntype"] == "quarter"
     assert slot["recite"] is False
 
 
-def test_collapse_recite_keeps_ni_whole_and_ter_quarter() -> None:
-    """``…pries-ter {Ni__}ko{\\laas_}`` → ter kwart, Ni hele noot, niet onder ||O||."""
+def test_collapse_recite_keeps_ni_and_ter_quarter() -> None:
+    """``…pries-ter {Ni_}ko{\\laas_}`` → ter kwart, Ni eigen noot, niet onder ||O||."""
     doc = _template()
     text = (
         Path("docs/specification-vsa-templates/library/tropaar-toon-4")
@@ -189,12 +197,12 @@ def test_collapse_recite_keeps_ni_whole_and_ter_quarter() -> None:
     lyrics = [
         (e.get("lyric"), e.get("recite"), e.get("ntype"))
         for e in events
-        if not e.get("rest")
+        if not e.get("rest") and not e.get("spacer")
     ]
     assert lyrics[0][0] == "Va"
     assert lyrics[0][1] is False  # scope {/Va} — eigen noot, geen breve
     assert ("ter", False, "quarter") in lyrics
-    assert ("Ni", False, "whole") in lyrics
+    assert ("Ni", False, "half") in lyrics
     assert ("ko", False, "quarter") in lyrics
 
 
@@ -248,7 +256,7 @@ def test_collapse_recite_for_print_two_syllables_stay_separate() -> None:
 
 
 def test_collapse_recite_scopes_stay_own_notes() -> None:
-    """``{/en} het … zacht{moe__}dig{\\heid_}`` — scopes eigen noten; zacht = slotkwart."""
+    """``{/en} het … zacht{moe_}dig{\\heid_}`` — scopes eigen noten; zacht = slotkwart."""
     doc = _template()
     text = (
         Path("docs/specification-vsa-templates/library/tropaar-toon-4")
@@ -264,13 +272,15 @@ def test_collapse_recite_scopes_stay_own_notes() -> None:
     lyrics = [
         (e.get("lyric"), e.get("recite"), e.get("ntype"))
         for e in events
-        if not e.get("rest")
+        if not e.get("rest") and not e.get("spacer")
     ]
     assert lyrics[0] == ("en", False, "quarter")
-    assert lyrics[1][1] is True  # breve
-    assert "het" in (lyrics[1][0] or "") and "zacht" not in (lyrics[1][0] or "")
+    assert lyrics[1] == ("het", True, "half")
+    spacer_lyrics = [e.get("lyric") for e in events if e.get("spacer")]
+    assert "voor" in spacer_lyrics
+    assert "zacht" not in spacer_lyrics
     assert ("zacht", False, "quarter") in lyrics
-    assert ("moe", False, "whole") in lyrics
+    assert ("moe", False, "half") in lyrics
     assert ("dig", False, "quarter") in lyrics
     assert ("heid", False, "half") in lyrics
 
@@ -288,9 +298,9 @@ def test_instance_recite_mscx_no_dots_has_hidden_spacers() -> None:
         chunk = m.group(1)
         assert "<dots>" not in chunk
         assert "<durationType>half</durationType>" in chunk
-    assert "<Rest><visible>0</visible>" in mscx
-    assert "<position>left</position>" in mscx
-    assert "<align>left,baseline</align>" in mscx
+    assert "<play>0</play>" in mscx
+    assert "<position>left</position>" not in mscx
+    assert "<align>left,baseline</align>" not in mscx
     assert "durationType>longa</durationType>" not in mscx
 
 
@@ -298,8 +308,10 @@ def test_elia_instance_hyphens_and_melisma_slurs() -> None:
     doc = _template()
     mapped = map_vsa_to_template(doc, _elia_text())
     mscx = render.render_instance_mscx(doc, mapped, title="Elia instance")
-    # Recite-collapse: „grond-slag der“ onder ||O||; „pro-fe-ten“ cadens.
-    assert "grond-slag der" in mscx or "grond slag der" in mscx
+    # Recite-collapse: eerste lettergreep op ||O||; rest op spacers; cadens eigen noten.
+    assert "<text>grond-</text>" in mscx or "<text>grond</text>" in mscx
+    assert "<text>slag</text>" in mscx or "<text>slag-</text>" in mscx
+    assert "<text>der</text>" in mscx
     assert "<text>pro-</text>" in mscx
     assert "<text>fe-</text>" in mscx
     assert "<text>ten</text>" in mscx
@@ -308,7 +320,7 @@ def test_elia_instance_hyphens_and_melisma_slurs() -> None:
     assert 'Spanner type="Slur"' in mscx
     assert "<ticks>" in mscx
     assert "<headType>breve</headType>" in mscx
-    assert "<align>left,baseline</align>" in mscx
+    assert "<align>left,baseline</align>" not in mscx
     assert "<text>En-</text>" in mscx
     assert "<text>gel</text>" in mscx
 
@@ -393,7 +405,13 @@ def test_elia_instance_musicxml_coria_nonempty() -> None:
         assert part, pid
         assert "<lyric" in part.group(1), pid
         assert "<text>Voor</text>" in part.group(1), pid
-    path_mxl = LIBRARY / "tropaar-toon-4" / "examples" / "elia.mxl"
+    path_mxl = (
+        LIBRARY
+        / "tropaar-toon-4"
+        / "examples"
+        / "corpus"
+        / "T4-06-profeet-elia.mxl"
+    )
     assert path_mxl.is_file() and path_mxl.stat().st_size > 0
 
 
@@ -467,7 +485,7 @@ def test_vsa_note_line_column_elia_en() -> None:
     text = _elia_text()
     stanzas = extract_stanza_notes(text)
     en = next(n for n in stanzas[0] if n.lyric == "En")
-    assert en.line == 10
+    assert en.line == 12
     assert en.column >= 1
     # Kolom wijst naar de `{` van `{En_}`.
     line = text.splitlines()[en.line - 1]
@@ -624,9 +642,146 @@ def test_elia_instance_s_from_vsa_atb_from_template() -> None:
 
 
 def test_elia_instance_mscz_written() -> None:
-    path = LIBRARY / "tropaar-toon-4" / "examples" / "elia.mscz"
+    path = (
+        LIBRARY
+        / "tropaar-toon-4"
+        / "examples"
+        / "corpus"
+        / "T4-06-profeet-elia.mscz"
+    )
     assert path.is_file(), "run: python scripts\\render_tropaar_toon4_corpus.py"
     with zipfile.ZipFile(path) as archive:
+        assert "score_style.mss" in archive.namelist()
         mscx = archive.read("score.mscx").decode("utf-8")
+        mss = archive.read("score_style.mss").decode("utf-8")
     assert "<Lyrics>" in mscx
-    assert "Profeet Elia" in mscx or "Elia" in mscx
+    assert "Profeet Elia" in mscx
+    assert "T4-06 —" not in mscx
+    assert "<maxPageFillSpread>0</maxPageFillSpread>" in mscx
+    assert "<maxSystemDistance>9.64</maxSystemDistance>" in mscx
+    assert "<maxSystemSpread>9.64</maxSystemSpread>" in mscx
+    assert "<minSystemDistance>9.64</minSystemDistance>" in mscx
+    assert "<staffDistance>5</staffDistance>" in mscx or "<staffDistance>5.0</staffDistance>" in mscx
+    assert "<frameSystemDistance>4</frameSystemDistance>" in mscx or "<frameSystemDistance>4.0</frameSystemDistance>" in mscx
+    assert f"<height>{render.TITLE_VBOX_HEIGHT_SP:g}</height>" in mscx
+    assert "<maxSystemDistance>9.64</maxSystemDistance>" in mss
+    assert "<enableVerticalSpread>0</enableVerticalSpread>" in mss
+    assert "<enableIndentationOnFirstSystem>0</enableIndentationOnFirstSystem>" in mss
+    assert "<frameSystemDistance>4</frameSystemDistance>" in mss or "<frameSystemDistance>4.0</frameSystemDistance>" in mss
+
+
+def _satb(s: str, a: str = "do", t: str = "sol-1", b: str = "do-1") -> dict:
+    return {"S": s, "A": a, "T": t, "B": b}
+
+
+def test_of_chooses_fa_cadence_path() -> None:
+    """VSA mi–fa–mi kiest het fa-pad; het re-pad wordt niet stil gebruikt."""
+    from vsa.template_instance import CODE_CADENCE_PATH
+
+    phrase = {
+        "id": "laatste",
+        "events": [
+            {"role": "recite", "pitches": _satb("mi")},
+            {
+                "of": [
+                    {
+                        "id": "re-close",
+                        "events": [
+                            {"role": "cadence", "duration": "_", "pitches": _satb("re", "ti-1", "sol-1", "sol-2")},
+                            {"role": "cadence", "duration": "__", "pitches": _satb("mi")},
+                        ],
+                    },
+                    {
+                        "id": "fa-close",
+                        "events": [
+                            {"role": "cadence", "duration": "_", "pitches": _satb("fa", "re", "la-1", "re-1")},
+                            {"role": "cadence", "duration": "__", "pitches": _satb("mi")},
+                        ],
+                    },
+                ]
+            },
+        ],
+    }
+    text = "---\ndo: F4\nmode: major\n---\n\n// x {/a_}{\\b_}. [//:]\n"
+    stanzas = extract_stanza_notes(text)
+    mapped = map_stanza(stanzas[0], phrase, do="F4", mode="major")
+    degrees = [n.template_event["pitches"]["S"] for n in mapped if n.template_event.get("role") == "cadence"]
+    assert degrees == ["fa", "mi"]
+
+    bad = "---\ndo: F4\nmode: major\n---\n\n// x {/a_}{/z_}. [//:]\n"
+    stanzas_bad = extract_stanza_notes(bad)
+    with pytest.raises(TemplateInstanceError) as caught:
+        map_stanza(stanzas_bad[0], phrase, do="F4", mode="major", source="x.vsa")
+    assert caught.value.code in {CODE_CADENCE_PATH, "VSA-TEMPLATE-PITCH-MISMATCH"}
+    assert "cadenspad" in caught.value.hint_nl
+
+
+def test_h8_llgr_attaches_remaining_to_last_syllable() -> None:
+    phrase = {
+        "id": "slot",
+        "events": [
+            {"role": "recite", "pitches": _satb("mi")},
+            {"role": "cadence", "duration": "_", "pitches": _satb("fa", "re", "la-1", "re-1")},
+            {
+                "role": "cadence",
+                "duration": "_",
+                "anchor": "l.lgr.",
+                "pitches": _satb("re", "ti-1", "sol-1", "sol-2"),
+            },
+            {"role": "cadence", "duration": "__", "pitches": _satb("mi")},
+        ],
+    }
+    text = "---\ndo: F4\nmode: major\n---\n\n// x {/a_}. [//:]\n"
+    mapped = map_stanza(extract_stanza_notes(text)[0], phrase, do="F4", mode="major")
+    degrees = [n.template_event["pitches"]["S"] for n in mapped]
+    assert degrees[-3:] == ["fa", "re", "mi"]
+    assert mapped[-2].lyric == ""
+    assert mapped[-1].lyric == ""
+    assert mapped[-2].template_event.get("anchor") == "l.lgr."
+
+
+def test_normalize_anchor_strips_spaces() -> None:
+    from vsa.template_instance import normalize_anchor
+
+    assert normalize_anchor("e. st.") == "e.st."
+    assert normalize_anchor("l.st") == "l.st."
+    assert normalize_anchor("l. lgr.") == "l.lgr."
+
+
+def test_mode_mismatch_between_vsa_and_template_raises() -> None:
+    doc = _template()
+    text = "---\ndo: F4\nmode: minor\n---\n\nGij waart een {En_}gel.\n"
+    with pytest.raises(TemplateInstanceError) as caught:
+        map_vsa_to_template(doc, text, source="elia.vsa")
+    assert caught.value.code == "VSA-TEMPLATE-MODE-MISMATCH"
+
+
+def test_sequence_form_rejects_wrong_stanza_count() -> None:
+    path = LIBRARY / "tropaar-toon-3" / "template.yaml"
+    doc = yaml.safe_load(path.read_text(encoding="utf-8"))
+    text = "---\ndo: G4\nmode: major\n---\n\n// aa {/b_}. [//:]\n"
+    with pytest.raises(TemplateInstanceError) as caught:
+        map_vsa_to_template(doc, text, source="seq.vsa")
+    assert caught.value.code == "VSA-TEMPLATE-TEXT-MAPPING"
+
+
+def test_tropaar_toon4_tenor_opening_is_c4() -> None:
+    """sol-1 t.o.v. do:F4 = C4 (niet C3)."""
+    from vsa.template_instance import degree_pitch
+
+    doc = _template()
+    opening = doc["phrases"][0]["events"][0]["pitches"]["T"]
+    assert opening == "sol-1"
+    pitch = degree_pitch(opening, doc["do"], doc["mode"])
+    assert (pitch.step, pitch.octave, int(pitch.alter)) == ("C", 4, 0)
+
+
+def test_open_skipped_when_vsa_starts_unscoped() -> None:
+    """H1: open blijft in YAML; instance krijgt geen dubbele noot."""
+    phrase = next(p for p in _template()["phrases"] if p["id"] == "1")
+    assert phrase["events"][0]["role"] == "open"
+    assert phrase["events"][1]["role"] == "recite"
+    mapped = map_vsa_to_template(_template(), _elia_text())
+    roles = [n.template_event["role"] for n in mapped[0][1]]
+    assert roles[0] == "recite"
+    assert "open" not in roles

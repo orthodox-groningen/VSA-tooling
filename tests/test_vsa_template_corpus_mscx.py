@@ -15,12 +15,11 @@ sys.path.insert(0, str(ROOT / "scripts"))
 
 import render_vsa_template_musicxml as render  # noqa: E402
 
-from vsa.corpus_vsa import CORPUS_ENTRIES, load_corpus  # noqa: E402
+from vsa.corpus_vsa import CORPUS_ENTRIES, load_corpus_from_vsa_dir  # noqa: E402
 from vsa.template_mapping import assign_stanzas_to_phrases, select_mapping_plan  # noqa: E402
 
 LIBRARY = ROOT / "docs" / "specification-vsa-templates" / "library"
 TEMPLATE_YAML = LIBRARY / "tropaar-toon-4" / "template.yaml"
-ONDERZOEK = ROOT / "docs" / "plans" / "onderzoeks-troparen-en-kondaken.md"
 CORPUS_DIR = TEMPLATE_YAML.parent / "examples" / "corpus"
 
 EXPECTED_STANZAS: dict[str, int] = {
@@ -44,13 +43,13 @@ ELIA_PHRASES = ["1", "2", "1", "2", "1", "2", "laatste"]
 
 @pytest.mark.parametrize("piece_id,expected", EXPECTED_STANZAS.items())
 def test_corpus_stanza_counts(piece_id: str, expected: int) -> None:
-    piece = next(p for p in load_corpus(ONDERZOEK) if p.piece_id == piece_id)
+    piece = next(p for p in load_corpus_from_vsa_dir(CORPUS_DIR) if p.piece_id == piece_id)
     assert piece.stanza_count == expected
 
 
 def test_corpus_has_thirteen_pieces() -> None:
     assert len(CORPUS_ENTRIES) == 13
-    assert len(load_corpus(ONDERZOEK)) == 13
+    assert len(list(CORPUS_DIR.glob("T4-*.vsa"))) == 13
 
 
 def test_elia_phrase_assignment() -> None:
@@ -74,12 +73,25 @@ def test_expanded_elia_has_seven_measures_no_repeats() -> None:
     mscx = render.render_expanded_mscx(
         doc,
         ELIA_PHRASES,
-        title="T4-06 — Profeet Elia",
+        title="Profeet Elia",
     )
     assert _measure_count_staff1(mscx) == 7
     assert "<startRepeat/>" not in mscx
     assert "<endRepeat>" not in mscx
     assert "Profeet Elia" in mscx
+
+
+def test_instance_title_uses_frontmatter_not_corpus_id() -> None:
+    """MSCZ/PDF-titel = frontmatter title; geen T4-XX-prefix."""
+    import render_tropaar_toon4_corpus as corpus  # noqa: E402
+
+    vsa = CORPUS_DIR / "T4-06-profeet-elia.vsa"
+    text = vsa.read_text(encoding="utf-8")
+    assert corpus.instance_title(vsa, text) == "Profeet Elia"
+    bare = "Gij waart een {En_}gel.\n"
+    assert corpus.instance_title(Path("T4-06-profeet-elia.vsa"), bare) == (
+        "T4-06-profeet-elia"
+    )
 
 
 def test_andreas_five_phrase_assignment() -> None:
@@ -125,6 +137,18 @@ def test_corpus_instances_vsa_mscz_mxl() -> None:
     assert not leftovers, leftovers
 
 
-def test_template_mscz_exists() -> None:
-    path = TEMPLATE_YAML.parent / "template.mscz"
-    assert path.is_file()
+def test_template_mscz_and_mxl_exist() -> None:
+    base = TEMPLATE_YAML.parent
+    assert (base / "template.mscz").is_file()
+    assert (base / "template.mxl").is_file()
+    assert not (base / "template-from-yaml.mscx").exists()
+    assert not (base / "template-from-yaml.mscz").exists()
+    with zipfile.ZipFile(base / "template.mscz") as archive:
+        mscx = archive.read("score.mscx").decode("utf-8")
+    assert "<enableVerticalSpread>0</enableVerticalSpread>" in mscx
+    assert "<maxPageFillSpread>0</maxPageFillSpread>" in mscx
+    assert "<minSystemDistance>9.64</minSystemDistance>" in mscx
+    assert "<maxSystemDistance>9.64</maxSystemDistance>" in mscx
+    assert "<staffDistance>5</staffDistance>" in mscx or "<staffDistance>5.0</staffDistance>" in mscx
+    assert "<frameSystemDistance>4</frameSystemDistance>" in mscx or "<frameSystemDistance>4.0</frameSystemDistance>" in mscx
+    assert "<enableIndentationOnFirstSystem>0</enableIndentationOnFirstSystem>" in mscx

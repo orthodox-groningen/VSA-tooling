@@ -3,8 +3,9 @@
 ## Library (geldige formules)
 
 Canonieke werkmappen: [`library/`](library/README.md).
-Per formule: `template.yaml`, `template.musicxml` (SA/TB, zonder maatsoort,
-optionals tussen haakjes), optioneel `examples/` en `notes/`.
+Per formule: `template.yaml`, plus afgeleide `template.mscz` (MuseScore) en
+`template.mxl` (MusicXML) waar de pijplijn dat al doet; optioneel
+`examples/corpus/` en `notes/`.
 
 | Map                                                    | Vorm     | Doel                                |
 | ------------------------------------------------------ | -------- | ----------------------------------- |
@@ -38,6 +39,6 @@ python scripts\render_vsa_template_musicxml.py --all
 ## Checklist “mag in library/”
 
 - [ ] Schema + documentregels groen
-- [ ] `template.musicxml` gegenereerd (SA/TB, `senza-misura`)
+- [ ] `template.mxl` gegenereerd (SA/TB, `senza-misura`)
 - [ ] `source` of README verklaart herkomst
 - [ ] Onzekere pitches: `pitches_status: provisional`

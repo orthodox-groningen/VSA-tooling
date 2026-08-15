@@ -52,6 +52,13 @@ def test_mscx_has_style_block() -> None:
     mscx = _tropaar_mscx()
     assert "<Style>" in mscx
     assert "<enableVerticalSpread>0</enableVerticalSpread>" in mscx
+    assert "<maxPageFillSpread>0</maxPageFillSpread>" in mscx
+    assert "<maxSystemDistance>9.64</maxSystemDistance>" in mscx
+    assert "<maxSystemSpread>9.64</maxSystemSpread>" in mscx
+    assert "<minSystemDistance>9.64</minSystemDistance>" in mscx
+    assert "<staffDistance>5</staffDistance>" in mscx or "<staffDistance>5.0</staffDistance>" in mscx
+    assert "<frameSystemDistance>4</frameSystemDistance>" in mscx or "<frameSystemDistance>4.0</frameSystemDistance>" in mscx
+    assert "<enableIndentationOnFirstSystem>0</enableIndentationOnFirstSystem>" in mscx
     assert "<lastSystemFillLimit>1</lastSystemFillLimit>" in mscx
     assert f"<staffFontFace>{render.STAFF_FONT}</staffFontFace>" in mscx
 

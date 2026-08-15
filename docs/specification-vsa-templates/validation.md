@@ -44,10 +44,16 @@ Draft-v0 DOET NOG GEEN:
 | error    | Schema- of documentregelfout                     |
 | warning  | bijv. `pitches_status: provisional` (toekomstig) |
 
-## Toekomstige CLI
+## CLI
 
-```text
+```cmd
 vsa template validate pad\naar\template.yaml
+vsa template validate docs\specification-vsa-templates\library
 ```
 
-Nog niet geïmplementeerd; de pytest-suite dekt de structurele + documentregels.
+Exitcode `0` = alle gevonden `template.yaml` geldig; `1` = minstens één fout
+(`bestand: ERROR: CODE: …`, zelfde geest als `vsa validate`).
+
+Toets: schema-enums (`mode` ∈ {`major`, `minor`}), documentregels, `of`-groepen,
+anker-normalisatie, `text_mapping` / `mapping_plans`. pytest dekt dezelfde
+regels (`tests/test_vsa_template_schema.py`).

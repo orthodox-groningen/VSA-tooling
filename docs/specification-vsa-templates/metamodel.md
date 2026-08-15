@@ -18,8 +18,11 @@ Event
   ├── role: open | recite | cadence | link
   ├── duration: VSA-ELM (~ | - | _ | _. | __ | . | ..)
   ├── optional: bool
-  ├── anchor: e.st. | l.st. | vl.st. | null
+  ├── anchor: e.st. | l.st. | vl.st. | l.lgr. | null
   └── pitches: { S, A, T, B }   # laddergraden t.o.v. do
+
+  of:
+    └── [ { id?, events: [ Event, … ] }, … ]   # ≥2 cadenspaden; VSA kiest via hoogte
 ```
 
 ## Concepten

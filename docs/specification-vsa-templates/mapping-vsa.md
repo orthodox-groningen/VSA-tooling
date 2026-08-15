@@ -164,7 +164,7 @@ met meerdere [muzikale posities](@) (`&` in de modifiers).
 
 | #   | Hypothese                                                                                                                                                                                                                                                                            |
 | --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| H1  | Ongemarkeerde VSA-syllaben vóór cadens-scopes vallen op recite.                                                                                                                                                                                                                      |
+| H1  | Ongemarkeerde VSA-syllaben vóór cadens-scopes vallen op recite. `open` (zelfde graad, eigen event op het formuleblad) wordt in de instance **overgeslagen** als de VSA meteen reciteert — geen dubbele noot. YAML blijft twee events.                                                |
 | H2  | Cadens-scopes corresponderen met `cadence`-events, vaak bij `l.st.` of erna.                                                                                                                                                                                                         |
 | H3  | `{/…}` aan het begin van een regel kan `e.st.` van frase `2` (of vergelijkbaar) zijn.                                                                                                                                                                                                |
 | H4  | `optional: true` events: mee als VSA-S dat slot gebruikt, anders weg — voor **alle** stemmen.                                                                                                                                                                                        |
@@ -234,6 +234,49 @@ Mappingfouten (H7/H9 e.d.) moeten **bruikbaar** zijn, in dezelfde geest als
 Minimaal in elke melding: bronpad, **regel/kolom** in de VSA-bron (via
 `VsaNote.line`/`column`), frase-id, betrokken lyric/syllabe, verwachte vs
 gevonden laddergraden. Compact: `bestand:regel:kolom: CODE`.
+
+## Parallelle cadenspaden (`of`)
+
+Eén [template-frase](template-frase@) mag 2+ slot-/cadensreeksen hebben, in
+YAML als `of:` met minstens twee `events:`-lijsten. De VSA kiest **impliciet**
+welk pad klinkt: de mapper probeert de paden in volgorde en neemt het eerste
+waarvan de hoogten (EHM) kloppen. Geen pad → `TemplateInstanceError`
+(`VSA-TEMPLATE-CADENCE-PATH` / hoogte-mismatch).
+
+Dit zijn **formule-alternatieven in één template**, geen aparte
+[uitvoeringsvorm](@bron)-en (die horen bij zangstuk → variant →
+uitvoeringsvorm). Tropaar-toon-4 `laatste` is nu alleen mi–re–mi; een fa-pad
+kan later als tweede `of`-tak zonder extra YAML-bestand.
+
+Formuleblad (`template.mscz`): toont **pad 0** (eerste tak).
+
+## `mode` / `do` (template vs VSA)
+
+Template-`mode` is `major` of `minor` — dezelfde waarden als de VSA-parser.
+Bij `map_vsa_to_template` moeten VSA-frontmatter `mode` en `do` (indien
+aanwezig) **exact** gelijk zijn aan de template; anders
+`VSA-TEMPLATE-MODE-MISMATCH` / `VSA-TEMPLATE-DO-MISMATCH`. Geen stille
+afwijking.
+
+## Sequence-form / `text_mapping`-lengte
+
+`sequence: ["1", "2", "3"]` eist precies drie VSA-regels. Cycle+final is
+variabel (herhaling tot de slotfrase past). Past het aantal regels niet bij
+het plan → `VSA-TEMPLATE-TEXT-MAPPING` (zelfde geest als `vsa validate`).
+
+## Tenor-octaaf (tropaar toon 4)
+
+Openingsakkoord tenor `sol-1` t.o.v. `do: F4` = **C4** (niet C3). Bass
+`do-1` = F3. Dat is de gekozen spelling in `template.yaml`;
+`pitches_status` blijft `provisional` tot een volledige PDF-audit van andere
+tonen.
+
+## Inline VSA in proza
+
+Toon-aanduiding (`T.4`, `T.N`) hoort **niet** in de zingbare VSA-regel (geen
+lyric-syllabe). Klein fragment in markdown/proza (alleen hoogtemarkering,
+eventueel `Amen`) is een aparte presentatielaag — niet de
+instance-lyric-pipeline. Corpus-`.vsa` heeft geen `T.N` vóór EHM’s.
 
 ## Corpus en detail
 

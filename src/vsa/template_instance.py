@@ -8,9 +8,14 @@ from pathlib import Path
 from typing import Any
 
 from .music import Duration, Pitch
-from .pitch_resolver import PitchResolver, degree_to_pitch
-from .template_mapping import assign_stanzas_to_phrases, select_mapping_plan
+from .pitch_resolver import ALLOWED_MODES, PitchResolver, degree_to_pitch
+from .template_mapping import (
+    TemplateMappingError,
+    assign_stanzas_to_phrases,
+    select_mapping_plan,
+)
 from .vsa_stanzas import VsaNote, extract_stanza_notes
+from .yaml_frontmatter import frontmatter_to_block_metadata, parse_vsa_frontmatter
 
 _DEGREE_RE = re.compile(r"^(#|b)?(do|re|mi|fa|sol|la|ti)([+-][1-3])?$")
 _DEGREE_ORDER = ("do", "re", "mi", "fa", "sol", "la", "ti")
@@ -19,6 +24,12 @@ _STEP_SEMI = {"C": 0, "D": 2, "E": 4, "F": 5, "G": 7, "A": 9, "B": 11}
 CODE_PITCH_MISMATCH = "VSA-TEMPLATE-PITCH-MISMATCH"
 CODE_REQUIRED_SKIPPED = "VSA-TEMPLATE-REQUIRED-SLOT-SKIPPED"
 CODE_REQUIRED_UNUSED = "VSA-TEMPLATE-REQUIRED-SLOT-UNUSED"
+CODE_MODE_MISMATCH = "VSA-TEMPLATE-MODE-MISMATCH"
+CODE_DO_MISMATCH = "VSA-TEMPLATE-DO-MISMATCH"
+CODE_TEXT_MAPPING = "VSA-TEMPLATE-TEXT-MAPPING"
+CODE_CADENCE_PATH = "VSA-TEMPLATE-CADENCE-PATH"
+
+CANON_ANCHORS = ("e.st.", "l.st.", "vl.st.", "l.lgr.")
 
 
 class TemplateInstanceError(Exception):
@@ -131,6 +142,87 @@ def split_phrase_events(
     return events[:recite_at], events[recite_at], events[recite_at + 1 :]
 
 
+def normalize_anchor(value: str) -> str:
+    """Canoniek anker: spaties weg, sluitende punt. ``e. st.`` → ``e.st.``."""
+    compact = "".join(str(value).split())
+    if compact and not compact.endswith("."):
+        compact += "."
+    return compact
+
+
+def _norm_event(event: dict[str, Any]) -> dict[str, Any]:
+    if "anchor" not in event:
+        return event
+    out = dict(event)
+    out["anchor"] = normalize_anchor(str(event["anchor"]))
+    return out
+
+
+def flatten_phrase_events(
+    events: list[dict[str, Any]] | None,
+    *,
+    of_index: int = 0,
+) -> list[dict[str, Any]]:
+    """Lineaire eventlijst; bij ``of`` het gekozen pad (default: eerste).
+
+    Formuleblad toont pad 0. Instance-mapping kiest via
+    ``expand_of_candidates`` het pad dat bij de VSA-hoogten past.
+    """
+    out: list[dict[str, Any]] = []
+    for item in events or []:
+        if isinstance(item, dict) and "of" in item:
+            branches = item.get("of") or []
+            if not branches:
+                continue
+            chosen = branches[of_index] if of_index < len(branches) else branches[0]
+            nested = chosen.get("events", []) if isinstance(chosen, dict) else chosen
+            out.extend(flatten_phrase_events(list(nested), of_index=0))
+        elif isinstance(item, dict):
+            out.append(_norm_event(item))
+    return out
+
+
+def expand_of_candidates(events: list[dict[str, Any]] | None) -> list[list[dict[str, Any]]]:
+    """Alle lineaire realisaties van een frase (cartesisch product van ``of``)."""
+    from itertools import product
+
+    segments: list[list[list[dict[str, Any]]]] = []
+    current: list[dict[str, Any]] = []
+
+    def flush_flat() -> None:
+        nonlocal current
+        if current:
+            segments.append([current])
+            current = []
+
+    for item in events or []:
+        if isinstance(item, dict) and "of" in item:
+            flush_flat()
+            branches: list[list[dict[str, Any]]] = []
+            for raw in item.get("of") or []:
+                nested = raw.get("events", []) if isinstance(raw, dict) else raw
+                branches.append(flatten_phrase_events(list(nested)))
+            if len(branches) < 2:
+                raise TemplateInstanceError(
+                    "of-groep heeft minstens twee cadenspaden nodig",
+                    code="VSA-TEMPLATE-OF",
+                    hint_nl="Zet minstens twee `events:`-lijsten onder `of`.",
+                )
+            segments.append(branches)
+        elif isinstance(item, dict):
+            current.append(_norm_event(item))
+    flush_flat()
+    if not segments:
+        return [[]]
+    out: list[list[dict[str, Any]]] = []
+    for combo in product(*segments):
+        merged: list[dict[str, Any]] = []
+        for part in combo:
+            merged.extend(part)
+        out.append(merged)
+    return out
+
+
 def map_stanza(
     notes: list[VsaNote],
     phrase: dict[str, Any],
@@ -139,8 +231,49 @@ def map_stanza(
     mode: str,
     source: str = "",
 ) -> list[MappedNote]:
-    """Koppel één VSA-regel aan de events van één template-frase (H1, H4–H8)."""
+    """Koppel één VSA-regel aan de events van één template-frase (H1, H4–H8).
+
+    Bij ``of``: eerste pad dat de VSA-hoogten accepteert wint; geen pad →
+    hoogte-mismatch (geen stille keuze).
+    """
     phrase_id = str(phrase.get("id", "?"))
+    raw_events = list(phrase.get("events") or [])
+    candidates = expand_of_candidates(raw_events)
+    if len(candidates) == 1:
+        return _map_stanza_linear(
+            notes, candidates[0], phrase_id=phrase_id, do=do, mode=mode, source=source
+        )
+    last_error: TemplateInstanceError | None = None
+    retry_codes = {CODE_PITCH_MISMATCH, CODE_REQUIRED_SKIPPED, CODE_REQUIRED_UNUSED}
+    for cand in candidates:
+        try:
+            return _map_stanza_linear(
+                notes, cand, phrase_id=phrase_id, do=do, mode=mode, source=source
+            )
+        except TemplateInstanceError as exc:
+            last_error = exc
+            if exc.code not in retry_codes:
+                raise
+    assert last_error is not None
+    last_error.hint_nl = (
+        (last_error.hint_nl + " ") if last_error.hint_nl else ""
+    ) + (
+        "Deze frase heeft meerdere cadenspaden (`of`); geen pad past bij de "
+        "VSA-hoogten. Pas de VSA aan of voeg het ontbrekende pad toe in de template."
+    )
+    last_error.code = CODE_CADENCE_PATH if last_error.code == CODE_PITCH_MISMATCH else last_error.code
+    raise last_error
+
+
+def _map_stanza_linear(
+    notes: list[VsaNote],
+    events: list[dict[str, Any]],
+    *,
+    phrase_id: str,
+    do: str,
+    mode: str,
+    source: str = "",
+) -> list[MappedNote]:
     if not notes:
         raise TemplateInstanceError(
             f"lege VSA-regel voor frase {phrase_id!r}",
@@ -149,7 +282,6 @@ def map_stanza(
             source=source,
             phrase_id=phrase_id,
         )
-    events = list(phrase.get("events") or [])
     if not events:
         raise TemplateInstanceError(
             f"frase {phrase_id!r} heeft geen events",
@@ -170,7 +302,7 @@ def map_stanza(
             out.append(_assign(notes[index], recite, show_anchor=False))
             index += 1
         if not any(n.template_event is recite for n in out) and index < len(notes):
-            # Geen ongemarkeerde recite-syllaben: recite-slot overslaan.
+            # Geen ongemarkeerde recite-syllaben: recite-slot overslaan (H1).
             pass
 
     last_degree: str | None = None
@@ -191,6 +323,14 @@ def map_stanza(
     return out
 
 
+def _vsa_frontmatter_do_mode(vsa_text: str) -> tuple[str | None, str | None]:
+    frontmatter, _ = parse_vsa_frontmatter(vsa_text)
+    flat = frontmatter_to_block_metadata(frontmatter)
+    do = flat.get("do")
+    mode = flat.get("mode")
+    return do, mode
+
+
 def map_vsa_to_template(
     template: dict[str, Any],
     vsa_text: str,
@@ -200,9 +340,40 @@ def map_vsa_to_template(
     """Volledige instance-mapping: tekstregels → (frase-id, mapped notes)."""
     do = str(template["do"])
     mode = str(template.get("mode", "major"))
+    vsa_do, vsa_mode = _vsa_frontmatter_do_mode(vsa_text)
+    if vsa_mode and vsa_mode != mode:
+        raise TemplateInstanceError(
+            f"mode in VSA ({vsa_mode!r}) wijkt af van template ({mode!r})",
+            code=CODE_MODE_MISMATCH,
+            hint_nl=(
+                "Zet `mode` in de VSA-frontmatter gelijk aan template.yaml "
+                f"(toegestaan: {', '.join(sorted(ALLOWED_MODES))})."
+            ),
+            source=source,
+        )
+    if vsa_do and vsa_do != do:
+        raise TemplateInstanceError(
+            f"do in VSA ({vsa_do!r}) wijkt af van template ({do!r})",
+            code=CODE_DO_MISMATCH,
+            hint_nl="Gebruik dezelfde do-context als de template (bijv. F4).",
+            source=source,
+        )
     stanzas = extract_stanza_notes(vsa_text, metadata={"do": do, "mode": mode})
-    plan = select_mapping_plan(template, len(stanzas))
-    phrase_ids = assign_stanzas_to_phrases(plan, len(stanzas))
+    try:
+        plan = select_mapping_plan(template, len(stanzas))
+        phrase_ids = assign_stanzas_to_phrases(
+            plan, len(stanzas), phrase_id_set={str(p["id"]) for p in template["phrases"]}
+        )
+    except TemplateMappingError as exc:
+        raise TemplateInstanceError(
+            str(exc),
+            code=CODE_TEXT_MAPPING,
+            hint_nl=(
+                "Het aantal VSA-regels (`*`-frasen) moet passen bij sequence / "
+                "text_mapping / mapping_plans van de template."
+            ),
+            source=source,
+        ) from exc
     by_id = {str(p["id"]): p for p in template["phrases"]}
     mapped: list[tuple[str, list[MappedNote]]] = []
     for pid, notes in zip(phrase_ids, stanzas, strict=True):

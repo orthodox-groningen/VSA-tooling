@@ -10,9 +10,10 @@ library/
   README.md                 ← dit bestand (geldt voor alle formules)
   tropaar-toon-4/
     template.yaml           ← canonieke formule
-    template.musicxml       ← formule zonder lyrics (S/A + T/B, optionals)
-    README.md               ← kort: status, bron, open vragen
-    examples/               ← VSA-voorbeelden + afgeleide MusicXML
+    template.mscz           ← formuleblad MuseScore (één bestand, geen .mscx)
+    template.mxl            ← formule MusicXML (delen)
+    README.md               ← kort: status, bron, pijplijn
+    examples/corpus/        ← .vsa + afgeleide .mscz/.mxl
     notes/                  ← corpus, mappinglessen, besluiten
   …
 ```
@@ -24,12 +25,34 @@ Invalid schema-cases blijven in
 
 | Onderwerp       | Afspraak                                                                                  |
 | --------------- | ----------------------------------------------------------------------------------------- |
-| Architectuur    | **VSA→template-instance**: S uit VSA, A/T/B uit template (synchroon)                                      |
+| Architectuur    | **VSA→template-instance**: S uit VSA, A/T/B uit template (synchroon)                      |
 | MusicXML-balken | 2 partijen: P1 `S/A` (G), P2 `T/B` (F); per partij voice1=S of T, voice2=A of B; `backup` |
 | Maatsoort       | bij voorkeur `senza-misura`; 4/4 tolereren in MuseScore-exports                           |
 | Optionele noten | YAML `optional: true` ↔ MusicXML notehead parentheses                                     |
 | Pitches         | PDF/PNG = featurebron; menselijke MuseScore-edit → YAML                                   |
 | Renderer        | `python scripts/render_vsa_template_musicxml.py --all` (hulp, niet bron)                  |
+| Validatie       | `vsa template validate <pad>`                                                             |
+
+## Formuleblad vs instance
+
+| Artefact                    | Rol                 | In git?       | Regenereren                                     |
+| --------------------------- | ------------------- | ------------- | ----------------------------------------------- |
+| `template.yaml`             | formule-bron        | ja            | handmatig                                       |
+| `template.mscz`             | formule MuseScore   | ja (afgeleid) | `render_tropaar_toon4_corpus.py --template`     |
+| `template.mxl`              | formule MusicXML    | ja (afgeleid) | idem / `render_vsa_template_musicxml.py --all`  |
+| `template.pdf`              | formule print       | nee           | `--template --pdf`                              |
+| corpus `.vsa`               | zangstuk-bron       | ja            | curated                                         |
+| corpus `.mscz` / `.mxl`     | instance            | ja (afgeleid) | `render_tropaar_toon4_corpus.py`                    |
+| corpus `*.pdf`              | print               | nee           | `--pdf` / `--pdf-only`                          |
+
+Formuleblad: ankers, frase-ids, cycle-frames, `||O||` zonder VSA-lyrics.
+Instance: VSA-lyrics, recite-collapse, geen formulelabels; titel =
+frontmatter-`title` (anders bestandsstem). Coria-MXL = instance zonder
+collapse. Details: [rendering-pitfalls.md](../rendering-pitfalls.md).
+
+**Geen** `template-from-yaml.mscx`/`.mscz` meer (één formule-MSCZ volstaat).
+MuseScore-rommel (`.mscbackup/`, `Thumbnails/`, losse `META-INF/`, …) niet
+committen.
 
 ## MuseScore-authoring (conventies)
 
@@ -47,31 +70,26 @@ Deze symbolen zijn **onze** semantiek; MuseScore zelf kent geen “recite”.
 YAML-ankers zijn **zonder** spaties (`l.st.`); op het blad **mét** spaties
 (`l. st.`). De pijl is hulpgrafiek, geen tweede [formulelabel](formulelabel@).
 
-### Twee doelen van het `.mscx`
+### Formuleblad (`.mscz`)
 
-Het gegenereerde `template-from-yaml.mscx` (en `.mscz`) dient voor twee dingen:
+Het gegenereerde `template.mscz` dient voor twee dingen:
 
-1. **Templatebron** — YAML en MuseScore in de pas houden terwijl de formule
-   op orde komt. MusicXML/MXL en Coria-playback zijn daarvoor niet nodig.
-2. **Koorprintje** — dezelfde partituur als printbare bron voor het koor.
+1. **Controle** — YAML en MuseScore in de pas houden terwijl de formule
+   op orde komt.
+2. **Koorprintje** — dezelfde partituur als printbare bron (PDF lokaal via
+   `--template --pdf`).
 
 Die tweede rol wint bij layoutkeuzes. Extra G-sleutels moeten weg. Extra
-witruimte van verborgen rusten is ongewenst: die rusten nemen ruimte in op
-het blad **én** klinken mee bij afspelen.
+witruimte van verborgen rusten is ongewenst.
 
 **Geen measure-padding.** De maatlengte is de som van de echte nootduren.
-Editing-gemak (slack om noten tussendoor te schuiven) verliest van
-printkwaliteit. Extra rest-slack is geen prijs die we betalen.
 
-PDF: exporteer in MuseScore vanuit `template-from-yaml.mscx` of `.mscz`. De
-renderer schrijft geen PDF.
-
-YAML → MuseScore (alleen tropaar toon 4 tot nu toe):
+YAML → MuseScore + MXL (tropaar toon 4):
 
 ```cmd
 cd /d C:\Git\orthodox-groningen\VSA-tooling
-python scripts\render_vsa_template_musicxml.py docs\specification-vsa-templates\library\tropaar-toon-4\template.yaml docs\specification-vsa-templates\library\tropaar-toon-4\template-from-yaml.mscx
-python scripts\render_vsa_template_musicxml.py docs\specification-vsa-templates\library\tropaar-toon-4\template.yaml docs\specification-vsa-templates\library\tropaar-toon-4\template-from-yaml.mscz
+python scripts\render_tropaar_toon4_corpus.py --template
+python scripts\render_tropaar_toon4_corpus.py --template --pdf
 ```
 
 Overschrijf nooit de gebruikersoriginelen
@@ -116,19 +134,19 @@ recite zijn altijd aparte events).
 
 ### Cycle-regel op het blad
 
-Op de PDF staat vaak `||: 1, 2 :|| laatste`. Open
-**`template-from-yaml.mscx`** (of `.mscz`): daar staat de regel in een
-**HBox** na de laatste maat (met lege spacer-HBox ervoor), DejaVu Sans
-Condensed 14pt — of in een **VBox** als er te weinig ruimte is. MusicXML/MXL
-kan MuseScore-Style/HBox/VBox **niet** round-trippen. YAML-`cycle`/`final`
-blijft leidend.
+Op de PDF staat vaak `||: 1, 2 :|| laatste`. Open **`template.mscz`**: daar
+staat de regel in een **HBox** na de laatste maat (met lege spacer-HBox
+ervoor), DejaVu Sans Condensed 14pt — of in een **VBox** als er te weinig
+ruimte is. MusicXML/MXL kan MuseScore-Style/HBox/VBox **niet** round-trippen.
+YAML-`cycle`/`final` blijft leidend.
 
 ### Laatste systeem niet uitrekken
 
-In het **`.mscx`** staan de MuseScore-stijlen:
-`enableVerticalSpread=0` (geen verticale uitvulling van balken) en
-`lastSystemFillLimit=1` (100% — laatste systeem rekt niet). MusicXML kan die
-stijl niet dragen. De `.mxl` zet wel `new-system` op de laatste frase.
+In het **`.mscz`** staan de MuseScore-stijlen:
+`enableVerticalSpread=0`, `maxPageFillSpread=0`, en lage gelijke
+`minSystemDistance`/`maxSystemDistance` (anders vult MuseScore tot het
+maximum, ook met vertical spread uit). `lastSystemFillLimit=1` op het formuleblad (100% —
+laatste systeem rekt niet horizontaal). MusicXML kan die stijl niet dragen.
 
 ### Reciteertoon (||O||)
 

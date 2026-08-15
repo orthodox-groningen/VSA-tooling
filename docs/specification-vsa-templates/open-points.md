@@ -1,7 +1,7 @@
 # Open punten — vsa-templates
 
 Checklist voor verdere chats. Afgevinkt = gedaan in deze branch/sessies.
-Onder **Werklijst** staan de open items (nog ongeordend).
+Onder **Werklijst** staan alleen nog echte vervolgstappen.
 
 Valkuilen bij MSCZ/MXL: [rendering-pitfalls.md](rendering-pitfalls.md).
 Mappingcontract: [mapping-vsa.md](mapping-vsa.md).
@@ -22,11 +22,13 @@ Mappingcontract: [mapping-vsa.md](mapping-vsa.md).
 - [x] Hoogte-mismatch → harde `TemplateInstanceError` (H9); geen stil hold.
 - [x] Tropaar-toon-4 corpus-pipeline: `.vsa` / `.mscz` / `.mxl` + lokale PDF;
       CLI `scripts/render_tropaar_toon4_corpus.py`.
-- [x] Recite-print (MSCZ): ≥3 ongemarkeerde recite → `||O||` + laatste als
-      kwart; **VSA-scopes** eigen noten; Coria-MXL zonder collapse.
+- [x] Recite-print (MSCZ): ≥3 ongemarkeerd recite → `||O||`; eerste
+      lettergreep **gecentreerd** op de nootkop; rest op spacer-noten naar
+      rechts; laatste als kwart; **geen** melisma-extender onder recite;
+      VSA-scopes eigen noten; Coria-MXL zonder collapse.
 - [x] Instance-layout: één maat per strofe; MS4-maatstrepen via voice-
-      `<BarLine visible=0>`; geen dots op `||O||`; MuseScore
-      `<position>left</position>` voor recite-lyrics.
+      `<BarLine visible=0>`; geen dots op `||O||`; lyric-dichtheid via
+      `lyricsMinDistance` / `minNoteDistance` / maat-eind-spacer.
 - [x] Valkuilen-doc + links in README / AGENTS / MkDocs:
       [rendering-pitfalls.md](rendering-pitfalls.md).
 - [x] PDF-export uit git geweerd (afgeleide); lokaal via `--pdf-only`.
@@ -37,81 +39,51 @@ Mappingcontract: [mapping-vsa.md](mapping-vsa.md).
 - [x] **Mapping H4–H7** in de instance-mapper (optional; VSA-duur H5;
       hold/zelfde-S H6; H7 andere toon alleen via optional / zelfde-S-run
       incl. na recite). Details: [mapping-vsa.md](mapping-vsa.md).
+- [x] **H1 `open` vs eerste recite:** YAML houdt twee events (formuleblad);
+      instance slaat `open` over als VSA meteen reciteert — geen dubbele noot.
+- [x] **`mode` / `do`:** template én VSA-parser alleen `major`/`minor`;
+      mismatch → `VSA-TEMPLATE-MODE-MISMATCH` / `VSA-TEMPLATE-DO-MISMATCH`.
+- [x] **Sequence / text_mapping-lengte:** aantal VSA-regels moet bij het plan
+      passen → `VSA-TEMPLATE-TEXT-MAPPING`.
+- [x] **`l.lgr.` (H8):** mapper koppelt geankerd event + rest van de frase aan
+      de laatste VSA-syllabe; stichier-toon-5 `laatste` heeft het anker.
+- [x] **Anker-normalisatie:** `e. st.` → `e.st.` (zelfde voor `l.st.`,
+      `vl.st.`, `l.lgr.`).
+- [x] **Parallelle cadenspaden (`of`):** YAML + mapper; VSA kiest impliciet;
+      geen pad → mismatch. **Geen** [uitvoeringsvorm](@bron) (dat is
+      zangstuk-niveau). Formuleblad toont pad 0. Tropaar-toon-4 `laatste`
+      blijft voorlopig alleen mi–re–mi (fa-tak kan later bij).
+- [x] **Tenor-octaaf tropaar-toon-4:** `sol-1` t.o.v. `do: F4` = **C4**
+      (niet C3). Vastgelegd in YAML + test.
+- [x] CLI `vsa template validate`.
+- [x] Formule-MusicXML: `scripts/render_vsa_template_musicxml.py`
+      (`--all` of `template.yaml` → `.musicxml`/`.mscz`).
+- [x] Formuleblad vs instance: wat in git / hoe regenereren — zie
+      [rendering-pitfalls.md](rendering-pitfalls.md#formuleblad-vs-instance-wat-in-git)
+      en [library/README.md](library/README.md).
+- [x] **Inline VSA in proza:** `T.N` is geen zingbare syllabe; corpus zonder
+      `T.N` in de VSA-regel. Markdown-inline renderer is geen
+      instance-pipeline (zie mapping-vsa).
+- [x] **Geen org glossary-PR** tot termen repo-overschrijdend moeten
+      (template-termen blijven lokaal).
+- [x] **Stemmen met onderling verschillende ritmes:** niet doen tot de
+      noodzaak blijkt (homofone eventkeuzes blijven).
 
 ---
 
-## Werklijst (volgende chat — ongeordend)
-
-### Terminologie / org
-
-- [ ] Eventueel org-brede namen via glossary-PR op **bron** (als termen
-      repo-overschrijdend moeten zijn).
+## Werklijst (vervolg)
 
 ### Templates / pitches
 
-- [ ] **Tenor-octaaf openingsakkoord (tropaar toon 4):** in `template.yaml`
-      staat tenor vaak als `sol-1`. Controleren tegen het bronblad/PDF of dat
-      het juiste oktaaf is t.o.v. `do: F4` (historisch twijfelpunt was
-      klinkend C3 vs C4). Zo nodig YAML + corpus-export bijwerken.
-- [ ] Overige templates (niet alleen tropaar-toon-4): graden/`do`/`mode`
-      provisional tot PDF-/partituur-audit.
-- [ ] **`mode` in template-YAML vs VSA:** vastleggen welke waarden mogen
-      (`major` / `minor` / …) en die laten matchen met wat de VSA-parser/
-      pitch-resolver accepteert — geen stille afwijking tussen template en
-      `.vsa`-frontmatter.
-- [ ] **Sequence-form en aantal tekstregels:** bij
-      `sequence: ["1", "2", "3"]` horen precies drie VSA-regels (`*`-frasen).
-      Nu handmatig; later valideren of duidelijke fout als het aantal niet
-      klopt. (Bij `text_mapping` / `mapping_plans` hetzelfde idee:
-      lengte tekst ↔ gevraagde frase-reeks.)
-- [ ] `l.lgr.`-anker in stichier-template + event-mapping (H8): anker markeert
-      start van een slotmelisma; dat event **plus alle volgende** events in
-      de frase vallen op de laatste VSA-syllabe.
-
-### Semantiek / mapping
-
-- [ ] Stemmen met onderling verschillende ritmes (buiten parallel
-      split/merge); dat doen we pas als de noodzaak hiervoor is gebleken.
-- [ ] **Parallelle template-sporen (`of`):** één frase mag 2+ cadens-/slot-
-      paden (bijv. `mi–re–mi` **of** `mi–fa–mi`). VSA kiest impliciet;
-      onbekend pad → hoogte-mismatch. Meerdere [uitvoeringsvorm](@)-en in
-      één template zonder aparte YAML’s.
-- [ ] **`open` vs eerste recite:** template heeft vaak twee events (open +
-      recite) op dezelfde toon. Beslissen/documenteren: blijven het twee
-      events (mapper slaat open over als VSA meteen reciteert — huidig
-      gedrag H1), of mag YAML één samengevoegd event zijn? Geen stille
-      dubbele noot in de partituur.
-- [ ] Normalisatie anker-labels (`e. st.` vs `e.st.`). Canoniek overal
-      `e.st.` (en dezelfde vorm voor `l.st.`, `vl.st.`, `l.lgr.`).
+- [ ] Overige templates (niet tropaar-toon-4): graden/`do`/`mode`
+      `provisional` tot PDF-/partituur-audit.
+- [ ] Tropaar-toon-4 `laatste`: fa-cadenspad als tweede `of`-tak encoderen
+      zodra SATB van dat pad tegen het bronblad is gezet.
 
 ### Tooling / export
 
-- [ ] CLI `vsa template validate`.
-- [ ] MusicXML-export vanuit **formule**-template (+ optioneel VSA-lyrics),
-      naast bestaande instance-export.
-- [ ] Andere genres/tonen: zelfde instance-pipeline als tropaar-toon-4
-      (corpus + render-script of generiek maken).
-
-### Layout / print (polish)
-
-- [ ] Lyric-dichtheid: krappe overgangen cadens ↔ volgende recite (soms
-      bijna plakken); spacer-/`lyricsMinDistance`-fijnregeling.
-- [ ] Visuele check of melisma-extender onder recite-tekst storend is;
-      eventueel ticks/spacers bijstellen.
-- [ ] **Recite-tekst t.o.v. `||O||`:** de **eerste** lettergreep van de
-      tekst onder de reciteertoon uitlijnen op de nootkop (gecentreerd op
-      die noot); de rest van de recitaltekst volgt naar rechts.
-- [ ] **Spatiering binnen recite-tekst:** geen grote lege gap tussen het
-      einde van de recitaltekst en de volgende (cadens)lettergreep.
-      Die “rest-ruimte” verdelen over de spaties *tussen* de lettergrepen
-      van de recitaltekst, zodat de tekst visueel gelijkmatig doorloopt.
-- [ ] Formuleblad (`template.mscz`) vs instance: documenteren wat wel/niet
-      in git hoort en hoe CI/lokaal regenereert.
-
-### Publicatie / UX
-
-- [ ] **Inline gerenderde VSA in proza:** toon-aanduiding e.d. (`T.4`) hoort
-      niet als zingbare tekst in de VSA-regel. Klein VSA-fragment (alleen
-      hoogtemarkering + eventueel `Amen`) in markdown/proza — tablet/pc/
-      telefoon én print — zonder SVG/lyric-pipeline die letters als
-      syllaben meeneemt.
+- [ ] Andere genres/tonen: eigen corpus + render zodra pitches geverifieerd
+      zijn (mapper/renderer zijn al generiek).
+- [ ] Markdown-inline VSA-fragment (hoogtemarkering / `Amen` in proza) als
+      aparte presentatielaag — tablet/pc/telefoon én print — wanneer die UX
+      nodig is.

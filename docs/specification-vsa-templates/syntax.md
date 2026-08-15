@@ -88,8 +88,35 @@ Voorbeelden bij `do: F4`, `mode: major`: `do`→F4, `mi`→A4, `sol-1`→C4.
 1. Frase-ids uniek; mogen `1a` / `2a` bevatten.
 2. Cycle- / sequence- / alias-form zoals hierboven.
 3. Elk [template-event](@): `role`, `duration` (ELM), `pitches` met S/A/T/B.
-4. `do` matcht scientific pitch; `mode` niet-lege identifier.
-5. `anchor` ∈ {`e.st.`, `l.st.`, `vl.st.`, `l.lgr.`} indien aanwezig ([frase-anker](@)).
+4. `do` matcht scientific pitch; `mode` ∈ {`major`, `minor`} (zelfde waarden
+   als de VSA-parser).
+5. `anchor` ∈ {`e.st.`, `l.st.`, `vl.st.`, `l.lgr.`} indien aanwezig
+   ([frase-anker](@)). Spaties in invoer (`e. st.`) worden genormaliseerd naar
+   de canonieke vorm zonder spatie.
+6. In `events` mag een **`of`-groep** staan (minstens twee cadenspaden). Elk
+   pad is een lijst gewone events. Formuleblad toont pad 0; de instance-mapper
+   kiest het pad dat bij de VSA-hoogten past. Geen pad → hoogte-mismatch.
+   Dit zijn **geen** [uitvoeringsvorm](@bron)-en.
+
+```yaml
+- of:
+    - id: re-close
+      events:
+        - role: cadence
+          duration: "_"
+          pitches: { S: re, A: ti-1, T: sol-1, B: sol-2 }
+        - role: cadence
+          duration: "__"
+          pitches: { S: mi, A: do, T: sol-1, B: do-1 }
+    - id: fa-close
+      events:
+        - role: cadence
+          duration: "_"
+          pitches: { S: fa, A: re, T: la-1, B: re-1 }
+        - role: cadence
+          duration: "__"
+          pitches: { S: mi, A: do, T: sol-1, B: do-1 }
+```
 
 ## Wat syntax niet uitdrukt
 

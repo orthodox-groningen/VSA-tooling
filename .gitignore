@@ -11,6 +11,10 @@ node_modules/
 # MuseScore/lokale PDF-export — niet committen (scans horen in bron)
 *.pdf
 
+# MuseScore-rommel bij openen/opslaan naast .mscz (niet committen)
+**/.mscbackup/
+**/Thumbnails/
+
 # Lokale docs-checks (scripts/check-docs.py) — niet committen
 docs/reports/
 

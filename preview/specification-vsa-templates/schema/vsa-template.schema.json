@@ -85,6 +85,20 @@
       "minItems": 1,
       "items": { "type": "string", "minLength": 1 }
     },
+    "text_mapping": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/mapping_step" }
+    },
+    "mapping_plans": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/mapping_plan" }
+    },
+    "default_mapping_plan": {
+      "type": "string",
+      "minLength": 1
+    },
     "phrases": {
       "type": "array",
       "minItems": 1,
@@ -149,7 +163,7 @@
         "optional": { "type": "boolean" },
         "anchor": {
           "type": "string",
-          "enum": ["e.st.", "l.st.", "vl.st."]
+          "enum": ["e.st.", "l.st.", "vl.st.", "l.lgr."]
         },
         "pitches": { "$ref": "#/$defs/pitches" }
       }
@@ -164,6 +178,58 @@
           "type": "array",
           "minItems": 1,
           "items": { "$ref": "#/$defs/event" }
+        }
+      }
+    },
+    "mapping_step": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["phrase"],
+          "properties": {
+            "phrase": { "type": "string", "minLength": 1 }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["sequence"],
+          "properties": {
+            "sequence": {
+              "type": "array",
+              "minItems": 1,
+              "items": { "type": "string", "minLength": 1 }
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["repeat"],
+          "properties": {
+            "repeat": {
+              "type": "array",
+              "minItems": 1,
+              "items": { "type": "string", "minLength": 1 }
+            },
+            "until": {}
+          }
+        }
+      ]
+    },
+    "mapping_plan": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "steps"],
+      "properties": {
+        "id": { "type": "string", "minLength": 1 },
+        "label": { "type": "string", "minLength": 1 },
+        "when": { "type": "object" },
+        "steps": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/$defs/mapping_step" }
         }
       }
     }

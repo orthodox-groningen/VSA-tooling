@@ -98,7 +98,7 @@
   
   <strong>Preview</strong>
    — branch <code>feat/vsa-templates-spec</code>
-  , gebouwd 2026-08-10 23:00 CEST.
+  , gebouwd 2026-08-15 07:00 CEST.
   <a href="https://orthodox-groningen.github.io/VSA-tooling/">Live documentatie (main)</a>.
   
 
@@ -1753,6 +1753,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../library/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Library
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../conformance/" class="md-nav__link">
         
   
@@ -1885,10 +1913,21 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#bewust-uitgesteld" class="md-nav__link">
+  <a href="#layout-print-mscz" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Bewust uitgesteld
+        Layout / print (MSCZ)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#publicatie-ux-later" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Publicatie / UX (later)
       
     </span>
   </a>
@@ -3274,10 +3313,21 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#bewust-uitgesteld" class="md-nav__link">
+  <a href="#layout-print-mscz" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Bewust uitgesteld
+        Layout / print (MSCZ)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#publicatie-ux-later" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Publicatie / UX (later)
       
     </span>
   </a>
@@ -3313,8 +3363,8 @@
 <h2 id="terminologie">Terminologie<a class="headerlink" href="#terminologie" title="Permanent link">&para;</a></h2>
 <ul>
 <li>[x] Lokale curated texts: <a class="og-termref" href="/VSA-tooling/preview/terminologie/vsa-template" title="VSA-template: een machineleesbaar YAML-document dat een formulematige liturgische melodie vastlegt (frasen, herhaling of vaste volgorde, Reciteertoon, ankers, SATB-Laddergraden) binnen een Do-context, bedoeld om later tekst uit VSA erop te mappen.">vsa-template</a>, <a class="og-termref" href="/VSA-tooling/preview/terminologie/template-frase" title="Template-frase: een genaamde melodische eenheid binnen een Vsa-template (bijv. id <code>1</code>, <code>2</code>, <code>1a</code> of <code>laatste</code>), opgebouwd uit geordende Template-events.">template-frase</a>,
-      <a class="og-termref" href="/VSA-tooling/preview/terminologie/template-event" title="Template-event: de kleinste muzikale stap in een Template-frase: een rol (open, Reciteertoon, cadens, link), een duur als Enkelvoudige Lengte-modifier, en SATB-Laddergraden.">template-event</a>, <a class="og-termref" href="/VSA-tooling/preview/terminologie/frase-anker" title="Frase-anker: een label op een Template-event (<code>e.st.</code>, <code>l.st.</code>, <code>vl.st.</code>) dat op het toonboekblad aangeeft welke tekstklemtoon (eerste / laatste / voorlaatste streek) op die noot hoort te vallen.">frase-anker</a>, <a class="og-termref" href="/VSA-tooling/preview/terminologie/reciteertoon" title="Reciteertoon: een Template-event (of bladnotatie) waarop een variabel aantal syllaben op hetzelfde SATB-akkoord wordt gezongen; in een Vsa-template gemarkeerd als <code>role: recite</code>.">reciteertoon</a>, <a class="og-termref" href="/VSA-tooling/preview/terminologie/laddergraad" title="Laddergraad: een toonpositie op de ladder binnen een Do-context (<code>do</code>, <code>re</code>, <code>mi</code>, …), optioneel chromatisch (<code>#</code>/<code>b</code>) en met octaafverschuiving (<code>do-1</code>); in een Vsa-template de canonieke vorm van SATB-pitches.">laddergraad</a>,
-      <a class="og-termref" href="/VSA-tooling/preview/terminologie/do-context" title="Do-context: de grondtooncontext waarbinnen relatieve toonhoogtebewegingen in VSA-notatie en in een Vsa-template worden geïnterpreteerd; voor MusicXML-export of afspelen vastgelegd via blok-Metadata (<code>do</code>, <code>mode</code>), niet via de zangtekst zelf.">do-context</a>.</li>
+      <a class="og-termref" href="/VSA-tooling/preview/terminologie/template-event" title="Template-event: de kleinste muzikale stap in een Template-frase: een rol (open, Reciteertoon, cadens, link), een duur als Enkelvoudige Lengte-modifier, en SATB-Laddergraden.">template-event</a>, <a class="og-termref" href="/VSA-tooling/preview/terminologie/frase-id" title="Frase-id: de machineleesbare id van een Template-frase in een Vsa-template (<code>1</code>, <code>2</code>, <code>laatste</code>, …); op het toonboekblad het cijfer of woord in een cirkel of vierkant boven de eerste noot van die frase.">frase-id</a>, <a class="og-termref" href="/VSA-tooling/preview/terminologie/frase-anker" title="Frase-anker: een label op een Template-event (<code>e.st.</code>, <code>l.st.</code>, <code>vl.st.</code>, <code>l.lgr.</code>) dat op het toonboekblad aangeeft welke tekstklemtoon (eerste / laatste / voorlaatste streek, of start van het slotmelisma op de laatste lettergreep) op die noot hoort te vallen.">frase-anker</a>, <a class="og-termref" href="/VSA-tooling/preview/terminologie/formulelabel" title="Formulelabel: een Frase-id (bijv. <code>1</code>, <code>2</code>, <code>laatste</code>) of Frase-anker (bijv. <code>e. st.</code>, <code>l. st.</code>) die wordt gebruikt door onze tooling; ze staan boven de notenbalk van een formulepartituur.">formulelabel</a>,
+      <a class="og-termref" href="/VSA-tooling/preview/terminologie/reciteertoon" title="Reciteertoon: een Template-event (of bladnotatie) waarop een variabel aantal syllaben op hetzelfde SATB-akkoord wordt gezongen; in een Vsa-template gemarkeerd als <code>role: recite</code>.">reciteertoon</a>, <a class="og-termref" href="/VSA-tooling/preview/terminologie/laddergraad" title="Laddergraad: een toonpositie op de ladder binnen een Do-context (<code>do</code>, <code>re</code>, <code>mi</code>, …), optioneel chromatisch (<code>#</code>/<code>b</code>) en met octaafverschuiving (<code>do-1</code>); in een Vsa-template de canonieke vorm van SATB-pitches.">laddergraad</a>, <a class="og-termref" href="/VSA-tooling/preview/terminologie/do-context" title="Do-context: de grondtooncontext waarbinnen relatieve toonhoogtebewegingen in VSA-notatie en in een Vsa-template worden geïnterpreteerd; voor MusicXML-export of afspelen vastgelegd via blok-Metadata (<code>do</code>, <code>mode</code>), niet via de zangtekst zelf.">do-context</a>.</li>
 <li>[ ] Eventueel org-brede namen via glossary-PR op <strong>bron</strong> (als termen
       repo-overschrijdend moeten zijn).</li>
 </ul>
@@ -3322,25 +3372,49 @@
 <ul>
 <li>[ ] Tenor-octaaf openingsakkoord tropaar toon 4: <code>sol-1</code> vs <code>sol-2</code> (was C3|C4).</li>
 <li>[ ] Alle templates: graden/<code>do</code>/<code>mode</code> provisional tot PDF-audit.</li>
-<li>[ ] Sequence-form: tekstlengte vs <code>len(sequence)</code> — mapping open.</li>
+<li>[ ] Sequence-form: tekstlengte vs <code>len(sequence)</code> — handmatig bij <code>text_mapping</code>.</li>
+<li>[x] Frase-toewijzing: <code>text_mapping</code> + <code>mapping_plans</code> + mapper
+      (<a href="https://github.com/orthodox-groningen/VSA-tooling/blob/main/src/vsa/template_mapping.py"><code>template_mapping.py</code></a>).</li>
+<li>[ ] <code>l.lgr.</code>-anker in stichier-template + event-mapping (H8).</li>
 <li>[ ] Welke <code>mode</code>-identifiers exact — gelijk trekken met VSA-implementatie.</li>
 </ul>
 <h2 id="semantiek-model">Semantiek / model<a class="headerlink" href="#semantiek-model" title="Permanent link">&para;</a></h2>
 <ul>
-<li>[ ] Stemmen met onderling verschillende ritmes.</li>
-<li>[ ] Mapping-architectuur pad A vs B — zie <a href="../mapping-vsa/">mapping-vsa.md</a>.</li>
+<li>[ ] Stemmen met onderling verschillende ritmes (buiten parallel split/merge).</li>
+<li>[x] Mapping-architectuur: <strong>pad B</strong> (S uit VSA, A/T/B uit template) —
+      zie <a href="../mapping-vsa/">mapping-vsa.md</a>.</li>
+<li>[x] Hoogte-mismatch in cadens → <code>PadBError</code> (geen stil hold); zie H9 in
+      <a href="../mapping-vsa/">mapping-vsa.md</a>.</li>
+<li>[ ] <strong>Parallelle template-sporen (<code>of</code>):</strong> één frase mag 2+ cadens-/slot-
+      paden declareren (bijv. <code>mi–re–mi</code> <strong>of</strong> <code>mi–mi–fa</code>). De VSA kiest
+      impliciet welk spoor; een pad dat de template niet faciliteert blijft
+      een hoogte-mismatch-fout. Zo kunnen meerdere <a class="og-termref" href="/bron/terms/uitvoeringsvorm" title="Uitvoeringsvorm: Een concrete realisatie van een bepaalde Variant van een Zangstuk, waarbij de muzikale identiteit van die variant behouden blijft.">uitvoeringsvorm</a>-en
+      in één template zonder aparte YAML-bestanden.</li>
 <li>[ ] Of <code>open</code> en eerste recite mogen samenvallen.</li>
 <li>[ ] Normalisatie anker-labels (<code>e. st.</code> vs <code>e.st.</code>).</li>
+<li>[ ] H4/H5/H6/H7 operationeel maken: optional, split/merge, hold, skip parallel op SATB.</li>
 </ul>
 <h2 id="tooling-later">Tooling (later)<a class="headerlink" href="#tooling-later" title="Permanent link">&para;</a></h2>
 <ul>
 <li>[ ] CLI <code>vsa template validate</code>.</li>
 <li>[ ] MusicXML-export vanuit template (+ optioneel VSA-lyrics).</li>
 </ul>
-<h2 id="bewust-uitgesteld">Bewust uitgesteld<a class="headerlink" href="#bewust-uitgesteld" title="Permanent link">&para;</a></h2>
+<h2 id="layout-print-mscz">Layout / print (MSCZ)<a class="headerlink" href="#layout-print-mscz" title="Permanent link">&para;</a></h2>
 <ul>
-<li>Volledige toonboek-transcriptie (alle 8 tonen × genres).</li>
-<li>OMR-pipeline.</li>
+<li>[x] <strong>Reciteertoon in uitgewerkte MSCZ (print):</strong> recite-reeks → één breve
+      (<code>||O||</code>) met daaronder de tekst; <strong>laatste lettergreep</strong> van het
+      recitatief krijgt een eigen gewone noot (overgang naar cadens). Coria-MXL
+      blijft per-syllabe-noten. Zie <code>collapse_recite_for_print()</code> in
+      <code>scripts/render_vsa_template_musicxml.py</code>.</li>
+</ul>
+<h2 id="publicatie-ux-later">Publicatie / UX (later)<a class="headerlink" href="#publicatie-ux-later" title="Permanent link">&para;</a></h2>
+<ul>
+<li>[ ] <strong>Inline gerenderde VSA in proza:</strong> toon-aanduiding e.d. (<code>T.4</code> vóór een
+      hoogte-markering) hoort niet meer als zingbare tekst in de VSA-regel.
+      Zoek een manier om een klein VSA-fragment (alleen hoogtemarkering +
+      eventueel <code>Amen</code>) in een tekstregel/markdown te plaatsen — bruikbaar op
+      tablet/pc/telefoon én op print — zonder dat de SVG/lyric-pipeline die
+      letters als syllaben meeneemt.</li>
 </ul>
 
 
@@ -3378,7 +3452,7 @@
       
       
       <p class="og-footer-stamps">
-        Bijgewerkt: 2026-08-09
+        Bijgewerkt: 2026-08-15
         
       </p>
       

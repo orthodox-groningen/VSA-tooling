@@ -98,7 +98,7 @@
   
   <strong>Preview</strong>
    — branch <code>feat/vsa-templates-spec</code>
-  , gebouwd 2026-08-15 11:37 CEST.
+  , gebouwd 2026-08-15 12:27 CEST.
   <a href="https://orthodox-groningen.github.io/VSA-tooling/">Live documentatie (main)</a>.
   
 
@@ -1887,6 +1887,23 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Hypotheses (event-niveau)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#h4-vs-h7-optional-vs-verplicht" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        H4 vs H7 (optional vs verplicht)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -1897,6 +1914,23 @@
       
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="Hoogte-mismatch (instance)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#foutmeldingen-instance-mapping" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Foutmeldingen (instance-mapping)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -3527,6 +3561,23 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Hypotheses (event-niveau)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#h4-vs-h7-optional-vs-verplicht" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        H4 vs H7 (optional vs verplicht)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -3537,6 +3588,23 @@
       
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="Hoogte-mismatch (instance)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#foutmeldingen-instance-mapping" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Foutmeldingen (instance-mapping)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -3860,7 +3928,7 @@ met meerdere <a class="og-termref" href="/VSA-tooling/preview/terminologie/muzik
 </tr>
 <tr>
 <td>H7</td>
-<td>Trailing template-slots die VSA-S niet aandoet, worden voor alle stemmen <strong>overgeslagen</strong>.</td>
+<td><strong>Verplichte</strong> template-slots moet VSA aandoen (eigen syllabe, hold H6, of melisma H8). Ongebruikt verplicht slot aan het eind → <strong>fout</strong>. Een <strong>andere</strong> toon in de cadens overslaan mag alleen via <code>optional: true</code> (H4). Rest van een ondergevulde <strong>zelfde-S-run</strong> mag stil weg.</td>
 </tr>
 <tr>
 <td>H8</td>
@@ -3872,6 +3940,46 @@ met meerdere <a class="og-termref" href="/VSA-tooling/preview/terminologie/muzik
 </tr>
 </tbody>
 </table>
+<h3 id="h4-vs-h7-optional-vs-verplicht">H4 vs H7 (optional vs verplicht)<a class="headerlink" href="#h4-vs-h7-optional-vs-verplicht" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Soort template-slot</th>
+<th>VSA doet het slot niet aan</th>
+<th>Gedrag</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>optional: true</code> (haakjes op het blad)</td>
+<td>—</td>
+<td>stil weglaten voor alle stemmen (<strong>H4</strong>)</td>
+</tr>
+<tr>
+<td>verplicht (geen <code>optional</code>)</td>
+<td>—</td>
+<td><strong><code>TemplateInstanceError</code></strong> — VSA moet het slot meenemen of de template/VSA corrigeren</td>
+</tr>
+<tr>
+<td>verplicht, maar VSA “springt” naar <strong>andere</strong> toon</td>
+<td>tussenslot(s) met <strong>andere</strong> S-graad</td>
+<td><strong>fout</strong> tenzij die tussenslots <code>optional: true</code> zijn</td>
+</tr>
+<tr>
+<td>rest van een <strong>zelfde-S-run</strong> na de laatste gebruikte syllabe op die graad</td>
+<td>VSA gaat door naar een latere andere toon</td>
+<td>mag stil weg (ondergevulde run; geen andere toon overgeslagen)</td>
+</tr>
+<tr>
+<td>optional tussenslots bij sprong naar latere toon</td>
+<td>VSA-pitch matcht een later slot</td>
+<td>optional tussenslots weglaten (<strong>H4</strong>); daarna koppelen</td>
+</tr>
+</tbody>
+</table>
+<p><strong>H6-aanscherping:</strong> blijven er VSA-syllaben op dezelfde graad én is het <strong>volgende</strong>
+template-slot ook die graad, dan vult de volgende syllabe dat slot (bijv. <code>l.st.</code>),
+in plaats van alles op het eerste slot te houden.</p>
 <h2 id="hoogte-mismatch-instance">Hoogte-mismatch (instance)<a class="headerlink" href="#hoogte-mismatch-instance" title="Permanent link">&para;</a></h2>
 <p>Vergelijking: absolute toonhoogte van de VSA-noot ↔ laddergraad <code>pitches.S</code>
 van template-events in de cadens-tail (zelfde <code>do</code>/<code>mode</code>).</p>
@@ -3884,12 +3992,20 @@ van template-events in de cadens-tail (zelfde <code>do</code>/<code>mode</code>)
 </thead>
 <tbody>
 <tr>
-<td>VSA-pitch = huidig/later slot in de tail</td>
-<td>koppelen; tussenslots overslaan (H7)</td>
+<td>VSA-pitch = huidig slot</td>
+<td>koppelen</td>
+</tr>
+<tr>
+<td>VSA-pitch = later slot; overgeslagen tussenslots alleen <code>optional</code> of rest van dezelfde S-run</td>
+<td>tussenslots weg; daarna koppelen</td>
+</tr>
+<tr>
+<td>VSA-pitch = later slot; ≥1 overgeslagen tussenslot is verplicht <strong>én</strong> andere S-graad</td>
+<td><strong><code>TemplateInstanceError</code></strong> (verplicht slot overgeslagen)</td>
 </tr>
 <tr>
 <td>VSA-pitch = zelfde slot opnieuw</td>
-<td>hold (H6)</td>
+<td>hold (H6); bij volgend zelfde-S-slot: dat slot vullen</td>
 </tr>
 <tr>
 <td>VSA-pitch past nergens meer in de resterende tail</td>
@@ -3903,10 +4019,41 @@ van template-events in de cadens-tail (zelfde <code>do</code>/<code>mode</code>)
 <td>Extra noot ná de tail,zelfde hoogte als slot</td>
 <td>hold (H6)</td>
 </tr>
+<tr>
+<td>Einde VSA terwijl er nog <strong>verplichte</strong> template-slots resten</td>
+<td><strong><code>TemplateInstanceError</code></strong> (verplicht slot niet aangedaan)</td>
+</tr>
+<tr>
+<td>Einde VSA; resten alleen <code>optional: true</code></td>
+<td>optional resten weglaten (H4)</td>
+</tr>
 </tbody>
 </table>
 <p>Zo wordt bijv. <code>{-&amp;/Schep_&amp;_}{\per_}</code> (mi–fa–mi) op template-<code>laatste</code>
 (mi–re–mi) afgewezen i.p.v. A/T/B stil op mi te laten hangen.</p>
+<h3 id="foutmeldingen-instance-mapping">Foutmeldingen (instance-mapping)<a class="headerlink" href="#foutmeldingen-instance-mapping" title="Permanent link">&para;</a></h3>
+<p>Mappingfouten (H7/H9 e.d.) moeten <strong>bruikbaar</strong> zijn, in dezelfde geest als
+<code>vsa validate</code>:</p>
+<table>
+<thead>
+<tr>
+<th>Laag</th>
+<th>Inhoud</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Compact</strong></td>
+<td>korte regel: bestand, regel/kolom (of frase-id + syllabe), foutcode</td>
+</tr>
+<tr>
+<td><strong>Uitgebreid</strong></td>
+<td>wat er mis is (VSA-pitch vs verwachte template-S-slots); <strong>hint</strong> hoe te herstellen (VSA aanpassen, optional zetten, of ander cadenspad)</td>
+</tr>
+</tbody>
+</table>
+<p>Minimaal in elke melding: bronpad, positie in de VSA-tekst (regel/kolom waar
+mogelijk), frase-id, betrokken lyric/syllabe, verwachte vs gevonden laddergraden.</p>
 <h2 id="corpus-en-detail">Corpus en detail<a class="headerlink" href="#corpus-en-detail" title="Permanent link">&para;</a></h2>
 <p>Library-werkmappen: <a href="../library/"><code>library/</code></a>.</p>
 <p>Corpus Toon 4:

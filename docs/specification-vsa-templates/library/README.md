@@ -32,6 +32,7 @@ Invalid schema-cases blijven in
 | Pitches         | PDF/PNG = featurebron; menselijke MuseScore-edit → YAML                                   |
 | Renderer        | `python scripts/render_vsa_template_musicxml.py --all` (hulp, niet bron)                  |
 | Validatie       | `vsa template validate <pad>`                                                             |
+| Nieuw template  | [Werkwijze: YAML-template maken](../authoring.md) (mal + lagen + formuleblad-check)       |
 
 ## Formuleblad vs instance
 
@@ -42,7 +43,7 @@ Invalid schema-cases blijven in
 | `template.mxl`              | formule MusicXML    | ja (afgeleid) | idem / `render_vsa_template_musicxml.py --all`  |
 | `template.pdf`              | formule print       | nee           | `--template --pdf`                              |
 | corpus `.vsa`               | zangstuk-bron       | ja            | curated                                         |
-| corpus `.mscz` / `.mxl`     | instance            | ja (afgeleid) | `render_tropaar_toon4_corpus.py`                    |
+| corpus `.mscz` / `.mxl`     | instance            | ja (afgeleid) | `render_tropaar_toon4_corpus.py`                |
 | corpus `*.pdf`              | print               | nee           | `--pdf` / `--pdf-only`                          |
 
 Formuleblad: ankers, frase-ids, cycle-frames, `||O||` zonder VSA-lyrics.

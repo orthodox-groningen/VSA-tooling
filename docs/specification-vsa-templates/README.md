@@ -24,6 +24,7 @@ zijn. Tool-termen staan al in `docs/terminologie/` (zie [glossary](../glossary.m
 | Document                                            | Inhoud                                         |
 | --------------------------------------------------- | ---------------------------------------------- |
 | [Doel en scope](overview.md)                        | Idee, niet-doelen, TermRefs                    |
+| [Werkwijze: YAML-template maken](authoring.md)      | Taak: mal, structuur, pitches, `of`, check     |
 | [Requirements-inventory](requirements-inventory.md) | Feature-eisen uit toonboekbladen               |
 | [Metamodel](metamodel.md)                           | Concepten en relaties                          |
 | [Syntax](syntax.md)                                 | Canonieke YAML-vorm                            |

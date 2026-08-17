@@ -119,6 +119,7 @@ nav:
   - VSA-templates:
     - Overzicht: specification-vsa-templates/README.md
     - Doel en scope: specification-vsa-templates/overview.md
+    - Werkwijze YAML-template: specification-vsa-templates/authoring.md
     - Requirements-inventory: specification-vsa-templates/requirements-inventory.md
     - Metamodel: specification-vsa-templates/metamodel.md
     - Syntax: specification-vsa-templates/syntax.md

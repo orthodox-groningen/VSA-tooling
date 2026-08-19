@@ -3,9 +3,9 @@
 Status: **Spoor B geïmplementeerd** (juni 2026): `:::include svg|coria|mxl` + demo-pagina; expliciete conversiestap in CI nog open.
 
 Normatieve contracten:
-[bron — exportcontracten](https://orthodox-groningen.github.io/bron/reference/exportcontracten/),
-[conversiemechanismen](https://orthodox-groningen.github.io/bron/reference/conversiemechanismen/),
-[CI-architectuur](https://orthodox-groningen.github.io/bron/plans/ci-architectuur/).
+[bron — exportcontracten](https://orthodox-ronl.github.io/bron/reference/exportcontracten/),
+[conversiemechanismen](https://orthodox-ronl.github.io/bron/reference/conversiemechanismen/),
+[CI-architectuur](https://orthodox-ronl.github.io/bron/plans/ci-architectuur/).
 
 Gebruikseisen per drager (papier/tablet/telefoon):
 [gebruikseisen-dragers.md](gebruikseisen-dragers.md).
@@ -207,7 +207,7 @@ toepast. Increment 1 documenteert dit onderscheid; code mag transitional blijven
 ## Repository-structuur `bron`
 
 **Besluit:** documentatie (specs, manuals, reference, plannen) wordt via **GitHub Pages**
-(`orthodox-groningen.github.io/bron`) ontsloten. **Inhoud** (brondocumenten, metadata,
+(`orthodox-ronl.github.io/bron`) ontsloten. **Inhoud** (brondocumenten, metadata,
 composities) staat los van die site — wordt niet als webpagina’s gepubliceerd, wel via
 build/indexen geconsumeerd.
 
@@ -297,7 +297,7 @@ nav:
   - Plannen: plans/
 ```
 
-**URL-conventie:** `https://orthodox-groningen.github.io/bron/specs/inhoudslevenscyclus/` (MkDocs) of `.html` (Jekyll/Pages default)
+**URL-conventie:** `https://orthodox-ronl.github.io/bron/specs/inhoudslevenscyclus/` (MkDocs) of `.html` (Jekyll/Pages default)
 
 ### `zangstukken/` — brondocumenten en metadata
 
@@ -371,7 +371,7 @@ De bron-repo documenteert **wat** er in de keten zit en **welke eisen** elke sta
 
 | Document                                                                    | Pad (nieuw) | Scope                               | Status                   |
 | --------------------------------------------------------------------------- | ----------- | ----------------------------------- | ------------------------ |
-| [README.md](https://github.com/orthodox-groningen/bron/blob/main/README.md) | repo-root   | Korte intro; link naar GitHub Pages | Aanwezig                 |
+| [README.md](https://github.com/orthodox-ronl/bron/blob/main/README.md) | repo-root   | Korte intro; link naar GitHub Pages | Aanwezig                 |
 | **`docs/specs/inhoudslevenscyclus.md`**                                     | specs       | Bron → conversie → exportcontract   | **Nieuw — kern**         |
 | `docs/specs/zangstuk-formaat.md`                                            | specs       | Schema `zangstuk.yaml`              | Gepland                  |
 | `docs/specs/repo-structuur.md`                                              | specs       | Mapstructuur, naamgeving            | Uit bron-spec zip        |
@@ -500,7 +500,7 @@ Zonder stap 1 riskeren exporttypes in code te worden gedefinieerd zonder gedeeld
 | --------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Blok-directives (`web-only`, `print-only`, `keep-together`) **niet nesten** | Behouden — implementatie in [../src/vsa/markdown_directives.py](../src/vsa/markdown_directives.py) blijft                                                                                                  |
 | Regel-directives (`:::include`, `:::coria`) **binnen** `keep-together`      | Toegestaan — verwerkt in eerdere passes vóór `process_directives`                                                                                                                                          |
-| Authoring-conventie voor titels/navigatie                                   | `web-only` als **sibling vóór** `keep-together` (voorbeeld in [VSA-demo](https://github.com/orthodox-groningen/VSA-demo)) |
+| Authoring-conventie voor titels/navigatie                                   | `web-only` als **sibling vóór** `keep-together` (voorbeeld in [VSA-demo](https://github.com/orthodox-ronl/VSA-demo)) |
 | Coria-link alleen online, notatie samen printen                             | Coria-regels binnen `keep-together`; print verbergt `.coria-play` via CSS (bestaand patroon)                                                                                                               |
 
 **Fase 2 (§2.3 todo):** nesting `web-only` ⊂ `keep-together` alleen als sibling-conventie onwerkbaar blijkt — vereist wijziging state machine, niet nodig voor eerste demo.
@@ -513,7 +513,7 @@ Twee sporen; **spoor A (bron) eerst** voor overzicht:
 
 ### Spoor A — Documentatiestructuur + kern-spec `bron` (prioriteit)
 
-**Repo:** `C:\git\orthodox-groningen\bron`
+**Repo:** `C:\git\orthodox-ronl\bron`
 
 1. **Mapstructuur** `docs/{specs,manuals,reference,plans}/` + `docs/index.md`
 2. **`docs/specs/inhoudslevenscyclus.md`** (eerste versie, drie delen)
@@ -577,7 +577,7 @@ Implementatiedetails:
 
 ### 3. Demo-pagina
 
-Nieuw bestand: export-demo in de consumer-site (zie [VSA-demo](https://github.com/orthodox-groningen/VSA-demo)).
+Nieuw bestand: export-demo in de consumer-site (zie [VSA-demo](https://github.com/orthodox-ronl/VSA-demo)).
 
 Demonstratie van exporttypes (niet conversie) op bestaande toon-3-assets:
 
@@ -608,7 +608,7 @@ Conversie (`vsa svg`, `vsa musicxml`) gebeurt in de build; deze pagina toont exp
 :::end-keep-together:::
 ```
 
-Optioneel: link vanuit het praktijk-overzicht in de consumer-site ([VSA-demo](https://github.com/orthodox-groningen/VSA-demo)).
+Optioneel: link vanuit het praktijk-overzicht in de consumer-site ([VSA-demo](https://github.com/orthodox-ronl/VSA-demo)).
 
 ---
 

@@ -1,4 +1,4 @@
-"""Guard: catalogus moet uit orthodox-groningen/bron komen, niet PyPI-naamgenoot."""
+"""Guard: catalogus moet uit orthodox-ronl/bron komen, niet PyPI-naamgenoot."""
 
 from pathlib import Path
 

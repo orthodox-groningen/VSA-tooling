@@ -2,15 +2,15 @@
 
 **Status:** concept — nog niet gevalideerd met echte bestanden/gebruikers  
 **Canonieke plek:** [VSA-tooling](@bron) (tool-/producteisen). Org-stub:
-[bron — gebruikseisen](https://github.com/orthodox-groningen/bron/blob/main/docs/plans/gebruikseisen-representatievormen.md).
+[bron — gebruikseisen](https://github.com/orthodox-ronl/bron/blob/main/docs/plans/gebruikseisen-representatievormen.md).
 
 **Doel:** vastleggen welke eisen gelden voor **presentatie op een drager**
 (papier, tablet, telefoon) — los van het catalogusbegrip
-[representatie](https://github.com/orthodox-groningen/bron/blob/main/docs/specs/terminologie.md#8-representatie)
+[representatie](https://github.com/orthodox-ronl/bron/blob/main/docs/specs/terminologie.md#8-representatie)
 (`.vsa`, scan, …). Dit is een eisendocument, geen ontwerp: kolom `status` =
 `vastgesteld` / `open` / `bewust uitgesteld`.
 
-**Gerelateerd:** [uitgaveprofielen.md](https://github.com/orthodox-groningen/VSA-tooling/blob/focus-on-tooling/docs/plans/uitgaveprofielen.md) ([samenstelling](@bron)/export),
+**Gerelateerd:** [uitgaveprofielen.md](https://github.com/orthodox-ronl/VSA-tooling/blob/focus-on-tooling/docs/plans/uitgaveprofielen.md) ([samenstelling](@bron)/export),
 [rendering.md](../specification/rendering.md).
 
 Elke eis krijgt drie kolommen:
@@ -73,7 +73,7 @@ gegenereerd moet worden, of nog gekopieerd moet worden.
 internetverbinding tijdens diensten helemaal niet meer nodig zou zijn (ook niet
 naar een lokale server) omdat het apparaat dan zelf alles bij zich heeft. Dat
 idee staat apart beschreven in de
-[bron — ideeën-backlog](https://github.com/orthodox-groningen/bron/blob/main/docs/plans/ideeen/README.md),
+[bron — ideeën-backlog](https://github.com/orthodox-ronl/bron/blob/main/docs/plans/ideeen/README.md),
 en valt buiten de scope van dit document.
 
 ---
@@ -130,7 +130,7 @@ op tablet/telefoon expliciet gemaakt via de oefenmodus (§5).
 ## 6. Koppeling van de link aan het model
 
 **Org-model (bron):** een link naar oefenmateriaal hoort bij [variant](@bron)/[uitvoeringsvorm](@bron),
-niet bij één catalogus-[representatie](https://github.com/orthodox-groningen/bron/blob/main/docs/specs/terminologie.md#8-representatie)
+niet bij één catalogus-[representatie](https://github.com/orthodox-ronl/bron/blob/main/docs/specs/terminologie.md#8-representatie)
 — anders moet dezelfde link per [bronbestand](@bron) apart onderhouden worden. Zie stub in bron.
 
 **Presentatie (deze repo):** de *drager*-output (PDF vs. HTML) bepaalt wél wat je
@@ -205,5 +205,5 @@ stilzwijgend laten vervallen.
   PDF (redactieproces vs. automatische server-generatie) — hangt samen met §3 en
   §6 maar is nog niet uitgewerkt.
 - De app als toekomstige uitbreiding. Dat idee staat apart beschreven in de
-  [bron — ideeën-backlog](https://github.com/orthodox-groningen/bron/blob/main/docs/plans/ideeen/README.md),
+  [bron — ideeën-backlog](https://github.com/orthodox-ronl/bron/blob/main/docs/plans/ideeen/README.md),
   en valt buiten de scope van dit document.

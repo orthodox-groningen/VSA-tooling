@@ -32,7 +32,7 @@ Voorbeeld: `examples\minimal\050_svg_demo.vsa` kan op `validate` falen
 ## Snel starten
 
 ```cmd
-cd /d C:\Git\orthodox-groningen\VSA-tooling
+cd /d C:\Git\orthodox-ronl\VSA-tooling
 vsa validate examples\docs-walkthroughs\svg-phrase-kort.vsa
 ```
 
@@ -74,7 +74,7 @@ Concrete [fail-fixture](@)
 ```
 
 ```cmd
-cd /d C:\Git\orthodox-groningen\VSA-tooling
+cd /d C:\Git\orthodox-ronl\VSA-tooling
 vsa validate examples\docs-walkthroughs\validate-unclosed-scope.vsa
 ```
 

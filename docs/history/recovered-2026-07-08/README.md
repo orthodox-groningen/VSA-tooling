@@ -14,7 +14,7 @@ Staging na delete-commit `9ff66f94` (2026-07-08).
 ## Terughalen van categorie A (git)
 
 ```cmd
-cd /d C:\Git\orthodox-groningen\VSA-tooling
+cd /d C:\Git\orthodox-ronl\VSA-tooling
 git show 9ff66f94^:docs/spec/vsa-spec-v1.0.1.md
 ```
 

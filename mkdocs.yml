@@ -1,8 +1,8 @@
 site_name: VSA-tooling — documentatie
 site_description: Documentatie van de VSA-toolchain (parser, validatie, SVG/MusicXML, hergebruik)
-site_url: https://orthodox-groningen.github.io/VSA-tooling/
-repo_url: https://github.com/orthodox-groningen/VSA-tooling
-repo_name: orthodox-groningen/VSA-tooling
+site_url: https://orthodox-ronl.github.io/VSA-tooling/
+repo_url: https://github.com/orthodox-ronl/VSA-tooling
+repo_name: orthodox-ronl/VSA-tooling
 edit_uri: edit/main/docs/
 
 exclude_docs: |
@@ -180,11 +180,11 @@ extra:
   branch: ""
   social:
     - icon: fontawesome/solid/book-bible
-      link: https://orthodox-groningen.github.io/bron/
+      link: https://orthodox-ronl.github.io/bron/
       name: bron — documentatie
     - icon: fontawesome/solid/code
-      link: https://orthodox-groningen.github.io/VSA-tooling/
+      link: https://orthodox-ronl.github.io/VSA-tooling/
       name: VSA-tooling — documentatie
     - icon: fontawesome/solid/globe
-      link: https://orthodox-groningen.github.io/VSA-demo/
+      link: https://orthodox-ronl.github.io/VSA-demo/
       name: VSA-demo

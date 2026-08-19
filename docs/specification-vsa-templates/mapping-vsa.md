@@ -2,9 +2,9 @@
 
 Status: **hypotheses + architectuurkeuze VSA→template-instance**; geen normatieve VSA 1.0-wijziging.
 
-Implementatie: [`src/vsa/template_mapping.py`](https://github.com/orthodox-groningen/VSA-tooling/blob/main/src/vsa/template_mapping.py)
+Implementatie: [`src/vsa/template_mapping.py`](https://github.com/orthodox-ronl/VSA-tooling/blob/main/src/vsa/template_mapping.py)
 (frase-toewijzing) en
-[`src/vsa/template_instance.py`](https://github.com/orthodox-groningen/VSA-tooling/blob/main/src/vsa/template_instance.py)
+[`src/vsa/template_instance.py`](https://github.com/orthodox-ronl/VSA-tooling/blob/main/src/vsa/template_instance.py)
 (event-niveau, S uit VSA + A/T/B uit template).
 
 ## Doel

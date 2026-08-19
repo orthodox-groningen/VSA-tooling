@@ -149,4 +149,4 @@ sluiten.
 - Volledige workflow, profielen, Coria-integratie en frontmatter-instellingen: [musicxml-export.md](../../guides/musicxml-export.md)
 - [`vsa validate`](validate.md) — controleer [VSA-notatie](@bron) vóór export.
 - Outputreferentie: [outputs.md](../outputs.md)
-- Bron-contract (exporttype mxl/coria): [exporttype-coria](https://orthodox-groningen.github.io/bron/reference/exporttype-coria/)
+- Bron-contract (exporttype mxl/coria): [exporttype-coria](https://orthodox-ronl.github.io/bron/reference/exporttype-coria/)

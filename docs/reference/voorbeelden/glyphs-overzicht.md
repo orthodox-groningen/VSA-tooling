@@ -21,7 +21,7 @@ Hersteld uit de oude Hugo-demo
 ```
 
 ```cmd
-cd /d C:\Git\orthodox-groningen\VSA-tooling
+cd /d C:\Git\orthodox-ronl\VSA-tooling
 vsa svg examples\docs-walkthroughs\svg-glyphs-overzicht.vsa generated\docs-glyphs-overzicht.svg
 ```
 

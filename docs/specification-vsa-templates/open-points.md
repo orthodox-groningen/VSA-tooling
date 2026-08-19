@@ -14,10 +14,10 @@ Mappingcontract: [mapping-vsa.md](mapping-vsa.md).
       [template-event](@), [frase-id](@), [frase-anker](@), [formulelabel](@),
       [reciteertoon](@), [laddergraad](@), [do-context](@).
 - [x] Frase-toewijzing: `text_mapping` + `mapping_plans` +
-      [`template_mapping.py`](https://github.com/orthodox-groningen/VSA-tooling/blob/main/src/vsa/template_mapping.py).
+      [`template_mapping.py`](https://github.com/orthodox-ronl/VSA-tooling/blob/main/src/vsa/template_mapping.py).
 - [x] Mapping-architectuur **VSA→template-instance** (S uit VSA, A/T/B uit
       template) — zie [mapping-vsa.md](mapping-vsa.md);
-      implementatie [`template_instance.py`](https://github.com/orthodox-groningen/VSA-tooling/blob/main/src/vsa/template_instance.py)
+      implementatie [`template_instance.py`](https://github.com/orthodox-ronl/VSA-tooling/blob/main/src/vsa/template_instance.py)
       (geen “pad B”-jargon meer).
 - [x] Hoogte-mismatch → harde `TemplateInstanceError` (H9); geen stil hold.
 - [x] Tropaar-toon-4 corpus-pipeline: `.vsa` / `.mscz` / `.mxl` + lokale PDF;

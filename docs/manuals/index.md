@@ -36,4 +36,4 @@ Taakgerichte documentatie voor werken met de [VSA-tooling](@bron). Dit is het
 Flags en foutcodes: [CLI-referentie](../reference/cli/index.md).
 
 Organisatie-specs (terminologie, [zangstuk](@bron)-formaat):
-[bron — documentatie](https://orthodox-groningen.github.io/bron/).
+[bron — documentatie](https://orthodox-ronl.github.io/bron/).

@@ -7,19 +7,19 @@ De repository is een GitHub Pages project-site.
 Daardoor staat de site niet op:
 
 ```text
-https://orthodox-groningen.github.io/
+https://orthodox-ronl.github.io/
 ```
 
 maar op:
 
 ```text
-https://orthodox-groningen.github.io/VSA-tooling/
+https://orthodox-ronl.github.io/VSA-tooling/
 ```
 
 De preview staat daarom op:
 
 ```text
-https://orthodox-groningen.github.io/VSA-tooling/preview/
+https://orthodox-ronl.github.io/VSA-tooling/preview/
 ```
 
 ## Wijziging
@@ -27,8 +27,8 @@ https://orthodox-groningen.github.io/VSA-tooling/preview/
 De workflows gebruiken nu project-site baseURL's:
 
 ```text
-Productie: https://orthodox-groningen.github.io/VSA-tooling/
-Preview:   https://orthodox-groningen.github.io/VSA-tooling/preview/
+Productie: https://orthodox-ronl.github.io/VSA-tooling/
+Preview:   https://orthodox-ronl.github.io/VSA-tooling/preview/
 ```
 
 ## Gevolg

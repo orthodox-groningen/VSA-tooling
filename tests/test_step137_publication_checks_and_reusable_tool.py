@@ -93,7 +93,7 @@ def test_docs_pages_preview_uses_project_preview_url_and_publication_check():
         encoding="utf-8"
     )
 
-    assert "https://orthodox-groningen.github.io/VSA-tooling/preview/" in workflow
+    assert "https://orthodox-ronl.github.io/VSA-tooling/preview/" in workflow
     assert "url_prefix=/VSA-tooling/preview/" in workflow
     assert "check-publication-output.py" in reusable
     # Feature-branch builds moeten hun eigen check-script gebruiken (niet @main).
@@ -107,7 +107,7 @@ def test_docs_pages_production_uses_project_url_and_publication_check():
         encoding="utf-8"
     )
 
-    assert "https://orthodox-groningen.github.io/VSA-tooling/" in workflow
+    assert "https://orthodox-ronl.github.io/VSA-tooling/" in workflow
     assert "url_prefix=/VSA-tooling/" in workflow
     assert "check-publication-output.py" in reusable
 
@@ -116,6 +116,6 @@ def test_reusable_workflow_installs_vsa_tool_from_repository():
     workflow = Path(".github/workflows/vsa-render-reusable.yml").read_text(encoding="utf-8")
 
     assert "workflow_call:" in workflow
-    assert "git+https://github.com/orthodox-groningen/VSA-tooling.git" in workflow
+    assert "git+https://github.com/orthodox-ronl/VSA-tooling.git" in workflow
     assert "vsa build-markdown" in workflow
     assert "vsa validate" in workflow

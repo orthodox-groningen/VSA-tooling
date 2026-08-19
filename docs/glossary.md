@@ -11,7 +11,7 @@ De tabel wordt gevuld door de TEv2-pipeline (`hrgt`) vanuit de curated texts in
 lijken; lokaal: `scripts\docs-build-tev2.cmd`.
 
 Org-brede normatieve uitleg staat in
-[bron — terminologie](https://orthodox-groningen.github.io/bron/specs/terminologie/).
+[bron — terminologie](https://orthodox-ronl.github.io/bron/specs/terminologie/).
 Zie ook [TEv2 in tool-docs](guides/tev2-docs.md).
 
 | Term | Definitie |

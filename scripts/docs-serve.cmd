@@ -17,7 +17,7 @@ if errorlevel 1 exit /b 1
 
 REM Zelfde tijdstempel-patroon als docs-pages.yml (lokaal: Europe/Amsterdam).
 for /f "usebackq delims=" %%I in (`"%PY%" -c "from datetime import datetime; from zoneinfo import ZoneInfo; print(datetime.now(ZoneInfo('Europe/Amsterdam')).strftime('%%Y-%%m-%%d %%H:%%M %%Z'))"`) do set "BUILD_TIME=%%I"
-"%PY%" scripts\set-mkdocs-site-url.py "https://orthodox-groningen.github.io/VSA-tooling/" false "%BUILD_TIME%" "local"
+"%PY%" scripts\set-mkdocs-site-url.py "https://orthodox-ronl.github.io/VSA-tooling/" false "%BUILD_TIME%" "local"
 if errorlevel 1 (
   copy /y mkdocs.yml.serve-bak mkdocs.yml >nul
   del mkdocs.yml.serve-bak 2>nul

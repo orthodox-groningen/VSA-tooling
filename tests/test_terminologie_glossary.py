@@ -8,7 +8,7 @@ ROOT = Path(__file__).resolve().parents[1]
 VSA_GLOSSARY = ROOT / "docs" / "glossary.md"
 VSA_TERM = ROOT / "docs" / "terminologie" / "vsa.md"
 ZANGSTUK_TERM = ROOT / "docs" / "terminologie" / "zangstuk.md"
-CURSOR_RULE = ROOT / ".cursor" / "rules" / "orthodox-groningen-terminologie.mdc"
+CURSOR_RULE = ROOT / ".cursor" / "rules" / "orthodox-ronl-terminologie.mdc"
 
 OPTIONAL_SIBLING_ORG_REPOS = (
     "catalogus",
@@ -117,7 +117,7 @@ def test_docs_avoid_deprecated_terminology():
 def test_cursor_terminologie_rule_in_present_org_repos():
     missing = []
     for repo, base in iter_repos_with_cursor_rule():
-        rule = base / ".cursor" / "rules" / "orthodox-groningen-terminologie.mdc"
+        rule = base / ".cursor" / "rules" / "orthodox-ronl-terminologie.mdc"
         if not rule.is_file():
             missing.append(repo)
             continue

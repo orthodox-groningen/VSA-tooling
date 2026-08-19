@@ -5,7 +5,7 @@ publiceren van VSA-notatie.
 
 De repository bevat de Python CLI (`vsa`) en documentatie (MkDocs Material).
 Een voorbeeld-Hugo-consumer staat in
-[VSA-demo](https://github.com/orthodox-groningen/VSA-demo).
+[VSA-demo](https://github.com/orthodox-ronl/VSA-demo).
 
 ## Waarvoor is deze repo?
 
@@ -62,7 +62,7 @@ scripts\docs-serve.cmd
 Voorbeeldconsumer (aparte repo):
 
 ```cmd
-cd /d C:\Git\orthodox-groningen\VSA-demo
+cd /d C:\Git\orthodox-ronl\VSA-demo
 scripts\bootstrap.cmd
 scripts\serve-hugo.cmd
 ```
@@ -85,13 +85,13 @@ Gepubliceerde docs (MkDocs Material):
 
 | Omgeving                  | URL                                                       |
 | ------------------------- | --------------------------------------------------------- |
-| Productie (`main`)        | https://orthodox-groningen.github.io/VSA-tooling/         |
-| Preview (andere branches) | https://orthodox-groningen.github.io/VSA-tooling/preview/ |
+| Productie (`main`)        | https://orthodox-ronl.github.io/VSA-tooling/         |
+| Preview (andere branches) | https://orthodox-ronl.github.io/VSA-tooling/preview/ |
 
 Lokaal:
 
 ```cmd
-cd /d C:\Git\orthodox-groningen\VSA-tooling
+cd /d C:\Git\orthodox-ronl\VSA-tooling
 scripts\docs-serve.cmd
 ```
 

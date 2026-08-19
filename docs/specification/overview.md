@@ -11,7 +11,7 @@ in een [samenstelling](@bron) via `:::include`).
 Deze specificatie beschrijft de **taal en haar semantiek** (plus toolcontracts
 in de overige specificatiepagina’s). Org-brede begrippen zoals
 [zangstuk](@bron) en [afgeleide](@bron) staan in de
-[bron-terminologie](https://orthodox-groningen.github.io/bron/specs/terminologie/);
+[bron-terminologie](https://orthodox-ronl.github.io/bron/specs/terminologie/);
 tool-termen in de [glossary](../glossary.md).
 
 ## Status
@@ -69,7 +69,7 @@ de `do` van de toonladder.
 | Bron                                                                                 | Inhoud                                              |
 | ------------------------------------------------------------------------------------ | --------------------------------------------------- |
 | [Glossary (deze site)](../glossary.md)                                               | Tool-termen + geselecteerde bron-termen (na TEv2)   |
-| [bron — terminologie](https://orthodox-groningen.github.io/bron/specs/terminologie/) | Org-brede canonieke begrippen                       |
+| [bron — terminologie](https://orthodox-ronl.github.io/bron/specs/terminologie/) | Org-brede canonieke begrippen                       |
 | Curated texts                                                                        | `docs/terminologie/` (lokaal) en bron `docs/terms/` |
 
 Gebruik TermRefs in specificatietekst (`[parser](@)`, `[zangstuk](@bron)`, …)

@@ -22,7 +22,7 @@ Klein voorbeeld van VSA-invoer en SVG-rendering.
 ## Commando
 
 ```cmd
-cd /d C:\Git\orthodox-groningen\VSA-tooling
+cd /d C:\Git\orthodox-ronl\VSA-tooling
 vsa svg examples\docs-walkthroughs\svg-phrase-kort.vsa generated\docs-demo-basis.svg
 ```
 

@@ -13,7 +13,7 @@ volledige CLI-syntax, alle argumenten en foutgevallen: zie de man-pagina
 Eén bestand ([docs-fixture](@): tropaar zondag toon 3):
 
 ```cmd
-cd /d C:\Git\orthodox-groningen\VSA-tooling
+cd /d C:\Git\orthodox-ronl\VSA-tooling
 vsa musicxml examples\docs-walkthroughs\coria-oefenlink\oefenmelodie.vsa generated\mxl\oefenmelodie.mxl
 ```
 
@@ -60,7 +60,7 @@ Naast de `.vsa` ligt `oefenmelodie.coria.html` (docs-placeholder), zodat
 `mode="auto"` de HTML-variant kiest.
 
 ```cmd
-cd /d C:\Git\orthodox-groningen\VSA-tooling
+cd /d C:\Git\orthodox-ronl\VSA-tooling
 vsa build-markdown examples\docs-walkthroughs\coria-oefenlink generated\docs-walkthrough-coria\content generated\docs-walkthrough-coria\static\vsa
 ```
 
@@ -114,7 +114,7 @@ Parameters:
 | `mode="auto"`    | HTML indien aanwezig, anders MXL (default)            |
 
 Volledige parameterdocumentatie:
-[exporttype coria](https://orthodox-groningen.github.io/bron/reference/exporttype-coria/)
+[exporttype coria](https://orthodox-ronl.github.io/bron/reference/exporttype-coria/)
 ([exporttype](@bron) `coria`).
 
 ### Hugo-shortcodes (edge cases)

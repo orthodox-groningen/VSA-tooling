@@ -115,4 +115,4 @@ regel/kolom; herstel de [VSA-notatie](@bron); daarna opnieuw `vsa svg`.
 - [`vsa process`](process.md) — SVG's genereren uit meerdere Markdownbestanden.
 - [`vsa build-markdown`](build-markdown.md) — SVG's + Hugo-Markdown in één stap.
 - Workflow-uitleg: [svg-export.md](../../guides/svg-export.md)
-- Bron-contract (SVG als exporttype): [conversie-vsa-svg](https://orthodox-groningen.github.io/bron/reference/conversie-vsa-svg/), [exporttype-svg](https://orthodox-groningen.github.io/bron/reference/exporttype-svg/)
+- Bron-contract (SVG als exporttype): [conversie-vsa-svg](https://orthodox-ronl.github.io/bron/reference/conversie-vsa-svg/), [exporttype-svg](https://orthodox-ronl.github.io/bron/reference/exporttype-svg/)

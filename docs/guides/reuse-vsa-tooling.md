@@ -2,12 +2,12 @@
 
 Deze pagina is de **integratiehandleiding**: hoe je `vsa-tool` in een andere repo
 installeert en in CI gebruikt. Volledig werkend voorbeeld:
-[VSA-demo](https://github.com/orthodox-groningen/VSA-demo).
+[VSA-demo](https://github.com/orthodox-ronl/VSA-demo).
 
 ## Direct met `pip`
 
 ```cmd
-python -m pip install "vsa-tool[rendering] @ git+https://github.com/orthodox-groningen/VSA-tooling.git@main"
+python -m pip install "vsa-tool[rendering] @ git+https://github.com/orthodox-ronl/VSA-tooling.git@main"
 ```
 
 Voor productie bij voorkeur een **tag** i.p.v. `@main`, bijvoorbeeld `@v0.1.0`
@@ -55,7 +55,7 @@ on:
 
 jobs:
   vsa:
-    uses: orthodox-groningen/VSA-tooling/.github/workflows/vsa-render-reusable.yml@main
+    uses: orthodox-ronl/VSA-tooling/.github/workflows/vsa-render-reusable.yml@main
     with:
       input_dir: content
       output_dir: generated/vsa/content
@@ -98,13 +98,13 @@ jobs:
 
   deploy:
     needs: build
-    uses: orthodox-groningen/VSA-tooling/.github/workflows/pages-deploy-reusable.yml@main
+    uses: orthodox-ronl/VSA-tooling/.github/workflows/pages-deploy-reusable.yml@main
     with:
       artifact_name: pages-site
       publish_dir: site
       destination_dir: preview
       url_prefix: /mijn-repo/preview/
-      pages_url: https://orthodox-groningen.github.io/mijn-repo/preview/
+      pages_url: https://orthodox-ronl.github.io/mijn-repo/preview/
     permissions:
       contents: write
 ```
@@ -125,12 +125,12 @@ Productie-deploy (root van `gh-pages`, preview-map behouden):
 ```yaml
   deploy:
     needs: build
-    uses: orthodox-groningen/VSA-tooling/.github/workflows/pages-deploy-reusable.yml@main
+    uses: orthodox-ronl/VSA-tooling/.github/workflows/pages-deploy-reusable.yml@main
     with:
       artifact_name: pages-site
       publish_dir: site
       url_prefix: /mijn-repo/
-      pages_url: https://orthodox-groningen.github.io/mijn-repo/
+      pages_url: https://orthodox-ronl.github.io/mijn-repo/
     permissions:
       contents: write
 ```
@@ -139,11 +139,11 @@ Productie-deploy (root van `gh-pages`, preview-map behouden):
 
 | Repo                                                                         | Wat je ziet                       |
 | ---------------------------------------------------------------------------- | --------------------------------- |
-| [VSA-demo](https://github.com/orthodox-groningen/VSA-demo)                   | Volledige Hugo-consumer + Pages   |
+| [VSA-demo](https://github.com/orthodox-ronl/VSA-demo)                   | Volledige Hugo-consumer + Pages   |
 | Deze repo `docs-pages.yml`                                                   | MkDocs tool-docs op Pages         |
-| [bron docs-pages](https://github.com/orthodox-groningen/bron)                | MkDocs + dezelfde deploy-reusable |
+| [bron docs-pages](https://github.com/orthodox-ronl/bron)                | MkDocs + dezelfde deploy-reusable |
 
 ## Org-grenzen (D1)
 
 Installeer de tool hier; **dupliceer geen** org-specs. Terminologie en
-zangstuk-formaat: [bron — specs](https://orthodox-groningen.github.io/bron/specs/).
+zangstuk-formaat: [bron — specs](https://orthodox-ronl.github.io/bron/specs/).

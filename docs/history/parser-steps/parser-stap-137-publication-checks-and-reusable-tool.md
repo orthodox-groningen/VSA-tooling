@@ -48,5 +48,5 @@ Andere repositories kunnen deze via `workflow_call` gebruiken.
 Daarnaast blijft direct gebruik via `pip install` mogelijk:
 
 ```text
-vsa-tool[rendering] @ git+https://github.com/orthodox-groningen/VSA-tooling.git@main
+vsa-tool[rendering] @ git+https://github.com/orthodox-ronl/VSA-tooling.git@main
 ```

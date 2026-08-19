@@ -24,7 +24,7 @@ jobs:
       - name: Checkout bron repository
         uses: actions/checkout@v4
         with:
-          repository: orthodox-groningen/bron
+          repository: orthodox-ronl/bron
           path: vendor/bron
           ref: main
 

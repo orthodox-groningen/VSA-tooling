@@ -70,7 +70,7 @@ def test_vsa_ci_uses_consumer_minimal():
 
 def test_vsa_ci_checks_out_bron_for_catalogus():
     text = Path(".github/workflows/vsa-ci.yml").read_text(encoding="utf-8")
-    assert "repository: orthodox-groningen/bron" in text
+    assert "repository: orthodox-ronl/bron" in text
     assert "path: vendor/bron" in text
     assert "scripts\\ci.cmd" in text
 
@@ -80,8 +80,8 @@ def test_docs_pages_cutover_targets():
 
     assert "destination_dir=preview" in text
     assert 'destination_dir="' in text or "destination_dir=" in text
-    assert "https://orthodox-groningen.github.io/VSA-tooling/" in text
-    assert "https://orthodox-groningen.github.io/VSA-tooling/preview/" in text
+    assert "https://orthodox-ronl.github.io/VSA-tooling/" in text
+    assert "https://orthodox-ronl.github.io/VSA-tooling/preview/" in text
     assert "docs-preview" not in text
     assert 'destination_dir=docs"' not in text
     assert "destination_dir=docs," not in text

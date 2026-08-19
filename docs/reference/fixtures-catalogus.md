@@ -49,7 +49,7 @@ voor gerichte tests (zie [Testen en regressie](../guides/testing-and-regression.
 ## Zelf draaien
 
 ```cmd
-cd /d C:\Git\orthodox-groningen\VSA-tooling
+cd /d C:\Git\orthodox-ronl\VSA-tooling
 vsa validate examples\regression\compound-melisma\input.vsa
 vsa validate examples\expected-fail\semantic-mismatch.vsa
 scripts\test.cmd

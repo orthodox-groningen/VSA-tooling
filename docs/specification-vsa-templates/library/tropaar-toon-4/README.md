@@ -35,7 +35,7 @@ Titel in MSCZ/PDF = frontmatter-`title`; ontbreekt die → bestandsnaam zonder
 extensie.
 
 ```cmd
-cd /d C:\Git\orthodox-groningen\VSA-tooling
+cd /d C:\Git\orthodox-ronl\VSA-tooling
 call .venv\Scripts\activate
 python scripts\render_tropaar_toon4_corpus.py
 python scripts\render_tropaar_toon4_corpus.py --pdf
@@ -44,7 +44,7 @@ python scripts\render_tropaar_toon4_corpus.py --pdf
 Alleen formuleblad:
 
 ```cmd
-cd /d C:\Git\orthodox-groningen\VSA-tooling
+cd /d C:\Git\orthodox-ronl\VSA-tooling
 python scripts\render_tropaar_toon4_corpus.py --template
 python scripts\render_tropaar_toon4_corpus.py --template --pdf
 ```
@@ -52,7 +52,7 @@ python scripts\render_tropaar_toon4_corpus.py --template --pdf
 Alleen PDF’s opnieuw uit bestaande `.mscz`:
 
 ```cmd
-cd /d C:\Git\orthodox-groningen\VSA-tooling
+cd /d C:\Git\orthodox-ronl\VSA-tooling
 python scripts\render_tropaar_toon4_corpus.py --pdf-only
 ```
 

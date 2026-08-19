@@ -5,13 +5,13 @@
 Preview automatisch publiceren bij iedere commit:
 
 ```text
-https://orthodox-groningen.github.io/VSA-tooling/preview/
+https://orthodox-ronl.github.io/VSA-tooling/preview/
 ```
 
 Productie blijft handmatig via workflow dispatch:
 
 ```text
-https://orthodox-groningen.github.io/VSA-tooling/
+https://orthodox-ronl.github.io/VSA-tooling/
 ```
 
 ## Belangrijk ontwerpbesluit

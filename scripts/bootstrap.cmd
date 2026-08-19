@@ -11,14 +11,14 @@ call .venv\Scripts\activate
 
 python -m pip install --upgrade pip
 
-REM orthodox-groningen/catalogus (bron) — niet de PyPI-naamgenoot "catalogus".
+REM orthodox-ronl/catalogus (bron) — niet de PyPI-naamgenoot "catalogus".
 if exist vendor\bron\pyproject.toml (
     pip install -e vendor\bron
 ) else if exist ..\bron\pyproject.toml (
     pip install -e ..\bron
 ) else (
     echo ERROR: bron-repo niet gevonden ^(vendor\bron of ..\bron^).
-    echo catalogus moet uit orthodox-groningen/bron komen; PyPI "catalogus" is een ander package.
+    echo catalogus moet uit orthodox-ronl/bron komen; PyPI "catalogus" is een ander package.
     exit /b 1
 )
 

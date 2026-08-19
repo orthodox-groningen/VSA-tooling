@@ -1,11 +1,11 @@
 # Parochie-lokaal — VSA-tooling
 
-**Algemene handleiding (canoniek):** [bron/docs/manuals/parochie-lokaal-zangstukken.md](https://github.com/orthodox-groningen/bron/blob/main/docs/manuals/parochie-lokaal-zangstukken.md)
+**Algemene handleiding (canoniek):** [bron/docs/manuals/parochie-lokaal-zangstukken.md](https://github.com/orthodox-ronl/bron/blob/main/docs/manuals/parochie-lokaal-zangstukken.md)
 
-Terminologie: [bron/docs/specs/terminologie.md](https://github.com/orthodox-groningen/bron/blob/main/docs/specs/terminologie.md).
+Terminologie: [bron/docs/specs/terminologie.md](https://github.com/orthodox-ronl/bron/blob/main/docs/specs/terminologie.md).
 
 Dit document beschrijft alleen wat **specifiek voor [VSA-tooling](@bron)** geldt (CLI,
-includes, catalogus). Voor een browsable Hugo-voorbeeld: [VSA-demo](https://github.com/orthodox-groningen/VSA-demo).
+includes, catalogus). Voor een browsable Hugo-voorbeeld: [VSA-demo](https://github.com/orthodox-ronl/VSA-demo).
 
 ---
 
@@ -17,7 +17,7 @@ examples/consumer-minimal/content-source/
 
 [Parochie-lokale representaties](@bron) / [zangstukken](@bron) in een consumer-site:
 zie VSA-demo en
-[bron — parochie-lokaal](https://github.com/orthodox-groningen/bron/blob/main/docs/manuals/parochie-lokaal-zangstukken.md).
+[bron — parochie-lokaal](https://github.com/orthodox-ronl/bron/blob/main/docs/manuals/parochie-lokaal-zangstukken.md).
 
 ---
 
@@ -44,9 +44,9 @@ Prefix `lokaal:` of `bron:` beperkt de zoekscope; `id:` doorzoekt beide (lokaal 
 Status: **geïmplementeerd** — resolve-stap vóór build (of auto-resolve in `build-markdown`
 voor publishbare paden).
 
-Normatief contract (bron): [catalogus-samenstelling-zangstuk.md](https://github.com/orthodox-groningen/bron/blob/main/docs/specs/catalogus-samenstelling-zangstuk.md).
+Normatief contract (bron): [catalogus-samenstelling-zangstuk.md](https://github.com/orthodox-ronl/bron/blob/main/docs/specs/catalogus-samenstelling-zangstuk.md).
 
-Handleiding Rene: [sjabloon schrijven](https://github.com/orthodox-groningen/bron/blob/main/docs/manuals/catalogus/sjabloon-schrijven.md).
+Handleiding Rene: [sjabloon schrijven](https://github.com/orthodox-ronl/bron/blob/main/docs/manuals/catalogus/sjabloon-schrijven.md).
 
 #### Bedoeld gedrag
 
@@ -54,7 +54,7 @@ Handleiding Rene: [sjabloon schrijven](https://github.com/orthodox-groningen/bro
    nog **geen** pad.
 2. Frontmatter **`default.*`** levert context (`gelegenheid` in de **sessie**,
    `gelegenheidstype` in het sjabloon).
-3. [`vsa resolve-catalogus`](../reference/cli/resolve-catalogus.md) roept [`catalogus zoek`](https://orthodox-groningen.github.io/bron/reference/catalogus-cli/#catalogus-zoek) aan per unieke
+3. [`vsa resolve-catalogus`](../reference/cli/resolve-catalogus.md) roept [`catalogus zoek`](https://orthodox-ronl.github.io/bron/reference/catalogus-cli/#catalogus-zoek) aan per unieke
    `zoek=`-waarde (+ [exporttypen](@bron) blijven aparte regels).
 4. Uitvoer: dezelfde regels met **`bron:…`** / **`lokaal:…`** i.p.v. `zoek=`.
 5. Pas daarna [`vsa build-markdown`](../reference/cli/build-markdown.md) / Hugo.
@@ -103,7 +103,7 @@ Meerdere regels met **dezelfde** `zoek=` → één catalogus-zoekactie, meerdere
 
 - [Parser](@): `markdown_include.py` — weigert open `zoek=` in build.
 - Resolve: [`vsa resolve-catalogus`](../reference/cli/resolve-catalogus.md) (CLI).
-- Afhankelijkheid: **`catalogus`** uit bron-repo ([`catalogus zoek`](https://orthodox-groningen.github.io/bron/reference/catalogus-cli/#catalogus-zoek)).
+- Afhankelijkheid: **`catalogus`** uit bron-repo ([`catalogus zoek`](https://orthodox-ronl.github.io/bron/reference/catalogus-cli/#catalogus-zoek)).
 
 ---
 
@@ -119,7 +119,7 @@ tussenstap vóór [`vsa validate`](../reference/cli/validate.md) /
 ### Syntax
 
 ```cmd
-cd /d C:\Git\orthodox-groningen\VSA-tooling
+cd /d C:\Git\orthodox-ronl\VSA-tooling
 vsa resolve-catalogus pad\naar\samenstelling.md ^
   --content-root pad\naar\content-source ^
   --bron-root ..\bron
@@ -132,26 +132,26 @@ vsa resolve-catalogus pad\naar\samenstelling.md ^
 | `--bron-root`    | [Bron-repository](@bron) (`zangstukken/`)                                                                                                                                  |
 | `--output`       | Optioneel ander uitvoerbestand; default: overschrijven invoer of `.resolved.md`                                                                                            |
 | `--dry-run`      | Alleen rapport, geen schrijven                                                                                                                                             |
-| `--interactive`  | Review bij ambiguïteit (**gepland**; nu: `AmbiguousError` + [`catalogus zoek --lijst`](https://orthodox-groningen.github.io/bron/reference/catalogus-cli/#catalogus-zoek)) |
+| `--interactive`  | Review bij ambiguïteit (**gepland**; nu: `AmbiguousError` + [`catalogus zoek --lijst`](https://orthodox-ronl.github.io/bron/reference/catalogus-cli/#catalogus-zoek)) |
 
 ### Wat het commando doet
 
 1. Yaml-frontmatter parsen → **`default.*`**.
 2. Alle `:::include … zoek="…"` regels vinden (niet in code fences).
-3. Per `zoek=` + context: [`catalogus zoek`](https://orthodox-groningen.github.io/bron/reference/catalogus-cli/#catalogus-zoek) (bron-package).
+3. Per `zoek=` + context: [`catalogus zoek`](https://orthodox-ronl.github.io/bron/reference/catalogus-cli/#catalogus-zoek) (bron-package).
 4. Bij unieke match: vervang `zoek="…"` door `bron:…` / `lokaal:…`.
-5. Bij ambiguïteit: **`AmbiguousError`** (strict); review via [`catalogus zoek --lijst`](https://orthodox-groningen.github.io/bron/reference/catalogus-cli/#catalogus-zoek).
+5. Bij ambiguïteit: **`AmbiguousError`** (strict); review via [`catalogus zoek --lijst`](https://orthodox-ronl.github.io/bron/reference/catalogus-cli/#catalogus-zoek).
 6. Schrijf opgelost bestand.
 
 ### Relatie tot `catalogus` CLI
 
 | Tool                                                                                                                                        | Rol                                                                                                                                            |
 | ------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
-| [`catalogus zoek`](https://orthodox-groningen.github.io/bron/reference/catalogus-cli/#catalogus-zoek) `"Kondakion" --default-gelegenheid …` | Lage API — één zoekactie                                                                                                                       |
-| [`catalogus index validate`](https://orthodox-groningen.github.io/bron/reference/catalogus-cli/#catalogus-index-validate)                   | Index controleren vóór bulk-resolve                                                                                                            |
-| [`vsa resolve-catalogus`](../reference/cli/resolve-catalogus.md)                                                                            | Markdown-processor voor Rene — roept [`catalogus zoek`](https://orthodox-groningen.github.io/bron/reference/catalogus-cli/#catalogus-zoek) aan |
+| [`catalogus zoek`](https://orthodox-ronl.github.io/bron/reference/catalogus-cli/#catalogus-zoek) `"Kondakion" --default-gelegenheid …` | Lage API — één zoekactie                                                                                                                       |
+| [`catalogus index validate`](https://orthodox-ronl.github.io/bron/reference/catalogus-cli/#catalogus-index-validate)                   | Index controleren vóór bulk-resolve                                                                                                            |
+| [`vsa resolve-catalogus`](../reference/cli/resolve-catalogus.md)                                                                            | Markdown-processor voor Rene — roept [`catalogus zoek`](https://orthodox-ronl.github.io/bron/reference/catalogus-cli/#catalogus-zoek) aan |
 
-Zie [bron — catalogus CLI](https://orthodox-groningen.github.io/bron/reference/catalogus-cli/).
+Zie [bron — catalogus CLI](https://orthodox-ronl.github.io/bron/reference/catalogus-cli/).
 
 ### Pipeline
 
@@ -198,12 +198,12 @@ Inline (kort fragment):
 Lokaal controleren (tooling):
 
 ```cmd
-cd /d C:\Git\orthodox-groningen\VSA-tooling
+cd /d C:\Git\orthodox-ronl\VSA-tooling
 vsa validate examples\consumer-minimal\content-source
 scripts\docs-serve.cmd
 ```
 
-Hugo-voorbeeldconsumer: [VSA-demo](https://github.com/orthodox-groningen/VSA-demo).
+Hugo-voorbeeldconsumer: [VSA-demo](https://github.com/orthodox-ronl/VSA-demo).
 
 ---
 

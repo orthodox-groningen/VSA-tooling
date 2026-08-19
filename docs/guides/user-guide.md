@@ -40,7 +40,7 @@ VSA-notatie  →  validate  →  SVG / MusicXML / Hugo-Markdown
 | Eerste SVG                   | `vsa svg examples\docs-walkthroughs\svg-phrase-kort.vsa …` schrijft een `.svg`     |
 
 ```cmd
-cd /d C:\Git\orthodox-groningen\VSA-tooling
+cd /d C:\Git\orthodox-ronl\VSA-tooling
 scripts\bootstrap.cmd
 vsa validate examples\docs-walkthroughs\svg-phrase-kort.vsa
 ```
@@ -56,4 +56,4 @@ vsa validate examples\docs-walkthroughs\svg-phrase-kort.vsa
 
 - Hub: [Handleidingen](../manuals/index.md)
 - Alle flags: [CLI-referentie](../reference/cli/index.md)
-- Org-docs: [bron](https://orthodox-groningen.github.io/bron/)
+- Org-docs: [bron](https://orthodox-ronl.github.io/bron/)

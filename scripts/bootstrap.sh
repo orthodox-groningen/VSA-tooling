@@ -5,14 +5,14 @@ cd "$(dirname "$0")/.."
 
 python -m pip install --upgrade pip
 
-# orthodox-groningen/catalogus (bron) — niet de PyPI-naamgenoot "catalogus".
+# orthodox-ronl/catalogus (bron) — niet de PyPI-naamgenoot "catalogus".
 if [[ -f vendor/bron/pyproject.toml ]]; then
   python -m pip install -e vendor/bron
 elif [[ -f ../bron/pyproject.toml ]]; then
   python -m pip install -e ../bron
 else
   echo "ERROR: bron-repo niet gevonden (vendor/bron of ../bron)."
-  echo "catalogus moet uit orthodox-groningen/bron komen; PyPI \"catalogus\" is een ander package."
+  echo "catalogus moet uit orthodox-ronl/bron komen; PyPI \"catalogus\" is een ander package."
   exit 1
 fi
 

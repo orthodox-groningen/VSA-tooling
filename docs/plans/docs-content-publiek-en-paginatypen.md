@@ -3,7 +3,7 @@
 | Veld              | Waarde                                                                                                                                                                           |
 | ----------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **Status**        | pointer                                                                                                                                                                          |
-| **Canoniek plan** | [bron — Docs-content: publiek & paginatypen](https://github.com/orthodox-groningen/bron/blob/docs/hrg-termrefs-en-contentplan/docs/plans/docs-content-publiek-en-paginatypen.md) |
+| **Canoniek plan** | [bron — Docs-content: publiek & paginatypen](https://github.com/orthodox-ronl/bron/blob/docs/hrg-termrefs-en-contentplan/docs/plans/docs-content-publiek-en-paginatypen.md) |
 
 Het org-brede werkplan (persona’s, paginatypen, audit, fasen 0–E) staat in
 **bron**. Dit bestand voorkomt een tweede, uit elkaar lopende kopie (D1).

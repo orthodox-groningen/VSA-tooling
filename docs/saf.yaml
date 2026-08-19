@@ -1,11 +1,11 @@
 scope:
   scopetag: vsa-tooling
-  scopedir: https://github.com/orthodox-groningen/VSA-tooling/tree/main/docs
+  scopedir: https://github.com/orthodox-ronl/VSA-tooling/tree/main/docs
   curatedir: terminologie
   glossarydir: mrgs
   defaultvsn: vsa-tooling
   defaulttype: concept
-  website: https://orthodox-groningen.github.io/VSA-tooling
+  website: https://orthodox-ronl.github.io/VSA-tooling
   navpath: /terminologie
   navid: slug
   license: ../LICENSE
@@ -16,7 +16,7 @@ scope:
 
 scopes:
   - scopetag: bron
-    scopedir: https://github.com/orthodox-groningen/bron/tree/main/docs
+    scopedir: https://github.com/orthodox-ronl/bron/tree/main/docs
 
 versions:
   - vsntag: vsa-tooling

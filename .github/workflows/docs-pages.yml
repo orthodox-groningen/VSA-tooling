@@ -47,19 +47,19 @@ jobs:
           branch="${GITHUB_REF#refs/heads/}"
           echo "branch=$branch" >> "$GITHUB_OUTPUT"
           if [[ "${GITHUB_REF}" == "refs/heads/main" ]]; then
-            echo "site_url=https://orthodox-groningen.github.io/VSA-tooling/" >> "$GITHUB_OUTPUT"
+            echo "site_url=https://orthodox-ronl.github.io/VSA-tooling/" >> "$GITHUB_OUTPUT"
             echo "destination_dir=" >> "$GITHUB_OUTPUT"
             echo "url_prefix=/VSA-tooling/" >> "$GITHUB_OUTPUT"
-            echo "pages_url=https://orthodox-groningen.github.io/VSA-tooling/" >> "$GITHUB_OUTPUT"
+            echo "pages_url=https://orthodox-ronl.github.io/VSA-tooling/" >> "$GITHUB_OUTPUT"
             echo "preview=false" >> "$GITHUB_OUTPUT"
             echo "label=production" >> "$GITHUB_OUTPUT"
             # Ongebruikt voor root: deploy wist alles en zet /preview/ terug.
             echo "keep_files=false" >> "$GITHUB_OUTPUT"
           else
-            echo "site_url=https://orthodox-groningen.github.io/VSA-tooling/preview/" >> "$GITHUB_OUTPUT"
+            echo "site_url=https://orthodox-ronl.github.io/VSA-tooling/preview/" >> "$GITHUB_OUTPUT"
             echo "destination_dir=preview" >> "$GITHUB_OUTPUT"
             echo "url_prefix=/VSA-tooling/preview/" >> "$GITHUB_OUTPUT"
-            echo "pages_url=https://orthodox-groningen.github.io/VSA-tooling/preview/" >> "$GITHUB_OUTPUT"
+            echo "pages_url=https://orthodox-ronl.github.io/VSA-tooling/preview/" >> "$GITHUB_OUTPUT"
             echo "preview=true" >> "$GITHUB_OUTPUT"
             echo "label=preview" >> "$GITHUB_OUTPUT"
             # false: vervang /preview/ volledig (geen weesbestanden van eerdere builds).

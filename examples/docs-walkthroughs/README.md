@@ -29,7 +29,7 @@ Gecommitte preview-SVG’s staan onder
 manifest:
 
 ```cmd
-cd /d C:\Git\orthodox-groningen\VSA-tooling
+cd /d C:\Git\orthodox-ronl\VSA-tooling
 python scripts\sync-docs-walkthrough-svgs.py
 ```
 

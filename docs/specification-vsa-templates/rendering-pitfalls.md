@@ -112,7 +112,7 @@ renderers; de corpus-CLI is tropaar-toon-4 totdat hun `pitches_status` geen
 ## Regenereren
 
 ```cmd
-cd /d C:\Git\orthodox-groningen\VSA-tooling
+cd /d C:\Git\orthodox-ronl\VSA-tooling
 .\.venv\Scripts\python.exe -m pytest tests\test_vsa_template_instance.py tests\test_vsa_template_corpus_mscx.py -q
 .\.venv\Scripts\python.exe scripts\render_tropaar_toon4_corpus.py
 .\.venv\Scripts\python.exe scripts\render_tropaar_toon4_corpus.py --template

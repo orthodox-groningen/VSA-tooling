@@ -6,7 +6,7 @@ Status: ontwerpdocument, groeit mee met de praktijk. Versie per 27 juni
 ## 1. Doel en scope
 
 De `bron`-repository is de centrale, enige bron van waarheid voor de
-muzikale inhoud (zangstukken) die binnen `orthodox-groningen` wordt gebruikt.
+muzikale inhoud (zangstukken) die binnen `orthodox-ronl` wordt gebruikt.
 Parochie-sites (bijv. Hugo-installaties voor Hemelum, Groningen) consumeren
 deze repository als databron; ze bewerken hem niet rechtstreeks.
 

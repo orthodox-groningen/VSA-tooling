@@ -87,7 +87,7 @@ witruimte van verborgen rusten is ongewenst.
 YAML → MuseScore + MXL (tropaar toon 4):
 
 ```cmd
-cd /d C:\Git\orthodox-groningen\VSA-tooling
+cd /d C:\Git\orthodox-ronl\VSA-tooling
 python scripts\render_tropaar_toon4_corpus.py --template
 python scripts\render_tropaar_toon4_corpus.py --template --pdf
 ```

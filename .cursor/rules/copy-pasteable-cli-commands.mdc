@@ -16,7 +16,7 @@ Als je **commando's voor de gebruiker** geeft om lokaal uit te voeren (testen, b
 Voorbeeld:
 
 ```cmd
-cd /d C:\Git\orthodox-groningen\VSA-tooling
+cd /d C:\Git\orthodox-ronl\VSA-tooling
 vsa validate examples\hugo-demo\content-source
 vsa build-markdown examples\hugo-demo\content-source generated\hugo\content examples\hugo-demo\static\vsa
 ```

@@ -58,7 +58,7 @@ jobs:
       - name: Install VSA tooling
         run: |
           python -m pip install --upgrade pip
-          python -m pip install "vsa-tool[rendering] @ git+https://github.com/orthodox-groningen/VSA-tooling.git@${{ inputs.vsa_ref }}"
+          python -m pip install "vsa-tool[rendering] @ git+https://github.com/orthodox-ronl/VSA-tooling.git@${{ inputs.vsa_ref }}"
 
       - name: Install rendering fonts
         if: runner.os == 'Linux'

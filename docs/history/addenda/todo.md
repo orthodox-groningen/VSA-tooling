@@ -101,7 +101,7 @@ Status: `Geïmplementeerd`
 Status: `Geïmplementeerd` — expliciete conversiestap en MXL-kopie naar static nog open
 
 Normatieve contracten (parameters, validatie, fouten):
-[exportcontracten](https://orthodox-groningen.github.io/bron/reference/exportcontracten/).
+[exportcontracten](https://orthodox-ronl.github.io/bron/reference/exportcontracten/).
 
 Vervolg op `:::coria`: één transclusion-mechanisme met expliciete exporttypes:
 
@@ -130,7 +130,7 @@ Geneste directives zijn niet toegestaan: ':::web-only:::' binnen open ':::keep-t
 
 Implementatie: `src/vsa/markdown_directives.py` verbiedt nesting expliciet.
 In de praktijk komt dit voor wanneer `:::web-only:::` (bijv. Coria-link) binnen
-`:::keep-together:::` staat — zie [VSA-demo](https://github.com/orthodox-groningen/VSA-demo/blob/main/content-source/praktijk/zondagen/zondag-toon-1.md).
+`:::keep-together:::` staat — zie [VSA-demo](https://github.com/orthodox-ronl/VSA-demo/blob/main/content-source/praktijk/zondagen/zondag-toon-1.md).
 
 Te onderzoeken bij herziening van [spec-vsa-document-samenstellen.md](spec-vsa-document-samenstellen.md):
 
@@ -144,16 +144,16 @@ Te onderzoeken bij herziening van [spec-vsa-document-samenstellen.md](spec-vsa-d
 
 Status: **Afgerond** (werkversie)
 
-- Normatief: [bron/docs/specs/terminologie.md](https://github.com/orthodox-groningen/bron/blob/main/docs/specs/terminologie.md) (stub: [specs/terminologie.md](specs/terminologie.md)).
-- [documentatie-eigendom](https://github.com/orthodox-groningen/bron/blob/main/docs/specs/documentatie-eigendom.md): geen duplicaten; VSA-specs in `docs/spec/`.
-- Alias-resolver in code: **geïmplementeerd** in [bron/catalogus](https://github.com/orthodox-groningen/bron/blob/main/docs/reference/catalogus-cli.md) (fase 2); id-gebaseerde `:::include` in VSA-tooling (fase 3, basis).
+- Normatief: [bron/docs/specs/terminologie.md](https://github.com/orthodox-ronl/bron/blob/main/docs/specs/terminologie.md) (stub: [specs/terminologie.md](specs/terminologie.md)).
+- [documentatie-eigendom](https://github.com/orthodox-ronl/bron/blob/main/docs/specs/documentatie-eigendom.md): geen duplicaten; VSA-specs in `docs/spec/`.
+- Alias-resolver in code: **geïmplementeerd** in [bron/catalogus](https://github.com/orthodox-ronl/bron/blob/main/docs/reference/catalogus-cli.md) (fase 2); id-gebaseerde `:::include` in VSA-tooling (fase 3, basis).
 
 ### 3.2 Parochie-lokaal model (map `lokaal/`, manifest, promotie)
 
 Status: **Geïmplementeerd** (demo + docs); term **manifest** normatief in bron §16
 
 - [parochie-lokaal-zangstukken.md](parochie-lokaal-zangstukken.md)
-- Demo: [VSA-demo](https://github.com/orthodox-groningen/VSA-demo) `content-source/lokaal/` + include in `antifonen-hemelum.md`
+- Demo: [VSA-demo](https://github.com/orthodox-ronl/VSA-demo) `content-source/lokaal/` + include in `antifonen-hemelum.md`
 - Tests: [test_hugo_lokaal_zangstukken.py](../tests/test_hugo_lokaal_zangstukken.py)
 
 ### 3.3 Hugo rootSections (github.io-links)
@@ -166,4 +166,4 @@ Status: **Afgerond**
 
 Status: **Open — afwachten**
 
-Als geneste yaml (variant → uitvoeringsvorm → representatie) in `bron` wordt ingevoerd: beoordelen of [terminologie §16 manifest](https://github.com/orthodox-groningen/bron/blob/main/docs/specs/terminologie.md#16-manifest) ongewijzigd geldt (zelfde bestandsnamen en niveaus) of uitbreiding nodig is. Zie ook bron §22 open punten.
+Als geneste yaml (variant → uitvoeringsvorm → representatie) in `bron` wordt ingevoerd: beoordelen of [terminologie §16 manifest](https://github.com/orthodox-ronl/bron/blob/main/docs/specs/terminologie.md#16-manifest) ongewijzigd geldt (zelfde bestandsnamen en niveaus) of uitbreiding nodig is. Zie ook bron §22 open punten.

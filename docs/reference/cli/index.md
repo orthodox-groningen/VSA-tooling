@@ -13,7 +13,7 @@ Alle voorbeelden in deze referentie gaan uit van Windows `cmd.exe` en de
 repository-root als werkmap:
 
 ```cmd
-cd /d C:\Git\orthodox-groningen\VSA-tooling
+cd /d C:\Git\orthodox-ronl\VSA-tooling
 ```
 
 Paden in commando's zijn relatief aan die map, tenzij je een absoluut pad
@@ -73,7 +73,7 @@ overzichtspagina herhaalt die details niet.
 ## Scripts
 
 De onderstaande scripts gebruik je rond `vsa` zelf (installatie, testen,
-docs). Zie [`scripts/README.md`](https://github.com/orthodox-groningen/VSA-tooling/blob/main/scripts/README.md)
+docs). Zie [`scripts/README.md`](https://github.com/orthodox-ronl/VSA-tooling/blob/main/scripts/README.md)
 voor het volledige overzicht.
 
 | Script                    | Doel                                                       |
@@ -99,6 +99,6 @@ Bij problemen: eerst [`vsa validate`](validate.md), daarna `scripts\test.cmd`, e
 - SVG-workflow: [svg-export.md](../../guides/svg-export.md)
 - MusicXML-workflow: [musicxml-export.md](../../guides/musicxml-export.md)
 - Parochie-lokale [VSA](@) (catalogus, includes): [parochie-lokaal-vsa.md](../../guides/parochie-lokaal-vsa.md)
-- Bron-contracten (org-breed, normatief): [conversie-vsa-svg](https://orthodox-groningen.github.io/bron/reference/conversie-vsa-svg/),
-  [exporttype-svg](https://orthodox-groningen.github.io/bron/reference/exporttype-svg/),
-  [catalogus-cli](https://orthodox-groningen.github.io/bron/reference/catalogus-cli/)
+- Bron-contracten (org-breed, normatief): [conversie-vsa-svg](https://orthodox-ronl.github.io/bron/reference/conversie-vsa-svg/),
+  [exporttype-svg](https://orthodox-ronl.github.io/bron/reference/exporttype-svg/),
+  [catalogus-cli](https://orthodox-ronl.github.io/bron/reference/catalogus-cli/)

@@ -4,19 +4,19 @@ VSA-tooling gebruikt TEv2 voor **tool-termen** ([parser](@), [renderer](@), incl
 `docs/terminologie/`. De mensleesbare glossary staat in `docs/glossary.md` (zelfde
 patroon als bron: één bronbestand met `{% hrg="vsa-tooling" %}`, geen
 `_index.template`/rename). Org-termen uit
-[bron](https://orthodox-groningen.github.io/bron/specs/terminologie/) worden via
+[bron](https://orthodox-ronl.github.io/bron/specs/terminologie/) worden via
 `termselection: "*@bron"` in de lokale MRG/HRG opgenomen (D1: bron blijft
 canoniek). Lokale curated texts kunnen een term herdefiniëren; dan wint die voor
 `[term](@)`, terwijl `[term](@bron)` de org-definitie blijft.
 
 **Contributor-note (term bodies):** volg het org
-[term-entry-sjabloon](https://github.com/orthodox-groningen/bron/blob/main/docs/specs/term-entry-sjabloon.md)
+[term-entry-sjabloon](https://github.com/orthodox-ronl/bron/blob/main/docs/specs/term-entry-sjabloon.md)
 waar zinvol (voorbeeld, waartoe, verder lezen). Voor org-begrippen in
 eindgebruikersprose: voorkeur `[term](@bron)` tenzij je bewust de lokale
 herdefinitie bedoelt.
 
 Org-brede contributor-checklist (scripts, pins, tabellen):
-[Documentatie bijdragen](https://orthodox-groningen.github.io/bron/manuals/docs-bijdragen/)
+[Documentatie bijdragen](https://orthodox-ronl.github.io/bron/manuals/docs-bijdragen/)
 (bron).
 
 ## Lokaal
@@ -24,7 +24,7 @@ Org-brede contributor-checklist (scripts, pins, tabellen):
 Installeer TEv2-tools via de repo-pins (voorkeur):
 
 ```cmd
-cd /d C:\Git\orthodox-groningen\VSA-tooling
+cd /d C:\Git\orthodox-ronl\VSA-tooling
 npm install
 ```
 
@@ -42,7 +42,7 @@ npm install -g @tno-terminology-design/trrt @tno-terminology-design/hrgt @tno-te
 | `scripts\docs-build-tev2.cmd` | Volledige keten + TermRef-check + MkDocs (= CI-parity)               |
 
 ```cmd
-cd /d C:\Git\orthodox-groningen\VSA-tooling
+cd /d C:\Git\orthodox-ronl\VSA-tooling
 scripts\docs-serve-tev2.cmd
 ```
 
@@ -107,5 +107,5 @@ python scripts\align_markdown_tables.py docs/
 
 ## Hugo / presentatie
 
-TEv2 in de demosite hoort bij [VSA-demo](https://github.com/orthodox-groningen/VSA-demo)
+TEv2 in de demosite hoort bij [VSA-demo](https://github.com/orthodox-ronl/VSA-demo)
 (daar desgewenst deferred). Deze handleiding gaat alleen over **MkDocs tool-docs**.

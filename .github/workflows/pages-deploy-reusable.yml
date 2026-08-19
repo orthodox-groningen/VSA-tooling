@@ -82,9 +82,9 @@ jobs:
         if: ${{ !inputs.skip_publication_check }}
         uses: actions/checkout@v4
         with:
-          repository: orthodox-groningen/VSA-tooling
+          repository: orthodox-ronl/VSA-tooling
           path: vendor/vsa-tooling
-          ref: ${{ github.repository == 'orthodox-groningen/VSA-tooling' && github.sha || inputs.vsa_tooling_ref }}
+          ref: ${{ github.repository == 'orthodox-ronl/VSA-tooling' && github.sha || inputs.vsa_tooling_ref }}
 
       - name: Check publication output
         if: ${{ !inputs.skip_publication_check }}

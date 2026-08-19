@@ -5,7 +5,7 @@ SVG- en MusicXML-export, Markdown-build en hergebruik in andere repositories.
 
 Deze site is voor **wie de tool gebruikt of documenteert** — niet voor het koor
 dat een dienst oefent. Daarvoor: de parochie-site
-([VSA-demo](https://github.com/orthodox-groningen/VSA-demo) als voorbeeld).
+([VSA-demo](https://github.com/orthodox-ronl/VSA-demo) als voorbeeld).
 
 ## Wie ben je? (kies je route)
 
@@ -15,10 +15,10 @@ dat een dienst oefent. Daarvoor: de parochie-site
 | Hugo/CI aan `vsa-tool` hangen                          | Consumer-site builder       | [Consumer-site](manuals/consumer-site.md) · [Integratie](integratie/index.md)              |
 | Docs of TEv2 bijdragen                                 | Docs-/tool-contributor      | [TEv2 in tool-docs](guides/tev2-docs.md)                                                   |
 | Formele taal-/toolregels                               | Spec-/PR-reviewer           | [Specificaties](specification/README.md) · [Terminologie](glossary.md)                     |
-| [Zangstuk](@bron) / `access:` in de [bron-repo](@bron) | Bron-contentbeheerder       | [bron — handleidingen](https://orthodox-groningen.github.io/bron/manuals/)                 |
-| Partituur oefenen / liturgie volgen                    | Koor / liturgie             | **Niet hier** — parochie-site / [VSA-demo](https://github.com/orthodox-groningen/VSA-demo) |
+| [Zangstuk](@bron) / `access:` in de [bron-repo](@bron) | Bron-contentbeheerder       | [bron — handleidingen](https://orthodox-ronl.github.io/bron/manuals/)                 |
+| Partituur oefenen / liturgie volgen                    | Koor / liturgie             | **Niet hier** — parochie-site / [VSA-demo](https://github.com/orthodox-ronl/VSA-demo) |
 
-Rollen en toon: [bron — schrijfconventies](https://orthodox-groningen.github.io/bron/specs/schrijfconventies/).
+Rollen en toon: [bron — schrijfconventies](https://orthodox-ronl.github.io/bron/specs/schrijfconventies/).
 
 ## Wat vind je hier
 
@@ -38,14 +38,14 @@ Rollen en toon: [bron — schrijfconventies](https://orthodox-groningen.github.i
 | ---------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
 | Hoe gebruik ik de VSA-CLI of bouw ik een consumer-site?    | [Starten](getting-started/README.md) of [Handleidingen](manuals/index.md)                    |
 | Wat moet de taal/tool formeel doen?                        | [Specificaties](specification/README.md)                                                     |
-| Org-specs, [zangstuk](@bron)-formaat, glossary             | [bron — documentatie](https://orthodox-groningen.github.io/bron/)                            |
+| Org-specs, [zangstuk](@bron)-formaat, glossary             | [bron — documentatie](https://orthodox-ronl.github.io/bron/)                            |
 
 ## Wat is dit *niet*
 
 | Repo / site                                                | Rol                                                                |
 | ---------------------------------------------------------- | ------------------------------------------------------------------ |
-| [bron](https://orthodox-groningen.github.io/bron/)         | Org-specs en [zangstukken](@bron) (single source of truth)         |
-| [VSA-demo](https://orthodox-groningen.github.io/VSA-demo/) | Hugo-presentatiesite / voorbeeldconsumer                           |
+| [bron](https://orthodox-ronl.github.io/bron/)         | Org-specs en [zangstukken](@bron) (single source of truth)         |
+| [VSA-demo](https://orthodox-ronl.github.io/VSA-demo/) | Hugo-presentatiesite / voorbeeldconsumer                           |
 | **Deze site**                                              | Documentatie van de **tool**, geen liturgische browsable catalogus |
 
 > **URL-cutover:** docs staan op `/` (`main`) en `/preview/` (andere branches).
@@ -54,7 +54,7 @@ Rollen en toon: [bron — schrijfconventies](https://orthodox-groningen.github.i
 ## Lokaal bekijken
 
 ```cmd
-cd /d C:\Git\orthodox-groningen\VSA-tooling
+cd /d C:\Git\orthodox-ronl\VSA-tooling
 python -m pip install -r requirements-docs.txt
 scripts\docs-serve.cmd
 ```
@@ -65,7 +65,7 @@ Met TermRefs (na `npm install`): `scripts\docs-serve-tev2.cmd` — zie
 ## Snel naar de tool
 
 ```cmd
-cd /d C:\Git\orthodox-groningen\VSA-tooling
+cd /d C:\Git\orthodox-ronl\VSA-tooling
 scripts\bootstrap.cmd
 vsa --version
 vsa validate examples\minimal\001_plain_text.vsa

@@ -5,7 +5,7 @@
 Bij elke commit wordt automatisch een preview-site gebouwd en gepubliceerd onder:
 
 ```text
-https://orthodox-groningen.github.io/preview/
+https://orthodox-ronl.github.io/preview/
 ```
 
 Productie blijft handmatig.

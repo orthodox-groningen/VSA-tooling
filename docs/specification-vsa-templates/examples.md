@@ -21,7 +21,7 @@ Alle formules: [vsa-templates](vsa-template@) met `pitches_status: provisional`
 tot PDF-audit. MusicXML regenereren:
 
 ```cmd
-cd /d C:\Git\orthodox-groningen\VSA-tooling
+cd /d C:\Git\orthodox-ronl\VSA-tooling
 python scripts\render_vsa_template_musicxml.py --all
 ```
 

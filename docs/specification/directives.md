@@ -112,7 +112,7 @@ Renderers bepalen zelf hoe de abstracte betekenis wordt uitgewerkt.
 
 Status: **geïmplementeerd** (`id=` / `lokaal=` / **`zoek=`**).
 
-Normatief zoek-contract (bron): [catalogus-zoek-api.md](https://github.com/orthodox-groningen/bron/blob/main/docs/specs/catalogus-zoek-api.md).
+Normatief zoek-contract (bron): [catalogus-zoek-api.md](https://github.com/orthodox-ronl/bron/blob/main/docs/specs/catalogus-zoek-api.md).
 
 ---
 
@@ -150,7 +150,7 @@ Expand: lees doel-`.vsa`, strip frontmatter, splice body **in-memory** (brondocu
 
 Bij ambiguïteit:
 
-1. [`catalogus zoek --lijst`](https://orthodox-groningen.github.io/bron/reference/catalogus-cli/#catalogus-zoek) met dezelfde context.
+1. [`catalogus zoek --lijst`](https://orthodox-ronl.github.io/bron/reference/catalogus-cli/#catalogus-zoek) met dezelfde context.
 2. Verfijn `zoek=` of `default.*` in ouder-`.vsa`.
 3. Of schakel over naar **`@include-vsa lokaal=…`** / **`id=…`** na review.
 
@@ -163,7 +163,7 @@ Bij ambiguïteit:
 - **`zoek=`** in sjablonen/sessies: liturgische rol in de zoekstring; feest in `default.gelegenheid`.
 - **`@include-vsa zoek=`** in `.vsa`: context uit **ouder**-`.vsa` frontmatter.
 
-Zie [catalogus-zoek-api — twee contextlagen](https://github.com/orthodox-groningen/bron/blob/main/docs/specs/catalogus-zoek-api.md).
+Zie [catalogus-zoek-api — twee contextlagen](https://github.com/orthodox-ronl/bron/blob/main/docs/specs/catalogus-zoek-api.md).
 
 ---
 
@@ -171,7 +171,7 @@ Zie [catalogus-zoek-api — twee contextlagen](https://github.com/orthodox-groni
 
 | Onderdeel                                                                                                                      | Status              |
 | ------------------------------------------------------------------------------------------------------------------------------ | ------------------- |
-| `expand_include_vsa` in [`include_vsa.py`](https://github.com/orthodox-groningen/VSA-tooling/blob/main/src/vsa/include_vsa.py) | **Geïmplementeerd** |
+| `expand_include_vsa` in [`include_vsa.py`](https://github.com/orthodox-ronl/VSA-tooling/blob/main/src/vsa/include_vsa.py) | **Geïmplementeerd** |
 | `@include-vsa id=` / `lokaal=`                                                                                                 | **Geïmplementeerd** |
 | `@include-vsa zoek=`                                                                                                           | **Geïmplementeerd** |
 | Integratie validate / svg / musicxml / build-markdown                                                                          | **Geïmplementeerd** |
@@ -248,7 +248,7 @@ Wordt door [`vsa build-markdown`](../reference/cli/build-markdown.md) omgezet na
     :::include <exporttype> "pad/naar/melodie.vsa" [parameters]:::
 
 Exporttypes: `svg`, `coria`, `mxl` — alleen voor `.vsa`-bronverwijzingen.
-`:::coria` blijft een synoniem voor `:::include coria`. Zie [exportcontracten](https://orthodox-groningen.github.io/bron/reference/exportcontracten/)
+`:::coria` blijft een synoniem voor `:::include coria`. Zie [exportcontracten](https://orthodox-ronl.github.io/bron/reference/exportcontracten/)
 ([exporttypen](@bron)).
 
 Het pad is **relatief aan het includerende bestand** (niet aan de projectroot), **of**
@@ -261,11 +261,11 @@ een logische referentie via **catalogus** (fase 3):
 
 **Fase 4 — catalogus-zoek:** `zoek="…"` in sjablonen/sessies; [`vsa resolve-catalogus`](../reference/cli/resolve-catalogus.md)
 vervangt vóór build door `bron:…` / `lokaal:…`. Open `zoek=` in build → **fout**.
-Zie [catalogus-samenstelling-zangstuk](https://orthodox-groningen.github.io/bron/specs/catalogus-samenstelling-zangstuk/)
+Zie [catalogus-samenstelling-zangstuk](https://orthodox-ronl.github.io/bron/specs/catalogus-samenstelling-zangstuk/)
 en [parochie-lokaal-vsa.md](../guides/parochie-lokaal-vsa.md).
 
 Segmenten mogen [aliassen](@bron) zijn (`Hemelum` → `hemelum`). Zie
-[catalogus-cli](https://orthodox-groningen.github.io/bron/reference/catalogus-cli/).
+[catalogus-cli](https://orthodox-ronl.github.io/bron/reference/catalogus-cli/).
 
 Ondersteunde bestandstypen:
 
@@ -445,13 +445,13 @@ Hugo verwerkt daarna het gegenereerde Markdown-bestand tot HTML.
 Authoring-syntax voor **export** (niet conversie) is contractueel vastgelegd in de
 **[bron-repository](@bron)**:
 
-- [Exportcontracten](https://orthodox-groningen.github.io/bron/reference/exportcontracten/)
-- Per type: [svg](https://orthodox-groningen.github.io/bron/reference/exporttype-svg/),
-  [coria](https://orthodox-groningen.github.io/bron/reference/exporttype-coria/),
-  [mxl](https://orthodox-groningen.github.io/bron/reference/exporttype-mxl/)
+- [Exportcontracten](https://orthodox-ronl.github.io/bron/reference/exportcontracten/)
+- Per type: [svg](https://orthodox-ronl.github.io/bron/reference/exporttype-svg/),
+  [coria](https://orthodox-ronl.github.io/bron/reference/exporttype-coria/),
+  [mxl](https://orthodox-ronl.github.io/bron/reference/exporttype-mxl/)
 
 Conversie ([`vsa svg`](../reference/cli/svg.md), [`vsa musicxml`](../reference/cli/musicxml.md)):
-[Conversiemechanismen](https://orthodox-groningen.github.io/bron/reference/conversiemechanismen/)
+[Conversiemechanismen](https://orthodox-ronl.github.io/bron/reference/conversiemechanismen/)
 ([conversiemechanisme](@bron)).
 
 ### Implementatiestatus (VSA-tooling)

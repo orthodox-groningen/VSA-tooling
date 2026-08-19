@@ -14,7 +14,7 @@ vsa resolve-catalogus [-h] [--content-root CONTENT_ROOT] [--bron-root BRON_ROOT]
 
 Sjablonen en sessie-Markdown mogen `:::include <exporttype> zoek="…"` bevatten
 zonder al een concreet pad — bijvoorbeeld `:::include svg zoek="Kondakion" alt="Kondakion":::`.
-`vsa resolve-catalogus` lost deze op naar een catalogus-pad door [`catalogus zoek`](https://orthodox-groningen.github.io/bron/reference/catalogus-cli/#catalogus-zoek)
+`vsa resolve-catalogus` lost deze op naar een catalogus-pad door [`catalogus zoek`](https://orthodox-ronl.github.io/bron/reference/catalogus-cli/#catalogus-zoek)
 (uit de `catalogus`-package van de `bron`-repo) aan te roepen, en schrijft
 een nieuwe versie van het bestand waarin `zoek="…"` is vervangen door
 `bron:…` of `lokaal:…`.
@@ -32,10 +32,10 @@ opgelost.
    `default.gelegenheidstype`) levert zoekcontext.
 2. Alle `:::include <svg|coria|mxl> zoek="…"`-regels vinden (niet binnen
    code fences).
-3. Per unieke `zoek=`-waarde + context: één aanroep van [`catalogus zoek`](https://orthodox-groningen.github.io/bron/reference/catalogus-cli/#catalogus-zoek).
+3. Per unieke `zoek=`-waarde + context: één aanroep van [`catalogus zoek`](https://orthodox-ronl.github.io/bron/reference/catalogus-cli/#catalogus-zoek).
 4. Bij een unieke match: vervang `zoek="…"` door `bron:…` of `lokaal:…`.
 5. Bij ambiguïteit: fout (`AmbiguousError`) — review handmatig via
-   [`catalogus zoek --lijst`](https://orthodox-groningen.github.io/bron/reference/catalogus-cli/#catalogus-zoek) (interactieve review is gepland, nog niet
+   [`catalogus zoek --lijst`](https://orthodox-ronl.github.io/bron/reference/catalogus-cli/#catalogus-zoek) (interactieve review is gepland, nog niet
    geïmplementeerd).
 6. Schrijf het opgeloste bestand.
 
@@ -143,21 +143,21 @@ Geen content-root of bron-root; geef --content-root en/of --bron-root op.
 Exitcode: `1`. Fix: geef `--content-root` en/of `--bron-root` expliciet op.
 
 Bij ambiguïteit (meerdere [zangstukken](@bron) matchen dezelfde zoekterm + context)
-stopt het commando met een foutmelding van [`catalogus zoek`](https://orthodox-groningen.github.io/bron/reference/catalogus-cli/#catalogus-zoek). Fix: gebruik
-[`catalogus zoek --lijst`](https://orthodox-groningen.github.io/bron/reference/catalogus-cli/#catalogus-zoek) (in de `bron`-repo) om de kandidaten te bekijken en
+stopt het commando met een foutmelding van [`catalogus zoek`](https://orthodox-ronl.github.io/bron/reference/catalogus-cli/#catalogus-zoek). Fix: gebruik
+[`catalogus zoek --lijst`](https://orthodox-ronl.github.io/bron/reference/catalogus-cli/#catalogus-zoek) (in de `bron`-repo) om de kandidaten te bekijken en
 verfijn de zoekterm of `default.*`-context.
 
 ## Relatie tot `catalogus` CLI
 
 | Tool                                                                                                                                        | Rol                                                                                                                                                      |
 | ------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [`catalogus zoek`](https://orthodox-groningen.github.io/bron/reference/catalogus-cli/#catalogus-zoek) `"Kondakion" --default-gelegenheid …` | Lage-niveau API — één zoekactie.                                                                                                                         |
-| [`catalogus index validate`](https://orthodox-groningen.github.io/bron/reference/catalogus-cli/#catalogus-index-validate)                   | Index controleren vóór bulk-resolve.                                                                                                                     |
-| [`vsa resolve-catalogus`](resolve-catalogus.md)                                                                                             | Markdown-processor die [`catalogus zoek`](https://orthodox-groningen.github.io/bron/reference/catalogus-cli/#catalogus-zoek) per `zoek=`-regel aanroept. |
+| [`catalogus zoek`](https://orthodox-ronl.github.io/bron/reference/catalogus-cli/#catalogus-zoek) `"Kondakion" --default-gelegenheid …` | Lage-niveau API — één zoekactie.                                                                                                                         |
+| [`catalogus index validate`](https://orthodox-ronl.github.io/bron/reference/catalogus-cli/#catalogus-index-validate)                   | Index controleren vóór bulk-resolve.                                                                                                                     |
+| [`vsa resolve-catalogus`](resolve-catalogus.md)                                                                                             | Markdown-processor die [`catalogus zoek`](https://orthodox-ronl.github.io/bron/reference/catalogus-cli/#catalogus-zoek) per `zoek=`-regel aanroept. |
 
 ## Zie ook
 
 - [`vsa build-markdown`](build-markdown.md) — volgende stap in de pipeline; weigert open `zoek=`.
 - [`vsa validate`](validate.md) — draai na resolve om het opgeloste bestand te controleren.
 - Handleiding: [parochie-lokaal-vsa.md](../../guides/parochie-lokaal-vsa.md)
-- Bron-contract (normatief): [catalogus-samenstelling-zangstuk.md](https://orthodox-groningen.github.io/bron/specs/catalogus-samenstelling-zangstuk/), [catalogus-cli](https://orthodox-groningen.github.io/bron/reference/catalogus-cli/)
+- Bron-contract (normatief): [catalogus-samenstelling-zangstuk.md](https://orthodox-ronl.github.io/bron/specs/catalogus-samenstelling-zangstuk/), [catalogus-cli](https://orthodox-ronl.github.io/bron/reference/catalogus-cli/)

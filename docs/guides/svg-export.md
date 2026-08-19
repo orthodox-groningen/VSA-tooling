@@ -45,7 +45,7 @@ Eén geldige frase bekijken (`examples\docs-walkthroughs\svg-phrase-kort.vsa`):
 ```
 
 ```cmd
-cd /d C:\Git\orthodox-groningen\VSA-tooling
+cd /d C:\Git\orthodox-ronl\VSA-tooling
 vsa svg examples\docs-walkthroughs\svg-phrase-kort.vsa generated\vsa\svg-phrase-kort.svg
 ```
 
@@ -173,7 +173,7 @@ van die site (zie [consumer-site.md](../manuals/consumer-site.md) en
 [reuse-vsa-tooling.md](reuse-vsa-tooling.md) voor het volledige
 build-in-CI-voorbeeld). In de [bron-repository](@bron) zelf worden geen [afgeleide](@bron)
 SVG's opgeslagen — daar staat alleen de `.vsa`-bron (zie
-[repo-structuur](https://github.com/orthodox-groningen/bron/blob/main/docs/specs/repo-structuur.md)
+[repo-structuur](https://github.com/orthodox-ronl/bron/blob/main/docs/specs/repo-structuur.md)
 en het `derived/`-concept daar voor build-output dat nooit in git komt).
 
 ## Diagnose bij problemen
@@ -194,4 +194,4 @@ en het `derived/`-concept daar voor build-output dat nooit in git komt).
 - [vsa.toml](@)-defaults en voorrang: [config.md](../reference/config.md)
 - Consumer-site-structuur: [consumer-site.md](../manuals/consumer-site.md)
 - Integratie in andere repo's/CI: [reuse-vsa-tooling.md](reuse-vsa-tooling.md)
-- Bron-contracten (normatief): [conversie-vsa-svg](https://orthodox-groningen.github.io/bron/reference/conversie-vsa-svg/), [exporttype-svg](https://orthodox-groningen.github.io/bron/reference/exporttype-svg/) ([exporttype](@bron) `svg`)
+- Bron-contracten (normatief): [conversie-vsa-svg](https://orthodox-ronl.github.io/bron/reference/conversie-vsa-svg/), [exporttype-svg](https://orthodox-ronl.github.io/bron/reference/exporttype-svg/) ([exporttype](@bron) `svg`)

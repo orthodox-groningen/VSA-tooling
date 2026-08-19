@@ -47,7 +47,7 @@ Voor een tekst met **n** regels (frasen):
 3. **Geen** eis dat `n−1` een veelvoud van `len(cycle)` is.
 
 Implementatie: `assign_stanzas_to_phrases()` in
-[`src/vsa/template_mapping.py`](https://github.com/orthodox-groningen/VSA-tooling/blob/main/src/vsa/template_mapping.py).
+[`src/vsa/template_mapping.py`](https://github.com/orthodox-ronl/VSA-tooling/blob/main/src/vsa/template_mapping.py).
 
 Uitgebreidere bladen (prefix, embedded cycle, meerdere plannen): zie
 [mapping-vsa.md](../../../mapping-vsa.md).

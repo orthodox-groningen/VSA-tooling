@@ -13,7 +13,7 @@ Langere VSA-regel die de [renderer](@) over meerdere regels kan zetten.
 ## Commando
 
 ```cmd
-cd /d C:\Git\orthodox-groningen\VSA-tooling
+cd /d C:\Git\orthodox-ronl\VSA-tooling
 vsa svg examples\docs-walkthroughs\svg-phrase-lang.vsa generated\docs-demo-multiline.svg --max-line-width 400
 ```
 

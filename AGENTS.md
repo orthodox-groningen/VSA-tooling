@@ -1,10 +1,10 @@
 # AGENTS.md
 
 Richtlijnen voor AI-assistenten in
-[orthodox-groningen/VSA-tooling](https://github.com/orthodox-groningen/VSA-tooling).
+[orthodox-ronl/VSA-tooling](https://github.com/orthodox-ronl/VSA-tooling).
 
 Organisatie-context (andere repo's, terminologie): zie
-[bron/AGENTS.md](https://github.com/orthodox-groningen/bron/blob/main/AGENTS.md).
+[bron/AGENTS.md](https://github.com/orthodox-ronl/bron/blob/main/AGENTS.md).
 
 ---
 
@@ -15,7 +15,7 @@ VSA-tooling is de **Python-toolchain** voor Vereenvoudigde Slavische Accentnotat
 - parser en semantische validator;
 - CLI (`vsa`): validate, parse, blocks, build-markdown, svg, musicxml, …;
 - MkDocs-documentatie op GitHub Pages; presentatievoorbeeld in
-  [VSA-demo](https://github.com/orthodox-groningen/VSA-demo);
+  [VSA-demo](https://github.com/orthodox-ronl/VSA-demo);
 - regressietests en GitHub Actions CI (inclusief herbruikbare render-workflow).
 
 **Normatieve org-specs staan in `bron`** — link ernaar, dupliceer niet. Tool-specifieke
@@ -23,16 +23,16 @@ documentatie hoort in `docs/specification/`, `docs/guides/` en `docs/plans/`.
 
 ---
 
-## Terminologie (orthodox-groningen)
+## Terminologie (orthodox-ronl)
  
 Normatieve glossary:
-[bron/docs/specs/terminologie.md](https://github.com/orthodox-groningen/bron/blob/main/docs/specs/terminologie.md)
+[bron/docs/specs/terminologie.md](https://github.com/orthodox-ronl/bron/blob/main/docs/specs/terminologie.md)
 
 Vier niveaus: `zangstuk-id` → `variant-id` → `uitvoeringsvorm-id` → `representatie-id`
 
 Regels R1–R5 en documentatie-eigendom: zie
-[documentatie-eigendom](https://github.com/orthodox-groningen/bron/blob/main/docs/specs/documentatie-eigendom.md)
-en `.cursor/rules/orthodox-groningen-terminologie.mdc`.
+[documentatie-eigendom](https://github.com/orthodox-ronl/bron/blob/main/docs/specs/documentatie-eigendom.md)
+en `.cursor/rules/orthodox-ronl-terminologie.mdc`.
 
 **Vermijden:** `uv-id`, afkorting `uv`, **uitvoeringsalternatief**, impliciet `variant-id: standaard`.
 
@@ -90,7 +90,7 @@ Define verifiable success criteria (tests, validate, build) and loop until they 
 | bron     | checkout onder `vendor/bron` of sibling `../bron` (CI; **catalogus**-pakket)      |
 
 ```cmd
-cd /d C:\Git\orthodox-groningen\VSA-tooling
+cd /d C:\Git\orthodox-ronl\VSA-tooling
 scripts\bootstrap.cmd
 ```
 
@@ -108,7 +108,7 @@ scripts\bootstrap.cmd
 ### Tests
 
 ```cmd
-cd /d C:\Git\orthodox-groningen\VSA-tooling
+cd /d C:\Git\orthodox-ronl\VSA-tooling
 scripts\test.cmd
 ```
 
@@ -117,7 +117,7 @@ Verbose: `scripts\test-verbose.cmd`
 ### Volledige CI lokaal
 
 ```cmd
-cd /d C:\Git\orthodox-groningen\VSA-tooling
+cd /d C:\Git\orthodox-ronl\VSA-tooling
 scripts\ci.cmd
 ```
 
@@ -127,7 +127,7 @@ Stappen: pytest → `vsa validate` + `build-markdown` op
 ### VSA CLI (typisch)
 
 ```cmd
-cd /d C:\Git\orthodox-groningen\VSA-tooling
+cd /d C:\Git\orthodox-ronl\VSA-tooling
 call .venv\Scripts\activate
 vsa validate examples\consumer-minimal\content-source
 vsa build-markdown examples\consumer-minimal\content-source generated\ci\content generated\ci\static\vsa
@@ -135,10 +135,10 @@ vsa build-markdown examples\consumer-minimal\content-source generated\ci\content
 
 ### Voorbeeldconsumer (VSA-demo)
 
-Presentatiesite: [VSA-demo](https://github.com/orthodox-groningen/VSA-demo).
+Presentatiesite: [VSA-demo](https://github.com/orthodox-ronl/VSA-demo).
 
 ```cmd
-cd /d C:\Git\orthodox-groningen\VSA-demo
+cd /d C:\Git\orthodox-ronl\VSA-demo
 scripts\bootstrap.cmd
 scripts\serve-hugo.cmd
 ```
@@ -155,7 +155,7 @@ Opruimen in deze repo: `scripts\clean.cmd`. Overzicht scripts: `scripts/README.m
 | `scripts\docs-build-tev2.cmd` | TEv2 + TermRef-check + MkDocs (CI)     |
 
 ```cmd
-cd /d C:\Git\orthodox-groningen\VSA-tooling
+cd /d C:\Git\orthodox-ronl\VSA-tooling
 npm install
 scripts\docs-build-tev2.cmd
 ```
@@ -214,7 +214,7 @@ test(parser): regressie voor height-marker policy
 Gebruik **`gh` CLI**. Stel titel, body en `gh pr create`-commando **voor aan de gebruiker** vóór uitvoering.
 
 ```cmd
-cd /d C:\Git\orthodox-groningen\VSA-tooling
+cd /d C:\Git\orthodox-ronl\VSA-tooling
 git push -u origin HEAD
 gh pr create --title "feat(vsa): korte beschrijving" --body "## Summary
 - …
@@ -248,7 +248,7 @@ CI checkt `bron` uit naar `vendor/bron` (`ref: main`).
 
 | Regel                                 | Doel                             |
 | ------------------------------------- | -------------------------------- |
-| `orthodox-groningen-terminologie.mdc` | Glossary + R1–R5                 |
+| `orthodox-ronl-terminologie.mdc` | Glossary + R1–R5                 |
 | `copy-pasteable-cli-commands.mdc`     | cmd-blokken voor gebruiker       |
 | `markdown-table-layout.mdc`           | Tabel-alignment in markdown-bron |
 
@@ -259,7 +259,7 @@ Na bulk-tabellen: `python scripts/align_markdown_tables.py <pad>`.
 ## Extern hergebruik
 
 ```cmd
-python -m pip install "vsa-tool[rendering] @ git+https://github.com/orthodox-groningen/VSA-tooling.git@main"
+python -m pip install "vsa-tool[rendering] @ git+https://github.com/orthodox-ronl/VSA-tooling.git@main"
 ```
 
 Zie `docs/guides/reuse-vsa-tooling.md`.

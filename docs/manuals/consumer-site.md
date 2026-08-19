@@ -4,7 +4,7 @@
     **Voor:** consumer-site builder die wil weten wat in welke repo hoort.
     **Wanneer:** je hangt Hugo + `vsa-tool` aan elkaar.
     **Niet:** een volledige Hugo-cursus — die hoort bij
-    [VSA-demo](https://github.com/orthodox-groningen/VSA-demo).
+    [VSA-demo](https://github.com/orthodox-ronl/VSA-demo).
 
 **Antwoord in het kort:** tooling = package/CLI; presentatievoorbeeld =
 VSA-demo; [zangstukken](@bron)/org-specs = [bron-repository](@bron).
@@ -14,8 +14,8 @@ VSA-demo; [zangstukken](@bron)/org-specs = [bron-repository](@bron).
 | Repo                                                           | Rol                                          |
 | -------------------------------------------------------------- | -------------------------------------------- |
 | **[VSA-tooling](@bron)** (deze docs)                           | Package, CLI, specs, [fixtures](@)           |
-| **[VSA-demo](https://github.com/orthodox-groningen/VSA-demo)** | Voorbeeld-Hugo-site + Pages                  |
-| **[bron](https://github.com/orthodox-groningen/bron)**         | [Zangstukken](@bron) en org-specs            |
+| **[VSA-demo](https://github.com/orthodox-ronl/VSA-demo)** | Voorbeeld-Hugo-site + Pages                  |
+| **[bron](https://github.com/orthodox-ronl/bron)**         | [Zangstukken](@bron) en org-specs            |
 
 ## Minimale keten (tooling)
 
@@ -30,7 +30,7 @@ content-source/*.md  (+ .vsa)
 ```
 
 ```cmd
-cd /d C:\Git\orthodox-groningen\VSA-tooling
+cd /d C:\Git\orthodox-ronl\VSA-tooling
 vsa validate examples\consumer-minimal\content-source
 vsa build-markdown examples\consumer-minimal\content-source generated\ci\content generated\ci\static\vsa
 ```
@@ -46,12 +46,12 @@ Zie [MusicXML-export — Coria-walkthrough](../guides/musicxml-export.md#walkthr
 ## Lokaal (voorbeeldconsumer)
 
 ```cmd
-cd /d C:\Git\orthodox-groningen\VSA-demo
+cd /d C:\Git\orthodox-ronl\VSA-demo
 scripts\bootstrap.cmd
 scripts\serve-hugo.cmd
 ```
 
-Documentatie: [VSA-demo README](https://github.com/orthodox-groningen/VSA-demo/blob/main/README.md).
+Documentatie: [VSA-demo README](https://github.com/orthodox-ronl/VSA-demo/blob/main/README.md).
 
 ## Zie ook
 

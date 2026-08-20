@@ -23,7 +23,7 @@ VSA, A/T/B uit template) klopt nadat de YAML staat.
 
 ## Aanbevolen aanpak: mal + drie lagen
 
-### 0. Start van een mal
+### 1. Start van een mal
 
 Kopieer een bestaande formulemap (bijv.
 [`library/tropaar-toon-4/`](library/tropaar-toon-4/)) naar
@@ -35,7 +35,7 @@ Optioneel: koppel in je editor het schema
 [`schema/vsa-template.schema.json`](schema/vsa-template.schema.json) aan
 `template.yaml` voor rode krullen tijdens het typen.
 
-### 1. Structuur (zonder echte pitches)
+### 2. Structuur (zonder echte pitches)
 
 Zet eerst vast:
 
@@ -46,12 +46,12 @@ Zet eerst vast:
 Pitches mogen tijdelijk overal dezelfde graad zijn (bijv. `do`) — alleen om
 schema + validate groen te krijgen.
 
-### 2. Pitches
+### 3. Pitches
 
 Vul S/A/T/B per event tegen het bronblad. Status `provisional` in de map-README
 zolang de audit niet klaar is.
 
-### 3. Keuzes (`of`) — pas als nodig
+### 4. Keuzes (`of`) — pas als nodig
 
 Pas daarna `of`-groepen toe (alternatieven op een plek in de eventreeks). Het
 formuleblad toont per groep **alternatief 0** (eerste tak). Andere takken

@@ -31,41 +31,29 @@ functies zijn aanwezig:
 De projectrichting en actuele open punten staan in
 [docs/status-en-roadmap.md](docs/status-en-roadmap.md).
 
-## Snel starten
+## Commando's
 
-De voorbeelden hieronder gaan uit van Windows en een shell in de repository-root.
+Org-conventie: [repo-scripts](https://github.com/orthodox-ronl/bron/blob/main/docs/specs/repo-scripts.md). Python **3.14**.
 
 ```cmd
-scripts\bootstrap.cmd
-vsa --version
+cd /d C:\Git\orthodox-groningen\VSA-tooling
+test
+serve
 ```
 
-Controleer een voorbeeldbestand:
+| Commando | Doel |
+| -------- | ---- |
+| `test` | pytest |
+| `check` | CI-spiegel |
+| `serve` / `serve-tev2` | MkDocs preview |
+| `build` | TEv2 + MkDocs (CI-pariteit) |
 
 ```cmd
+vsa --version
 vsa validate examples\minimal\001_plain_text.vsa
 ```
 
-Maak een SVG (renderdemo; `050_svg_demo.vsa` is OK voor `svg` maar faalt op
-`validate` — zie docs):
-
-```cmd
-vsa svg examples\minimal\050_svg_demo.vsa output.svg
-```
-
-Docs lokaal:
-
-```cmd
-scripts\docs-serve.cmd
-```
-
-Voorbeeldconsumer (aparte repo):
-
-```cmd
-cd /d C:\Git\orthodox-ronl\VSA-demo
-scripts\bootstrap.cmd
-scripts\serve-hugo.cmd
-```
+Docs: `serve`. Voorbeeldconsumer: repo VSA-demo, commando's `check` / `serve`.
 
 ## Belangrijke mappen
 
@@ -77,7 +65,7 @@ scripts\serve-hugo.cmd
 | `examples/regression/`       | Vastgelegde input/output-cases voor regressies.                              |
 | `examples/consumer-minimal/` | Minimale Markdown/VSA-fixture voor CI-smoke.                                 |
 | `docs/`                      | Gebruikersdocs, specs, plannen (MkDocs-bron).                                |
-| `scripts/`                   | Windows-scripts voor bootstrap, tests, CI en docs-serve.                     |
+| `scripts/`                   | Windows-commando's (`test`, `check`, `serve`, `build`). |
 
 ## Documentatie
 
@@ -91,8 +79,8 @@ Gepubliceerde docs (MkDocs Material):
 Lokaal:
 
 ```cmd
-cd /d C:\Git\orthodox-ronl\VSA-tooling
-scripts\docs-serve.cmd
+cd /d C:\Git\orthodox-groningen\VSA-tooling
+serve
 ```
 
 | Document                                                                                                | Gebruik                                          |

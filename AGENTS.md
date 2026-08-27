@@ -83,23 +83,23 @@ Define verifiable success criteria (tests, validate, build) and loop until they 
 
 | Vereiste | Versie / tool                                                                     |
 | -------- | --------------------------------------------------------------------------------- |
-| Python   | ≥ 3.12                                                                            |
-| venv     | `.venv` (via bootstrap)                                                           |
-| Tests    | pytest                                                                            |
-| Docs     | MkDocs Material (`requirements-docs.txt`)                                         |
-| bron     | checkout onder `vendor/bron` of sibling `../bron` (CI; **catalogus**-pakket)      |
+| Python   | 3.14 (`.\scripts` op PATH; geen bootstrap-stap) |
+| Tests    | `test` / pytest |
+| Docs     | `serve` / `build` (MkDocs Material) |
+| bron     | sibling `../bron` of `vendor/bron` (**catalogus**) |
 
 ```cmd
-cd /d C:\Git\orthodox-ronl\VSA-tooling
-scripts\bootstrap.cmd
+cd /d C:\Git\orthodox-groningen\VSA-tooling
+test
 ```
 
-`bootstrap.cmd` installeert **catalogus** uit `vendor\bron` of `..\bron` vóór `vsa-tool`
-(verplicht — PyPI heeft een andere package met dezelfde naam).
+`_ensure` installeert **catalogus** uit `vendor\bron` of `..\bron` en `vsa-tool[rendering]` in Python 3.14.
+Globale `vsa` op PATH blijft uit `.venv\Scripts` (zelfde Python 3.14 na herinstall).
 
-**Rendering (SVG):** `pip install -r requirements-rendering.txt` (Pillow, DejaVu in `assets/fonts/`).
+**Rendering (SVG):** Pillow via `--vsa-tool` / `requirements-rendering.txt` (DejaVu in `assets/fonts/`).
 
 **Commando's voor de gebruiker:** één kopieerbaar cmd-blok, Windows-paden (`\`), begin met `cd /d`.
+Scripts: [bron/docs/specs/repo-scripts.md](https://github.com/orthodox-ronl/bron/blob/main/docs/specs/repo-scripts.md).
 
 ---
 
@@ -108,17 +108,17 @@ scripts\bootstrap.cmd
 ### Tests
 
 ```cmd
-cd /d C:\Git\orthodox-ronl\VSA-tooling
-scripts\test.cmd
+cd /d C:\Git\orthodox-groningen\VSA-tooling
+test
 ```
 
-Verbose: `scripts\test-verbose.cmd`
+Verbose: `test -v`
 
 ### Volledige CI lokaal
 
 ```cmd
-cd /d C:\Git\orthodox-ronl\VSA-tooling
-scripts\ci.cmd
+cd /d C:\Git\orthodox-groningen\VSA-tooling
+check
 ```
 
 Stappen: pytest → `vsa validate` + `build-markdown` op
@@ -127,8 +127,7 @@ Stappen: pytest → `vsa validate` + `build-markdown` op
 ### VSA CLI (typisch)
 
 ```cmd
-cd /d C:\Git\orthodox-ronl\VSA-tooling
-call .venv\Scripts\activate
+cd /d C:\Git\orthodox-groningen\VSA-tooling
 vsa validate examples\consumer-minimal\content-source
 vsa build-markdown examples\consumer-minimal\content-source generated\ci\content generated\ci\static\vsa
 ```
@@ -138,29 +137,29 @@ vsa build-markdown examples\consumer-minimal\content-source generated\ci\content
 Presentatiesite: [VSA-demo](https://github.com/orthodox-ronl/VSA-demo).
 
 ```cmd
-cd /d C:\Git\orthodox-ronl\VSA-demo
-scripts\bootstrap.cmd
-scripts\serve-hugo.cmd
+cd /d C:\Git\orthodox-groningen\VSA-demo
+check --strict
+serve
 ```
 
-Opruimen in deze repo: `scripts\clean.cmd`. Overzicht scripts: `scripts/README.md`.
+Opruimen in deze repo: `clean`. Overzicht: `scripts/README.md`.
 
 ### Documentatiesite (MkDocs)
 
-| Script                        | Doel                                   |
-| ----------------------------- | -------------------------------------- |
-| `scripts\docs-serve.cmd`      | Snelle preview zonder TEv2             |
-| `scripts\docs-serve-tev2.cmd` | Preview met TermRefs (CI-parity)       |
-| `scripts\docs-build.cmd`      | `mkdocs build --strict` zonder TEv2    |
-| `scripts\docs-build-tev2.cmd` | TEv2 + TermRef-check + MkDocs (CI)     |
+| Script | Doel |
+| ------ | ---- |
+| `serve` | Snelle preview zonder TEv2 |
+| `serve-tev2` | Preview met TermRefs (CI-parity) |
+| `build --no-tev2` | `mkdocs build --strict` zonder TEv2 |
+| `build` | TEv2 + TermRef-check + MkDocs (CI) |
 
 ```cmd
-cd /d C:\Git\orthodox-ronl\VSA-tooling
+cd /d C:\Git\orthodox-groningen\VSA-tooling
 npm install
-scripts\docs-build-tev2.cmd
+build
 ```
 
-Of snelle serve zonder TEv2: `scripts\docs-serve.cmd`.
+Of snelle serve zonder TEv2: `serve`.
 Handleiding: [docs/guides/tev2-docs.md](docs/guides/tev2-docs.md).
 CI/deploy: `.github/workflows/docs-pages.yml` → TEv2 + `gh-pages:/` (`main`) of `/preview/`.
 

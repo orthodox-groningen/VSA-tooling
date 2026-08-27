@@ -41,7 +41,7 @@ Handmatig: `release-artifacts`, `docs-build` (`workflow_dispatch`).
 | Runner     | `ubuntu-latest`                                                                       |
 | Doel       | TEv2 (mrg-import/mrgt/hrgt/trrt) + `mkdocs build --strict` → Pages `/` of `/preview/` |
 | Publiceert | Ja (`pages-deploy-reusable`; MRG auto-commit + `[skip ci]`)                           |
-| Lokaal     | `scripts\docs-build-tev2.cmd`                                                         |
+| Lokaal     | `build`                                                         |
 
 Productie (main → root): de reusable workflow kopieert eerst bestaande
 `/preview/` in de nieuwe site-build en deployt daarna met `keep_files=false`
@@ -66,7 +66,7 @@ vervangen alleen `/preview/` (`keep_files=false` + `destination_dir`).
 | Runner     | `ubuntu-latest`                              |
 | Doel       | TEv2 + `mkdocs build --strict` (geen deploy) |
 | Publiceert | Nee                                          |
-| Lokaal     | `scripts\docs-build-tev2.cmd`                |
+| Lokaal     | `build`                |
 
 ### `release-artifacts.yml`
 

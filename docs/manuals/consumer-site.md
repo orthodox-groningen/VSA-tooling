@@ -30,7 +30,7 @@ content-source/*.md  (+ .vsa)
 ```
 
 ```cmd
-cd /d C:\Git\orthodox-ronl\VSA-tooling
+cd /d C:\Git\orthodox-groningen\VSA-tooling
 vsa validate examples\consumer-minimal\content-source
 vsa build-markdown examples\consumer-minimal\content-source generated\ci\content generated\ci\static\vsa
 ```
@@ -47,7 +47,7 @@ Zie [MusicXML-export — Coria-walkthrough](../guides/musicxml-export.md#walkthr
 
 ```cmd
 cd /d C:\Git\orthodox-ronl\VSA-demo
-scripts\bootstrap.cmd
+test
 scripts\serve-hugo.cmd
 ```
 

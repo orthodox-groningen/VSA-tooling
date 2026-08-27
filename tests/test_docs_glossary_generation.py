@@ -21,8 +21,8 @@ def test_tev2_config_hrgt_targets_glossary_md():
 def test_prepare_and_docs_build_tev2_scripts_exist():
     assert Path("scripts/prepare-tev2-docs.py").exists()
     assert Path("scripts/docs-tev2-run.cmd").exists()
-    assert Path("scripts/docs-build-tev2.cmd").exists()
-    assert Path("scripts/docs-serve-tev2.cmd").exists()
+    assert Path("scripts/build.cmd").exists()
+    assert Path("scripts/serve-tev2.cmd").exists()
     assert Path("scripts/sort-glossary-table.py").exists()
     assert Path("scripts/check-tev2-termrefs.py").exists()
     assert not Path("scripts/mkdocs-glossary-index.py").exists()
@@ -48,7 +48,7 @@ def test_mkdocs_nav_uses_glossary_md():
         assert "inject-glossary-termrefs.py glossary.md" in body
         assert "mkdocs-glossary-index.py" not in body
         assert "_index.template" not in body
-    build = Path("scripts/docs-build-tev2.cmd").read_text(encoding="utf-8")
+    build = Path("scripts/build.cmd").read_text(encoding="utf-8")
     assert "docs-tev2-run.cmd" in build
 
 
@@ -102,5 +102,5 @@ def test_docs_tev2_run_always_runs_mrg_import():
     assert "mrg-import" in text
     assert "Skipping mrg-import locally" not in text
     assert 'TEV2_RUN_IMPORT"=="1"' not in text
-    build = Path("scripts/docs-build-tev2.cmd").read_text(encoding="utf-8")
+    build = Path("scripts/build.cmd").read_text(encoding="utf-8")
     assert "docs-tev2-run.cmd" in build

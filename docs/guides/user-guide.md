@@ -40,8 +40,8 @@ VSA-notatie  →  validate  →  SVG / MusicXML / Hugo-Markdown
 | Eerste SVG                   | `vsa svg examples\docs-walkthroughs\svg-phrase-kort.vsa …` schrijft een `.svg`     |
 
 ```cmd
-cd /d C:\Git\orthodox-ronl\VSA-tooling
-scripts\bootstrap.cmd
+cd /d C:\Git\orthodox-groningen\VSA-tooling
+test
 vsa validate examples\docs-walkthroughs\svg-phrase-kort.vsa
 ```
 

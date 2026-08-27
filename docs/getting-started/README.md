@@ -20,13 +20,13 @@ Deze pagina helpt je om de [VSA-tooling](@bron) **lokaal** te laten werken
 ## 1. Repo-root
 
 ```cmd
-cd /d C:\Git\orthodox-ronl\VSA-tooling
+cd /d C:\Git\orthodox-groningen\VSA-tooling
 ```
 
 ## 2. Omgeving
 
 ```cmd
-scripts\bootstrap.cmd
+test
 ```
 
 ## 3. Installatie controleren

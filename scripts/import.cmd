@@ -1,13 +1,12 @@
 @echo off
 cls
 setlocal
-
 cd /d "%~dp0\.."
+call scripts\_ensure.cmd --vsa-tool --import vsa
+if errorlevel 1 exit /b 1
 
 echo %CD%^> %0 %1
 echo.
-
-call ".venv\Scripts\activate"
 
 if "%~1"=="" (
     echo Gebruik: import ^<zipfile^>

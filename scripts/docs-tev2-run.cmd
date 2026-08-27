@@ -3,6 +3,8 @@ REM TEv2 preprocess only (staging → mrg-import → tools → TermRef-check →
 REM Preferred install: npm install  (pins in package.json)
 setlocal
 cd /d "%~dp0.."
+call scripts\_ensure.cmd --node --npm-install --pip-r requirements-docs.txt --catalogus --import mkdocs
+if errorlevel 1 exit /b 1
 set NO_MKDOCS_2_WARNING=1
 
 if exist "%APPDATA%\npm" set "PATH=%APPDATA%\npm;%PATH%"

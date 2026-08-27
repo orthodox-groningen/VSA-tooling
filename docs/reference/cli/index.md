@@ -13,7 +13,7 @@ Alle voorbeelden in deze referentie gaan uit van Windows `cmd.exe` en de
 repository-root als werkmap:
 
 ```cmd
-cd /d C:\Git\orthodox-ronl\VSA-tooling
+cd /d C:\Git\orthodox-groningen\VSA-tooling
 ```
 
 Paden in commando's zijn relatief aan die map, tenzij je een absoluut pad
@@ -78,10 +78,10 @@ voor het volledige overzicht.
 
 | Script                    | Doel                                                       |
 | ------------------------- | ---------------------------------------------------------- |
-| `scripts\bootstrap.cmd`   | Installeert de lokale omgeving (`.venv`, `vsa`, pytest).   |
+| `test`   | Installeert de lokale omgeving (`.venv`, `vsa`, pytest).   |
 | `scripts\test.cmd`        | Draait de pytest-suite.                                    |
 | `scripts\ci.cmd`          | Draait de volledige lokale CI (pytest + consumer-minimal). |
-| `scripts\docs-serve.cmd`  | Serveert deze MkDocs-documentatie lokaal.                  |
+| `serve`  | Serveert deze MkDocs-documentatie lokaal.                  |
 
 ## Diagnosevolgorde
 

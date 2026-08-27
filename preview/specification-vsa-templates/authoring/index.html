@@ -10,7 +10,7 @@
       
       
       
-        <link rel="canonical" href="https://orthodox-ronl.github.io/VSA-tooling/preview/terminologie/include-vsa/">
+        <link rel="canonical" href="https://orthodox-ronl.github.io/VSA-tooling/preview/specification-vsa-templates/authoring/">
       
       
       
@@ -23,7 +23,7 @@
     
     
       
-        <title>@include-vsa - VSA-tooling — documentatie</title>
+        <title>Werkwijze: YAML-template maken - VSA-tooling — documentatie</title>
       
     
     
@@ -80,7 +80,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#include-vsa" class="md-skip">
+        <a href="#werkwijze-yaml-template-maken" class="md-skip">
           Ga naar inhoud
         </a>
       
@@ -130,7 +130,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              @include-vsa
+              Werkwijze: YAML-template maken
             
           </span>
         </div>
@@ -323,7 +323,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../specification-vsa-templates/" class="md-tabs__link">
+        <a href="../" class="md-tabs__link">
           
   
   
@@ -1492,7 +1492,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../specification-vsa-templates/" class="md-nav__link">
+      <a href="../" class="md-nav__link">
         
   
   
@@ -1520,7 +1520,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../specification-vsa-templates/overview/" class="md-nav__link">
+      <a href="../overview/" class="md-nav__link">
         
   
   
@@ -1548,7 +1548,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../specification-vsa-templates/requirements-inventory/" class="md-nav__link">
+      <a href="../requirements-inventory/" class="md-nav__link">
         
   
   
@@ -1576,7 +1576,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../specification-vsa-templates/metamodel/" class="md-nav__link">
+      <a href="../metamodel/" class="md-nav__link">
         
   
   
@@ -1604,7 +1604,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../specification-vsa-templates/syntax/" class="md-nav__link">
+      <a href="../syntax/" class="md-nav__link">
         
   
   
@@ -1632,7 +1632,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../specification-vsa-templates/semantics/" class="md-nav__link">
+      <a href="../semantics/" class="md-nav__link">
         
   
   
@@ -1660,7 +1660,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../specification-vsa-templates/validation/" class="md-nav__link">
+      <a href="../validation/" class="md-nav__link">
         
   
   
@@ -1688,7 +1688,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../specification-vsa-templates/mapping-vsa/" class="md-nav__link">
+      <a href="../mapping-vsa/" class="md-nav__link">
         
   
   
@@ -1716,7 +1716,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../specification-vsa-templates/rendering-pitfalls/" class="md-nav__link">
+      <a href="../rendering-pitfalls/" class="md-nav__link">
         
   
   
@@ -1744,7 +1744,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../specification-vsa-templates/examples/" class="md-nav__link">
+      <a href="../examples/" class="md-nav__link">
         
   
   
@@ -1772,7 +1772,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../specification-vsa-templates/library/" class="md-nav__link">
+      <a href="../library/" class="md-nav__link">
         
   
   
@@ -1800,7 +1800,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../specification-vsa-templates/conformance/" class="md-nav__link">
+      <a href="../conformance/" class="md-nav__link">
         
   
   
@@ -1828,7 +1828,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../specification-vsa-templates/open-points/" class="md-nav__link">
+      <a href="../open-points/" class="md-nav__link">
         
   
   
@@ -1856,7 +1856,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../specification-vsa-templates/versioning/" class="md-nav__link">
+      <a href="../versioning/" class="md-nav__link">
         
   
   
@@ -3175,10 +3175,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#motivatie" class="md-nav__link">
+  <a href="#wat-is-de-bron" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Motivatie
+        Wat is de bron?
       
     </span>
   </a>
@@ -3186,10 +3186,104 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#gerelateerd-verder-lezen" class="md-nav__link">
+  <a href="#aanbevolen-aanpak-mal-drie-lagen" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Gerelateerd / verder lezen
+        Aanbevolen aanpak: mal + drie lagen
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Aanbevolen aanpak: mal + drie lagen">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-start-van-een-mal" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Start van een mal
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-structuur-zonder-echte-pitches" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Structuur (zonder echte pitches)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-pitches" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Pitches
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-keuzes-of-pas-als-nodig" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Keuzes (of) — pas als nodig
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#checklist-per-iteratie" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Checklist per iteratie
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#commandos-windows" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Commando's (Windows)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#wat-je-niet-hoeft-te-doen-nu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Wat je níet hoeft te doen (nu)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gerelateerd" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Gerelateerd
       
     </span>
   </a>
@@ -3213,7 +3307,7 @@
 
 
   
-    <a href="https://github.com/orthodox-ronl/VSA-tooling/edit/main/docs/terminologie/include-vsa.md" title="Wijzig deze pagina" class="md-content__button md-icon" rel="edit">
+    <a href="https://github.com/orthodox-ronl/VSA-tooling/edit/main/docs/specification-vsa-templates/authoring.md" title="Wijzig deze pagina" class="md-content__button md-icon" rel="edit">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
     </a>
@@ -3221,29 +3315,123 @@
   
 
 
-<h1 id="include-vsa">@include-vsa<a class="headerlink" href="#include-vsa" title="Permanent link">&para;</a></h1>
-<p><code>@include-vsa</code> / <a class="og-termref" href="/VSA-tooling/preview/terminologie/include-vsa" title="@include-vsa: een string die met <code>@include-vsa</code> begint, precies één ondersteunde resolverparameter bevat (<code>zoek=</code>, <code>id=</code> of <code>lokaal=</code>) en tijdens verwerking door de body van het doelbestand wordt vervangen.">vsa-inline-include</a> vervangt alleen de directive-substring
-door <a class="og-termref" href="/VSA-tooling/preview/terminologie/vsa" title="Vereenvoudigde Slavische Accentnotatie: wordt gebruikt om te verwijzen naar een Formele Notatie voor het vastleggen van Zangstukken en ook naar de Toolset waarmee zulke vastleggingen kunnen worden gevalideerd en naar publiceerbare vormen worden omgezet.">VSA</a>-bronmateriaal tijdens verwerking. Omringende tekst in dezelfde
-regel blijft bestaan.</p>
-<p>Voorbeeld:</p>
-<div class="highlight"><pre><span></span><code>refrein: @include-vsa lokaal=cherubijnenhymne/kastorski/groningen/groningen-vsa
-</code></pre></div>
-<p>Goede/valide voorbeelden van @include-vsa zijn:
-- Exact één van <code>zoek=</code> / <code>id=</code> / <code>lokaal=</code>
-- Alleen de directive-substring wordt vervangen</p>
-<p>Geen goede/niet valide voorbeelden van @include-vsa zijn:
-- Meerdere resolverparameters tegelijk
-- Hele regel of heel <a class="og-termref" href="/VSA-tooling/preview/terminologie/vsa-blokken" title="VSA-blok: een tekstfragment in een Markdownbestand dat begint met <code>::: vsa-notatie</code> en eindigt met <code>:::</code>, beide aan het begin van een regel, met daartussen VSA-notatie; typisch ontdekt en verwerkt door de Vsa-toolset (o.a. <code>vsa blocks</code>, <code>vsa validate</code>, <code>vsa process</code>).">VSA-blok</a> wissen</p>
-<h2 id="motivatie">Motivatie<a class="headerlink" href="#motivatie" title="Permanent link">&para;</a></h2>
-<p>Zo kun je herbruikbare <a class="og-termref" href="/VSA-tooling/preview/terminologie/vsa" title="Vereenvoudigde Slavische Accentnotatie: wordt gebruikt om te verwijzen naar een Formele Notatie voor het vastleggen van Zangstukken en ook naar de Toolset waarmee zulke vastleggingen kunnen worden gevalideerd en naar publiceerbare vormen worden omgezet.">VSA</a>-fragmenten (refreinen, gedeelde regels) één keer
-onderhouden en op meerdere plaatsen includen, zonder de omringende regeltekst
-te verliezen.</p>
-<h2 id="gerelateerd-verder-lezen">Gerelateerd / verder lezen<a class="headerlink" href="#gerelateerd-verder-lezen" title="Permanent link">&para;</a></h2>
+<h1 id="werkwijze-yaml-template-maken">Werkwijze: YAML-template maken<a class="headerlink" href="#werkwijze-yaml-template-maken" title="Permanent link">&para;</a></h1>
+<p>Taakbeschrijving voor het <strong>opstellen of uitbreiden</strong> van een
+<a class="og-termref" href="/VSA-tooling/preview/terminologie/vsa-template" title="VSA-template: een machineleesbaar YAML-document dat een formulematige liturgische melodie vastlegt (frasen, herhaling of vaste volgorde, Reciteertoon, ankers, SATB-Laddergraden) binnen een Do-context, bedoeld om later tekst uit VSA erop te mappen.">vsa-template</a> in de library. Doel: een geldige <code>template.yaml</code>
+die je in MuseScore kunt controleren via het formuleblad — zonder alles tegelijk
+te hoeven bedenken.</p>
+<p>Normatieve details: <a href="../syntax/">syntax</a>, <a href="../semantics/">semantiek</a>,
+<a href="../validation/">validatie</a>, <a href="../mapping-vsa/">mapping</a>.
+Mapafspraken: <a href="../library/">library/README.md</a>.</p>
+<h2 id="wat-is-de-bron">Wat is de bron?<a class="headerlink" href="#wat-is-de-bron" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Artefact</th>
+<th>Rol</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>template.yaml</code></td>
+<td><strong>Canonieke formule</strong> — hier bewerk je</td>
+</tr>
+<tr>
+<td>Toonboek / onderzoek</td>
+<td>Pitches en frase-indeling</td>
+</tr>
+<tr>
+<td><code>template.mscz</code></td>
+<td>Afgeleid formuleblad (MuseScore-controle)</td>
+</tr>
+<tr>
+<td>Corpus-<code>.vsa</code></td>
+<td>Testen van <strong>instanties</strong>, niet om YAML te maken</td>
+</tr>
+</tbody>
+</table>
+<p>VSA-voorbeelden maken het template <strong>niet</strong>. Ze toetsen of de mapping (S uit
+VSA, A/T/B uit template) klopt nadat de YAML staat.</p>
+<h2 id="aanbevolen-aanpak-mal-drie-lagen">Aanbevolen aanpak: mal + drie lagen<a class="headerlink" href="#aanbevolen-aanpak-mal-drie-lagen" title="Permanent link">&para;</a></h2>
+<h3 id="1-start-van-een-mal">1. Start van een mal<a class="headerlink" href="#1-start-van-een-mal" title="Permanent link">&para;</a></h3>
+<p>Kopieer een bestaande formulemap (bijv.
+<a href="../library/tropaar-toon-4/"><code>library/tropaar-toon-4/</code></a>) naar
+<code>library/&lt;genre&gt;-toon-&lt;n&gt;/</code>. Pas daarna <code>id</code>, <code>title</code>, <code>do</code>, <code>mode</code> en de
+frases aan. Liever knippen in een werkend bestand dan vanaf nul de metamodel-boom
+typen.</p>
+<p>Optioneel: koppel in je editor het schema
+<a href="../schema/vsa-template.schema.json"><code>schema/vsa-template.schema.json</code></a> aan
+<code>template.yaml</code> voor rode krullen tijdens het typen.</p>
+<h3 id="2-structuur-zonder-echte-pitches">2. Structuur (zonder echte pitches)<a class="headerlink" href="#2-structuur-zonder-echte-pitches" title="Permanent link">&para;</a></h3>
+<p>Zet eerst vast:</p>
 <ul>
-<li>Referentie: <a href="../../reference/include-vsa/">include-vsa</a></li>
-<li>Org: <a class="og-termref" href="/bron/terms/representatie" title="Representatie: Een bestand waarin een Uitvoeringsvorm concreet is vastgelegd.">representatie</a>, <a class="og-termref" href="/bron/terms/samenstelling" title="Samenstelling: Een markdown-document (met VSA-directives) dat Representaties ordent voor een lezersdoel, zonder zelf Representatie te zijn.">samenstelling</a> — context waarin includes
-  in publicatieketens voorkomen</li>
+<li><code>cycle</code> / <code>final</code> (of <code>sequence</code> / <code>text_mapping</code>);</li>
+<li>frase-ids (<code>"1"</code>, <code>"2"</code>, <code>"laatste"</code>, …);</li>
+<li>per event: <code>role</code>, <code>duration</code> (ELM), eventueel <code>anchor</code> / <code>optional</code>.</li>
 </ul>
+<p>Pitches mogen tijdelijk overal dezelfde graad zijn (bijv. <code>do</code>) — alleen om
+schema + validate groen te krijgen.</p>
+<h3 id="3-pitches">3. Pitches<a class="headerlink" href="#3-pitches" title="Permanent link">&para;</a></h3>
+<p>Vul S/A/T/B per event tegen het bronblad. Status <code>provisional</code> in de map-README
+zolang de audit niet klaar is.</p>
+<h3 id="4-keuzes-of-pas-als-nodig">4. Keuzes (<code>of</code>) — pas als nodig<a class="headerlink" href="#4-keuzes-of-pas-als-nodig" title="Permanent link">&para;</a></h3>
+<p>Pas daarna <code>of</code>-groepen toe (alternatieven op een plek in de eventreeks). Het
+formuleblad toont per groep <strong>alternatief 0</strong> (eerste tak). Andere takken
+controleer je met een VSA die die hoogten kiest (instance), of tijdelijk door
+die tak als eerste te zetten.</p>
+<p>Details: <a href="../mapping-vsa/">mapping-vsa.md</a> (<code>of</code>-alternatieven).</p>
+<h2 id="checklist-per-iteratie">Checklist per iteratie<a class="headerlink" href="#checklist-per-iteratie" title="Permanent link">&para;</a></h2>
+<p>Na elke laag:</p>
+<ol>
+<li><code>vsa template validate</code> op het bestand of de library-map.</li>
+<li>Formuleblad regenereren en in MuseScore openen.</li>
+<li>Klopt het blad niet → YAML nog niet klaar (ook als validate groen is).</li>
+</ol>
+<h2 id="commandos-windows">Commando's (Windows)<a class="headerlink" href="#commandos-windows" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>cd /d C:\Git\orthodox-ronl\VSA-tooling
+call .venv\Scripts\activate
+vsa template validate docs\specification-vsa-templates\library\tropaar-toon-4\template.yaml
+python scripts\render_tropaar_toon4_corpus.py --template
+</code></pre></div>
+<p>Andere formules: zelfde validate; render via
+<code>python scripts\render_vsa_template_musicxml.py docs\specification-vsa-templates\library\&lt;map&gt;\template.yaml</code>
+of <code>--all</code> waar van toepassing. Corpus-instanties (pas na stabiele YAML):</p>
+<div class="highlight"><pre><span></span><code>python scripts\render_tropaar_toon4_corpus.py
+python scripts\render_tropaar_toon4_corpus.py --pdf
+</code></pre></div>
+<h2 id="wat-je-niet-hoeft-te-doen-nu">Wat je níet hoeft te doen (nu)<a class="headerlink" href="#wat-je-niet-hoeft-te-doen-nu" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Geen GUI of “VSA → YAML afleiden”.</li>
+<li>Geen ossia / alle <code>of</code>-takken tegelijk op het formuleblad (alleen alternatief 0).</li>
+<li>Geen geneste <code>of</code> (verboden).</li>
+</ul>
+<h2 id="gerelateerd">Gerelateerd<a class="headerlink" href="#gerelateerd" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Document</th>
+<th>Wanneer</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../library/">library/README.md</a></td>
+<td>Mapstructuur, wat in git</td>
+</tr>
+<tr>
+<td><a href="../rendering-pitfalls/">rendering-pitfalls.md</a></td>
+<td>Layout / MuseScore-valkuilen</td>
+</tr>
+<tr>
+<td><a href="../../specification/cli/">CLI: <code>vsa template validate</code></a></td>
+<td>Validatie-commando</td>
+</tr>
+<tr>
+<td><a href="../open-points/">open-points.md</a></td>
+<td>Open vervolgstappen</td>
+</tr>
+</tbody>
+</table>
 
 
 
@@ -3280,7 +3468,7 @@ te verliezen.</p>
       
       
       <p class="og-footer-stamps">
-        Bijgewerkt: 2026-08-09
+        Bijgewerkt: 2026-08-20
         
       </p>
       

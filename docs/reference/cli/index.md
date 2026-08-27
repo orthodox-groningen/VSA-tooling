@@ -36,7 +36,7 @@ vsa [--config CONFIG] [--version] <subcommando> …
 | `--version`       | Nee       | Toon de geïnstalleerde versie en stop direct (subcommando wordt genegeerd).                                                             |
 | `-h`, `--help`    | Nee       | Toon hulp. Werkt zowel op `vsa --help` als op `vsa <subcommando> --help`.                                                               |
 
-Sommige subcommando's (`svg`, `process`, `build-markdown`, `musicxml`)
+Sommige subcommando's (`svg`, `process`, `build-markdown`, `musicxml`, `pdf`)
 accepteren `--config` ook als **subcommando-optie**. Die overschrijft dan de
 globale `--config`.
 
@@ -63,6 +63,7 @@ echo %ERRORLEVEL%
 | [`svg`](svg.md)                                  | Render één [vsa-bestand](@bron) naar één SVG-bestand.                                      |
 | [`process`](process.md)                          | Genereer SVG-bestanden uit [VSA-blokken](@) in Markdown (zonder Markdown te herschrijven). |
 | [`build-markdown`](build-markdown.md)            | Genereer Hugo-geschikte Markdown én SVG-assets uit content-source.                         |
+| [`pdf`](pdf.md)                                  | Render één Markdownbestand (VSA, includes, pagebreaks) naar A4-PDF.                        |
 | [`resolve-catalogus`](resolve-catalogus.md)      | Los `:::include … zoek="…"` op naar catalogus-paden (`bron:…` / `lokaal:…`).               |
 | [`musicxml`](musicxml.md)                        | Exporteer [VSA](@) naar MusicXML (`.mxl` of `.musicxml`).                                  |
 

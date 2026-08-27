@@ -11,6 +11,7 @@ dependencies = [
     # Let op: PyPI heeft een ánder package "catalogus" (Breezy).
     # Installeer altijd eerst orthodox-ronl/bron (scripts/bootstrap.cmd).
     "catalogus>=0.1.0",
+    "markdown>=3.5",
 ]
 
 [project.scripts]

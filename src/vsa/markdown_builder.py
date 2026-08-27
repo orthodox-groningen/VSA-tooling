@@ -110,41 +110,14 @@ def build_markdown_site(
         target_markdown = output_dir / relative
         target_markdown.parent.mkdir(parents=True, exist_ok=True)
 
-        source = markdown_file.read_text(encoding="utf-8")
-        bron_root = _discover_bron_root(input_dir)
-        if has_unresolved_zoek_includes(source):
-            try:
-                source = resolve_catalogus_markdown(
-                    source,
-                    source_path=markdown_file,
-                    content_root=input_dir,
-                    bron_root=bron_root,
-                ).text
-            except ResolveCatalogusError as exc:
-                raise IncludeError(exc.message_nl) from exc
-        source = resolve_includes(
-            source,
-            source_path=markdown_file,
-            svg_assets_dir=assets_dir,
-            svg_assets_url_prefix=assets_url_prefix,
-            content_root=input_dir,
-            bron_root=bron_root,
-        )
-        source = resolve_coria_directives(
-            source,
+        rewritten, svg_paths = prepare_markdown_document(
             markdown_file,
             content_root=input_dir,
-        )
-        source = process_directives(source)
-
-        rewritten, svg_paths = _rewrite_markdown_file(
-            source=source,
-            source_path=markdown_file,
-            source_relative=relative,
             assets_dir=assets_dir,
             assets_url_prefix=assets_url_prefix,
             max_line_width=max_line_width,
             output_mode=output_mode,
+            bron_root=_discover_bron_root(input_dir),
         )
 
         target_markdown.write_text(rewritten, encoding="utf-8")
@@ -161,6 +134,73 @@ def build_markdown_site(
         svg_files=written_svg,
         static_files=written_static,
     )
+
+
+def _source_relative(markdown_file: Path, content_root: Path) -> Path:
+    try:
+        return markdown_file.resolve().relative_to(content_root.resolve())
+    except ValueError:
+        return Path(markdown_file.name)
+
+
+def prepare_markdown_document(
+    markdown_file: Path,
+    *,
+    content_root: Path,
+    assets_dir: Path,
+    assets_url_prefix: str = "/vsa",
+    max_line_width: float = 800.0,
+    output_mode: str = "img",
+    bron_root: Path | None = None,
+) -> tuple[str, list[Path]]:
+    """Resolve includes/directives and replace VSA-blokken with SVG references.
+
+    Same pipeline as one file in ``build_markdown_site``, without writing
+    the rewritten Markdown. Caller is responsible for validation.
+    """
+    markdown_file = Path(markdown_file)
+    content_root = Path(content_root)
+    assets_dir = Path(assets_dir)
+    assets_dir.mkdir(parents=True, exist_ok=True)
+
+    source = markdown_file.read_text(encoding="utf-8")
+    if bron_root is None:
+        bron_root = _discover_bron_root(content_root)
+    if has_unresolved_zoek_includes(source):
+        try:
+            source = resolve_catalogus_markdown(
+                source,
+                source_path=markdown_file,
+                content_root=content_root,
+                bron_root=bron_root,
+            ).text
+        except ResolveCatalogusError as exc:
+            raise IncludeError(exc.message_nl) from exc
+    source = resolve_includes(
+        source,
+        source_path=markdown_file,
+        svg_assets_dir=assets_dir,
+        svg_assets_url_prefix=assets_url_prefix,
+        content_root=content_root,
+        bron_root=bron_root,
+    )
+    source = resolve_coria_directives(
+        source,
+        markdown_file,
+        content_root=content_root,
+    )
+    source = process_directives(source)
+
+    rewritten, svg_paths = _rewrite_markdown_file(
+        source=source,
+        source_path=markdown_file,
+        source_relative=_source_relative(markdown_file, content_root),
+        assets_dir=assets_dir,
+        assets_url_prefix=assets_url_prefix,
+        max_line_width=max_line_width,
+        output_mode=output_mode,
+    )
+    return rewritten, svg_paths
 
 
 def _copy_content_assets(input_dir: Path, output_dir: Path) -> list[str]:

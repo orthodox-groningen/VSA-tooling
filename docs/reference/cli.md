@@ -12,5 +12,6 @@ De CLI-referentie is opgesplitst in losse man-pagina's per subcommando.
 | `svg`                  | [cli/svg.md](cli/svg.md)                             |
 | `process`              | [cli/process.md](cli/process.md)                     |
 | `build-markdown`       | [cli/build-markdown.md](cli/build-markdown.md)       |
+| `pdf`                  | [cli/pdf.md](cli/pdf.md)                             |
 | `resolve-catalogus`    | [cli/resolve-catalogus.md](cli/resolve-catalogus.md) |
 | `musicxml`             | [cli/musicxml.md](cli/musicxml.md)                   |

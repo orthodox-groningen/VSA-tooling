@@ -15,6 +15,7 @@ man-pagina's onder [CLI-referentie](../reference/cli/index.md).
 | Eén SVG maken                             | [`vsa svg <input.vsa> <output.svg>`](../reference/cli/svg.md)                                    |
 | Markdownbestanden verwerken naar SVG      | [`vsa process <input> <output>`](../reference/cli/process.md)                                    |
 | [Hugo-output](@) genereren                | [`vsa build-markdown …`](../reference/cli/build-markdown.md)                                     |
+| Markdown + VSA naar A4-PDF                | [`vsa pdf <bestand.md>`](../reference/cli/pdf.md)                                                |
 | `zoek=`-includes oplossen naar catalogus  | [`vsa resolve-catalogus <bestand.md>`](../reference/cli/resolve-catalogus.md)                    |
 | MusicXML exporteren                       | [`vsa musicxml <input.vsa> <output.mxl>`](../reference/cli/musicxml.md)                          |
 

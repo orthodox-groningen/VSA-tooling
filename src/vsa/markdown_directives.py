@@ -56,8 +56,9 @@ def process_directives(text: str) -> str:
     in_code_fence = False
     fence_marker = ""
     state = _State.NORMAL
+    open_line = 0
 
-    for line in lines:
+    for line_no, line in enumerate(lines, start=1):
         stripped = line.strip()
 
         fence = _opening_or_closing_fence(stripped)
@@ -84,10 +85,11 @@ def process_directives(text: str) -> str:
             if state != _State.NORMAL:
                 current_name = _SHORTCODE[state]
                 raise DirectiveError(
-                    f"Geneste directives zijn niet toegestaan:"
+                    f"regel {line_no}: Geneste directives zijn niet toegestaan:"
                     f" ':::{name}:::' binnen open ':::{current_name}:::'"
                 )
             state = new_state
+            open_line = line_no
             result_lines.append(_opening_shortcode(name))
             continue
 
@@ -96,10 +98,11 @@ def process_directives(text: str) -> str:
             if state != _State.NORMAL:
                 current_name = _SHORTCODE[state]
                 raise DirectiveError(
-                    f"Geneste directives zijn niet toegestaan:"
+                    f"regel {line_no}: Geneste directives zijn niet toegestaan:"
                     f" ':::keep-together:::' binnen open ':::{current_name}:::'"
                 )
             state = _State.KEEP_TOGETHER
+            open_line = line_no
             scale = _parse_scale(kt_match.group(1))
             if scale:
                 result_lines.append(_opening_shortcode("keep-together", f'scale="{scale}"'))
@@ -112,13 +115,13 @@ def process_directives(text: str) -> str:
             end_tag = stripped
             if state == _State.NORMAL:
                 raise DirectiveError(
-                    f"'{end_tag}' zonder overeenkomend openingsblok"
+                    f"regel {line_no}: '{end_tag}' zonder overeenkomend openingsblok"
                 )
             if state != expected_state:
                 current_name = _SHORTCODE[state]
                 raise DirectiveError(
-                    f"Verkeerde sluitingstag: verwacht ':::end-{current_name}:::',"
-                    f" maar zag '{end_tag}'"
+                    f"regel {line_no}: Verkeerde sluitingstag: verwacht"
+                    f" ':::end-{current_name}:::', maar zag '{end_tag}'"
                 )
             name = _SHORTCODE[state]
             result_lines.append(_closing_shortcode(name))
@@ -130,7 +133,8 @@ def process_directives(text: str) -> str:
     if state != _State.NORMAL:
         name = _SHORTCODE[state]
         raise DirectiveError(
-            f"Niet-gesloten blok: ':::{name}:::' zonder ':::end-{name}:::'"
+            f"regel {open_line}: Niet-gesloten blok:"
+            f" ':::{name}:::' zonder ':::end-{name}:::'"
         )
 
     return "\n".join(result_lines) + "\n"

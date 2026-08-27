@@ -27,6 +27,7 @@ def test_user_guide_mentions_core_commands():
             "vsa validate",
             "vsa svg",
             "vsa build-markdown",
+            "vsa pdf",
             "vsa process",
             "vsa blocks",
             "vsa parse",
@@ -40,7 +41,7 @@ def test_cli_reference_mentions_core_commands():
 
     assert_terms(
         text,
-        ("vsa validate", "vsa svg", "vsa build-markdown", "vsa process", "vsa blocks", "vsa parse"),
+        ("vsa validate", "vsa svg", "vsa build-markdown", "vsa pdf", "vsa process", "vsa blocks", "vsa parse"),
     )
 
 

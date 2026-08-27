@@ -148,6 +148,7 @@ nav:
       - reference/cli/svg.md
       - reference/cli/process.md
       - reference/cli/build-markdown.md
+      - reference/cli/pdf.md
       - reference/cli/resolve-catalogus.md
       - reference/cli/musicxml.md
     - Grammatica: reference/grammar.md

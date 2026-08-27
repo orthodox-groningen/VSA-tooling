@@ -165,10 +165,8 @@ def main() -> int:
     for rel in args.pip_r:
         pip_install(["-r", str(ROOT / rel)])
 
-    for spec in args.pip_e:
-        pip_install(["-e", spec])
-
-    if args.catalogus and not module_ok("catalogus"):
+    # bron-catalogus vóór vsa-tool, anders pakt pip het PyPI-package "catalogus" (Breezy).
+    if args.catalogus:
         bron = sibling_or_vendor(os.path.join("..", "bron"), os.path.join("vendor", "bron"))
         if bron is None:
             fail(
@@ -177,6 +175,9 @@ def main() -> int:
                 "Clone https://github.com/orthodox-ronl/bron next to this repo.",
             )
         pip_install(["-e", str(bron)])
+
+    for spec in args.pip_e:
+        pip_install(["-e", spec])
 
     if args.vsa_tool and not module_ok("vsa"):
         tooling = sibling_or_vendor(

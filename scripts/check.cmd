@@ -4,7 +4,7 @@ cd /d %~dp0\..
 echo.
 echo === VSA check (CI-spiegel) ===
 echo.
-call scripts\_ensure.cmd --catalogus --vsa-tool --import vsa --import pytest --import PIL
+call scripts\_ensure.cmd --catalogus --vsa-tool --pip-e ".[dev,rendering]" --import vsa --import pytest --import PIL
 if errorlevel 1 exit /b 1
 
 if exist generated\ci rmdir /s /q generated\ci

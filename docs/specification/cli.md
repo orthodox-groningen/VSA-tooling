@@ -423,6 +423,27 @@ Betekenis:
 | shortcode zichtbaar als tekst | controleer Hugo shortcode-bestand     |
 | oude output blijft zichtbaar  | verwijder `generated` en bouw opnieuw |
 
+## `vsa pdf <bestand.md>`
+
+### Doel
+
+Maak een A4-PDF van één Markdownbestand: VSA-blokken, includes en pagebreaks
+worden net als bij `build-markdown` opgelost; daarna print Edge/Chrome.
+
+### Gebruik
+
+```cmd
+vsa pdf <bestand.md> -o uit.pdf
+```
+
+### Output
+
+| Output | Voorbeeld        |
+| ------ | ---------------- |
+| PDF    | `uit.pdf`        |
+
+Fouten (validatie) gebruiken hetzelfde formaat als `vsa validate`.
+
 ## `vsa.toml`
 
 ### Doel

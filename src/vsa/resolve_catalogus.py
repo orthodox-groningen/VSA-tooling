@@ -219,10 +219,9 @@ def write_resolved_markdown(
 
 
 def _discover_content_root(source_path: Path) -> Path | None:
-    for parent in (source_path.parent, *source_path.parents):
-        if (parent / "lokaal").is_dir():
-            return parent.resolve()
-    return None
+    from .include_vsa import discover_content_root
+
+    return discover_content_root(source_path)
 
 
 def _frontmatter_block(frontmatter: dict) -> list[str]:

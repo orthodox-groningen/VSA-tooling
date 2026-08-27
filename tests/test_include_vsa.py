@@ -8,6 +8,7 @@ import pytest
 
 from vsa.include_vsa import (
     IncludeVsaError,
+    discover_content_root,
     prepare_vsa_body,
 )
 from vsa.validation_runner import validate_file
@@ -33,6 +34,18 @@ def _write_lokaal_tree(root: Path) -> None:
     (base / "variant.yaml").write_text(VARIANT_YAML, encoding="utf-8")
     (base / "hemelum/uitvoeringsvorm.yaml").write_text(UV_YAML, encoding="utf-8")
     (base / "hemelum/repr/hemelum.vsa").write_text(HEMELUM_VSA, encoding="utf-8")
+
+
+def test_discover_content_root_from_relative_name_in_nested_cwd(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    content = tmp_path / "content-source"
+    nested = content / "praktijk" / "samenstellingen"
+    nested.mkdir(parents=True)
+    (content / "lokaal").mkdir()
+    (nested / "page.md").write_text("# x\n", encoding="utf-8")
+    monkeypatch.chdir(nested)
+    assert discover_content_root(Path("page.md")) == content.resolve()
 
 
 TROPARION_BODY = "[:] refrein melodie [:]\n"

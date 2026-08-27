@@ -68,10 +68,15 @@ INCLUDE_VSA_PATTERN = re.compile(
 
 
 def discover_content_root(source_path: Path) -> Path | None:
-    """Zoek parochie content-source (map met ``lokaal/``) omhoog vanaf ``source_path``."""
-    for parent in (source_path.parent, *source_path.parents):
+    """Zoek parochie content-source (map met ``lokaal/``) omhoog vanaf ``source_path``.
+
+    ``source_path`` mag relatief zijn (bijv. alleen de bestandsnaam in de cwd);
+    zonder ``resolve()`` stopt de walk bij ``.`` en wordt ``lokaal/`` in een
+    bovenliggende map gemist.
+    """
+    for parent in Path(source_path).resolve().parents:
         if (parent / "lokaal").is_dir():
-            return parent.resolve()
+            return parent
     return None
 
 

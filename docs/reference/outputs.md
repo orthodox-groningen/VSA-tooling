@@ -9,6 +9,7 @@
 | JSON         | Machineleesbare inspectie                    |
 | [AST](@)     | Interne parserrepresentatie                  |
 | MusicXML     | Muzikale export                              |
+| PDF          | A4-afdruk van één Markdownbestand            |
 
 ## SVG
 
@@ -73,3 +74,13 @@ MusicXML-export gebruikt [metadata](@) uit `.vsa`-frontmatter en renderer-/expor
 | `muziek.tempo`           | Tempo-informatie                            |
 | `muziek.part-name`       | Partijnaam                                  |
 | `muziek.midi-*`          | Playbackinstellingen                        |
+
+## PDF
+
+```cmd
+vsa pdf <bestand.md> -o uit.pdf
+```
+
+A4-PDF van één Markdownbestand na dezelfde VSA/include/pagebreak-keten als
+`build-markdown`. Vereist Edge, Chrome of Chromium (`CHROME_PATH`).
+

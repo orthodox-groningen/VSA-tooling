@@ -11,6 +11,7 @@ from pathlib import Path
 from .block_parser import DEFAULT_METADATA, parse_markdown_blocks
 from .config import load_config
 from .markdown_builder import build_markdown_site
+from .markdown_pdf import PdfError, write_markdown_pdf
 from .markdown_processor import ProcessValidationError, process_path
 from .musicxml_package import (
     _MUSICXML_SUFFIX,
@@ -36,6 +37,11 @@ def main(argv=None):
         return _run(args)
     except ProcessValidationError as exc:
         _print_validation_messages(exc.messages)
+        return 1
+    except PdfError as exc:
+        print(f"ERROR: {exc.message_nl}", file=sys.stderr)
+        if exc.hint_nl:
+            print(exc.hint_nl, file=sys.stderr)
         return 1
     except Exception as exc:
         print(str(exc), file=sys.stderr)
@@ -180,6 +186,35 @@ def _build_parser():
         help="template.yaml of map met template.yaml-bestanden.",
     )
 
+    pdf = subparsers.add_parser(
+        "pdf",
+        help="Render een Markdownbestand (VSA, includes, pagebreaks) naar PDF.",
+    )
+    pdf.add_argument("input", help="Markdownbestand (.md) met VSA-blokken en/of includes.")
+    pdf.add_argument(
+        "-o",
+        "--output",
+        default=None,
+        help="Uitvoer-PDF (default: <stem>.pdf in de huidige map).",
+    )
+    pdf.add_argument("--config", default=None)
+    pdf.add_argument(
+        "--content-root",
+        default=None,
+        help="Content-root voor includes (default: map met lokaal/, anders de map van het bestand).",
+    )
+    pdf.add_argument(
+        "--bron-root",
+        default=None,
+        help="Bron-repo root (default: auto via vendor/bron of ../bron).",
+    )
+    pdf.add_argument("--max-line-width", type=float, default=None)
+    pdf.add_argument(
+        "--chrome",
+        default=None,
+        help="Pad naar Edge/Chrome/Chromium (anders CHROME_PATH of auto-detectie).",
+    )
+
     return parser
 
 
@@ -220,6 +255,9 @@ def _run(args):
 
     if args.command == "template":
         return _cmd_template(args)
+
+    if args.command == "pdf":
+        return _cmd_pdf(args, config)
 
     print(f"Onbekend commando: {args.command}", file=sys.stderr)
     return 1
@@ -368,6 +406,23 @@ def _cmd_build_markdown(args, config):
 
     print(f"{len(result.markdown_files)} Markdownbestand(en) geschreven")
     print(f"{len(result.svg_files)} SVG-bestand(en) geschreven")
+    return 0
+
+
+def _cmd_pdf(args, config):
+    input_path = Path(args.input)
+    output_path = Path(args.output) if args.output else Path(input_path.stem + ".pdf")
+    chrome_command = [args.chrome] if args.chrome else None
+    result = write_markdown_pdf(
+        input_path,
+        output_path,
+        content_root=args.content_root,
+        bron_root=args.bron_root,
+        config=config,
+        max_line_width=args.max_line_width,
+        chrome_command=chrome_command,
+    )
+    print(f"PDF geschreven naar: {result}")
     return 0
 
 

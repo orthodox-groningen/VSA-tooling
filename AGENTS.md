@@ -13,7 +13,7 @@ Organisatie-context (andere repo's, terminologie): zie
 VSA-tooling is de **Python-toolchain** voor Vereenvoudigde Slavische Accentnotatie:
 
 - parser en semantische validator;
-- CLI (`vsa`): validate, parse, blocks, build-markdown, svg, musicxml, …;
+- CLI (`vsa`): validate, parse, blocks, build-markdown, pdf, svg, musicxml, …;
 - MkDocs-documentatie op GitHub Pages; presentatievoorbeeld in
   [VSA-demo](https://github.com/orthodox-ronl/VSA-demo);
 - regressietests en GitHub Actions CI (inclusief herbruikbare render-workflow).

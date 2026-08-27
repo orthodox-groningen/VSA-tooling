@@ -98,7 +98,7 @@
   
   <strong>Preview</strong>
    — branch <code>cursor/org-scripts-conventie-e9f7</code>
-  , gebouwd 2026-08-27 16:21 CEST.
+  , gebouwd 2026-08-27 18:24 CEST.
   <a href="https://orthodox-ronl.github.io/VSA-tooling/">Live documentatie (main)</a>.
   
 
@@ -2472,6 +2472,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../reference/cli/pdf/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    vsa pdf — Markdown met VSA naar PDF
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../reference/cli/resolve-catalogus/" class="md-nav__link">
         
   
@@ -3834,8 +3862,31 @@
 </tr>
 </tbody>
 </table>
-<h2 id="vsatoml"><code>vsa.toml</code><a class="headerlink" href="#vsatoml" title="Permanent link">&para;</a></h2>
+<h2 id="vsa-pdf-bestandmd"><code>vsa pdf &lt;bestand.md&gt;</code><a class="headerlink" href="#vsa-pdf-bestandmd" title="Permanent link">&para;</a></h2>
 <h3 id="doel_7">Doel<a class="headerlink" href="#doel_7" title="Permanent link">&para;</a></h3>
+<p>Maak een A4-PDF van één Markdownbestand: VSA-blokken, includes en pagebreaks
+worden net als bij <code>build-markdown</code> opgelost; daarna print Edge/Chrome.</p>
+<h3 id="gebruik_7">Gebruik<a class="headerlink" href="#gebruik_7" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>vsa pdf &lt;bestand.md&gt; -o uit.pdf
+</code></pre></div>
+<h3 id="output_4">Output<a class="headerlink" href="#output_4" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Output</th>
+<th>Voorbeeld</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PDF</td>
+<td><code>uit.pdf</code></td>
+</tr>
+</tbody>
+</table>
+<p>Fouten (validatie) gebruiken hetzelfde formaat als <code>vsa validate</code>.</p>
+<h2 id="vsatoml"><code>vsa.toml</code><a class="headerlink" href="#vsatoml" title="Permanent link">&para;</a></h2>
+<h3 id="doel_8">Doel<a class="headerlink" href="#doel_8" title="Permanent link">&para;</a></h3>
 <p>Projectdefaults vastleggen.</p>
 <h3 id="voorbeeld">Voorbeeld<a class="headerlink" href="#voorbeeld" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="k">[rendering]</span>
@@ -3920,14 +3971,14 @@ default
 start output.svg
 </code></pre></div>
 <h2 id="vsa-template-validate-pad"><code>vsa template validate &lt;pad&gt;</code><a class="headerlink" href="#vsa-template-validate-pad" title="Permanent link">&para;</a></h2>
-<h3 id="doel_8">Doel<a class="headerlink" href="#doel_8" title="Permanent link">&para;</a></h3>
+<h3 id="doel_9">Doel<a class="headerlink" href="#doel_9" title="Permanent link">&para;</a></h3>
 <p>Valideer een <code>template.yaml</code> (of een map met zulke bestanden) tegen schema en
 documentregels.</p>
-<h3 id="gebruik_7">Gebruik<a class="headerlink" href="#gebruik_7" title="Permanent link">&para;</a></h3>
+<h3 id="gebruik_8">Gebruik<a class="headerlink" href="#gebruik_8" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code>vsa template validate docs\specification-vsa-templates\library
 vsa template validate docs\specification-vsa-templates\library\tropaar-toon-4\template.yaml
 </code></pre></div>
-<h3 id="output_4">Output<a class="headerlink" href="#output_4" title="Permanent link">&para;</a></h3>
+<h3 id="output_5">Output<a class="headerlink" href="#output_5" title="Permanent link">&para;</a></h3>
 <p>Bij succes: één <code>OK</code>-regel per bestand. Bij fout: <code>pad: ERROR: CODE: …</code> en
 exitcode <code>1</code>.</p>
 

@@ -63,9 +63,11 @@ def test_docs_build_runs_on_pull_request_not_push():
 
 
 def test_vsa_ci_uses_consumer_minimal():
-    text = Path("scripts/ci.cmd").read_text(encoding="utf-8")
-    assert "consumer-minimal" in text
-    assert "hugo-demo" not in text
+    alias = Path("scripts/ci.cmd").read_text(encoding="utf-8")
+    check = Path("scripts/check.cmd").read_text(encoding="utf-8")
+    assert "check.cmd" in alias
+    assert "consumer-minimal" in check
+    assert "hugo-demo" not in check
 
 
 def test_vsa_ci_checks_out_bron_for_catalogus():

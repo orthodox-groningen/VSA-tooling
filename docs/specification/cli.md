@@ -64,7 +64,7 @@ Dan is de tool niet geïnstalleerd in de actieve Python-omgeving.
 Oplossing:
 
 ```cmd
-scripts\bootstrap.cmd
+test
 ```
 
 ## `vsa validate <bestand-of-map>`
@@ -465,10 +465,10 @@ default
 
 | Script                         | Wat doet het?               |
 | ------------------------------ | --------------------------- |
-| `scripts\bootstrap.cmd`        | installeert lokale omgeving |
+| `test`        | installeert lokale omgeving |
 | `scripts\test.cmd`             | draait tests                |
 | `scripts\ci.cmd`               | draait lokale CI            |
-| `scripts\docs-serve.cmd`       | MkDocs docs lokaal serveren |
+| `serve`       | MkDocs docs lokaal serveren |
 
 ## Diagnosevolgorde
 

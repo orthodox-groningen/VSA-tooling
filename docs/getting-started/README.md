@@ -26,7 +26,7 @@ cd /d C:\Git\orthodox-ronl\VSA-tooling
 ## 2. Omgeving
 
 ```cmd
-scripts\bootstrap.cmd
+test
 ```
 
 ## 3. Installatie controleren

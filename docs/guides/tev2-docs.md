@@ -36,14 +36,14 @@ npm install -g @tno-terminology-design/trrt @tno-terminology-design/hrgt @tno-te
 
 | Script                        | Doel                                                                 |
 | ----------------------------- | -------------------------------------------------------------------- |
-| `scripts\docs-serve.cmd`      | Snelle preview **zonder** TermRef-hover                              |
-| `scripts\docs-serve-tev2.cmd` | Preview **met** TEv2 (staging `generated/`, zoals CI)                |
+| `serve`      | Snelle preview **zonder** TermRef-hover                              |
+| `serve-tev2` | Preview **met** TEv2 (staging `generated/`, zoals CI)                |
 | `scripts\docs-build.cmd`      | Alleen `mkdocs build --strict`                                       |
-| `scripts\docs-build-tev2.cmd` | Volledige keten + TermRef-check + MkDocs (= CI-parity)               |
+| `build` | Volledige keten + TermRef-check + MkDocs (= CI-parity)               |
 
 ```cmd
 cd /d C:\Git\orthodox-ronl\VSA-tooling
-scripts\docs-serve-tev2.cmd
+serve-tev2
 ```
 
 `mrg-import` haalt de bron-MRG op (nodig voor `*@bron` in `docs/saf.yaml`).

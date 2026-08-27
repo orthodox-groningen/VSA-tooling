@@ -41,7 +41,7 @@ VSA-notatie  →  validate  →  SVG / MusicXML / Hugo-Markdown
 
 ```cmd
 cd /d C:\Git\orthodox-ronl\VSA-tooling
-scripts\bootstrap.cmd
+test
 vsa validate examples\docs-walkthroughs\svg-phrase-kort.vsa
 ```
 

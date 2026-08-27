@@ -1,6 +1,6 @@
 # VSA CI — Windows-validatie bij elke push/PR.
-# Doel: scripts\ci.cmd (pytest, validate + build-markdown op examples/consumer-minimal).
-# catalogus komt uit orthodox-ronl/bron (niet de PyPI-naamgenoot). Lokaal: scripts\ci.cmd
+# Doel: scripts\check.cmd (pytest, validate + build-markdown op examples/consumer-minimal).
+# catalogus komt uit orthodox-ronl/bron (niet de PyPI-naamgenoot). Lokaal: check
 
 name: VSA CI
 
@@ -32,7 +32,7 @@ jobs:
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
-          python-version: "3.12"
+          python-version: "3.14"
           cache: pip
           cache-dependency-path: |
             requirements*.txt

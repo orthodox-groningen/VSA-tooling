@@ -47,7 +47,7 @@ Zie [MusicXML-export — Coria-walkthrough](../guides/musicxml-export.md#walkthr
 
 ```cmd
 cd /d C:\Git\orthodox-ronl\VSA-demo
-scripts\bootstrap.cmd
+test
 scripts\serve-hugo.cmd
 ```
 

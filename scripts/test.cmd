@@ -1,8 +1,7 @@
 @echo off
 setlocal
-
 cd /d %~dp0\..
-
-call .venv\Scripts\activate
-
-python -m pytest
+call scripts\_ensure.cmd --catalogus --vsa-tool --pip-e ".[dev,rendering]" --import vsa --import pytest --import PIL
+if errorlevel 1 exit /b 1
+python -m pytest %*
+exit /b %ERRORLEVEL%

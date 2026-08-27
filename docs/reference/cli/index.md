@@ -78,10 +78,10 @@ voor het volledige overzicht.
 
 | Script                    | Doel                                                       |
 | ------------------------- | ---------------------------------------------------------- |
-| `scripts\bootstrap.cmd`   | Installeert de lokale omgeving (`.venv`, `vsa`, pytest).   |
+| `test`   | Installeert de lokale omgeving (`.venv`, `vsa`, pytest).   |
 | `scripts\test.cmd`        | Draait de pytest-suite.                                    |
 | `scripts\ci.cmd`          | Draait de volledige lokale CI (pytest + consumer-minimal). |
-| `scripts\docs-serve.cmd`  | Serveert deze MkDocs-documentatie lokaal.                  |
+| `serve`  | Serveert deze MkDocs-documentatie lokaal.                  |
 
 ## Diagnosevolgorde
 

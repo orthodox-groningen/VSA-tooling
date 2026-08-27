@@ -18,7 +18,8 @@ def test_catalogus_is_not_pypi_breezy_registry():
     assert hasattr(catalogus, "ZoekContext")
 
 
-def test_bootstrap_documents_bron_requirement():
-    text = Path("scripts/bootstrap.cmd").read_text(encoding="utf-8")
-    assert "vendor\\bron" in text or "vendor/bron" in text
-    assert "PyPI" in text
+def test_ensure_installs_catalogus_from_bron():
+    text = Path("scripts/_ensure.py").read_text(encoding="utf-8")
+    assert "vendor" in text
+    assert "bron" in text
+    assert "catalogus" in text

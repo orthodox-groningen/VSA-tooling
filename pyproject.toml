@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "vsa-tool"
 version = "0.1.0"
-requires-python = ">=3.12"
+requires-python = ">=3.14"
 dependencies = [
     "PyYAML>=6.0",
     # Let op: PyPI heeft een ánder package "catalogus" (Breezy).
@@ -25,4 +25,7 @@ where = ["src"]
 [project.optional-dependencies]
 rendering = [
     "Pillow>=10.0",
+]
+dev = [
+    "pytest>=8.0",
 ]

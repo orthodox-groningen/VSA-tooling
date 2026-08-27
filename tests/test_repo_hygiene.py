@@ -16,7 +16,9 @@ def test_gitignore_marks_generated_as_build_output():
 
 
 def test_ci_uses_consumer_minimal_not_mutating_source():
-    text = read(SCRIPTS / "ci.cmd")
+    alias = read(SCRIPTS / "ci.cmd")
+    text = read(SCRIPTS / "check.cmd")
+    assert "check.cmd" in alias
     assert r"examples\consumer-minimal\content-source" in text
     assert "build-markdown" in text
     assert "sync-bron-zondagen" not in text

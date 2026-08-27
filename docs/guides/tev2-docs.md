@@ -24,7 +24,7 @@ Org-brede contributor-checklist (scripts, pins, tabellen):
 Installeer TEv2-tools via de repo-pins (voorkeur):
 
 ```cmd
-cd /d C:\Git\orthodox-groningen\VSA-tooling
+cd /d C:\Git\orthodox-ronl\VSA-tooling
 npm install
 ```
 
@@ -42,7 +42,7 @@ npm install -g @tno-terminology-design/trrt @tno-terminology-design/hrgt @tno-te
 | `build` | Volledige keten + TermRef-check + MkDocs (= CI-parity)               |
 
 ```cmd
-cd /d C:\Git\orthodox-groningen\VSA-tooling
+cd /d C:\Git\orthodox-ronl\VSA-tooling
 serve-tev2
 ```
 

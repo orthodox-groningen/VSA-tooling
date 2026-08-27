@@ -15,7 +15,7 @@ Gebruik de gebruikershandleiding (`docs/guides/user-guide.md`) voor taakgerichte
 De voorbeelden gaan uit van:
 
 ```cmd
-cd /d C:\Git\orthodox-groningen\VSA-tooling
+cd /d C:\Git\orthodox-ronl\VSA-tooling
 ```
 
 Paden zijn relatief aan die map, tenzij je absolute paden gebruikt.

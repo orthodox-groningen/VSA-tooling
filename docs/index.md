@@ -54,7 +54,7 @@ Rollen en toon: [bron — schrijfconventies](https://orthodox-ronl.github.io/bro
 ## Lokaal bekijken
 
 ```cmd
-cd /d C:\Git\orthodox-groningen\VSA-tooling
+cd /d C:\Git\orthodox-ronl\VSA-tooling
 python -m pip install -r requirements-docs.txt
 serve
 ```
@@ -65,7 +65,7 @@ Met TermRefs (na `npm install`): `serve-tev2` — zie
 ## Snel naar de tool
 
 ```cmd
-cd /d C:\Git\orthodox-groningen\VSA-tooling
+cd /d C:\Git\orthodox-ronl\VSA-tooling
 test
 vsa --version
 vsa validate examples\minimal\001_plain_text.vsa

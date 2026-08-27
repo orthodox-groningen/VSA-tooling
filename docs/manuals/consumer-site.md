@@ -30,7 +30,7 @@ content-source/*.md  (+ .vsa)
 ```
 
 ```cmd
-cd /d C:\Git\orthodox-groningen\VSA-tooling
+cd /d C:\Git\orthodox-ronl\VSA-tooling
 vsa validate examples\consumer-minimal\content-source
 vsa build-markdown examples\consumer-minimal\content-source generated\ci\content generated\ci\static\vsa
 ```

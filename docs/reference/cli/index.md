@@ -13,7 +13,7 @@ Alle voorbeelden in deze referentie gaan uit van Windows `cmd.exe` en de
 repository-root als werkmap:
 
 ```cmd
-cd /d C:\Git\orthodox-groningen\VSA-tooling
+cd /d C:\Git\orthodox-ronl\VSA-tooling
 ```
 
 Paden in commando's zijn relatief aan die map, tenzij je een absoluut pad

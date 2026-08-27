@@ -89,7 +89,7 @@ Define verifiable success criteria (tests, validate, build) and loop until they 
 | bron     | sibling `../bron` of `vendor/bron` (**catalogus**) |
 
 ```cmd
-cd /d C:\Git\orthodox-groningen\VSA-tooling
+cd /d C:\Git\orthodox-ronl\VSA-tooling
 test
 ```
 
@@ -108,7 +108,7 @@ Scripts: [bron/docs/specs/repo-scripts.md](https://github.com/orthodox-ronl/bron
 ### Tests
 
 ```cmd
-cd /d C:\Git\orthodox-groningen\VSA-tooling
+cd /d C:\Git\orthodox-ronl\VSA-tooling
 test
 ```
 
@@ -117,7 +117,7 @@ Verbose: `test -v`
 ### Volledige CI lokaal
 
 ```cmd
-cd /d C:\Git\orthodox-groningen\VSA-tooling
+cd /d C:\Git\orthodox-ronl\VSA-tooling
 check
 ```
 
@@ -127,7 +127,7 @@ Stappen: pytest → `vsa validate` + `build-markdown` op
 ### VSA CLI (typisch)
 
 ```cmd
-cd /d C:\Git\orthodox-groningen\VSA-tooling
+cd /d C:\Git\orthodox-ronl\VSA-tooling
 vsa validate examples\consumer-minimal\content-source
 vsa build-markdown examples\consumer-minimal\content-source generated\ci\content generated\ci\static\vsa
 ```
@@ -137,7 +137,7 @@ vsa build-markdown examples\consumer-minimal\content-source generated\ci\content
 Presentatiesite: [VSA-demo](https://github.com/orthodox-ronl/VSA-demo).
 
 ```cmd
-cd /d C:\Git\orthodox-groningen\VSA-demo
+cd /d C:\Git\orthodox-ronl\VSA-demo
 check --strict
 serve
 ```
@@ -154,7 +154,7 @@ Opruimen in deze repo: `clean`. Overzicht: `scripts/README.md`.
 | `build` | TEv2 + TermRef-check + MkDocs (CI) |
 
 ```cmd
-cd /d C:\Git\orthodox-groningen\VSA-tooling
+cd /d C:\Git\orthodox-ronl\VSA-tooling
 npm install
 build
 ```

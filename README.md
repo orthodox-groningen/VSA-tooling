@@ -36,7 +36,7 @@ De projectrichting en actuele open punten staan in
 Org-conventie: [repo-scripts](https://github.com/orthodox-ronl/bron/blob/main/docs/specs/repo-scripts.md). Python **3.14**.
 
 ```cmd
-cd /d C:\Git\orthodox-groningen\VSA-tooling
+cd /d C:\Git\orthodox-ronl\VSA-tooling
 test
 serve
 ```
@@ -79,7 +79,7 @@ Gepubliceerde docs (MkDocs Material):
 Lokaal:
 
 ```cmd
-cd /d C:\Git\orthodox-groningen\VSA-tooling
+cd /d C:\Git\orthodox-ronl\VSA-tooling
 serve
 ```
 

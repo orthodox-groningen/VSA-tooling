@@ -32,7 +32,7 @@ _PAIRED_KEEP = frozenset({"print-only", "keep-together"})
 _PAIRED_DROP = frozenset({"web-only"})
 
 _PRINT_CSS = """
-@page { size: A4; margin: 2cm; }
+@page { size: A4; margin: 1cm 2cm; }
 html { font-size: 18px; }
 body {
   font-family: Arial, sans-serif;
@@ -57,7 +57,7 @@ img, .vsa-notation { max-width: 100%; height: auto; }
 .vsa-container { margin: 1.25rem 0; max-width: 100%; }
 .vsa-notation {
   border: 1px solid #d0d0d0;
-  padding: 0.75rem;
+  padding: 0;
   background: #fff;
 }
 .keep-together .vsa-notation { width: var(--vsa-scale, auto); }

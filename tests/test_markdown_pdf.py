@@ -66,6 +66,7 @@ def test_expand_keep_together_scale():
 def test_markdown_to_print_html_has_print_css_and_headings():
     html = markdown_to_print_html("# Titel\n\n{{< pagebreak >}}\n", title="Demo")
     assert "<title>Demo</title>" in html
+    assert "@page { size: A4; margin: 1cm 2cm; }" in html
     assert "page-break-before: always" in html
     assert 'class="pagebreak"' in html
     assert "<h1>Titel</h1>" in html

@@ -4084,6 +4084,7 @@ Onder renderen verstaan we het omzetten van gevalideerde <a class="og-termref" h
 <p>Bij meerdere underscores worden de lijnen verticaal gestapeld.</p>
 <p>Een punt (<code>.</code>) wordt gerenderd als een gevulde cirkel. De diameter van de cirkel bedraagt <code>U/4</code>.</p>
 <p>Meerdere punten worden verticaal gestapeld.</p>
+<p><code>-.</code> en <code>~.</code> worden gerenderd als één horizontale lijn over de <strong>linkerhelft</strong> van de kolom (zelfde y als <code>_</code>, tot het kolommidden). Beide tokens hebben dezelfde glyph.</p>
 <h3 id="musicxml-export">MusicXML-export<a class="headerlink" href="#musicxml-export" title="Permanent link">&para;</a></h3>
 <blockquote>
 <p><strong>Implementatiestatus:</strong> geïmplementeerd in <code>vsa-tool</code> als <a href="../../reference/cli/musicxml/"><code>vsa musicxml</code></a>.
@@ -4206,12 +4207,20 @@ mode="major"
 <td>kwartnoot</td>
 </tr>
 <tr>
+<td><code>-.</code></td>
+<td>gepunteerde kwartnoot</td>
+</tr>
+<tr>
+<td><code>~.</code></td>
+<td>gepunteerde kwartnoot</td>
+</tr>
+<tr>
 <td><code>_</code></td>
 <td>halve noot</td>
 </tr>
 <tr>
 <td><code>_.</code></td>
-<td>anderhalve noot</td>
+<td>gepunteerde halve noot</td>
 </tr>
 <tr>
 <td><code>__</code></td>
@@ -7177,7 +7186,7 @@ local_heights = height_markers[1:]
       
       
       <p class="og-footer-stamps">
-        Bijgewerkt: 2026-08-09
+        Bijgewerkt: 2026-09-01
         
       </p>
       

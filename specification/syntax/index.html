@@ -4080,6 +4080,18 @@ eigen reciteernoot (zie <a href="../rendering/#ongescopte-tekst-reciteertoon">On
 <td>standaardduur</td>
 <td>geen zichtbare <a class="og-termref" href="/VSA-tooling/terminologie/glyph" title="Glyph: een zichtbaar grafisch teken dat de Renderer tekent voor een VSA-markering (bijvoorbeeld een streep van een Hoogte-modifier of een onderstreping van een Lengte-modifier), los van de zangtekst zelf.">glyph</a></td>
 </tr>
+<tr>
+<td><code>-.</code></td>
+<td><code>{tekst-.}</code></td>
+<td>1½ × standaardduur</td>
+<td>halve lijn (linkerhelft) onder het <a class="og-termref" href="/VSA-tooling/terminologie/zangelement" title="Zangelement: het verplichte tekstfragment binnen een VSA-scope waaraan optionele Hoogte-modifiers en Lengte-modifiers hangen; de gezongen lettergreep of tekst die bij de Muzikale Posities hoort.">zangelement</a></td>
+</tr>
+<tr>
+<td><code>~.</code></td>
+<td><code>{tekst~.}</code></td>
+<td>1½ × standaardduur</td>
+<td>zelfde glyph als <code>-.</code></td>
+</tr>
 </tbody>
 </table>
 <h3 id="samengestelde-modifiers">Samengestelde modifiers<a class="headerlink" href="#samengestelde-modifiers" title="Permanent link">&para;</a></h3>
@@ -4209,11 +4221,12 @@ Bb2
 <span class="k">ELM </span><span class="err">::</span><span class="o">=</span>
       <span class="s2">"~"</span>
     <span class="p">|</span> <span class="s2">"-"</span>
+    <span class="p">|</span> <span class="s2">"-."</span>
+    <span class="p">|</span> <span class="s2">"~."</span>
     <span class="p">|</span> <span class="s2">"_"</span>
     <span class="p">|</span> <span class="s2">"_."</span>
     <span class="p">|</span> <span class="s2">"__"</span>
     <span class="p">|</span> <span class="s2">"."</span>
-    <span class="p">|</span> <span class="s2">".."</span>
     <span class="p">|</span> <span class="s2">".."</span> <span class="p">;</span>
 
 <span class="k">zangelement </span><span class="err">::</span><span class="o">=</span>
@@ -4264,7 +4277,7 @@ Bb2
       
       
       <p class="og-footer-stamps">
-        Bijgewerkt: 2026-08-09
+        Bijgewerkt: 2026-09-01
         
       </p>
       

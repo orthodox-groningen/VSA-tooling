@@ -20,7 +20,7 @@ Een enkelvoudige lengte-modifier (ELM) is de kleinste duur-eenheid binnen een
 van een [samengestelde lengte-modifier](@).
 
 Goede/valide voorbeelden van Enkelvoudige lengte-modifier zijn:
-- Precies één duurpositie
+- Precies één duurpositie (`_`, `_.`, `-.`, `~.`, …)
 - Onderdeel van een [lengte-modifier](@)
 
 Geen goede/niet valide voorbeelden van Enkelvoudige lengte-modifier zijn:

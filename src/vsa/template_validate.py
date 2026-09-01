@@ -16,7 +16,7 @@ DEGREE_RE = re.compile(r"^(#|b)?(do|re|mi|fa|sol|la|ti)([+-][1-3])?$")
 ID_RE = re.compile(r"^[a-z0-9_-]+$")
 VOICES = ("S", "A", "T", "B")
 ROLES = frozenset({"open", "recite", "cadence", "link"})
-DURATIONS = frozenset({"~", "-", "_", "_.", "__", ".", ".."})
+DURATIONS = frozenset({"~", "-", "-.", "~.", "_", "_.", "__", ".", ".."})
 ANCHORS = frozenset(CANON_ANCHORS)
 GENRES = frozenset({"tropaar", "stichier", "vers", "other"})
 

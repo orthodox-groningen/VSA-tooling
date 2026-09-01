@@ -226,6 +226,8 @@ Een [ELM](@) beschrijft de duur van één [muzikale positie](@) ten opzichte van
 | `..`     | `{tekst..}` | 1/4 × standaardduur | twee gestapelde punten                                      |
 | `-`      | `{tekst-}`  | standaardduur       | implementatie-afhankelijke standaardduur-glyph              |
 | `~`      | `{tekst~}`  | standaardduur       | geen zichtbare [glyph](@)                                   |
+| `-.`     | `{tekst-.}` | 1½ × standaardduur  | halve lijn (linkerhelft) onder het [zangelement](@)          |
+| `~.`     | `{tekst~.}` | 1½ × standaardduur  | zelfde glyph als `-.`                                      |
 
 ### Samengestelde modifiers
 
@@ -371,11 +373,12 @@ base-EHM ::=
 ELM ::=
       "~"
     | "-"
+    | "-."
+    | "~."
     | "_"
     | "_."
     | "__"
     | "."
-    | ".."
     | ".." ;
 
 zangelement ::=

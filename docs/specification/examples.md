@@ -13,6 +13,8 @@ Dit document bewaart de voorbeelden en niet-normatieve toelichting uit de hoofds
 | `{tekst_&_}`        | tekst over twee posities, beide met dubbele duur                      |
 | `{//&\tekst}`       | twee posities: twee stappen omhoog, daarna één stap omlaag            |
 | `{/tekst_.}`        | één stap omhoog, driemaal standaardduur                               |
+| `{/tekst-.}`        | één stap omhoog, anderhalfmaal standaardduur                            |
+| `{/tekst~.}`        | zelfde duur en glyph als `{/tekst-.}`                                  |
 | `{/&\&/tekst_&~&~}` | drie posities: omhoog, omlaag, omhoog; alleen eerste positie verlengd |
 | `[:]`               | horizontale lijn op baseline                                          |
 | `[//:]`             | [toonhoogte-markering](@) met initiële beweging `//`                  |

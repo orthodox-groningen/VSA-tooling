@@ -123,6 +123,8 @@ Een punt (`.`) wordt gerenderd als een gevulde cirkel. De diameter van de cirkel
 
 Meerdere punten worden verticaal gestapeld.
 
+`-.` en `~.` worden gerenderd als één horizontale lijn over de **linkerhelft** van de kolom (zelfde y als `_`, tot het kolommidden). Beide tokens hebben dezelfde glyph.
+
 ### MusicXML-export
 
 > **Implementatiestatus:** geïmplementeerd in `vsa-tool` als [`vsa musicxml`](../reference/cli/musicxml.md).
@@ -202,15 +204,17 @@ Elke [ELM](@) binnen een [lengte-modifier](@) bepaalt de duur van een [muzikale 
 
 Mapping naar MusicXML bij `duration-model="default"`:
 
-| [ELM](@) | MusicXML-duur   |
-| -------- | --------------- |
-| `~`      | kwartnoot       |
-| `-`      | kwartnoot       |
-| `_`      | halve noot      |
-| `_.`     | anderhalve noot |
-| `__`     | hele noot       |
-| `.`      | achtste noot    |
-| `..`     | zestiende noot  |
+| [ELM](@) | MusicXML-duur         |
+| -------- | --------------------- |
+| `~`      | kwartnoot             |
+| `-`      | kwartnoot             |
+| `-.`     | gepunteerde kwartnoot |
+| `~.`     | gepunteerde kwartnoot |
+| `_`      | halve noot            |
+| `_.`     | gepunteerde halve noot |
+| `__`     | hele noot             |
+| `.`      | achtste noot          |
+| `..`     | zestiende noot        |
 
 Andere duration-modellen mogen hiervan afwijken. Als meerdere [ELMs](@) aanwezig zijn binnen één [zangelement-scope](@), krijgt elke [muzikale positie](@) haar eigen duurwaarde.
 

@@ -12,7 +12,7 @@ Hersteld uit de oude Hugo-demo
 [:] {/op} {\neer} {-vlak} {~niets} {//dub}bel {////vier} {\\\\\vijf}
 [/:] {+//op} {+\neer} {+-vlak} {+~niets} {#//dub}bel {♯\\\\\drie}
 [//:] {b///op} {b\neer} {b-vlak} {b~niets} {♭//dub}bel {♭//drie}
-[/////:] {kort_} ander{half_.} {dub__}bel dub{bel__} {punt.} {pun..}{ten..} {\\\\\stapel}
+[/////:] {kort_} {gepunt-.} ander{half_.} {dub__}bel dub{bel__} {punt.} {pun..}{ten..} {\\\\\stapel}
 [:] Gij {\die} {/on}{/&\sterf}{\&/elijk} {/zijt_},
     {\en} {/om} {/on_}{\ze} {\Ver}{/&\los_&_}{\sing_}
     en altijd Maagd {\Ma}{/&\&\ri~&~&_}{/a_};
@@ -42,7 +42,7 @@ vsa svg examples\docs-walkthroughs\svg-glyphs-overzicht.vsa generated\docs-glyph
 [Fixture](@): `examples/docs-walkthroughs/svg-glyphs-lengte.vsa`
 
 ```text
-[:] {kort_} {anderhalf_.} {dubbel__} {punt.} {punten..} [:]
+[:] {kort_} {gepunt-.} {anderhalf_.} {dubbel__} {punt.} {punten..} [:]
 ```
 
 ![Lengtemarkers SVG](../../guides/assets/walkthroughs/svg-glyphs-lengte.svg)

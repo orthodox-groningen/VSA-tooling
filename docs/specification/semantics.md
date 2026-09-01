@@ -276,8 +276,10 @@ Een [ELM](@) bepaalt de duur van één [muzikale positie](@) ten opzichte van de
 | -------- | ------------------- |
 | `-`      | 1 × standaardduur   |
 | `~`      | 1 × standaardduur   |
+| `-.`     | 1½ × standaardduur  |
+| `~.`     | 1½ × standaardduur  |
 | `_`      | 2 × standaardduur   |
-| `_.`     | 3 x standaardduur   |
+| `_.`     | 3 × standaardduur   |
 | `__`     | 4 × standaardduur   |
 | `.`      | 1/2 × standaardduur |
 | `..`     | 1/4 × standaardduur |

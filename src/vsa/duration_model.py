@@ -7,8 +7,10 @@ The default mapping is specified in VSA-spec §8.2.5::
     ELM  → MusicXML duration
     ~    → kwartnoot  (quarter)
     -    → kwartnoot  (quarter)
+    -.   → gepunteerde kwartnoot (dotted quarter)
+    ~.   → gepunteerde kwartnoot (dotted quarter)
     _    → halve noot (half)
-    _.   → anderhalve noot (dotted half)
+    _.   → gepunteerde halve noot (dotted half)
     __   → hele noot  (whole)
     .    → achtste noot (eighth)
     ..   → zestiende noot (16th)
@@ -25,6 +27,8 @@ from .music import Duration
 _DEFAULT_MODEL: dict[str, Duration] = {
     "~":  Duration(note_type="quarter", dots=0),
     "-":  Duration(note_type="quarter", dots=0),
+    "-.": Duration(note_type="quarter", dots=1),
+    "~.": Duration(note_type="quarter", dots=1),
     "_":  Duration(note_type="half",    dots=0),
     "_.": Duration(note_type="half",    dots=1),
     "__": Duration(note_type="whole",   dots=0),
@@ -48,7 +52,7 @@ class UnknownELM(ValueError):
 def elm_to_duration(elm: str, model: str = "default") -> Duration:
     """Return the :class:`~vsa.music.Duration` for a given ELM string.
 
-    :param elm: The ELM string, e.g. ``"_"``, ``"~"``, ``"_."``.
+    :param elm: The ELM string, e.g. ``"_"``, ``"-."``, ``"_."``.
     :param model: The duration model name (default: ``"default"``).
     :raises UnknownDurationModel: If the model name is not registered.
     :raises UnknownELM: If the ELM string has no mapping in the model.

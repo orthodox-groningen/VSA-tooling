@@ -28,6 +28,8 @@ MINOR_ST = (0, 2, 3, 5, 7, 8, 10)  # natural minor
 ELM_DIV = {
     "~": (4, "quarter", 0),
     "-": (4, "quarter", 0),
+    "-.": (6, "quarter", 1),
+    "~.": (6, "quarter", 1),
     "_": (8, "half", 0),
     "_.": (12, "half", 1),
     "__": (16, "whole", 0),

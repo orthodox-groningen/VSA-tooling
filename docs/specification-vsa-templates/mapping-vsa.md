@@ -25,7 +25,7 @@ Beschrijven hoe een [VSA](@)-tekstblok (melodie **S**) op
 
 | Modifier                                              | Rol in de instance                                                                                                                                                                                         |
 | ----------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **ELM** (`_`, `__`, `~`, …)                           | **VSA bepaalt de werkelijke duur.** Template-`duration` is alleen een formule-indicatie op het blad; in de uitgewerkte partituur wint de VSA-ELM. A/T/B krijgen **dezelfde** duur als S op dat event (H5). |
+| **ELM** (`_`, `__`, `~`, `-.`, `~.`, …)        | **VSA bepaalt de werkelijke duur.** Template-`duration` is alleen een formule-indicatie op het blad; in de uitgewerkte partituur wint de VSA-ELM. A/T/B krijgen **dezelfde** duur als S op dat event (H5). |
 | **EHM** (`/`, `\`, `~`, …) / resulterende laddergraad | **Moet precies matchen** op template-`pitches.S` (zelfde klinkende toon t.o.v. `do`/`mode`). Geen “ongeveer”; mismatch → harde fout (H9), geen stil hold.                                                  |
 
 Kort: duur mag afwijken van de formule; **toonhoogte niet**.

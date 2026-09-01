@@ -151,6 +151,19 @@ class SVGGlyphRenderer:
         width = self._glyph_width(col_width, self.lower_width_factor, cap_factor=1.65) # cap_factor was 1.45
         half_width = width / 2
 
+        if value in ("-.", "~."):
+            return [
+                self._line(
+                    cx - half_width,
+                    y,
+                    cx,
+                    y,
+                    color=self.lower_color,
+                    stroke_width=self.lower_stroke_width,
+                    css_class="vsa-glyph vsa-lower-glyph vsa-glyph-length",
+                ),
+            ]
+
         if value == "_.":
             gap = self.unit * 0.40 # was 0.35
             return [

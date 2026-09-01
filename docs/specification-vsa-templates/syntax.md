@@ -66,6 +66,8 @@ Standaardduur ↔ kwartnoot bij `duration-model: default`.
 | ---- | --------------------- | ------------------ |
 | `~`  | 1 × standaardduur     | quarter            |
 | `-`  | 1 × standaardduur     | quarter            |
+| `-.` | 1½ × standaardduur    | dotted quarter      |
+| `~.` | 1½ × standaardduur    | dotted quarter      |
 | `_`  | 2 × standaardduur     | half               |
 | `_.` | 3 × standaardduur     | dotted half        |
 | `__` | 4 × standaardduur     | whole              |

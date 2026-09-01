@@ -4,6 +4,7 @@ Deze lijst bevat punten die niet als definitieve normatieve regel zijn vastgeste
 
 | Punt                                           | Status                                               | Bron / huidige plek                                                               |
 | ---------------------------------------------- | ---------------------------------------------------- | --------------------------------------------------------------------------------- |
+| ELM voor 1.5 x standaardduur                   | hoge prio, bijv. voor MGods lied bij ontslapen       | `docs/specification/`: syntax, semantiek, voorbeelden                             |
 | Meerstemmige VSA-uitbreiding                   | toekomstvoorstel                                     | `docs/plans/vsa-polyphony-proposal.md`                                            |
 | [Control-token](@) dispatch en registry        | deels gespecificeerd, implementatiegericht           | `docs/specification/directives.md`; parser-stappen 109–116 in `docs/history/`     |
 | Document-samenstelling en transclusion         | specificatie aanwezig, implementatiestatus wisselend | `docs/specification/directives.md`; guide: `docs/guides/parochie-lokaal-vsa.md`   |

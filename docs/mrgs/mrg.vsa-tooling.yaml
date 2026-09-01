@@ -299,7 +299,7 @@ entries:
       - "enkelvoudige-hoogte-modifier"
     termid: "concept:enkelvoudige-hoogte-modifier"
     vsntag: "vsa-tooling"
-  - git_date: 2026-08-09T00:00:00.000Z
+  - git_date: 2026-09-01T00:00:00.000Z
     slug: "enkelvoudige-lengte-modifier"
     term: "enkelvoudige-lengte-modifier"
     termType: "concept"

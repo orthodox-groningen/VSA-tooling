@@ -21,7 +21,7 @@ def test_pages_deploy_reusable_is_workflow_call():
 def test_pages_deploy_reusable_uses_peaceiris_not_deploy_pages():
     text = REUSABLE.read_text(encoding="utf-8")
 
-    assert "peaceiris/actions-gh-pages@v3" in text
+    assert "peaceiris/actions-gh-pages@v4" in text
     assert "publish_branch: gh-pages" in text
     assert "keep_files:" in text
     assert "actions/deploy-pages" not in text
@@ -63,7 +63,7 @@ def test_docs_pages_uses_pages_deploy_reusable():
 
     assert "pages-deploy-reusable.yml" in text
     assert "artifact_name: pages-docs-site" in text
-    assert "upload-artifact@v4" in text
+    assert "upload-artifact@v7" in text
     assert "jobs:" in text
     assert "build:" in text
     assert "deploy:" in text

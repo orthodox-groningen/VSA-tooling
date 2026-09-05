@@ -70,7 +70,7 @@ De workflow valideert en uploadt gegenereerde Markdown/SVG als artifact.
 
 Na een site-build upload je het artifact en roep je de herbruikbare
 deploy-workflow aan. Die draait `check-publication-output.py` (tenzij
-overgeslagen) en pusht via `peaceiris/actions-gh-pages@v3` naar `gh-pages`.
+overgeslagen) en pusht via `peaceiris/actions-gh-pages@v4` naar `gh-pages`.
 
 **Repo-instelling:** Settings → Pages → Deploy from a branch → `gh-pages` → `/`
 (niet “GitHub Actions”).

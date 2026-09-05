@@ -573,7 +573,7 @@ Implementatiedetails:
 - `include coria` zonder sibling → `coria` shortcode (MXL URL)
 - `include mxl` → download-URL
 - onbekend exporttype → `IncludeError`
-- exporttype + `.md` → fout (exporttypes `svg`/`coria`/`mxl` alleen voor `.vsa`-bronverwijzing)
+- exporttype + `.md` → fout (`svg` alleen `.vsa`; `coria`/`mxl` alleen `.vsa`/`.mxl`/`.musicxml`)
 
 ### 3. Demo-pagina
 

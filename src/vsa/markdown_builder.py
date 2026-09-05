@@ -3,7 +3,7 @@ from pathlib import Path
 import re
 import shutil
 
-from .content_assets import CORIA_HTML_SOURCE_SUFFIX
+from .content_assets import CORIA_HTML_SOURCE_SUFFIX, NATIVE_MUSICXML_SUFFIXES
 
 from .block_parser import START_MARKER, END_MARKER, parse_markdown_blocks
 from .config import VSAConfig
@@ -70,6 +70,7 @@ def build_markdown_site(
     output_mode="img",
     config: VSAConfig | None = None,
     coria_assets_dir=None,
+    native_mxl_assets_dir=None,
 ):
     input_dir = Path(input_dir)
     output_dir = Path(output_dir)
@@ -79,6 +80,11 @@ def build_markdown_site(
     else:
         coria_assets_dir = Path(coria_assets_dir)
     coria_assets_dir.mkdir(parents=True, exist_ok=True)
+    if native_mxl_assets_dir is None:
+        native_mxl_assets_dir = assets_dir.parent / "mxl"
+    else:
+        native_mxl_assets_dir = Path(native_mxl_assets_dir)
+    native_mxl_assets_dir.mkdir(parents=True, exist_ok=True)
 
     markdown_files = _discover_markdown_files(input_dir)
 
@@ -127,7 +133,9 @@ def build_markdown_site(
 
     written_static = _copy_content_assets(input_dir, output_dir)
     written_coria = _copy_coria_html_assets(input_dir, coria_assets_dir)
+    written_native_mxl = _copy_native_musicxml_assets(input_dir, native_mxl_assets_dir)
     written_static.extend(written_coria)
+    written_static.extend(written_native_mxl)
 
     return MarkdownBuildResult(
         markdown_files=written_markdown,
@@ -238,6 +246,25 @@ def _copy_coria_html_assets(input_dir: Path, coria_assets_dir: Path) -> list[str
             relative.name[: -len(CORIA_HTML_SOURCE_SUFFIX)] + ".html"
         )
         target = coria_assets_dir / published
+        target.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copy2(source, target)
+        written.append(str(target))
+
+    return written
+
+
+def _copy_native_musicxml_assets(input_dir: Path, mxl_assets_dir: Path) -> list[str]:
+    """Copy native ``.mxl`` / ``.musicxml`` from content-source to ``static/mxl/``."""
+    written: list[str] = []
+
+    for source in sorted(input_dir.rglob("*")):
+        if not source.is_file():
+            continue
+        if source.suffix.lower() not in NATIVE_MUSICXML_SUFFIXES:
+            continue
+
+        relative = source.relative_to(input_dir)
+        target = mxl_assets_dir / relative
         target.parent.mkdir(parents=True, exist_ok=True)
         shutil.copy2(source, target)
         written.append(str(target))

@@ -3,9 +3,11 @@ import shutil
 from pathlib import Path
 
 from .content_assets import (
+    CORIA_MXL_SOURCE_SUFFIXES,
     ContentAssetError,
     DEFAULT_CORIA_HTML_URL_PREFIX,
     DEFAULT_MXL_URL_PREFIX,
+    DEFAULT_NATIVE_MXL_URL_PREFIX,
     resolve_asset,
 )
 from .markdown_coria import (
@@ -66,13 +68,15 @@ def resolve_includes(
     content_root: Path | None = None,
     bron_root: Path | None = None,
     mxl_url_prefix: str = DEFAULT_MXL_URL_PREFIX,
+    native_mxl_url_prefix: str = DEFAULT_NATIVE_MXL_URL_PREFIX,
     coria_html_url_prefix: str = DEFAULT_CORIA_HTML_URL_PREFIX,
 ) -> str:
     """Resolve :::include [exporttype] path [params]::: directives recursively.
 
-    Exporttypes ``svg``, ``coria``, and ``mxl`` refer to a ``.vsa`` source path.
+    Exporttype ``svg`` refers to a ``.vsa`` source path. Exporttypes ``coria``
+    and ``mxl`` accept ``.vsa`` (derived MXL) or native ``.mxl`` / ``.musicxml``.
     Extension-based includes (``.md``, ``.vsa`` without exporttype, ``.svg``, …)
-    behave as before.
+    behave as before. Plain ``:::include bestand.mxl:::`` is not supported.
 
     Logische referenties ``id:…``, ``lokaal:…`` en ``bron:…`` worden via
     **catalogus** opgelost naar een ``.vsa``-pad (fase 3).
@@ -128,6 +132,7 @@ def resolve_includes(
                 result_lines,
                 content_root=content_root,
                 mxl_url_prefix=mxl_url_prefix,
+                native_mxl_url_prefix=native_mxl_url_prefix,
                 coria_html_url_prefix=coria_html_url_prefix,
             )
             continue
@@ -164,6 +169,7 @@ def resolve_includes(
                 content_root=content_root,
                 bron_root=bron_root,
                 mxl_url_prefix=mxl_url_prefix,
+                native_mxl_url_prefix=native_mxl_url_prefix,
                 coria_html_url_prefix=coria_html_url_prefix,
             )
             result_lines.extend(expanded.splitlines())
@@ -247,7 +253,7 @@ def _parse_include_directive(stripped: str) -> tuple[str | None, str, str | None
         if (
             keyword not in EXPORT_TYPES
             and "." not in keyword
-            and rel_path.lower().endswith(".vsa")
+            and Path(rel_path).suffix.lower() in CORIA_MXL_SOURCE_SUFFIXES
         ):
             raise IncludeError(f"Onbekend exporttype: {keyword!r}")
 
@@ -302,13 +308,24 @@ def _resolve_export_include(
     *,
     content_root: Path | None,
     mxl_url_prefix: str,
+    native_mxl_url_prefix: str,
     coria_html_url_prefix: str,
 ) -> None:
-    if included_path.suffix.lower() != ".vsa":
-        raise IncludeError(
-            f"Exporttype '{export_type}' verwacht een .vsa-bron, kreeg: '{rel_path}'"
-            f" (vanuit {source_path})"
-        )
+    suffix = included_path.suffix.lower()
+    if export_type == "svg":
+        if suffix != ".vsa":
+            raise IncludeError(
+                f"Exporttype 'svg' verwacht een .vsa-bron, kreeg: '{rel_path}'"
+                f" (vanuit {source_path})"
+            )
+    elif export_type in {"coria", "mxl"}:
+        if suffix not in CORIA_MXL_SOURCE_SUFFIXES:
+            raise IncludeError(
+                f"Exporttype '{export_type}' verwacht een .vsa-, .mxl- of "
+                f".musicxml-bron, kreeg: '{rel_path}' (vanuit {source_path})"
+            )
+    else:
+        raise IncludeError(f"Onbekend exporttype: {export_type!r}")
 
     if not included_path.exists():
         raise IncludeError(
@@ -341,6 +358,7 @@ def _resolve_export_include(
                 content_root,
                 "coria",
                 mxl_url_prefix=mxl_url_prefix,
+                native_mxl_url_prefix=native_mxl_url_prefix,
                 coria_html_url_prefix=coria_html_url_prefix,
                 coria_mode=coria_mode,
             )
@@ -354,6 +372,7 @@ def _resolve_export_include(
                 content_root,
                 "mxl",
                 mxl_url_prefix=mxl_url_prefix,
+                native_mxl_url_prefix=native_mxl_url_prefix,
                 coria_html_url_prefix=coria_html_url_prefix,
             )
             label = parse_coria_label(params_str) or DEFAULT_MXL_DOWNLOAD_LABEL

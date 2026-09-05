@@ -108,3 +108,61 @@ def test_build_markdown_copies_coria_html(tmp_path: Path):
     assert (coria_dir / "praktijk" / "melodie.html").exists()
     generated = (output_dir / "page.md").read_text(encoding="utf-8")
     assert "coria-html" in generated
+
+
+def test_resolve_asset_native_mxl_path(tmp_path: Path):
+    content = tmp_path / "content"
+    piece = content / "praktijk" / "corpus" / "nicolaas.mxl"
+    piece.parent.mkdir(parents=True)
+    piece.write_bytes(b"PK\x03\x04")
+
+    asset = resolve_asset(piece, content, "mxl")
+    assert asset.public_url_path == "/mxl/praktijk/corpus/nicolaas.mxl"
+
+
+def test_resolve_coria_directive_native_mxl(tmp_path: Path):
+    content = tmp_path / "content"
+    md_dir = content / "praktijk"
+    md_dir.mkdir(parents=True)
+    (md_dir / "melodie.mxl").write_bytes(b"PK\x03\x04")
+    md = md_dir / "page.md"
+    md.write_text(':::coria "melodie.mxl" label="Oefenen":::\n', encoding="utf-8")
+
+    result = resolve_coria_directives(
+        md.read_text(encoding="utf-8"),
+        md,
+        content_root=content,
+    )
+
+    assert 'coria src="/mxl/praktijk/melodie.mxl"' in result
+    assert ":::coria" not in result
+
+
+def test_build_markdown_copies_native_mxl(tmp_path: Path):
+    input_dir = tmp_path / "in"
+    output_dir = tmp_path / "out"
+    assets_dir = tmp_path / "static" / "vsa"
+    mxl_dir = tmp_path / "static" / "mxl"
+    piece_dir = input_dir / "praktijk"
+    piece_dir.mkdir(parents=True)
+    (piece_dir / "melodie.mxl").write_bytes(b"PK\x03\x04")
+    (piece_dir / "score.musicxml").write_text("<score-partwise/>", encoding="utf-8")
+    (input_dir / "page.md").write_text(
+        ':::include coria "praktijk/melodie.mxl":::\n'
+        ':::include mxl "praktijk/score.musicxml":::\n',
+        encoding="utf-8",
+    )
+
+    result = build_markdown_site(
+        input_dir,
+        output_dir,
+        assets_dir,
+        native_mxl_assets_dir=mxl_dir,
+    )
+
+    assert (mxl_dir / "praktijk" / "melodie.mxl").exists()
+    assert (mxl_dir / "praktijk" / "score.musicxml").exists()
+    generated = (output_dir / "page.md").read_text(encoding="utf-8")
+    assert 'coria src="/mxl/praktijk/melodie.mxl"' in generated
+    assert 'mxl-download src="/mxl/praktijk/score.musicxml"' in generated
+    assert any(path.endswith("melodie.mxl") for path in result.static_files)

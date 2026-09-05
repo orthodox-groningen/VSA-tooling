@@ -10,6 +10,7 @@ from .content_assets import (
     CoriaMode,
     DEFAULT_CORIA_HTML_URL_PREFIX,
     DEFAULT_MXL_URL_PREFIX,
+    DEFAULT_NATIVE_MXL_URL_PREFIX,
     resolve_asset,
 )
 
@@ -30,9 +31,10 @@ def resolve_coria_directives(
     *,
     content_root: Path,
     mxl_url_prefix: str = DEFAULT_MXL_URL_PREFIX,
+    native_mxl_url_prefix: str = DEFAULT_NATIVE_MXL_URL_PREFIX,
     coria_html_url_prefix: str = DEFAULT_CORIA_HTML_URL_PREFIX,
 ) -> str:
-    """Replace ``:::coria "melodie.vsa" …:::`` with Hugo shortcode output."""
+    """Replace ``:::coria "melodie.vsa|mxl|musicxml" …:::`` with Hugo shortcodes."""
     lines = text.splitlines()
     result_lines: list[str] = []
     in_code_fence = False
@@ -71,6 +73,7 @@ def resolve_coria_directives(
                 content_root,
                 "coria",
                 mxl_url_prefix=mxl_url_prefix,
+                native_mxl_url_prefix=native_mxl_url_prefix,
                 coria_html_url_prefix=coria_html_url_prefix,
                 coria_mode=_parse_mode(params),
             )

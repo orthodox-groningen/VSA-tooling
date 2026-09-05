@@ -418,6 +418,7 @@ In **content-source** gebruik je de build-time directive:
 
 ```markdown
 :::coria "tropaar-zondag-toon-3.vsa" label="Oefenen in Coria":::
+:::include coria "corpus/T4-11-nicolaas-van-myra.mxl" label="Oefenen in Coria":::
 ```
 
 Padregels zijn identiek aan `:::include`. Implementatie:
@@ -427,13 +428,20 @@ Padregels zijn identiek aan `:::include`. Implementatie:
 
 **1. Coria-export-HTML (aanbevolen voor koorleden)**
 
-Sibling `{stem}.coria.html` naast de `.vsa` in content-source. Build kopieert
-naar `static/coria/…/{stem}.html`. Directive emitteert `{{< coria-html >}}`.
+Sibling `{stem}.coria.html` naast de bron (`.vsa` of native MusicXML) in
+content-source. Build kopieert naar `static/coria/…/{stem}.html`. Directive
+emitteert `{{< coria-html >}}`.
 
-**2. Deep-link naar `.mxl` (`play_from_url`)**
+**2. Deep-link naar MusicXML (`play_from_url`)**
 
-Fallback wanneer geen `.coria.html` aanwezig is. MXL onder `static/vsa/mxl/…`
-(wordt apart gegenereerd). Directive emitteert `{{< coria >}}`.
+Fallback wanneer geen `.coria.html` aanwezig is.
+
+- Uit een vsa-bestand: afgeleide MXL onder `static/vsa/mxl/…` (apart
+  gegenereerd via [`vsa musicxml`](../reference/cli/musicxml.md)).
+- Native `.mxl` / `.musicxml`: het bronbestand zelf, gekopieerd naar
+  `static/mxl/…` (andere URL-prefix, zodat beide naast elkaar kunnen).
+
+Directive emitteert `{{< coria >}}`.
 
 Site-build: `build-markdown` (directive + `.coria.html`-kopie) vóór
 [`vsa musicxml`](../reference/cli/musicxml.md) (MXL-generatie). Lokaal (`baseURL /`) werkt `play_from_url`

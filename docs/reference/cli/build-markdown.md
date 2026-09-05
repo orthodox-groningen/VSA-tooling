@@ -50,6 +50,10 @@ Vóór het renderen valideert dit commando dezelfde controles als
 - **Bestanden**:
   - Markdown in `output_dir`, met dezelfde relatieve structuur als `input_dir`.
   - SVG in `assets_dir`, benoemd als `<stem>-block-<n>.svg`.
+  - `.coria.html`-siblings naar `assets_dir/../coria/` (site-URL `/coria/…`).
+  - Native `.mxl` / `.musicxml` naar `assets_dir/../mxl/` (site-URL `/mxl/…`).
+    Afgeleide MXL uit een vsa-bestand blijft onder `static/vsa/mxl/` (via
+    [`vsa musicxml`](musicxml.md)).
 
 ### Bestandspad versus URL-pad
 

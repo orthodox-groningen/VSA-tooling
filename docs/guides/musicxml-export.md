@@ -82,18 +82,23 @@ als SVG:
 
 ### In content-source: `:::coria` (aanbevolen)
 
-Zelfde padregels als `:::include` — alleen de `.vsa`-naam naast je `.md`:
+Zelfde padregels als `:::include`. Bron is een vsa-bestand **of** een native
+`.mxl` / `.musicxml`:
 
 ```markdown
 :::include svg "oefenmelodie.vsa" alt="Tropaar" scale="85%":::
 :::coria "oefenmelodie.vsa" label="Oefenen in Coria":::
+:::include coria "corpus/T4-11-nicolaas-van-myra.mxl" label="Oefenen in Coria":::
+:::include mxl "corpus/T4-11-nicolaas-van-myra.mxl" label="Download MusicXML":::
 ```
 
 Bij [`vsa build-markdown`](../reference/cli/build-markdown.md):
 
 1. Pad oplossen t.o.v. het `.md`-bestand.
-2. Als `{stem}.coria.html` naast de `.vsa` staat → link naar Coria-HTML (partij al gekozen).
-3. Anders → MXL-link via `play_from_url`.
+2. Als `{stem}.coria.html` naast de bron staat → link naar Coria-HTML (partij al gekozen).
+3. Anders → MusicXML via `play_from_url`:
+   - `.vsa` → `/vsa/mxl/…/{stem}.mxl` (afgeleide)
+   - `.mxl` / `.musicxml` → `/mxl/…` (bestand zelf; build kopieert naar `static/mxl/`)
 
 Optioneel Coria-HTML naast de bron (handmatig uit Coria):
 
@@ -218,8 +223,9 @@ vsa musicxml lied.vsa lied.mxl --musicxml-profile engraving
 
 ## Tips
 
-- **Koorleden zonder extra klikken?** Plaats `{stem}.coria.html` naast de `.vsa`
-  en gebruik `:::coria "bestand.vsa":::` in content-source.
+- **Koorleden zonder extra klikken?** Plaats `{stem}.coria.html` naast de bron
+  (`.vsa` of native MusicXML) en gebruik `:::coria "bestand.vsa":::` of
+  `:::include coria "bestand.mxl":::` in content-source.
 - **Coria laadt het `.mxl` niet?** Controleer of je niet per ongeluk
   `engraving` hebt gekozen; gebruik `playback` (de default). Op een website moet
   het `.mxl`-bestand via HTTPS bereikbaar zijn.

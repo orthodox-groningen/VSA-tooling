@@ -451,6 +451,109 @@ def test_include_mxl_download(tmp_path):
     assert 'label="MXL"' in result
 
 
+def test_include_coria_native_mxl(tmp_path):
+    content = tmp_path / "content"
+    md_dir = content / "praktijk" / "corpus"
+    md_dir.mkdir(parents=True)
+    mxl = md_dir / "T4-11-nicolaas-van-myra.mxl"
+    mxl.write_bytes(b"PK\x03\x04")
+    md = md_dir / "page.md"
+    md.write_text(
+        ':::include coria "T4-11-nicolaas-van-myra.mxl" label="Oefenen":::\n',
+        encoding="utf-8",
+    )
+
+    result = resolve_includes(
+        md.read_text(encoding="utf-8"),
+        md,
+        content_root=content,
+    )
+
+    assert (
+        'coria src="/mxl/praktijk/corpus/T4-11-nicolaas-van-myra.mxl"' in result
+    )
+    assert "coria-html" not in result
+    assert "/vsa/mxl/" not in result
+
+
+def test_include_mxl_native_musicxml_download(tmp_path):
+    content = tmp_path / "content"
+    md_dir = content / "praktijk"
+    md_dir.mkdir(parents=True)
+    score = md_dir / "uitgebreid.musicxml"
+    score.write_text("<score-partwise/>", encoding="utf-8")
+    md = md_dir / "page.md"
+    md.write_text(
+        ':::include mxl "uitgebreid.musicxml" label="Download":::\n',
+        encoding="utf-8",
+    )
+
+    result = resolve_includes(
+        md.read_text(encoding="utf-8"),
+        md,
+        content_root=content,
+    )
+
+    assert 'mxl-download src="/mxl/praktijk/uitgebreid.musicxml"' in result
+
+
+def test_include_coria_native_mxl_html_sibling(tmp_path):
+    content = tmp_path / "content"
+    md_dir = content / "praktijk"
+    md_dir.mkdir(parents=True)
+    mxl = md_dir / "melodie.mxl"
+    mxl.write_bytes(b"PK\x03\x04")
+    mxl.with_name("melodie.coria.html").write_text("<html></html>", encoding="utf-8")
+    md = md_dir / "page.md"
+    md.write_text(':::include coria "melodie.mxl":::\n', encoding="utf-8")
+
+    result = resolve_includes(
+        md.read_text(encoding="utf-8"),
+        md,
+        content_root=content,
+    )
+
+    assert 'coria-html src="/coria/praktijk/melodie.html"' in result
+
+
+def test_include_coria_vsa_and_native_mxl_distinct_urls(tmp_path):
+    content = tmp_path / "content"
+    md_dir = content / "praktijk"
+    md_dir.mkdir(parents=True)
+    (md_dir / "melodie.vsa").write_text("{/a_}", encoding="utf-8")
+    (md_dir / "melodie.mxl").write_bytes(b"PK\x03\x04")
+    md = md_dir / "page.md"
+    md.write_text(
+        ':::include coria "melodie.vsa":::\n:::include coria "melodie.mxl":::\n',
+        encoding="utf-8",
+    )
+
+    result = resolve_includes(
+        md.read_text(encoding="utf-8"),
+        md,
+        content_root=content,
+    )
+
+    assert 'coria src="/vsa/mxl/praktijk/melodie.mxl"' in result
+    assert 'coria src="/mxl/praktijk/melodie.mxl"' in result
+
+
+def test_plain_include_mxl_raises(tmp_path):
+    mxl = tmp_path / "melodie.mxl"
+    mxl.write_bytes(b"PK\x03\x04")
+    source = tmp_path / "doc.md"
+    with pytest.raises(IncludeError, match="Onbekend bestandstype"):
+        resolve_includes(':::include "melodie.mxl":::\n', source)
+
+
+def test_include_svg_with_mxl_raises(tmp_path):
+    mxl = tmp_path / "melodie.mxl"
+    mxl.write_bytes(b"PK\x03\x04")
+    source = tmp_path / "doc.md"
+    with pytest.raises(IncludeError, match="verwacht een .vsa-bron"):
+        resolve_includes(':::include svg "melodie.mxl":::\n', source)
+
+
 def test_include_unknown_exporttype_raises(tmp_path):
     source = tmp_path / "doc.md"
     with pytest.raises(IncludeError, match="Onbekend exporttype"):

@@ -245,11 +245,13 @@ Wordt door [`vsa build-markdown`](../reference/cli/build-markdown.md) omgezet na
 
     :::include pad/naar/bestand.ext:::
 
-    :::include <exporttype> "pad/naar/melodie.vsa" [parameters]:::
+    :::include <exporttype> "pad/naar/bron" [parameters]:::
 
-Exporttypes: `svg`, `coria`, `mxl` — alleen voor `.vsa`-bronverwijzingen.
-`:::coria` blijft een synoniem voor `:::include coria`. Zie [exportcontracten](https://orthodox-ronl.github.io/bron/reference/exportcontracten/)
+Exporttypes: `svg` (alleen `.vsa`); `coria` en `mxl` (`.vsa`, of native `.mxl` /
+`.musicxml`). `:::coria` blijft een synoniem voor `:::include coria`. Zie
+[exportcontracten](https://orthodox-ronl.github.io/bron/reference/exportcontracten/)
 ([exporttypen](@bron)).
+Plain `:::include bestand.mxl:::` (zonder exporttype) is niet toegestaan.
 
 Het pad is **relatief aan het includerende bestand** (niet aan de projectroot), **of**
 een logische referentie via **catalogus** (fase 3):
@@ -279,12 +281,16 @@ Ondersteunde bestandstypen:
 ### Coria-oefenlink
 
     :::coria "pad/naar/melodie.vsa" [label="…"] [mode="auto|html|mxl"]:::
+    :::include coria "pad/naar/score.mxl" [label="…"] [mode="auto|html|mxl"]:::
 
 Pad relatief aan het includerende bestand, zoals bij `:::include`.
 
-- Als `{stem}.coria.html` naast de `.vsa` staat: link naar Coria-export-HTML
-  (partij al gekozen). Build kopieert naar `static/coria/…`.
-- Anders: link naar gegenereerde `.mxl` via Coria `play_from_url`.
+- Bron `.vsa`: als `{stem}.coria.html` naast het vsa-bestand staat → Coria-HTML
+  (`static/coria/…`). Anders → afgeleide `.mxl` via `play_from_url`
+  (`/vsa/mxl/…/{stem}.mxl`).
+- Bron `.mxl` / `.musicxml`: het bestand zelf (`/mxl/…` inclusief extensie).
+  Optioneel `{stem}.coria.html` naast dat bestand. Build kopieert native
+  MusicXML naar `static/mxl/…`.
 
 Wordt bij `build-markdown` omgezet naar Hugo-shortcode `coria-html` of `coria`.
 

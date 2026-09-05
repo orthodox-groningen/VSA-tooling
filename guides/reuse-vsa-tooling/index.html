@@ -3460,7 +3460,7 @@ batchconversie. Hugo (of MkDocs) komt pas bij een publicatiesite — zie
 <h2 id="github-pages-deploy">GitHub Pages deploy<a class="headerlink" href="#github-pages-deploy" title="Permanent link">&para;</a></h2>
 <p>Na een site-build upload je het artifact en roep je de herbruikbare
 deploy-workflow aan. Die draait <code>check-publication-output.py</code> (tenzij
-overgeslagen) en pusht via <code>peaceiris/actions-gh-pages@v3</code> naar <code>gh-pages</code>.</p>
+overgeslagen) en pusht via <code>peaceiris/actions-gh-pages@v4</code> naar <code>gh-pages</code>.</p>
 <p><strong>Repo-instelling:</strong> Settings → Pages → Deploy from a branch → <code>gh-pages</code> → <code>/</code>
 (niet “GitHub Actions”).</p>
 <div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deploy site</span>
@@ -3475,9 +3475,9 @@ overgeslagen) en pusht via <code>peaceiris/actions-gh-pages@v3</code> naar <code
 <span class="w">  </span><span class="nt">build</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">runs-on</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ubuntu-latest</span>
 <span class="w">    </span><span class="nt">steps</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/checkout@v4</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/checkout@v5</span>
 <span class="w">      </span><span class="c1"># … bouw naar public/ …</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/upload-artifact@v4</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/upload-artifact@v7</span>
 <span class="w">        </span><span class="nt">with</span><span class="p">:</span>
 <span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pages-site</span>
 <span class="w">          </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">public</span>
@@ -3620,7 +3620,7 @@ zangstuk-formaat: <a href="https://orthodox-ronl.github.io/bron/specs/">bron —
       
       
       <p class="og-footer-stamps">
-        Bijgewerkt: 2026-08-19
+        Bijgewerkt: 2026-09-05
         
       </p>
       

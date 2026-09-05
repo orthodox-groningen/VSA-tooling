@@ -97,8 +97,8 @@
             
   
   <strong>Preview</strong>
-   — branch <code>ci/node24-actions</code>
-  , gebouwd 2026-09-05 11:03 CEST.
+   — branch <code>feature/include-coria-native-mxl</code>
+  , gebouwd 2026-09-05 18:26 CEST.
   <a href="https://orthodox-ronl.github.io/VSA-tooling/">Live documentatie (main)</a>.
   
 
@@ -3641,15 +3641,20 @@ vsa build-markdown examples\docs-walkthroughs\coria-oefenlink generated\docs-wal
 als SVG:</p>
 <p><img alt="Tropaar zondag toon 3 (docs-voorbeeld)" src="../assets/walkthroughs/coria-oefenmelodie.svg" /></p>
 <h3 id="in-content-source-coria-aanbevolen">In content-source: <code>:::coria</code> (aanbevolen)<a class="headerlink" href="#in-content-source-coria-aanbevolen" title="Permanent link">&para;</a></h3>
-<p>Zelfde padregels als <code>:::include</code> — alleen de <code>.vsa</code>-naam naast je <code>.md</code>:</p>
+<p>Zelfde padregels als <code>:::include</code>. Bron is een vsa-bestand <strong>of</strong> een native
+<code>.mxl</code> / <code>.musicxml</code>:</p>
 <div class="highlight"><pre><span></span><code>:::include svg "oefenmelodie.vsa" alt="Tropaar" scale="85%":::
 :::coria "oefenmelodie.vsa" label="Oefenen in Coria":::
+:::include coria "corpus/T4-11-nicolaas-van-myra.mxl" label="Oefenen in Coria":::
+:::include mxl "corpus/T4-11-nicolaas-van-myra.mxl" label="Download MusicXML":::
 </code></pre></div>
 <p>Bij <a href="../../reference/cli/build-markdown/"><code>vsa build-markdown</code></a>:</p>
 <ol>
 <li>Pad oplossen t.o.v. het <code>.md</code>-bestand.</li>
-<li>Als <code>{stem}.coria.html</code> naast de <code>.vsa</code> staat → link naar Coria-HTML (partij al gekozen).</li>
-<li>Anders → MXL-link via <code>play_from_url</code>.</li>
+<li>Als <code>{stem}.coria.html</code> naast de bron staat → link naar Coria-HTML (partij al gekozen).</li>
+<li>Anders → MusicXML via <code>play_from_url</code>:</li>
+<li><code>.vsa</code> → <code>/vsa/mxl/…/{stem}.mxl</code> (afgeleide)</li>
+<li><code>.mxl</code> / <code>.musicxml</code> → <code>/mxl/…</code> (bestand zelf; build kopieert naar <code>static/mxl/</code>)</li>
 </ol>
 <p>Optioneel Coria-HTML naast de bron (handmatig uit Coria):</p>
 <div class="highlight"><pre><span></span><code>coria-oefenlink/oefenmelodie.vsa
@@ -3836,8 +3841,9 @@ maatstrepen, typografie-hints of gedetailleerde melisma-lijnen nodig hebt:</p>
 </code></pre></div>
 <h2 id="tips">Tips<a class="headerlink" href="#tips" title="Permanent link">&para;</a></h2>
 <ul>
-<li><strong>Koorleden zonder extra klikken?</strong> Plaats <code>{stem}.coria.html</code> naast de <code>.vsa</code>
-  en gebruik <code>:::coria "bestand.vsa":::</code> in content-source.</li>
+<li><strong>Koorleden zonder extra klikken?</strong> Plaats <code>{stem}.coria.html</code> naast de bron
+  (<code>.vsa</code> of native MusicXML) en gebruik <code>:::coria "bestand.vsa":::</code> of
+  <code>:::include coria "bestand.mxl":::</code> in content-source.</li>
 <li><strong>Coria laadt het <code>.mxl</code> niet?</strong> Controleer of je niet per ongeluk
   <code>engraving</code> hebt gekozen; gebruik <code>playback</code> (de default). Op een website moet
   het <code>.mxl</code>-bestand via HTTPS bereikbaar zijn.</li>
@@ -3884,7 +3890,7 @@ maatstrepen, typografie-hints of gedetailleerde melisma-lijnen nodig hebt:</p>
       
       
       <p class="og-footer-stamps">
-        Bijgewerkt: 2026-08-19
+        Bijgewerkt: 2026-09-05
         
       </p>
       

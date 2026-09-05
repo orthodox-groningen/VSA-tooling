@@ -97,8 +97,8 @@
             
   
   <strong>Preview</strong>
-   — branch <code>ci/node24-actions</code>
-  , gebouwd 2026-09-05 11:03 CEST.
+   — branch <code>feature/include-coria-native-mxl</code>
+  , gebouwd 2026-09-05 18:26 CEST.
   <a href="https://orthodox-ronl.github.io/VSA-tooling/">Live documentatie (main)</a>.
   
 
@@ -4608,16 +4608,24 @@ ongekomprimeerde MusicXML geschreven.</p>
 <h5 id="coria-integratie-hugo">Coria-integratie (Hugo)<a class="headerlink" href="#coria-integratie-hugo" title="Permanent link">&para;</a></h5>
 <p>In <strong>content-source</strong> gebruik je de build-time directive:</p>
 <div class="highlight"><pre><span></span><code>:::coria "tropaar-zondag-toon-3.vsa" label="Oefenen in Coria":::
+:::include coria "corpus/T4-11-nicolaas-van-myra.mxl" label="Oefenen in Coria":::
 </code></pre></div>
 <p>Padregels zijn identiek aan <code>:::include</code>. Implementatie:
 <code>src/vsa/markdown_coria.py</code>, <code>src/vsa/content_assets.py</code>.</p>
 <p><a href="https://coria.nl">Coria</a> publicatiewijzen:</p>
 <p><strong>1. Coria-export-HTML (aanbevolen voor koorleden)</strong></p>
-<p>Sibling <code>{stem}.coria.html</code> naast de <code>.vsa</code> in content-source. Build kopieert
-naar <code>static/coria/…/{stem}.html</code>. Directive emitteert <code>{{&lt; coria-html &gt;}}</code>.</p>
-<p><strong>2. Deep-link naar <code>.mxl</code> (<code>play_from_url</code>)</strong></p>
-<p>Fallback wanneer geen <code>.coria.html</code> aanwezig is. MXL onder <code>static/vsa/mxl/…</code>
-(wordt apart gegenereerd). Directive emitteert <code>{{&lt; coria &gt;}}</code>.</p>
+<p>Sibling <code>{stem}.coria.html</code> naast de bron (<code>.vsa</code> of native MusicXML) in
+content-source. Build kopieert naar <code>static/coria/…/{stem}.html</code>. Directive
+emitteert <code>{{&lt; coria-html &gt;}}</code>.</p>
+<p><strong>2. Deep-link naar MusicXML (<code>play_from_url</code>)</strong></p>
+<p>Fallback wanneer geen <code>.coria.html</code> aanwezig is.</p>
+<ul>
+<li>Uit een vsa-bestand: afgeleide MXL onder <code>static/vsa/mxl/…</code> (apart
+  gegenereerd via <a href="../../reference/cli/musicxml/"><code>vsa musicxml</code></a>).</li>
+<li>Native <code>.mxl</code> / <code>.musicxml</code>: het bronbestand zelf, gekopieerd naar
+  <code>static/mxl/…</code> (andere URL-prefix, zodat beide naast elkaar kunnen).</li>
+</ul>
+<p>Directive emitteert <code>{{&lt; coria &gt;}}</code>.</p>
 <p>Site-build: <code>build-markdown</code> (directive + <code>.coria.html</code>-kopie) vóór
 <a href="../../reference/cli/musicxml/"><code>vsa musicxml</code></a> (MXL-generatie). Lokaal (<code>baseURL /</code>) werkt <code>play_from_url</code>
 niet: Coria haalt het bestand server-side op.</p>
@@ -7191,7 +7199,7 @@ local_heights = height_markers[1:]
       
       
       <p class="og-footer-stamps">
-        Bijgewerkt: 2026-09-01
+        Bijgewerkt: 2026-09-05
         
       </p>
       

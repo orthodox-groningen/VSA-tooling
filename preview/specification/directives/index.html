@@ -97,8 +97,8 @@
             
   
   <strong>Preview</strong>
-   — branch <code>ci/node24-actions</code>
-  , gebouwd 2026-09-05 11:03 CEST.
+   — branch <code>feature/include-coria-native-mxl</code>
+  , gebouwd 2026-09-05 18:26 CEST.
   <a href="https://orthodox-ronl.github.io/VSA-tooling/">Live documentatie (main)</a>.
   
 
@@ -3553,11 +3553,13 @@ Uit die bronbestanden wordt gegenereerd:</p>
 <h3 id="transclusion-include">Transclusion (include)<a class="headerlink" href="#transclusion-include" title="Permanent link">&para;</a></h3>
 <pre><code>:::include pad/naar/bestand.ext:::
 
-:::include &lt;exporttype&gt; "pad/naar/melodie.vsa" [parameters]:::
+:::include &lt;exporttype&gt; "pad/naar/bron" [parameters]:::
 </code></pre>
-<p>Exporttypes: <code>svg</code>, <code>coria</code>, <code>mxl</code> — alleen voor <code>.vsa</code>-bronverwijzingen.
-<code>:::coria</code> blijft een synoniem voor <code>:::include coria</code>. Zie <a href="https://orthodox-ronl.github.io/bron/reference/exportcontracten/">exportcontracten</a>
-(<a class="og-termref" href="/bron/terms/exporttype" title="Exporttype: De naam die in een <code>:::include &lt;exporttype&gt;</code>-directive aangeeft welk Exportmechanisme wordt gebruikt, zoals <code>svg</code>, <code>coria</code> of <code>mxl</code>.">exporttypen</a>).</p>
+<p>Exporttypes: <code>svg</code> (alleen <code>.vsa</code>); <code>coria</code> en <code>mxl</code> (<code>.vsa</code>, of native <code>.mxl</code> /
+<code>.musicxml</code>). <code>:::coria</code> blijft een synoniem voor <code>:::include coria</code>. Zie
+<a href="https://orthodox-ronl.github.io/bron/reference/exportcontracten/">exportcontracten</a>
+(<a class="og-termref" href="/bron/terms/exporttype" title="Exporttype: De naam die in een <code>:::include &lt;exporttype&gt;</code>-directive aangeeft welk Exportmechanisme wordt gebruikt, zoals <code>svg</code>, <code>coria</code> of <code>mxl</code>.">exporttypen</a>).
+Plain <code>:::include bestand.mxl:::</code> (zonder exporttype) is niet toegestaan.</p>
 <p>Het pad is <strong>relatief aan het includerende bestand</strong> (niet aan de projectroot), <strong>of</strong>
 een logische referentie via <strong>catalogus</strong> (fase 3):</p>
 <pre><code>:::include svg id:zangstuk-id/variant-id/uitvoeringsvorm-id [parameters]:::
@@ -3600,12 +3602,16 @@ en <a href="../../guides/parochie-lokaal-vsa/">parochie-lokaal-vsa.md</a>.</p>
 </table>
 <h3 id="coria-oefenlink">Coria-oefenlink<a class="headerlink" href="#coria-oefenlink" title="Permanent link">&para;</a></h3>
 <pre><code>:::coria "pad/naar/melodie.vsa" [label="…"] [mode="auto|html|mxl"]:::
+:::include coria "pad/naar/score.mxl" [label="…"] [mode="auto|html|mxl"]:::
 </code></pre>
 <p>Pad relatief aan het includerende bestand, zoals bij <code>:::include</code>.</p>
 <ul>
-<li>Als <code>{stem}.coria.html</code> naast de <code>.vsa</code> staat: link naar Coria-export-HTML
-  (partij al gekozen). Build kopieert naar <code>static/coria/…</code>.</li>
-<li>Anders: link naar gegenereerde <code>.mxl</code> via Coria <code>play_from_url</code>.</li>
+<li>Bron <code>.vsa</code>: als <code>{stem}.coria.html</code> naast het vsa-bestand staat → Coria-HTML
+  (<code>static/coria/…</code>). Anders → afgeleide <code>.mxl</code> via <code>play_from_url</code>
+  (<code>/vsa/mxl/…/{stem}.mxl</code>).</li>
+<li>Bron <code>.mxl</code> / <code>.musicxml</code>: het bestand zelf (<code>/mxl/…</code> inclusief extensie).
+  Optioneel <code>{stem}.coria.html</code> naast dat bestand. Build kopieert native
+  MusicXML naar <code>static/mxl/…</code>.</li>
 </ul>
 <p>Wordt bij <code>build-markdown</code> omgezet naar Hugo-shortcode <code>coria-html</code> of <code>coria</code>.</p>
 <h3 id="conditionele-inhoud">Conditionele inhoud<a class="headerlink" href="#conditionele-inhoud" title="Permanent link">&para;</a></h3>
@@ -3840,7 +3846,7 @@ in bron-docs; korte samenvatting blijft in sectie 3 en 3b hierboven.</p>
       
       
       <p class="og-footer-stamps">
-        Bijgewerkt: 2026-08-19
+        Bijgewerkt: 2026-09-05
         
       </p>
       
